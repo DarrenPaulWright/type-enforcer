@@ -5,10 +5,10 @@
 	"main": "src/index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"docs-readme": "jsdoc2md src/index.js > README.md",
-		"docs-enforce": "jsdoc2md src/enforcer/**/*.js > api/enforce.md",
-		"docs-method": "jsdoc2md src/methods/**/*.js > api/method.md",
-		"docs-types": "jsdoc2md src/types/**/*.js > api/types.md",
+		"docs-readme": "jsdoc2md src/index.js > README.md --template docs.hbs",
+		"docs-enforce": "jsdoc2md src/enforcer/**/*.js > api/enforce.md --template docs.hbs",
+		"docs-method": "jsdoc2md src/methods/**/*.js > api/method.md --template docs.hbs",
+		"docs-types": "jsdoc2md src/types/**/*.js > api/types.md --template docs.hbs",
 		"docs": "npm run docs-readme && npm run docs-enforce && npm run docs-method"
 	},
 	"repository": {

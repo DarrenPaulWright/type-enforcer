@@ -1,8 +1,4 @@
 /**
- * Type enforcement library for javascript
- *
- * ## Installation
- *
  * With npm
  * ```
  * npm install type-enforcer
@@ -20,7 +16,7 @@
  * - Still needs full test coverage
  * - Needs better documentation
  *
- * @name type-enforcer
+ * @name Installation
  */
 export { default as CallbackQueue } from './types/CallbackQueue';
 export * from './types/CssSize';

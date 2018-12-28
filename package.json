@@ -1,0 +1,47 @@
+{
+	"name": "type-enforcer",
+	"version": "0.0.1",
+	"description": "Type enforcement library for javascript",
+	"main": "src/index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"docs-readme": "jsdoc2md src/index.js > README.md",
+		"docs-enforce": "jsdoc2md src/enforcer/**/*.js > api/enforce.md",
+		"docs-method": "jsdoc2md src/methods/**/*.js > api/method.md",
+		"docs-types": "jsdoc2md src/types/**/*.js > api/types.md",
+		"docs": "npm run docs-readme && npm run docs-enforce && npm run docs-method"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/DarrenPaulWright/type-enforcer.git"
+	},
+	"keywords": [
+		"type",
+		"enforce",
+		"method"
+	],
+	"author": "Darren Paul Wright <Darren@DarrenPaulWright.com>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/DarrenPaulWright/type-enforcer/issues"
+	},
+	"homepage": "https://github.com/DarrenPaulWright/type-enforcer#readme",
+	"dependencies": {
+		"lodash": "^4.17.11",
+		"moment": "^2.23.0"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.2.2",
+		"@babel/plugin-proposal-class-properties": "^7.2.3",
+		"@babel/plugin-proposal-private-methods": "^7.2.3",
+		"@babel/preset-env": "^7.2.3",
+		"babel-plugin-lodash": "^3.3.4",
+		"chai": "^4.2.0",
+		"eslint": "^5.11.0",
+		"eslint-loader": "^2.1.1",
+		"jasmine": "^3.3.1",
+		"jsdoc-to-markdown": "^4.0.1",
+		"wallaby-webpack": "^3.9.13",
+		"webpack": "^4.28.2"
+	}
+}

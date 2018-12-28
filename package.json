@@ -5,6 +5,9 @@
 	"main": "src/index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
+		"patch": "npm version patch -m \"Increment patch version to %s\"",
+		"minor": "npm version minor -m \"Increment minor version to %s\"",
+		"major": "npm version major -m \"Increment major version to %s\"",
 		"docs-readme": "jsdoc2md src/index.js > README.md --template docs.hbs",
 		"docs-enforce": "jsdoc2md src/enforcer/**/*.js > api/enforce.md --template docs.hbs",
 		"docs-method": "jsdoc2md src/methods/**/*.js > api/method.md --template docs.hbs",

@@ -26,6 +26,27 @@ import methodVector from './types/methodVector';
  * import { method } from 'type-enforcer';
  * ```
  *
+ * Use it as a prototype:
+ * ``` javascript
+ * const Thing = function() {};
+ *
+ * Thing.prototype.myMethod = method.string([options]);
+ * ```
+ *
+ * or in a class:
+ * ``` javascript
+ * class Thing() {}
+ *
+ * Thing.prototype.myMethod = method.string([options]);
+ * ```
+ *
+ * or as a non-prototype method:
+ * ``` javascript
+ * const Thing = function() {
+ *     this.myMethod = method.string([options]);
+ * };
+ * ```
+ *
  * @typedef {object} method
  */
 export default {

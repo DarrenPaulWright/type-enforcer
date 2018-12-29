@@ -1,7 +1,19 @@
-import enforceBool from '../../enforcer/types/enforceCssSize';
-import buildMethod from '../variants/buildMethod';
+import enforceCssSize from '../../enforcer/types/enforceCssSize';
+import { buildMethod } from './methodAny';
 
+/**
+ * Builds a method for getting/setting a CssSize instance
+ *
+ * @function method.cssSize
+ * @extends method.any
+ *
+ * @arg [options=Same as method.any except:]
+ * @arg [options.enforce=enforce.cssSize]
+ * @arg [options.compare=CssSize.isSame]
+ *
+ * @returns {Function}
+ */
 export default buildMethod({
-	enforce: enforceBool,
+	enforce: enforceCssSize,
 	compare: (newValue, oldValue) => (newValue && newValue.isSame) ? !newValue.isSame(oldValue) : newValue !== oldValue
 });

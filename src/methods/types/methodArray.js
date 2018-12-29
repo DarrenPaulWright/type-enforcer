@@ -1,24 +1,22 @@
 import { isEqual } from 'lodash';
 import enforceArray from '../../enforcer/types/enforceArray';
-import buildMethod from '../variants/buildMethod';
+import { buildMethod } from './methodAny';
 
 /**
  * Builds a method for getting/setting an array
  *
  * @function method.array
+ * @extends method.any
  *
- * @param   {Object}       [options]
- * @param   {Function}     [options.before] - A callback that gets executed before a new valid value is set
- * @param   {Function}     [options.set]       - A callback that gets executed when a new valid value is
- *     set
- * @param   {Array}        [options.other] - An array of other values that that can be set
+ * @arg [options=Same as method.any except:]
+ * @arg [options.init=[]]
+ * @arg [options.enforce=enforce.array]
+ * @arg [options.compare=!lodash.isEqual]
  *
- * @returns {this|Array} - If setting a value then returns this, otherwise returns valueObject.property
+ * @returns {Function}
  */
 export default buildMethod({
 	enforce: enforceArray,
 	init: [],
-	compare: function(newValue, oldValue) {
-		return !isEqual(newValue, oldValue);
-	}
+	compare: (newValue, oldValue) => !isEqual(newValue, oldValue)
 });

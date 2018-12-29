@@ -1,22 +1,16 @@
 import enforceElement from '../../enforcer/types/enforceElement';
-import buildMethod from '../variants/buildMethod';
+import { buildMethod } from './methodAny';
 
 /**
- * Gets or Sets a DOM element
+ * Builds a method for getting/setting a DOM element
  *
  * @function method.element
+ * @extends method.any
  *
- * @param   {Object}       valueObject      - An object that holds the property to be set and returned
- * @param   {Array}        property         - The property of valueObject that gets returned or should get
- *     set when a new value is passed in
- * @param   {Object}       [options]
- * @param   {Function}     [options.before] - A callback that gets executed before a new valid value is set
- * @param   {Function}     [options.set]       - A callback that gets executed when a new valid value is
- *     set
- * @param   {Array}        [options.other] - An array of other values that that can be set
+ * @arg [options=Same as method.any except:]
+ * @arg [options.enforce=enforce.element]
  *
- * @returns {this|String} - If setting a value then returns this, otherwise returns
- *     valueObject.property
+ * @returns {Function}
  */
 export default buildMethod({
 	enforce: enforceElement

@@ -9,10 +9,16 @@
 		"minor": "npm version minor -m \"Increment minor version to %s\"",
 		"major": "npm version major -m \"Increment major version to %s\"",
 		"docs-readme": "jsdoc2md src/index.js > README.md --template docs.hbs",
-		"docs-enforce": "jsdoc2md src/enforcer/**/*.js > api/enforce.md --template docs.hbs",
-		"docs-method": "jsdoc2md src/methods/**/*.js > api/method.md --template docs.hbs",
-		"docs-types": "jsdoc2md src/types/**/*.js > api/types.md --template docs.hbs",
-		"docs": "npm run docs-readme && npm run docs-enforce && npm run docs-method"
+		"docs-enforce": "jsdoc2md src/enforcer/**/*.js > docs/enforce.md --template docs.hbs",
+		"docs-method": "jsdoc2md src/methods/**/*.js > docs/method.md --template docs.hbs",
+		"docs-callbackqueue": "jsdoc2md src/CallbackQueue.js > docs/CallbackQueue.md --template docs.hbs",
+		"docs-csssize": "jsdoc2md src/types/CssSize.js > docs/CssSize.md --template docs.hbs",
+		"docs-dockpoint": "jsdoc2md src/types/DockPoint.js > docs/DockPoint.md --template docs.hbs",
+		"docs-enum": "jsdoc2md src/types/Enum.js > docs/Enum.md --template docs.hbs",
+		"docs-point": "jsdoc2md src/types/Point.js > docs/Point.md --template docs.hbs",
+		"docs-thickness": "jsdoc2md src/types/Thickness.js > docs/Thickness.md --template docs.hbs",
+		"docs-vector": "jsdoc2md src/types/Vector.js > docs/Vector.md --template docs.hbs",
+		"docs": "npm run docs-readme && npm run docs-enforce && npm run docs-method && npm run docs-callbackqueue && npm run docs-csssize && npm run docs-dockpoint && npm run docs-enum && npm run docs-point && npm run docs-thickness && npm run docs-vector"
 	},
 	"repository": {
 		"type": "git",

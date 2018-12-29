@@ -11,14 +11,35 @@
  * - [@babel/plugin-proposal-class-properties](https://github.com/babel/babel/tree/master/packages/babel-plugin-proposal-class-properties)
  * - [@babel/plugin-proposal-private-methods](https://github.com/babel/babel/tree/master/packages/babel-plugin-proposal-private-methods)
  *
- * ## Notes
+ * ## Contributing
  *
- * - Still needs full test coverage
- * - Needs better documentation
+ * If you would like to help out, type-enforcer still needs full test coverage and more data types. If you add a new type be sure to add an enforce function and a method. When done, add any new types to package.json scripts, docs-newType, and add that to the docs script, then run
+ * ```
+ * npm run docs
+ * ```
+ * to generate new docs. If a new file is generated, add a link to it in the description in index.js
+ *
+ * ## Docs
+ *
+ * ### Data Types
+ * - [CssSize](https://github.com/darrenpaulwright/type-enforcer/blob/master/docs/CssSize.md)
+ * - [DockPoint](https://github.com/darrenpaulwright/type-enforcer/blob/master/docs/DockPoint.md)
+ * - [Enum](https://github.com/darrenpaulwright/type-enforcer/blob/master/docs/Enum.md)
+ * - [Point](https://github.com/darrenpaulwright/type-enforcer/blob/master/docs/Point.md)
+ * - [Thickness](https://github.com/darrenpaulwright/type-enforcer/blob/master/docs/Thickness.md)
+ * - [Vector](https://github.com/darrenpaulwright/type-enforcer/blob/master/docs/Vector.md)
+ *
+ * ### CallbackQueue
+ * - [CallbackQueue](https://github.com/darrenpaulwright/type-enforcer/blob/master/docs/CallbackQueue.md)
+ *
+ * ### Enforcement
+ * - [enforce](https://github.com/darrenpaulwright/type-enforcer/blob/master/docs/enforce.md)
+ *
+ * ### Methods
+ * - [method](https://github.com/darrenpaulwright/type-enforcer/blob/master/docs/method.md)
  *
  * @name Installation
  */
-export { default as CallbackQueue } from './types/CallbackQueue';
 export * from './types/CssSize';
 export { default as CssSize } from './types/CssSize';
 export { default as DockPoint } from './types/DockPoint';
@@ -26,6 +47,8 @@ export { default as Enum } from './types/Enum';
 export { default as Point } from './types/Point';
 export { default as Thickness } from './types/Thickness';
 export { default as Vector } from './types/Vector';
+
+export { default as CallbackQueue } from './CallbackQueue';
 
 export { default as enforce } from './enforcer/enforce';
 

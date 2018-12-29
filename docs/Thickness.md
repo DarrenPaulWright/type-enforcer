@@ -145,7 +145,7 @@ Determine if something is an instance of Thickness
 
 ## License
 
-[MIT](./LICENSE)
+[MIT](./LICENSE.md)
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg
 [npm-url]: https://npmjs.com/package/type-enforcer

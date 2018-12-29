@@ -308,7 +308,7 @@ Builds a method for getting/setting a Vector instance
 
 ## License
 
-[MIT](./LICENSE)
+[MIT](./LICENSE.md)
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg
 [npm-url]: https://npmjs.com/package/type-enforcer

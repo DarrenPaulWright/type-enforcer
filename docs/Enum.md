@@ -36,7 +36,7 @@ Freezes an enumerable object and adds a "has" method## Usage``` javascriptim
 
 ## License
 
-[MIT](./LICENSE)
+[MIT](./LICENSE.md)
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg
 [npm-url]: https://npmjs.com/package/type-enforcer

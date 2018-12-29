@@ -8,8 +8,12 @@ const IS_BUSY = Symbol();
 /**
  * A simple queue for callbacks that allows for adding, removing, and triggering all or specific callbacks
  *
- * @module CallbacksQueue
- * @constructor
+ * ## Usage
+ * ``` javascript
+ * import { CallbackQueue } from 'type-enforcer';
+ * ```
+ *
+ * @class CallbackQueue
  */
 export default class CallbackQueue {
 	constructor() {
@@ -20,17 +24,15 @@ export default class CallbackQueue {
 	}
 
 	/**
-	 * Add a callback to be called whenever the window is resized or
-	 *      CallbackQueue.trigger() is called.
+	 * Add a callback to the queue.
 	 *
-	 * @method add
-	 * @member module:CallbacksQueue
+	 * @memberof CallbackQueue
 	 * @instance
 	 *
-	 * @param {Function} callback - Callback function.
-	 * @param {Object}   data
+	 * @arg {Function} callback - Callback function.
+	 * @arg {Object}   data - Any arbitrary data. Returned when the callback is discarded.
 	 *
-	 * @returns {Number}          - An unique ID for this callback.
+	 * @returns {Number} A unique ID for this callback.
 	 */
 	add(callback, data) {
 		if (isFunction(callback)) {
@@ -45,15 +47,14 @@ export default class CallbackQueue {
 	}
 
 	/**
-	 * Remove a specific callback from the stack.
+	 * Remove a specific callback from the queue.
 	 *
-	 * @method discard
-	 * @member module:CallbacksQueue
+	 * @memberof CallbackQueue
 	 * @instance
 	 *
-	 * @param {Number} ID - The ID returned by CallbacksQueue.add().
+	 * @arg {Number} ID - The ID returned by CallbackQueue.add().
 	 *
-	 * @returns {object} - the data object added with this callback
+	 * @returns {Object} The data object added with this callback
 	 */
 	discard(ID) {
 		let data;
@@ -68,10 +69,9 @@ export default class CallbackQueue {
 	}
 
 	/**
-	 * Remove ALL callbacks from the stack.
+	 * Remove ALL callbacks from the queue.
 	 *
-	 * @method discardAll
-	 * @member module:CallbacksQueue
+	 * @memberof CallbackQueue
 	 * @instance
 	 */
 	discardAll() {
@@ -82,14 +82,13 @@ export default class CallbackQueue {
 	/**
 	 * Triggers one or all callbacks.
 	 *
-	 * @method trigger
-	 * @member module:CallbacksQueue
+	 * @memberof CallbackQueue
 	 * @instance
 	 *
-	 * @param {Number} [ID] - To trigger only a specific callback, provide the ID returned by CallbacksQueue.add().
+	 * @arg {Number} [ID] - To trigger only a specific callback, provide the ID returned by CallbackQueue.add().
 	 *    Otherwise all callbacks are called.
-	 * @param {Array} [extraArguments] - Array of arguments to apply to each callback.
-	 * @param {Array} [context]
+	 * @arg {Array} [extraArguments] - Array of arguments to apply to each callback.
+	 * @arg {Array} [context]
 	 *
 	 * @returns {this}
 	 */
@@ -115,12 +114,11 @@ export default class CallbackQueue {
 	/**
 	 * Triggers the first callback and removes it from the queue.
 	 *
-	 * @method triggerFirst
-	 * @member module:CallbacksQueue
+	 * @memberof CallbackQueue
 	 * @instance
 	 *
-	 * @param {Array} [extraArguments] - Array of arguments to apply to each callback.
-	 * @param {Array} [context] - "this" applied to the callback
+	 * @arg {Array} [extraArguments] - Array of arguments to apply to each callback.
+	 * @arg {Array} [context] - "this" applied to the callback
 	 *
 	 * @returns {this}
 	 */
@@ -139,10 +137,9 @@ export default class CallbackQueue {
 	}
 
 	/**
-	 * The total number of current callbacks.
+	 * The total number of current callbacks in this queue.
 	 *
-	 * @method getTotalCallbacks
-	 * @member module:CallbacksQueue
+	 * @memberof CallbackQueue
 	 * @instance
 	 *
 	 * @returns {number}
@@ -154,8 +151,7 @@ export default class CallbackQueue {
 	/**
 	 * Gets the callback object
 	 *
-	 * @method getCallbacks
-	 * @member module:CallbacksQueue
+	 * @memberof CallbackQueue
 	 * @instance
 	 *
 	 * @returns {object}
@@ -167,8 +163,7 @@ export default class CallbackQueue {
 	/**
 	 * See if this queue is currently executing callbacks.
 	 *
-	 * @method isBusy
-	 * @member module:CallbacksQueue
+	 * @memberof CallbackQueue
 	 * @instance
 	 *
 	 * @returns {boolean}

@@ -3,10 +3,16 @@ import { assign, values } from 'lodash';
 const VALUES = Symbol();
 
 /**
- * A data type. Freezes an enumerable object and adds a "has" method
+ * Freezes an enumerable object and adds a "has" method
  *
- * @module Enum
- * @constructor
+ * ## Usage
+ * ``` javascript
+ * import { Enum } from 'type-enforcer';
+ * ```
+ *
+ * @class Enum
+ *
+ * @arg {Object} value
  */
 export default class Enum {
 	constructor(value) {
@@ -17,15 +23,14 @@ export default class Enum {
 	}
 
 	/**
-	 * @method has
-	 * @member module:Enum
+	 * @memberof Enum
 	 * @instance
 	 *
-	 * @param {string} item
+	 * @arg {String} value
 	 *
 	 * @returns {boolean}
 	 */
-	has(item) {
-		return this[VALUES].includes(item);
+	has(value) {
+		return this[VALUES].includes(value);
 	}
 }

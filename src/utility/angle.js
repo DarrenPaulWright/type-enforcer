@@ -2,15 +2,17 @@ const TWO_PI = 2 * Math.PI;
 
 /**
  * Angle functions.
- * @module angle
+ *
+ * @typedef {object} angle
  */
 export default angle = {
 	/**
 	 * Returns the same angle between 0 and 2 * PI
-	 * @method normalize
-	 * @member module:angle
-	 * @static
-	 * @param   {Number} angle
+	 *
+	 * @function angle.normalize
+	 *
+	 * @arg   {Number} angle
+	 *
 	 * @returns {Number} - The normalized angle
 	 */
 	normalize: function(angle) {
@@ -19,10 +21,11 @@ export default angle = {
 	},
 	/**
 	 * Returns the angle from origin to the provided Point
-	 * @method fromOrigin
-	 * @member module:angle
-	 * @static
-	 * @param   {Point} point
+	 *
+	 * @function angle.fromOrigin
+	 *
+	 * @arg   {Point} point
+	 *
 	 * @returns {Number} - The angle
 	 */
 	fromOrigin: function(point) {

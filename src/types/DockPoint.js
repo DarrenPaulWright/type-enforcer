@@ -4,13 +4,42 @@ import Enum from './Enum';
 
 const SEPARATOR = '.';
 
+const getOpposite = (direction) => {
+	switch (direction) {
+		case DockPoint.BASIC_POINTS.TOP:
+			return DockPoint.BASIC_POINTS.BOTTOM;
+		case DockPoint.BASIC_POINTS.RIGHT:
+			return DockPoint.BASIC_POINTS.LEFT;
+		case DockPoint.BASIC_POINTS.BOTTOM:
+			return DockPoint.BASIC_POINTS.TOP;
+		case DockPoint.BASIC_POINTS.LEFT:
+			return DockPoint.BASIC_POINTS.RIGHT;
+		case DockPoint.BASIC_POINTS.CENTER:
+			return DockPoint.BASIC_POINTS.CENTER;
+		default:
+			return DockPoint.BASIC_POINTS.NONE;
+	}
+};
+
 /**
- * A data type. Allows the designation of a specific point relative to an object.
+ * Allows the designation of a specific point relative to an object.
  *
- * @module DockPoint
- * @constructor
+ * ## Usage
+ * ``` javascript
+ * import { DockPoint } from 'type-enforcer';
+ * ```
+ *
+ * @class DockPoint
+ *
+ * @arg {String} [value=DockPoint.POINTS.TOP_CENTER] - Anything from DockPoint.POINTS
  */
 export default class DockPoint {
+	/**
+	 * @const BASIC_POINTS
+	 * @static
+	 * @memberof DockPoint
+	 * @type {Enum}
+	 */
 	static BASIC_POINTS = new Enum({
 		TOP: 'top',
 		RIGHT: 'right',
@@ -19,6 +48,12 @@ export default class DockPoint {
 		CENTER: 'center',
 		NONE: ''
 	});
+	/**
+	 * @const POINTS
+	 * @static
+	 * @memberof DockPoint
+	 * @type {Enum}
+	 */
 	static POINTS = new Enum(assign({}, DockPoint.BASIC_POINTS, {
 		TOP_LEFT: DockPoint.BASIC_POINTS.TOP + SEPARATOR + DockPoint.BASIC_POINTS.LEFT,
 		TOP_CENTER: DockPoint.BASIC_POINTS.TOP + SEPARATOR + DockPoint.BASIC_POINTS.CENTER,
@@ -36,27 +71,19 @@ export default class DockPoint {
 	#horizontal = [DockPoint.BASIC_POINTS.LEFT, DockPoint.BASIC_POINTS.RIGHT];
 	#vertical = [DockPoint.BASIC_POINTS.TOP, DockPoint.BASIC_POINTS.BOTTOM];
 
-	constructor(input) {
-		this.value(input || DockPoint.POINTS.TOP_CENTER);
+	constructor(value) {
+		this.value(value || DockPoint.POINTS.TOP_CENTER);
 	}
 
-	#getOpposite(direction) {
-		switch (direction) {
-			case DockPoint.BASIC_POINTS.TOP:
-				return DockPoint.BASIC_POINTS.BOTTOM;
-			case DockPoint.BASIC_POINTS.RIGHT:
-				return DockPoint.BASIC_POINTS.LEFT;
-			case DockPoint.BASIC_POINTS.BOTTOM:
-				return DockPoint.BASIC_POINTS.TOP;
-			case DockPoint.BASIC_POINTS.LEFT:
-				return DockPoint.BASIC_POINTS.RIGHT;
-			case DockPoint.BASIC_POINTS.CENTER:
-				return DockPoint.BASIC_POINTS.CENTER;
-			default:
-				return DockPoint.BASIC_POINTS.NONE;
-		}
-	}
-
+	/**
+	 * Determine if something is a valid dock point
+	 *
+	 * @memberof DockPoint
+	 *
+	 * @arg {String|DockPoint} value
+	 *
+	 * @returns {boolean}
+	 */
 	static isValid(value) {
 		if (DockPoint.isInstance(value)) {
 			return true;
@@ -65,14 +92,39 @@ export default class DockPoint {
 		return DockPoint.POINTS.has(value);
 	}
 
+	/**
+	 * Determine if something is an instance of DockPoint
+	 *
+	 * @memberof DockPoint
+	 *
+	 * @arg {DockPoint} is
+	 *
+	 * @returns {boolean}
+	 */
 	static isInstance(is) {
 		return is instanceof DockPoint;
 	}
 
-	has(input) {
-		return this.primary() === input || this.secondary() === input;
+	/**
+	 * Determine either the primary or secondary is equivalent to a value
+	 *
+	 * @memberof DockPoint
+	 * @instance
+	 *
+	 * @arg {String} value - DockPoint.BASIC_POINTS
+	 *
+	 * @returns {boolean}
+	 */
+	has(value) {
+		return this.primary() === value || this.secondary() === value;
 	}
 
+	/**
+	 * Set the left or right value to the opposite, whether it's the primary or secondary
+	 *
+	 * @memberof DockPoint
+	 * @instance
+	 */
 	swapHorizontal() {
 		if (this.#horizontal.includes(this.primary())) {
 			this.primary(this.oppositePrimary);
@@ -82,6 +134,12 @@ export default class DockPoint {
 		}
 	}
 
+	/**
+	 * Set the top or bottom value to the opposite, whether it's the primary or secondary
+	 *
+	 * @memberof DockPoint
+	 * @instance
+	 */
 	swapVertical() {
 		if (this.#vertical.includes(this.primary())) {
 			this.primary(this.oppositePrimary);
@@ -91,22 +149,71 @@ export default class DockPoint {
 		}
 	}
 
+	/**
+	 * Get the opposite of the current primary
+	 *
+	 * @memberof DockPoint
+	 * @instance
+	 *
+	 * @returns {String} DockPoint.BASIC_POINTS
+	 */
 	get oppositePrimary() {
-		return this.#getOpposite(this.primary());
+		return getOpposite(this.primary());
 	}
 
+	/**
+	 * Get the opposite of the current secondary
+	 *
+	 * @memberof DockPoint
+	 * @instance
+	 *
+	 * @returns {String} DockPoint.BASIC_POINTS
+	 */
 	get oppositeSecondary() {
-		return this.#getOpposite(this.secondary());
+		return getOpposite(this.secondary());
 	}
 }
 
 assign(DockPoint.prototype, {
+	/**
+	 * The primary value
+	 *
+	 * @method
+	 * @memberof DockPoint
+	 * @instance
+	 *
+	 * @arg {String} [value] - DockPoint.BASIC_POINTS
+	 *
+	 * @returns {this|String} DockPoint.BASIC_POINTS
+	 */
 	primary: methodEnum({
 		enum: DockPoint.BASIC_POINTS
 	}),
+	/**
+	 * The secondary value
+	 *
+	 * @method
+	 * @memberof DockPoint
+	 * @instance
+	 *
+	 * @arg {String} [value] - DockPoint.BASIC_POINTS
+	 *
+	 * @returns {this|String} DockPoint.BASIC_POINTS
+	 */
 	secondary: methodEnum({
 		enum: DockPoint.BASIC_POINTS
 	}),
+	/**
+	 * The full value
+	 *
+	 * @method
+	 * @memberof DockPoint
+	 * @instance
+	 *
+	 * @arg {String} [value] - DockPoint.POINTS
+	 *
+	 * @returns {this|String} DockPoint.POINTS
+	 */
 	value: methodEnum({
 		enum: DockPoint.POINTS,
 		set: function(value) {

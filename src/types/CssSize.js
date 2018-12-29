@@ -1,4 +1,5 @@
-import { concat, defer, each, join, throttle } from 'lodash';
+import { assign, concat, defer, each, join, throttle } from 'lodash';
+import methodElement from '../methods/types/methodElement';
 
 export const AUTO = 'auto';
 export const INITIAL = 'initial';
@@ -69,13 +70,6 @@ const measureUnits = (units, save, element) => {
 };
 
 let oneRem;
-/**
- * Returns the pixel value of one rem unit
- *
- * @function getOneRem
- *
- * @return {string}
- */
 const getOneRem = () => {
 	if (!oneRem) {
 		oneRem = parseFloat(window.getComputedStyle(document.documentElement).fontSize);
@@ -116,14 +110,34 @@ const UNITS = Symbol();
 const VALUE = Symbol();
 const PIXELS_VALUE = Symbol();
 const FONT_BASED_UNITS = Symbol();
-const ELEMENT = Symbol();
 
+/**
+ * A class for css sizes
+ *
+ * ## Usage
+ * ``` javascript
+ * import { CssSize } from 'type-enforcer';
+ * ```
+ *
+ * @class CssSize
+ *
+ * @arg {String} [size=0]
+ */
 export default class CssSize {
 	constructor(size) {
 		this[SIZE] = ZERO_PIXELS;
 		this.set(size);
 	}
 
+	/**
+	 * Determine if something is a valid css size
+	 *
+	 * @memberof CssSize
+	 *
+	 * @arg {String|CssSize} size
+	 *
+	 * @returns {boolean}
+	 */
 	static isValid(size) {
 		if (CssSize.isInstance(size)) {
 			return true;
@@ -134,10 +148,29 @@ export default class CssSize {
 		return false;
 	}
 
+	/**
+	 * Determine if something is an instance of CssSize
+	 *
+	 * @memberof CssSize
+	 *
+	 * @arg {CssSize} size
+	 *
+	 * @returns {boolean}
+	 */
 	static isInstance(size) {
 		return size instanceof CssSize;
 	}
 
+	/**
+	 * Set the value
+	 *
+	 * @memberof CssSize
+	 * @instance
+	 *
+	 * @arg {String} size - A valid css size, ie '32px', '1rem', 'auto', etc.
+	 *
+	 * @returns {this}
+	 */
 	set(size) {
 		if (CssSize.isValid(size)) {
 			this[SIZE] = size[SIZE] || (isNonZeroNumber(size) ? size + PIXELS : size + '');
@@ -150,19 +183,14 @@ export default class CssSize {
 		return this;
 	}
 
-	element(element) {
-		if (arguments.length) {
-			if (element !== this[ELEMENT]) {
-				this[ELEMENT] = element;
-				this[FONT_BASED_UNITS] = {};
-			}
-
-			return this;
-		}
-
-		return this[ELEMENT];
-	}
-
+	/**
+	 * Get the units portion of the current value
+	 *
+	 * @memberof CssSize
+	 * @instance
+	 *
+	 * @returns {String}
+	 */
 	get units() {
 		if (this[UNITS] === undefined && !unitlessSizes.includes(this[SIZE])) {
 			this[UNITS] = this[SIZE].replace(NUMERIC_REGEX, '');
@@ -171,6 +199,14 @@ export default class CssSize {
 		return this[UNITS];
 	}
 
+	/**
+	 * Get the numeric portion of the current value
+	 *
+	 * @memberof CssSize
+	 * @instance
+	 *
+	 * @returns {Number}
+	 */
 	get value() {
 		if (this[VALUE] === undefined) {
 			this[VALUE] = parseFloat(this[SIZE]);
@@ -182,6 +218,16 @@ export default class CssSize {
 		return this[VALUE];
 	}
 
+	/**
+	 * Get the pixel equivalent of the current value
+	 *
+	 * @memberof CssSize
+	 * @instance
+	 *
+	 * @arg {boolean} [isNumber=false] - If true then return a number, else a string with 'px' on the end.
+	 *
+	 * @returns {Number|String}
+	 */
 	toPixels(isNumber = false) {
 		if (this[PIXELS_VALUE] === undefined) {
 			if (unitlessSizes.includes(this[SIZE])) {
@@ -204,7 +250,7 @@ export default class CssSize {
 						this[PIXELS_VALUE] = getMeasurement(viewPortUnitMeasurements, viewPortUnits, units);
 					}
 					else if (fontBasedUnits.includes(units)) {
-						this[PIXELS_VALUE] = getMeasurement(this[FONT_BASED_UNITS], fontBasedUnits, units, this[ELEMENT]);
+						this[PIXELS_VALUE] = getMeasurement(this[FONT_BASED_UNITS], fontBasedUnits, units, this.element());
 					}
 					else {
 						this[PIXELS_VALUE] = 1;
@@ -218,18 +264,52 @@ export default class CssSize {
 		return (!isNumber && typeof this[PIXELS_VALUE] === 'number') ? this[PIXELS_VALUE] + (this[PIXELS_VALUE] !== 0 ? PIXELS : '') : this[PIXELS_VALUE];
 	}
 
+	/**
+	 * Determine if the current value is 'auto'
+	 *
+	 * @memberof CssSize
+	 * @instance
+	 *
+	 * @returns {boolean}
+	 */
 	get isAuto() {
 		return this[SIZE] === AUTO;
 	}
 
+	/**
+	 * Determine if the current value is a fixed size
+	 *
+	 * @memberof CssSize
+	 * @instance
+	 *
+	 * @returns {boolean}
+	 */
 	get isFixed() {
 		return fixedUnits.includes(this.units);
 	}
 
+	/**
+	 * Determine if the current value is a percent size
+	 *
+	 * @memberof CssSize
+	 * @instance
+	 *
+	 * @returns {boolean}
+	 */
 	get isPercent() {
 		return percentUnits.includes(this.units);
 	}
 
+	/**
+	 * Determine if another size is equivalent to this one
+	 *
+	 * @memberof CssSize
+	 * @instance
+	 *
+	 * @arg {CssSize|String} size
+	 *
+	 * @returns {boolean}
+	 */
 	isSame(size) {
 		if (CssSize.isInstance(size)) {
 			return size.toPixels(true) === this.toPixels(true);
@@ -243,7 +323,34 @@ export default class CssSize {
 		return size === this[SIZE];
 	}
 
+	/**
+	 * Get the current value as a string
+	 *
+	 * @memberof CssSize
+	 * @instance
+	 *
+	 * @returns {String}
+	 */
 	toString() {
 		return this[SIZE] + '';
 	}
 }
+
+assign(CssSize.prototype, {
+	/**
+	 * Set the element to measure font based units against
+	 *
+	 * @method
+	 * @memberof CssSize
+	 * @instance
+	 *
+	 * @arg {Element} [element] - A DOM element
+	 *
+	 * @returns {this|Element}
+	 */
+	element: methodElement({
+		set: function(element) {
+			this[FONT_BASED_UNITS] = {};
+		}
+	})
+});

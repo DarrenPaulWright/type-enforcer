@@ -42,7 +42,13 @@ const IS_BUSY = Symbol();
 
 /**
  * Vector model with helper types
- * @module Vector
+ *
+ * ## Usage
+ * ``` javascript
+ * import { Vector } from 'type-enforcer';
+ * ```
+ *
+ * @class Vector
  */
 export default class Vector {
 	constructor(initStart, initEnd) {
@@ -54,14 +60,39 @@ export default class Vector {
 		calculateLength.call(this);
 	}
 
+	/**
+	 * Determine if something is an instance of Vector
+	 *
+	 * @memberof Vector
+	 *
+	 * @arg {Vector} is
+	 *
+	 * @returns {boolean}
+	 */
 	static isInstance(is) {
 		return is instanceof Vector;
 	}
 
+	/**
+	 * Determine if another vector is the same as this one
+	 *
+	 * @memberof Vector
+	 * @instance
+	 *
+	 * @arg {Vector} vector2
+	 *
+	 * @returns {Boolean}
+	 */
 	isSame(vector2) {
 		return vector2.start().isSame(this.start()) && vector2.end().isSame(this.end());
 	}
 
+	/**
+	 * Switch the start and end points
+	 *
+	 * @memberof Vector
+	 * @instance
+	 */
 	invert() {
 		let tempOrigin = this.start();
 
@@ -74,19 +105,74 @@ export default class Vector {
 }
 
 assign(Vector.prototype, {
+	/**
+	 * The start point
+	 *
+	 * @method
+	 * @memberof Vector
+	 * @instance
+	 *
+	 * @arg {Point} [point]
+	 *
+	 * @returns {this|Point}
+	 */
 	start: methodPoint({
 		set: calculateLength
 	}),
+	/**
+	 * The end point
+	 *
+	 * @method
+	 * @memberof Vector
+	 * @instance
+	 *
+	 * @arg {Point} [point]
+	 *
+	 * @returns {this|Point}
+	 */
 	end: methodPoint({
 		set: calculateLength
 	}),
+	/**
+	 * The length of the vector. Resets the end point.
+	 *
+	 * @method
+	 * @memberof Vector
+	 * @instance
+	 *
+	 * @arg {Number} [length]
+	 *
+	 * @returns {this|Number}
+	 */
 	length: methodNumber({
 		set: setDestinationFromAngle
 	}),
+	/**
+	 * The angle from the start point to the end point. Resets the end point
+	 *
+	 * @method
+	 * @memberof Vector
+	 * @instance
+	 *
+	 * @arg {Number} [angle]
+	 *
+	 * @returns {this|Number}
+	 */
 	angle: methodNumber({
 		enforce: (newValue, oldValue) => angle.normalize(enforce.number(newValue, oldValue)),
 		set: setDestinationFromAngle
 	}),
+	/**
+	 * The x and y difference represented as a point
+	 *
+	 * @method
+	 * @memberof Vector
+	 * @instance
+	 *
+	 * @arg {Point} [point]
+	 *
+	 * @returns {this|Point}
+	 */
 	offset: methodPoint({
 		set: setEndFromOffset
 	})

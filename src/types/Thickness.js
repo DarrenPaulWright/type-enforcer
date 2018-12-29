@@ -13,6 +13,51 @@ const BOTTOM = Symbol();
 const LEFT = Symbol();
 const ELEMENT = Symbol();
 
+/**
+ * Replicates the functionality of css border-width, margin, and padding, or anything that requires top, right, bottom, and left css sizes.
+ *
+ * ## Usage
+ * ``` javascript
+ * import { Thickness } from 'type-enforcer';
+ * ```
+ *
+ * The sizes can be provided as individual parameters, an array, or a space separated string in the following arrangements:
+ * - If one size is provided it gets applied to all sides
+ * - If two sizes are provided the first gets applied to top and bottom, the second size gets applied right and left
+ * - If three sizes are provided the first gets applied to top, the second to right and left, and the third to bottom
+ * - If four sizes are provided then they get applied to top, right, bottom, and left respectively
+ *
+ * Examples:
+ * ``` javascript
+ * const thickness1 = new Thickness();
+ * console.log(thickness1.toString());
+ * // '0 0 0 0'
+ *
+ * const thickness2 = new Thickness(1, 2, 3, 4);
+ * console.log(thickness2.toString());
+ * // '1px 2px 3px 4px'
+ *
+ * const thickness3 = new Thickness([5, 6, 7]);
+ * console.log(thickness3.toString());
+ * // '5px 6px 7px 6px'
+ *
+ * const thickness4 = new Thickness('20px 30px');
+ * console.log(thickness4.toString());
+ * // '20px 30px'
+ *
+ * const thickness5 = new Thickness('20px');
+ * thickness5.bottom = 5;
+ * console.log(thickness5.toString());
+ * // '20px 20px 5px'
+ * ```
+ *
+ * @class Thickness
+ *
+ * @arg {String|Number|Array} [top]
+ * @arg {String|Number} [right]
+ * @arg {String|Number} [bottom]
+ * @arg {String|Number} [left]
+ */
 export default class Thickness {
 	constructor(...args) {
 		this[TOP] = new CssSize();
@@ -23,6 +68,19 @@ export default class Thickness {
 		this.set.apply(this, args);
 	}
 
+	/**
+	 * Set the sizes of all sides
+	 *
+	 * @memberof Thickness
+	 * @instance
+	 *
+	 * @arg {String|Number|Array} [top]
+	 * @arg {String|Number} [right]
+	 * @arg {String|Number} [bottom]
+	 * @arg {String|Number} [left]
+	 *
+	 * @returns {boolean}
+	 */
 	set() {
 		const self = this;
 		const args = splitArgs(arguments);
@@ -57,6 +115,15 @@ export default class Thickness {
 		}
 	}
 
+	/**
+	 * Determine if something is a valid Thickness
+	 *
+	 * @memberof Thickness
+	 *
+	 * @arg {String|Thickness} value
+	 *
+	 * @returns {boolean}
+	 */
 	static isValid() {
 		const args = splitArgs(arguments);
 
@@ -81,10 +148,27 @@ export default class Thickness {
 		return false;
 	}
 
+	/**
+	 * Determine if something is an instance of Thickness
+	 *
+	 * @memberof Thickness
+	 *
+	 * @arg {Thickness} is
+	 *
+	 * @returns {boolean}
+	 */
 	static isInstance(is) {
 		return is instanceof Thickness;
 	}
 
+	/**
+	 * The top size
+	 *
+	 * @memberof Thickness
+	 * @instance
+	 *
+	 * @type {CssSize}
+	 */
 	get top() {
 		return this[TOP].toPixels(true);
 	}
@@ -93,6 +177,14 @@ export default class Thickness {
 		this[TOP].set(size);
 	}
 
+	/**
+	 * The right size
+	 *
+	 * @memberof Thickness
+	 * @instance
+	 *
+	 * @type {CssSize}
+	 */
 	get right() {
 		return this[RIGHT].toPixels(true);
 	}
@@ -101,6 +193,14 @@ export default class Thickness {
 		this[RIGHT].set(size);
 	}
 
+	/**
+	 * The bottom size
+	 *
+	 * @memberof Thickness
+	 * @instance
+	 *
+	 * @type {CssSize}
+	 */
 	get bottom() {
 		return this[BOTTOM].toPixels(true);
 	}
@@ -109,6 +209,14 @@ export default class Thickness {
 		this[BOTTOM].set(size);
 	}
 
+	/**
+	 * The left size
+	 *
+	 * @memberof Thickness
+	 * @instance
+	 *
+	 * @type {CssSize}
+	 */
 	get left() {
 		return this[LEFT].toPixels(true);
 	}
@@ -117,18 +225,54 @@ export default class Thickness {
 		this[LEFT].set(size);
 	}
 
-	isSame(thickness) {
-		return this.toString() === (thickness ? thickness.toString() : null);
-	}
-
+	/**
+	 * Get the sum of the right and left
+	 *
+	 * @memberof Thickness
+	 * @instance
+	 * @readonly
+	 *
+	 * @type {Number}
+	 */
 	get horizontal() {
 		return this.left + this.right;
 	}
 
+	/**
+	 * Get the sum of the top and bottom
+	 *
+	 * @memberof Thickness
+	 * @instance
+	 * @readonly
+	 *
+	 * @type {Number}
+	 */
 	get vertical() {
 		return this.top + this.bottom;
 	}
 
+	/**
+	 * Determine if another thickness is the same as this one
+	 *
+	 * @memberof Thickness
+	 * @instance
+	 *
+	 * @arg {Thickness} thickness
+	 *
+	 * @returns {Boolean}
+	 */
+	isSame(thickness) {
+		return this.toString() === (thickness ? thickness.toString() : null);
+	}
+
+	/**
+	 * Get this thickness as a space separated string
+	 *
+	 * @memberof Thickness
+	 * @instance
+	 *
+	 * @returns {String}
+	 */
 	toString() {
 		const topBottomSame = this[TOP].isSame(this[BOTTOM]);
 		const leftRightSame = this[RIGHT].isSame(this[LEFT]);
@@ -153,6 +297,17 @@ export default class Thickness {
 }
 
 assign(Thickness.prototype, {
+	/**
+	 * Set the element to measure font based units against
+	 *
+	 * @method
+	 * @memberof Thickness
+	 * @instance
+	 *
+	 * @arg {Element} [element] - A DOM element
+	 *
+	 * @returns {this|Element}
+	 */
 	element: methodElement({
 		set: function(element) {
 			this[TOP].element(element);

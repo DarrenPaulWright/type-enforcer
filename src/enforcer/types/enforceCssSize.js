@@ -1,18 +1,18 @@
 import CssSize from '../../types/CssSize';
 
 /**
- * If the first value is a valid css size then return that, otherwise return the second value.
+ * If the first value is a valid css size then return that, otherwise return the alt value.
  *
  * @function enforce.cssSize
  *
- * @param   {CssSize|String} setterValue
- * @param   {CssSize} defaultValue
+ * @arg   {CssSize|String} value
+ * @arg   {CssSize} alt
  *
  * @returns {CssSize}
  */
-export default (setterValue, defaultValue) => {
-	if (CssSize.isValid(setterValue) && !CssSize.isInstance(setterValue)) {
-		setterValue = new CssSize(setterValue);
+export default (value, alt) => {
+	if (CssSize.isValid(value) && !CssSize.isInstance(value)) {
+		value = new CssSize(value);
 	}
-	return CssSize.isInstance(setterValue) ? setterValue : defaultValue;
+	return CssSize.isInstance(value) ? value : alt;
 }

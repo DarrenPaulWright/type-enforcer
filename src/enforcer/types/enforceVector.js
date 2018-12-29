@@ -1,15 +1,15 @@
 import Vector from '../../types/Vector';
 
 /**
- * If the first value is a vector then return that, otherwise return the second value.
+ * If the first value is a vector then return that, otherwise return the alt value.
  *
  * @function enforce.vector
  *
- * @param   {Vector} setterValue
- * @param   {Vector} defaultValue
+ * @arg   {Vector} value
+ * @arg   {Vector} alt
  *
  * @returns {Vector}
  */
-export default (setterValue, defaultValue) => {
-	return Vector.isInstance(setterValue) ? setterValue : defaultValue;
+export default (value, alt) => {
+	return Vector.isInstance(value) ? value : alt;
 };

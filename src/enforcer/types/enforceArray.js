@@ -1,11 +1,11 @@
 /**
- * If the first value is an array, then return that, otherwise return the second value.
+ * If the first value is an array, then return that, otherwise return the alt value.
  *
  * @function enforce.array
  *
- * @param   {Array} setterValue
- * @param   {Array} defaultValue
+ * @arg   {Array} value
+ * @arg   {Array} alt
  *
  * @returns {Array}
  */
-export default (setterValue, defaultValue) => Array.isArray(setterValue) ? setterValue : defaultValue;
+export default (value, alt) => Array.isArray(value) ? value : alt;

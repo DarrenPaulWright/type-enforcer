@@ -1,11 +1,11 @@
 /**
- * If the first value is a function then return that, otherwise return the second value.
+ * If the first value is a function then return that, otherwise return the alt value.
  *
  * @function enforce.func
  *
- * @param   {Function} setterValue
- * @param   {Function} defaultValue
+ * @arg   {Function} value
+ * @arg   {Function} alt
  *
  * @returns {Function}
  */
-export default (setterValue, defaultValue) => typeof setterValue === 'function' ? setterValue : defaultValue;
+export default (value, alt) => typeof value === 'function' ? value : alt;

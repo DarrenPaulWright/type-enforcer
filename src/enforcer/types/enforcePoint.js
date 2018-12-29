@@ -1,18 +1,18 @@
 import Point from '../../types/Point';
 
 /**
- * If the first value is a point then return that, otherwise return the second value.
+ * If the first value is a point then return that, otherwise return the alt value.
  *
  * @function enforce.point
  *
- * @param   {String|Point} setterValue
- * @param   {Point} defaultValue
+ * @arg   {String|Point} value
+ * @arg   {Point} alt
  *
  * @returns {Point}
  */
-export default (setterValue, defaultValue) => {
-	if (Point.isValid(setterValue) && !Point.isInstance(setterValue)) {
-		setterValue = new Point(setterValue);
+export default (value, alt) => {
+	if (Point.isValid(value) && !Point.isInstance(value)) {
+		value = new Point(value);
 	}
-	return Point.isInstance(setterValue) ? setterValue : defaultValue;
+	return Point.isInstance(value) ? value : alt;
 };

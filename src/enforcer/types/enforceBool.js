@@ -1,11 +1,11 @@
 /**
- * If the first value is a boolean, then return that, otherwise return the second value.
+ * If the first value is a boolean, then return that, otherwise return the alt value.
  *
  * @function enforce.bool
  *
- * @param   {Boolean} setterValue
- * @param   {Boolean} defaultValue
+ * @arg   {Boolean} value
+ * @arg   {Boolean} alt
  *
  * @returns {Boolean}
  */
-export default (setterValue, defaultValue) => (setterValue === false || setterValue === true) ? setterValue : defaultValue;
+export default (value, alt) => (value === false || value === true) ? value : alt;

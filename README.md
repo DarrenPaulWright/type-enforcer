@@ -14,7 +14,7 @@ With npm```npm install type-enforcer```## CompatibilityRequires:- Babel 
 
 ## License
 
-[MIT](./LICENSE.md)
+[MIT](https://github.com/darrenpaulwright/type-enforcer/blob/master/LICENSE.md)
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg
 [npm-url]: https://npmjs.com/package/type-enforcer

@@ -5,7 +5,7 @@ const TWO_PI = 2 * Math.PI;
  *
  * @typedef {object} angle
  */
-export default angle = {
+const angle = {
 	/**
 	 * Returns the same angle between 0 and 2 * PI
 	 *
@@ -32,3 +32,5 @@ export default angle = {
 		return angle.normalize(Math.atan2(point.y, point.x));
 	}
 };
+
+export default angle;

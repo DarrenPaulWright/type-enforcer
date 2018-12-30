@@ -1,6 +1,6 @@
 import { getStoredValue } from './helper';
 
-export default beforeSet = (options) => {
+export default (options) => {
 	const key = Symbol();
 
 	return function(newValue, isForcedSave) {

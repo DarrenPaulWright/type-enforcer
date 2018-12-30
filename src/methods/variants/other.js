@@ -1,6 +1,6 @@
 import { getStoredValue, hasOtherValidValue } from './helper';
 
-export default other = (options) => {
+export default (options) => {
 	const key = Symbol();
 
 	return function(newValue, isForcedSave) {

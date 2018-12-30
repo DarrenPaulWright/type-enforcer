@@ -1,4 +1,3 @@
-
-export default get = (options) => function() {
+export default (options) => function() {
 	return options.get.call(this);
 };

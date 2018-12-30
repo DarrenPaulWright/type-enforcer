@@ -1,6 +1,6 @@
 import { hasOtherValidValue } from './helper';
 
-export default getOtherSet = (options) => function(newValue, isForcedSave) {
+export default (options) => function(newValue, isForcedSave) {
 	const value = options.get.call(this);
 
 	if (arguments.length) {

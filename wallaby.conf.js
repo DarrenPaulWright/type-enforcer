@@ -24,11 +24,11 @@ module.exports = function(wallaby) {
 	return {
 		name: 'type-enforcer',
 		files: [
-			{ pattern: 'tests/TestUtil.js', instrument: false, load: false },
-			{ pattern: 'src/**/*.js', instrument: true, load: false }
+			{pattern: 'tests/TestUtil.js', instrument: false, load: false},
+			{pattern: 'src/**/*.js', instrument: true, load: false}
 		],
 		tests: [
-			{ pattern: 'tests/**/*.Test.js', instrument: false, load: false }
+			{pattern: 'tests/**/*.Test.js', instrument: false, load: false}
 		],
 		env: {
 			kind: 'chrome'

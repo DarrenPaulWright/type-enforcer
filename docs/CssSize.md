@@ -2,6 +2,7 @@
 [![npm][npm]][npm-url]
 [![deps][deps]][deps-url]
 [![size][size]][size-url]
+[![Known Vulnerabilities](vuls)](vuls-url)
 
 Type enforcement library for javascript
 
@@ -30,7 +31,12 @@ Type enforcement library for javascript
 <a name="new_CssSize_new"></a>
 
 ### new CssSize([size])
-A class for css sizes## Usage``` javascriptimport { CssSize } from 'type-enforcer';```
+A class for css sizes
+
+## Usage
+``` javascript
+import { CssSize } from 'type-enforcer';
+```
 
 
 | Param | Type | Default |
@@ -150,3 +156,5 @@ Determine if something is an instance of CssSize
 [deps-url]: https://david-dm.org/darrenpaulwright/type-enforcer
 [size]: https://packagephobia.now.sh/badge?p=type-enforcer
 [size-url]: https://packagephobia.now.sh/result?p=type-enforcer
+[vuls]: https://snyk.io/test/github/DarrenPaulWright/type-enforcer/badge.svg?targetFile=package.json
+[vuls-url]: https://snyk.io/test/github/DarrenPaulWright/type-enforcer?targetFile=package.json

@@ -2,13 +2,19 @@
 [![npm][npm]][npm-url]
 [![deps][deps]][deps-url]
 [![size][size]][size-url]
+[![Known Vulnerabilities](vuls)](vuls-url)
 
 Type enforcement library for javascript
 
 <a name="enforce"></a>
 
 ## enforce : <code>object</code>
-Utility functions for enforcing data types.## Usage``` javascriptimport { enforce } from 'type-enforcer';```
+Utility functions for enforcing data types.
+
+## Usage
+``` javascript
+import { enforce } from 'type-enforcer';
+```
 
 **Kind**: global typedef  
 
@@ -68,7 +74,8 @@ If the first value is a valid css size then return that, otherwise return the al
 <a name="enforce.date"></a>
 
 ### enforce.date(value, alt) ⇒ <code>Date</code>
-If the first value is a valid js date or a momentjs instance of a valid date then return that, otherwise returnthe alt value.
+If the first value is a valid js date or a momentjs instance of a valid date then return that, otherwise return
+the alt value.
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
 
@@ -225,3 +232,5 @@ If the first value is a vector then return that, otherwise return the alt value.
 [deps-url]: https://david-dm.org/darrenpaulwright/type-enforcer
 [size]: https://packagephobia.now.sh/badge?p=type-enforcer
 [size-url]: https://packagephobia.now.sh/result?p=type-enforcer
+[vuls]: https://snyk.io/test/github/DarrenPaulWright/type-enforcer/badge.svg?targetFile=package.json
+[vuls-url]: https://snyk.io/test/github/DarrenPaulWright/type-enforcer?targetFile=package.json

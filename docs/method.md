@@ -2,13 +2,40 @@
 [![npm][npm]][npm-url]
 [![deps][deps]][deps-url]
 [![size][size]][size-url]
+[![Known Vulnerabilities](vuls)](vuls-url)
 
 Type enforcement library for javascript
 
 <a name="method"></a>
 
 ## method : <code>object</code>
-Enforce data types and remove common boilerplate code on class methods.## Usage``` javascriptimport { method } from 'type-enforcer';```Use it as a prototype:``` javascriptconst Thing = function() {};Thing.prototype.myMethod = method.string([options]);```or in a class:``` javascriptclass Thing() {}Thing.prototype.myMethod = method.string([options]);```or as a non-prototype method:``` javascriptconst Thing = function() {    this.myMethod = method.string([options]);};```
+Enforce data types and remove common boilerplate code on class methods.
+
+## Usage
+``` javascript
+import { method } from 'type-enforcer';
+```
+
+Use it as a prototype:
+``` javascript
+const Thing = function() {};
+
+Thing.prototype.myMethod = method.string([options]);
+```
+
+or in a class:
+``` javascript
+class Thing() {}
+
+Thing.prototype.myMethod = method.string([options]);
+```
+
+or as a non-prototype method:
+``` javascript
+const Thing = function() {
+    this.myMethod = method.string([options]);
+};
+```
 
 **Kind**: global typedef  
 
@@ -208,7 +235,9 @@ Builds a method for getting/setting an integer
 <a name="method.keyValue"></a>
 
 ### method.keyValue([options]) ⇒ <code>function</code>
-Builds a method that accepts either:- two args, a key and a value- one arg, an object with multiple key/value pairs
+Builds a method that accepts either:
+- two args, a key and a value
+- one arg, an object with multiple key/value pairs
 
 **Kind**: static method of [<code>method</code>](#method)  
 **Returns**: <code>function</code> - accepts a new value and returns the methods constructor (allows chaining), or if no args are passed returns the output of options.get  
@@ -316,3 +345,5 @@ Builds a method for getting/setting a Vector instance
 [deps-url]: https://david-dm.org/darrenpaulwright/type-enforcer
 [size]: https://packagephobia.now.sh/badge?p=type-enforcer
 [size-url]: https://packagephobia.now.sh/result?p=type-enforcer
+[vuls]: https://snyk.io/test/github/DarrenPaulWright/type-enforcer/badge.svg?targetFile=package.json
+[vuls-url]: https://snyk.io/test/github/DarrenPaulWright/type-enforcer?targetFile=package.json

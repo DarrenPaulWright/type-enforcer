@@ -2,6 +2,7 @@
 [![npm][npm]][npm-url]
 [![deps][deps]][deps-url]
 [![size][size]][size-url]
+[![Known Vulnerabilities](vuls)](vuls-url)
 
 Type enforcement library for javascript
 
@@ -24,7 +25,12 @@ Type enforcement library for javascript
 <a name="new_CallbackQueue_new"></a>
 
 ### new CallbackQueue()
-A simple queue for callbacks that allows for adding, removing, and triggering all or specific callbacks## Usage``` javascriptimport { CallbackQueue } from 'type-enforcer';```
+A simple queue for callbacks that allows for adding, removing, and triggering all or specific callbacks
+
+## Usage
+``` javascript
+import { CallbackQueue } from 'type-enforcer';
+```
 
 <a name="CallbackQueue+add"></a>
 
@@ -111,3 +117,5 @@ See if this queue is currently executing callbacks.
 [deps-url]: https://david-dm.org/darrenpaulwright/type-enforcer
 [size]: https://packagephobia.now.sh/badge?p=type-enforcer
 [size-url]: https://packagephobia.now.sh/result?p=type-enforcer
+[vuls]: https://snyk.io/test/github/DarrenPaulWright/type-enforcer/badge.svg?targetFile=package.json
+[vuls-url]: https://snyk.io/test/github/DarrenPaulWright/type-enforcer?targetFile=package.json

@@ -2,6 +2,7 @@
 [![npm][npm]][npm-url]
 [![deps][deps]][deps-url]
 [![size][size]][size-url]
+[![Known Vulnerabilities](vuls)](vuls-url)
 
 Type enforcement library for javascript
 
@@ -30,7 +31,12 @@ Type enforcement library for javascript
 <a name="new_DockPoint_new"></a>
 
 ### new DockPoint([value])
-Allows the designation of a specific point relative to an object.## Usage``` javascriptimport { DockPoint } from 'type-enforcer';```
+Allows the designation of a specific point relative to an object.
+
+## Usage
+``` javascript
+import { DockPoint } from 'type-enforcer';
+```
 
 
 | Param | Type | Default | Description |
@@ -151,3 +157,5 @@ Determine if something is an instance of DockPoint
 [deps-url]: https://david-dm.org/darrenpaulwright/type-enforcer
 [size]: https://packagephobia.now.sh/badge?p=type-enforcer
 [size-url]: https://packagephobia.now.sh/result?p=type-enforcer
+[vuls]: https://snyk.io/test/github/DarrenPaulWright/type-enforcer/badge.svg?targetFile=package.json
+[vuls-url]: https://snyk.io/test/github/DarrenPaulWright/type-enforcer?targetFile=package.json

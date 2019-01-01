@@ -1,3 +1,4 @@
+import enforceInstance from '../../enforcer/types/enforceInstance';
 import { buildMethod } from './methodAny';
 
 /**
@@ -13,5 +14,5 @@ import { buildMethod } from './methodAny';
  * @returns {Function}
  */
 export default buildMethod({
-	enforce: (newValue, oldValue, options) => newValue instanceof options.instance ? newValue : oldValue
+	enforce: (newValue, oldValue, options) => enforceInstance(newValue, options.instance, oldValue)
 });

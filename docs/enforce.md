@@ -22,6 +22,7 @@ Utility functions for enforcing data types.## Usage``` javascriptimport { en
     * [.element(value, alt)](#enforce.element) ⇒ <code>Element</code>
     * [.enum(value, enumerable, alt)](#enforce.enum) ⇒ <code>String</code>
     * [.func(value, alt)](#enforce.func) ⇒ <code>function</code>
+    * [.instance(value, constructor, alt)](#enforce.instance) ⇒ <code>Object</code>
     * [.int(value, alt, [minValue], [maxValue])](#enforce.int) ⇒ <code>int</code>
     * [.number(value, alt, [minValue], [maxValue])](#enforce.number) ⇒ <code>Number</code>
     * [.object(value, alt)](#enforce.object) ⇒ <code>Object</code>
@@ -126,6 +127,19 @@ If the first value is a function then return that, otherwise return the alt valu
 | --- | --- |
 | value | <code>function</code> | 
 | alt | <code>function</code> | 
+
+<a name="enforce.instance"></a>
+
+### enforce.instance(value, constructor, alt) ⇒ <code>Object</code>
+If the first value is an instance of constructor then return that, otherwise return the alt value.
+
+**Kind**: static method of [<code>enforce</code>](#enforce)  
+
+| Param | Type |
+| --- | --- |
+| value | <code>Object</code> | 
+| constructor | <code>function</code> | 
+| alt | <code>Object</code> | 
 
 <a name="enforce.int"></a>
 

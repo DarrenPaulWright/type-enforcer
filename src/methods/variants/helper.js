@@ -1,4 +1,3 @@
-
 export const getStoredValue = function(key, init) {
 	if (this && !Object.getOwnPropertySymbols(this).includes(key)) {
 		this[key] = init;

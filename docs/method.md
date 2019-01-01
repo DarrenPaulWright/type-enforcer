@@ -17,7 +17,6 @@ Enforce data types and remove common boilerplate code on class methods.## Usag
     * [.any([options])](#method.any) ⇒ <code>function</code>
     * [.array([options])](#method.array) ⇒ <code>function</code>
     * [.bool([options])](#method.bool) ⇒ <code>function</code>
-    * [.queue([options])](#method.queue) ⇒ <code>function</code>
     * [.cssSize([options])](#method.cssSize) ⇒ <code>function</code>
     * [.date([options])](#method.date) ⇒ <code>function</code>
     * [.dockPoint([options])](#method.dockPoint) ⇒ <code>function</code>
@@ -30,6 +29,7 @@ Enforce data types and remove common boilerplate code on class methods.## Usag
     * [.number([options])](#method.number) ⇒ <code>function</code>
     * [.object([options])](#method.object) ⇒ <code>function</code>
     * [.point([options])](#method.point) ⇒ <code>function</code>
+    * [.queue([options])](#method.queue) ⇒ <code>function</code>
     * [.string([options])](#method.string) ⇒ <code>function</code>
     * [.thickness([options])](#method.thickness) ⇒ <code>function</code>
     * [.vector([options])](#method.vector) ⇒ <code>function</code>
@@ -82,19 +82,6 @@ Builds a method for getting/setting a boolean
 | [options] | <code>Same as method.any except:</code> | 
 | [options.init] | <code>false</code> | 
 | [options.enforce] | <code>enforce.bool</code> | 
-
-<a name="method.queue"></a>
-
-### method.queue([options]) ⇒ <code>function</code>
-Builds a method that implements a Queue
-
-**Kind**: static method of [<code>method</code>](#method)  
-**Returns**: <code>function</code> - accepts a new value and returns the methods constructor (allows chaining), or if no args are passed returns the instance of Queue  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| [options] | <code>Object</code> |  |
-| [options.set] | <code>function</code> | Called after a new callback is added to the queue. Provides a reference to the queue, sets the context to the methods constructor. |
 
 <a name="method.cssSize"></a>
 
@@ -262,6 +249,19 @@ Builds a method for getting/setting a Point instance
 | [options.init] | <code>Point</code> | 
 | [options.enforce] | <code>enforce.point</code> | 
 | [options.compare] | <code>Point.isSame</code> | 
+
+<a name="method.queue"></a>
+
+### method.queue([options]) ⇒ <code>function</code>
+Builds a method that implements a Queue
+
+**Kind**: static method of [<code>method</code>](#method)  
+**Returns**: <code>function</code> - accepts a new value and returns the methods constructor (allows chaining), or if no args are passed returns the instance of Queue  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [options] | <code>Object</code> |  |
+| [options.set] | <code>function</code> | Called after a new callback is added to the queue. Provides a reference to the queue, sets the context to the methods constructor. |
 
 <a name="method.string"></a>
 

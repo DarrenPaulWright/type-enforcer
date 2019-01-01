@@ -1,6 +1,6 @@
 import { assert } from 'chai';
-import TestUtil from '../TestUtil';
 import { DockPoint } from '../../src/index';
+import TestUtil from '../TestUtil';
 
 const testUtil = new TestUtil(DockPoint);
 

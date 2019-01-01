@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import Moment from 'moment';
-import { CssSize, AUTO, INHERIT, INITIAL, enforce, Thickness, Enum } from '../src/index';
+import { AUTO, CssSize, enforce, Enum, INHERIT, INITIAL, Thickness } from '../src/index';
 
 const validArray1 = [{
 	id: 1

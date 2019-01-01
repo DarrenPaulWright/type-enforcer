@@ -1,9 +1,10 @@
 import { assert } from 'chai';
+import { concat, each, map } from 'lodash';
 import {
-	CssSize,
 	AUTO,
 	CENTIMETERS,
 	CH,
+	CssSize,
 	EM,
 	EX,
 	INCHES,
@@ -16,13 +17,12 @@ import {
 	PIXELS,
 	POINTS,
 	ROOT_EM,
+	Thickness,
 	VIEWPORT_HEIGHT,
 	VIEWPORT_MIN,
 	VIEWPORT_WIDTH,
-	Thickness,
 	ZERO_PIXELS
 } from '../../src/index';
-import { concat, each, map } from 'lodash';
 
 const unitlessSizes = map([AUTO, INITIAL, INHERIT, NONE], (size) => ({
 	size: size,
@@ -51,7 +51,20 @@ const otherValidSizes = [{
 	unit: PIXELS
 }];
 const validSizes = concat(unitlessSizes, otherValidSizes);
-const fixedUnits = ['', PIXELS, CENTIMETERS, EM, ROOT_EM, EX, CH, INCHES, MILLIMETERS, PICAS, POINTS, VIEWPORT_HEIGHT, VIEWPORT_WIDTH, VIEWPORT_MIN];
+const fixedUnits = ['',
+	PIXELS,
+	CENTIMETERS,
+	EM,
+	ROOT_EM,
+	EX,
+	CH,
+	INCHES,
+	MILLIMETERS,
+	PICAS,
+	POINTS,
+	VIEWPORT_HEIGHT,
+	VIEWPORT_WIDTH,
+	VIEWPORT_MIN];
 const percentUnits = [PERCENT];
 const units = concat(percentUnits, fixedUnits);
 

@@ -10,12 +10,12 @@ const IS_BUSY = Symbol();
  *
  * ## Usage
  * ``` javascript
- * import { CallbackQueue } from 'type-enforcer';
+ * import { Queue } from 'type-enforcer';
  * ```
  *
- * @class CallbackQueue
+ * @class Queue
  */
-export default class CallbackQueue {
+export default class Queue {
 	constructor() {
 		this[CALLBACKS] = {};
 		this[CURRENT_ID] = 0;
@@ -26,7 +26,7 @@ export default class CallbackQueue {
 	/**
 	 * Add a callback to the queue.
 	 *
-	 * @memberof CallbackQueue
+	 * @memberof Queue
 	 * @instance
 	 *
 	 * @arg {Function} callback - Callback function.
@@ -49,10 +49,10 @@ export default class CallbackQueue {
 	/**
 	 * Remove a specific callback from the queue.
 	 *
-	 * @memberof CallbackQueue
+	 * @memberof Queue
 	 * @instance
 	 *
-	 * @arg {Number} ID - The ID returned by CallbackQueue.add().
+	 * @arg {Number} ID - The ID returned by Queue.add().
 	 *
 	 * @returns {Object} The data object added with this callback
 	 */
@@ -71,7 +71,7 @@ export default class CallbackQueue {
 	/**
 	 * Remove ALL callbacks from the queue.
 	 *
-	 * @memberof CallbackQueue
+	 * @memberof Queue
 	 * @instance
 	 */
 	discardAll() {
@@ -82,10 +82,10 @@ export default class CallbackQueue {
 	/**
 	 * Triggers one or all callbacks.
 	 *
-	 * @memberof CallbackQueue
+	 * @memberof Queue
 	 * @instance
 	 *
-	 * @arg {Number} [ID] - To trigger only a specific callback, provide the ID returned by CallbackQueue.add().
+	 * @arg {Number} [ID] - To trigger only a specific callback, provide the ID returned by Queue.add().
 	 *    Otherwise all callbacks are called.
 	 * @arg {Array} [extraArguments] - Array of arguments to apply to each callback.
 	 * @arg {Array} [context]
@@ -114,7 +114,7 @@ export default class CallbackQueue {
 	/**
 	 * Triggers the first callback and removes it from the queue.
 	 *
-	 * @memberof CallbackQueue
+	 * @memberof Queue
 	 * @instance
 	 *
 	 * @arg {Array} [extraArguments] - Array of arguments to apply to each callback.
@@ -139,7 +139,7 @@ export default class CallbackQueue {
 	/**
 	 * The total number of current callbacks in this queue.
 	 *
-	 * @memberof CallbackQueue
+	 * @memberof Queue
 	 * @instance
 	 *
 	 * @returns {number}
@@ -151,7 +151,7 @@ export default class CallbackQueue {
 	/**
 	 * Gets the callback object
 	 *
-	 * @memberof CallbackQueue
+	 * @memberof Queue
 	 * @instance
 	 *
 	 * @returns {object}
@@ -163,7 +163,7 @@ export default class CallbackQueue {
 	/**
 	 * See if this queue is currently executing callbacks.
 	 *
-	 * @memberof CallbackQueue
+	 * @memberof Queue
 	 * @instance
 	 *
 	 * @returns {boolean}

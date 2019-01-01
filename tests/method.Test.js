@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 import { assign } from 'lodash';
 import moment from 'moment';
-import { method, Enum, CallbackQueue } from '../src/index';
+import { Enum, method, Queue } from '../src/index';
 
 const testNormal = (settings) => {
 	let testFunctionCall = '';
@@ -192,7 +192,7 @@ describe('method', () => {
 		});
 	});
 
-	describe('.callbackQueue', () => {
+	describe('.queue', () => {
 		let testFunctionCall = '';
 		let didExecute = 0;
 		const testFunc = () => {
@@ -203,7 +203,7 @@ describe('method', () => {
 			it('should build a method', () => {
 				const testConstructor = new TestConstructor();
 
-				assert.isTrue(testConstructor.testMethod() instanceof CallbackQueue);
+				assert.isTrue(testConstructor.testMethod() instanceof Queue);
 			});
 
 			it('should not call the callback when set', () => {
@@ -225,12 +225,12 @@ describe('method', () => {
 				assert.equal(didExecute, 1);
 			});
 
-			it('should return an instance of CallbackQueue if no value is provided', () => {
+			it('should return an instance of Queue if no value is provided', () => {
 				const testConstructor = new TestConstructor();
 
 				testConstructor.testMethod(testFunc);
 
-				assert.isTrue(testConstructor.testMethod() instanceof CallbackQueue);
+				assert.isTrue(testConstructor.testMethod() instanceof Queue);
 			});
 		};
 
@@ -245,7 +245,7 @@ describe('method', () => {
 				}
 			}
 
-			TestConstructor.prototype.testMethod = method.callbackQueue({
+			TestConstructor.prototype.testMethod = method.queue({
 				set: function(newValue) {
 					testFunctionCall = newValue;
 				}
@@ -264,7 +264,7 @@ describe('method', () => {
 					return false;
 				};
 
-				this.testMethod = method.callbackQueue({
+				this.testMethod = method.queue({
 					set: function(newValue) {
 						testFunctionCall = newValue;
 					}

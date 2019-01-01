@@ -26,11 +26,9 @@
  * - [DockPoint](https://github.com/darrenpaulwright/type-enforcer/blob/master/docs/DockPoint.md)
  * - [Enum](https://github.com/darrenpaulwright/type-enforcer/blob/master/docs/Enum.md)
  * - [Point](https://github.com/darrenpaulwright/type-enforcer/blob/master/docs/Point.md)
+ * - [Queue](https://github.com/darrenpaulwright/type-enforcer/blob/master/docs/Queue.md)
  * - [Thickness](https://github.com/darrenpaulwright/type-enforcer/blob/master/docs/Thickness.md)
  * - [Vector](https://github.com/darrenpaulwright/type-enforcer/blob/master/docs/Vector.md)
- *
- * ### CallbackQueue
- * - [CallbackQueue](https://github.com/darrenpaulwright/type-enforcer/blob/master/docs/CallbackQueue.md)
  *
  * ### Enforcement
  * - [enforce](https://github.com/darrenpaulwright/type-enforcer/blob/master/docs/enforce.md)
@@ -45,10 +43,9 @@ export { default as CssSize } from './types/CssSize';
 export { default as DockPoint } from './types/DockPoint';
 export { default as Enum } from './types/Enum';
 export { default as Point } from './types/Point';
+export { default as Queue } from './types/Queue';
 export { default as Thickness } from './types/Thickness';
 export { default as Vector } from './types/Vector';
-
-export { default as CallbackQueue } from './CallbackQueue';
 
 export { default as enforce } from './enforcer/enforce';
 

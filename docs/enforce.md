@@ -9,12 +9,7 @@ Type enforcement library for javascript
 <a name="enforce"></a>
 
 ## enforce : <code>object</code>
-Utility functions for enforcing data types.
-
-## Usage
-``` javascript
-import { enforce } from 'type-enforcer';
-```
+Utility functions for enforcing data types.## Usage``` javascriptimport { enforce } from 'type-enforcer';```
 
 **Kind**: global typedef  
 
@@ -74,8 +69,7 @@ If the first value is a valid css size then return that, otherwise return the al
 <a name="enforce.date"></a>
 
 ### enforce.date(value, alt) ⇒ <code>Date</code>
-If the first value is a valid js date or a momentjs instance of a valid date then return that, otherwise return
-the alt value.
+If the first value is a valid js date or a momentjs instance of a valid date then return that, otherwise returnthe alt value.
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
 

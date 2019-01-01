@@ -31,12 +31,7 @@ Type enforcement library for javascript
 <a name="new_CssSize_new"></a>
 
 ### new CssSize([size])
-A class for css sizes
-
-## Usage
-``` javascript
-import { CssSize } from 'type-enforcer';
-```
+A class for css sizes## Usage``` javascriptimport { CssSize } from 'type-enforcer';```
 
 
 | Param | Type | Default |

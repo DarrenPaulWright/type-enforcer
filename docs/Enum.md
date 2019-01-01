@@ -18,12 +18,7 @@ Type enforcement library for javascript
 <a name="new_Enum_new"></a>
 
 ### new Enum(value)
-Freezes an enumerable object and adds a "has" method
-
-## Usage
-``` javascript
-import { Enum } from 'type-enforcer';
-```
+Freezes an enumerable object and adds a "has" method## Usage``` javascriptimport { Enum } from 'type-enforcer';```
 
 
 | Param | Type |

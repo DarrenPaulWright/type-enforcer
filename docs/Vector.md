@@ -27,12 +27,7 @@ Type enforcement library for javascript
 <a name="new_Vector_new"></a>
 
 ### new Vector()
-Vector model with helper types
-
-## Usage
-``` javascript
-import { Vector } from 'type-enforcer';
-```
+Vector model with helper types## Usage``` javascriptimport { Vector } from 'type-enforcer';```
 
 <a name="Vector+isSame"></a>
 

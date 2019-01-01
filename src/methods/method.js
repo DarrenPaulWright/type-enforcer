@@ -1,7 +1,6 @@
 import methodAny from './types/methodAny';
 import methodArray from './types/methodArray';
 import methodBool from './types/methodBool';
-import methodCallbackQueue from './types/methodCallbackQueue';
 import methodCssSize from './types/methodCssSize';
 import methodDate from './types/methodDate';
 import methodDockPoint from './types/methodDockPoint';
@@ -14,6 +13,7 @@ import methodKeyValue from './types/methodKeyValue';
 import methodNumber from './types/methodNumber';
 import methodObject from './types/methodObject';
 import methodPoint from './types/methodPoint';
+import methodQueue from './types/methodQueue';
 import methodString from './types/methodString';
 import methodThickness from './types/methodThickness';
 import methodVector from './types/methodVector';
@@ -53,7 +53,7 @@ export default {
 	any: methodAny,
 	array: methodArray,
 	bool: methodBool,
-	callbackQueue: methodCallbackQueue,
+	queue: methodQueue,
 	cssSize: methodCssSize,
 	date: methodDate,
 	dockPoint: methodDockPoint,

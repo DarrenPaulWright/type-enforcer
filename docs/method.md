@@ -9,33 +9,7 @@ Type enforcement library for javascript
 <a name="method"></a>
 
 ## method : <code>object</code>
-Enforce data types and remove common boilerplate code on class methods.
-
-## Usage
-``` javascript
-import { method } from 'type-enforcer';
-```
-
-Use it as a prototype:
-``` javascript
-const Thing = function() {};
-
-Thing.prototype.myMethod = method.string([options]);
-```
-
-or in a class:
-``` javascript
-class Thing() {}
-
-Thing.prototype.myMethod = method.string([options]);
-```
-
-or as a non-prototype method:
-``` javascript
-const Thing = function() {
-    this.myMethod = method.string([options]);
-};
-```
+Enforce data types and remove common boilerplate code on class methods.## Usage``` javascriptimport { method } from 'type-enforcer';```Use it as a prototype:``` javascriptconst Thing = function() {};Thing.prototype.myMethod = method.string([options]);```or in a class:``` javascriptclass Thing() {}Thing.prototype.myMethod = method.string([options]);```or as a non-prototype method:``` javascriptconst Thing = function() {    this.myMethod = method.string([options]);};```
 
 **Kind**: global typedef  
 
@@ -43,7 +17,7 @@ const Thing = function() {
     * [.any([options])](#method.any) ⇒ <code>function</code>
     * [.array([options])](#method.array) ⇒ <code>function</code>
     * [.bool([options])](#method.bool) ⇒ <code>function</code>
-    * [.callbackQueue([options])](#method.callbackQueue) ⇒ <code>function</code>
+    * [.queue([options])](#method.queue) ⇒ <code>function</code>
     * [.cssSize([options])](#method.cssSize) ⇒ <code>function</code>
     * [.date([options])](#method.date) ⇒ <code>function</code>
     * [.dockPoint([options])](#method.dockPoint) ⇒ <code>function</code>
@@ -109,18 +83,18 @@ Builds a method for getting/setting a boolean
 | [options.init] | <code>false</code> | 
 | [options.enforce] | <code>enforce.bool</code> | 
 
-<a name="method.callbackQueue"></a>
+<a name="method.queue"></a>
 
-### method.callbackQueue([options]) ⇒ <code>function</code>
-Builds a method that implements a CallbackQueue
+### method.queue([options]) ⇒ <code>function</code>
+Builds a method that implements a Queue
 
 **Kind**: static method of [<code>method</code>](#method)  
-**Returns**: <code>function</code> - accepts a new value and returns the methods constructor (allows chaining), or if no args are passed returns the instance of CallbackQueue  
+**Returns**: <code>function</code> - accepts a new value and returns the methods constructor (allows chaining), or if no args are passed returns the instance of Queue  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | [options] | <code>Object</code> |  |
-| [options.set] | <code>function</code> | Called after a new callback is added to the queue. Provides a reference to the callbackQueue, sets the context to the methods constructor. |
+| [options.set] | <code>function</code> | Called after a new callback is added to the queue. Provides a reference to the queue, sets the context to the methods constructor. |
 
 <a name="method.cssSize"></a>
 
@@ -235,9 +209,7 @@ Builds a method for getting/setting an integer
 <a name="method.keyValue"></a>
 
 ### method.keyValue([options]) ⇒ <code>function</code>
-Builds a method that accepts either:
-- two args, a key and a value
-- one arg, an object with multiple key/value pairs
+Builds a method that accepts either:- two args, a key and a value- one arg, an object with multiple key/value pairs
 
 **Kind**: static method of [<code>method</code>](#method)  
 **Returns**: <code>function</code> - accepts a new value and returns the methods constructor (allows chaining), or if no args are passed returns the output of options.get  

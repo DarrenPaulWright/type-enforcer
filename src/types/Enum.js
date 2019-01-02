@@ -1,4 +1,4 @@
-import { assign, values } from 'lodash';
+import { assign, each, values } from 'lodash';
 
 const VALUES = Symbol();
 
@@ -32,5 +32,27 @@ export default class Enum {
 	 */
 	has(value) {
 		return this[VALUES].includes(value);
+	}
+
+	/**
+	 * Calls a callback with each of the enum values
+	 * ``` javascript
+	 * const items = new Enum({
+	 *     THING: 'thing'
+	 * });
+	 *
+	 * items.each((value) => {
+	 *     console.log(value);
+	 * });
+	 * // 'thing'
+	 * ```
+	 *
+	 * @memberof Enum
+	 * @instance
+	 *
+	 * @param {Function} callback
+	 */
+	each(callback) {
+		each(this[VALUES], callback);
 	}
 }

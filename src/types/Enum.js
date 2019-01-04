@@ -44,7 +44,7 @@ export default class Enum {
 	 * items.each((value) => {
 	 *     console.log(value);
 	 * });
-	 * // 'thing'
+	 * // => 'thing'
 	 * ```
 	 *
 	 * @memberof Enum

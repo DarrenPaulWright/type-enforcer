@@ -38,7 +38,7 @@ Freezes an enumerable object and adds a "has" method## Usage``` javascriptim
 <a name="Enum+each"></a>
 
 ### enum.each(callback)
-Calls a callback with each of the enum values``` javascriptconst items = new Enum({    THING: 'thing'});items.each((value) => {    console.log(value);});// 'thing'```
+Calls a callback with each of the enum values``` javascriptconst items = new Enum({    THING: 'thing'});items.each((value) => {    console.log(value);});// => 'thing'```
 
 **Kind**: instance method of [<code>Enum</code>](#Enum)  
 

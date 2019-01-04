@@ -19,6 +19,8 @@ Type enforcement library for javascript
         * [.has(value)](#DockPoint+has) ⇒ <code>boolean</code>
         * [.swapHorizontal()](#DockPoint+swapHorizontal)
         * [.swapVertical()](#DockPoint+swapVertical)
+        * [.isSame(dockPoint)](#DockPoint+isSame) ⇒ <code>boolean</code>
+        * [.toString()](#DockPoint+toString) ⇒ <code>String</code>
         * [.primary([value])](#DockPoint+primary) ⇒ <code>this</code> \| <code>String</code>
         * [.secondary([value])](#DockPoint+secondary) ⇒ <code>this</code> \| <code>String</code>
         * [.value([value])](#DockPoint+value) ⇒ <code>this</code> \| <code>String</code>
@@ -73,6 +75,23 @@ Set the left or right value to the opposite, whether it's the primary or seconda
 
 ### dockPoint.swapVertical()
 Set the top or bottom value to the opposite, whether it's the primary or secondary
+
+**Kind**: instance method of [<code>DockPoint</code>](#DockPoint)  
+<a name="DockPoint+isSame"></a>
+
+### dockPoint.isSame(dockPoint) ⇒ <code>boolean</code>
+Determine if another DockPoint is equivalent to this one
+
+**Kind**: instance method of [<code>DockPoint</code>](#DockPoint)  
+
+| Param | Type |
+| --- | --- |
+| dockPoint | <code>\*</code> | 
+
+<a name="DockPoint+toString"></a>
+
+### dockPoint.toString() ⇒ <code>String</code>
+Get the current value as a string
 
 **Kind**: instance method of [<code>DockPoint</code>](#DockPoint)  
 <a name="DockPoint+primary"></a>

@@ -85,13 +85,28 @@ describe('Thickness', () => {
 		});
 	});
 
-	describe('methods', () => {
+	describe('.set', () => {
+		it('should accept another Thickness instance', () => {
+			const thickness = new Thickness(3, 4, 5, 6);
+
+			thickness.set(new Thickness(7, 8, 9, 10));
+
+			assert.equal(thickness.top, 7);
+			assert.equal(thickness.right, 8);
+			assert.equal(thickness.bottom, 9);
+			assert.equal(thickness.left, 10);
+		});
+	});
+
+	describe('.vertical', () => {
 		it('should add the top and bottom when vertical is called', () => {
 			const thickness = new Thickness(3, 4, 5, 6);
 
 			assert.equal(thickness.vertical, 8);
 		});
+	});
 
+	describe('.horizontal', () => {
 		it('should add the left and right when horizontal is called', () => {
 			const thickness = new Thickness(3, 4, 5, 6);
 
@@ -100,6 +115,10 @@ describe('Thickness', () => {
 	});
 
 	describe('.isValid', () => {
+		it('should return false if nothing is provided', () => {
+			assert.isFalse(Thickness.isValid());
+		});
+
 		it('should return true for an instance of Thickness', () => {
 			assert.isTrue(Thickness.isValid(new Thickness(0)));
 		});
@@ -186,6 +205,20 @@ describe('Thickness', () => {
 			const thickness = new Thickness('12px 4rem');
 
 			assert.equal(thickness.toString(), '12px 64px');
+		});
+	});
+
+	describe('.element', () => {
+		it('should measure font sizes if an element is set', () => {
+			const thickness = new Thickness('2em 3em');
+			const element = document.createElement('div');
+
+			element.style.fontSize = '16px';
+			document.body.appendChild(element);
+
+			thickness.element(element);
+
+			assert.equal(thickness.toString(), '32px 48px');
 		});
 	});
 });

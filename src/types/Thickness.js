@@ -31,24 +31,24 @@ const ELEMENT = Symbol();
  * ``` javascript
  * const thickness1 = new Thickness();
  * console.log(thickness1.toString());
- * // '0 0 0 0'
+ * // => '0 0 0 0'
  *
  * const thickness2 = new Thickness(1, 2, 3, 4);
  * console.log(thickness2.toString());
- * // '1px 2px 3px 4px'
+ * // => '1px 2px 3px 4px'
  *
  * const thickness3 = new Thickness([5, 6, 7]);
  * console.log(thickness3.toString());
- * // '5px 6px 7px 6px'
+ * // => '5px 6px 7px 6px'
  *
  * const thickness4 = new Thickness('20px 30px');
  * console.log(thickness4.toString());
- * // '20px 30px'
+ * // => '20px 30px'
  *
  * const thickness5 = new Thickness('20px');
  * thickness5.bottom = 5;
  * console.log(thickness5.toString());
- * // '20px 20px 5px'
+ * // => '20px 20px 5px'
  * ```
  *
  * @class Thickness

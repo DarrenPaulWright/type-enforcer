@@ -13,20 +13,31 @@ Type enforcement library for javascript
 
 * [Queue](#Queue)
     * [new Queue()](#new_Queue_new)
+    * [.length](#Queue+length) ⇒ <code>number</code>
+    * [.isBusy](#Queue+isBusy) ⇒ <code>boolean</code>
     * [.add(callback, data)](#Queue+add) ⇒ <code>Number</code>
     * [.discard(ID)](#Queue+discard) ⇒ <code>Object</code>
     * [.discardAll()](#Queue+discardAll)
     * [.trigger([ID], [extraArguments], [context])](#Queue+trigger) ⇒ <code>this</code>
     * [.triggerFirst([extraArguments], [context])](#Queue+triggerFirst) ⇒ <code>this</code>
-    * [.getTotalCallbacks()](#Queue+getTotalCallbacks) ⇒ <code>number</code>
-    * [.getCallbacks()](#Queue+getCallbacks) ⇒ <code>object</code>
-    * [.isBusy()](#Queue+isBusy) ⇒ <code>boolean</code>
 
 <a name="new_Queue_new"></a>
 
 ### new Queue()
 A simple queue for callbacks that allows for adding, removing, and triggering all or specific callbacks## Usage``` javascriptimport { Queue } from 'type-enforcer';```
 
+<a name="Queue+length"></a>
+
+### queue.length ⇒ <code>number</code>
+The total number of current callbacks in this queue.
+
+**Kind**: instance property of [<code>Queue</code>](#Queue)  
+<a name="Queue+isBusy"></a>
+
+### queue.isBusy ⇒ <code>boolean</code>
+See if this queue is currently executing callbacks.
+
+**Kind**: instance property of [<code>Queue</code>](#Queue)  
 <a name="Queue+add"></a>
 
 ### queue.add(callback, data) ⇒ <code>Number</code>
@@ -83,24 +94,6 @@ Triggers the first callback and removes it from the queue.
 | [extraArguments] | <code>Array</code> | Array of arguments to apply to each callback. |
 | [context] | <code>Array</code> | "this" applied to the callback |
 
-<a name="Queue+getTotalCallbacks"></a>
-
-### queue.getTotalCallbacks() ⇒ <code>number</code>
-The total number of current callbacks in this queue.
-
-**Kind**: instance method of [<code>Queue</code>](#Queue)  
-<a name="Queue+getCallbacks"></a>
-
-### queue.getCallbacks() ⇒ <code>object</code>
-Gets the callback object
-
-**Kind**: instance method of [<code>Queue</code>](#Queue)  
-<a name="Queue+isBusy"></a>
-
-### queue.isBusy() ⇒ <code>boolean</code>
-See if this queue is currently executing callbacks.
-
-**Kind**: instance method of [<code>Queue</code>](#Queue)  
 
 ## License
 

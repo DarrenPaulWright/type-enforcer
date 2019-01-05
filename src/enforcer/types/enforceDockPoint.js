@@ -5,7 +5,7 @@ import DockPoint from '../../types/DockPoint';
  *
  * @function enforce.dockPoint
  *
- * @arg   {String} value
+ * @arg   {*} value
  * @arg   {String} alt
  *
  * @returns {DockPoint}

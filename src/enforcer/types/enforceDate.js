@@ -1,16 +1,13 @@
-import Moment from 'moment/moment';
+import { isDate } from 'lodash';
 
 /**
- * If the first value is a valid js date or a momentjs instance of a valid date then return that, otherwise return
- * the alt value.
+ * If the first value is a [date]{@link https://lodash.com/docs/#isDate} then return that, otherwise return the alt value.
  *
  * @function enforce.date
  *
- * @arg   {Date} value
- * @arg   {Date} alt
+ * @arg   {*} value
+ * @arg {Date} alt
  *
  * @returns {Date}
  */
-export default (value, alt) => {
-	return ((Moment.isMoment(value) && value.isValid()) || Moment.isDate(value)) ? value : alt;
-}
+export default (value, alt) => isDate(value) ? value : alt;

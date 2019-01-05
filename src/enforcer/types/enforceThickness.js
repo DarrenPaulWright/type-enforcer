@@ -5,7 +5,7 @@ import Thickness from '../../types/Thickness';
  *
  * @function enforce.thickness
  *
- * @arg   {String|Thickness} value
+ * @arg   {*} value
  * @arg   {Thickness} alt
  *
  * @returns {Thickness}

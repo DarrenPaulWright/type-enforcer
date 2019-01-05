@@ -34,49 +34,49 @@ Utility functions for enforcing data types.## Usage``` javascriptimport { en
 <a name="enforce.array"></a>
 
 ### enforce.array(value, alt) ⇒ <code>Array</code>
-If the first value is an array, then return that, otherwise return the alt value.
+If the first value is an [array](https://lodash.com/docs/#isArray), then return that, otherwise return the alt value.
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
 
 | Param | Type |
 | --- | --- |
-| value | <code>Array</code> | 
+| value | <code>\*</code> | 
 | alt | <code>Array</code> | 
 
 <a name="enforce.bool"></a>
 
 ### enforce.bool(value, alt) ⇒ <code>Boolean</code>
-If the first value is a boolean, then return that, otherwise return the alt value.
+If the first value is a [boolean](https://lodash.com/docs/#isBoolean), then return that, otherwise return the alt value.
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
 
 | Param | Type |
 | --- | --- |
-| value | <code>Boolean</code> | 
+| value | <code>\*</code> | 
 | alt | <code>Boolean</code> | 
 
 <a name="enforce.cssSize"></a>
 
 ### enforce.cssSize(value, alt) ⇒ <code>CssSize</code>
-If the first value is a valid css size then return that, otherwise return the alt value.
+If the first value is a valid CssSize then return that, otherwise return the alt value.
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
 
 | Param | Type |
 | --- | --- |
-| value | <code>CssSize</code> \| <code>String</code> | 
+| value | <code>\*</code> | 
 | alt | <code>CssSize</code> | 
 
 <a name="enforce.date"></a>
 
 ### enforce.date(value, alt) ⇒ <code>Date</code>
-If the first value is a valid js date or a momentjs instance of a valid date then return that, otherwise returnthe alt value.
+If the first value is a [date](https://lodash.com/docs/#isDate) then return that, otherwise return the alt value.
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
 
 | Param | Type |
 | --- | --- |
-| value | <code>Date</code> | 
+| value | <code>\*</code> | 
 | alt | <code>Date</code> | 
 
 <a name="enforce.dockPoint"></a>
@@ -88,19 +88,19 @@ If the first value is a valid dockPoint then return that, otherwise return the a
 
 | Param | Type |
 | --- | --- |
-| value | <code>String</code> | 
+| value | <code>\*</code> | 
 | alt | <code>String</code> | 
 
 <a name="enforce.element"></a>
 
 ### enforce.element(value, alt) ⇒ <code>Element</code>
-If the first value is a DOM element then return that, otherwise return the alt value.
+If the first value is a [DOM element](https://lodash.com/docs/#isElement) then return that, otherwise return the alt value.
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
 
 | Param | Type |
 | --- | --- |
-| value | <code>Element</code> | 
+| value | <code>\*</code> | 
 | alt | <code>Element</code> | 
 
 <a name="enforce.enum"></a>
@@ -112,20 +112,20 @@ If the first value exists in the provided enum then return that, otherwise retur
 
 | Param | Type |
 | --- | --- |
-| value | <code>String</code> | 
+| value | <code>\*</code> | 
 | enumerable | <code>Enum</code> | 
 | alt | <code>String</code> | 
 
 <a name="enforce.func"></a>
 
 ### enforce.func(value, alt) ⇒ <code>function</code>
-If the first value is a function then return that, otherwise return the alt value.
+If the first value is a [function](https://lodash.com/docs/#isFunction) then return that, otherwise return the alt value.
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
 
 | Param | Type |
 | --- | --- |
-| value | <code>function</code> | 
+| value | <code>\*</code> | 
 | alt | <code>function</code> | 
 
 <a name="enforce.instance"></a>
@@ -137,20 +137,20 @@ If the first value is an instance of constructor then return that, otherwise ret
 
 | Param | Type |
 | --- | --- |
-| value | <code>Object</code> | 
+| value | <code>\*</code> | 
 | constructor | <code>function</code> | 
 | alt | <code>Object</code> | 
 
 <a name="enforce.int"></a>
 
 ### enforce.int(value, alt, [minValue], [maxValue]) ⇒ <code>int</code>
-If the first value is an integer then return that, otherwise return the alt value.
+If the first value is an [integer](https://lodash.com/docs/#isInteger) then return that, otherwise return the alt value.
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
 
 | Param | Type |
 | --- | --- |
-| value | <code>int</code> | 
+| value | <code>\*</code> | 
 | alt | <code>int</code> | 
 | [minValue] | <code>int</code> | 
 | [maxValue] | <code>int</code> | 
@@ -158,27 +158,27 @@ If the first value is an integer then return that, otherwise return the alt valu
 <a name="enforce.number"></a>
 
 ### enforce.number(value, alt, [minValue], [maxValue]) ⇒ <code>Number</code>
-If the first value is a number then return that, otherwise return the alt value.
+If the first value is a [number](https://lodash.com/docs/#isNumber) (excluding NaN) then return that, otherwise return the alt value.
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
 
-| Param | Type |
-| --- | --- |
-| value | <code>Number</code> | 
-| alt | <code>Number</code> | 
-| [minValue] | <code>Number</code> | 
-| [maxValue] | <code>Number</code> | 
+| Param | Type | Default |
+| --- | --- | --- |
+| value | <code>\*</code> |  | 
+| alt | <code>Number</code> |  | 
+| [minValue] | <code>Number</code> | <code>-Infinity</code> | 
+| [maxValue] | <code>Number</code> | <code>Infinity</code> | 
 
 <a name="enforce.object"></a>
 
 ### enforce.object(value, alt) ⇒ <code>Object</code>
-If the first value is a plain object then return that, otherwise return the alt value.
+If the first value is a [plain object](https://lodash.com/docs/#isPlainObject) then return that, otherwise return the alt value.
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
 
 | Param | Type |
 | --- | --- |
-| value | <code>Object</code> | 
+| value | <code>\*</code> | 
 | alt | <code>Object</code> | 
 
 <a name="enforce.point"></a>
@@ -190,19 +190,19 @@ If the first value is a point then return that, otherwise return the alt value.
 
 | Param | Type |
 | --- | --- |
-| value | <code>String</code> \| <code>Point</code> | 
+| value | <code>\*</code> | 
 | alt | <code>Point</code> | 
 
 <a name="enforce.string"></a>
 
 ### enforce.string(value, alt) ⇒ <code>String</code>
-If the first value is a string then return that, otherwise return the alt value.
+If the first value is a [string](https://lodash.com/docs/#isString) then return that, otherwise return the alt value.
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
 
 | Param | Type |
 | --- | --- |
-| value | <code>String</code> | 
+| value | <code>\*</code> | 
 | alt | <code>String</code> | 
 
 <a name="enforce.thickness"></a>
@@ -214,7 +214,7 @@ If the first value is a thickness then return that, otherwise return the alt val
 
 | Param | Type |
 | --- | --- |
-| value | <code>String</code> \| <code>Thickness</code> | 
+| value | <code>\*</code> | 
 | alt | <code>Thickness</code> | 
 
 <a name="enforce.vector"></a>
@@ -226,7 +226,7 @@ If the first value is a vector then return that, otherwise return the alt value.
 
 | Param | Type |
 | --- | --- |
-| value | <code>Vector</code> | 
+| value | <code>\*</code> | 
 | alt | <code>Vector</code> | 
 
 

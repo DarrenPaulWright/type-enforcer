@@ -25,6 +25,7 @@ module.exports = function(wallaby) {
 		name: 'type-enforcer',
 		files: [
 			{pattern: 'tests/TestUtil.js', instrument: false, load: false},
+			{pattern: 'tests/enforcer/enforceTestUtility.js', instrument: false, load: false},
 			{pattern: 'src/**/*.js', instrument: true, load: false}
 		],
 		tests: [

@@ -5,7 +5,7 @@ import Vector from '../../types/Vector';
  *
  * @function enforce.vector
  *
- * @arg   {Vector} value
+ * @arg   {*} value
  * @arg   {Vector} alt
  *
  * @returns {Vector}

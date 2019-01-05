@@ -5,7 +5,7 @@ import Point from '../../types/Point';
  *
  * @function enforce.point
  *
- * @arg   {String|Point} value
+ * @arg   {*} value
  * @arg   {Point} alt
  *
  * @returns {Point}

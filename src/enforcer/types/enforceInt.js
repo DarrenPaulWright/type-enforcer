@@ -1,11 +1,11 @@
 import { clamp, isInteger } from 'lodash';
 
 /**
- * If the first value is an integer then return that, otherwise return the alt value.
+ * If the first value is an [integer]{@link https://lodash.com/docs/#isInteger} then return that, otherwise return the alt value.
  *
  * @function enforce.int
  *
- * @arg   {int} value
+ * @arg   {*} value
  * @arg   {int} alt
  * @arg   {int} [minValue]
  * @arg   {int} [maxValue]

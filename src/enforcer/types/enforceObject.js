@@ -1,11 +1,11 @@
 import { isPlainObject } from 'lodash';
 
 /**
- * If the first value is a plain object then return that, otherwise return the alt value.
+ * If the first value is a [plain object]{@link https://lodash.com/docs/#isPlainObject} then return that, otherwise return the alt value.
  *
  * @function enforce.object
  *
- * @arg   {Object} value
+ * @arg   {*} value
  * @arg   {Object} alt
  *
  * @returns {Object}

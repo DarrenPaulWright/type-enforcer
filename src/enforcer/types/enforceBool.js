@@ -1,11 +1,13 @@
+import { isBoolean } from 'lodash';
+
 /**
- * If the first value is a boolean, then return that, otherwise return the alt value.
+ * If the first value is a [boolean]{@link https://lodash.com/docs/#isBoolean}, then return that, otherwise return the alt value.
  *
  * @function enforce.bool
  *
- * @arg   {Boolean} value
+ * @arg   {*} value
  * @arg   {Boolean} alt
  *
  * @returns {Boolean}
  */
-export default (value, alt) => (value === false || value === true) ? value : alt;
+export default (value, alt) => isBoolean(value) ? value : alt;

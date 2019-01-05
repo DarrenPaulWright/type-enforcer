@@ -1,11 +1,11 @@
 import CssSize from '../../types/CssSize';
 
 /**
- * If the first value is a valid css size then return that, otherwise return the alt value.
+ * If the first value is a valid CssSize then return that, otherwise return the alt value.
  *
  * @function enforce.cssSize
  *
- * @arg   {CssSize|String} value
+ * @arg   {*} value
  * @arg   {CssSize} alt
  *
  * @returns {CssSize}

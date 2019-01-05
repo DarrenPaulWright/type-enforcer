@@ -3,7 +3,7 @@
  *
  * @function enforce.enum
  *
- * @arg   {String} value
+ * @arg   {*} value
  * @arg   {Enum} enumerable
  * @arg   {String} alt
  *

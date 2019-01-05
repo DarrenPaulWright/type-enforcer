@@ -3,7 +3,7 @@
  *
  * @function enforce.instance
  *
- * @arg   {Object} value
+ * @arg   {*} value
  * @arg   {Function} constructor
  * @arg   {Object} alt
  *

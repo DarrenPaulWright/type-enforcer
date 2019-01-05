@@ -1,11 +1,11 @@
 import { isElement } from 'lodash';
 
 /**
- * If the first value is a DOM element then return that, otherwise return the alt value.
+ * If the first value is a [DOM element]{@link https://lodash.com/docs/#isElement} then return that, otherwise return the alt value.
  *
  * @function enforce.element
  *
- * @arg   {Element} value
+ * @arg   {*} value
  * @arg   {Element} alt
  *
  * @returns {Element}

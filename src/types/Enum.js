@@ -1,5 +1,6 @@
-import { assign, each, values } from 'lodash';
+import { assign, each, forOwn } from 'lodash';
 
+const KEYS = Symbol();
 const VALUES = Symbol();
 
 /**
@@ -12,17 +13,24 @@ const VALUES = Symbol();
  *
  * @class Enum
  *
- * @arg {Object} value
+ * @arg {Object} object
  */
 export default class Enum {
-	constructor(value) {
-		assign(this, value);
-		this[VALUES] = values(value);
+	constructor(object) {
+		assign(this, object);
+		this[KEYS] = [];
+		this[VALUES] = [];
+		forOwn(object, (value, key) => {
+			this[KEYS].push(key);
+			this[VALUES].push(value);
+		});
 		Object.freeze(this);
-		value = null;
+		object = null;
 	}
 
 	/**
+	 * Check if a provided value is in this enum
+	 *
 	 * @memberof Enum
 	 * @instance
 	 *
@@ -32,6 +40,20 @@ export default class Enum {
 	 */
 	has(value) {
 		return this[VALUES].includes(value);
+	}
+
+	/**
+	 * Get the key of a provided value
+	 *
+	 * @memberof Enum
+	 * @instance
+	 *
+	 * @arg {String} value
+	 *
+	 * @returns {String}
+	 */
+	key(value) {
+		return this[KEYS][this[VALUES].indexOf(value)];
 	}
 
 	/**

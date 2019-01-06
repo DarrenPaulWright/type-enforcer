@@ -12,23 +12,37 @@ Type enforcement library for javascript
 **Kind**: global class  
 
 * [Enum](#Enum)
-    * [new Enum(value)](#new_Enum_new)
+    * [new Enum(object)](#new_Enum_new)
     * [.has(value)](#Enum+has) ⇒ <code>boolean</code>
+    * [.key(value)](#Enum+key) ⇒ <code>String</code>
     * [.each(callback)](#Enum+each)
 
 <a name="new_Enum_new"></a>
 
-### new Enum(value)
+### new Enum(object)
 Freezes an enumerable object and adds a "has" method## Usage``` javascriptimport { Enum } from 'type-enforcer';```
 
 
 | Param | Type |
 | --- | --- |
-| value | <code>Object</code> | 
+| object | <code>Object</code> | 
 
 <a name="Enum+has"></a>
 
 ### enum.has(value) ⇒ <code>boolean</code>
+Check if a provided value is in this enum
+
+**Kind**: instance method of [<code>Enum</code>](#Enum)  
+
+| Param | Type |
+| --- | --- |
+| value | <code>String</code> | 
+
+<a name="Enum+key"></a>
+
+### enum.key(value) ⇒ <code>String</code>
+Get the key of a provided value
+
 **Kind**: instance method of [<code>Enum</code>](#Enum)  
 
 | Param | Type |

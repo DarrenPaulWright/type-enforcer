@@ -12,6 +12,26 @@ describe('Enum', () => {
 		assert.isTrue(ENUM.TEST2 === 'test2');
 	});
 
+	describe('.key', () => {
+		it('should return the appropriate key for a valid value', () => {
+			const ENUM = new Enum({
+				TEST1: 'test1',
+				TEST2: 'test2'
+			});
+
+			assert.equal(ENUM.key('test2'), 'TEST2');
+		});
+
+		it('should return undefined for a bad value', () => {
+			const ENUM = new Enum({
+				TEST1: 'test1',
+				TEST2: 'test2'
+			});
+
+			assert.equal(ENUM.key('test3'), undefined);
+		});
+	});
+
 	describe('.has', () => {
 		it('should return true for a valid value', () => {
 			const ENUM = new Enum({

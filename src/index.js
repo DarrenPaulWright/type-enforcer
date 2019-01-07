@@ -41,6 +41,9 @@
  *
  * ## Docs
  *
+ * ### Checks
+ * - [isInstanceOf](https://github.com/darrenpaulwright/type-enforcer/blob/master/docs/isInstanceOf.md)
+ *
  * ### Data Types
  * - [CssSize](https://github.com/darrenpaulwright/type-enforcer/blob/master/docs/CssSize.md)
  * - [DockPoint](https://github.com/darrenpaulwright/type-enforcer/blob/master/docs/DockPoint.md)
@@ -58,6 +61,8 @@
  *
  * @name Installation
  */
+export { default as isInstanceOf } from './checks/isInstanceOf';
+
 export * from './types/CssSize';
 export { default as CssSize } from './types/CssSize';
 export { default as DockPoint } from './types/DockPoint';

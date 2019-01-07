@@ -1,3 +1,5 @@
+import { isInstanceOf } from '../../index';
+
 /**
  * If the first value is an instance of constructor then return that, otherwise return the alt value.
  *
@@ -9,4 +11,4 @@
  *
  * @returns {Object}
  */
-export default (value, constructor, alt) => value instanceof constructor ? value : alt;
+export default (value, constructor, alt) => isInstanceOf(value, constructor) ? value : alt;

@@ -1,6 +1,10 @@
 import { each, isArray, isNumber, isString } from 'lodash';
 import angle from '../utility/angle';
 
+const SEPARATOR = ',';
+
+const isNumeric = (value) => isNumber(value) || parseFloat(value).toString() === value;
+
 /**
  * Point model with helper types
  *
@@ -54,10 +58,13 @@ export default class Point {
 		if (Point.isInstance(point)) {
 			return true;
 		}
-		if (isArray(point)) {
-			return point.length === 2 && isNumber(point[0]) && isNumber(point[1]);
+		if (isString(point)) {
+			point = point.split(SEPARATOR).map(parseFloat);
 		}
-		return point && isNumber(point.x) && isNumber(point.y);
+		if (isArray(point)) {
+			return point.length === 2 && isNumeric(point[0]) && isNumeric(point[1]);
+		}
+		return point && isNumeric(point.x) && isNumeric(point.y);
 	}
 
 	/**
@@ -85,6 +92,9 @@ export default class Point {
 	 * @returns {this}
 	 */
 	set(x, y) {
+		if (isString(x) && !y) {
+			x = x.split(SEPARATOR);
+		}
 		if (isArray(x)) {
 			y = x[1];
 			x = x[0];
@@ -93,8 +103,8 @@ export default class Point {
 			y = x.y;
 			x = x.x;
 		}
-		this.x = isNumber(x) ? x : 0;
-		this.y = isNumber(y) ? y : 0;
+		this.x = parseFloat(x) || 0;
+		this.y = parseFloat(y) || 0;
 
 		x = null;
 		y = null;
@@ -113,7 +123,7 @@ export default class Point {
 	 * @returns {String}
 	 */
 	toString(suffix = '') {
-		return this.x + suffix + ',' + this.y + suffix;
+		return this.x + suffix + SEPARATOR + this.y + suffix;
 	}
 
 	/**
@@ -127,6 +137,9 @@ export default class Point {
 	 * @returns {Boolean}
 	 */
 	isSame(point2) {
+		if (!Point.isInstance(point2)) {
+			point2 = new Point(point2);
+		}
 		return (this.x === point2.x && this.y === point2.y);
 	}
 

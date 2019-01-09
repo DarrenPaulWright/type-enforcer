@@ -18,5 +18,5 @@ import { buildMethod } from './methodAny';
 export default buildMethod({
 	init: new Point(),
 	enforce: enforcePoint,
-	compare: (point1, point2) => !point1.isSame(point2)
+	compare: (newValue, oldValue) => Point.isInstance(newValue) ? !newValue.isSame(oldValue) : newValue !== oldValue
 });

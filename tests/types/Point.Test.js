@@ -3,8 +3,22 @@ import { Point } from '../../src/index';
 
 describe('Point', () => {
 	describe('Init', () => {
+		it('should default 0,0', () => {
+			const point = new Point();
+
+			assert.equal(point.x, 0);
+			assert.equal(point.y, 0);
+		});
+
 		it('should accept an array', () => {
 			const point = new Point([1, 2]);
+
+			assert.equal(point.x, 1);
+			assert.equal(point.y, 2);
+		});
+
+		it('should accept an array with numeric strings', () => {
+			const point = new Point(['1', '2']);
 
 			assert.equal(point.x, 1);
 			assert.equal(point.y, 2);
@@ -20,11 +34,55 @@ describe('Point', () => {
 			assert.equal(point.y, 2);
 		});
 
+		it('should accept an object with x and y numeric strings', () => {
+			const point = new Point({
+				x: '1',
+				y: '2'
+			});
+
+			assert.equal(point.x, 1);
+			assert.equal(point.y, 2);
+		});
+
 		it('should accept two numbers', () => {
 			const point = new Point(1, 2);
 
 			assert.equal(point.x, 1);
 			assert.equal(point.y, 2);
+		});
+
+		it('should accept a comma separated string', () => {
+			const point = new Point('1,2');
+
+			assert.equal(point.x, 1);
+			assert.equal(point.y, 2);
+		});
+	});
+
+	describe('.isValid', () => {
+		it('should return true for a string with two numbers', () => {
+			assert.isTrue(Point.isValid('1,2'));
+		});
+		it('should return true for an array with two numbers', () => {
+			assert.isTrue(Point.isValid([1, 2]));
+		});
+		it('should return true for an array with two numeric strings', () => {
+			assert.isTrue(Point.isValid(['1', '2']));
+		});
+		it('should return true for an object with x and y', () => {
+			assert.isTrue(Point.isValid({
+				x: 1,
+				y: 2
+			}));
+		});
+		it('should return true for an object with x and y numeric strings', () => {
+			assert.isTrue(Point.isValid({
+				x: '1',
+				y: '2'
+			}));
+		});
+		it('should return true for an instance of Point', () => {
+			assert.isTrue(Point.isValid(new Point(1, 2)));
 		});
 	});
 
@@ -41,6 +99,27 @@ describe('Point', () => {
 			const point = new Point(1, 2);
 
 			assert.equal(point.isSame(new Point(1, 2)), true);
+		});
+
+		it('should return true when a String that is the same is provided', () => {
+			const point = new Point(1, 2);
+
+			assert.equal(point.isSame('1,2'), true);
+		});
+
+		it('should return true when an array that is the same is provided', () => {
+			const point = new Point(1, 2);
+
+			assert.equal(point.isSame([1, 2]), true);
+		});
+
+		it('should return true when an object that is the same is provided', () => {
+			const point = new Point(1, 2);
+
+			assert.equal(point.isSame({
+				x: 1,
+				y: 2
+			}), true);
 		});
 
 		it('should NOT return true when a Point that has a different x value is provided', () => {

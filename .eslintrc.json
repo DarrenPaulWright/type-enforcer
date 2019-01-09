@@ -1,4 +1,10 @@
 {
+	"env": {
+		"browser": true,
+		"node": true,
+		"es6": true,
+		"jasmine": true
+	},
 	"parserOptions": {
 		"ecmaVersion": 6,
 		"sourceType": "module"
@@ -8,23 +14,5 @@
 		"curly": 2,
 		"no-console": 0,
 		"no-useless-escape": 0
-	},
-	"globals": {
-		"Blob": true,
-		"cache": true,
-		"caches": true,
-		"clearTimeout": true,
-		"console": true,
-		"document": true,
-		"event": true,
-		"FileReader": true,
-		"global": true,
-		"Image": true,
-		"navigator": true,
-		"Promise": true,
-		"setTimeout": true,
-		"SVGElement": true,
-		"Symbol": true,
-		"window": true
 	}
 }

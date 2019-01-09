@@ -4,7 +4,8 @@
 	"description": "Type enforcement library for javascript",
 	"main": "src/index.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
+		"test": "karma start --single-run",
+		"test-watch": "karma start",
 		"patch": "npm version patch -m \"Increment patch version to %s\"",
 		"minor": "npm version minor -m \"Increment minor version to %s\"",
 		"major": "npm version major -m \"Increment major version to %s\"",
@@ -44,12 +45,19 @@
 	"devDependencies": {
 		"@babel/core": "^7.2.2",
 		"@babel/preset-env": "^7.2.3",
+		"babel-loader": "^8.0.5",
 		"babel-plugin-lodash": "^3.3.4",
 		"chai": "^4.2.0",
 		"eslint": "^5.11.0",
 		"eslint-loader": "^2.1.1",
 		"jasmine": "^3.3.1",
+		"jasmine-core": "^3.3.0",
 		"jsdoc-to-markdown": "^4.0.1",
+		"karma": "^3.1.4",
+		"karma-chrome-launcher": "^2.2.0",
+		"karma-firefox-launcher": "^1.1.0",
+		"karma-jasmine": "^2.0.1",
+		"karma-webpack": "^3.0.5",
 		"wallaby-webpack": "^3.9.13",
 		"webpack": "^4.28.2"
 	}

@@ -1,5 +1,7 @@
 # type-enforcer
 [![npm][npm]][npm-url]
+[![build][build]][build-url]
+[![Coverage Status](https://coveralls.io/repos/github/DarrenPaulWright/type-enforcer/badge.svg?branch=master)](https://coveralls.io/github/DarrenPaulWright/type-enforcer?branch=master)
 [![deps][deps]][deps-url]
 [![size][size]][size-url]
 [![Known Vulnerabilities](https://snyk.io/test/github/DarrenPaulWright/type-enforcer/badge.svg?targetFile=package.json)](https://snyk.io/test/github/DarrenPaulWright/type-enforcer?targetFile=package.json)
@@ -33,7 +35,12 @@ Type enforcement library for javascript
 <a name="new_DockPoint_new"></a>
 
 ### new DockPoint([value])
-Allows the designation of a specific point relative to an object.## Usage``` javascriptimport { DockPoint } from 'type-enforcer';```
+Allows the designation of a specific point relative to an object.
+
+## Usage
+``` javascript
+import { DockPoint } from 'type-enforcer';
+```
 
 
 | Param | Type | Default | Description |
@@ -167,6 +174,8 @@ Determine if something is an instance of DockPoint
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg
 [npm-url]: https://npmjs.com/package/type-enforcer
+[build]: https://travis-ci.org/DarrenPaulWright/type-enforcer.svg?branch=master
+[build-url]: https://travis-ci.org/DarrenPaulWright/type-enforcer
 [deps]: https://david-dm.org/darrenpaulwright/type-enforcer.svg
 [deps-url]: https://david-dm.org/darrenpaulwright/type-enforcer
 [size]: https://packagephobia.now.sh/badge?p=type-enforcer

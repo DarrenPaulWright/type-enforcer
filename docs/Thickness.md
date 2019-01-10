@@ -1,5 +1,7 @@
 # type-enforcer
 [![npm][npm]][npm-url]
+[![build][build]][build-url]
+[![Coverage Status](https://coveralls.io/repos/github/DarrenPaulWright/type-enforcer/badge.svg?branch=master)](https://coveralls.io/github/DarrenPaulWright/type-enforcer?branch=master)
 [![deps][deps]][deps-url]
 [![size][size]][size-url]
 [![Known Vulnerabilities](https://snyk.io/test/github/DarrenPaulWright/type-enforcer/badge.svg?targetFile=package.json)](https://snyk.io/test/github/DarrenPaulWright/type-enforcer?targetFile=package.json)
@@ -31,7 +33,42 @@ Type enforcement library for javascript
 <a name="new_Thickness_new"></a>
 
 ### new Thickness([top], [right], [bottom], [left])
-Replicates the functionality of css border-width, margin, and padding, or anything that requires top, right, bottom, and left css sizes.## Usage``` javascriptimport { Thickness } from 'type-enforcer';```The sizes can be provided as individual parameters, an array, or a space separated string in the following arrangements:- If one size is provided it gets applied to all sides- If two sizes are provided the first gets applied to top and bottom, the second size gets applied right and left- If three sizes are provided the first gets applied to top, the second to right and left, and the third to bottom- If four sizes are provided then they get applied to top, right, bottom, and left respectivelyExamples:``` javascriptconst thickness1 = new Thickness();console.log(thickness1.toString());// => '0 0 0 0'const thickness2 = new Thickness(1, 2, 3, 4);console.log(thickness2.toString());// => '1px 2px 3px 4px'const thickness3 = new Thickness([5, 6, 7]);console.log(thickness3.toString());// => '5px 6px 7px 6px'const thickness4 = new Thickness('20px 30px');console.log(thickness4.toString());// => '20px 30px'const thickness5 = new Thickness('20px');thickness5.bottom = 5;console.log(thickness5.toString());// => '20px 20px 5px'```
+Replicates the functionality of css border-width, margin, and padding, or anything that requires top, right, bottom, and left css sizes.
+
+## Usage
+``` javascript
+import { Thickness } from 'type-enforcer';
+```
+
+The sizes can be provided as individual parameters, an array, or a space separated string in the following arrangements:
+- If one size is provided it gets applied to all sides
+- If two sizes are provided the first gets applied to top and bottom, the second size gets applied right and left
+- If three sizes are provided the first gets applied to top, the second to right and left, and the third to bottom
+- If four sizes are provided then they get applied to top, right, bottom, and left respectively
+
+Examples:
+``` javascript
+const thickness1 = new Thickness();
+console.log(thickness1.toString());
+// => '0 0 0 0'
+
+const thickness2 = new Thickness(1, 2, 3, 4);
+console.log(thickness2.toString());
+// => '1px 2px 3px 4px'
+
+const thickness3 = new Thickness([5, 6, 7]);
+console.log(thickness3.toString());
+// => '5px 6px 7px 6px'
+
+const thickness4 = new Thickness('20px 30px');
+console.log(thickness4.toString());
+// => '20px 30px'
+
+const thickness5 = new Thickness('20px');
+thickness5.bottom = 5;
+console.log(thickness5.toString());
+// => '20px 20px 5px'
+```
 
 
 | Param | Type |
@@ -150,6 +187,8 @@ Determine if something is an instance of Thickness
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg
 [npm-url]: https://npmjs.com/package/type-enforcer
+[build]: https://travis-ci.org/DarrenPaulWright/type-enforcer.svg?branch=master
+[build-url]: https://travis-ci.org/DarrenPaulWright/type-enforcer
 [deps]: https://david-dm.org/darrenpaulwright/type-enforcer.svg
 [deps-url]: https://david-dm.org/darrenpaulwright/type-enforcer
 [size]: https://packagephobia.now.sh/badge?p=type-enforcer

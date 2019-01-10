@@ -1,25 +1,7 @@
 const wallabyWebpack = require('wallaby-webpack');
 
 module.exports = function(wallaby) {
-	const webpackPostprocessor = wallabyWebpack({
-		module: {
-			rules: [{
-				test: /\.js$/,
-				enforce: 'pre',
-				exclude: /node_modules/,
-				use: [
-					{
-						loader: 'eslint-loader',
-						options: {
-							configFile: '.eslintrc.json',
-							cache: true,
-							emitWarning: true
-						}
-					}
-				]
-			}]
-		}
-	});
+	const webpackPostprocessor = wallabyWebpack();
 
 	return {
 		name: 'type-enforcer',

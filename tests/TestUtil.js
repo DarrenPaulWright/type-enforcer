@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { concat, difference } from 'lodash';
+import { concat, difference, forOwn, isPlainObject, each } from 'lodash';
 import { Point } from '../src';
 
 const emptyFunction = function() {
@@ -72,6 +72,80 @@ export const testTypes = [{
 	true: validPoints,
 	false: difference(testValues, validPoints)
 }];
+
+/**
+ * @function multiTest
+ *
+ * @param {Object} settings
+ * @param {Object|Array} settings.values
+ * @param {Function} settings.test
+ * @param {Function} [settings.filter]
+ * @param {Function} [settings.message=`should return ${output} when set to ${input}`]
+ * @param {String} [settings.inputKey]
+ * @param {String} [settings.outputKey]
+ * @param {*} [settings.output]
+ * @param {Boolean} [settings.eachPair=false]
+ * @param {String} [settings.assertion='equal']
+ */
+export const multiTest = (settings) => {
+	const assertion = settings.assertion || 'equal';
+
+	const buildMessage = settings.message || ((input, output) => {
+		return `should return ${output} when set to ${input}`;
+	});
+
+	const doTest = (input, output, value) => {
+		if ((!settings.filter) || settings.filter(value)) {
+			it(buildMessage(input, output), () => {
+				assert[assertion](settings.test(input), output);
+			});
+		}
+	};
+
+	if (isPlainObject(settings.values)) {
+		forOwn(settings.values, (value, key) => {
+			doTest(key, value, value);
+		});
+	}
+	else {
+		if (settings.hasOwnProperty('output')) {
+			if (settings.hasOwnProperty('inputKey')) {
+				each(settings.values, (value) => {
+					doTest(value[settings.inputKey], settings.output, value);
+				});
+			}
+			else {
+				each(settings.values, (value) => {
+					doTest(value, settings.output, value);
+				});
+			}
+		}
+		if (settings.hasOwnProperty('outputKey')) {
+			if (settings.hasOwnProperty('inputKey')) {
+				each(settings.values, (value) => {
+					doTest(value[settings.inputKey], value[settings.outputKey], value);
+				});
+			}
+			else {
+				each(settings.values, (value) => {
+					doTest(value, value[settings.outputKey], value);
+				});
+			}
+		}
+		else {
+			if (settings.hasOwnProperty('inputKey')) {
+				each(settings.values, (value) => {
+					doTest(value[settings.inputKey], undefined, value);
+				});
+			}
+			else {
+				each(settings.values, (value) => {
+					doTest(value, undefined, value);
+				});
+			}
+		}
+	}
+};
 
 export default function TestUtil(Constructor) {
 	this.testMethod = (settings) => {

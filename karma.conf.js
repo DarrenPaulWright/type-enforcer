@@ -1,6 +1,12 @@
 module.exports = function(config) {
 	config.set({
-		browsers: ['Chrome', 'Firefox'],
+		browsers: ['chromeCustom'],
+		customLaunchers: {
+			chromeCustom: {
+				base: 'ChromeHeadless',
+				flags: ['--window-size=830,600']
+			}
+		},
 		files: [
 			'tests/TestUtil.js',
 			'tests/enforcer/enforceTestUtility.js',

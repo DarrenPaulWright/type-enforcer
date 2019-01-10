@@ -216,8 +216,8 @@ describe('CssSize', () => {
 			assert.equal(cssSize.set('2vh').toPixels(), '12px');
 		});
 
-		it('should return "16px" when the value is "2vw"', () => {
-			assert.equal(cssSize.set('2vw').toPixels(), '16px');
+		it('should return "16.25px" when the value is "2vw"', () => {
+			assert.equal(cssSize.set('2vw').toPixels(), '16.25px');
 		});
 
 		it('should return "12px" when the value is "2vmin"', () => {

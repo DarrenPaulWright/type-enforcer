@@ -8,6 +8,7 @@ module.exports = function(config) {
 			}
 		},
 		files: [
+			'tests/test.css',
 			'tests/TestUtil.js',
 			'tests/enforcer/enforceTestUtility.js',
 			'tests/**/*.Test.js'

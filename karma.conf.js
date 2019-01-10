@@ -3,13 +3,16 @@ module.exports = function(config) {
 		browsers: ['Chrome', 'Firefox'],
 		files: [
 			'tests/TestUtil.js',
-			'tests/**/*.Test.js',
+			'tests/enforcer/enforceTestUtility.js',
+			'tests/**/*.Test.js'
 		],
 		frameworks: ['jasmine'],
 		preprocessors: {
 			'tests/TestUtil.js': ['webpack'],
+			'tests/enforcer/enforceTestUtility.js': ['webpack'],
 			'tests/**/*.Test.js': ['webpack']
 		},
+		reporters: ['dots'],
 		webpack: {
 			mode: 'development',
 			module: {

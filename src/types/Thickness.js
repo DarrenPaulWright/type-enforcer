@@ -11,7 +11,6 @@ const TOP = Symbol();
 const RIGHT = Symbol();
 const BOTTOM = Symbol();
 const LEFT = Symbol();
-const ELEMENT = Symbol();
 
 /**
  * Replicates the functionality of css border-width, margin, and padding, or anything that requires top, right, bottom, and left css sizes.

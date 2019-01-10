@@ -1,4 +1,4 @@
-import { each, isArray, isNumber, isString } from 'lodash';
+import { isArray, isNumber, isString } from 'lodash';
 import angle from '../utility/angle';
 
 const SEPARATOR = ',';

@@ -33,7 +33,7 @@ const typeOfMap = new Enum({
  *
  * @returns {Boolean}
  */
-export default isInstanceOf = (object, constructor) => {
+export default (object, constructor) => {
 	if (object === undefined || typeof constructor !== 'function') {
 		return false;
 	}

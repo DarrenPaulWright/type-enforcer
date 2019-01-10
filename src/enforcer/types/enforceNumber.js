@@ -1,4 +1,4 @@
-import { clamp, isInteger, isNumber } from 'lodash';
+import { clamp, isNumber } from 'lodash';
 
 /**
  * If the first value is a [number]{@link https://lodash.com/docs/#isNumber} (excluding NaN) then return that, otherwise return the alt value.

@@ -1,4 +1,4 @@
-import { assign, concat, defer, each, join, throttle } from 'lodash';
+import { assign, concat, each, join, throttle } from 'lodash';
 import methodElement from '../methods/types/methodElement';
 
 export const AUTO = 'auto';
@@ -349,7 +349,7 @@ assign(CssSize.prototype, {
 	 * @returns {this|Element}
 	 */
 	element: methodElement({
-		set: function(element) {
+		set: function() {
 			this[FONT_BASED_UNITS] = {};
 		}
 	})

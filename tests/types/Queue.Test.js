@@ -93,7 +93,7 @@ describe('Queue', () => {
 			queue.add(() => {
 				testVar++;
 			});
-			const ID = queue.add(() => {
+			queue.add(() => {
 				testVar++;
 			});
 			queue.add(() => {

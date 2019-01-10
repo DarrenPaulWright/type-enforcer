@@ -60,7 +60,7 @@ describe('Enum', () => {
 				TEST2: 'test2'
 			});
 
-			ENUM.each((value) => {
+			ENUM.each(() => {
 				testVar++;
 			});
 

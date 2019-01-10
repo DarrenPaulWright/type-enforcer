@@ -1,7 +1,6 @@
 import { assert } from 'chai';
 import { assign } from 'lodash';
-import moment from 'moment';
-import { Enum, method, Queue } from '../src/index';
+import { Enum, method, Queue } from '../../src/index';
 
 const testNormal = (settings) => {
 	let testFunctionCall = '';
@@ -193,7 +192,6 @@ describe('method', () => {
 	});
 
 	describe('.queue', () => {
-		let testFunctionCall = '';
 		let didExecute = 0;
 		const testFunc = () => {
 			didExecute++;
@@ -236,7 +234,7 @@ describe('method', () => {
 
 		describe('(prototype)', () => {
 			class TestConstructor {
-				onRemove(func) {
+				onRemove() {
 
 				}
 
@@ -246,8 +244,7 @@ describe('method', () => {
 			}
 
 			TestConstructor.prototype.testMethod = method.queue({
-				set: function(newValue) {
-					testFunctionCall = newValue;
+				set: function() {
 				}
 			});
 
@@ -256,7 +253,7 @@ describe('method', () => {
 
 		describe('(property)', () => {
 			const TestConstructor = function() {
-				this.onRemove = (func) => {
+				this.onRemove = () => {
 
 				};
 
@@ -265,8 +262,7 @@ describe('method', () => {
 				};
 
 				this.testMethod = method.queue({
-					set: function(newValue) {
-						testFunctionCall = newValue;
+					set: function() {
 					}
 				});
 			};
@@ -290,7 +286,7 @@ describe('method', () => {
 		testNormal({
 			methodType: 'date',
 			testItem: new Date(),
-			testItem2: moment('2015-07-07')
+			testItem2: new Date('2015-07-07')
 		});
 	});
 
@@ -321,10 +317,8 @@ describe('method', () => {
 		testNormal({
 			methodType: 'func',
 			testItem: () => {
-				const test = 'test1';
 			},
 			testItem2: () => {
-				const test2 = 'test2';
 			}
 		});
 	});

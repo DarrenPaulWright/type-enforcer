@@ -1,4 +1,4 @@
-import { assign, isArray, isNumber } from 'lodash';
+import { assign } from 'lodash';
 import enforce from '../enforcer/enforce';
 import methodNumber from '../methods/types/methodNumber';
 import methodPoint from '../methods/types/methodPoint';

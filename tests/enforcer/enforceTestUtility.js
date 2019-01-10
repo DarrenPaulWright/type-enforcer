@@ -9,7 +9,6 @@ const validCssSize2 = new CssSize('100px');
 const validThickness2 = new Thickness('100px 200px');
 const validString1 = 'test string';
 const validFunction1 = () => {
-	const test1 = 1;
 };
 const validInt = 11;
 const validFloat = 34.23463456;

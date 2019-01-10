@@ -3,10 +3,8 @@ import { enforce } from '../../../src';
 import { runNegativeTests } from '../enforceTestUtility';
 
 const validFunction1 = () => {
-	const test1 = 1;
 };
 const validFunction2 = () => {
-	const test2 = 2;
 };
 
 describe('enforce', () => {

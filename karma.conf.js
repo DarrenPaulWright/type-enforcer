@@ -21,13 +21,7 @@ _.each(testRunnerConfig.getKarmaFiles(config, {
 
 module.exports = function(config) {
 	config.set({
-		browsers: ['chromeCustom'],
-		customLaunchers: {
-			chromeCustom: {
-				base: 'ChromeHeadless',
-				flags: ['--window-size=830,600']
-			}
-		},
+		browsers: ['Chrome', 'Firefox'],
 		files: files.files,
 		frameworks: ['jasmine'],
 		preprocessors: preprocessors,

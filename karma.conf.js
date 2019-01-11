@@ -26,6 +26,9 @@ module.exports = function(config) {
 		frameworks: ['jasmine'],
 		preprocessors: preprocessors,
 		reporters: ['brief'],
+		briefReporter: {
+			renderOnRunCompleteOnly: process.argv.includes('--single-run')
+		},
 		webpack: {
 			mode: 'development',
 			module: {

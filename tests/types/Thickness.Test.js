@@ -172,9 +172,9 @@ describe('Thickness', () => {
 		});
 
 		it('should convert css units on each side', () => {
-			const thickness = new Thickness('2pc 2em 2pc 2vmin');
+			const thickness = new Thickness('2pc 3em 4pc 5pc');
 
-			assert.equal(thickness.toString(), '32px 32px 32px 12px');
+			assert.equal(thickness.toString(), '32px 48px 64px 80px');
 		});
 
 		it('should combine all sides into one if they are the same', () => {

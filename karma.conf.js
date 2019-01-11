@@ -31,7 +31,7 @@ module.exports = function(config) {
 		files: files.files,
 		frameworks: ['jasmine'],
 		preprocessors: preprocessors,
-		reporters: ['dots'],
+		reporters: ['brief'],
 		webpack: {
 			mode: 'development',
 			module: {

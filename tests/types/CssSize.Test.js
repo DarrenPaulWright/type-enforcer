@@ -91,13 +91,22 @@ const inValidValues = [undefined, 'asdf', null, {}, /asdf/, [], new Thickness()]
 const zeros = [0, '0'];
 
 let tmpElement = document.createElement('div');
-tmpElement.style.height = '2vh';
-tmpElement.style.width = '2vw';
 document.body.appendChild(tmpElement);
-const measure = {
-	w: parseFloat(window.getComputedStyle(tmpElement).width),
-	h: parseFloat(window.getComputedStyle(tmpElement).height)
+const measure = {};
+const measureValue = (value, key) => {
+	tmpElement.style.height = value;
+	measure[key] = parseFloat(window.getComputedStyle(tmpElement).height);
 };
+measureValue('2vh', 'vh');
+measureValue('2vw', 'vw');
+measureValue('2em', 'em');
+measureValue('2ex', 'ex');
+measureValue('2ch', 'ch');
+tmpElement.style.fontSize = '40px';
+measureValue('2em', 'emLarge');
+measureValue('2ex', 'exLarge');
+measureValue('2ch', 'chLarge');
+
 tmpElement.remove();
 tmpElement = null;
 
@@ -216,17 +225,17 @@ describe('CssSize', () => {
 			'2mm': precision(7.5),
 			'8pt': precision(10.6),
 			'8pc': precision(128),
-			'2vh': precision(measure.h),
-			'2vw': precision(measure.w),
-			'2vmin': precision(Math.min(measure.h, measure.w)),
-			'2em': precision(32),
-			'2ex': precision(14.3),
-			'2ch': precision(16)
+			'2vh': precision(measure.vh),
+			'2vw': precision(measure.vw),
+			'2vmin': precision(Math.min(measure.vh, measure.vw)),
+			'2em': precision(measure.em),
+			'2ex': precision(measure.ex),
+			'2ch': precision(measure.ch)
 		};
 		const elementSizeMapOnDom = assign({}, sizeMap, {
-			'2em': precision(80),
-			'2ex': precision(35.8),
-			'2ch': precision(40)
+			'2em': precision(measure.emLarge),
+			'2ex': precision(measure.exLarge),
+			'2ch': precision(measure.chLarge)
 		});
 
 		multiTest({

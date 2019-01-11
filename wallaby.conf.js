@@ -1,18 +1,29 @@
 const wallabyWebpack = require('wallaby-webpack');
+const testRunnerConfig = require('test-runner-config');
+const config = require('./testRunner.config.js');
+
+const files = testRunnerConfig.getWallabyFiles(config, {
+	css: (file) => {
+		return {pattern: file, instrument: false, load: true};
+	},
+	helper: (file) => {
+		return {pattern: file, instrument: false, load: false};
+	},
+	src: (file) => {
+		return {pattern: file, instrument: true, load: false};
+	},
+	specs: (file) => {
+		return {pattern: file, instrument: false, load: false};
+	}
+});
 
 module.exports = function(wallaby) {
 	const webpackPostprocessor = wallabyWebpack();
 
 	return {
 		name: 'type-enforcer',
-		files: [
-			{pattern: 'tests/TestUtil.js', instrument: false, load: false},
-			{pattern: 'tests/enforcer/enforceTestUtility.js', instrument: false, load: false},
-			{pattern: 'src/**/*.js', instrument: true, load: false}
-		],
-		tests: [
-			{pattern: 'tests/**/*.Test.js', instrument: false, load: false}
-		],
+		files: files.files,
+		tests: files.tests,
 		env: {
 			kind: 'chrome'
 		},

@@ -1,6 +1,6 @@
 html, body {
-    width: 800px !important;
-    height: 600px !important;
+    height: 100%;
+    width: 100%;
     font-family: "Times New Roman", serif;
     font-size: 100%;
 }

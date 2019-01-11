@@ -1,5 +1,6 @@
 import { assign, concat, each, join, throttle } from 'lodash';
 import methodElement from '../methods/types/methodElement';
+import isElementInDom from '../utility/isElementInDom';
 
 export const AUTO = 'auto';
 export const INITIAL = 'initial';
@@ -47,11 +48,14 @@ const NUMERIC_REGEX = new RegExp(NUMERIC_VALUE);
 const CSS_SIZE_REGEX = new RegExp(VALID_SIZES_STRING + OR + ALL_UNITS_STRING);
 
 const measureUnits = (units, save, element) => {
+	const isAttached = !(!element || !isElementInDom(element));
 	let thisElement = element || document.createElement('div');
 	let originalHeight = window.getComputedStyle(thisElement).height;
 
 	if (!element) {
 		thisElement.style.position = 'absolute';
+	}
+	if (!isAttached) {
 		document.body.appendChild(thisElement);
 	}
 
@@ -66,6 +70,9 @@ const measureUnits = (units, save, element) => {
 	}
 	else {
 		thisElement.style.height = originalHeight;
+		if (!isAttached) {
+			thisElement.parentNode.removeChild(thisElement);
+		}
 	}
 };
 

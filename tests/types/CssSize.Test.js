@@ -90,6 +90,17 @@ const validValues2 = concat(positiveUnits, validSizes);
 const inValidValues = [undefined, 'asdf', null, {}, /asdf/, [], new Thickness()];
 const zeros = [0, '0'];
 
+let tmpElement = document.createElement('div');
+tmpElement.style.height = '2vh';
+tmpElement.style.width = '2vw';
+document.body.appendChild(tmpElement);
+const measure = {
+	w: parseFloat(window.getComputedStyle(tmpElement).width),
+	h: parseFloat(window.getComputedStyle(tmpElement).height)
+};
+tmpElement.remove();
+tmpElement = null;
+
 describe('CssSize', () => {
 	describe('constructor', () => {
 		it('should default to 0', () => {
@@ -183,7 +194,8 @@ describe('CssSize', () => {
 	});
 
 	describe('.toPixels', () => {
-		const getValue = (cssSize) => round(cssSize.toPixels(true), 1);
+		const precision = (value) => round(value, 0);
+		const getValue = (cssSize) => precision(cssSize.toPixels(true));
 		const getCssSize = (input) => getValue(new CssSize(input));
 		const getCssSizeWithElement = (input) => {
 			const element = document.createElement('div');
@@ -197,29 +209,24 @@ describe('CssSize', () => {
 			return getValue(new CssSize(input).element(element));
 		};
 		const sizeMap = {
-			'1rem': 16,
-			'3px': 3,
-			'1.5in': 144,
-			'2cm': 75.6,
-			'2mm': 7.5,
-			'8pt': 10.6,
-			'8pc': 128,
-			'2vh': 12,
-			'2vw': 16,
-			'2vmin': 12,
-			'2em': 32,
-			'2ex': 14.3,
-			'2ch': 16
+			'1rem': precision(16),
+			'3px': precision(3),
+			'1.5in': precision(144),
+			'2cm': precision(75.6),
+			'2mm': precision(7.5),
+			'8pt': precision(10.6),
+			'8pc': precision(128),
+			'2vh': precision(measure.h),
+			'2vw': precision(measure.w),
+			'2vmin': precision(Math.min(measure.h, measure.w)),
+			'2em': precision(32),
+			'2ex': precision(14.3),
+			'2ch': precision(16)
 		};
-		const elementSizeMap = assign({}, sizeMap, {
-			'2em': 0,
-			'2ex': 0,
-			'2ch': 0
-		});
 		const elementSizeMapOnDom = assign({}, sizeMap, {
-			'2em': 80,
-			'2ex': 35.8,
-			'2ch': 40
+			'2em': precision(80),
+			'2ex': precision(35.8),
+			'2ch': precision(40)
 		});
 
 		multiTest({
@@ -229,7 +236,7 @@ describe('CssSize', () => {
 
 		describe('with element NOT attached to DOM', () => {
 			multiTest({
-				values: elementSizeMap,
+				values: elementSizeMapOnDom,
 				test: getCssSizeWithElement
 			});
 		});

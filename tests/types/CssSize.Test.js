@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { assign, concat, each, map, round } from 'lodash';
+import { assign, concat, map, round } from 'lodash';
 import {
 	AUTO,
 	CENTIMETERS,
@@ -183,7 +183,7 @@ describe('CssSize', () => {
 	});
 
 	describe('.toPixels', () => {
-		const getValue = (cssSize) => round(cssSize.toPixels(true), 1)
+		const getValue = (cssSize) => round(cssSize.toPixels(true), 1);
 		const getCssSize = (input) => getValue(new CssSize(input));
 		const getCssSizeWithElement = (input) => {
 			const element = document.createElement('div');
@@ -205,7 +205,7 @@ describe('CssSize', () => {
 			'8pt': 10.6,
 			'8pc': 128,
 			'2vh': 12,
-			'2vw': 16.3,
+			'2vw': 16,
 			'2vmin': 12,
 			'2em': 32,
 			'2ex': 14.3,
@@ -319,34 +319,45 @@ describe('CssSize', () => {
 	});
 
 	describe('.isSame', () => {
-		const testIsValid = (cssSize, value2) => {
-			it('should return true when both values are ' + value2, () => {
-				assert.isTrue(cssSize.isSame(value2));
-			});
-		};
-		const testIsNotValid = (cssSize, value2) => {
-			it('should return false when the value is ' + cssSize + ' and the test value is ' + value2, () => {
-				assert.isFalse(cssSize.isSame(value2));
-			});
+		const testCallback = (value1, value2) => new CssSize(value1).isSame(value2);
+		const isValid = (value1, value2) => {
+			return (value1 !== value2 &&
+				!(value1.size === 0 && value2.size === '0' || value1.size === '0' && value2.size === 0) &&
+				!(value1.size + PIXELS === value2.size || value1.size === value2.size + PIXELS))
 		};
 
-		each(validValues2, (value) => {
-			const cssSize = new CssSize(value.size);
+		multiTest({
+			values: validValues2,
+			eachPair: true,
+			message: (input1, input2) => `should return false when the value is ${input1} and the test value is ${input2}`,
+			filter: isValid,
+			test: testCallback,
+			assertion: 'isFalse',
+			inputKey: 'size'
+		});
 
-			each(validValues2, (value2) => {
-				if (value !== value2 &&
-					!(value.size == 0 && value2.size === '0' || value.size == '0' && value2.size === 0) &&
-					!(value.size + PIXELS === value2.size || value.size === value2.size + PIXELS)) {
-					testIsNotValid(cssSize, value2.size);
-				}
-				else {
-					testIsValid(cssSize, value2.size);
-				}
-			});
+		multiTest({
+			values: validValues2,
+			eachPair: true,
+			message: (input1, input2) => `should return true when the value is ${input1} and the test value is ${input2}`,
+			filter: (value1, value2) => !isValid(value1, value2),
+			test: testCallback,
+			assertion: 'isTrue',
+			inputKey: 'size'
+		});
 
-			each(inValidValues, (value2) => {
-				testIsNotValid(cssSize, value2);
-			});
+		multiTest({
+			values: validValues2,
+			values2: map(inValidValues, (value) => {
+				return {
+					size: value
+				}
+			}),
+			eachPair: true,
+			message: (input1, input2) => `should return false when the value is ${input1} and the test value is ${input2}`,
+			test: testCallback,
+			assertion: 'isFalse',
+			inputKey: 'size'
 		});
 
 		it('should return true for values that equate to the same pixels', () => {

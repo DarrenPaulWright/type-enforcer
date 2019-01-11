@@ -2,5 +2,5 @@ html, body {
     width: 800px !important;
     height: 600px !important;
     font-family: "Times New Roman", serif;
-    font-size: 16px;
+    font-size: 100%;
 }

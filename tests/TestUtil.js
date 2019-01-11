@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { concat, difference, forOwn, isPlainObject, each } from 'lodash';
+import { concat, difference, each, forOwn, isPlainObject } from 'lodash';
 import { Point } from '../src';
 
 const emptyFunction = function() {
@@ -73,77 +73,131 @@ export const testTypes = [{
 	false: difference(testValues, validPoints)
 }];
 
+export const eachPair = (array1, array2, callback, isUnique = false) => {
+	let i;
+	let j;
+	const length1 = array1.length;
+	const length2 = array2.length;
+	let doBreak = false;
+
+	isUnique = array1 === array2 && isUnique;
+
+	for (i = 0; i < length1; i++) {
+		for (j = isUnique ? i + 1 : 0; j < length2; j++) {
+			if (callback(array1[i], array2[j])) {
+				doBreak = true;
+				break;
+			}
+		}
+
+		if (doBreak) {
+			break;
+		}
+	}
+};
+
 /**
  * @function multiTest
  *
  * @param {Object} settings
  * @param {Object|Array} settings.values
+ * @param {Object|Array} [settings.values2] - Only for eachPair. If not provided, pairs are made within the values array. If provided, pairs are only made with one from each array.
  * @param {Function} settings.test
  * @param {Function} [settings.filter]
  * @param {Function} [settings.message=`should return ${output} when set to ${input}`]
  * @param {String} [settings.inputKey]
  * @param {String} [settings.outputKey]
  * @param {*} [settings.output]
- * @param {Boolean} [settings.eachPair=false]
+ * @param {Boolean} [settings.eachPair=false] - values must be an array, runs tests on every combination of two items from values
+ * @param {Boolean} [settings.eachUniquePair=false] - like eachPair, but runs unique pairs
  * @param {String} [settings.assertion='equal']
  */
 export const multiTest = (settings) => {
 	const assertion = settings.assertion || 'equal';
 
-	const buildMessage = settings.message || ((input, output) => {
+	const buildSingleMessage = settings.message || ((input, output) => {
 		return `should return ${output} when set to ${input}`;
 	});
 
-	const doTest = (input, output, value) => {
+	const buildDoubleMessage = settings.message || ((input1, input2, output) => {
+		return `should return ${output} when ${input1} and ${input2} are provided`;
+	});
+
+	const testSingleValue = (input, output, value) => {
 		if ((!settings.filter) || settings.filter(value)) {
-			it(buildMessage(input, output), () => {
+			it(buildSingleMessage(input, output), () => {
 				assert[assertion](settings.test(input), output);
 			});
 		}
 	};
 
-	if (isPlainObject(settings.values)) {
-		forOwn(settings.values, (value, key) => {
-			doTest(key, value, value);
-		});
-	}
-	else {
-		if (settings.hasOwnProperty('output')) {
-			if (settings.hasOwnProperty('inputKey')) {
-				each(settings.values, (value) => {
-					doTest(value[settings.inputKey], settings.output, value);
-				});
+	const testDoubleValue = (input1, input2, output, value1, value2) => {
+		if ((!settings.filter) || settings.filter(value1, value2)) {
+			it(buildDoubleMessage(input1, input2, output), () => {
+				assert[assertion](settings.test(input1, input2), output);
+			});
+		}
+	};
+
+	const testSingleArrayValue = (value) => {
+		if ('output' in settings) {
+			if ('inputKey' in settings) {
+				testSingleValue(value[settings.inputKey], settings.output, value);
 			}
 			else {
-				each(settings.values, (value) => {
-					doTest(value, settings.output, value);
-				});
+				testSingleValue(value, settings.output, value);
 			}
 		}
-		if (settings.hasOwnProperty('outputKey')) {
-			if (settings.hasOwnProperty('inputKey')) {
-				each(settings.values, (value) => {
-					doTest(value[settings.inputKey], value[settings.outputKey], value);
-				});
+		else if ('outputKey' in settings) {
+			if ('inputKey' in settings) {
+				testSingleValue(value[settings.inputKey], value[settings.outputKey], value);
 			}
 			else {
-				each(settings.values, (value) => {
-					doTest(value, value[settings.outputKey], value);
-				});
+				testSingleValue(value, value[settings.outputKey], value);
 			}
 		}
 		else {
-			if (settings.hasOwnProperty('inputKey')) {
-				each(settings.values, (value) => {
-					doTest(value[settings.inputKey], undefined, value);
-				});
+			if ('inputKey' in settings) {
+				testSingleValue(value[settings.inputKey], undefined, value);
 			}
 			else {
-				each(settings.values, (value) => {
-					doTest(value, undefined, value);
-				});
+				testSingleValue(value, undefined, value);
 			}
 		}
+	};
+
+	const testDoubleArrayValue = (value1, value2) => {
+		if ('output' in settings) {
+			if ('inputKey' in settings) {
+				testDoubleValue(value1[settings.inputKey], value2[settings.inputKey], settings.output, value1, value2);
+			}
+			else {
+				testDoubleValue(value1, value2, settings.output, value1, value2);
+			}
+		}
+		else {
+			if ('inputKey' in settings) {
+				testDoubleValue(value1[settings.inputKey], value2[settings.inputKey], undefined, value1, value2);
+			}
+			else {
+				testDoubleValue(value1, value2, undefined, value1, value2);
+			}
+		}
+	};
+
+	if (isPlainObject(settings.values)) {
+		forOwn(settings.values, (value, key) => {
+			testSingleValue(key, value, value);
+		});
+	}
+	else if (settings.eachPair) {
+		eachPair(settings.values, settings.values2 || settings.values, testDoubleArrayValue);
+	}
+	else if (settings.eachUniquePair) {
+		eachPair(settings.values, settings.values2 || settings.values, testDoubleArrayValue, true);
+	}
+	else {
+		each(settings.values, testSingleArrayValue);
 	}
 };
 

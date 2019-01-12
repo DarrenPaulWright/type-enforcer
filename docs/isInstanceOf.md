@@ -11,24 +11,7 @@ Type enforcement library for javascript
 <a name="isInstanceOf"></a>
 
 ## isInstanceOf(object, constructor) ⇒ <code>Boolean</code>
-Check if a value is an instance of a constructor.
-
-## Usage
-``` javascript
-import { isInstanceOf } from 'type-enforcer';
-```
-
-Fixes issues with primitives and instanceOf, example:
-``` javascript
-isInstanceOf(false, Boolean);
- => true
-
-isInstanceOf(42, Number);
- => true
-
-isInstanceOf('test', String);
- => true
-```
+Check if a value is an instance of a constructor.## Usage``` javascriptimport { isInstanceOf } from 'type-enforcer';```Fixes issues with primitives and instanceOf, example:``` javascriptisInstanceOf(false, Boolean); => trueisInstanceOf(42, Number); => trueisInstanceOf('test', String); => true```
 
 **Kind**: global function  
 

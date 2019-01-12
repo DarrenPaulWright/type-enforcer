@@ -11,21 +11,16 @@ Type enforcement library for javascript
 <a name="enforce"></a>
 
 ## enforce : <code>object</code>
-Utility functions for enforcing data types.
-
-## Usage
-``` javascript
-import { enforce } from 'type-enforcer';
-```
+Utility functions for enforcing data types.## Usage``` javascriptimport { enforce } from 'type-enforcer';```
 
 **Kind**: global typedef  
 
 * [enforce](#enforce) : <code>object</code>
     * [.array(value, alt)](#enforce.array) ⇒ <code>Array</code>
     * [.bool(value, alt)](#enforce.bool) ⇒ <code>Boolean</code>
-    * [.cssSize(value, alt)](#enforce.cssSize) ⇒ <code>CssSize</code>
+    * [.cssSize(value, alt, [options])](#enforce.cssSize) ⇒ <code>CssSize</code>
     * [.date(value, alt)](#enforce.date) ⇒ <code>Date</code>
-    * [.dockPoint(value, alt)](#enforce.dockPoint) ⇒ <code>DockPoint</code>
+    * [.dockPoint(value, alt, [options])](#enforce.dockPoint) ⇒ <code>DockPoint</code>
     * [.element(value, alt)](#enforce.element) ⇒ <code>Element</code>
     * [.enum(value, enumerable, alt)](#enforce.enum) ⇒ <code>String</code>
     * [.func(value, alt)](#enforce.func) ⇒ <code>function</code>
@@ -33,10 +28,10 @@ import { enforce } from 'type-enforcer';
     * [.int(value, alt, [minValue], [maxValue])](#enforce.int) ⇒ <code>int</code>
     * [.number(value, alt, [minValue], [maxValue])](#enforce.number) ⇒ <code>Number</code>
     * [.object(value, alt)](#enforce.object) ⇒ <code>Object</code>
-    * [.point(value, alt)](#enforce.point) ⇒ <code>Point</code>
+    * [.point(value, alt, [options])](#enforce.point) ⇒ <code>Point</code>
     * [.string(value, alt)](#enforce.string) ⇒ <code>String</code>
-    * [.thickness(value, alt)](#enforce.thickness) ⇒ <code>Thickness</code>
-    * [.vector(value, alt)](#enforce.vector) ⇒ <code>Vector</code>
+    * [.thickness(value, alt, [options])](#enforce.thickness) ⇒ <code>Thickness</code>
+    * [.vector(value, alt, [options])](#enforce.vector) ⇒ <code>Vector</code>
 
 <a name="enforce.array"></a>
 
@@ -64,15 +59,17 @@ If the first value is a [boolean](https://lodash.com/docs/#isBoolean), then retu
 
 <a name="enforce.cssSize"></a>
 
-### enforce.cssSize(value, alt) ⇒ <code>CssSize</code>
+### enforce.cssSize(value, alt, [options]) ⇒ <code>CssSize</code>
 If the first value is a valid CssSize then return that, otherwise return the alt value.
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
 
-| Param | Type |
-| --- | --- |
-| value | <code>\*</code> | 
-| alt | <code>CssSize</code> | 
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | <code>\*</code> |  |  |
+| alt | <code>CssSize</code> |  |  |
+| [options] | <code>Object</code> |  |  |
+| [options.coerce] | <code>Boolean</code> | <code>true</code> | If false, then will only accept a specific instance |
 
 <a name="enforce.date"></a>
 
@@ -88,15 +85,17 @@ If the first value is a [date](https://lodash.com/docs/#isDate) then return that
 
 <a name="enforce.dockPoint"></a>
 
-### enforce.dockPoint(value, alt) ⇒ <code>DockPoint</code>
+### enforce.dockPoint(value, alt, [options]) ⇒ <code>DockPoint</code>
 If the first value is a valid dockPoint then return that, otherwise return the alt value.
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
 
-| Param | Type |
-| --- | --- |
-| value | <code>\*</code> | 
-| alt | <code>String</code> | 
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | <code>\*</code> |  |  |
+| alt | <code>String</code> |  |  |
+| [options] | <code>Object</code> |  |  |
+| [options.coerce] | <code>Boolean</code> | <code>true</code> | If false, then will only accept a specific instance |
 
 <a name="enforce.element"></a>
 
@@ -190,15 +189,17 @@ If the first value is a [plain object](https://lodash.com/docs/#isPlainObject) t
 
 <a name="enforce.point"></a>
 
-### enforce.point(value, alt) ⇒ <code>Point</code>
+### enforce.point(value, alt, [options]) ⇒ <code>Point</code>
 If the first value is a point then return that, otherwise return the alt value.
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
 
-| Param | Type |
-| --- | --- |
-| value | <code>\*</code> | 
-| alt | <code>Point</code> | 
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | <code>\*</code> |  |  |
+| alt | <code>Point</code> |  |  |
+| [options] | <code>Object</code> |  |  |
+| [options.coerce] | <code>Boolean</code> | <code>true</code> | If false, then will only accept a specific instance |
 
 <a name="enforce.string"></a>
 
@@ -214,27 +215,31 @@ If the first value is a [string](https://lodash.com/docs/#isString) then return 
 
 <a name="enforce.thickness"></a>
 
-### enforce.thickness(value, alt) ⇒ <code>Thickness</code>
+### enforce.thickness(value, alt, [options]) ⇒ <code>Thickness</code>
 If the first value is a thickness then return that, otherwise return the alt value.
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
 
-| Param | Type |
-| --- | --- |
-| value | <code>\*</code> | 
-| alt | <code>Thickness</code> | 
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | <code>\*</code> |  |  |
+| alt | <code>Thickness</code> |  |  |
+| [options] | <code>Object</code> |  |  |
+| [options.coerce] | <code>Boolean</code> | <code>true</code> | If false, then will only accept a specific instance |
 
 <a name="enforce.vector"></a>
 
-### enforce.vector(value, alt) ⇒ <code>Vector</code>
+### enforce.vector(value, alt, [options]) ⇒ <code>Vector</code>
 If the first value is a vector then return that, otherwise return the alt value.
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
 
-| Param | Type |
-| --- | --- |
-| value | <code>\*</code> | 
-| alt | <code>Vector</code> | 
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | <code>\*</code> |  |  |
+| alt | <code>Vector</code> |  |  |
+| [options] | <code>Object</code> |  |  |
+| [options.coerce] | <code>Boolean</code> | <code>true</code> | If false, then will only accept a specific instance |
 
 
 ## License

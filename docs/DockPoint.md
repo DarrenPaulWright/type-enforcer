@@ -35,12 +35,7 @@ Type enforcement library for javascript
 <a name="new_DockPoint_new"></a>
 
 ### new DockPoint([value])
-Allows the designation of a specific point relative to an object.
-
-## Usage
-``` javascript
-import { DockPoint } from 'type-enforcer';
-```
+Allows the designation of a specific point relative to an object.## Usage``` javascriptimport { DockPoint } from 'type-enforcer';```
 
 
 | Param | Type | Default | Description |
@@ -154,7 +149,7 @@ Determine if something is a valid dock point
 
 | Param | Type |
 | --- | --- |
-| value | <code>String</code> \| [<code>DockPoint</code>](#DockPoint) | 
+| value | <code>\*</code> | 
 
 <a name="DockPoint.isInstance"></a>
 

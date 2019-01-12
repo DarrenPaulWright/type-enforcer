@@ -14,27 +14,30 @@ Type enforcement library for javascript
 **Kind**: global class  
 
 * [Vector](#Vector)
-    * [new Vector()](#new_Vector_new)
+    * [new Vector([start], [end])](#new_Vector_new)
     * _instance_
         * [.isSame(vector2)](#Vector+isSame) ⇒ <code>Boolean</code>
         * [.invert()](#Vector+invert)
+        * [.toString()](#Vector+toString)
         * [.start([point])](#Vector+start) ⇒ <code>this</code> \| <code>Point</code>
         * [.end([point])](#Vector+end) ⇒ <code>this</code> \| <code>Point</code>
         * [.length([length])](#Vector+length) ⇒ <code>this</code> \| <code>Number</code>
         * [.angle([angle])](#Vector+angle) ⇒ <code>this</code> \| <code>Number</code>
         * [.offset([point])](#Vector+offset) ⇒ <code>this</code> \| <code>Point</code>
     * _static_
+        * [.isValid(value)](#Vector.isValid) ⇒ <code>boolean</code>
         * [.isInstance(is)](#Vector.isInstance) ⇒ <code>boolean</code>
 
 <a name="new_Vector_new"></a>
 
-### new Vector()
-Vector model with helper types
+### new Vector([start], [end])
+Vector model with helper types## Usage``` javascriptimport { Vector } from 'type-enforcer';```
 
-## Usage
-``` javascript
-import { Vector } from 'type-enforcer';
-```
+
+| Param | Type |
+| --- | --- |
+| [start] | <code>Point</code> | 
+| [end] | <code>Point</code> | 
 
 <a name="Vector+isSame"></a>
 
@@ -51,6 +54,12 @@ Determine if another vector is the same as this one
 
 ### vector.invert()
 Switch the start and end points
+
+**Kind**: instance method of [<code>Vector</code>](#Vector)  
+<a name="Vector+toString"></a>
+
+### vector.toString()
+Get a string representation of the vector
 
 **Kind**: instance method of [<code>Vector</code>](#Vector)  
 <a name="Vector+start"></a>
@@ -107,6 +116,17 @@ The x and y difference represented as a point
 | Param | Type |
 | --- | --- |
 | [point] | <code>Point</code> | 
+
+<a name="Vector.isValid"></a>
+
+### Vector.isValid(value) ⇒ <code>boolean</code>
+Determine if something is a valid Vector
+
+**Kind**: static method of [<code>Vector</code>](#Vector)  
+
+| Param | Type |
+| --- | --- |
+| value | <code>\*</code> | 
 
 <a name="Vector.isInstance"></a>
 

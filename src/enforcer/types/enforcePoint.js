@@ -1,18 +1,16 @@
 import Point from '../../types/Point';
+import customTypeEnforcer from './customTypeEnforcer';
 
 /**
  * If the first value is a point then return that, otherwise return the alt value.
  *
  * @function enforce.point
  *
- * @arg   {*} value
- * @arg   {Point} alt
+ * @arg {*} value
+ * @arg {Point} alt
+ * @arg {Object}  [options]
+ * @arg {Boolean} [options.coerce=true] - If false, then will only accept a specific instance
  *
  * @returns {Point}
  */
-export default (value, alt) => {
-	if (Point.isValid(value) && !Point.isInstance(value)) {
-		value = new Point(value);
-	}
-	return Point.isInstance(value) ? value : alt;
-};
+export default customTypeEnforcer(Point);

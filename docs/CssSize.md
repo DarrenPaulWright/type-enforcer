@@ -33,12 +33,7 @@ Type enforcement library for javascript
 <a name="new_CssSize_new"></a>
 
 ### new CssSize([size])
-A class for css sizes
-
-## Usage
-``` javascript
-import { CssSize } from 'type-enforcer';
-```
+A class for css sizes## Usage``` javascriptimport { CssSize } from 'type-enforcer';```
 
 
 | Param | Type | Default |
@@ -134,7 +129,7 @@ Determine if something is a valid css size
 
 | Param | Type |
 | --- | --- |
-| size | <code>String</code> \| [<code>CssSize</code>](#CssSize) | 
+| size | <code>\*</code> | 
 
 <a name="CssSize.isInstance"></a>
 

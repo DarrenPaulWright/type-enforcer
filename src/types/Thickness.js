@@ -1,4 +1,4 @@
-import { assign, each, join } from 'lodash';
+import { assign, each, isString, join } from 'lodash';
 import methodElement from '../methods/types/methodElement';
 import CssSize from './CssSize';
 
@@ -119,7 +119,7 @@ export default class Thickness {
 	 *
 	 * @memberof Thickness
 	 *
-	 * @arg {String|Thickness} value
+	 * @arg {*} value
 	 *
 	 * @returns {boolean}
 	 */
@@ -261,7 +261,10 @@ export default class Thickness {
 	 * @returns {Boolean}
 	 */
 	isSame(thickness) {
-		return this.toString() === (thickness ? thickness.toString() : null);
+		if (!Thickness.isValid(thickness)) {
+			return false;
+		}
+		return this.toString() === (isString(thickness) ? thickness : thickness.toString());
 	}
 
 	/**

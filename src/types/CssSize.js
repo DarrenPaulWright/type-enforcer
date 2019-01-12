@@ -141,16 +141,16 @@ export default class CssSize {
 	 *
 	 * @memberof CssSize
 	 *
-	 * @arg {String|CssSize} size
+	 * @arg {*} value
 	 *
 	 * @returns {boolean}
 	 */
-	static isValid(size) {
-		if (CssSize.isInstance(size)) {
+	static isValid(value) {
+		if (CssSize.isInstance(value)) {
 			return true;
 		}
-		if (['string', 'number'].includes(typeof size)) {
-			return CSS_SIZE_REGEX.test(size) || isNonZeroNumber(size);
+		if (['string', 'number'].includes(typeof value)) {
+			return CSS_SIZE_REGEX.test(value) || isNonZeroNumber(value);
 		}
 		return false;
 	}

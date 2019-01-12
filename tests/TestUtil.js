@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import { concat, difference, each, forOwn, isPlainObject } from 'lodash';
-import { Point } from '../src';
+import { Point, Vector } from '../src';
 
 const emptyFunction = function() {
 };
@@ -17,6 +17,7 @@ export const validObjects = [{}, {
 export const validRegExps = [/asdf/g, new RegExp('test 2')];
 export const validStrings = ['', 'test', new String('test2')];
 export const validPoints = [new Point(1, 2)];
+export const validVectors = [new Vector([1, 2], [3, 4]), new Vector([3, 4], [5, 6])];
 
 export const testValues = concat(
 	[null, undefined],
@@ -29,7 +30,8 @@ export const testValues = concat(
 	validObjects,
 	validRegExps,
 	validStrings,
-	validPoints
+	validPoints,
+	validVectors
 );
 
 export const testTypes = [{
@@ -71,6 +73,10 @@ export const testTypes = [{
 	value: Point,
 	true: validPoints,
 	false: difference(testValues, validPoints)
+}, {
+	value: Vector,
+	true: validVectors,
+	false: difference(testValues, validVectors)
 }];
 
 export const eachPair = (array1, array2, callback, isUnique = false) => {

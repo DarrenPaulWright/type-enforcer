@@ -80,7 +80,7 @@ export default class DockPoint {
 	 *
 	 * @memberof DockPoint
 	 *
-	 * @arg {String|DockPoint} value
+	 * @arg {*} value
 	 *
 	 * @returns {boolean}
 	 */

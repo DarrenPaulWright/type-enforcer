@@ -1,8 +1,10 @@
-import { assign } from 'lodash';
-import enforce from '../enforcer/enforce';
+import { assign, isArray } from 'lodash';
+import { isJson } from '../checks/isJson';
+import enforceNumber from '../enforcer/types/enforceNumber';
 import methodNumber from '../methods/types/methodNumber';
 import methodPoint from '../methods/types/methodPoint';
 import angle from '../utility/angle';
+import Point from './Point';
 
 const calculateLength = function() {
 	if (!this[IS_BUSY]) {
@@ -49,15 +51,47 @@ const IS_BUSY = Symbol();
  * ```
  *
  * @class Vector
+ *
+ * @param {Point} [start]
+ * @param {Point} [end]
  */
 export default class Vector {
-	constructor(initStart, initEnd) {
+	constructor(start, end) {
 		this[IS_BUSY] = true;
-		this.start(initStart);
-		this.end(initEnd);
+		if (start && !end) {
+			if (Vector.isValid(start)) {
+				start = JSON.parse(start);
+				end = start[1];
+				start = start[0];
+			}
+		}
+		this.start(start);
+		this.end(end);
 		this[IS_BUSY] = false;
 
 		calculateLength.call(this);
+	}
+
+	/**
+	 * Determine if something is a valid Vector
+	 *
+	 * @memberof Vector
+	 *
+	 * @arg {*} value
+	 *
+	 * @returns {boolean}
+	 */
+	static isValid(value) {
+		if (Vector.isInstance(value)) {
+			return true;
+		}
+		if (!isJson(value)) {
+			return false;
+		}
+
+		value = JSON.parse(value);
+
+		return (isArray(value) && value.length === 2 && Point.isValid(value[0]) && Point.isValid(value[1]));
 	}
 
 	/**
@@ -84,6 +118,9 @@ export default class Vector {
 	 * @returns {Boolean}
 	 */
 	isSame(vector2) {
+		if (!Vector.isInstance(vector2)) {
+			return false;
+		}
 		return vector2.start().isSame(this.start()) && vector2.end().isSame(this.end());
 	}
 
@@ -101,6 +138,16 @@ export default class Vector {
 		tempOrigin = null;
 
 		return this;
+	}
+
+	/**
+	 * Get a string representation of the vector
+	 *
+	 * @memberof Vector
+	 * @instance
+	 */
+	toString() {
+		return '[[' + this.start().toString() + '],[' + this.end().toString() + ']]';
 	}
 }
 
@@ -159,7 +206,7 @@ assign(Vector.prototype, {
 	 * @returns {this|Number}
 	 */
 	angle: methodNumber({
-		enforce: (newValue, oldValue) => angle.normalize(enforce.number(newValue, oldValue)),
+		enforce: (newValue, oldValue) => angle.normalize(enforceNumber(newValue, oldValue)),
 		set: setDestinationFromAngle
 	}),
 	/**

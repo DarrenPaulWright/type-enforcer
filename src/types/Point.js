@@ -50,21 +50,21 @@ export default class Point {
 	 *
 	 * @memberof Point
 	 *
-	 * @arg {String|Array|Point} value
+	 * @arg {*} value
 	 *
 	 * @returns {boolean}
 	 */
-	static isValid(point) {
-		if (Point.isInstance(point)) {
+	static isValid(value) {
+		if (Point.isInstance(value)) {
 			return true;
 		}
-		if (isString(point)) {
-			point = point.split(SEPARATOR).map(parseFloat);
+		if (isString(value)) {
+			value = value.split(SEPARATOR).map(parseFloat);
 		}
-		if (isArray(point)) {
-			return point.length === 2 && isNumeric(point[0]) && isNumeric(point[1]);
+		if (isArray(value)) {
+			return value.length === 2 && isNumeric(value[0]) && isNumeric(value[1]);
 		}
-		return point && isNumeric(point.x) && isNumeric(point.y);
+		return value && isNumeric(value.x) && isNumeric(value.y);
 	}
 
 	/**
@@ -137,8 +137,11 @@ export default class Point {
 	 * @returns {Boolean}
 	 */
 	isSame(point2) {
+		if (!point2) {
+			return false;
+		}
 		if (!Point.isInstance(point2)) {
-			point2 = new Point(point2);
+			return new Point(point2).toString() === this.toString();
 		}
 		return (this.x === point2.x && this.y === point2.y);
 	}

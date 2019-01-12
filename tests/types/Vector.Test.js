@@ -5,32 +5,32 @@ import TestUtil from '../TestUtil';
 const testUtil = new TestUtil(Vector);
 
 describe('Vector', () => {
-	describe('construct', () => {
-		it('should instantiated without any arguments', () => {
+	describe('init', () => {
+		it('should instantiate without any arguments', () => {
 			window.control = new Vector();
 
 			assert.deepEqual(window.control.start(), new Point(0, 0));
 		});
 
-		it('should accept a start when instantiated', () => {
+		it('should accept a start', () => {
 			window.control = new Vector([1, 2]);
 
 			assert.deepEqual(window.control.start(), new Point(1, 2));
 		});
 
-		it('should accept an end when instantiated', () => {
+		it('should accept an end', () => {
 			window.control = new Vector([1, 2], [5, 4]);
 
 			assert.deepEqual(window.control.end(), new Point(5, 4));
 		});
 
-		it('should accept Points when instantiated', () => {
+		it('should accept Points', () => {
 			window.control = new Vector(new Point(1, 2), new Point(5, 4));
 
 			assert.deepEqual(window.control.end(), new Point(5, 4));
 		});
 
-		it('should accept Objects when instantiated', () => {
+		it('should accept Objects', () => {
 			window.control = new Vector({
 				x: 1,
 				y: 2
@@ -40,6 +40,12 @@ describe('Vector', () => {
 			});
 
 			assert.deepEqual(window.control.end(), new Point(5, 4));
+		});
+
+		it('should accept a valid string', () => {
+			window.control = new Vector('[[1,2],[3,4]]');
+
+			assert.deepEqual(window.control.end(), new Point(3, 4));
 		});
 
 		it('should set the length when instantiated', () => {
@@ -299,6 +305,51 @@ describe('Vector', () => {
 			window.control.offset(new Point(5, 6));
 
 			assert.deepEqual(window.control.length(), Math.sqrt((61)));
+		});
+	});
+
+	describe('.toString', () => {
+		it('should return a string of the vector', () => {
+			assert.equal(new Vector().toString(), '[[0,0],[0,0]]');
+		});
+		it('should return a string of the vector if custom', () => {
+			assert.equal(new Vector([1, 2], [3, 4]).toString(), '[[1,2],[3,4]]');
+		});
+	});
+
+	describe('.isSame', () => {
+		it('should return false if not a Vector', () => {
+			assert.isFalse(new Vector([1, 2], [3, 4]).isSame('something'));
+		});
+		it('should return true if the same Vector', () => {
+			assert.isTrue(new Vector([1, 2], [3, 4]).isSame(new Vector([1, 2], [3, 4])));
+		});
+		it('should return false if a different Vector', () => {
+			assert.isFalse(new Vector([1, 2], [3, 4]).isSame(new Vector([5, 2], [3, 4])));
+		});
+	});
+
+	describe('.isValid', () => {
+		it('should return false if an empty string', () => {
+			assert.isFalse(Vector.isValid(''));
+		});
+		it('should return false if not a parseable string', () => {
+			assert.isFalse(Vector.isValid('not a vector'));
+		});
+		it('should return false if is an object', () => {
+			assert.isFalse(Vector.isValid('{}'));
+		});
+		it('should return true if is a Vector', () => {
+			assert.isTrue(Vector.isValid(new Vector([1, 2], [3, 4])));
+		});
+		it('should return true if is a valid string', () => {
+			assert.isTrue(Vector.isValid('[[1,2],[3,4]]'));
+		});
+		it('should return false if to many points are provided', () => {
+			assert.isFalse(Vector.isValid('[[1,2],[3,4],[5,6]]'));
+		});
+		it('should return false if to many coordinates are provided', () => {
+			assert.isFalse(Vector.isValid('[[1,2,7],[3,4,8]]'));
 		});
 	});
 });

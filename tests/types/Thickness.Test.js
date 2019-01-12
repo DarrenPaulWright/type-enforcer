@@ -221,4 +221,16 @@ describe('Thickness', () => {
 			assert.equal(thickness.toString(), '32px 48px');
 		});
 	});
+
+	describe('.isSame', () => {
+		it('should return true for another same Thickness', () => {
+			assert.isTrue(new Thickness('32px 48px').isSame(new Thickness('32px 48px')));
+		});
+		it('should return true for a string that is the same', () => {
+			assert.isTrue(new Thickness('32px 48px').isSame('32px 48px'));
+		});
+		it('should return false for a different Thickness', () => {
+			assert.isFalse(new Thickness('32px 48px').isSame(new Thickness('48px')));
+		});
+	});
 });

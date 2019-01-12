@@ -27,7 +27,7 @@ Type enforcement library for javascript
         * [.toString()](#CssSize+toString) ⇒ <code>String</code>
         * [.element([element])](#CssSize+element) ⇒ <code>this</code> \| <code>Element</code>
     * _static_
-        * [.isValid(size)](#CssSize.isValid) ⇒ <code>boolean</code>
+        * [.isValid(value)](#CssSize.isValid) ⇒ <code>boolean</code>
         * [.isInstance(size)](#CssSize.isInstance) ⇒ <code>boolean</code>
 
 <a name="new_CssSize_new"></a>
@@ -122,14 +122,14 @@ Set the element to measure font based units against
 
 <a name="CssSize.isValid"></a>
 
-### CssSize.isValid(size) ⇒ <code>boolean</code>
+### CssSize.isValid(value) ⇒ <code>boolean</code>
 Determine if something is a valid css size
 
 **Kind**: static method of [<code>CssSize</code>](#CssSize)  
 
 | Param | Type |
 | --- | --- |
-| size | <code>\*</code> | 
+| value | <code>\*</code> | 
 
 <a name="CssSize.isInstance"></a>
 
@@ -145,7 +145,7 @@ Determine if something is an instance of CssSize
 
 ## License
 
-[MIT](https://github.com/darrenpaulwright/type-enforcer/blob/master/LICENSE.md)
+[MIT](LICENSE.md)
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg
 [npm-url]: https://npmjs.com/package/type-enforcer

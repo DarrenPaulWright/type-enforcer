@@ -42,26 +42,28 @@
  * ## Docs
  *
  * ### Checks
- * - [isInstanceOf](https://github.com/darrenpaulwright/type-enforcer/blob/master/docs/isInstanceOf.md)
+ * - [isInstanceOf](docs/isInstanceOf.md)
+ * - [isInstanceOf](docs/isJson.md)
  *
  * ### Data Types
- * - [CssSize](https://github.com/darrenpaulwright/type-enforcer/blob/master/docs/CssSize.md)
- * - [DockPoint](https://github.com/darrenpaulwright/type-enforcer/blob/master/docs/DockPoint.md)
- * - [Enum](https://github.com/darrenpaulwright/type-enforcer/blob/master/docs/Enum.md)
- * - [Point](https://github.com/darrenpaulwright/type-enforcer/blob/master/docs/Point.md)
- * - [Queue](https://github.com/darrenpaulwright/type-enforcer/blob/master/docs/Queue.md)
- * - [Thickness](https://github.com/darrenpaulwright/type-enforcer/blob/master/docs/Thickness.md)
- * - [Vector](https://github.com/darrenpaulwright/type-enforcer/blob/master/docs/Vector.md)
+ * - [CssSize](docs/CssSize.md)
+ * - [DockPoint](docs/DockPoint.md)
+ * - [Enum](docs/Enum.md)
+ * - [Point](docs/Point.md)
+ * - [Queue](docs/Queue.md)
+ * - [Thickness](docs/Thickness.md)
+ * - [Vector](docs/Vector.md)
  *
  * ### Enforcement
- * - [enforce](https://github.com/darrenpaulwright/type-enforcer/blob/master/docs/enforce.md)
+ * - [enforce](docs/enforce.md)
  *
  * ### Methods
- * - [method](https://github.com/darrenpaulwright/type-enforcer/blob/master/docs/method.md)
+ * - [method](docs/method.md)
  *
  * @name Installation
  */
 export { default as isInstanceOf } from './checks/isInstanceOf';
+export { default as isJson } from './checks/isJson';
 
 export * from './types/CssSize';
 export { default as CssSize } from './types/CssSize';

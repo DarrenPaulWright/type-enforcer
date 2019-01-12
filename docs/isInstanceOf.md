@@ -23,7 +23,7 @@ Check if a value is an instance of a constructor.## Usage``` javascriptimpor
 
 ## License
 
-[MIT](https://github.com/darrenpaulwright/type-enforcer/blob/master/LICENSE.md)
+[MIT](LICENSE.md)
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg
 [npm-url]: https://npmjs.com/package/type-enforcer

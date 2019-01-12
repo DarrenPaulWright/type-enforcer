@@ -65,7 +65,7 @@ Calls a callback with each of the enum values``` javascriptconst items = new E
 
 ## License
 
-[MIT](https://github.com/darrenpaulwright/type-enforcer/blob/master/LICENSE.md)
+[MIT](LICENSE.md)
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg
 [npm-url]: https://npmjs.com/package/type-enforcer

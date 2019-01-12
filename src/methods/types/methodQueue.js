@@ -14,12 +14,14 @@ export default (options = {}) => {
 	const key = Symbol();
 
 	return function(newValue) {
-		if (this && !this[key] && !this.isRemoved()) {
+		if (this && !this[key] && (!this.isRemoved || !this.isRemoved())) {
 			this[key] = new Queue();
 
-			this.onRemove(() => {
-				this[key].discardAll();
-			});
+			if (this.onRemove) {
+				this.onRemove(() => {
+					this[key].discardAll();
+				});
+			}
 		}
 
 		if (arguments.length) {
@@ -34,6 +36,6 @@ export default (options = {}) => {
 			return this;
 		}
 
-		return this ? this[key] : undefined;
+		return this[key];
 	};
 };

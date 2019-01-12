@@ -2,7 +2,7 @@ import enforceDate from '../../enforcer/types/enforceDate';
 import { buildMethod } from './methodAny';
 
 /**
- * Builds a method for getting/setting a date or momentjs instance
+ * Builds a method for getting/setting a date
  *
  * @function method.date
  * @extends method.any

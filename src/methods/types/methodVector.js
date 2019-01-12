@@ -1,6 +1,6 @@
 import enforceVector from '../../enforcer/types/enforceVector';
 import Vector from '../../types/Vector';
-import { buildMethod } from './methodAny';
+import { buildMethod, compareCustomType } from './methodAny';
 
 /**
  * Builds a method for getting/setting a Vector instance
@@ -18,5 +18,5 @@ import { buildMethod } from './methodAny';
 export default buildMethod({
 	init: new Vector(),
 	enforce: enforceVector,
-	compare: (vector1, vector2) => !vector1.isSame(vector2)
+	compare: compareCustomType(Vector)
 });

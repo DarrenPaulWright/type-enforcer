@@ -1,5 +1,6 @@
 import enforceCssSize from '../../enforcer/types/enforceCssSize';
-import { buildMethod } from './methodAny';
+import CssSize from '../../types/CssSize';
+import { buildMethod, compareCustomType } from './methodAny';
 
 /**
  * Builds a method for getting/setting a CssSize instance
@@ -15,5 +16,5 @@ import { buildMethod } from './methodAny';
  */
 export default buildMethod({
 	enforce: enforceCssSize,
-	compare: (newValue, oldValue) => (newValue && newValue.isSame) ? !newValue.isSame(oldValue) : newValue !== oldValue
+	compare: compareCustomType(CssSize)
 });

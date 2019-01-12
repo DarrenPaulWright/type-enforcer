@@ -11,33 +11,7 @@ Type enforcement library for javascript
 <a name="method"></a>
 
 ## method : <code>object</code>
-Enforce data types and remove common boilerplate code on class methods.
-
-## Usage
-``` javascript
-import { method } from 'type-enforcer';
-```
-
-Use it as a prototype:
-``` javascript
-const Thing = function() {};
-
-Thing.prototype.myMethod = method.string([options]);
-```
-
-or in a class:
-``` javascript
-class Thing() {}
-
-Thing.prototype.myMethod = method.string([options]);
-```
-
-or as a non-prototype method:
-``` javascript
-const Thing = function() {
-    this.myMethod = method.string([options]);
-};
-```
+Enforce data types and remove common boilerplate code on class methods.## Usage``` javascriptimport { method } from 'type-enforcer';```Use it as a prototype:``` javascriptconst Thing = function() {};Thing.prototype.myMethod = method.string([options]);```or in a class:``` javascriptclass Thing() {}Thing.prototype.myMethod = method.string([options]);```or as a non-prototype method:``` javascriptconst Thing = function() {    this.myMethod = method.string([options]);};```
 
 **Kind**: global typedef  
 
@@ -68,7 +42,7 @@ const Thing = function() {
 Builds a method for getting/setting any data type
 
 **Kind**: static method of [<code>method</code>](#method)  
-**Returns**: <code>function</code> - accepts two args: a new value and forceSave override. If no args are provided then the current value is returned.  
+**Returns**: <code>function</code> - if a "before" or "set" option is set, then this function accepts two args: a new value and forceSave override. If no args are provided then the current value is returned. If neither "before" nor "set" is set, then only one arg is accepted, the new value. Also returns the current value if no args are provided.  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -79,7 +53,7 @@ Builds a method for getting/setting any data type
 | [options.before] | <code>function</code> |  | Called before a new valid value is set. Provides the prior value, sets the context to the methods constructor. |
 | [options.set] | <code>function</code> |  | Called after a new valid value is set. Provides the new value, sets the context to the methods constructor. |
 | [options.get] | <code>function</code> |  | Called to get the value, sets the context to the methods constructor. |
-| [options.other] | <code>Array</code> |  | An array of other values that can be set |
+| [options.other] | <code>Array</code> \| <code>\*</code> |  | Another value/type or array of other values/types that can be set |
 | [options.stringify] | <code>Boolean</code> | <code>false</code> | If true, then call toString() on the value before returning it (if the value has a toString method) |
 
 <a name="method.array"></a>
@@ -128,7 +102,7 @@ Builds a method for getting/setting a CssSize instance
 <a name="method.date"></a>
 
 ### method.date([options]) ⇒ <code>function</code>
-Builds a method for getting/setting a date or momentjs instance
+Builds a method for getting/setting a date
 
 **Kind**: static method of [<code>method</code>](#method)  
 **Extends**: [<code>any</code>](#method.any)  
@@ -224,9 +198,7 @@ Builds a method for getting/setting an integer
 <a name="method.keyValue"></a>
 
 ### method.keyValue([options]) ⇒ <code>function</code>
-Builds a method that accepts either:
-- two args, a key and a value
-- one arg, an object with multiple key/value pairs
+Builds a method that accepts either:- two args, a key and a value- one arg, an object with multiple key/value pairs
 
 **Kind**: static method of [<code>method</code>](#method)  
 **Returns**: <code>function</code> - accepts a new value and returns the methods constructor (allows chaining), or if no args are passed returns the output of options.get  
@@ -339,7 +311,7 @@ Builds a method for getting/setting a Vector instance
 
 ## License
 
-[MIT](https://github.com/darrenpaulwright/type-enforcer/blob/master/LICENSE.md)
+[MIT](LICENSE.md)
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg
 [npm-url]: https://npmjs.com/package/type-enforcer

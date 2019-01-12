@@ -1,3 +1,5 @@
+import { processOutput } from './helper';
+
 export default (options) => function(newValue, isForcedSave) {
 	const value = options.get.call(this);
 
@@ -11,5 +13,5 @@ export default (options) => function(newValue, isForcedSave) {
 		return this;
 	}
 
-	return (options.stringify && value && value.toString) ? value.toString() : value;
+	return processOutput(value, options);
 };

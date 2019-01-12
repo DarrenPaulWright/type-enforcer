@@ -1,6 +1,6 @@
 import enforcePoint from '../../enforcer/types/enforcePoint';
 import Point from '../../types/Point';
-import { buildMethod } from './methodAny';
+import { buildMethod, compareCustomType } from './methodAny';
 
 /**
  * Builds a method for getting/setting a Point instance
@@ -18,5 +18,5 @@ import { buildMethod } from './methodAny';
 export default buildMethod({
 	init: new Point(),
 	enforce: enforcePoint,
-	compare: (newValue, oldValue) => Point.isInstance(newValue) ? !newValue.isSame(oldValue) : newValue !== oldValue
+	compare: compareCustomType(Point)
 });

@@ -1,5 +1,6 @@
 import enforceThickness from '../../enforcer/types/enforceThickness';
-import { buildMethod } from './methodAny';
+import Thickness from '../../types/Thickness';
+import { buildMethod, compareCustomType } from './methodAny';
 
 /**
  * Builds a method for getting/setting a thickness instance
@@ -15,5 +16,5 @@ import { buildMethod } from './methodAny';
  */
 export default buildMethod({
 	enforce: enforceThickness,
-	compare: (newValue, oldValue) => (newValue && newValue.isSame) ? !newValue.isSame(oldValue) : newValue !== oldValue
+	compare: compareCustomType(Thickness)
 });

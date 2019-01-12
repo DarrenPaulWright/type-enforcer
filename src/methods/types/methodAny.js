@@ -4,7 +4,6 @@ import beforeSet from '../variants/beforeSet';
 import get from '../variants/get';
 import getBefore from '../variants/getBefore';
 import getBeforeSet from '../variants/getBeforeSet';
-import getOther from '../variants/getOther';
 import getOtherBefore from '../variants/getOtherBefore';
 import getOtherBeforeSet from '../variants/getOtherBeforeSet';
 import getOtherSet from '../variants/getOtherSet';
@@ -19,6 +18,18 @@ import set from '../variants/set';
 const notEnforced = (newValue) => newValue;
 
 const simpleCompare = (newValue, oldValue) => newValue !== oldValue;
+
+export const compareCustomType = (Type) => (newValue, oldValue) => {
+	if (Type.isInstance(oldValue)) {
+		return !oldValue.isSame(newValue);
+	}
+	else if (Type.isInstance(newValue)) {
+		return !newValue.isSame(oldValue);
+	}
+	else {
+		return newValue !== oldValue;
+	}
+};
 
 export const buildMethod = (defaultSettings = {}) => {
 	defaultSettings = assign({
@@ -41,7 +52,7 @@ export const buildMethod = (defaultSettings = {}) => {
 					method = options.before ? getOtherBeforeSet : getOtherSet;
 				}
 				else {
-					method = options.before ? getOtherBefore : getOther;
+					method = options.before ? getOtherBefore : get;
 				}
 			}
 			else {
@@ -88,9 +99,9 @@ export const buildMethod = (defaultSettings = {}) => {
  * @arg {Function} [options.before] - Called before a new valid value is set. Provides the prior value, sets the context to the methods constructor.
  * @arg {Function} [options.set] - Called after a new valid value is set. Provides the new value, sets the context to the methods constructor.
  * @arg {Function} [options.get] - Called to get the value, sets the context to the methods constructor.
- * @arg {Array}    [options.other] - An array of other values that can be set
+ * @arg {Array|*}  [options.other] - Another value/type or array of other values/types that can be set
  * @arg {Boolean}  [options.stringify=false] - If true, then call toString() on the value before returning it (if the value has a toString method)
  *
- * @returns {Function} accepts two args: a new value and forceSave override. If no args are provided then the current value is returned.
+ * @returns {Function} if a "before" or "set" option is set, then this function accepts two args: a new value and forceSave override. If no args are provided then the current value is returned. If neither "before" nor "set" is set, then only one arg is accepted, the new value. Also returns the current value if no args are provided.
  */
 export default buildMethod();

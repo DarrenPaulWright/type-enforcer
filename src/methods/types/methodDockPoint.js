@@ -1,5 +1,6 @@
 import enforceDockPoint from '../../enforcer/types/enforceDockPoint';
-import { buildMethod } from './methodAny';
+import DockPoint from '../../types/DockPoint';
+import { buildMethod, compareCustomType } from './methodAny';
 
 /**
  * Builds a method for getting/setting a DockPoint instance
@@ -15,5 +16,5 @@ import { buildMethod } from './methodAny';
  */
 export default buildMethod({
 	enforce: enforceDockPoint,
-	compare: (newValue, oldValue) => (newValue && newValue.isSame) ? !newValue.isSame(oldValue) : newValue !== oldValue
+	compare: compareCustomType(DockPoint)
 });

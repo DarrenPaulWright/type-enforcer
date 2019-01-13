@@ -21,7 +21,13 @@ _.each(testRunnerConfig.getKarmaFiles(config, {
 
 module.exports = function(config) {
 	config.set({
-		browsers: ['Chrome', 'Firefox'],
+		browsers: ['ChromeHeadless', 'FirefoxHeadless'],
+		customLaunchers: {
+			FirefoxHeadless: {
+				base: 'Firefox',
+				flags: ['-headless']
+			}
+		},
 		files: files.files,
 		frameworks: ['jasmine'],
 		preprocessors: preprocessors,

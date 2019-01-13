@@ -84,6 +84,7 @@ export const testTypes = [{
 	true: validObjects
 }, {
 	value: RegExp,
+	name: 'regExp',
 	true: validRegExps,
 	false: difference(testValues, validRegExps)
 }, {

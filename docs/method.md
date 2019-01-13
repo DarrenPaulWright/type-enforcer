@@ -32,6 +32,7 @@ Enforce data types and remove common boilerplate code on class methods.## Usag
     * [.object([options])](#method.object) ⇒ <code>function</code>
     * [.point([options])](#method.point) ⇒ <code>function</code>
     * [.queue([options])](#method.queue) ⇒ <code>function</code>
+    * [.regExp([options])](#method.regExp) ⇒ <code>function</code>
     * [.string([options])](#method.string) ⇒ <code>function</code>
     * [.thickness([options])](#method.thickness) ⇒ <code>function</code>
     * [.vector([options])](#method.vector) ⇒ <code>function</code>
@@ -264,6 +265,20 @@ Builds a method that implements a Queue
 | --- | --- | --- |
 | [options] | <code>Object</code> |  |
 | [options.set] | <code>function</code> | Called after a new callback is added to the queue. Provides a reference to the queue, sets the context to the methods constructor. |
+
+<a name="method.regExp"></a>
+
+### method.regExp([options]) ⇒ <code>function</code>
+Builds a method for getting/setting a RegExp
+
+**Kind**: static method of [<code>method</code>](#method)  
+**Extends**: [<code>any</code>](#method.any)  
+
+| Param | Default |
+| --- | --- |
+| [options] | <code>Same as method.any except:</code> | 
+| [options.init] | <code>&#x27;&#x27;</code> | 
+| [options.enforce] | <code>enforce.string</code> | 
 
 <a name="method.string"></a>
 

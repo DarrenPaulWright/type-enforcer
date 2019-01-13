@@ -29,6 +29,7 @@ Utility functions for enforcing data types.## Usage``` javascriptimport { en
     * [.number(value, alt, [minValue], [maxValue])](#enforce.number) ⇒ <code>Number</code>
     * [.object(value, alt)](#enforce.object) ⇒ <code>Object</code>
     * [.point(value, alt, [options])](#enforce.point) ⇒ <code>Point</code>
+    * [.regExp(value, alt)](#enforce.regExp) ⇒ <code>RegExp</code>
     * [.string(value, alt)](#enforce.string) ⇒ <code>String</code>
     * [.thickness(value, alt, [options])](#enforce.thickness) ⇒ <code>Thickness</code>
     * [.vector(value, alt, [options])](#enforce.vector) ⇒ <code>Vector</code>
@@ -200,6 +201,18 @@ If the first value is a point then return that, otherwise return the alt value.
 | alt | <code>Point</code> |  |  |
 | [options] | <code>Object</code> |  |  |
 | [options.coerce] | <code>Boolean</code> | <code>true</code> | If false, then will only accept a specific instance |
+
+<a name="enforce.regExp"></a>
+
+### enforce.regExp(value, alt) ⇒ <code>RegExp</code>
+If the first value is a [RegExp](https://lodash.com/docs/#isRegExp) then return that, otherwise return the alt value.
+
+**Kind**: static method of [<code>enforce</code>](#enforce)  
+
+| Param | Type |
+| --- | --- |
+| value | <code>\*</code> | 
+| alt | <code>RegExp</code> | 
 
 <a name="enforce.string"></a>
 

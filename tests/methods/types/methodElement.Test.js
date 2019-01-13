@@ -1,11 +1,12 @@
+import { validElements } from '../../TestUtil';
 import { testMethodType } from '../methodTestUtility';
 
 describe('method', () => {
 	describe('.element', () => {
 		testMethodType({
 			methodType: 'element',
-			testItem: document.createElement('div'),
-			testItem2: document.createElement('span')
+			testItem: validElements[0],
+			testItem2: validElements[1]
 		});
 	});
 });

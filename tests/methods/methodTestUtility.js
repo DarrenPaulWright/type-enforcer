@@ -608,14 +608,17 @@ export const testVariant = (settings) => {
 			});
 
 			it('should run toString on the result of the "get" callback', () => {
-				const variant = settings.variant(assign({}, defaultOptions, {
-					get: function() {
-						return new Point(1, 2);
-					},
-					stringify: true
-				}));
+				const Constructor = function() {
+					this.testMethod = settings.variant(assign({}, defaultOptions, {
+						get: function() {
+							return new Point(1, 2);
+						},
+						stringify: true
+					}));
+				};
+				const constructor = new Constructor();
 
-				assert.deepEqual(variant(), '1,2');
+				assert.equal(constructor.testMethod(), '1,2');
 			});
 		});
 	}
@@ -736,6 +739,7 @@ export const testVariant = (settings) => {
 
 				assert.equal(testVar, constructor);
 			});
+
 			it('should NOT call the "before" callback if "compare" returns false', () => {
 				let testVar = '';
 				const Constructor = function() {
@@ -756,6 +760,7 @@ export const testVariant = (settings) => {
 
 				assert.equal(testVar, '');
 			});
+
 			it('should call the "before" callback if "compare" returns false and isForceSave is true', () => {
 				let testVar = '';
 				const Constructor = function() {
@@ -797,6 +802,7 @@ export const testVariant = (settings) => {
 
 				assert.equal(testVar, constructor);
 			});
+
 			it('should NOT call the "before" callback if "compare" returns false', () => {
 				let testVar = '';
 				const Constructor = function() {
@@ -816,6 +822,7 @@ export const testVariant = (settings) => {
 
 				assert.equal(testVar, '');
 			});
+
 			it('should call the "before" callback if "compare" returns false and isForceSave is true', () => {
 				let testVar = '';
 				const Constructor = function() {
@@ -859,6 +866,7 @@ export const testVariant = (settings) => {
 
 				assert.equal(testVar, constructor);
 			});
+
 			it('should NOT call the "set" callback if "compare" returns false', () => {
 				let testVar = '';
 				const Constructor = function() {
@@ -878,6 +886,7 @@ export const testVariant = (settings) => {
 
 				assert.equal(testVar, '');
 			});
+
 			it('should call the "set" callback if "compare" returns false and isForceSave is true', () => {
 				let testVar = '';
 				const Constructor = function() {
@@ -920,6 +929,7 @@ export const testVariant = (settings) => {
 
 				assert.equal(testVar, constructor);
 			});
+
 			it('should NOT call the "set" callback if "compare" returns false', () => {
 				let testVar = '';
 				const Constructor = function() {
@@ -941,6 +951,7 @@ export const testVariant = (settings) => {
 
 				assert.equal(testVar, '');
 			});
+
 			it('should call the "set" callback if "compare" returns false and isForceSave is true', () => {
 				let testVar = '';
 				const Constructor = function() {
@@ -987,6 +998,7 @@ export const testVariant = (settings) => {
 
 				assert.equal(testVar, true);
 			});
+
 			it('should call the "compare" callback with a different value if other has that value', () => {
 				let testVar = '';
 				const Constructor = function() {
@@ -1028,6 +1040,7 @@ export const testVariant = (settings) => {
 
 				assert.equal(testVar, true);
 			});
+
 			it('should set the value with a different value if other has that value', () => {
 				let testVar = '';
 				const Constructor = function() {

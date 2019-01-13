@@ -34,7 +34,7 @@ const typeOfMap = new Enum({
  * @returns {Boolean}
  */
 export default (object, constructor) => {
-	if (object === undefined || typeof constructor !== 'function') {
+	if (object === undefined || !(typeof constructor === 'function' && constructor.prototype)) {
 		return false;
 	}
 	return object instanceof constructor || typeof object === typeOfMap.key(constructor);

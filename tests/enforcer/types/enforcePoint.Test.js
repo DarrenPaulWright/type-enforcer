@@ -1,17 +1,15 @@
 import { assert } from 'chai';
 import { enforce, Point } from '../../../src';
+import { validPoints } from '../../TestUtil';
 import { runNegativeTests } from '../enforceTestUtility';
-
-const point1 = new Point(1, 2);
-const point2 = new Point(3, 4);
 
 describe('enforce', () => {
 	describe('.point', () => {
 		it('should return the setter value when a valid Point is provided', () => {
-			assert.isTrue(enforce.point(point1, point2) instanceof Point);
-			assert.equal(enforce.point(point1, point2).toString(), point1);
+			assert.isTrue(enforce.point(validPoints[0], validPoints[1]) instanceof Point);
+			assert.equal(enforce.point(validPoints[0], validPoints[1]).toString(), validPoints[0]);
 		});
 
-		runNegativeTests('point', point2);
+		runNegativeTests('point', validPoints[1]);
 	});
 });

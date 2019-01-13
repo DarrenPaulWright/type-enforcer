@@ -1,19 +1,15 @@
 import { assert } from 'chai';
 import { enforce } from '../../../src';
+import { validFunctions } from '../../TestUtil';
 import { runNegativeTests } from '../enforceTestUtility';
-
-const validFunction1 = () => {
-};
-const validFunction2 = () => {
-};
 
 describe('enforce', () => {
 	describe('.func', () => {
 		it('should return the setter value when an array is provided', () => {
-			assert.deepEqual(enforce.func(validFunction1, validFunction2), validFunction1);
-			assert.notDeepEqual(enforce.func(validFunction1, validFunction2), validFunction2);
+			assert.deepEqual(enforce.func(validFunctions[0], validFunctions[1]), validFunctions[0]);
+			assert.notDeepEqual(enforce.func(validFunctions[0], validFunctions[1]), validFunctions[1]);
 		});
 
-		runNegativeTests('func', validFunction2);
+		runNegativeTests('func', validFunctions[1]);
 	});
 });

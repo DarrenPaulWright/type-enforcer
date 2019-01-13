@@ -1,3 +1,4 @@
+import { validArrays } from '../../TestUtil';
 import { testMethodType } from '../methodTestUtility';
 
 describe('method', () => {
@@ -5,12 +6,8 @@ describe('method', () => {
 		testMethodType({
 			methodType: 'array',
 			init: [],
-			testItem: [{
-				id: 1
-			}],
-			testItem2: [{
-				id: 2
-			}]
+			testItem: validArrays[0],
+			testItem2: validArrays[1]
 		});
 	});
 });

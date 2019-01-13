@@ -1,22 +1,27 @@
 import { assert } from 'chai';
 import { concat, difference, each, forOwn, isPlainObject } from 'lodash';
-import { Point, Vector } from '../src';
+import { CssSize, DockPoint, Point, Thickness, Vector } from '../src';
 
-const emptyFunction = function() {
-};
-
-export const validArrays = [[], new Array()];
+export const validArrays = [[1], [2], [], new Array()];
 export const validBooleans = [true, false, new Boolean(true)];
 export const validDates = [new Date(), new Date('01/15/2010')];
-export const validElements = [document.createElement('div')];
-export const validFunctions = [emptyFunction];
-export const validNumbers = [0, 10, 3.14159, new Number(42)];
+export const validElements = [document.createElement('div'), document.createElement('span')];
+export const validFunctions = [function() {
+}, () => {
+}];
+export const validInts = [0, 10];
+export const validNumbers = [-10.00000001, 3.14159, new Number(42.2)];
 export const validObjects = [{}, {
 	test1: 1
 }, new Object()];
 export const validRegExps = [/asdf/g, new RegExp('test 2')];
 export const validStrings = ['', 'test', new String('test2')];
-export const validPoints = [new Point(1, 2)];
+
+export const validCssSizes = [new CssSize('14px'), new CssSize('20px')];
+export const validDockPoints = [new DockPoint(DockPoint.POINTS.TOP_CENTER),
+	new DockPoint(DockPoint.POINTS.BOTTOM_LEFT)];
+export const validPoints = [new Point(1, 2), new Point([3, 4])];
+export const validThicknesses = [new Thickness('12px'), new Thickness('20px')];
 export const validVectors = [new Vector([1, 2], [3, 4]), new Vector([3, 4], [5, 6])];
 
 export const testValues = concat(
@@ -26,40 +31,56 @@ export const testValues = concat(
 	validDates,
 	validElements,
 	validFunctions,
+	validInts,
 	validNumbers,
 	validObjects,
 	validRegExps,
 	validStrings,
+	validCssSizes,
+	validDockPoints,
 	validPoints,
+	validThicknesses,
 	validVectors
 );
 
 export const testTypes = [{
 	value: Array,
+	name: 'array',
 	true: validArrays,
 	false: difference(testValues, validArrays)
 }, {
 	value: Boolean,
+	name: 'bool',
 	true: validBooleans,
 	false: difference(testValues, validBooleans)
 }, {
 	value: Date,
+	name: 'date',
 	true: validDates,
 	false: difference(testValues, validDates)
 }, {
 	value: Element,
+	name: 'element',
 	true: validElements,
 	false: difference(testValues, validElements)
 }, {
 	value: Function,
+	name: 'func',
 	true: validFunctions,
 	false: difference(testValues, validFunctions)
 }, {
+	name: 'int',
+	skip: ['number'],
+	true: validInts,
+	false: difference(testValues, validInts)
+}, {
 	value: Number,
-	true: validNumbers,
-	false: difference(testValues, validNumbers)
+	name: 'number',
+	true: concat(validNumbers),
+	false: difference(testValues, validNumbers, validInts)
 }, {
 	value: Object,
+	name: 'object',
 	true: validObjects
 }, {
 	value: RegExp,
@@ -67,14 +88,32 @@ export const testTypes = [{
 	false: difference(testValues, validRegExps)
 }, {
 	value: String,
+	name: 'string',
 	true: validStrings,
 	false: difference(testValues, validStrings)
 }, {
+	value: CssSize,
+	name: 'cssSize',
+	true: validCssSizes,
+	false: difference(testValues, validCssSizes)
+}, {
+	value: DockPoint,
+	name: 'dockPoint',
+	true: validDockPoints,
+	false: difference(testValues, validDockPoints)
+}, {
 	value: Point,
+	name: 'point',
 	true: validPoints,
 	false: difference(testValues, validPoints)
 }, {
+	value: Thickness,
+	name: 'thickness',
+	true: validThicknesses,
+	false: difference(testValues, validThicknesses)
+}, {
 	value: Vector,
+	name: 'vector',
 	true: validVectors,
 	false: difference(testValues, validVectors)
 }];

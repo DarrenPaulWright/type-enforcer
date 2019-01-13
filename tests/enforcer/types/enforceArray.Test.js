@@ -1,21 +1,15 @@
 import { assert } from 'chai';
 import { enforce } from '../../../src';
+import { validArrays } from '../../TestUtil';
 import { runNegativeTests } from '../enforceTestUtility';
-
-const validArray1 = [{
-	id: 1
-}];
-const validArray2 = [{
-	id: 2
-}];
 
 describe('enforce', () => {
 	describe('.array', () => {
 		it('should return the setter value when an array is provided', () => {
-			assert.deepEqual(enforce.array(validArray1, validArray2), validArray1);
-			assert.notDeepEqual(enforce.array(validArray1, validArray2), validArray2);
+			assert.deepEqual(enforce.array(validArrays[0], validArrays[1]), validArrays[0]);
+			assert.notDeepEqual(enforce.array(validArrays[0], validArrays[1]), validArrays[1]);
 		});
 
-		runNegativeTests('array', validArray2);
+		runNegativeTests('array', validArrays[1]);
 	});
 });

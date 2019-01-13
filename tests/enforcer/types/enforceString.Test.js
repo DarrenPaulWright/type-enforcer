@@ -1,17 +1,15 @@
 import { assert } from 'chai';
 import { enforce } from '../../../src';
+import { validStrings } from '../../TestUtil';
 import { runNegativeTests } from '../enforceTestUtility';
-
-const validString1 = 'test string';
-const validString2 = 'test string 2';
 
 describe('enforce', () => {
 	describe('.string', () => {
 		it('should return the setter value when a string is provided', () => {
-			assert.deepEqual(enforce.string(validString2, validString1), validString2);
-			assert.notDeepEqual(enforce.string(validString2, validString1), validString1);
+			assert.deepEqual(enforce.string(validStrings[1], validStrings[0]), validStrings[1]);
+			assert.notDeepEqual(enforce.string(validStrings[1], validStrings[0]), validStrings[0]);
 		});
 
-		runNegativeTests('string', validString1);
+		runNegativeTests('string', validStrings[1]);
 	});
 });

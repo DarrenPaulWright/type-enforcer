@@ -1,4 +1,4 @@
-import { CssSize } from '../../../src';
+import { validCssSizes } from '../../TestUtil';
 import { testMethodType } from '../methodTestUtility';
 
 describe('method', () => {
@@ -16,8 +16,8 @@ describe('method', () => {
 	describe('.cssSize', () => {
 		testMethodType({
 			methodType: 'cssSize',
-			testItem: new CssSize('14px'),
-			testItem2: new CssSize('20px')
+			testItem: validCssSizes[0],
+			testItem2: validCssSizes[1]
 		});
 	});
 });

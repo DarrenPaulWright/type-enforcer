@@ -1,4 +1,5 @@
 import { DockPoint } from '../../../src';
+import { validDockPoints } from '../../TestUtil';
 import { testMethodType } from '../methodTestUtility';
 
 describe('method', () => {
@@ -16,8 +17,8 @@ describe('method', () => {
 	describe('.dockPoint', () => {
 		testMethodType({
 			methodType: 'dockPoint',
-			testItem: new DockPoint(DockPoint.POINTS.TOP_CENTER),
-			testItem2: new DockPoint(DockPoint.POINTS.BOTTOM_LEFT),
+			testItem: validDockPoints[0],
+			testItem2: validDockPoints[1],
 			coerce: [{
 				value: DockPoint.POINTS.TOP_RIGHT,
 				coerced: new DockPoint(DockPoint.POINTS.TOP_RIGHT)

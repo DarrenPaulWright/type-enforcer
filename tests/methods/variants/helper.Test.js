@@ -19,16 +19,18 @@ describe('hasOtherValidValue', () => {
 	});
 
 	each(testTypes, (baseType) => {
-		each(baseType.true, (newValue) => {
-			it('should return true for [' + baseType.value + '] and "' + newValue + '"', () => {
-				assert.isTrue(hasOtherValidValue([baseType.value], newValue));
+		if (baseType.value) {
+			each(baseType.true, (newValue) => {
+				it('should return true for [' + baseType.value + '] and "' + newValue + '"', () => {
+					assert.isTrue(hasOtherValidValue([baseType.value], newValue));
+				});
 			});
-		});
 
-		each(baseType.false, (newValue) => {
-			it('should return false for [' + baseType.value + '] and "' + newValue + '"', () => {
-				assert.isFalse(hasOtherValidValue([baseType.value], newValue));
+			each(baseType.false, (newValue) => {
+				it('should return false for [' + baseType.value + '] and "' + newValue + '"', () => {
+					assert.isFalse(hasOtherValidValue([baseType.value], newValue));
+				});
 			});
-		});
+		}
 	});
 });

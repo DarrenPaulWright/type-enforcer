@@ -1,4 +1,4 @@
-import { assign, castArray, cloneDeep } from 'lodash';
+import { assign, castArray, cloneDeep, isEqual } from 'lodash';
 import before from '../variants/before';
 import beforeSet from '../variants/beforeSet';
 import get from '../variants/get';
@@ -19,6 +19,8 @@ const notEnforced = (newValue) => newValue;
 
 const simpleCompare = (newValue, oldValue) => newValue !== oldValue;
 
+export const deepCompare = (newValue, oldValue) => !isEqual(newValue, oldValue);
+
 export const compareCustomType = (Type) => (newValue, oldValue) => {
 	if (Type.isInstance(oldValue)) {
 		return !oldValue.isSame(newValue);
@@ -31,7 +33,16 @@ export const compareCustomType = (Type) => (newValue, oldValue) => {
 	}
 };
 
-export const buildMethod = (defaultSettings = {}) => {
+export const setDeepOnInit = (options) => {
+	if (options.deep === false) {
+		options.compare = simpleCompare;
+	}
+	delete options.deep;
+
+	return options;
+};
+
+export const buildMethod = (defaultSettings = {}, onInit) => {
 	defaultSettings = assign({
 		enforce: notEnforced,
 		compare: simpleCompare
@@ -41,6 +52,9 @@ export const buildMethod = (defaultSettings = {}) => {
 		let method;
 
 		options = assign(cloneDeep(defaultSettings), options);
+		if (onInit) {
+			options = onInit(options);
+		}
 
 		if ('other' in options) {
 			options.other = castArray(options.other);
@@ -95,7 +109,7 @@ export const buildMethod = (defaultSettings = {}) => {
  * @arg {Object}   [options]
  * @arg {*} [options.init] - The initial value
  * @arg {Function} [options.enforce] - Enforce this data type
- * @arg {Function} [options.compare=] - Compares a new value to the current value. Return true if the two values are different.
+ * @arg {Function} [options.compare] - Compares a new value to the current value. Return true if the two values are different.
  * @arg {Function} [options.before] - Called before a new valid value is set. Provides the prior value, sets the context to the methods constructor.
  * @arg {Function} [options.set] - Called after a new valid value is set. Provides the new value, sets the context to the methods constructor.
  * @arg {Function} [options.get] - Called to get the value, sets the context to the methods constructor.

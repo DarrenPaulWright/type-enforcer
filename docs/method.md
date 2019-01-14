@@ -50,7 +50,7 @@ Builds a method for getting/setting any data type
 | [options] | <code>Object</code> |  |  |
 | [options.init] | <code>\*</code> |  | The initial value |
 | [options.enforce] | <code>function</code> |  | Enforce this data type |
-| [options.compare=] | <code>function</code> |  | Compares a new value to the current value. Return true if the two values are different. |
+| [options.compare] | <code>function</code> |  | Compares a new value to the current value. Return true if the two values are different. |
 | [options.before] | <code>function</code> |  | Called before a new valid value is set. Provides the prior value, sets the context to the methods constructor. |
 | [options.set] | <code>function</code> |  | Called after a new valid value is set. Provides the new value, sets the context to the methods constructor. |
 | [options.get] | <code>function</code> |  | Called to get the value, sets the context to the methods constructor. |
@@ -65,12 +65,13 @@ Builds a method for getting/setting an array
 **Kind**: static method of [<code>method</code>](#method)  
 **Extends**: [<code>any</code>](#method.any)  
 
-| Param | Default |
-| --- | --- |
-| [options] | <code>Same as method.any except:</code> | 
-| [options.init] | <code>[]</code> | 
-| [options.enforce] | <code>enforce.array</code> | 
-| [options.compare] | <code>!lodash.isEqual</code> | 
+| Param | Default | Description |
+| --- | --- | --- |
+| [options] | <code>Same as method.any except:</code> |  |
+| [options.init] | <code>[]</code> |  |
+| [options.enforce] | <code>enforce.array</code> |  |
+| [options.compare] | <code>deepCompare</code> | Performs a deep comparison between values with [lodash.isEqual](https://lodash.com/docs/#isEqual) |
+| [options.deep] | <code>true</code> | If false then only use strict equality |
 
 <a name="method.bool"></a>
 
@@ -233,10 +234,12 @@ Builds a method for getting/setting a plain object
 **Kind**: static method of [<code>method</code>](#method)  
 **Extends**: [<code>any</code>](#method.any)  
 
-| Param | Default |
-| --- | --- |
-| [options] | <code>Same as method.any except:</code> | 
-| [options.enforce] | <code>enforce.object</code> | 
+| Param | Default | Description |
+| --- | --- | --- |
+| [options] | <code>Same as method.any except:</code> |  |
+| [options.enforce] | <code>enforce.object</code> |  |
+| [options.compare] | <code>deepCompare</code> | Performs a deep comparison between values with [lodash.isEqual](https://lodash.com/docs/#isEqual) |
+| [options.deep] | <code>true</code> | If false then only use strict equality |
 
 <a name="method.point"></a>
 

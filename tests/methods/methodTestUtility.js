@@ -7,7 +7,7 @@ import { processOutput } from '../../src/methods/variants/helper';
 
 const variantSet = powerset(['get', 'other', 'before', 'set']);
 const everyMethodVariant = map(variantSet, (combination) => {
-	everyMethodVariant.push('testMethod' + join(map(combination, startCase), ''));
+	return 'testMethod' + join(map(combination, startCase), '');
 });
 
 export const testMethodType = (settings) => {

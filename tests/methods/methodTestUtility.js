@@ -1,8 +1,14 @@
 import { assert } from 'chai';
-import { assign, each } from 'lodash';
+import { assign, each, join, map, startCase } from 'lodash';
+import powerset from 'powerset';
 import { method, Point } from '../../src';
 import enforceString from '../../src/enforcer/types/enforceString';
 import { processOutput } from '../../src/methods/variants/helper';
+
+const variantSet = powerset(['get', 'other', 'before', 'set']);
+const everyMethodVariant = map(variantSet, (combination) => {
+	everyMethodVariant.push('testMethod' + join(map(combination, startCase), ''));
+});
 
 export const testMethodType = (settings) => {
 	let testBefore = '';
@@ -19,27 +25,9 @@ export const testMethodType = (settings) => {
 	const testGetCallbackWithTestItem = function() {
 		return settings.testItem;
 	};
-	const everyMethod = [
-		'testMethodBefore',
-		'testMethodBeforeSet',
-		'testMethodGet',
-		'testMethodGetBefore',
-		'testMethodGetBeforeSet',
-		'testMethodGetOther',
-		'testMethodGetOtherBefore',
-		'testMethodGetOtherBeforeSet',
-		'testMethodGetOtherSet',
-		'testMethodGetSet',
-		'testMethodOther',
-		'testMethodOtherBefore',
-		'testMethodOtherBeforeSet',
-		'testMethodOtherSet',
-		'testMethodSet',
-		'testMethodNone'
-	];
 
 	const runTests = (TestConstructor, init, testItem, coerce) => {
-		each(everyMethod, (methodName) => {
+		each(everyMethodVariant, (methodName) => {
 			const hasGet = methodName.toLowerCase().indexOf('get') !== -1;
 			const hasOther = methodName.toLowerCase().indexOf('other') !== -1;
 			const hasBefore = methodName.toLowerCase().indexOf('before') !== -1;
@@ -260,7 +248,7 @@ export const testMethodType = (settings) => {
 			testMethodSet: method[settings.methodType](assign({}, settings.extraProps, {
 				set: testSetCallback
 			})),
-			testMethodNone: method[settings.methodType](assign({}, settings.extraProps))
+			testMethod: method[settings.methodType](assign({}, settings.extraProps))
 		});
 
 		runTests(TestConstructor1, settings.init, settings.testItem, settings.coerce);
@@ -348,7 +336,7 @@ export const testMethodType = (settings) => {
 				init: settings.testItem,
 				set: testSetCallback
 			})),
-			testMethodNone: method[settings.methodType](assign({}, settings.extraProps, {
+			testMethod: method[settings.methodType](assign({}, settings.extraProps, {
 				init: settings.testItem
 			}))
 		});
@@ -420,7 +408,7 @@ export const testMethodType = (settings) => {
 			this.testMethodSet = method[settings.methodType](assign({}, settings.extraProps, {
 				set: testSetCallback
 			}));
-			this.testMethodNone = method[settings.methodType](assign({}, settings.extraProps));
+			this.testMethod = method[settings.methodType](assign({}, settings.extraProps));
 		};
 
 		runTests(TestConstructor3, settings.init, settings.testItem, settings.coerce);
@@ -505,7 +493,7 @@ export const testMethodType = (settings) => {
 				init: settings.testItem,
 				set: testSetCallback
 			}));
-			this.testMethodNone = method[settings.methodType](assign({}, settings.extraProps, {
+			this.testMethod = method[settings.methodType](assign({}, settings.extraProps, {
 				init: settings.testItem
 			}));
 		};

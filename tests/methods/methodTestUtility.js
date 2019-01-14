@@ -7,7 +7,10 @@ import { processOutput } from '../../src/methods/variants/helper';
 
 const variantSet = powerset(['get', 'other', 'before', 'set']);
 const everyMethodVariant = map(variantSet, (combination) => {
-	return 'testMethod' + join(map(combination, startCase), '');
+	return {
+		name: 'testMethod' + join(map(combination, startCase), ''),
+		options: combination
+	};
 });
 
 export const testMethodType = (settings) => {
@@ -27,11 +30,12 @@ export const testMethodType = (settings) => {
 	};
 
 	const runTests = (TestConstructor, init, testItem, coerce) => {
-		each(everyMethodVariant, (methodName) => {
-			const hasGet = methodName.toLowerCase().indexOf('get') !== -1;
-			const hasOther = methodName.toLowerCase().indexOf('other') !== -1;
-			const hasBefore = methodName.toLowerCase().indexOf('before') !== -1;
-			const hasSet = methodName.toLowerCase().indexOf('set') !== -1;
+		each(everyMethodVariant, (methodData) => {
+			const methodName = methodData.name;
+			const hasGet = methodData.options.includes('get');
+			const hasOther = methodData.options.includes('other');
+			const hasBefore = methodData.options.includes('before');
+			const hasSet = methodData.options.includes('set');
 
 			describe('(' + methodName.replace('testMethod', '') + ')', () => {
 				it('should return the init value', () => {
@@ -181,164 +185,44 @@ export const testMethodType = (settings) => {
 		});
 	};
 
+	const getOptionCallback = (option, withTestItem) => {
+		switch (option) {
+			case 'get':
+				return withTestItem ? testGetCallbackWithTestItem : testGetCallback;
+			case 'other':
+				return undefined;
+			case 'before':
+				return testBeforeCallback;
+			case 'set':
+				return testSetCallback;
+		}
+	};
+
+	const addMethodsTo = (applyTo, extraProps = {}) => {
+		each(everyMethodVariant, (methodData) => {
+			const options = assign({}, settings.extraProps, extraProps);
+
+			each(methodData.options, (option) => {
+				options[option] = getOptionCallback(option, extraProps.init);
+			});
+
+			applyTo[methodData.name] = method[settings.methodType](options);
+		});
+	};
+
 	describe('(prototype, default init)', () => {
 		class TestConstructor1 {
 		}
-
-		assign(TestConstructor1.prototype, {
-			testMethodBefore: method[settings.methodType](assign({}, settings.extraProps, {
-				before: testBeforeCallback
-			})),
-			testMethodBeforeSet: method[settings.methodType](assign({}, settings.extraProps, {
-				before: testBeforeCallback,
-				set: testSetCallback
-			})),
-			testMethodGet: method[settings.methodType](assign({}, settings.extraProps, {
-				get: testGetCallback
-			})),
-			testMethodGetBefore: method[settings.methodType](assign({}, settings.extraProps, {
-				before: testBeforeCallback,
-				get: testGetCallback
-			})),
-			testMethodGetBeforeSet: method[settings.methodType](assign({}, settings.extraProps, {
-				before: testBeforeCallback,
-				set: testSetCallback,
-				get: testGetCallback
-			})),
-			testMethodGetOther: method[settings.methodType](assign({}, settings.extraProps, {
-				get: testGetCallback,
-				other: undefined
-			})),
-			testMethodGetOtherBefore: method[settings.methodType](assign({}, settings.extraProps, {
-				before: testBeforeCallback,
-				get: testGetCallback,
-				other: undefined
-			})),
-			testMethodGetOtherBeforeSet: method[settings.methodType](assign({}, settings.extraProps, {
-				before: testBeforeCallback,
-				set: testSetCallback,
-				get: testGetCallback,
-				other: undefined
-			})),
-			testMethodGetOtherSet: method[settings.methodType](assign({}, settings.extraProps, {
-				set: testSetCallback,
-				get: testGetCallback,
-				other: undefined
-			})),
-			testMethodGetSet: method[settings.methodType](assign({}, settings.extraProps, {
-				set: testSetCallback,
-				get: testGetCallback
-			})),
-			testMethodOther: method[settings.methodType](assign({}, settings.extraProps, {
-				other: undefined
-			})),
-			testMethodOtherBefore: method[settings.methodType](assign({}, settings.extraProps, {
-				before: testBeforeCallback,
-				other: undefined
-			})),
-			testMethodOtherBeforeSet: method[settings.methodType](assign({}, settings.extraProps, {
-				before: testBeforeCallback,
-				set: testSetCallback,
-				other: undefined
-			})),
-			testMethodOtherSet: method[settings.methodType](assign({}, settings.extraProps, {
-				set: testSetCallback,
-				other: undefined
-			})),
-			testMethodSet: method[settings.methodType](assign({}, settings.extraProps, {
-				set: testSetCallback
-			})),
-			testMethod: method[settings.methodType](assign({}, settings.extraProps))
-		});
+		addMethodsTo(TestConstructor1.prototype);
 
 		runTests(TestConstructor1, settings.init, settings.testItem, settings.coerce);
 	});
 
-	describe('(prototype, with init)', () => {
+	describe('(prototype, provided init)', () => {
 		class TestConstructor2 {
 		}
-
-		assign(TestConstructor2.prototype, {
-			testMethodBefore: method[settings.methodType](assign({}, settings.extraProps, {
-				init: settings.testItem,
-				before: testBeforeCallback
-			})),
-			testMethodBeforeSet: method[settings.methodType](assign({}, settings.extraProps, {
-				init: settings.testItem,
-				before: testBeforeCallback,
-				set: testSetCallback
-			})),
-			testMethodGet: method[settings.methodType](assign({}, settings.extraProps, {
-				init: settings.testItem,
-				get: testGetCallbackWithTestItem
-			})),
-			testMethodGetBefore: method[settings.methodType](assign({}, settings.extraProps, {
-				init: settings.testItem,
-				before: testBeforeCallback,
-				get: testGetCallbackWithTestItem
-			})),
-			testMethodGetBeforeSet: method[settings.methodType](assign({}, settings.extraProps, {
-				init: settings.testItem,
-				before: testBeforeCallback,
-				set: testSetCallback,
-				get: testGetCallbackWithTestItem
-			})),
-			testMethodGetOther: method[settings.methodType](assign({}, settings.extraProps, {
-				init: settings.testItem,
-				get: testGetCallbackWithTestItem,
-				other: undefined
-			})),
-			testMethodGetOtherBefore: method[settings.methodType](assign({}, settings.extraProps, {
-				init: settings.testItem,
-				before: testBeforeCallback,
-				get: testGetCallbackWithTestItem,
-				other: undefined
-			})),
-			testMethodGetOtherBeforeSet: method[settings.methodType](assign({}, settings.extraProps, {
-				init: settings.testItem,
-				before: testBeforeCallback,
-				set: testSetCallback,
-				get: testGetCallbackWithTestItem,
-				other: undefined
-			})),
-			testMethodGetOtherSet: method[settings.methodType](assign({}, settings.extraProps, {
-				init: settings.testItem,
-				set: testSetCallback,
-				get: testGetCallbackWithTestItem,
-				other: undefined
-			})),
-			testMethodGetSet: method[settings.methodType](assign({}, settings.extraProps, {
-				init: settings.testItem,
-				set: testSetCallback,
-				get: testGetCallbackWithTestItem
-			})),
-			testMethodOther: method[settings.methodType](assign({}, settings.extraProps, {
-				init: settings.testItem,
-				other: undefined
-			})),
-			testMethodOtherBefore: method[settings.methodType](assign({}, settings.extraProps, {
-				init: settings.testItem,
-				before: testBeforeCallback,
-				other: undefined
-			})),
-			testMethodOtherSet: method[settings.methodType](assign({}, settings.extraProps, {
-				init: settings.testItem,
-				set: testSetCallback,
-				other: undefined
-			})),
-			testMethodOtherBeforeSet: method[settings.methodType](assign({}, settings.extraProps, {
-				init: settings.testItem,
-				before: testBeforeCallback,
-				set: testSetCallback,
-				other: undefined
-			})),
-			testMethodSet: method[settings.methodType](assign({}, settings.extraProps, {
-				init: settings.testItem,
-				set: testSetCallback
-			})),
-			testMethod: method[settings.methodType](assign({}, settings.extraProps, {
-				init: settings.testItem
-			}))
+		addMethodsTo(TestConstructor2.prototype, {
+			init: settings.testItem
 		});
 
 		runTests(TestConstructor2, settings.testItem, settings.testItem2, settings.coerce);
@@ -346,156 +230,17 @@ export const testMethodType = (settings) => {
 
 	describe('(property, default init)', () => {
 		const TestConstructor3 = function() {
-			this.testMethodBefore = method[settings.methodType](assign({}, settings.extraProps, {
-				before: testBeforeCallback
-			}));
-			this.testMethodBeforeSet = method[settings.methodType](assign({}, settings.extraProps, {
-				set: testSetCallback,
-				before: testBeforeCallback
-			}));
-			this.testMethodGet = method[settings.methodType](assign({}, settings.extraProps, {
-				get: testGetCallback
-			}));
-			this.testMethodGetBefore = method[settings.methodType](assign({}, settings.extraProps, {
-				get: testGetCallback,
-				before: testBeforeCallback
-			}));
-			this.testMethodGetBeforeSet = method[settings.methodType](assign({}, settings.extraProps, {
-				get: testGetCallback,
-				before: testBeforeCallback,
-				set: testSetCallback
-			}));
-			this.testMethodGetOther = method[settings.methodType](assign({}, settings.extraProps, {
-				get: testGetCallback,
-				other: undefined
-			}));
-			this.testMethodGetOtherBefore = method[settings.methodType](assign({}, settings.extraProps, {
-				get: testGetCallback,
-				before: testBeforeCallback,
-				other: undefined
-			}));
-			this.testMethodGetOtherBeforeSet = method[settings.methodType](assign({}, settings.extraProps, {
-				get: testGetCallback,
-				before: testBeforeCallback,
-				set: testSetCallback,
-				other: undefined
-			}));
-			this.testMethodGetOtherSet = method[settings.methodType](assign({}, settings.extraProps, {
-				get: testGetCallback,
-				set: testSetCallback,
-				other: undefined
-			}));
-			this.testMethodGetSet = method[settings.methodType](assign({}, settings.extraProps, {
-				get: testGetCallback,
-				set: testSetCallback
-			}));
-			this.testMethodOther = method[settings.methodType](assign({}, settings.extraProps, {
-				other: undefined
-			}));
-			this.testMethodOtherBefore = method[settings.methodType](assign({}, settings.extraProps, {
-				before: testBeforeCallback,
-				other: undefined
-			}));
-			this.testMethodOtherBeforeSet = method[settings.methodType](assign({}, settings.extraProps, {
-				before: testBeforeCallback,
-				set: testSetCallback,
-				other: undefined
-			}));
-			this.testMethodOtherSet = method[settings.methodType](assign({}, settings.extraProps, {
-				set: testSetCallback,
-				other: undefined
-			}));
-			this.testMethodSet = method[settings.methodType](assign({}, settings.extraProps, {
-				set: testSetCallback
-			}));
-			this.testMethod = method[settings.methodType](assign({}, settings.extraProps));
+			addMethodsTo(this);
 		};
 
 		runTests(TestConstructor3, settings.init, settings.testItem, settings.coerce);
 	});
 
-	describe('(property, with init)', () => {
+	describe('(property, provided init)', () => {
 		const TestConstructor4 = function() {
-			this.testMethodBefore = method[settings.methodType](assign({}, settings.extraProps, {
-				init: settings.testItem,
-				before: testBeforeCallback
-			}));
-			this.testMethodBeforeSet = method[settings.methodType](assign({}, settings.extraProps, {
-				init: settings.testItem,
-				set: testSetCallback,
-				before: testBeforeCallback
-			}));
-			this.testMethodGet = method[settings.methodType](assign({}, settings.extraProps, {
-				init: settings.testItem,
-				get: testGetCallbackWithTestItem
-			}));
-			this.testMethodGetBefore = method[settings.methodType](assign({}, settings.extraProps, {
-				init: settings.testItem,
-				before: testBeforeCallback,
-				get: testGetCallbackWithTestItem
-			}));
-			this.testMethodGetBeforeSet = method[settings.methodType](assign({}, settings.extraProps, {
-				init: settings.testItem,
-				before: testBeforeCallback,
-				set: testSetCallback,
-				get: testGetCallbackWithTestItem
-			}));
-			this.testMethodGetOther = method[settings.methodType](assign({}, settings.extraProps, {
-				init: settings.testItem,
-				get: testGetCallbackWithTestItem,
-				other: undefined
-			}));
-			this.testMethodGetOtherBefore = method[settings.methodType](assign({}, settings.extraProps, {
-				init: settings.testItem,
-				before: testBeforeCallback,
-				get: testGetCallbackWithTestItem,
-				other: undefined
-			}));
-			this.testMethodGetOtherBeforeSet = method[settings.methodType](assign({}, settings.extraProps, {
-				init: settings.testItem,
-				before: testBeforeCallback,
-				set: testSetCallback,
-				get: testGetCallbackWithTestItem,
-				other: undefined
-			}));
-			this.testMethodGetOtherSet = method[settings.methodType](assign({}, settings.extraProps, {
-				init: settings.testItem,
-				set: testSetCallback,
-				get: testGetCallbackWithTestItem,
-				other: undefined
-			}));
-			this.testMethodGetSet = method[settings.methodType](assign({}, settings.extraProps, {
-				init: settings.testItem,
-				set: testSetCallback,
-				get: testGetCallbackWithTestItem
-			}));
-			this.testMethodOther = method[settings.methodType](assign({}, settings.extraProps, {
-				init: settings.testItem,
-				other: undefined
-			}));
-			this.testMethodOtherBefore = method[settings.methodType](assign({}, settings.extraProps, {
-				init: settings.testItem,
-				before: testBeforeCallback,
-				other: undefined
-			}));
-			this.testMethodOtherBeforeSet = method[settings.methodType](assign({}, settings.extraProps, {
-				init: settings.testItem,
-				before: testBeforeCallback,
-				set: testSetCallback,
-				other: undefined
-			}));
-			this.testMethodOtherSet = method[settings.methodType](assign({}, settings.extraProps, {
-				init: settings.testItem,
-				set: testSetCallback,
-				other: undefined
-			}));
-			this.testMethodSet = method[settings.methodType](assign({}, settings.extraProps, {
-				init: settings.testItem,
-				set: testSetCallback
-			}));
-			this.testMethod = method[settings.methodType](assign({}, settings.extraProps, {
+			addMethodsTo(this, {
 				init: settings.testItem
-			}));
+			});
 		};
 
 		runTests(TestConstructor4, settings.testItem, settings.testItem2, settings.coerce);

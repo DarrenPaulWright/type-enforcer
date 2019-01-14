@@ -11,6 +11,7 @@ import { buildMethod, compareCustomType } from './methodAny';
  * @arg [options=Same as method.any except:]
  * @arg [options.enforce=enforce.cssSize]
  * @arg [options.compare=CssSize.isSame]
+ * @arg [options.coerce=true] - If false then use strict equality
  *
  * @returns {Function}
  */

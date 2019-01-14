@@ -1,4 +1,5 @@
-import { Point } from '../../../src';
+import { assert } from 'chai';
+import { method, Point } from '../../../src';
 import { testMethodType } from '../methodTestUtility';
 
 describe('method', () => {
@@ -24,6 +25,20 @@ describe('method', () => {
 				value: '5,6',
 				coerced: new Point([5, 6])
 			}]
+		});
+
+		it('should NOT save a coercable value if coerce is false', () => {
+			const TestConstructor = function() {
+				this.testMethod = method.point({
+					init: undefined,
+					coerce: false
+				});
+			};
+			const testConstructor = new TestConstructor();
+
+			testConstructor.testMethod('1,2');
+
+			assert.equal(testConstructor.testMethod(), undefined);
 		});
 	});
 });

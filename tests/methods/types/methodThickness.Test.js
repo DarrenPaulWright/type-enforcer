@@ -1,4 +1,5 @@
-import { Thickness } from '../../../src';
+import { assert } from 'chai';
+import { method, Thickness } from '../../../src';
 import { testMethodType } from '../methodTestUtility';
 
 describe('method', () => {
@@ -32,6 +33,19 @@ describe('method', () => {
 				value: 13,
 				coerced: new Thickness('13px')
 			}]
+		});
+
+		it('should NOT save a coercable value if coerce is false', () => {
+			const TestConstructor = function() {
+				this.testMethod = method.thickness({
+					coerce: false
+				});
+			};
+			const testConstructor = new TestConstructor();
+
+			testConstructor.testMethod('12px 3em');
+
+			assert.equal(testConstructor.testMethod(), undefined);
 		});
 	});
 });

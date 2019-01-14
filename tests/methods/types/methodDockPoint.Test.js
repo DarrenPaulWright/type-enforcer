@@ -1,4 +1,5 @@
-import { DockPoint } from '../../../src';
+import { assert } from 'chai';
+import { DockPoint, method } from '../../../src';
 import { validDockPoints } from '../../TestUtil';
 import { testMethodType } from '../methodTestUtility';
 
@@ -23,6 +24,19 @@ describe('method', () => {
 				value: DockPoint.POINTS.TOP_RIGHT,
 				coerced: new DockPoint(DockPoint.POINTS.TOP_RIGHT)
 			}]
+		});
+
+		it('should NOT save a coercable value if coerce is false', () => {
+			const TestConstructor = function() {
+				this.testMethod = method.dockPoint({
+					coerce: false
+				});
+			};
+			const testConstructor = new TestConstructor();
+
+			testConstructor.testMethod('top.left');
+
+			assert.equal(testConstructor.testMethod(), undefined);
 		});
 	});
 });

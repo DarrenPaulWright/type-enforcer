@@ -11,6 +11,7 @@ import { buildMethod, compareCustomType } from './methodAny';
  * @arg [options=Same as method.any except:]
  * @arg [options.enforce=enforce.dockPoint]
  * @arg [options.compare=DockPoint.isSame]
+ * @arg [options.coerce=true] - If false then use strict equality
  *
  * @returns {Function}
  */

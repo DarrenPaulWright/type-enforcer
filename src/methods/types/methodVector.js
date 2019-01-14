@@ -12,6 +12,7 @@ import { buildMethod, compareCustomType } from './methodAny';
  * @arg [options.init=Vector]
  * @arg [options.enforce=enforce.vector]
  * @arg [options.compare=Vector.isSame]
+ * @arg [options.coerce=true] - If false then use strict equality
  *
  * @returns {Function}
  */

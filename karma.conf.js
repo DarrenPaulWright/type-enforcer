@@ -31,7 +31,7 @@ module.exports = function(config) {
 		files: files.files,
 		frameworks: ['jasmine'],
 		preprocessors: preprocessors,
-		reporters: ['brief'],
+		reporters: ['brief', 'coverage'],
 		briefReporter: {
 			renderOnRunCompleteOnly: process.argv.includes('--single-run')
 		},

@@ -1,4 +1,4 @@
-import { isString } from 'lodash';
+import isString from '../../checks/isString';
 
 /**
  * If the first value is a [string]{@link https://lodash.com/docs/#isString} then return that, otherwise return the alt value.

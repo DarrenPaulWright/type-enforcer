@@ -41,10 +41,6 @@
  *
  * ## Docs
  *
- * ### Checks
- * - [isInstanceOf](docs/isInstanceOf.md)
- * - [isInstanceOf](docs/isJson.md)
- *
  * ### Data Types
  * - [CssSize](docs/CssSize.md)
  * - [DockPoint](docs/DockPoint.md)
@@ -54,6 +50,9 @@
  * - [Thickness](docs/Thickness.md)
  * - [Vector](docs/Vector.md)
  *
+ * ### Checks
+ * - [checks](docs/checks.md)
+ *
  * ### Enforcement
  * - [enforce](docs/enforce.md)
  *
@@ -62,8 +61,18 @@
  *
  * @name Installation
  */
+export { default as isArray } from './checks/isArray';
+export { default as isBool } from './checks/isBool';
+export { default as isDate } from './checks/isDate';
+export { default as isElement } from './checks/isElement';
+export { default as isFunc } from './checks/isFunc';
 export { default as isInstanceOf } from './checks/isInstanceOf';
+export { default as isInt } from './checks/isInt';
 export { default as isJson } from './checks/isJson';
+export { default as isNumber } from './checks/isNumber';
+export { default as isObject } from './checks/isObject';
+export { default as isRegExp } from './checks/isRegExp';
+export { default as isString } from './checks/isString';
 
 export * from './types/CssSize';
 export { default as CssSize } from './types/CssSize';

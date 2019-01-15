@@ -1,4 +1,4 @@
-import { isRegExp } from 'lodash';
+import isRegExp from '../../checks/isRegExp';
 
 /**
  * If the first value is a [RegExp]{@link https://lodash.com/docs/#isRegExp} then return that, otherwise return the alt value.

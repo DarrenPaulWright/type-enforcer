@@ -1,4 +1,5 @@
-import { assign, isArray } from 'lodash';
+import { assign } from 'lodash';
+import isArray from '../checks/isArray';
 import isJson from '../checks/isJson';
 import enforceNumber from '../enforcer/types/enforceNumber';
 import methodNumber from '../methods/types/methodNumber';

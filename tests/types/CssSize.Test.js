@@ -138,7 +138,6 @@ describe('CssSize', () => {
 		const testCallback = (value) => CssSize.isValid(value);
 		multiTest({
 			values: validValues,
-			message: (input) => `should return true for ${input}`,
 			test: testCallback,
 			assertion: 'isTrue',
 			inputKey: 'size'

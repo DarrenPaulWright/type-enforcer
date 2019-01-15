@@ -11,7 +11,33 @@ Type enforcement library for javascript
 <a name="method"></a>
 
 ## method : <code>object</code>
-Enforce data types and remove common boilerplate code on class methods.## Usage``` javascriptimport { method } from 'type-enforcer';```Use it as a prototype:``` javascriptconst Thing = function() {};Thing.prototype.myMethod = method.string([options]);```or in a class:``` javascriptclass Thing() {}Thing.prototype.myMethod = method.string([options]);```or as a non-prototype method:``` javascriptconst Thing = function() {    this.myMethod = method.string([options]);};```
+Enforce data types and remove common boilerplate code on class methods.
+
+## Usage
+``` javascript
+import { method } from 'type-enforcer';
+```
+
+Use it as a prototype:
+``` javascript
+const Thing = function() {};
+
+Thing.prototype.myMethod = method.string([options]);
+```
+
+or in a class:
+``` javascript
+class Thing() {}
+
+Thing.prototype.myMethod = method.string([options]);
+```
+
+or as a non-prototype method:
+``` javascript
+const Thing = function() {
+    this.myMethod = method.string([options]);
+};
+```
 
 **Kind**: global typedef  
 
@@ -95,11 +121,12 @@ Builds a method for getting/setting a CssSize instance
 **Kind**: static method of [<code>method</code>](#method)  
 **Extends**: [<code>any</code>](#method.any)  
 
-| Param | Default |
-| --- | --- |
-| [options] | <code>Same as method.any except:</code> | 
-| [options.enforce] | <code>enforce.cssSize</code> | 
-| [options.compare] | <code>CssSize.isSame</code> | 
+| Param | Default | Description |
+| --- | --- | --- |
+| [options] | <code>Same as method.any except:</code> |  |
+| [options.enforce] | <code>enforce.cssSize</code> |  |
+| [options.compare] | <code>CssSize.isSame</code> |  |
+| [options.coerce] | <code>true</code> | If false then use strict equality |
 
 <a name="method.date"></a>
 
@@ -122,11 +149,12 @@ Builds a method for getting/setting a DockPoint instance
 **Kind**: static method of [<code>method</code>](#method)  
 **Extends**: [<code>any</code>](#method.any)  
 
-| Param | Default |
-| --- | --- |
-| [options] | <code>Same as method.any except:</code> | 
-| [options.enforce] | <code>enforce.dockPoint</code> | 
-| [options.compare] | <code>DockPoint.isSame</code> | 
+| Param | Default | Description |
+| --- | --- | --- |
+| [options] | <code>Same as method.any except:</code> |  |
+| [options.enforce] | <code>enforce.dockPoint</code> |  |
+| [options.compare] | <code>DockPoint.isSame</code> |  |
+| [options.coerce] | <code>true</code> | If false then use strict equality |
 
 <a name="method.element"></a>
 
@@ -200,7 +228,9 @@ Builds a method for getting/setting an integer
 <a name="method.keyValue"></a>
 
 ### method.keyValue([options]) ⇒ <code>function</code>
-Builds a method that accepts either:- two args, a key and a value- one arg, an object with multiple key/value pairs
+Builds a method that accepts either:
+- two args, a key and a value
+- one arg, an object with multiple key/value pairs
 
 **Kind**: static method of [<code>method</code>](#method)  
 **Returns**: <code>function</code> - accepts a new value and returns the methods constructor (allows chaining), or if no args are passed returns the output of options.get  
@@ -249,12 +279,13 @@ Builds a method for getting/setting a Point instance
 **Kind**: static method of [<code>method</code>](#method)  
 **Extends**: [<code>any</code>](#method.any)  
 
-| Param | Default |
-| --- | --- |
-| [options] | <code>Same as method.any except:</code> | 
-| [options.init] | <code>Point</code> | 
-| [options.enforce] | <code>enforce.point</code> | 
-| [options.compare] | <code>Point.isSame</code> | 
+| Param | Default | Description |
+| --- | --- | --- |
+| [options] | <code>Same as method.any except:</code> |  |
+| [options.init] | <code>Point</code> |  |
+| [options.enforce] | <code>enforce.point</code> |  |
+| [options.compare] | <code>Point.isSame</code> |  |
+| [options.coerce] | <code>true</code> | If false then use strict equality |
 
 <a name="method.queue"></a>
 
@@ -305,11 +336,12 @@ Builds a method for getting/setting a thickness instance
 **Kind**: static method of [<code>method</code>](#method)  
 **Extends**: [<code>any</code>](#method.any)  
 
-| Param | Default |
-| --- | --- |
-| [options] | <code>Same as method.any except:</code> | 
-| [options.enforce] | <code>enforce.thickness</code> | 
-| [options.compare] | <code>Thickness.isSame</code> | 
+| Param | Default | Description |
+| --- | --- | --- |
+| [options] | <code>Same as method.any except:</code> |  |
+| [options.enforce] | <code>enforce.thickness</code> |  |
+| [options.compare] | <code>Thickness.isSame</code> |  |
+| [options.coerce] | <code>true</code> | If false then use strict equality |
 
 <a name="method.vector"></a>
 
@@ -319,12 +351,13 @@ Builds a method for getting/setting a Vector instance
 **Kind**: static method of [<code>method</code>](#method)  
 **Extends**: [<code>any</code>](#method.any)  
 
-| Param | Default |
-| --- | --- |
-| [options] | <code>Same as method.any except:</code> | 
-| [options.init] | <code>Vector</code> | 
-| [options.enforce] | <code>enforce.vector</code> | 
-| [options.compare] | <code>Vector.isSame</code> | 
+| Param | Default | Description |
+| --- | --- | --- |
+| [options] | <code>Same as method.any except:</code> |  |
+| [options.init] | <code>Vector</code> |  |
+| [options.enforce] | <code>enforce.vector</code> |  |
+| [options.compare] | <code>Vector.isSame</code> |  |
+| [options.coerce] | <code>true</code> | If false then use strict equality |
 
 
 ## License

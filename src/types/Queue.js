@@ -1,4 +1,5 @@
-import { forOwn, isFunction } from 'lodash';
+import { forOwn } from 'lodash';
+import isFunc from '../checks/isFunc';
 
 const CALLBACKS = Symbol();
 const CURRENT_ID = Symbol();
@@ -34,7 +35,7 @@ export default class Queue {
 	 * @returns {Number} A unique ID for this callback.
 	 */
 	add(callback, data) {
-		if (isFunction(callback)) {
+		if (isFunc(callback)) {
 			const newID = (++this[CURRENT_ID] + '');
 			this[CALLBACKS][newID] = {
 				func: callback,

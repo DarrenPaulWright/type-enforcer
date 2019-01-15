@@ -4,9 +4,8 @@ import { testMethodType } from '../methodTestUtility';
 describe('method', () => {
 	describe('.enum', () => {
 		testMethodType({
-			methodType: 'enum',
-			testItem: 'test2',
-			testItem2: 'test3',
+			name: 'enum',
+			true: ['test2', 'test3'],
 			extraProps: {
 				enum: new Enum({
 					test1: 'test1',

@@ -1,18 +1,16 @@
 import { assert } from 'chai';
+import { assign, find } from 'lodash';
 import { method } from '../../../src';
+import { testTypes } from '../../TestUtil';
 import { testMethodType } from '../methodTestUtility';
+
+const data = find(testTypes, {
+	name: 'object'
+});
 
 describe('method', () => {
 	describe('.object', () => {
-		testMethodType({
-			methodType: 'object',
-			testItem: {
-				test: 'test1'
-			},
-			testItem2: {
-				test: 'test2'
-			}
-		});
+		testMethodType(assign({}, data));
 
 		it('should NOT call the set callback if the same object is provided and deep=false', () => {
 			let testSet = '';

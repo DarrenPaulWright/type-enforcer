@@ -1,14 +1,18 @@
 import { assert } from 'chai';
-import { method } from '../../../src';
-import { validCssSizes } from '../../TestUtil';
+import { assign, find } from 'lodash';
+import { CssSize, method } from '../../../src';
+import { testTypes } from '../../TestUtil';
 import { testMethodType } from '../methodTestUtility';
+
+const data = find(testTypes, {
+	name: 'cssSize'
+});
 
 describe('method', () => {
 	describe('.cssSize (stringify)', () => {
 		testMethodType({
-			methodType: 'cssSize',
-			testItem: '14px',
-			testItem2: '20px',
+			name: 'cssSize',
+			true: ['14px', '20px'],
 			extraProps: {
 				stringify: true
 			}
@@ -16,11 +20,12 @@ describe('method', () => {
 	});
 
 	describe('.cssSize', () => {
-		testMethodType({
-			methodType: 'cssSize',
-			testItem: validCssSizes[0],
-			testItem2: validCssSizes[1]
-		});
+		testMethodType(assign({}, data, {
+			coerce: [{
+				value: '16px',
+				coerced: new CssSize('16px')
+			}]
+		}));
 
 		it('should NOT save a coercable value if coerce is false', () => {
 			const TestConstructor = function() {

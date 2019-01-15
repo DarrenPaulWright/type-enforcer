@@ -1,13 +1,18 @@
 import { assert } from 'chai';
+import { assign, find } from 'lodash';
 import { method, Thickness } from '../../../src';
+import { testTypes } from '../../TestUtil';
 import { testMethodType } from '../methodTestUtility';
+
+const data = find(testTypes, {
+	name: 'thickness'
+});
 
 describe('method', () => {
 	describe('.thickness (stringify)', () => {
 		testMethodType({
-			methodType: 'thickness',
-			testItem: '12px',
-			testItem2: '20px',
+			name: 'thickness',
+			true: ['12px', '20px'],
 			extraProps: {
 				stringify: true
 			},
@@ -22,10 +27,7 @@ describe('method', () => {
 	});
 
 	describe('.thickness', () => {
-		testMethodType({
-			methodType: 'thickness',
-			testItem: new Thickness('12px'),
-			testItem2: new Thickness('20px'),
+		testMethodType(assign({}, data, {
 			coerce: [{
 				value: '12px 4rem',
 				coerced: new Thickness('12px 64px')
@@ -33,7 +35,7 @@ describe('method', () => {
 				value: 13,
 				coerced: new Thickness('13px')
 			}]
-		});
+		}));
 
 		it('should NOT save a coercable value if coerce is false', () => {
 			const TestConstructor = function() {

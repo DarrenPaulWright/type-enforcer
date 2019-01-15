@@ -9,8 +9,8 @@ export const validElements = [document.createElement('div'), document.createElem
 export const validFunctions = [function() {
 }, () => {
 }];
-export const validInts = [0, 10];
-export const validNumbers = [-10.00000001, 3.14159, new Number(42.2)];
+export const validInts = [1, 5];
+export const validNumbers = [1.3, 2.5, -10.00000001, 3.14159, new Number(42.2)];
 export const validObjects = [{}, {
 	test1: 1
 }, new Object()];
@@ -76,7 +76,7 @@ export const testTypes = [{
 }, {
 	value: Number,
 	name: 'number',
-	true: concat(validNumbers),
+	true: validNumbers,
 	false: difference(testValues, validNumbers, validInts)
 }, {
 	value: Object,

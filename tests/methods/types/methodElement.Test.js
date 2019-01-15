@@ -1,13 +1,14 @@
-import { validElements } from '../../TestUtil';
+import { assign, find } from 'lodash';
+import { testTypes } from '../../TestUtil';
 import { testMethodType } from '../methodTestUtility';
+
+const data = find(testTypes, {
+	name: 'element'
+});
 
 describe('method', () => {
 	describe('.element', () => {
-		testMethodType({
-			methodType: 'element',
-			testItem: validElements[0],
-			testItem2: validElements[1]
-		});
+		testMethodType(assign({}, data));
 	});
 });
 

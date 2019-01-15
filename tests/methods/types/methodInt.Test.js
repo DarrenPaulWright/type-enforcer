@@ -1,11 +1,14 @@
+import { assign, find } from 'lodash';
+import { testTypes } from '../../TestUtil';
 import { testMethodType } from '../methodTestUtility';
+
+const data = find(testTypes, {
+	name: 'int'
+});
 
 describe('method', () => {
 	describe('.int', () => {
-		testMethodType({
-			methodType: 'int',
-			testItem: 1,
-			testItem2: 5,
+		testMethodType(assign({}, data, {
 			extraProps: {
 				min: 0,
 				max: 10
@@ -17,7 +20,7 @@ describe('method', () => {
 				value: -3,
 				coerced: 0
 			}]
-		});
+		}));
 	});
 });
 

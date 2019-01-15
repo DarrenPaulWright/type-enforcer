@@ -1,14 +1,18 @@
 import { assert } from 'chai';
+import { assign, find } from 'lodash';
 import { DockPoint, method } from '../../../src';
-import { validDockPoints } from '../../TestUtil';
+import { testTypes } from '../../TestUtil';
 import { testMethodType } from '../methodTestUtility';
+
+const data = find(testTypes, {
+	name: 'dockPoint'
+});
 
 describe('method', () => {
 	describe('.dockPoint (stringify)', () => {
 		testMethodType({
-			methodType: 'dockPoint',
-			testItem: DockPoint.POINTS.TOP_CENTER,
-			testItem2: DockPoint.POINTS.BOTTOM_LEFT,
+			name: 'dockPoint',
+			true: [DockPoint.POINTS.TOP_CENTER, DockPoint.POINTS.BOTTOM_LEFT],
 			extraProps: {
 				stringify: true
 			}
@@ -16,15 +20,12 @@ describe('method', () => {
 	});
 
 	describe('.dockPoint', () => {
-		testMethodType({
-			methodType: 'dockPoint',
-			testItem: validDockPoints[0],
-			testItem2: validDockPoints[1],
+		testMethodType(assign({}, data, {
 			coerce: [{
 				value: DockPoint.POINTS.TOP_RIGHT,
 				coerced: new DockPoint(DockPoint.POINTS.TOP_RIGHT)
 			}]
-		});
+		}));
 
 		it('should NOT save a coercable value if coerce is false', () => {
 			const TestConstructor = function() {

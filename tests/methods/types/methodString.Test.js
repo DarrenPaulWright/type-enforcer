@@ -1,13 +1,16 @@
+import { assign, find } from 'lodash';
+import { testTypes } from '../../TestUtil';
 import { testMethodType } from '../methodTestUtility';
+
+const data = find(testTypes, {
+	name: 'string'
+});
 
 describe('method', () => {
 	describe('.string', () => {
-		testMethodType({
-			methodType: 'string',
-			init: '',
-			testItem: 'test1',
-			testItem2: 'test2'
-		});
+		testMethodType(assign({}, data, {
+			init: ''
+		}));
 	});
 });
 

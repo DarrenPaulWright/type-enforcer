@@ -1,13 +1,14 @@
-import { validRegExps } from '../../TestUtil';
+import { assign, find } from 'lodash';
+import { testTypes } from '../../TestUtil';
 import { testMethodType } from '../methodTestUtility';
+
+const data = find(testTypes, {
+	name: 'regExp'
+});
 
 describe('method', () => {
 	describe('.regExp', () => {
-		testMethodType({
-			methodType: 'regExp',
-			testItem: validRegExps[0],
-			testItem2: validRegExps[1]
-		});
+		testMethodType(assign({}, data));
 	});
 });
 

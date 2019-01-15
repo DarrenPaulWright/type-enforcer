@@ -5,9 +5,8 @@ import { testMethodType } from '../methodTestUtility';
 describe('method', () => {
 	describe('.instance', () => {
 		testMethodType({
-			methodType: 'instance',
-			testItem: validCssSizes[0],
-			testItem2: validCssSizes[1],
+			name: 'instance',
+			true: [validCssSizes[0], validCssSizes[1]],
 			extraProps: {
 				instance: CssSize
 			}

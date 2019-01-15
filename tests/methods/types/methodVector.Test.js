@@ -1,15 +1,19 @@
 import { assert } from 'chai';
+import { assign, find } from 'lodash';
 import { method, Vector } from '../../../src';
-import { validVectors } from '../../TestUtil';
+import { testTypes } from '../../TestUtil';
 import { testMethodType } from '../methodTestUtility';
+
+const data = find(testTypes, {
+	name: 'vector'
+});
 
 describe('method', () => {
 	describe('.vector (stringify)', () => {
 		testMethodType({
-			methodType: 'vector',
+			name: 'vector',
 			init: '[[0,0],[0,0]]',
-			testItem: '[[1,2],[3,4]]',
-			testItem2: '[[5,6],[7,8]]',
+			true: ['[[1,2],[3,4]]', '[[5,6],[7,8]]'],
 			extraProps: {
 				stringify: true
 			}
@@ -17,16 +21,13 @@ describe('method', () => {
 	});
 
 	describe('.vector', () => {
-		testMethodType({
-			methodType: 'vector',
+		testMethodType(assign({}, data, {
 			init: new Vector(),
-			testItem: validVectors[0],
-			testItem2: validVectors[1],
 			coerce: [{
 				value: '[[3,4],[5,6]]',
 				coerced: new Vector('[[3,4],[5,6]]')
 			}]
-		});
+		}));
 
 		it('should NOT save a coercable value if coerce is false', () => {
 			const TestConstructor = function() {

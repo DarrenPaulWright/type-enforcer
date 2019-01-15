@@ -26,7 +26,7 @@ export const testMethodType = (settings) => {
 		return settings.init;
 	};
 	const testGetCallbackWithTestItem = function() {
-		return settings.testItem;
+		return settings.true[0];
 	};
 
 	const runTests = (TestConstructor, init, testItem, coerce) => {
@@ -206,44 +206,56 @@ export const testMethodType = (settings) => {
 				options[option] = getOptionCallback(option, extraProps.init);
 			});
 
-			applyTo[methodData.name] = method[settings.methodType](options);
+			applyTo[methodData.name] = method[settings.name](options);
 		});
 	};
 
-	describe('(prototype, default init)', () => {
+	describe('(prototype)', () => {
 		class TestConstructor1 {
 		}
+
 		addMethodsTo(TestConstructor1.prototype);
 
-		runTests(TestConstructor1, settings.init, settings.testItem, settings.coerce);
+		runTests(TestConstructor1, settings.init, settings.true[0], settings.coerce);
 	});
 
-	describe('(prototype, provided init)', () => {
+	describe('(prototype) (init)', () => {
 		class TestConstructor2 {
 		}
+
 		addMethodsTo(TestConstructor2.prototype, {
-			init: settings.testItem
+			init: settings.true[0]
 		});
 
-		runTests(TestConstructor2, settings.testItem, settings.testItem2, settings.coerce);
+		runTests(TestConstructor2, settings.true[0], settings.true[1], settings.coerce);
+
+		each(settings.false, (falseValue) => {
+			it(`should return ${settings.true[0]} after attempting to set to ${falseValue}`, () => {
+				const testConstructor = new TestConstructor2();
+
+				testConstructor.testMethod(falseValue);
+
+				assert.deepEqual(testConstructor.testMethod(), settings.true[0]);
+			});
+		});
 	});
 
-	describe('(property, default init)', () => {
+	describe('(property)', () => {
 		const TestConstructor3 = function() {
 			addMethodsTo(this);
 		};
 
-		runTests(TestConstructor3, settings.init, settings.testItem, settings.coerce);
+		runTests(TestConstructor3, settings.init, settings.true[0], settings.coerce);
 	});
 
-	describe('(property, provided init)', () => {
+	describe('(property) (init)', () => {
 		const TestConstructor4 = function() {
 			addMethodsTo(this, {
-				init: settings.testItem
+				init: settings.true[0]
 			});
 		};
 
-		runTests(TestConstructor4, settings.testItem, settings.testItem2, settings.coerce);
+		runTests(TestConstructor4, settings.true[0], settings.true[1], settings.coerce);
 	});
 };
 

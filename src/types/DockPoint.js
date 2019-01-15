@@ -85,24 +85,11 @@ export default class DockPoint {
 	 * @returns {boolean}
 	 */
 	static isValid(value) {
-		if (DockPoint.isInstance(value)) {
+		if (value instanceof DockPoint) {
 			return true;
 		}
 
 		return DockPoint.POINTS.has(value);
-	}
-
-	/**
-	 * Determine if something is an instance of DockPoint
-	 *
-	 * @memberof DockPoint
-	 *
-	 * @arg {DockPoint} is
-	 *
-	 * @returns {boolean}
-	 */
-	static isInstance(is) {
-		return is instanceof DockPoint;
 	}
 
 	/**
@@ -184,7 +171,7 @@ export default class DockPoint {
 	 * @returns {boolean}
 	 */
 	isSame(dockPoint) {
-		return this.value() === (DockPoint.isInstance(dockPoint) ? dockPoint.value() : dockPoint);
+		return this.value() === (dockPoint instanceof DockPoint ? dockPoint.value() : dockPoint);
 	}
 
 	/**

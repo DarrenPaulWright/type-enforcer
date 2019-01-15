@@ -1,3 +1,4 @@
+import isThickness from '../../checks/isThickness';
 import Thickness from '../../types/Thickness';
 import customTypeEnforcer from './customTypeEnforcer';
 
@@ -13,4 +14,4 @@ import customTypeEnforcer from './customTypeEnforcer';
  *
  * @returns {Thickness}
  */
-export default customTypeEnforcer(Thickness);
+export default customTypeEnforcer(Thickness, isThickness);

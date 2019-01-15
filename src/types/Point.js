@@ -1,4 +1,6 @@
-import { isArray, isNumber, isString } from 'lodash';
+import isArray from '../checks/isArray';
+import isNumber from '../checks/isNumber';
+import isString from '../checks/isString';
 import angle from '../utility/angle';
 
 const SEPARATOR = ',';
@@ -55,7 +57,7 @@ export default class Point {
 	 * @returns {boolean}
 	 */
 	static isValid(value) {
-		if (Point.isInstance(value)) {
+		if (value instanceof Point) {
 			return true;
 		}
 		if (isString(value)) {
@@ -65,19 +67,6 @@ export default class Point {
 			return value.length === 2 && isNumeric(value[0]) && isNumeric(value[1]);
 		}
 		return value && isNumeric(value.x) && isNumeric(value.y);
-	}
-
-	/**
-	 * Determine if something is an instance of Point
-	 *
-	 * @memberof Point
-	 *
-	 * @arg {Point} is
-	 *
-	 * @returns {boolean}
-	 */
-	static isInstance(is) {
-		return is instanceof Point;
 	}
 
 	/**
@@ -140,7 +129,7 @@ export default class Point {
 		if (!point2) {
 			return false;
 		}
-		if (!Point.isInstance(point2)) {
+		if (!(point2 instanceof Point)) {
 			return new Point(point2).toString() === this.toString();
 		}
 		return (this.x === point2.x && this.y === point2.y);

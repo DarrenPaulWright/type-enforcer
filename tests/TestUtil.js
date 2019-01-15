@@ -161,9 +161,19 @@ export const eachPair = (array1, array2, callback, isUnique = false) => {
 export const multiTest = (settings) => {
 	const assertion = settings.assertion || 'equal';
 
-	const buildSingleMessage = settings.message || ((input, output) => {
-		return `should return ${output} when set to ${input}`;
-	});
+	let buildSingleMessage;
+	if (settings.message) {
+		buildSingleMessage = settings.message;
+	}
+	else if (settings.assertion === 'isTrue') {
+		buildSingleMessage = (input) => `should return true for ${input}`;
+	}
+	else if (settings.assertion === 'isFalse') {
+		buildSingleMessage = (input) => `should return false for ${input}`;
+	}
+	else {
+		buildSingleMessage = (input, output) => `should return ${output} when set to ${input}`;
+	}
 
 	const buildDoubleMessage = settings.message || ((input1, input2, output) => {
 		return `should return ${output} when ${input1} and ${input2} are provided`;

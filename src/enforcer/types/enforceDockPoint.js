@@ -1,3 +1,4 @@
+import isDockPoint from '../../checks/isDockPoint';
 import DockPoint from '../../types/DockPoint';
 import customTypeEnforcer from './customTypeEnforcer';
 
@@ -13,4 +14,4 @@ import customTypeEnforcer from './customTypeEnforcer';
  *
  * @returns {DockPoint}
  */
-export default customTypeEnforcer(DockPoint);
+export default customTypeEnforcer(DockPoint, isDockPoint);

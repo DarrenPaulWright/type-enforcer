@@ -1,4 +1,4 @@
-import { isArray } from 'lodash';
+import isArray from '../../checks/isArray';
 
 /**
  * If the first value is an [array]{@link https://lodash.com/docs/#isArray}, then return that, otherwise return the alt value.

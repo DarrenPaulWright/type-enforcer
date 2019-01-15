@@ -1,7 +1,7 @@
 /**
  * Check if a value can be parsed as JSON
  *
- * ## Usage
+ * @example
  * ``` javascript
  * import { isJson } from 'type-enforcer';
  * ```

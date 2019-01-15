@@ -1,4 +1,5 @@
-import { assign, isArray } from 'lodash';
+import { assign } from 'lodash';
+import isArray from '../checks/isArray';
 import isJson from '../checks/isJson';
 import enforceNumber from '../enforcer/types/enforceNumber';
 import methodNumber from '../methods/types/methodNumber';
@@ -82,7 +83,7 @@ export default class Vector {
 	 * @returns {boolean}
 	 */
 	static isValid(value) {
-		if (Vector.isInstance(value)) {
+		if (value instanceof Vector) {
 			return true;
 		}
 		if (!isJson(value)) {
@@ -92,19 +93,6 @@ export default class Vector {
 		value = JSON.parse(value);
 
 		return (isArray(value) && value.length === 2 && Point.isValid(value[0]) && Point.isValid(value[1]));
-	}
-
-	/**
-	 * Determine if something is an instance of Vector
-	 *
-	 * @memberof Vector
-	 *
-	 * @arg {Vector} is
-	 *
-	 * @returns {boolean}
-	 */
-	static isInstance(is) {
-		return is instanceof Vector;
 	}
 
 	/**
@@ -118,7 +106,7 @@ export default class Vector {
 	 * @returns {Boolean}
 	 */
 	isSame(vector2) {
-		if (!Vector.isInstance(vector2)) {
+		if (!(vector2 instanceof Vector)) {
 			return false;
 		}
 		return vector2.start().isSame(this.start()) && vector2.end().isSame(this.end());

@@ -1,3 +1,4 @@
+import isVector from '../../checks/isVector';
 import Vector from '../../types/Vector';
 import customTypeEnforcer from './customTypeEnforcer';
 
@@ -13,4 +14,4 @@ import customTypeEnforcer from './customTypeEnforcer';
  *
  * @returns {Vector}
  */
-export default customTypeEnforcer(Vector);
+export default customTypeEnforcer(Vector, isVector);

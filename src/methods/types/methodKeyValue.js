@@ -1,4 +1,5 @@
-import { forOwn, isPlainObject } from 'lodash';
+import { forOwn } from 'lodash';
+import isObject from '../../checks/isObject';
 
 /**
  * Builds a method that accepts either:
@@ -15,8 +16,8 @@ import { forOwn, isPlainObject } from 'lodash';
  */
 export default (options = {}) => {
 	return function(...args) {
-		if (options.set && (args.length === 2 || isPlainObject(args[0]))) {
-			if (isPlainObject(args[0])) {
+		if (options.set && (args.length === 2 || isObject(args[0]))) {
+			if (isObject(args[0])) {
 				forOwn(args[0], (value, key) => {
 					options.set.call(this, key, value);
 				});

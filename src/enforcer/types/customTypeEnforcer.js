@@ -1,6 +1,6 @@
-export default (Type) => (value, alt, options = {}) => {
-	if (options.coerce !== false && Type.isValid(value) && !Type.isInstance(value)) {
+export default (Type, check) => (value, alt, options = {}) => {
+	if (options.coerce !== false && check(value, true) && !check(value)) {
 		value = new Type(value);
 	}
-	return Type.isInstance(value) ? value : alt;
+	return check(value) ? value : alt;
 };

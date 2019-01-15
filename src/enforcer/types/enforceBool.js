@@ -1,4 +1,4 @@
-import { isBoolean } from 'lodash';
+import isBoolean from '../../checks/isBool';
 
 /**
  * If the first value is a [boolean]{@link https://lodash.com/docs/#isBoolean}, then return that, otherwise return the alt value.

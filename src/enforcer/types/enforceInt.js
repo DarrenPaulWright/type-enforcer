@@ -1,4 +1,5 @@
-import { clamp, isInteger } from 'lodash';
+import { clamp } from 'lodash';
+import isInt from '../../checks/isInt';
 
 /**
  * If the first value is an [integer]{@link https://lodash.com/docs/#isInteger} then return that, otherwise return the alt value.
@@ -13,5 +14,5 @@ import { clamp, isInteger } from 'lodash';
  * @returns {int}
  */
 export default (value, alt, minValue = -Infinity, maxValue = Infinity) => {
-	return isInteger(value) ? clamp(value, minValue, maxValue) : alt;
+	return isInt(value) ? clamp(value, minValue, maxValue) : alt;
 };

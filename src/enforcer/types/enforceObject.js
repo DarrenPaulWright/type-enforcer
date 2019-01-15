@@ -1,4 +1,4 @@
-import { isPlainObject } from 'lodash';
+import isObject from '../../checks/isObject';
 
 /**
  * If the first value is a [plain object]{@link https://lodash.com/docs/#isPlainObject} then return that, otherwise return the alt value.
@@ -10,4 +10,4 @@ import { isPlainObject } from 'lodash';
  *
  * @returns {Object}
  */
-export default (value, alt) => isPlainObject(value) ? value : alt;
+export default (value, alt) => isObject(value) ? value : alt;

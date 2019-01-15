@@ -1,3 +1,4 @@
+import isPoint from '../../checks/isPoint';
 import enforcePoint from '../../enforcer/types/enforcePoint';
 import Point from '../../types/Point';
 import { buildMethod, compareCustomType } from './methodAny';
@@ -19,5 +20,5 @@ import { buildMethod, compareCustomType } from './methodAny';
 export default buildMethod({
 	init: new Point(),
 	enforce: enforcePoint,
-	compare: compareCustomType(Point)
+	compare: compareCustomType(Point, isPoint)
 });

@@ -1,4 +1,4 @@
-import { isFunction } from 'lodash';
+import isFunction from '../../checks/isFunc';
 
 /**
  * If the first value is a [function]{@link https://lodash.com/docs/#isFunction} then return that, otherwise return the alt value.

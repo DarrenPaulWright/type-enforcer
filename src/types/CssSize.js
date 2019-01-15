@@ -146,26 +146,13 @@ export default class CssSize {
 	 * @returns {boolean}
 	 */
 	static isValid(value) {
-		if (CssSize.isInstance(value)) {
+		if (value instanceof CssSize) {
 			return true;
 		}
 		if (['string', 'number'].includes(typeof value)) {
 			return CSS_SIZE_REGEX.test(value) || isNonZeroNumber(value);
 		}
 		return false;
-	}
-
-	/**
-	 * Determine if something is an instance of CssSize
-	 *
-	 * @memberof CssSize
-	 *
-	 * @arg {CssSize} size
-	 *
-	 * @returns {boolean}
-	 */
-	static isInstance(size) {
-		return size instanceof CssSize;
 	}
 
 	/**
@@ -318,7 +305,7 @@ export default class CssSize {
 	 * @returns {boolean}
 	 */
 	isSame(size) {
-		if (CssSize.isInstance(size)) {
+		if (size instanceof CssSize) {
 			return size.toPixels(true) === this.toPixels(true);
 		}
 		if (isNonZeroNumber(size)) {

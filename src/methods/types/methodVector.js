@@ -1,3 +1,4 @@
+import isVector from '../../checks/isVector';
 import enforceVector from '../../enforcer/types/enforceVector';
 import Vector from '../../types/Vector';
 import { buildMethod, compareCustomType } from './methodAny';
@@ -19,5 +20,5 @@ import { buildMethod, compareCustomType } from './methodAny';
 export default buildMethod({
 	init: new Vector(),
 	enforce: enforceVector,
-	compare: compareCustomType(Vector)
+	compare: compareCustomType(Vector, isVector)
 });

@@ -5,10 +5,11 @@ import { method, Point } from '../../src';
 import enforceString from '../../src/enforcer/types/enforceString';
 import { processOutput } from '../../src/methods/variants/helper';
 
+const TEST_METHOD = 'testMethod';
 const variantSet = powerset(['get', 'other', 'before', 'set']);
 const everyMethodVariant = map(variantSet, (combination) => {
 	return {
-		name: 'testMethod' + join(map(combination, startCase), ''),
+		name: TEST_METHOD + join(map(combination, startCase), ''),
 		options: combination
 	};
 });
@@ -183,6 +184,15 @@ export const testMethodType = (settings) => {
 				});
 			});
 		});
+
+		it('should not set the value of another method with the same variant', () => {
+			const testConstructor = new TestConstructor();
+
+			testConstructor[TEST_METHOD](testItem);
+
+			assert.deepEqual(testConstructor[TEST_METHOD](), testItem);
+			assert.deepEqual(testConstructor[TEST_METHOD + '2'](), init);
+		});
 	};
 
 	const getOptionCallback = (option, withTestItem) => {
@@ -208,6 +218,8 @@ export const testMethodType = (settings) => {
 
 			applyTo[methodData.name] = method[settings.name](options);
 		});
+
+		applyTo[TEST_METHOD + '2'] = method[settings.name](assign({}, settings.extraProps, extraProps));
 	};
 
 	describe('(prototype)', () => {

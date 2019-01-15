@@ -21,11 +21,11 @@ const simpleCompare = (newValue, oldValue) => newValue !== oldValue;
 
 export const deepCompare = (newValue, oldValue) => !isEqual(newValue, oldValue);
 
-export const compareCustomType = (Type) => (newValue, oldValue) => {
-	if (Type.isInstance(oldValue)) {
+export const compareCustomType = (Type, check) => (newValue, oldValue) => {
+	if (check(oldValue)) {
 		return !oldValue.isSame(newValue);
 	}
-	else if (Type.isInstance(newValue)) {
+	else if (check(newValue)) {
 		return !newValue.isSame(oldValue);
 	}
 	else {

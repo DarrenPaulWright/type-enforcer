@@ -1,3 +1,4 @@
+import isPoint from '../../checks/isPoint';
 import Point from '../../types/Point';
 import customTypeEnforcer from './customTypeEnforcer';
 
@@ -13,4 +14,4 @@ import customTypeEnforcer from './customTypeEnforcer';
  *
  * @returns {Point}
  */
-export default customTypeEnforcer(Point);
+export default customTypeEnforcer(Point, isPoint);

@@ -1,3 +1,4 @@
+import isThickness from '../../checks/isThickness';
 import enforceThickness from '../../enforcer/types/enforceThickness';
 import Thickness from '../../types/Thickness';
 import { buildMethod, compareCustomType } from './methodAny';
@@ -17,5 +18,5 @@ import { buildMethod, compareCustomType } from './methodAny';
  */
 export default buildMethod({
 	enforce: enforceThickness,
-	compare: compareCustomType(Thickness)
+	compare: compareCustomType(Thickness, isThickness)
 });

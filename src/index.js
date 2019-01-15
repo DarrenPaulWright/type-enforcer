@@ -63,7 +63,9 @@
  */
 export { default as isArray } from './checks/isArray';
 export { default as isBool } from './checks/isBool';
+export { default as isCssSize } from './checks/isCssSize';
 export { default as isDate } from './checks/isDate';
+export { default as isDockPoint } from './checks/isDockPoint';
 export { default as isElement } from './checks/isElement';
 export { default as isFunc } from './checks/isFunc';
 export { default as isInstanceOf } from './checks/isInstanceOf';
@@ -71,8 +73,11 @@ export { default as isInt } from './checks/isInt';
 export { default as isJson } from './checks/isJson';
 export { default as isNumber } from './checks/isNumber';
 export { default as isObject } from './checks/isObject';
+export { default as isPoint } from './checks/isPoint';
 export { default as isRegExp } from './checks/isRegExp';
 export { default as isString } from './checks/isString';
+export { default as isThickness } from './checks/isThickness';
+export { default as isVector } from './checks/isVector';
 
 export * from './types/CssSize';
 export { default as CssSize } from './types/CssSize';

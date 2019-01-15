@@ -93,7 +93,7 @@ export default class Thickness {
 		};
 
 		if (args.length && Thickness.isValid.apply(this, args)) {
-			if (Thickness.isInstance(args[0])) {
+			if (args[0] instanceof Thickness) {
 				setValues(args[0].top, args[0].right, args[0].bottom, args[0].left);
 			}
 			else {
@@ -128,7 +128,7 @@ export default class Thickness {
 		const args = splitArgs(arguments);
 
 		if (args.length) {
-			if (Thickness.isInstance(args[0])) {
+			if (args[0] instanceof Thickness) {
 				return true;
 			}
 			else {
@@ -146,19 +146,6 @@ export default class Thickness {
 		}
 
 		return false;
-	}
-
-	/**
-	 * Determine if something is an instance of Thickness
-	 *
-	 * @memberof Thickness
-	 *
-	 * @arg {Thickness} is
-	 *
-	 * @returns {boolean}
-	 */
-	static isInstance(is) {
-		return is instanceof Thickness;
 	}
 
 	/**

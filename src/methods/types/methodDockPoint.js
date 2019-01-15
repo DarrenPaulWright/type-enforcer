@@ -1,3 +1,4 @@
+import isDockPoint from '../../checks/isDockPoint';
 import enforceDockPoint from '../../enforcer/types/enforceDockPoint';
 import DockPoint from '../../types/DockPoint';
 import { buildMethod, compareCustomType } from './methodAny';
@@ -17,5 +18,5 @@ import { buildMethod, compareCustomType } from './methodAny';
  */
 export default buildMethod({
 	enforce: enforceDockPoint,
-	compare: compareCustomType(DockPoint)
+	compare: compareCustomType(DockPoint, isDockPoint)
 });

@@ -1,3 +1,4 @@
+import isCssSize from '../../checks/isCssSize';
 import CssSize from '../../types/CssSize';
 import customTypeEnforcer from './customTypeEnforcer';
 
@@ -13,4 +14,4 @@ import customTypeEnforcer from './customTypeEnforcer';
  *
  * @returns {CssSize}
  */
-export default customTypeEnforcer(CssSize);
+export default customTypeEnforcer(CssSize, isCssSize);

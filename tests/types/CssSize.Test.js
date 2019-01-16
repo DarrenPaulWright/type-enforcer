@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { assign, concat, map, round } from 'lodash';
+import { assign, concat, difference, find, map, round } from 'lodash';
 import {
 	AUTO,
 	CENTIMETERS,
@@ -23,7 +23,11 @@ import {
 	VIEWPORT_WIDTH,
 	ZERO_PIXELS
 } from '../../src/index';
-import { multiTest } from '../TestUtil';
+import { multiTest, testTypes, validInts, validNumbers } from '../TestUtil';
+
+const data = find(testTypes, {
+	name: 'cssSize'
+});
 
 const unitlessSizes = map([AUTO, INITIAL, INHERIT, NONE], (size) => ({
 	size: size,
@@ -143,10 +147,14 @@ describe('CssSize', () => {
 			inputKey: 'size'
 		});
 		multiTest({
-			values: inValidValues,
-			message: (input) => `should return false for ${input}`,
+			values: data.true,
 			test: testCallback,
-			assertion: 'isNotTrue'
+			assertion: 'isTrue'
+		});
+		multiTest({
+			values: difference(data.false, validInts, validNumbers),
+			test: testCallback,
+			assertion: 'isFalse'
 		});
 	});
 
@@ -198,6 +206,11 @@ describe('CssSize', () => {
 			values: inValidValues,
 			test: testCallback,
 			output: 0
+		});
+
+		it('should return the same value twice', () => {
+			const cssSize = new CssSize('22px');
+			assert.equal(cssSize.value, cssSize.value);
 		});
 	});
 
@@ -377,6 +390,15 @@ describe('CssSize', () => {
 
 		it('should return true for values that equate to the same pixels', () => {
 			assert.isTrue(new CssSize('16px').isSame(new CssSize('1rem')));
+		});
+	});
+
+	describe('.toString', () => {
+		it('should return a default string', () => {
+			assert.equal(new CssSize().toString(), '0');
+		});
+		it('should return a string', () => {
+			assert.equal(new CssSize('21px').toString(), '21px');
 		});
 	});
 });

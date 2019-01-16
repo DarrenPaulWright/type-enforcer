@@ -1,5 +1,11 @@
 import { assert } from 'chai';
+import { difference, find } from 'lodash';
 import { Thickness } from '../../src/index';
+import { multiTest, testTypes, validCssSizes, validInts, validNumbers } from '../TestUtil';
+
+const data = find(testTypes, {
+	name: 'thickness'
+});
 
 describe('Thickness', () => {
 	describe('init', () => {
@@ -161,6 +167,18 @@ describe('Thickness', () => {
 
 		it('should return false for a string with bad css values', () => {
 			assert.isFalse(Thickness.isValid('1px asdf 3px 4px'));
+		});
+
+		const testCallback = (value) => Thickness.isValid(value);
+		multiTest({
+			values: data.true,
+			test: testCallback,
+			assertion: 'isTrue'
+		});
+		multiTest({
+			values: difference(data.false, validInts, validNumbers, validCssSizes),
+			test: testCallback,
+			assertion: 'isFalse'
 		});
 	});
 

@@ -1,8 +1,13 @@
 import { assert } from 'chai';
+import { concat, find } from 'lodash';
 import { Point, Vector } from '../../src/index';
-import TestUtil from '../TestUtil';
+import TestUtil, { multiTest, testTypes } from '../TestUtil';
 
 const testUtil = new TestUtil(Vector);
+
+const data = find(testTypes, {
+	name: 'vector'
+});
 
 describe('Vector', () => {
 	describe('init', () => {
@@ -330,26 +335,16 @@ describe('Vector', () => {
 	});
 
 	describe('.isValid', () => {
-		it('should return false if an empty string', () => {
-			assert.isFalse(Vector.isValid(''));
+		const testCallback = (value) => Vector.isValid(value);
+		multiTest({
+			values: data.true,
+			test: testCallback,
+			assertion: 'isTrue'
 		});
-		it('should return false if not a parseable string', () => {
-			assert.isFalse(Vector.isValid('not a vector'));
-		});
-		it('should return false if is an object', () => {
-			assert.isFalse(Vector.isValid('{}'));
-		});
-		it('should return true if is a Vector', () => {
-			assert.isTrue(Vector.isValid(new Vector([1, 2], [3, 4])));
-		});
-		it('should return true if is a valid string', () => {
-			assert.isTrue(Vector.isValid('[[1,2],[3,4]]'));
-		});
-		it('should return false if to many points are provided', () => {
-			assert.isFalse(Vector.isValid('[[1,2],[3,4],[5,6]]'));
-		});
-		it('should return false if to many coordinates are provided', () => {
-			assert.isFalse(Vector.isValid('[[1,2,7],[3,4,8]]'));
+		multiTest({
+			values: concat(data.false, '[[1,2],[3,4],[5,6]]', '[[1,2,7],[3,4,8]]'),
+			test: testCallback,
+			assertion: 'isFalse'
 		});
 	});
 });

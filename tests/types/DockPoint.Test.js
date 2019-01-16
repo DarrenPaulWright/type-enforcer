@@ -1,8 +1,13 @@
 import { assert } from 'chai';
-import { DockPoint } from '../../src/index';
-import TestUtil from '../TestUtil';
+import { find } from 'lodash';
+import { DockPoint } from '../../src';
+import TestUtil, { multiTest, testTypes } from '../TestUtil';
 
 const testUtil = new TestUtil(DockPoint);
+
+const data = find(testTypes, {
+	name: 'dockPoint'
+});
 
 describe('DockPoint', () => {
 	describe('.primary', () => {
@@ -228,6 +233,20 @@ describe('DockPoint', () => {
 		it('should return the same string as .value()', () => {
 			const dockPoint = new DockPoint(DockPoint.POINTS.TOP_LEFT);
 			assert.equal(dockPoint.toString(), dockPoint.value());
+		});
+	});
+
+	describe('.isValid', () => {
+		const testCallback = (value) => DockPoint.isValid(value);
+		multiTest({
+			values: data.true,
+			test: testCallback,
+			assertion: 'isTrue'
+		});
+		multiTest({
+			values: data.false,
+			test: testCallback,
+			assertion: 'isFalse'
 		});
 	});
 });

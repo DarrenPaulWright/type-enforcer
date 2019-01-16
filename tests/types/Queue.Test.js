@@ -123,6 +123,44 @@ describe('Queue', () => {
 			assert.equal(testVar, 2);
 		});
 
+		it('should NOT call any callbacks when called with an invalid id', () => {
+			let testVar = 0;
+			const queue = new Queue();
+			queue.add(() => {
+				testVar = 1;
+			});
+			queue.add(() => {
+				testVar = 2;
+			});
+			queue.add(() => {
+				testVar = 3;
+			});
+
+			queue.trigger('test');
+
+			assert.equal(testVar, 0);
+		});
+
+		it('should NOT call any callbacks that are discarded during a trigger', () => {
+			let testVar = 0;
+			const queue = new Queue();
+			queue.add(() => {
+				testVar = 1;
+				queue.discard(ID1);
+				queue.discard(ID2);
+			});
+			const ID1 = queue.add(() => {
+				testVar = 2;
+			});
+			const ID2 = queue.add(() => {
+				testVar = 3;
+			});
+
+			queue.trigger();
+
+			assert.equal(testVar, 1);
+		});
+
 		it('should call the callback with args when called with an id and args', () => {
 			let testVar = 0;
 			const queue = new Queue();

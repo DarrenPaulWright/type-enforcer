@@ -94,7 +94,7 @@ const getMeasurement = (save, units, unit, element) => {
 	return save[unit];
 };
 
-const isNonZeroNumber = (size) => size && size !== ZERO_PIXELS && !isNaN(size);
+const isNonZeroNumber = (size) => !!size && size !== ZERO_PIXELS && !isNaN(size);
 
 let currentWindowWidth;
 let currentWindowHeight;

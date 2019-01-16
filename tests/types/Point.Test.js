@@ -1,5 +1,11 @@
 import { assert } from 'chai';
+import { find } from 'lodash';
 import { Point } from '../../src/index';
+import { multiTest, testTypes } from '../TestUtil';
+
+const data = find(testTypes, {
+	name: 'point'
+});
 
 describe('Point', () => {
 	describe('Init', () => {
@@ -83,6 +89,18 @@ describe('Point', () => {
 		});
 		it('should return true for an instance of Point', () => {
 			assert.isTrue(Point.isValid(new Point(1, 2)));
+		});
+
+		const testCallback = (value) => Point.isValid(value);
+		multiTest({
+			values: data.true,
+			test: testCallback,
+			assertion: 'isTrue'
+		});
+		multiTest({
+			values: data.false,
+			test: testCallback,
+			assertion: 'isFalse'
 		});
 	});
 

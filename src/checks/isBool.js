@@ -5,15 +5,15 @@ import { isBoolean } from 'lodash';
  *
  * @example
  * ``` javascript
- * import { isBoolean } from 'type-enforcer';
+ * import { isBool } from 'type-enforcer';
  *
  * isBool(false);
  * // => true
  * ```
  *
- * @function isBoolean
+ * @function isBool
  *
- * @arg   {*} value
+ * @arg {*} value
  *
  * @returns {Boolean}
  */

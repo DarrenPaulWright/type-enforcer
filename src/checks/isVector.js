@@ -14,7 +14,7 @@ import { buildCustomTypeCheck } from './checks';
  *
  * @function isVector
  *
- * @arg   {*} value
+ * @arg {*} value
  *
  * @returns {Boolean}
  */

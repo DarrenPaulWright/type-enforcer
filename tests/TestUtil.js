@@ -145,18 +145,18 @@ export const eachPair = (array1, array2, callback, isUnique = false) => {
 /**
  * @function multiTest
  *
- * @param {Object}       settings
- * @param {Object|Array} settings.values
- * @param {Object|Array} [settings.values2] - Only for eachPair. If not provided, pairs are made within the values array. If provided, pairs are only made with one from each array.
- * @param {Function}     settings.test
- * @param {Function}     [settings.filter]
- * @param {Function}     [settings.message=`should return ${output} when set to ${input}`]
- * @param {String}       [settings.inputKey]
- * @param {String}       [settings.outputKey]
- * @param {*}            [settings.output]
- * @param {Boolean}      [settings.eachPair=false] - values must be an array, runs tests on every combination of two items from values
- * @param {Boolean}      [settings.eachUniquePair=false] - like eachPair, but runs unique pairs
- * @param {String}       [settings.assertion='equal']
+ * @arg {Object}       settings
+ * @arg {Object|Array} settings.values
+ * @arg {Object|Array} [settings.values2] - Only for eachPair. If not provided, pairs are made within the values array. If provided, pairs are only made with one from each array.
+ * @arg {Function}     settings.test
+ * @arg {Function}     [settings.filter]
+ * @arg {Function}     [settings.message=`should return ${output} when set to ${input}`]
+ * @arg {String}       [settings.inputKey]
+ * @arg {String}       [settings.outputKey]
+ * @arg {*}            [settings.output]
+ * @arg {Boolean}      [settings.eachPair=false] - values must be an array, runs tests on every combination of two items from values
+ * @arg {Boolean}      [settings.eachUniquePair=false] - like eachPair, but runs unique pairs
+ * @arg {String}       [settings.assertion='equal']
  */
 export const multiTest = (settings) => {
 	const assertion = settings.assertion || 'equal';

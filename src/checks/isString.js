@@ -13,7 +13,7 @@ import { isString } from 'lodash';
  *
  * @function isString
  *
- * @arg   {*} value
+ * @arg {*} value
  *
  * @returns {Boolean}
  */

@@ -5,9 +5,9 @@ import { isInstanceOf } from '../../index';
  *
  * @function enforce.instance
  *
- * @arg   {*} value
- * @arg   {Function} constructor
- * @arg   {Object} alt
+ * @arg {*} value
+ * @arg {Function} constructor
+ * @arg {Object} alt
  *
  * @returns {Object}
  */

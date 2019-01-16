@@ -13,7 +13,7 @@ import { isArray } from 'lodash';
  *
  * @function isArray
  *
- * @arg   {*} value
+ * @arg {*} value
  *
  * @returns {Boolean}
  */

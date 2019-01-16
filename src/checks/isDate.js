@@ -13,7 +13,7 @@ import { isDate } from 'lodash';
  *
  * @function isDate
  *
- * @arg   {*} value
+ * @arg {*} value
  *
  * @returns {Boolean}
  */

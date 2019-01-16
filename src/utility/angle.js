@@ -11,7 +11,7 @@ const angle = {
 	 *
 	 * @function angle.normalize
 	 *
-	 * @arg   {Number} angle
+	 * @arg {Number} angle
 	 *
 	 * @returns {Number} - The normalized angle
 	 */
@@ -24,7 +24,7 @@ const angle = {
 	 *
 	 * @function angle.fromOrigin
 	 *
-	 * @arg   {Point} point
+	 * @arg {Point} point
 	 *
 	 * @returns {Number} - The angle
 	 */

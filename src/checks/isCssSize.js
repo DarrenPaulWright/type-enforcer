@@ -14,7 +14,7 @@ import { buildCustomTypeCheck } from './checks';
  *
  * @function isCssSize
  *
- * @arg   {*} value
+ * @arg {*} value
  *
  * @returns {Boolean}
  */

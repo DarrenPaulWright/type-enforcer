@@ -5,8 +5,8 @@ import isString from '../../checks/isString';
  *
  * @function enforce.string
  *
- * @arg   {*} value
- * @arg   {String} alt
+ * @arg {*} value
+ * @arg {String} alt
  *
  * @returns {String}
  */

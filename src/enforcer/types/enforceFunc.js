@@ -5,8 +5,8 @@ import isFunction from '../../checks/isFunc';
  *
  * @function enforce.func
  *
- * @arg   {*} value
- * @arg   {Function} alt
+ * @arg {*} value
+ * @arg {Function} alt
  *
  * @returns {Function}
  */

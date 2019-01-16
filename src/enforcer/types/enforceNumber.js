@@ -6,10 +6,10 @@ import isNumber from '../../checks/isNumber';
  *
  * @function enforce.number
  *
- * @arg   {*} value
- * @arg   {Number} alt
- * @arg   {Number} [minValue=-Infinity]
- * @arg   {Number} [maxValue=Infinity]
+ * @arg {*} value
+ * @arg {Number} alt
+ * @arg {Number} [minValue=-Infinity]
+ * @arg {Number} [maxValue=Infinity]
  *
  * @returns {Number}
  */

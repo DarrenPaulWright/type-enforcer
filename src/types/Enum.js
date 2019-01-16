@@ -72,7 +72,7 @@ export default class Enum {
 	 * @memberof Enum
 	 * @instance
 	 *
-	 * @param {Function} callback
+	 * @arg {Function} callback
 	 */
 	each(callback) {
 		each(this[VALUES], callback);

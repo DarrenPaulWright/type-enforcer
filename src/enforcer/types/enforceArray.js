@@ -5,8 +5,8 @@ import isArray from '../../checks/isArray';
  *
  * @function enforce.array
  *
- * @arg   {*} value
- * @arg   {Array} alt
+ * @arg {*} value
+ * @arg {Array} alt
  *
  * @returns {Array}
  */

@@ -13,8 +13,8 @@ import { isNumber } from 'lodash';
  *
  * @function isNumber
  *
- * @arg   {*} value
- * @arg   {Boolean} [coerce=false] - If true then see if this value can be parsed as a number
+ * @arg {*} value
+ * @arg {Boolean} [coerce=false] - If true then see if this value can be parsed as a number
  *
  * @returns {Boolean}
  */

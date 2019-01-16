@@ -8,7 +8,7 @@
  *
  * @function isJson
  *
- * @arg   {*} value
+ * @arg {*} value
  *
  * @returns {Boolean}
  */

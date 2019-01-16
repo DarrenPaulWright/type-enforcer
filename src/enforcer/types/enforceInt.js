@@ -6,10 +6,10 @@ import isInt from '../../checks/isInt';
  *
  * @function enforce.int
  *
- * @arg   {*} value
- * @arg   {int} alt
- * @arg   {int} [minValue]
- * @arg   {int} [maxValue]
+ * @arg {*} value
+ * @arg {int} alt
+ * @arg {int} [minValue]
+ * @arg {int} [maxValue]
  *
  * @returns {int}
  */

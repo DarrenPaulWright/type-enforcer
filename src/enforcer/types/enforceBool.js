@@ -5,8 +5,8 @@ import isBoolean from '../../checks/isBool';
  *
  * @function enforce.bool
  *
- * @arg   {*} value
- * @arg   {Boolean} alt
+ * @arg {*} value
+ * @arg {Boolean} alt
  *
  * @returns {Boolean}
  */

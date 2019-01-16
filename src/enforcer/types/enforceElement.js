@@ -5,8 +5,8 @@ import isElement from '../../checks/isElement';
  *
  * @function enforce.element
  *
- * @arg   {*} value
- * @arg   {Element} alt
+ * @arg {*} value
+ * @arg {Element} alt
  *
  * @returns {Element}
  */

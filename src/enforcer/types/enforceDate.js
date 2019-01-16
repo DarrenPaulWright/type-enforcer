@@ -5,7 +5,7 @@ import isDate from '../../checks/isDate';
  *
  * @function enforce.date
  *
- * @arg   {*} value
+ * @arg {*} value
  * @arg {Date} alt
  *
  * @returns {Date}

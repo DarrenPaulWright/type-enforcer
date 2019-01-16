@@ -3,9 +3,9 @@
  *
  * @function enforce.enum
  *
- * @arg   {*} value
- * @arg   {Enum} enumerable
- * @arg   {String} alt
+ * @arg {*} value
+ * @arg {Enum} enumerable
+ * @arg {String} alt
  *
  * @returns {String}
  */

@@ -5,8 +5,8 @@ import isRegExp from '../../checks/isRegExp';
  *
  * @function enforce.regExp
  *
- * @arg   {*} value
- * @arg   {RegExp} alt
+ * @arg {*} value
+ * @arg {RegExp} alt
  *
  * @returns {RegExp}
  */

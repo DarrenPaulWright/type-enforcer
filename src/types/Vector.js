@@ -53,8 +53,8 @@ const IS_BUSY = Symbol();
  *
  * @class Vector
  *
- * @param {Point} [start]
- * @param {Point} [end]
+ * @arg {Point} [start]
+ * @arg {Point} [end]
  */
 export default class Vector {
 	constructor(start, end) {

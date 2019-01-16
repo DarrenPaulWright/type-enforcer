@@ -5,15 +5,15 @@ import { isFunction } from 'lodash';
  *
  * @example
  * ``` javascript
- * import { isFunction } from 'type-enforcer';
+ * import { isFunc } from 'type-enforcer';
  *
  * isFunc(() => {});
  * // => true
  * ```
  *
- * @function isFunction
+ * @function isFunc
  *
- * @arg   {*} value
+ * @arg {*} value
  *
  * @returns {Boolean}
  */

@@ -5,7 +5,7 @@ import { isInteger } from 'lodash';
  *
  * @example
  * ``` javascript
- * import { isInteger } from 'type-enforcer';
+ * import { isInt } from 'type-enforcer';
  *
  * isInt(42);
  * // => true
@@ -13,7 +13,7 @@ import { isInteger } from 'lodash';
  *
  * @function isInt
  *
- * @arg   {*} value
+ * @arg {*} value
  *
  * @returns {Boolean}
  */

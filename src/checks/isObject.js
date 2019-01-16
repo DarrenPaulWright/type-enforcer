@@ -13,7 +13,7 @@ import { isPlainObject } from 'lodash';
  *
  * @function isObject
  *
- * @arg   {*} value
+ * @arg {*} value
  *
  * @returns {Boolean}
  */

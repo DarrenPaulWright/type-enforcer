@@ -14,7 +14,7 @@ import { buildCustomTypeCheck } from './checks';
  *
  * @function isPoint
  *
- * @arg   {*} value
+ * @arg {*} value
  *
  * @returns {Boolean}
  */

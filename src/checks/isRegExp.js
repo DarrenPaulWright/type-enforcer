@@ -13,7 +13,7 @@ import { isRegExp } from 'lodash';
  *
  * @function isRegExp
  *
- * @arg   {*} value
+ * @arg {*} value
  *
  * @returns {Boolean}
  */

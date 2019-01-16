@@ -5,8 +5,8 @@ import isObject from '../../checks/isObject';
  *
  * @function enforce.object
  *
- * @arg   {*} value
- * @arg   {Object} alt
+ * @arg {*} value
+ * @arg {Object} alt
  *
  * @returns {Object}
  */

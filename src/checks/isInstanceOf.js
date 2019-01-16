@@ -28,8 +28,8 @@ const typeOfMap = new Enum({
  *
  * @function isInstanceOf
  *
- * @arg   {*} object
- * @arg   {Function} constructor
+ * @arg {*} object
+ * @arg {Function} constructor
  *
  * @returns {Boolean}
  */

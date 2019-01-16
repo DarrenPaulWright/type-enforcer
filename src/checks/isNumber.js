@@ -14,7 +14,13 @@ import { isNumber } from 'lodash';
  * @function isNumber
  *
  * @arg   {*} value
+ * @arg   {Boolean} [coerce=false] - If true then see if this value can be parsed as a number
  *
  * @returns {Boolean}
  */
-export default (value) => isNumber(value);
+export default (value, coerce) => {
+	if (coerce === true) {
+		return !isNaN(value);
+	}
+	return isNumber(value);
+};

@@ -14,5 +14,5 @@ import isNumber from '../../checks/isNumber';
  * @returns {Number}
  */
 export default (value, alt, minValue = -Infinity, maxValue = Infinity) => {
-	return (!isNaN(value) && isNumber(value)) ? clamp(value, minValue, maxValue) : alt;
+	return isNumber(value) ? clamp(value, minValue, maxValue) : alt;
 }

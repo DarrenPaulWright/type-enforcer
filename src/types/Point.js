@@ -5,8 +5,6 @@ import angle from '../utility/angle';
 
 const SEPARATOR = ',';
 
-const isNumeric = (value) => isNumber(value) || parseFloat(value).toString() === value;
-
 /**
  * Point model with helper types
  *
@@ -64,9 +62,9 @@ export default class Point {
 			value = value.split(SEPARATOR).map(parseFloat);
 		}
 		if (isArray(value)) {
-			return value.length === 2 && isNumeric(value[0]) && isNumeric(value[1]);
+			return value.length === 2 && isNumber(value[0], true) && isNumber(value[1], true);
 		}
-		return value && isNumeric(value.x) && isNumeric(value.y);
+		return !!value && isNumber(value.x, true) && isNumber(value.y, true);
 	}
 
 	/**

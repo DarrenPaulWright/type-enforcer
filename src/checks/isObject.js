@@ -1,4 +1,6 @@
 import { isPlainObject } from 'lodash';
+import { buildCheckWithCoerce } from './checks';
+import isJson from './isJson';
 
 /**
  * Check if a value is a [plain object]{@link https://lodash.com/docs/#isPlainObject}
@@ -17,4 +19,4 @@ import { isPlainObject } from 'lodash';
  *
  * @returns {Boolean}
  */
-export default (value) => isPlainObject(value);
+export default buildCheckWithCoerce(isPlainObject, (value) => isJson(value) && isPlainObject(JSON.parse(value)));

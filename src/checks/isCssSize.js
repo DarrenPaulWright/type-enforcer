@@ -10,11 +10,18 @@ import { buildCustomTypeCheck } from './checks';
  *
  * isCssSize(new CssSize());
  * // => true
+ *
+ * isCssSize('14px');
+ * // => false
+ *
+ * isCssSize('14px', true);
+ * // => true
  * ```
  *
  * @function isCssSize
  *
  * @arg {*} value
+ * @arg {Boolean} [coerce=false] - If true then see if this value can be coerced into an array
  *
  * @returns {Boolean}
  */

@@ -10,6 +10,12 @@ import { buildCustomTypeCheck } from './checks';
  *
  * isDockPoint(new DockPoint());
  * // => true
+ *
+ * isDockPoint('top');
+ * // => false
+ *
+ * isDockPoint('top', true);
+ * // => true
  * ```
  *
  * @function isDockPoint

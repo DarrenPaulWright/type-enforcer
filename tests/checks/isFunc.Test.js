@@ -15,4 +15,24 @@ describe('isFunc', () => {
 		test: (value) => isFunc(value),
 		assertion: 'isFalse'
 	});
+	multiTest({
+		values: data.coerceTrue,
+		test: (value) => isFunc(value),
+		assertion: 'isFalse'
+	});
+	multiTest({
+		values: data.true,
+		test: (value) => isFunc(value, true),
+		assertion: 'isTrue'
+	});
+	multiTest({
+		values: data.coerceTrue,
+		test: (value) => isFunc(value, true),
+		assertion: 'isTrue'
+	});
+	multiTest({
+		values: data.coerceFalse,
+		test: (value) => isFunc(value, true),
+		assertion: 'isFalse'
+	});
 });

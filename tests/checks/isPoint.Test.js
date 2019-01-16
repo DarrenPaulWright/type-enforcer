@@ -15,4 +15,24 @@ describe('isPoint', () => {
 		test: (value) => isPoint(value),
 		assertion: 'isFalse'
 	});
+	multiTest({
+		values: data.coerceTrue,
+		test: (value) => isPoint(value),
+		assertion: 'isFalse'
+	});
+	multiTest({
+		values: data.true,
+		test: (value) => isPoint(value, true),
+		assertion: 'isTrue'
+	});
+	multiTest({
+		values: data.coerceTrue,
+		test: (value) => isPoint(value, true),
+		assertion: 'isTrue'
+	});
+	multiTest({
+		values: data.coerceFalse,
+		test: (value) => isPoint(value, true),
+		assertion: 'isFalse'
+	});
 });

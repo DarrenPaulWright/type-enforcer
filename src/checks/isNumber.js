@@ -1,4 +1,5 @@
 import { isNumber } from 'lodash';
+import { buildCheckWithCoerce } from './checks';
 
 /**
  * Check if a value is a [number]{@link https://lodash.com/docs/#isNumber}
@@ -18,9 +19,4 @@ import { isNumber } from 'lodash';
  *
  * @returns {Boolean}
  */
-export default (value, coerce) => {
-	if (coerce === true) {
-		return !isNaN(value);
-	}
-	return isNumber(value);
-};
+export default buildCheckWithCoerce(isNumber, (value) => !isNaN(value));

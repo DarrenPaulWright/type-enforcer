@@ -15,4 +15,14 @@ describe('isBool', () => {
 		test: (value) => isBool(value),
 		assertion: 'isFalse'
 	});
+	multiTest({
+		values: data.coerceTrue,
+		test: (value) => isBool(value, true),
+		assertion: 'isTrue'
+	});
+	multiTest({
+		values: data.coerceFalse,
+		test: (value) => isBool(value, true),
+		assertion: 'isFalse'
+	});
 });

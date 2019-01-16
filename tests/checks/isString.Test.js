@@ -15,4 +15,24 @@ describe('isString', () => {
 		test: (value) => isString(value),
 		assertion: 'isFalse'
 	});
+	multiTest({
+		values: data.coerceTrue,
+		test: (value) => isString(value),
+		assertion: 'isFalse'
+	});
+	multiTest({
+		values: data.true,
+		test: (value) => isString(value, true),
+		assertion: 'isTrue'
+	});
+	multiTest({
+		values: data.coerceTrue,
+		test: (value) => isString(value, true),
+		assertion: 'isTrue'
+	});
+	multiTest({
+		values: data.coerceFalse,
+		test: (value) => isString(value, true),
+		assertion: 'isFalse'
+	});
 });

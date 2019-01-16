@@ -15,4 +15,24 @@ describe('isObject', () => {
 		test: (value) => isObject(value),
 		assertion: 'isFalse'
 	});
+	multiTest({
+		values: data.coerceTrue,
+		test: (value) => isObject(value),
+		assertion: 'isFalse'
+	});
+	multiTest({
+		values: data.true,
+		test: (value) => isObject(value, true),
+		assertion: 'isTrue'
+	});
+	multiTest({
+		values: data.coerceTrue,
+		test: (value) => isObject(value, true),
+		assertion: 'isTrue'
+	});
+	multiTest({
+		values: data.coerceFalse,
+		test: (value) => isObject(value, true),
+		assertion: 'isFalse'
+	});
 });

@@ -1,4 +1,5 @@
 import { isDate } from 'lodash';
+import { buildCheckWithCoerce } from './checks';
 
 /**
  * Check if a value is a [date]{@link https://lodash.com/docs/#isDate}
@@ -9,6 +10,12 @@ import { isDate } from 'lodash';
  *
  * isDate(new Date());
  * // => true
+ *
+ * isDate('10/12/1980');
+ * // => false
+ *
+ * isDate('10/12/1980', true);
+ * // => true
  * ```
  *
  * @function isDate
@@ -17,4 +24,4 @@ import { isDate } from 'lodash';
  *
  * @returns {Boolean}
  */
-export default (value) => isDate(value);
+export default buildCheckWithCoerce(isDate, (value) => !isNaN(Date.parse(value)));

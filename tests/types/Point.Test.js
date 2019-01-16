@@ -66,31 +66,6 @@ describe('Point', () => {
 	});
 
 	describe('.isValid', () => {
-		it('should return true for a string with two numbers', () => {
-			assert.isTrue(Point.isValid('1,2'));
-		});
-		it('should return true for an array with two numbers', () => {
-			assert.isTrue(Point.isValid([1, 2]));
-		});
-		it('should return true for an array with two numeric strings', () => {
-			assert.isTrue(Point.isValid(['1', '2']));
-		});
-		it('should return true for an object with x and y', () => {
-			assert.isTrue(Point.isValid({
-				x: 1,
-				y: 2
-			}));
-		});
-		it('should return true for an object with x and y numeric strings', () => {
-			assert.isTrue(Point.isValid({
-				x: '1',
-				y: '2'
-			}));
-		});
-		it('should return true for an instance of Point', () => {
-			assert.isTrue(Point.isValid(new Point(1, 2)));
-		});
-
 		const testCallback = (value) => Point.isValid(value);
 		multiTest({
 			values: data.true,
@@ -98,7 +73,12 @@ describe('Point', () => {
 			assertion: 'isTrue'
 		});
 		multiTest({
-			values: data.false,
+			values: data.coerceTrue,
+			test: testCallback,
+			assertion: 'isTrue'
+		});
+		multiTest({
+			values: data.coerceFalse,
 			test: testCallback,
 			assertion: 'isFalse'
 		});

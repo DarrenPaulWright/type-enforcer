@@ -1,13 +1,8 @@
 import { assert } from 'chai';
-import { find } from 'lodash';
 import { DockPoint } from '../../src';
-import TestUtil, { multiTest, testTypes } from '../TestUtil';
+import TestUtil, { multiTest, dockPointData as data } from '../TestUtil';
 
 const testUtil = new TestUtil(DockPoint);
-
-const data = find(testTypes, {
-	name: 'dockPoint'
-});
 
 describe('DockPoint', () => {
 	describe('.primary', () => {

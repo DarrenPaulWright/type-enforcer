@@ -1,12 +1,8 @@
 import { assert } from 'chai';
-import { assign, find } from 'lodash';
+import { assign } from 'lodash';
 import { CssSize, method } from '../../../src';
-import { testTypes } from '../../TestUtil';
+import { cssSizeData as data } from '../../TestUtil';
 import { testMethodType } from '../methodTestUtility';
-
-const data = find(testTypes, {
-	name: 'cssSize'
-});
 
 describe('method', () => {
 	describe('.cssSize (stringify)', () => {

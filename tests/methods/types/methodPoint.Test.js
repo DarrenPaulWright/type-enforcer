@@ -1,12 +1,8 @@
 import { assert } from 'chai';
-import { assign, find } from 'lodash';
+import { assign } from 'lodash';
 import { method, Point } from '../../../src';
-import { testTypes } from '../../TestUtil';
+import { pointData as data } from '../../TestUtil';
 import { testMethodType } from '../methodTestUtility';
-
-const data = find(testTypes, {
-	name: 'point'
-});
 
 describe('method', () => {
 	describe('.point (stringify)', () => {

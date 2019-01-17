@@ -1,8 +1,5 @@
-import { find } from 'lodash';
 import { isString } from '../../src';
-import { multiTest, testTypes } from '../TestUtil';
-
-const data = find(testTypes, {name: 'string'});
+import { multiTest, stringData as data } from '../TestUtil';
 
 describe('isString', () => {
 	multiTest({

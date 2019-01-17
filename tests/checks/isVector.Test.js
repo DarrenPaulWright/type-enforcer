@@ -1,8 +1,5 @@
-import { find } from 'lodash';
 import { isVector } from '../../src';
-import { multiTest, testTypes } from '../TestUtil';
-
-const data = find(testTypes, {name: 'vector'});
+import { multiTest, vectorData as data } from '../TestUtil';
 
 describe('isVector', () => {
 	multiTest({

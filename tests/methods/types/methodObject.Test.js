@@ -1,12 +1,8 @@
 import { assert } from 'chai';
-import { assign, find } from 'lodash';
+import { assign } from 'lodash';
 import { method } from '../../../src';
-import { testTypes } from '../../TestUtil';
+import { objectData as data } from '../../TestUtil';
 import { testMethodType } from '../methodTestUtility';
-
-const data = find(testTypes, {
-	name: 'object'
-});
 
 describe('method', () => {
 	describe('.object', () => {

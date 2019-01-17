@@ -1,15 +1,11 @@
 import { assert } from 'chai';
-import { assign, find, map, round } from 'lodash';
+import { assign, map, round } from 'lodash';
 import {
 	AUTO,
 	CssSize,
 	PIXELS
 } from '../../src/index';
-import { multiTest, testTypes, unitlessCssSizes, fixedCssUnits, percentCssUnits, validCssValuesShortList, validCssValues } from '../TestUtil';
-
-const data = find(testTypes, {
-	name: 'cssSize'
-});
+import { multiTest, cssSizeData as data, unitlessCssSizes, fixedCssUnits, percentCssUnits, validCssValuesShortList, validCssValues } from '../TestUtil';
 
 const zeros = [0, '0'];
 

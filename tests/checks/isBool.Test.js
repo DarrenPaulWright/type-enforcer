@@ -1,8 +1,5 @@
-import { find } from 'lodash';
 import { isBool } from '../../src';
-import { multiTest, testTypes } from '../TestUtil';
-
-const data = find(testTypes, {name: 'bool'});
+import { multiTest, boolData as data } from '../TestUtil';
 
 describe('isBool', () => {
 	multiTest({

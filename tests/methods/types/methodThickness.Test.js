@@ -1,12 +1,8 @@
 import { assert } from 'chai';
-import { assign, find } from 'lodash';
+import { assign } from 'lodash';
 import { method, Thickness } from '../../../src';
-import { testTypes } from '../../TestUtil';
+import { thicknessData as data } from '../../TestUtil';
 import { testMethodType } from '../methodTestUtility';
-
-const data = find(testTypes, {
-	name: 'thickness'
-});
 
 describe('method', () => {
 	describe('.thickness (stringify)', () => {

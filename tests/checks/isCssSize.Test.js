@@ -1,8 +1,5 @@
-import { find } from 'lodash';
 import { isCssSize } from '../../src';
-import { multiTest, testTypes } from '../TestUtil';
-
-const data = find(testTypes, {name: 'cssSize'});
+import { multiTest, cssSizeData as data } from '../TestUtil';
 
 describe('isCssSize', () => {
 	multiTest({

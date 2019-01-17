@@ -210,77 +210,87 @@ export const testValues = concat(
 	validVectors
 );
 
-export const testTypes = [{
+export const arrayData = {
 	value: Array,
 	name: 'array',
 	true: validArrays,
 	false: difference(testValues, validArrays),
 	coerceTrue: ['["test"]', '[]'],
 	coerceFalse: difference(testValues, validArrays, validVectors)
-}, {
+};
+export const boolData = {
 	value: Boolean,
 	name: 'bool',
 	true: validBooleans,
 	false: difference(testValues, validBooleans),
 	coerceTrue: testValues,
 	coerceFalse: []
-}, {
+};
+export const cssSizeData = {
 	value: CssSize,
 	name: 'cssSize',
 	true: validCssSizes,
 	false: difference(testValues, validCssSizes),
 	coerceTrue: map(validCssValues, (item) => item.size),
 	coerceFalse: difference(testValues, validCssSizes, validInts, validNumbers)
-}, {
+};
+export const dateData = {
 	value: Date,
 	name: 'date',
 	true: validDates,
 	false: difference(testValues, validDates),
 	coerceTrue: ['10/12/1980', 'January 8, 2014'],
 	coerceFalse: difference(testValues, validDates, validArrays, validNumbers, validInts, validRegExps, validPoints)
-}, {
+};
+export const dockPointData = {
 	value: DockPoint,
 	name: 'dockPoint',
 	true: validDockPoints,
 	false: difference(testValues, validDockPoints, ['']),
 	coerceTrue: coercableDockPoints,
 	coerceFalse: difference(testValues, validDockPoints, [''])
-}, {
+};
+export const elementData = {
 	value: Element,
 	name: 'element',
 	true: validElements,
 	false: difference(testValues, validElements),
 	coerceTrue: [],
 	coerceFalse: []
-}, {
+};
+export const functionData = {
 	value: Function,
 	name: 'func',
 	true: validFunctions,
 	false: difference(testValues, validFunctions),
 	coerceTrue: [],
 	coerceFalse: []
-}, {
+};
+export const intData = {
 	name: 'int',
 	skip: ['number'],
 	true: validInts,
 	false: difference(testValues, validInts),
 	coerceTrue: coerceNumberTrue,
 	coerceFalse: concat(coerceNumberFalse, coerceInfinity)
-}, {
+};
+export const numberData = {
 	value: Number,
 	name: 'number',
 	true: validNumbers,
 	false: difference(testValues, validNumbers, validInts),
 	coerceTrue: concat(coerceNumberTrue, coerceInfinity),
 	coerceFalse: coerceNumberFalse
-}, {
+};
+export const objectData = {
 	value: Object,
 	name: 'object',
 	true: validObjects,
 	false: [null, undefined, true, false],
 	coerceTrue: ['{}', '{"test":"test"}'],
 	coerceFalse: validStrings
-}, {
+};
+export const pointData = {
 	value: Point,
 	name: 'point',
 	true: validPoints,
@@ -293,35 +303,57 @@ export const testTypes = [{
 		y: 2
 	}],
 	coerceFalse: difference(testValues, validPoints)
-}, {
+};
+export const regExpData = {
 	value: RegExp,
 	name: 'regExp',
 	true: validRegExps,
 	false: difference(testValues, validRegExps),
 	coerceTrue: ['test', '/[a-z]+/gi'],
 	coerceFalse: difference(testValues, validStrings, validRegExps)
-}, {
+};
+export const stringData = {
 	value: String,
 	name: 'string',
 	true: validStrings,
 	false: difference(testValues, validStrings),
 	coerceTrue: difference(testValues, validStrings, [null, undefined]),
 	coerceFalse: [null, undefined]
-}, {
+};
+export const thicknessData = {
 	value: Thickness,
 	name: 'thickness',
 	true: validThicknesses,
 	false: difference(testValues, validThicknesses),
 	coerceTrue: ['1px', '1px 2px 3px 4px'],
 	coerceFalse: difference(testValues, validThicknesses, validCssSizes, validInts, validNumbers, validArrays)
-}, {
+};
+export const vectorData = {
 	value: Vector,
 	name: 'vector',
 	true: validVectors,
 	false: difference(testValues, validVectors),
 	coerceTrue: ['[[1,2],[3,4]]'],
 	coerceFalse: concat(difference(testValues, validVectors), ['[[1,2],[3,4],[5,6]]', '[[1,2,7],[3,4,8]]'])
-}];
+};
+
+export const testTypes = [
+	arrayData,
+	boolData,
+	cssSizeData,
+	dateData,
+	dockPointData,
+	elementData,
+	functionData,
+	intData,
+	numberData,
+	objectData,
+	pointData,
+	regExpData,
+	stringData,
+	thicknessData,
+	vectorData
+];
 
 export const eachPair = (array1, array2, callback, isUnique = false) => {
 	let i;

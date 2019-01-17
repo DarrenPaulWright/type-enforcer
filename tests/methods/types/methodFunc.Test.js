@@ -1,10 +1,6 @@
-import { assign, find } from 'lodash';
-import { testTypes } from '../../TestUtil';
+import { assign } from 'lodash';
+import { functionData as data } from '../../TestUtil';
 import { testMethodType } from '../methodTestUtility';
-
-const data = find(testTypes, {
-	name: 'func'
-});
 
 describe('method', () => {
 	describe('.func', () => {

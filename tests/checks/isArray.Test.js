@@ -1,8 +1,5 @@
-import { find } from 'lodash';
 import { isArray } from '../../src';
-import { multiTest, testTypes } from '../TestUtil';
-
-const data = find(testTypes, {name: 'array'});
+import { multiTest, arrayData as data } from '../TestUtil';
 
 describe('isArray', () => {
 	multiTest({

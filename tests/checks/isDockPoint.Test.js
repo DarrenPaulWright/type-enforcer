@@ -1,8 +1,5 @@
-import { find } from 'lodash';
 import { isDockPoint } from '../../src';
-import { multiTest, testTypes } from '../TestUtil';
-
-const data = find(testTypes, {name: 'dockPoint'});
+import { multiTest, dockPointData as data } from '../TestUtil';
 
 describe('isDockPoint', () => {
 	multiTest({

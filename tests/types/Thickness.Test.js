@@ -1,11 +1,6 @@
 import { assert } from 'chai';
-import { find } from 'lodash';
 import { Thickness } from '../../src/index';
-import { multiTest, testTypes } from '../TestUtil';
-
-const data = find(testTypes, {
-	name: 'thickness'
-});
+import { multiTest, thicknessData as data } from '../TestUtil';
 
 describe('Thickness', () => {
 	describe('init', () => {

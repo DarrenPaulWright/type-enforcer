@@ -1,12 +1,8 @@
 import { assert } from 'chai';
-import { assign, find } from 'lodash';
+import { assign } from 'lodash';
 import { method, Vector } from '../../../src';
-import { testTypes } from '../../TestUtil';
+import { vectorData as data } from '../../TestUtil';
 import { testMethodType } from '../methodTestUtility';
-
-const data = find(testTypes, {
-	name: 'vector'
-});
 
 describe('method', () => {
 	describe('.vector (stringify)', () => {

@@ -1,8 +1,5 @@
-import { find } from 'lodash';
 import { isRegExp } from '../../src';
-import { multiTest, testTypes } from '../TestUtil';
-
-const data = find(testTypes, {name: 'regExp'});
+import { multiTest, regExpData as data } from '../TestUtil';
 
 describe('isRegExp', () => {
 	multiTest({

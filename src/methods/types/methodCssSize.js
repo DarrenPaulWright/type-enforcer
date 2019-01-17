@@ -1,4 +1,5 @@
 import isCssSize from '../../checks/isCssSize';
+import enforceBool from '../../enforcer/types/enforceBool';
 import enforceCssSize from '../../enforcer/types/enforceCssSize';
 import CssSize from '../../types/CssSize';
 import { buildMethod, compareCustomType } from './methodAny';
@@ -17,6 +18,8 @@ import { buildMethod, compareCustomType } from './methodAny';
  * @returns {Function}
  */
 export default buildMethod({
-	enforce: enforceCssSize,
+	enforce: (newValue, oldValue, options) => {
+		return enforceCssSize(newValue, oldValue, enforceBool(options.coerce, true));
+	},
 	compare: compareCustomType(CssSize, isCssSize)
 });

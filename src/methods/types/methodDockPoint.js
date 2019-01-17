@@ -1,4 +1,5 @@
 import isDockPoint from '../../checks/isDockPoint';
+import enforceBool from '../../enforcer/types/enforceBool';
 import enforceDockPoint from '../../enforcer/types/enforceDockPoint';
 import DockPoint from '../../types/DockPoint';
 import { buildMethod, compareCustomType } from './methodAny';
@@ -17,6 +18,8 @@ import { buildMethod, compareCustomType } from './methodAny';
  * @returns {Function}
  */
 export default buildMethod({
-	enforce: enforceDockPoint,
+	enforce: (newValue, oldValue, options) => {
+		return enforceDockPoint(newValue, oldValue, enforceBool(options.coerce, true));
+	},
 	compare: compareCustomType(DockPoint, isDockPoint)
 });

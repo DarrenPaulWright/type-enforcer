@@ -1,4 +1,5 @@
 import isPoint from '../../checks/isPoint';
+import enforceBool from '../../enforcer/types/enforceBool';
 import enforcePoint from '../../enforcer/types/enforcePoint';
 import Point from '../../types/Point';
 import { buildMethod, compareCustomType } from './methodAny';
@@ -19,6 +20,8 @@ import { buildMethod, compareCustomType } from './methodAny';
  */
 export default buildMethod({
 	init: new Point(),
-	enforce: enforcePoint,
+	enforce: (newValue, oldValue, options) => {
+		return enforcePoint(newValue, oldValue, enforceBool(options.coerce, true));
+	},
 	compare: compareCustomType(Point, isPoint)
 });

@@ -1,4 +1,5 @@
 import isVector from '../../checks/isVector';
+import enforceBool from '../../enforcer/types/enforceBool';
 import enforceVector from '../../enforcer/types/enforceVector';
 import Vector from '../../types/Vector';
 import { buildMethod, compareCustomType } from './methodAny';
@@ -19,6 +20,8 @@ import { buildMethod, compareCustomType } from './methodAny';
  */
 export default buildMethod({
 	init: new Vector(),
-	enforce: enforceVector,
+	enforce: (newValue, oldValue, options) => {
+		return enforceVector(newValue, oldValue, enforceBool(options.coerce, true));
+	},
 	compare: compareCustomType(Vector, isVector)
 });

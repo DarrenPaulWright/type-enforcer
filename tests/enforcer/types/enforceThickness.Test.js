@@ -11,11 +11,11 @@ describe('enforce', () => {
 		});
 
 		it('should return the setter value when "inherit" is provided', () => {
-			assert.deepEqual(enforce.thickness(INHERIT, validThicknesses[1]).toString(), INHERIT);
+			assert.deepEqual(enforce.thickness(INHERIT, validThicknesses[1], true).toString(), INHERIT);
 		});
 
 		it('should return the setter value when "initial" is provided', () => {
-			assert.deepEqual(enforce.thickness(INITIAL, validThicknesses[1]).toString(), INITIAL);
+			assert.deepEqual(enforce.thickness(INITIAL, validThicknesses[1], true).toString(), INITIAL);
 		});
 
 		runNegativeTests('thickness', validThicknesses[1]);

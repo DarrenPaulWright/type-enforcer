@@ -28,17 +28,11 @@ Type enforcement library for javascript
         * [.element([element])](#CssSize+element) ⇒ <code>this</code> \| <code>Element</code>
     * _static_
         * [.isValid(value)](#CssSize.isValid) ⇒ <code>boolean</code>
-        * [.isInstance(size)](#CssSize.isInstance) ⇒ <code>boolean</code>
 
 <a name="new_CssSize_new"></a>
 
 ### new CssSize([size])
-A class for css sizes
-
-## Usage
-``` javascript
-import { CssSize } from 'type-enforcer';
-```
+A class for css sizes## Usage``` javascriptimport { CssSize } from 'type-enforcer';```
 
 
 | Param | Type | Default |
@@ -135,17 +129,6 @@ Determine if something is a valid css size
 | Param | Type |
 | --- | --- |
 | value | <code>\*</code> | 
-
-<a name="CssSize.isInstance"></a>
-
-### CssSize.isInstance(size) ⇒ <code>boolean</code>
-Determine if something is an instance of CssSize
-
-**Kind**: static method of [<code>CssSize</code>](#CssSize)  
-
-| Param | Type |
-| --- | --- |
-| size | [<code>CssSize</code>](#CssSize) | 
 
 
 ## License

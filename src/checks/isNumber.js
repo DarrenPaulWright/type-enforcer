@@ -10,12 +10,18 @@ import { buildCheckWithCoerce } from './checks';
  *
  * isNumber(3.14159);
  * // => true
+ *
+ * isNumber('3.14159');
+ * // => false
+ *
+ * isNumber('3.14159', true);
+ * // => true
  * ```
  *
  * @function isNumber
  *
  * @arg {*} value
- * @arg {Boolean} [coerce=false] - If true then see if this value can be parsed as a number
+ * @arg {Boolean} [coerce=false] - If true then see if this value can be coerced into a Number
  *
  * @returns {Boolean}
  */

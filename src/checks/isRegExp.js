@@ -1,4 +1,5 @@
-import { isRegExp } from 'lodash';
+import { isRegExp, isString } from 'lodash';
+import { buildCheckWithCoerce } from './checks';
 
 /**
  * Check if a value is a [RegExp]{@link https://lodash.com/docs/#isRegExp}
@@ -9,12 +10,19 @@ import { isRegExp } from 'lodash';
  *
  * isRegExp(/*+/g);
  * // => true
+ *
+ * isInt('/*+/g');
+ * // => false
+ *
+ * isInt('/*+/g', true);
+ * // => true
  * ```
  *
  * @function isRegExp
  *
  * @arg {*} value
+ * @arg {Boolean} [coerce=false] - If true then see if this value can be coerced into a RegExp
  *
  * @returns {Boolean}
  */
-export default (value) => isRegExp(value);
+export default buildCheckWithCoerce(isRegExp, (value) => isString(value));

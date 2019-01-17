@@ -27,36 +27,11 @@ Type enforcement library for javascript
         * [.clone()](#Point+clone) ⇒ <code>Boolean</code>
     * _static_
         * [.isValid(value)](#Point.isValid) ⇒ <code>boolean</code>
-        * [.isInstance(is)](#Point.isInstance) ⇒ <code>boolean</code>
 
 <a name="new_Point_new"></a>
 
 ### new Point([x], [y])
-Point model with helper types
-
-## Usage
-``` javascript
-import { Point } from 'type-enforcer';
-```
-
-Examples:
-``` javascript
-const point1 = new Point();
-console.log(point1.toString());
-// => '0,0'
-
-const point2 = new Point({ x:1, y:2 });
-console.log(point2.toString());
-// => '1,2'
-
-const point3 = new Point([3, 4]);
-console.log(point3.toString());
-// => '3,4'
-
-const point4 = new Point(5, 6);
-console.log(point4.toString());
-// => '5,6'
-```
+Point model with helper types## Usage``` javascriptimport { Point } from 'type-enforcer';```Examples:``` javascriptconst point1 = new Point();console.log(point1.toString());// => '0,0'const point2 = new Point({ x:1, y:2 });console.log(point2.toString());// => '1,2'const point3 = new Point([3, 4]);console.log(point3.toString());// => '3,4'const point4 = new Point(5, 6);console.log(point4.toString());// => '5,6'```
 
 
 | Param | Type | Default |
@@ -160,17 +135,6 @@ Determine if something is a valid point
 | Param | Type |
 | --- | --- |
 | value | <code>\*</code> | 
-
-<a name="Point.isInstance"></a>
-
-### Point.isInstance(is) ⇒ <code>boolean</code>
-Determine if something is an instance of Point
-
-**Kind**: static method of [<code>Point</code>](#Point)  
-
-| Param | Type |
-| --- | --- |
-| is | [<code>Point</code>](#Point) | 
 
 
 ## License

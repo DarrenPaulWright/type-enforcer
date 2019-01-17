@@ -10,11 +10,18 @@ import { buildCustomTypeCheck } from './checks';
  *
  * isVector(new Vector());
  * // => true
+ *
+ * isVector('[[1,2],[3,4]]');
+ * // => false
+ *
+ * isVector('[[1,2],[3,4]]', true);
+ * // => true
  * ```
  *
  * @function isVector
  *
  * @arg {*} value
+ * @arg {Boolean} [coerce=false] - If true then see if this value can be coerced into a Vector
  *
  * @returns {Boolean}
  */

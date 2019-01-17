@@ -26,17 +26,11 @@ Type enforcement library for javascript
         * [.offset([point])](#Vector+offset) ⇒ <code>this</code> \| <code>Point</code>
     * _static_
         * [.isValid(value)](#Vector.isValid) ⇒ <code>boolean</code>
-        * [.isInstance(is)](#Vector.isInstance) ⇒ <code>boolean</code>
 
 <a name="new_Vector_new"></a>
 
 ### new Vector([start], [end])
-Vector model with helper types
-
-## Usage
-``` javascript
-import { Vector } from 'type-enforcer';
-```
+Vector model with helper types## Usage``` javascriptimport { Vector } from 'type-enforcer';```
 
 
 | Param | Type |
@@ -132,17 +126,6 @@ Determine if something is a valid Vector
 | Param | Type |
 | --- | --- |
 | value | <code>\*</code> | 
-
-<a name="Vector.isInstance"></a>
-
-### Vector.isInstance(is) ⇒ <code>boolean</code>
-Determine if something is an instance of Vector
-
-**Kind**: static method of [<code>Vector</code>](#Vector)  
-
-| Param | Type |
-| --- | --- |
-| is | [<code>Vector</code>](#Vector) | 
 
 
 ## License

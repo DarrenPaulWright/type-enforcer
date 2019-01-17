@@ -21,6 +21,7 @@ import { buildCheckWithCoerce } from './checks';
  * @function isDate
  *
  * @arg {*} value
+ * @arg {Boolean} [coerce=false] - If true then see if this value can be coerced into a Date
  *
  * @returns {Boolean}
  */

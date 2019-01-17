@@ -11,11 +11,18 @@ import isJson from './isJson';
  *
  * isObject({});
  * // => true
+ *
+ * isObject('{}');
+ * // => false
+ *
+ * isObject('{}', true);
+ * // => true
  * ```
  *
  * @function isObject
  *
  * @arg {*} value
+ * @arg {Boolean} [coerce=false] - If true then see if this value can be coerced into an Object
  *
  * @returns {Boolean}
  */

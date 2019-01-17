@@ -12,7 +12,8 @@ import {
 	INHERIT,
 	INITIAL,
 	MILLIMETERS,
-	NONE, PERCENT,
+	NONE,
+	PERCENT,
 	PICAS,
 	PIXELS,
 	Point,
@@ -47,9 +48,6 @@ export const validDockPoints = [new DockPoint(DockPoint.POINTS.TOP_CENTER),
 export const validPoints = [new Point(1, 2), new Point([3, 4])];
 export const validThicknesses = [new Thickness('12px'), new Thickness('20px')];
 export const validVectors = [new Vector([1, 2], [3, 4]), new Vector([3, 4], [5, 6])];
-
-
-
 
 export const unitlessCssSizes = map([AUTO, INITIAL, INHERIT, NONE], (size) => ({
 	size: size,
@@ -109,9 +107,6 @@ const notationUnits = map(cssUnits, (unit) => ({
 
 export const validCssValuesShortList = concat(positiveUnits, validSizes);
 export const validCssValues = concat(validCssValuesShortList, negativeUnits, notationUnits);
-
-
-
 
 // the following numeric strings are pulled from https://github.com/minimaxir/big-list-of-naughty-strings
 const coerceInfinity = [
@@ -303,29 +298,29 @@ export const testTypes = [{
 	name: 'regExp',
 	true: validRegExps,
 	false: difference(testValues, validRegExps),
-	coerceTrue: [],
-	coerceFalse: []
+	coerceTrue: ['test', '/[a-z]+/gi'],
+	coerceFalse: difference(testValues, validStrings, validRegExps)
 }, {
 	value: String,
 	name: 'string',
 	true: validStrings,
 	false: difference(testValues, validStrings),
-	coerceTrue: [],
-	coerceFalse: []
+	coerceTrue: difference(testValues, validStrings, [null, undefined]),
+	coerceFalse: [null, undefined]
 }, {
 	value: Thickness,
 	name: 'thickness',
 	true: validThicknesses,
 	false: difference(testValues, validThicknesses),
-	coerceTrue: [],
-	coerceFalse: []
+	coerceTrue: ['1px', '1px 2px 3px 4px'],
+	coerceFalse: difference(testValues, validThicknesses, validCssSizes, validInts, validNumbers, validArrays)
 }, {
 	value: Vector,
 	name: 'vector',
 	true: validVectors,
 	false: difference(testValues, validVectors),
-	coerceTrue: [],
-	coerceFalse: []
+	coerceTrue: ['[[1,2],[3,4]]'],
+	coerceFalse: concat(difference(testValues, validVectors), ['[[1,2],[3,4],[5,6]]', '[[1,2,7],[3,4,8]]'])
 }];
 
 export const eachPair = (array1, array2, callback, isUnique = false) => {

@@ -10,11 +10,18 @@ import { buildCustomTypeCheck } from './checks';
  *
  * isThickness(new Thickness());
  * // => true
+ *
+ * isThickness('12px 20px');
+ * // => false
+ *
+ * isThickness('12px 20px', true);
+ * // => true
  * ```
  *
  * @function isThickness
  *
  * @arg {*} value
+ * @arg {Boolean} [coerce=false] - If true then see if this value can be coerced into a Thickness
  *
  * @returns {Boolean}
  */

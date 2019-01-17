@@ -10,11 +10,18 @@ import { buildCustomTypeCheck } from './checks';
  *
  * isPoint(new Point());
  * // => true
+ *
+ * isPoint('1,2');
+ * // => false
+ *
+ * isPoint('1,2', true);
+ * // => true
  * ```
  *
  * @function isPoint
  *
  * @arg {*} value
+ * @arg {Boolean} [coerce=false] - If true then see if this value can be coerced into a Point
  *
  * @returns {Boolean}
  */

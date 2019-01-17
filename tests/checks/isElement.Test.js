@@ -16,23 +16,8 @@ describe('isElement', () => {
 		assertion: 'isFalse'
 	});
 	multiTest({
-		values: data.coerceTrue,
-		test: (value) => isElement(value),
-		assertion: 'isFalse'
-	});
-	multiTest({
 		values: data.true,
 		test: (value) => isElement(value, true),
 		assertion: 'isTrue'
-	});
-	multiTest({
-		values: data.coerceTrue,
-		test: (value) => isElement(value, true),
-		assertion: 'isTrue'
-	});
-	multiTest({
-		values: data.coerceFalse,
-		test: (value) => isElement(value, true),
-		assertion: 'isFalse'
 	});
 });

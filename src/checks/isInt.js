@@ -10,13 +10,19 @@ import { buildCheckWithCoerce } from './checks';
  *
  * isInt(42);
  * // => true
+ *
+ * isInt('42');
+ * // => false
+ *
+ * isInt('42', true);
+ * // => true
  * ```
  *
  * @function isInt
  *
  * @arg {*} value
+ * @arg {Boolean} [coerce=false] - If true then see if this value can be coerced into an Integer
  *
  * @returns {Boolean}
  */
-// export default (value) => isInteger(value);
 export default buildCheckWithCoerce(isInteger, (value) => !isNaN(value) && !isNaN(parseInt(value)));

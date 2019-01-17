@@ -30,17 +30,11 @@ Type enforcement library for javascript
         * [.BASIC_POINTS](#DockPoint.BASIC_POINTS) : <code>Enum</code>
         * [.POINTS](#DockPoint.POINTS) : <code>Enum</code>
         * [.isValid(value)](#DockPoint.isValid) ⇒ <code>boolean</code>
-        * [.isInstance(is)](#DockPoint.isInstance) ⇒ <code>boolean</code>
 
 <a name="new_DockPoint_new"></a>
 
 ### new DockPoint([value])
-Allows the designation of a specific point relative to an object.
-
-## Usage
-``` javascript
-import { DockPoint } from 'type-enforcer';
-```
+Allows the designation of a specific point relative to an object.## Usage``` javascriptimport { DockPoint } from 'type-enforcer';```
 
 
 | Param | Type | Default | Description |
@@ -155,17 +149,6 @@ Determine if something is a valid dock point
 | Param | Type |
 | --- | --- |
 | value | <code>\*</code> | 
-
-<a name="DockPoint.isInstance"></a>
-
-### DockPoint.isInstance(is) ⇒ <code>boolean</code>
-Determine if something is an instance of DockPoint
-
-**Kind**: static method of [<code>DockPoint</code>](#DockPoint)  
-
-| Param | Type |
-| --- | --- |
-| is | [<code>DockPoint</code>](#DockPoint) | 
 
 
 ## License

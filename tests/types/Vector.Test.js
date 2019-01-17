@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { concat, find } from 'lodash';
+import { find } from 'lodash';
 import { Point, Vector } from '../../src/index';
 import TestUtil, { multiTest, testTypes } from '../TestUtil';
 
@@ -342,7 +342,12 @@ describe('Vector', () => {
 			assertion: 'isTrue'
 		});
 		multiTest({
-			values: concat(data.false, '[[1,2],[3,4],[5,6]]', '[[1,2,7],[3,4,8]]'),
+			values: data.coerceTrue,
+			test: testCallback,
+			assertion: 'isTrue'
+		});
+		multiTest({
+			values: data.coerceFalse,
 			test: testCallback,
 			assertion: 'isFalse'
 		});

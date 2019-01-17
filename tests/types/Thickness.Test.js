@@ -1,7 +1,7 @@
 import { assert } from 'chai';
-import { difference, find } from 'lodash';
+import { find } from 'lodash';
 import { Thickness } from '../../src/index';
-import { multiTest, testTypes, validCssSizes, validInts, validNumbers } from '../TestUtil';
+import { multiTest, testTypes } from '../TestUtil';
 
 const data = find(testTypes, {
 	name: 'thickness'
@@ -145,10 +145,6 @@ describe('Thickness', () => {
 			assert.isTrue(Thickness.isValid(1, 2, 3, 4));
 		});
 
-		it('should return true for one css value', () => {
-			assert.isTrue(Thickness.isValid('1px'));
-		});
-
 		it('should return true for two css values', () => {
 			assert.isTrue(Thickness.isValid('1px', '2px'));
 		});
@@ -161,22 +157,23 @@ describe('Thickness', () => {
 			assert.isTrue(Thickness.isValid('1px', '2px', '3px', '4px'));
 		});
 
-		it('should return true for a string with four css values', () => {
-			assert.isTrue(Thickness.isValid('1px 2px 3px 4px'));
-		});
-
 		it('should return false for a string with bad css values', () => {
 			assert.isFalse(Thickness.isValid('1px asdf 3px 4px'));
 		});
 
 		const testCallback = (value) => Thickness.isValid(value);
 		multiTest({
+			values: data.coerceTrue,
+			test: testCallback,
+			assertion: 'isTrue'
+		});
+		multiTest({
 			values: data.true,
 			test: testCallback,
 			assertion: 'isTrue'
 		});
 		multiTest({
-			values: difference(data.false, validInts, validNumbers, validCssSizes),
+			values: data.coerceFalse,
 			test: testCallback,
 			assertion: 'isFalse'
 		});

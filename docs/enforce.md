@@ -11,12 +11,7 @@ Type enforcement library for javascript
 <a name="enforce"></a>
 
 ## enforce : <code>object</code>
-Utility functions for enforcing data types.
-
-## Usage
-``` javascript
-import { enforce } from 'type-enforcer';
-```
+Utility functions for enforcing data types.## Usage``` javascriptimport { enforce } from 'type-enforcer';```
 
 **Kind**: global typedef  
 

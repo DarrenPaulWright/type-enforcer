@@ -21,6 +21,7 @@ import { buildCustomTypeCheck } from './checks';
  * @function isDockPoint
  *
  * @arg {*} value
+ * @arg {Boolean} [coerce=false] - If true then see if this value can be coerced into a DockPoint
  *
  * @returns {Boolean}
  */

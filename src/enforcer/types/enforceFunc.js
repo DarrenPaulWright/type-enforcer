@@ -1,4 +1,5 @@
 import isFunction from '../../checks/isFunc';
+import enforcer from './enforcer';
 
 /**
  * If the first value is a [function]{@link https://lodash.com/docs/#isFunction} then return that, otherwise return the alt value.
@@ -10,4 +11,4 @@ import isFunction from '../../checks/isFunc';
  *
  * @returns {Function}
  */
-export default (value, alt) => isFunction(value) ? value : alt;
+export default enforcer(isFunction);

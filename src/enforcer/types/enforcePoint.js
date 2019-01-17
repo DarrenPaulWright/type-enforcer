@@ -1,6 +1,6 @@
 import isPoint from '../../checks/isPoint';
 import Point from '../../types/Point';
-import { customTypeEnforcer } from './customTypeEnforcer';
+import enforcer from './enforcer';
 
 /**
  * If the first value is a point then return that, otherwise return the alt value.
@@ -9,8 +9,8 @@ import { customTypeEnforcer } from './customTypeEnforcer';
  *
  * @arg {*} value
  * @arg {Point} alt
- * @arg {Boolean} [coerce=false] - If true then allow values that can be coerced into a Point
+ * @arg {Boolean} [coerce=false] - If true then coerce the value when possible
  *
  * @returns {Point}
  */
-export default customTypeEnforcer(Point, isPoint);
+export default enforcer(isPoint, (value) => new Point(value));

@@ -1,6 +1,6 @@
 import isThickness from '../../checks/isThickness';
 import Thickness from '../../types/Thickness';
-import { customTypeEnforcer } from './customTypeEnforcer';
+import enforcer from './enforcer';
 
 /**
  * If the first value is a thickness then return that, otherwise return the alt value.
@@ -9,8 +9,8 @@ import { customTypeEnforcer } from './customTypeEnforcer';
  *
  * @arg {*} value
  * @arg {Thickness} alt
- * @arg {Boolean} [coerce=false] - If true then allow values that can be coerced into a Thickness
+ * @arg {Boolean} [coerce=false] - If true then coerce the value when possible
  *
  * @returns {Thickness}
  */
-export default customTypeEnforcer(Thickness, isThickness);
+export default enforcer(isThickness, (value) => new Thickness(value));

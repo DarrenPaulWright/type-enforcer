@@ -1,6 +1,6 @@
 import isCssSize from '../../checks/isCssSize';
 import CssSize from '../../types/CssSize';
-import { customTypeEnforcer } from './customTypeEnforcer';
+import enforcer from './enforcer';
 
 /**
  * If the first value is a valid CssSize then return that, otherwise return the alt value.
@@ -9,8 +9,8 @@ import { customTypeEnforcer } from './customTypeEnforcer';
  *
  * @arg {*} value
  * @arg {CssSize} alt
- * @arg {Boolean} [coerce=false] - If true then allow values that can be coerced into a CssSize
+ * @arg {Boolean} [coerce=false] - If true then coerce the value when possible
  *
  * @returns {CssSize}
  */
-export default customTypeEnforcer(CssSize, isCssSize);
+export default enforcer(isCssSize, (value) => new CssSize(value));

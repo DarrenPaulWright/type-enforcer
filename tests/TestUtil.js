@@ -309,7 +309,7 @@ export const regExpData = {
 	name: 'regExp',
 	true: validRegExps,
 	false: difference(testValues, validRegExps),
-	coerceTrue: ['test', '/[a-z]+/gi'],
+	coerceTrue: ['test', '/[a-z]+/', '/[a-z]+/gi'],
 	coerceFalse: difference(testValues, validStrings, validRegExps)
 };
 export const stringData = {

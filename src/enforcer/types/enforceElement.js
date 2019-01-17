@@ -1,4 +1,5 @@
 import isElement from '../../checks/isElement';
+import enforcer from './enforcer';
 
 /**
  * If the first value is a [DOM element]{@link https://lodash.com/docs/#isElement} then return that, otherwise return the alt value.
@@ -10,4 +11,4 @@ import isElement from '../../checks/isElement';
  *
  * @returns {Element}
  */
-export default (value, alt) => isElement(value) ? value : alt;
+export default enforcer(isElement);

@@ -1,19 +1,22 @@
+import isThickness from '../../checks/isThickness';
 import enforceThickness from '../../enforcer/types/enforceThickness';
-import { buildMethod } from './methodAny';
+import Thickness from '../../types/Thickness';
+import { buildMethod, compareCustomType, mapEnforcerDefaultCoerceTrue } from './methodAny';
 
 /**
- * Builds a method for getting/setting a thickness instance
+ * Builds a chainable method for getting/setting a [Thickness](docs/Thickness.md)
  *
  * @function method.thickness
  * @extends method.any
  *
- * @arg [options=Same as method.any except:]
- * @arg [options.enforce=enforce.thickness]
- * @arg [options.compare=Thickness.isSame]
+ * @arg {Object} [options] - Same as {@link method.any} with the following differences:
+ * @arg {Function} [options.enforce=enforce.thickness]
+ * @arg {Function} [options.compare=Thickness.isSame]
+ * @arg {Boolean} [options.coerce=true] - If false then don't coerce the value
  *
  * @returns {Function}
  */
 export default buildMethod({
-	enforce: enforceThickness,
-	compare: (newValue, oldValue) => (newValue && newValue.isSame) ? !newValue.isSame(oldValue) : newValue !== oldValue
+	enforce: mapEnforcerDefaultCoerceTrue(enforceThickness),
+	compare: compareCustomType(Thickness, isThickness)
 });

@@ -1,19 +1,22 @@
+import isDockPoint from '../../checks/isDockPoint';
 import enforceDockPoint from '../../enforcer/types/enforceDockPoint';
-import { buildMethod } from './methodAny';
+import DockPoint from '../../types/DockPoint';
+import { buildMethod, compareCustomType, mapEnforcerDefaultCoerceTrue } from './methodAny';
 
 /**
- * Builds a method for getting/setting a DockPoint instance
+ * Builds a chainable method for getting/setting a [DockPoint](docs/DockPoint.md)
  *
  * @function method.dockPoint
  * @extends method.any
  *
- * @arg [options=Same as method.any except:]
- * @arg [options.enforce=enforce.dockPoint]
- * @arg [options.compare=DockPoint.isSame]
+ * @arg {Object} [options] - Same as {@link method.any} with the following differences:
+ * @arg {Function} [options.enforce=enforce.dockPoint]
+ * @arg {Function} [options.compare=DockPoint.isSame]
+ * @arg {Boolean} [options.coerce=true] - If false then don't coerce the value
  *
  * @returns {Function}
  */
 export default buildMethod({
-	enforce: enforceDockPoint,
-	compare: (newValue, oldValue) => (newValue && newValue.isSame) ? !newValue.isSame(oldValue) : newValue !== oldValue
+	enforce: mapEnforcerDefaultCoerceTrue(enforceDockPoint),
+	compare: compareCustomType(DockPoint, isDockPoint)
 });

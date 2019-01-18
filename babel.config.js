@@ -6,6 +6,7 @@ module.exports = function(api) {
 	];
 	const plugins = [
 		'lodash',
+		['istanbul', {"exclude": ["tests/**/*.js"]}],
 		['@babel/plugin-proposal-private-methods', {'loose': true}],
 		['@babel/plugin-proposal-class-properties', {'loose': true}]
 	];

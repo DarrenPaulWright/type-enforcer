@@ -1,4 +1,4 @@
-import { getStoredValue, hasOtherValidValue } from './helper';
+import { getStoredValue, hasOtherValidValue, processOutput } from './helper';
 
 export default (options) => {
 	const key = Symbol();
@@ -19,6 +19,6 @@ export default (options) => {
 			return this;
 		}
 
-		return (options.stringify && value && value.toString) ? value.toString() : value;
+		return processOutput(value, options);
 	};
 };

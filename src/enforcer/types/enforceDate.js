@@ -1,16 +1,15 @@
-import Moment from 'moment/moment';
+import isDate from '../../checks/isDate';
+import enforcer from './enforcer';
 
 /**
- * If the first value is a valid js date or a momentjs instance of a valid date then return that, otherwise return
- * the alt value.
+ * Enforce that a value is a date. Uses [isDate](docs/checks.md#isDate).
  *
  * @function enforce.date
  *
- * @arg   {Date} value
- * @arg   {Date} alt
+ * @arg {*} value
+ * @arg {Date} alt - Returned if the value is not the correct type
+ * @arg {Boolean} [coerce=false] - If true then coerce the value when possible
  *
  * @returns {Date}
  */
-export default (value, alt) => {
-	return ((Moment.isMoment(value) && value.isValid()) || Moment.isDate(value)) ? value : alt;
-}
+export default enforcer(isDate, (value) => new Date(value));

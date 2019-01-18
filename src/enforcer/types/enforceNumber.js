@@ -1,17 +1,17 @@
-import { clamp, isInteger, isNumber } from 'lodash';
+import isNumber from '../../checks/isNumber';
+import enforcer from './enforcer';
 
 /**
- * If the first value is a number then return that, otherwise return the alt value.
+ * Enforce that a value is a number (excluding NaN). Uses [isNumber](docs/checks.md#isNumber).
  *
  * @function enforce.number
  *
- * @arg   {Number} value
- * @arg   {Number} alt
- * @arg   {Number} [minValue]
- * @arg   {Number} [maxValue]
+ * @arg {*} value
+ * @arg {Number} alt - Returned if the value is not the correct type
+ * @arg {Boolean} [coerce=false] - If true then coerce the value when possible
+ * @arg {Number} [minValue=-Infinity]
+ * @arg {Number} [maxValue=Infinity]
  *
  * @returns {Number}
  */
-export default (value, alt, minValue = -Infinity, maxValue = Infinity) => {
-	return (!isNaN(value) && isNumber(value)) ? clamp(value, minValue, maxValue) : alt;
-}
+export default enforcer(isNumber, Number, true);

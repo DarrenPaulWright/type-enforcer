@@ -1,5 +1,7 @@
 # type-enforcer
 [![npm][npm]][npm-url]
+[![build][build]][build-url]
+[![Coverage Status](https://coveralls.io/repos/github/DarrenPaulWright/type-enforcer/badge.svg?branch=master)](https://coveralls.io/github/DarrenPaulWright/type-enforcer?branch=master)
 [![deps][deps]][deps-url]
 [![size][size]][size-url]
 [![Known Vulnerabilities](https://snyk.io/test/github/DarrenPaulWright/type-enforcer/badge.svg?targetFile=package.json)](https://snyk.io/test/github/DarrenPaulWright/type-enforcer?targetFile=package.json)
@@ -19,6 +21,8 @@ Type enforcement library for javascript
         * [.has(value)](#DockPoint+has) ⇒ <code>boolean</code>
         * [.swapHorizontal()](#DockPoint+swapHorizontal)
         * [.swapVertical()](#DockPoint+swapVertical)
+        * [.isSame(dockPoint)](#DockPoint+isSame) ⇒ <code>boolean</code>
+        * [.toString()](#DockPoint+toString) ⇒ <code>String</code>
         * [.primary([value])](#DockPoint+primary) ⇒ <code>this</code> \| <code>String</code>
         * [.secondary([value])](#DockPoint+secondary) ⇒ <code>this</code> \| <code>String</code>
         * [.value([value])](#DockPoint+value) ⇒ <code>this</code> \| <code>String</code>
@@ -26,12 +30,16 @@ Type enforcement library for javascript
         * [.BASIC_POINTS](#DockPoint.BASIC_POINTS) : <code>Enum</code>
         * [.POINTS](#DockPoint.POINTS) : <code>Enum</code>
         * [.isValid(value)](#DockPoint.isValid) ⇒ <code>boolean</code>
-        * [.isInstance(is)](#DockPoint.isInstance) ⇒ <code>boolean</code>
 
 <a name="new_DockPoint_new"></a>
 
 ### new DockPoint([value])
-Allows the designation of a specific point relative to an object.## Usage``` javascriptimport { DockPoint } from 'type-enforcer';```
+Allows the designation of a specific point relative to an object.
+
+## Usage
+``` javascript
+import { DockPoint } from 'type-enforcer';
+```
 
 
 | Param | Type | Default | Description |
@@ -73,6 +81,23 @@ Set the left or right value to the opposite, whether it's the primary or seconda
 
 ### dockPoint.swapVertical()
 Set the top or bottom value to the opposite, whether it's the primary or secondary
+
+**Kind**: instance method of [<code>DockPoint</code>](#DockPoint)  
+<a name="DockPoint+isSame"></a>
+
+### dockPoint.isSame(dockPoint) ⇒ <code>boolean</code>
+Determine if another DockPoint is equivalent to this one
+
+**Kind**: instance method of [<code>DockPoint</code>](#DockPoint)  
+
+| Param | Type |
+| --- | --- |
+| dockPoint | <code>\*</code> | 
+
+<a name="DockPoint+toString"></a>
+
+### dockPoint.toString() ⇒ <code>String</code>
+Get the current value as a string
 
 **Kind**: instance method of [<code>DockPoint</code>](#DockPoint)  
 <a name="DockPoint+primary"></a>
@@ -128,26 +153,17 @@ Determine if something is a valid dock point
 
 | Param | Type |
 | --- | --- |
-| value | <code>String</code> \| [<code>DockPoint</code>](#DockPoint) | 
-
-<a name="DockPoint.isInstance"></a>
-
-### DockPoint.isInstance(is) ⇒ <code>boolean</code>
-Determine if something is an instance of DockPoint
-
-**Kind**: static method of [<code>DockPoint</code>](#DockPoint)  
-
-| Param | Type |
-| --- | --- |
-| is | [<code>DockPoint</code>](#DockPoint) | 
+| value | <code>\*</code> | 
 
 
 ## License
 
-[MIT](https://github.com/darrenpaulwright/type-enforcer/blob/master/LICENSE.md)
+[MIT](LICENSE.md)
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg
 [npm-url]: https://npmjs.com/package/type-enforcer
+[build]: https://travis-ci.org/DarrenPaulWright/type-enforcer.svg?branch=master
+[build-url]: https://travis-ci.org/DarrenPaulWright/type-enforcer
 [deps]: https://david-dm.org/darrenpaulwright/type-enforcer.svg
 [deps-url]: https://david-dm.org/darrenpaulwright/type-enforcer
 [size]: https://packagephobia.now.sh/badge?p=type-enforcer

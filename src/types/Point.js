@@ -1,5 +1,9 @@
-import { each, isArray, isNumber, isString } from 'lodash';
+import isArray from '../checks/isArray';
+import isNumber from '../checks/isNumber';
+import isString from '../checks/isString';
 import angle from '../utility/angle';
+
+const SEPARATOR = ',';
 
 /**
  * Point model with helper types
@@ -13,19 +17,19 @@ import angle from '../utility/angle';
  * ``` javascript
  * const point1 = new Point();
  * console.log(point1.toString());
- * // '0,0'
+ * // => '0,0'
  *
  * const point2 = new Point({ x:1, y:2 });
  * console.log(point2.toString());
- * // '1,2'
+ * // => '1,2'
  *
  * const point3 = new Point([3, 4]);
  * console.log(point3.toString());
- * // '3,4'
+ * // => '3,4'
  *
  * const point4 = new Point(5, 6);
  * console.log(point4.toString());
- * // '5,6'
+ * // => '5,6'
  * ```
  *
  * @class Point
@@ -46,31 +50,21 @@ export default class Point {
 	 *
 	 * @memberof Point
 	 *
-	 * @arg {String|Array|Point} value
+	 * @arg {*} value
 	 *
 	 * @returns {boolean}
 	 */
-	static isValid(point) {
-		if (Point.isInstance(point)) {
+	static isValid(value) {
+		if (value instanceof Point) {
 			return true;
 		}
-		if (isArray(point)) {
-			return point.length === 2 && isNumber(point[0]) && isNumber(point[1]);
+		if (isString(value)) {
+			value = value.split(SEPARATOR).map(parseFloat);
 		}
-		return point && isNumber(point.x) && isNumber(point.y);
-	}
-
-	/**
-	 * Determine if something is an instance of Point
-	 *
-	 * @memberof Point
-	 *
-	 * @arg {Point} is
-	 *
-	 * @returns {boolean}
-	 */
-	static isInstance(is) {
-		return is instanceof Point;
+		if (isArray(value)) {
+			return value.length === 2 && isNumber(value[0], true) && isNumber(value[1], true);
+		}
+		return !!value && isNumber(value.x, true) && isNumber(value.y, true);
 	}
 
 	/**
@@ -85,6 +79,9 @@ export default class Point {
 	 * @returns {this}
 	 */
 	set(x, y) {
+		if (isString(x) && !y) {
+			x = x.split(SEPARATOR);
+		}
 		if (isArray(x)) {
 			y = x[1];
 			x = x[0];
@@ -93,8 +90,8 @@ export default class Point {
 			y = x.y;
 			x = x.x;
 		}
-		this.x = isNumber(x) ? x : 0;
-		this.y = isNumber(y) ? y : 0;
+		this.x = parseFloat(x) || 0;
+		this.y = parseFloat(y) || 0;
 
 		x = null;
 		y = null;
@@ -113,7 +110,7 @@ export default class Point {
 	 * @returns {String}
 	 */
 	toString(suffix = '') {
-		return this.x + suffix + ',' + this.y + suffix;
+		return this.x + suffix + SEPARATOR + this.y + suffix;
 	}
 
 	/**
@@ -127,6 +124,12 @@ export default class Point {
 	 * @returns {Boolean}
 	 */
 	isSame(point2) {
+		if (!point2) {
+			return false;
+		}
+		if (!(point2 instanceof Point)) {
+			return new Point(point2).toString() === this.toString();
+		}
 		return (this.x === point2.x && this.y === point2.y);
 	}
 

@@ -1,13 +1,15 @@
-import { isString } from 'lodash';
+import isString from '../../checks/isString';
+import enforcer from './enforcer';
 
 /**
- * If the first value is a string then return that, otherwise return the alt value.
+ * Enforce that a value is a string. Uses [isString](docs/checks.md#isString).
  *
  * @function enforce.string
  *
- * @arg   {String} value
- * @arg   {String} alt
+ * @arg {*} value
+ * @arg {String} alt - Returned if the value is not the correct type
+ * @arg {Boolean} [coerce=false] - If true then coerce the value when possible
  *
  * @returns {String}
  */
-export default (value, alt) => isString(value) ? value : alt;
+export default enforcer(isString, (value) => value + '');

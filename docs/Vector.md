@@ -1,5 +1,7 @@
 # type-enforcer
 [![npm][npm]][npm-url]
+[![build][build]][build-url]
+[![Coverage Status](https://coveralls.io/repos/github/DarrenPaulWright/type-enforcer/badge.svg?branch=master)](https://coveralls.io/github/DarrenPaulWright/type-enforcer?branch=master)
 [![deps][deps]][deps-url]
 [![size][size]][size-url]
 [![Known Vulnerabilities](https://snyk.io/test/github/DarrenPaulWright/type-enforcer/badge.svg?targetFile=package.json)](https://snyk.io/test/github/DarrenPaulWright/type-enforcer?targetFile=package.json)
@@ -12,22 +14,34 @@ Type enforcement library for javascript
 **Kind**: global class  
 
 * [Vector](#Vector)
-    * [new Vector()](#new_Vector_new)
+    * [new Vector([start], [end])](#new_Vector_new)
     * _instance_
         * [.isSame(vector2)](#Vector+isSame) ⇒ <code>Boolean</code>
         * [.invert()](#Vector+invert)
+        * [.toString()](#Vector+toString)
         * [.start([point])](#Vector+start) ⇒ <code>this</code> \| <code>Point</code>
         * [.end([point])](#Vector+end) ⇒ <code>this</code> \| <code>Point</code>
         * [.length([length])](#Vector+length) ⇒ <code>this</code> \| <code>Number</code>
         * [.angle([angle])](#Vector+angle) ⇒ <code>this</code> \| <code>Number</code>
         * [.offset([point])](#Vector+offset) ⇒ <code>this</code> \| <code>Point</code>
     * _static_
-        * [.isInstance(is)](#Vector.isInstance) ⇒ <code>boolean</code>
+        * [.isValid(value)](#Vector.isValid) ⇒ <code>boolean</code>
 
 <a name="new_Vector_new"></a>
 
-### new Vector()
-Vector model with helper types## Usage``` javascriptimport { Vector } from 'type-enforcer';```
+### new Vector([start], [end])
+Vector model with helper types
+
+## Usage
+``` javascript
+import { Vector } from 'type-enforcer';
+```
+
+
+| Param | Type |
+| --- | --- |
+| [start] | <code>Point</code> | 
+| [end] | <code>Point</code> | 
 
 <a name="Vector+isSame"></a>
 
@@ -44,6 +58,12 @@ Determine if another vector is the same as this one
 
 ### vector.invert()
 Switch the start and end points
+
+**Kind**: instance method of [<code>Vector</code>](#Vector)  
+<a name="Vector+toString"></a>
+
+### vector.toString()
+Get a string representation of the vector
 
 **Kind**: instance method of [<code>Vector</code>](#Vector)  
 <a name="Vector+start"></a>
@@ -101,24 +121,26 @@ The x and y difference represented as a point
 | --- | --- |
 | [point] | <code>Point</code> | 
 
-<a name="Vector.isInstance"></a>
+<a name="Vector.isValid"></a>
 
-### Vector.isInstance(is) ⇒ <code>boolean</code>
-Determine if something is an instance of Vector
+### Vector.isValid(value) ⇒ <code>boolean</code>
+Determine if something is a valid Vector
 
 **Kind**: static method of [<code>Vector</code>](#Vector)  
 
 | Param | Type |
 | --- | --- |
-| is | [<code>Vector</code>](#Vector) | 
+| value | <code>\*</code> | 
 
 
 ## License
 
-[MIT](https://github.com/darrenpaulwright/type-enforcer/blob/master/LICENSE.md)
+[MIT](LICENSE.md)
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg
 [npm-url]: https://npmjs.com/package/type-enforcer
+[build]: https://travis-ci.org/DarrenPaulWright/type-enforcer.svg?branch=master
+[build-url]: https://travis-ci.org/DarrenPaulWright/type-enforcer
 [deps]: https://david-dm.org/darrenpaulwright/type-enforcer.svg
 [deps-url]: https://david-dm.org/darrenpaulwright/type-enforcer
 [size]: https://packagephobia.now.sh/badge?p=type-enforcer

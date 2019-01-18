@@ -1,4 +1,5 @@
 import { assign, each, join } from 'lodash';
+import isString from '../checks/isString';
 import methodElement from '../methods/types/methodElement';
 import CssSize from './CssSize';
 
@@ -11,7 +12,6 @@ const TOP = Symbol();
 const RIGHT = Symbol();
 const BOTTOM = Symbol();
 const LEFT = Symbol();
-const ELEMENT = Symbol();
 
 /**
  * Replicates the functionality of css border-width, margin, and padding, or anything that requires top, right, bottom, and left css sizes.
@@ -31,24 +31,24 @@ const ELEMENT = Symbol();
  * ``` javascript
  * const thickness1 = new Thickness();
  * console.log(thickness1.toString());
- * // '0 0 0 0'
+ * // => '0 0 0 0'
  *
  * const thickness2 = new Thickness(1, 2, 3, 4);
  * console.log(thickness2.toString());
- * // '1px 2px 3px 4px'
+ * // => '1px 2px 3px 4px'
  *
  * const thickness3 = new Thickness([5, 6, 7]);
  * console.log(thickness3.toString());
- * // '5px 6px 7px 6px'
+ * // => '5px 6px 7px 6px'
  *
  * const thickness4 = new Thickness('20px 30px');
  * console.log(thickness4.toString());
- * // '20px 30px'
+ * // => '20px 30px'
  *
  * const thickness5 = new Thickness('20px');
  * thickness5.bottom = 5;
  * console.log(thickness5.toString());
- * // '20px 20px 5px'
+ * // => '20px 20px 5px'
  * ```
  *
  * @class Thickness
@@ -93,7 +93,7 @@ export default class Thickness {
 		};
 
 		if (args.length && Thickness.isValid.apply(this, args)) {
-			if (Thickness.isInstance(args[0])) {
+			if (args[0] instanceof Thickness) {
 				setValues(args[0].top, args[0].right, args[0].bottom, args[0].left);
 			}
 			else {
@@ -120,7 +120,7 @@ export default class Thickness {
 	 *
 	 * @memberof Thickness
 	 *
-	 * @arg {String|Thickness} value
+	 * @arg {*} value
 	 *
 	 * @returns {boolean}
 	 */
@@ -128,7 +128,7 @@ export default class Thickness {
 		const args = splitArgs(arguments);
 
 		if (args.length) {
-			if (Thickness.isInstance(args[0])) {
+			if (args[0] instanceof Thickness) {
 				return true;
 			}
 			else {
@@ -146,19 +146,6 @@ export default class Thickness {
 		}
 
 		return false;
-	}
-
-	/**
-	 * Determine if something is an instance of Thickness
-	 *
-	 * @memberof Thickness
-	 *
-	 * @arg {Thickness} is
-	 *
-	 * @returns {boolean}
-	 */
-	static isInstance(is) {
-		return is instanceof Thickness;
 	}
 
 	/**
@@ -262,7 +249,10 @@ export default class Thickness {
 	 * @returns {Boolean}
 	 */
 	isSame(thickness) {
-		return this.toString() === (thickness ? thickness.toString() : null);
+		if (!Thickness.isValid(thickness)) {
+			return false;
+		}
+		return this.toString() === (isString(thickness) ? thickness : thickness.toString());
 	}
 
 	/**

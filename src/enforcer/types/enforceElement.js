@@ -1,13 +1,14 @@
-import { isElement } from 'lodash';
+import isElement from '../../checks/isElement';
+import enforcer from './enforcer';
 
 /**
- * If the first value is a DOM element then return that, otherwise return the alt value.
+ * Enforce that a value is a DOM element. Uses [isElement](docs/checks.md#isElement).
  *
  * @function enforce.element
  *
- * @arg   {Element} value
- * @arg   {Element} alt
+ * @arg {*} value
+ * @arg {Element} alt - Returned if the value is not the correct type
  *
  * @returns {Element}
  */
-export default (value, alt) => isElement(value) ? value : alt;
+export default enforcer(isElement);

@@ -1,14 +1,39 @@
+const _ = require('lodash');
+const testRunnerConfig = require('test-runner-config');
+const config = require('./testRunner.config.js');
+
+const exclude = (file) => {
+	return {pattern: file, included: false};
+};
+
+const files = testRunnerConfig.getKarmaFiles(config, {
+	src: exclude
+});
+const preprocessors = {};
+_.each(testRunnerConfig.getKarmaFiles(config, {
+	css: exclude,
+	src: exclude
+}).files, (pattern) => {
+	if (pattern.included !== false) {
+		preprocessors[pattern] = ['webpack'];
+	}
+});
+
 module.exports = function(config) {
 	config.set({
-		browsers: ['Chrome', 'Firefox'],
-		files: [
-			'tests/TestUtil.js',
-			'tests/**/*.Test.js',
-		],
+		browsers: ['ChromeHeadless', 'FirefoxHeadless'],
+		customLaunchers: {
+			FirefoxHeadless: {
+				base: 'Firefox',
+				flags: ['-headless']
+			}
+		},
+		files: files.files,
 		frameworks: ['jasmine'],
-		preprocessors: {
-			'tests/TestUtil.js': ['webpack'],
-			'tests/**/*.Test.js': ['webpack']
+		preprocessors: preprocessors,
+		reporters: ['brief', 'coverage'],
+		briefReporter: {
+			renderOnRunCompleteOnly: process.argv.includes('--single-run')
 		},
 		webpack: {
 			mode: 'development',

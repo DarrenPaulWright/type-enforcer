@@ -1,5 +1,7 @@
 # type-enforcer
 [![npm][npm]][npm-url]
+[![build][build]][build-url]
+[![Coverage Status](https://coveralls.io/repos/github/DarrenPaulWright/type-enforcer/badge.svg?branch=master)](https://coveralls.io/github/DarrenPaulWright/type-enforcer?branch=master)
 [![deps][deps]][deps-url]
 [![size][size]][size-url]
 [![Known Vulnerabilities](https://snyk.io/test/github/DarrenPaulWright/type-enforcer/badge.svg?targetFile=package.json)](https://snyk.io/test/github/DarrenPaulWright/type-enforcer?targetFile=package.json)
@@ -25,13 +27,17 @@ Type enforcement library for javascript
         * [.toString()](#CssSize+toString) ⇒ <code>String</code>
         * [.element([element])](#CssSize+element) ⇒ <code>this</code> \| <code>Element</code>
     * _static_
-        * [.isValid(size)](#CssSize.isValid) ⇒ <code>boolean</code>
-        * [.isInstance(size)](#CssSize.isInstance) ⇒ <code>boolean</code>
+        * [.isValid(value)](#CssSize.isValid) ⇒ <code>boolean</code>
 
 <a name="new_CssSize_new"></a>
 
 ### new CssSize([size])
-A class for css sizes## Usage``` javascriptimport { CssSize } from 'type-enforcer';```
+A class for css sizes
+
+## Usage
+``` javascript
+import { CssSize } from 'type-enforcer';
+```
 
 
 | Param | Type | Default |
@@ -120,33 +126,24 @@ Set the element to measure font based units against
 
 <a name="CssSize.isValid"></a>
 
-### CssSize.isValid(size) ⇒ <code>boolean</code>
+### CssSize.isValid(value) ⇒ <code>boolean</code>
 Determine if something is a valid css size
 
 **Kind**: static method of [<code>CssSize</code>](#CssSize)  
 
 | Param | Type |
 | --- | --- |
-| size | <code>String</code> \| [<code>CssSize</code>](#CssSize) | 
-
-<a name="CssSize.isInstance"></a>
-
-### CssSize.isInstance(size) ⇒ <code>boolean</code>
-Determine if something is an instance of CssSize
-
-**Kind**: static method of [<code>CssSize</code>](#CssSize)  
-
-| Param | Type |
-| --- | --- |
-| size | [<code>CssSize</code>](#CssSize) | 
+| value | <code>\*</code> | 
 
 
 ## License
 
-[MIT](https://github.com/darrenpaulwright/type-enforcer/blob/master/LICENSE.md)
+[MIT](LICENSE.md)
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg
 [npm-url]: https://npmjs.com/package/type-enforcer
+[build]: https://travis-ci.org/DarrenPaulWright/type-enforcer.svg?branch=master
+[build-url]: https://travis-ci.org/DarrenPaulWright/type-enforcer
 [deps]: https://david-dm.org/darrenpaulwright/type-enforcer.svg
 [deps-url]: https://david-dm.org/darrenpaulwright/type-enforcer
 [size]: https://packagephobia.now.sh/badge?p=type-enforcer

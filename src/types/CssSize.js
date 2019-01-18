@@ -1,5 +1,6 @@
-import { assign, concat, defer, each, join, throttle } from 'lodash';
+import { assign, concat, each, join, throttle } from 'lodash';
 import methodElement from '../methods/types/methodElement';
+import isElementInDom from '../utility/isElementInDom';
 
 export const AUTO = 'auto';
 export const INITIAL = 'initial';
@@ -47,11 +48,14 @@ const NUMERIC_REGEX = new RegExp(NUMERIC_VALUE);
 const CSS_SIZE_REGEX = new RegExp(VALID_SIZES_STRING + OR + ALL_UNITS_STRING);
 
 const measureUnits = (units, save, element) => {
+	const isAttached = !(!element || !isElementInDom(element));
 	let thisElement = element || document.createElement('div');
 	let originalHeight = window.getComputedStyle(thisElement).height;
 
 	if (!element) {
 		thisElement.style.position = 'absolute';
+	}
+	if (!isAttached) {
 		document.body.appendChild(thisElement);
 	}
 
@@ -66,6 +70,9 @@ const measureUnits = (units, save, element) => {
 	}
 	else {
 		thisElement.style.height = originalHeight;
+		if (!isAttached) {
+			thisElement.parentNode.removeChild(thisElement);
+		}
 	}
 };
 
@@ -87,7 +94,7 @@ const getMeasurement = (save, units, unit, element) => {
 	return save[unit];
 };
 
-const isNonZeroNumber = (size) => size && size !== ZERO_PIXELS && !isNaN(size);
+const isNonZeroNumber = (size) => !!size && size !== ZERO_PIXELS && !isNaN(size);
 
 let currentWindowWidth;
 let currentWindowHeight;
@@ -134,31 +141,18 @@ export default class CssSize {
 	 *
 	 * @memberof CssSize
 	 *
-	 * @arg {String|CssSize} size
+	 * @arg {*} value
 	 *
 	 * @returns {boolean}
 	 */
-	static isValid(size) {
-		if (CssSize.isInstance(size)) {
+	static isValid(value) {
+		if (value instanceof CssSize) {
 			return true;
 		}
-		if (['string', 'number'].includes(typeof size)) {
-			return CSS_SIZE_REGEX.test(size) || isNonZeroNumber(size);
+		if (['string', 'number'].includes(typeof value)) {
+			return CSS_SIZE_REGEX.test(value) || isNonZeroNumber(value);
 		}
 		return false;
-	}
-
-	/**
-	 * Determine if something is an instance of CssSize
-	 *
-	 * @memberof CssSize
-	 *
-	 * @arg {CssSize} size
-	 *
-	 * @returns {boolean}
-	 */
-	static isInstance(size) {
-		return size instanceof CssSize;
 	}
 
 	/**
@@ -311,7 +305,7 @@ export default class CssSize {
 	 * @returns {boolean}
 	 */
 	isSame(size) {
-		if (CssSize.isInstance(size)) {
+		if (size instanceof CssSize) {
 			return size.toPixels(true) === this.toPixels(true);
 		}
 		if (isNonZeroNumber(size)) {
@@ -349,7 +343,7 @@ assign(CssSize.prototype, {
 	 * @returns {this|Element}
 	 */
 	element: methodElement({
-		set: function(element) {
+		set: function() {
 			this[FONT_BASED_UNITS] = {};
 		}
 	})

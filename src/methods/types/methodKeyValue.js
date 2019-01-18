@@ -1,7 +1,8 @@
-import { forOwn, isPlainObject } from 'lodash';
+import { forOwn } from 'lodash';
+import isObject from '../../checks/isObject';
 
 /**
- * Builds a method that accepts either:
+ * Builds a chainable method that accepts either:
  * - two args, a key and a value
  * - one arg, an object with multiple key/value pairs
  *
@@ -15,8 +16,8 @@ import { forOwn, isPlainObject } from 'lodash';
  */
 export default (options = {}) => {
 	return function(...args) {
-		if (options.set && (args.length === 2 || isPlainObject(args[0]))) {
-			if (isPlainObject(args[0])) {
+		if (options.set && (args.length === 2 || isObject(args[0]))) {
+			if (isObject(args[0])) {
 				forOwn(args[0], (value, key) => {
 					options.set.call(this, key, value);
 				});

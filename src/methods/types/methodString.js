@@ -1,19 +1,20 @@
 import enforceString from '../../enforcer/types/enforceString';
-import { buildMethod } from './methodAny';
+import { buildMethod, mapEnforcer } from './methodAny';
 
 /**
- * Builds a method for getting/setting a string
+ * Builds a chainable method for getting/setting a string
  *
  * @function method.string
  * @extends method.any
  *
- * @arg [options=Same as method.any except:]
- * @arg [options.init='']
- * @arg [options.enforce=enforce.string]
+ * @arg {Object} [options] - Same as {@link method.any} with the following differences:
+ * @arg {*} [options.init='']
+ * @arg {Function} [options.enforce=enforce.string]
+ * @arg {Boolean} [options.coerce=false] - If true then coerce the value when possible
  *
  * @returns {Function}
  */
 export default buildMethod({
-	enforce: enforceString,
+	enforce: mapEnforcer(enforceString),
 	init: ''
 });

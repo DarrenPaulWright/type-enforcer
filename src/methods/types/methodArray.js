@@ -1,22 +1,23 @@
-import { isEqual } from 'lodash';
 import enforceArray from '../../enforcer/types/enforceArray';
-import { buildMethod } from './methodAny';
+import { buildMethod, deepCompare, mapEnforcer, setDeepOnInit } from './methodAny';
 
 /**
- * Builds a method for getting/setting an array
+ * Builds a chainable method for getting/setting an array
  *
  * @function method.array
  * @extends method.any
  *
- * @arg [options=Same as method.any except:]
- * @arg [options.init=[]]
- * @arg [options.enforce=enforce.array]
- * @arg [options.compare=!lodash.isEqual]
+ * @arg {Object} [options] - Same as {@link method.any} with the following differences:
+ * @arg {*} [options.init=[]]
+ * @arg {Function} [options.enforce=enforce.array]
+ * @arg {Function} [options.compare=deepCompare] - Performs a deep comparison between values with [lodash.isEqual]{@link https://lodash.com/docs/#isEqual}
+ * @arg {Boolean} [options.deep=true] - If false then only use strict equality
+ * @arg {Boolean} [options.coerce=false] - If true then coerce the value when possible
  *
  * @returns {Function}
  */
 export default buildMethod({
-	enforce: enforceArray,
+	enforce: mapEnforcer(enforceArray),
 	init: [],
-	compare: (newValue, oldValue) => !isEqual(newValue, oldValue)
-});
+	compare: deepCompare
+}, setDeepOnInit);

@@ -1,10 +1,10 @@
-import { assign, castArray, cloneDeep } from 'lodash';
+import { assign, castArray, cloneDeep, isEqual } from 'lodash';
+import enforceBool from '../../enforcer/types/enforceBool';
 import before from '../variants/before';
 import beforeSet from '../variants/beforeSet';
 import get from '../variants/get';
 import getBefore from '../variants/getBefore';
 import getBeforeSet from '../variants/getBeforeSet';
-import getOther from '../variants/getOther';
 import getOtherBefore from '../variants/getOtherBefore';
 import getOtherBeforeSet from '../variants/getOtherBeforeSet';
 import getOtherSet from '../variants/getOtherSet';
@@ -20,7 +20,42 @@ const notEnforced = (newValue) => newValue;
 
 const simpleCompare = (newValue, oldValue) => newValue !== oldValue;
 
-export const buildMethod = (defaultSettings = {}) => {
+export const deepCompare = (newValue, oldValue) => !isEqual(newValue, oldValue);
+
+export const compareCustomType = (Type, check) => (newValue, oldValue) => {
+	if (check(oldValue)) {
+		return !oldValue.isSame(newValue);
+	}
+	else if (check(newValue)) {
+		return !newValue.isSame(oldValue);
+	}
+	else {
+		return newValue !== oldValue;
+	}
+};
+
+export const setDeepOnInit = (options) => {
+	if (options.deep === false) {
+		options.compare = simpleCompare;
+	}
+	delete options.deep;
+
+	return options;
+};
+
+export const mapEnforcer = (enforcer) => (newValue, oldValue, options) => {
+	return enforcer(newValue, oldValue, options.coerce);
+};
+
+export const mapEnforcerNumeric = (enforcer) => (newValue, oldValue, options) => {
+	return enforcer(newValue, oldValue, options.coerce, options.min, options.max)
+};
+
+export const mapEnforcerDefaultCoerceTrue = (enforcer) => (newValue, oldValue, options) => {
+	return enforcer(newValue, oldValue, enforceBool(options.coerce, true));
+};
+
+export const buildMethod = (defaultSettings = {}, onInit) => {
 	defaultSettings = assign({
 		enforce: notEnforced,
 		compare: simpleCompare
@@ -30,6 +65,9 @@ export const buildMethod = (defaultSettings = {}) => {
 		let method;
 
 		options = assign(cloneDeep(defaultSettings), options);
+		if (onInit) {
+			options = onInit(options);
+		}
 
 		if ('other' in options) {
 			options.other = castArray(options.other);
@@ -41,7 +79,7 @@ export const buildMethod = (defaultSettings = {}) => {
 					method = options.before ? getOtherBeforeSet : getOtherSet;
 				}
 				else {
-					method = options.before ? getOtherBefore : getOther;
+					method = options.before ? getOtherBefore : get;
 				}
 			}
 			else {
@@ -77,20 +115,20 @@ export const buildMethod = (defaultSettings = {}) => {
 };
 
 /**
- * Builds a method for getting/setting any data type
+ * Builds a chainable method for getting/setting any data type
  *
  * @function method.any
  *
  * @arg {Object}   [options]
  * @arg {*} [options.init] - The initial value
  * @arg {Function} [options.enforce] - Enforce this data type
- * @arg {Function} [options.compare=] - Compares a new value to the current value. Return true if the two values are different.
+ * @arg {Function} [options.compare] - Compares a new value to the current value. Return true if the two values are different.
  * @arg {Function} [options.before] - Called before a new valid value is set. Provides the prior value, sets the context to the methods constructor.
  * @arg {Function} [options.set] - Called after a new valid value is set. Provides the new value, sets the context to the methods constructor.
  * @arg {Function} [options.get] - Called to get the value, sets the context to the methods constructor.
- * @arg {Array}    [options.other] - An array of other values that can be set
+ * @arg {Array|*}  [options.other] - Another value/type or array of other values/types that can be set
  * @arg {Boolean}  [options.stringify=false] - If true, then call toString() on the value before returning it (if the value has a toString method)
  *
- * @returns {Function} accepts two args: a new value and forceSave override. If no args are provided then the current value is returned.
+ * @returns {Function} if a "before" or "set" option is set, then this function accepts two args: a new value and forceSave override. If no args are provided then the current value is returned. If neither "before" nor "set" is set, then only one arg is accepted, the new value. Also returns the current value if no args are provided.
  */
 export default buildMethod();

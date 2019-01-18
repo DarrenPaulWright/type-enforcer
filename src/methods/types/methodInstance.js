@@ -2,14 +2,14 @@ import enforceInstance from '../../enforcer/types/enforceInstance';
 import { buildMethod } from './methodAny';
 
 /**
- * Builds a method for getting/setting an instance of a specific constructor
+ * Builds a chainable method for getting/setting an instance of a specific constructor
  *
  * @function method.instance
  * @extends method.any
  *
- * @arg [options=Same as method.any except:]
- * @arg [options.enforce=instanceOf]
- * @arg {Constructor} [options.instance] - The item to run instanceOf against
+ * @arg {Object} [options] - Same as {@link method.any} with the following differences:
+ * @arg {Function} [options.enforce=enforce.instance]
+ * @arg {Constructor} [options.instance] - The item to run enforce.instance against
  *
  * @returns {Function}
  */

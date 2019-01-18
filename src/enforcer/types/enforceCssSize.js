@@ -1,18 +1,16 @@
+import isCssSize from '../../checks/isCssSize';
 import CssSize from '../../types/CssSize';
+import enforcer from './enforcer';
 
 /**
- * If the first value is a valid css size then return that, otherwise return the alt value.
+ * Enforce that a value is a [CssSize](docs/CssSize.md). Uses [isCssSize](docs/checks.md#isCssSize).
  *
  * @function enforce.cssSize
  *
- * @arg   {CssSize|String} value
- * @arg   {CssSize} alt
+ * @arg {*} value
+ * @arg {CssSize} alt - Returned if the value is not the correct type
+ * @arg {Boolean} [coerce=false] - If true then coerce the value when possible
  *
  * @returns {CssSize}
  */
-export default (value, alt) => {
-	if (CssSize.isValid(value) && !CssSize.isInstance(value)) {
-		value = new CssSize(value);
-	}
-	return CssSize.isInstance(value) ? value : alt;
-}
+export default enforcer(isCssSize, (value) => new CssSize(value));

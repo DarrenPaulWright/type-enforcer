@@ -1,13 +1,15 @@
-import { isPlainObject } from 'lodash';
+import isObject from '../../checks/isObject';
+import enforcer from './enforcer';
 
 /**
- * If the first value is a plain object then return that, otherwise return the alt value.
+ * Enforce that a value is an object. Uses [isObject](docs/checks.md#isObject).
  *
  * @function enforce.object
  *
- * @arg   {Object} value
- * @arg   {Object} alt
+ * @arg {*} value
+ * @arg {Object} alt - Returned if the value is not the correct type
+ * @arg {Boolean} [coerce=false] - If true then coerce the value when possible
  *
  * @returns {Object}
  */
-export default (value, alt) => isPlainObject(value) ? value : alt;
+export default enforcer(isObject, Object);

@@ -1,11 +1,14 @@
+import isFunction from '../../checks/isFunc';
+import enforcer from './enforcer';
+
 /**
- * If the first value is a function then return that, otherwise return the alt value.
+ * Enforce that a value is a function. Uses [isFunction](docs/checks.md#isFunction).
  *
  * @function enforce.func
  *
- * @arg   {Function} value
- * @arg   {Function} alt
+ * @arg {*} value
+ * @arg {Function} alt - Returned if the value is not the correct type
  *
  * @returns {Function}
  */
-export default (value, alt) => typeof value === 'function' ? value : alt;
+export default enforcer(isFunction);

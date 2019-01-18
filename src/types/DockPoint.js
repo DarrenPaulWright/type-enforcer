@@ -72,7 +72,7 @@ export default class DockPoint {
 	#vertical = [DockPoint.BASIC_POINTS.TOP, DockPoint.BASIC_POINTS.BOTTOM];
 
 	constructor(value) {
-		this.value(value || DockPoint.POINTS.TOP_CENTER);
+		this.value(value);
 	}
 
 	/**
@@ -80,29 +80,16 @@ export default class DockPoint {
 	 *
 	 * @memberof DockPoint
 	 *
-	 * @arg {String|DockPoint} value
+	 * @arg {*} value
 	 *
 	 * @returns {boolean}
 	 */
 	static isValid(value) {
-		if (DockPoint.isInstance(value)) {
+		if (value instanceof DockPoint) {
 			return true;
 		}
 
 		return DockPoint.POINTS.has(value);
-	}
-
-	/**
-	 * Determine if something is an instance of DockPoint
-	 *
-	 * @memberof DockPoint
-	 *
-	 * @arg {DockPoint} is
-	 *
-	 * @returns {boolean}
-	 */
-	static isInstance(is) {
-		return is instanceof DockPoint;
 	}
 
 	/**
@@ -172,6 +159,32 @@ export default class DockPoint {
 	get oppositeSecondary() {
 		return getOpposite(this.secondary());
 	}
+
+	/**
+	 * Determine if another DockPoint is equivalent to this one
+	 *
+	 * @memberof DockPoint
+	 * @instance
+	 *
+	 * @arg {*} dockPoint
+	 *
+	 * @returns {boolean}
+	 */
+	isSame(dockPoint) {
+		return this.value() === (dockPoint instanceof DockPoint ? dockPoint.value() : dockPoint);
+	}
+
+	/**
+	 * Get the current value as a string
+	 *
+	 * @memberof DockPoint
+	 * @instance
+	 *
+	 * @returns {String}
+	 */
+	toString() {
+		return this.value() + '';
+	}
 }
 
 assign(DockPoint.prototype, {
@@ -187,6 +200,7 @@ assign(DockPoint.prototype, {
 	 * @returns {this|String} DockPoint.BASIC_POINTS
 	 */
 	primary: methodEnum({
+		init: DockPoint.BASIC_POINTS.NONE,
 		enum: DockPoint.BASIC_POINTS
 	}),
 	/**
@@ -201,6 +215,7 @@ assign(DockPoint.prototype, {
 	 * @returns {this|String} DockPoint.BASIC_POINTS
 	 */
 	secondary: methodEnum({
+		init: DockPoint.BASIC_POINTS.NONE,
 		enum: DockPoint.BASIC_POINTS
 	}),
 	/**
@@ -220,6 +235,13 @@ assign(DockPoint.prototype, {
 			value = value.split(SEPARATOR);
 			this.primary(value[0])
 				.secondary(value[1] || DockPoint.BASIC_POINTS.NONE);
+		},
+		get: function() {
+			let value = this.primary();
+			if (this.secondary() !== DockPoint.BASIC_POINTS.NONE) {
+				value += SEPARATOR + this.secondary();
+			}
+			return value;
 		}
 	})
 });

@@ -1,5 +1,6 @@
 import { assert } from 'chai';
 import { Thickness } from '../../src/index';
+import { multiTest, thicknessData as data } from '../TestUtil';
 
 describe('Thickness', () => {
 	describe('init', () => {
@@ -85,13 +86,28 @@ describe('Thickness', () => {
 		});
 	});
 
-	describe('methods', () => {
+	describe('.set', () => {
+		it('should accept another Thickness instance', () => {
+			const thickness = new Thickness(3, 4, 5, 6);
+
+			thickness.set(new Thickness(7, 8, 9, 10));
+
+			assert.equal(thickness.top, 7);
+			assert.equal(thickness.right, 8);
+			assert.equal(thickness.bottom, 9);
+			assert.equal(thickness.left, 10);
+		});
+	});
+
+	describe('.vertical', () => {
 		it('should add the top and bottom when vertical is called', () => {
 			const thickness = new Thickness(3, 4, 5, 6);
 
 			assert.equal(thickness.vertical, 8);
 		});
+	});
 
+	describe('.horizontal', () => {
 		it('should add the left and right when horizontal is called', () => {
 			const thickness = new Thickness(3, 4, 5, 6);
 
@@ -100,6 +116,10 @@ describe('Thickness', () => {
 	});
 
 	describe('.isValid', () => {
+		it('should return false if nothing is provided', () => {
+			assert.isFalse(Thickness.isValid());
+		});
+
 		it('should return true for an instance of Thickness', () => {
 			assert.isTrue(Thickness.isValid(new Thickness(0)));
 		});
@@ -120,10 +140,6 @@ describe('Thickness', () => {
 			assert.isTrue(Thickness.isValid(1, 2, 3, 4));
 		});
 
-		it('should return true for one css value', () => {
-			assert.isTrue(Thickness.isValid('1px'));
-		});
-
 		it('should return true for two css values', () => {
 			assert.isTrue(Thickness.isValid('1px', '2px'));
 		});
@@ -136,12 +152,25 @@ describe('Thickness', () => {
 			assert.isTrue(Thickness.isValid('1px', '2px', '3px', '4px'));
 		});
 
-		it('should return true for a string with four css values', () => {
-			assert.isTrue(Thickness.isValid('1px 2px 3px 4px'));
-		});
-
 		it('should return false for a string with bad css values', () => {
 			assert.isFalse(Thickness.isValid('1px asdf 3px 4px'));
+		});
+
+		const testCallback = (value) => Thickness.isValid(value);
+		multiTest({
+			values: data.coerceTrue,
+			test: testCallback,
+			assertion: 'isTrue'
+		});
+		multiTest({
+			values: data.true,
+			test: testCallback,
+			assertion: 'isTrue'
+		});
+		multiTest({
+			values: data.coerceFalse,
+			test: testCallback,
+			assertion: 'isFalse'
 		});
 	});
 
@@ -153,9 +182,9 @@ describe('Thickness', () => {
 		});
 
 		it('should convert css units on each side', () => {
-			const thickness = new Thickness('2pc 2em 2pc 2vmin');
+			const thickness = new Thickness('2pc 3em 4pc 5pc');
 
-			assert.equal(thickness.toString(), '32px 32px 32px 12px');
+			assert.equal(thickness.toString(), '32px 48px 64px 80px');
 		});
 
 		it('should combine all sides into one if they are the same', () => {
@@ -186,6 +215,32 @@ describe('Thickness', () => {
 			const thickness = new Thickness('12px 4rem');
 
 			assert.equal(thickness.toString(), '12px 64px');
+		});
+	});
+
+	describe('.element', () => {
+		it('should measure font sizes if an element is set', () => {
+			const thickness = new Thickness('2em 3em');
+			const element = document.createElement('div');
+
+			element.style.fontSize = '16px';
+			document.body.appendChild(element);
+
+			thickness.element(element);
+
+			assert.equal(thickness.toString(), '32px 48px');
+		});
+	});
+
+	describe('.isSame', () => {
+		it('should return true for another same Thickness', () => {
+			assert.isTrue(new Thickness('32px 48px').isSame(new Thickness('32px 48px')));
+		});
+		it('should return true for a string that is the same', () => {
+			assert.isTrue(new Thickness('32px 48px').isSame('32px 48px'));
+		});
+		it('should return false for a different Thickness', () => {
+			assert.isFalse(new Thickness('32px 48px').isSame(new Thickness('48px')));
 		});
 	});
 });

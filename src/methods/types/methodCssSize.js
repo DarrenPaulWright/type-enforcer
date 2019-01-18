@@ -1,19 +1,22 @@
+import isCssSize from '../../checks/isCssSize';
 import enforceCssSize from '../../enforcer/types/enforceCssSize';
-import { buildMethod } from './methodAny';
+import CssSize from '../../types/CssSize';
+import { buildMethod, compareCustomType, mapEnforcerDefaultCoerceTrue } from './methodAny';
 
 /**
- * Builds a method for getting/setting a CssSize instance
+ * Builds a chainable method for getting/setting a [CssSize](docs/CssSize.md)
  *
  * @function method.cssSize
  * @extends method.any
  *
- * @arg [options=Same as method.any except:]
- * @arg [options.enforce=enforce.cssSize]
- * @arg [options.compare=CssSize.isSame]
+ * @arg {Object} [options] - Same as {@link method.any} with the following differences:
+ * @arg {Function} [options.enforce=enforce.cssSize]
+ * @arg {Function} [options.compare=CssSize.isSame]
+ * @arg {Boolean} [options.coerce=true] - If false then don't coerce the value
  *
  * @returns {Function}
  */
 export default buildMethod({
-	enforce: enforceCssSize,
-	compare: (newValue, oldValue) => (newValue && newValue.isSame) ? !newValue.isSame(oldValue) : newValue !== oldValue
+	enforce: mapEnforcerDefaultCoerceTrue(enforceCssSize),
+	compare: compareCustomType(CssSize, isCssSize)
 });

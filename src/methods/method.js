@@ -14,6 +14,7 @@ import methodNumber from './types/methodNumber';
 import methodObject from './types/methodObject';
 import methodPoint from './types/methodPoint';
 import methodQueue from './types/methodQueue';
+import methodRegExp from './types/methodRegExp';
 import methodString from './types/methodString';
 import methodThickness from './types/methodThickness';
 import methodVector from './types/methodVector';
@@ -66,6 +67,7 @@ export default {
 	number: methodNumber,
 	object: methodObject,
 	point: methodPoint,
+	regExp: methodRegExp,
 	string: methodString,
 	thickness: methodThickness,
 	vector: methodVector

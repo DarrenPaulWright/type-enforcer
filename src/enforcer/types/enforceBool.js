@@ -1,11 +1,15 @@
+import isBoolean from '../../checks/isBool';
+import enforcer from './enforcer';
+
 /**
- * If the first value is a boolean, then return that, otherwise return the alt value.
+ * Enforce that a value is a boolean. Uses [isBool](docs/checks.md#isBool).
  *
  * @function enforce.bool
  *
- * @arg   {Boolean} value
- * @arg   {Boolean} alt
+ * @arg {*} value
+ * @arg {Boolean} alt - Returned if the value is not the correct type
+ * @arg {Boolean} [coerce=false] - If true then coerce the value when possible
  *
  * @returns {Boolean}
  */
-export default (value, alt) => (value === false || value === true) ? value : alt;
+export default enforcer(isBoolean, (value) => !!value);

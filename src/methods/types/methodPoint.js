@@ -1,22 +1,24 @@
+import isPoint from '../../checks/isPoint';
 import enforcePoint from '../../enforcer/types/enforcePoint';
 import Point from '../../types/Point';
-import { buildMethod } from './methodAny';
+import { buildMethod, compareCustomType, mapEnforcerDefaultCoerceTrue } from './methodAny';
 
 /**
- * Builds a method for getting/setting a Point instance
+ * Builds a chainable method for getting/setting a [Point](docs/Point.md)
  *
  * @function method.point
  * @extends method.any
  *
- * @arg [options=Same as method.any except:]
- * @arg [options.init=Point]
- * @arg [options.enforce=enforce.point]
- * @arg [options.compare=Point.isSame]
+ * @arg {Object} [options] - Same as {@link method.any} with the following differences:
+ * @arg {*} [options.init=Point]
+ * @arg {Function} [options.enforce=enforce.point]
+ * @arg {Function} [options.compare=Point.isSame]
+ * @arg {Boolean} [options.coerce=true] - If false then don't coerce the value
  *
  * @returns {Function}
  */
 export default buildMethod({
 	init: new Point(),
-	enforce: enforcePoint,
-	compare: (point1, point2) => !point1.isSame(point2)
+	enforce: mapEnforcerDefaultCoerceTrue(enforcePoint),
+	compare: compareCustomType(Point, isPoint)
 });

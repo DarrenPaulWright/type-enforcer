@@ -11,6 +11,7 @@ import enforceInt from './types/enforceInt';
 import enforceNumber from './types/enforceNumber';
 import enforceObject from './types/enforceObject';
 import enforcePoint from './types/enforcePoint';
+import enforceRegExp from './types/enforceRegExp';
 import enforceString from './types/enforceString';
 import enforceThickness from './types/enforceThickness';
 import enforceVector from './types/enforceVector';
@@ -39,6 +40,7 @@ export default {
 	number: enforceNumber,
 	object: enforceObject,
 	point: enforcePoint,
+	regExp: enforceRegExp,
 	string: enforceString,
 	thickness: enforceThickness,
 	vector: enforceVector

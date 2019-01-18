@@ -1,18 +1,16 @@
+import isPoint from '../../checks/isPoint';
 import Point from '../../types/Point';
+import enforcer from './enforcer';
 
 /**
- * If the first value is a point then return that, otherwise return the alt value.
+ * Enforce that a value is a [Point](docs/Point.md). Uses [isPoint](docs/checks.md#isPoint).
  *
  * @function enforce.point
  *
- * @arg   {String|Point} value
- * @arg   {Point} alt
+ * @arg {*} value
+ * @arg {Point} alt - Returned if the value is not the correct type
+ * @arg {Boolean} [coerce=false] - If true then coerce the value when possible
  *
  * @returns {Point}
  */
-export default (value, alt) => {
-	if (Point.isValid(value) && !Point.isInstance(value)) {
-		value = new Point(value);
-	}
-	return Point.isInstance(value) ? value : alt;
-};
+export default enforcer(isPoint, (value) => new Point(value));

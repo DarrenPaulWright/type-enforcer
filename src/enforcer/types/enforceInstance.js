@@ -1,12 +1,14 @@
+import { isInstanceOf } from '../../index';
+
 /**
- * If the first value is an instance of constructor then return that, otherwise return the alt value.
+ * Enforce that a value is an instance of a constructor. Uses [isInstanceOf](docs/checks.md#isInstanceOf).
  *
  * @function enforce.instance
  *
- * @arg   {Object} value
- * @arg   {Function} constructor
- * @arg   {Object} alt
+ * @arg {*} value
+ * @arg {Function} constructor
+ * @arg {Object} alt - Returned if the value is not the correct type
  *
  * @returns {Object}
  */
-export default (value, constructor, alt) => value instanceof constructor ? value : alt;
+export default (value, constructor, alt) => isInstanceOf(value, constructor) ? value : alt;

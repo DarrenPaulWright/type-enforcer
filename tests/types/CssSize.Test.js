@@ -1,11 +1,15 @@
 import { assert } from 'chai';
-import { assign, map, round } from 'lodash';
+import { assign, map } from 'lodash';
+import { AUTO, CssSize, PIXELS } from '../../src/index';
 import {
-	AUTO,
-	CssSize,
-	PIXELS
-} from '../../src/index';
-import { multiTest, cssSizeData as data, unitlessCssSizes, fixedCssUnits, percentCssUnits, validCssValuesShortList, validCssValues } from '../TestUtil';
+	cssSizeData as data,
+	fixedCssUnits,
+	multiTest,
+	percentCssUnits,
+	unitlessCssSizes,
+	validCssValues,
+	validCssValuesShortList
+} from '../TestUtil';
 
 const zeros = [0, '0'];
 
@@ -127,7 +131,7 @@ describe('CssSize', () => {
 	});
 
 	describe('.toPixels', () => {
-		const precision = (value) => round(value, 0);
+		const precision = (value) => Math.floor(value);
 		const getValue = (cssSize) => precision(cssSize.toPixels(true));
 		const getCssSize = (input) => getValue(new CssSize(input));
 		const getCssSizeWithElement = (input) => {
@@ -186,6 +190,14 @@ describe('CssSize', () => {
 			test: (input) => new CssSize(input).toPixels(),
 			inputKey: 'size',
 			outputKey: 'size'
+		});
+
+		it('should return 100% when set to 100%', () => {
+			assert.equal(new CssSize('100%').toPixels(true), '100%');
+		});
+
+		it('should return 0 when set to 0', () => {
+			assert.equal(new CssSize('0').toPixels(), '0');
 		});
 	});
 

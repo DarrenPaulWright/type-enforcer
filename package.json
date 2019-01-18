@@ -9,7 +9,7 @@
 		"patch": "npm version patch -m \"Increment patch version to %s\"",
 		"minor": "npm version minor -m \"Increment minor version to %s\"",
 		"major": "npm version major -m \"Increment major version to %s\"",
-		"docs-readme": "jsdoc2md src/index.js > README.md --template docs.hbs",
+		"docs-readme": "jsdoc2md src/index.js > README.md --template docs.hbs --partial scope.hbs",
 		"docs-enforce": "jsdoc2md src/enforcer/**/*.js > docs/enforce.md --template docs.hbs",
 		"docs-method": "jsdoc2md src/methods/**/*.js > docs/method.md --template docs.hbs",
 		"docs-checks": "jsdoc2md src/checks/*.js > docs/checks.md --template docs.hbs",

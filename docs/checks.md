@@ -173,7 +173,21 @@ Check if a value is an instance of a constructor.
 | constructor | <code>function</code> | 
 
 **Example**  
-``` javascriptimport { isInstanceOf } from 'type-enforcer';```Fixes issues with primitives and instanceOf``` javascriptisInstanceOf(false, Boolean); => trueisInstanceOf(42, Number); => trueisInstanceOf('test', String); => true```
+``` javascript
+import { isInstanceOf } from 'type-enforcer';
+```
+
+Fixes issues with primitives and instanceOf
+``` javascript
+isInstanceOf(false, Boolean);
+ => true
+
+isInstanceOf(42, Number);
+ => true
+
+isInstanceOf('test', String);
+ => true
+```
 <a name="isInt"></a>
 
 ## isInt(value, [coerce]) ⇒ <code>Boolean</code>
@@ -200,7 +214,9 @@ Check if a value can be parsed as JSON
 | value | <code>\*</code> | 
 
 **Example**  
-``` javascriptimport { isJson } from 'type-enforcer';```
+``` javascript
+import { isJson } from 'type-enforcer';
+```
 <a name="isNumber"></a>
 
 ## isNumber(value, [coerce]) ⇒ <code>Boolean</code>
@@ -214,7 +230,18 @@ Check if a value is a [number](https://lodash.com/docs/#isNumber)
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a Number |
 
 **Example**  
-``` javascriptimport { isNumber } from 'type-enforcer';isNumber(3.14159);// => trueisNumber('3.14159');// => falseisNumber('3.14159', true);// => true```
+``` javascript
+import { isNumber } from 'type-enforcer';
+
+isNumber(3.14159);
+// => true
+
+isNumber('3.14159');
+// => false
+
+isNumber('3.14159', true);
+// => true
+```
 <a name="isObject"></a>
 
 ## isObject(value, [coerce]) ⇒ <code>Boolean</code>

@@ -11,7 +11,7 @@
  *
  * This library uses [@babel/plugin-proposal-class-properties](https://github.com/babel/babel/tree/master/packages/babel-plugin-proposal-class-properties) and [@babel/plugin-proposal-private-methods](https://github.com/babel/babel/tree/master/packages/babel-plugin-proposal-private-methods) so you will need to set up a [babel.config.js](https://babeljs.io/docs/en/config-files#project-wide-configuration) file and set the [rootMode](https://babeljs.io/docs/en/options#rootmode) option to 'upward'.
  *
- * Example:
+ * @example
  * ``` javascript
  * // babel.config.js
  * module.exports = function(api) {
@@ -30,14 +30,6 @@
  * 	};
  * };
  * ```
- *
- * ## Contributing
- *
- * If you would like to help out, type-enforcer still needs full test coverage and more data types. If you add a new type be sure to add an enforce function and a method. When done, add any new types to package.json scripts, docs-newType, and add that to the docs script, then run
- * ```
- * npm run docs
- * ```
- * to generate new docs. If a new file is generated, add a link to it in the description in index.js
  *
  * ## Docs
  *
@@ -58,6 +50,14 @@
  *
  * ### Methods
  * - [method](docs/method.md)
+ *
+ * ## Contributing
+ *
+ * If you add a new type be sure to add an enforce function and a method. When done, add any new types to package.json scripts (docs-newType), and add that to the docs script, then run
+ * ```
+ * npm run docs
+ * ```
+ * to generate new docs. If a new file is generated, add a link to it in the description in index.js and run the docs command again
  *
  * @name Installation
  */

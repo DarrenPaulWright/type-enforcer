@@ -4,16 +4,16 @@ import Point from '../../types/Point';
 import { buildMethod, compareCustomType, mapEnforcerDefaultCoerceTrue } from './methodAny';
 
 /**
- * Builds a method for getting/setting a Point instance
+ * Builds a chainable method for getting/setting a [Point](docs/Point.md)
  *
  * @function method.point
  * @extends method.any
  *
- * @arg [options=Same as method.any except:]
- * @arg [options.init=Point]
- * @arg [options.enforce=enforce.point]
- * @arg [options.compare=Point.isSame]
- * @arg [options.coerce=true] - If false then use strict equality
+ * @arg {Object} [options] - Same as {@link method.any} with the following differences:
+ * @arg {*} [options.init=Point]
+ * @arg {Function} [options.enforce=enforce.point]
+ * @arg {Function} [options.compare=Point.isSame]
+ * @arg {Boolean} [options.coerce=true] - If false then don't coerce the value
  *
  * @returns {Function}
  */

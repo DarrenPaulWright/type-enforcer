@@ -21,7 +21,7 @@ import { buildCheckWithCoerce } from './checks';
  * @function isBool
  *
  * @arg {*} value
- * @arg {Boolean} [coerce=false] - If true then see if this value can be coerced into a boolean. Always returns true, as _everything_ can be coerced into a boolean.
+ * @arg {Boolean} [coerce=false] - If true then see if the value can be coerced into a boolean. Always returns true, as _everything_ can be coerced into a boolean.
  *
  * @returns {Boolean}
  */

@@ -3,12 +3,12 @@ import Vector from '../../types/Vector';
 import enforcer from './enforcer';
 
 /**
- * If the first value is a vector then return that, otherwise return the alt value.
+ * Enforce that a value is a [Vector](docs/Vector.md). Uses [isVector](docs/checks.md#isVector).
  *
  * @function enforce.vector
  *
  * @arg {*} value
- * @arg {Vector}  alt
+ * @arg {Vector}  alt - Returned if the value is not the correct type
  * @arg {Boolean} [coerce=false] - If true then coerce the value when possible
  *
  * @returns {Vector}

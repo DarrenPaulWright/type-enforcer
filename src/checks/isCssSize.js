@@ -2,7 +2,7 @@ import CssSize from '../types/CssSize';
 import { buildCustomTypeCheck } from './checks';
 
 /**
- * Check if a value is a CssSize
+ * Check if a value is a [CssSize](docs/CssSize.md)
  *
  * @example
  * ``` javascript
@@ -21,7 +21,7 @@ import { buildCustomTypeCheck } from './checks';
  * @function isCssSize
  *
  * @arg {*} value
- * @arg {Boolean} [coerce=false] - If true then see if this value can be coerced into a CssSize
+ * @arg {Boolean} [coerce=false] - If true then see if the value can be coerced into a CssSize
  *
  * @returns {Boolean}
  */

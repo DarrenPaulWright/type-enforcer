@@ -22,7 +22,7 @@ import isJson from './isJson';
  * @function isArray
  *
  * @arg {*} value
- * @arg {Boolean} [coerce=false] - If true then see if this value can be coerced into an array
+ * @arg {Boolean} [coerce=false] - If true then see if the value can be coerced into an array
  *
  * @returns {Boolean}
  */

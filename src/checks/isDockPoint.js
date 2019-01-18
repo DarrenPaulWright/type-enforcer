@@ -2,7 +2,7 @@ import DockPoint from '../types/DockPoint';
 import { buildCustomTypeCheck } from './checks';
 
 /**
- * Check if a value is a DockPoint
+ * Check if a value is a [DockPoint](docs/DockPoint.md)
  *
  * @example
  * ``` javascript
@@ -21,7 +21,7 @@ import { buildCustomTypeCheck } from './checks';
  * @function isDockPoint
  *
  * @arg {*} value
- * @arg {Boolean} [coerce=false] - If true then see if this value can be coerced into a DockPoint
+ * @arg {Boolean} [coerce=false] - If true then see if the value can be coerced into a DockPoint
  *
  * @returns {Boolean}
  */

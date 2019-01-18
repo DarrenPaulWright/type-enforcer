@@ -2,12 +2,12 @@ import isFunction from '../../checks/isFunc';
 import enforcer from './enforcer';
 
 /**
- * If the first value is a [function]{@link https://lodash.com/docs/#isFunction} then return that, otherwise return the alt value.
+ * Enforce that a value is a function. Uses [isFunction](docs/checks.md#isFunction).
  *
  * @function enforce.func
  *
  * @arg {*} value
- * @arg {Function} alt
+ * @arg {Function} alt - Returned if the value is not the correct type
  *
  * @returns {Function}
  */

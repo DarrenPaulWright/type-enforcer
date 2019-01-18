@@ -4,12 +4,12 @@ import enforcer from './enforcer';
 const SEPARATOR = '/';
 
 /**
- * If the first value is a [RegExp]{@link https://lodash.com/docs/#isRegExp} then return that, otherwise return the alt value.
+ * Enforce that a value is a RegExp. Uses [isRegExp](docs/checks.md#isRegExp).
  *
  * @function enforce.regExp
  *
  * @arg {*} value
- * @arg {RegExp} alt
+ * @arg {RegExp} alt - Returned if the value is not the correct type
  * @arg {Boolean} [coerce=false] - If true then coerce the value when possible
  *
  * @returns {RegExp}

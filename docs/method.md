@@ -40,7 +40,7 @@ Enforce data types and remove common boilerplate code on class methods.## Usag
 <a name="method.any"></a>
 
 ### method.any([options]) ⇒ <code>function</code>
-Builds a method for getting/setting any data type
+Builds a chainable method for getting/setting any data type
 
 **Kind**: static method of [<code>method</code>](#method)  
 **Returns**: <code>function</code> - if a "before" or "set" option is set, then this function accepts two args: a new value and forceSave override. If no args are provided then the current value is returned. If neither "before" nor "set" is set, then only one arg is accepted, the new value. Also returns the current value if no args are provided.  
@@ -60,149 +60,153 @@ Builds a method for getting/setting any data type
 <a name="method.array"></a>
 
 ### method.array([options]) ⇒ <code>function</code>
-Builds a method for getting/setting an array
-
-**Kind**: static method of [<code>method</code>](#method)  
-**Extends**: [<code>any</code>](#method.any)  
-
-| Param | Default | Description |
-| --- | --- | --- |
-| [options] | <code>Same as method.any except:</code> |  |
-| [options.init] | <code>[]</code> |  |
-| [options.enforce] | <code>enforce.array</code> |  |
-| [options.compare] | <code>deepCompare</code> | Performs a deep comparison between values with [lodash.isEqual](https://lodash.com/docs/#isEqual) |
-| [options.deep] | <code>true</code> | If false then only use strict equality |
-
-<a name="method.bool"></a>
-
-### method.bool([options]) ⇒ <code>function</code>
-Builds a method for getting/setting a boolean
-
-**Kind**: static method of [<code>method</code>](#method)  
-**Extends**: [<code>any</code>](#method.any)  
-
-| Param | Default |
-| --- | --- |
-| [options] | <code>Same as method.any except:</code> | 
-| [options.init] | <code>false</code> | 
-| [options.enforce] | <code>enforce.bool</code> | 
-
-<a name="method.cssSize"></a>
-
-### method.cssSize([options]) ⇒ <code>function</code>
-Builds a method for getting/setting a CssSize instance
-
-**Kind**: static method of [<code>method</code>](#method)  
-**Extends**: [<code>any</code>](#method.any)  
-
-| Param | Default | Description |
-| --- | --- | --- |
-| [options] | <code>Same as method.any except:</code> |  |
-| [options.enforce] | <code>enforce.cssSize</code> |  |
-| [options.compare] | <code>CssSize.isSame</code> |  |
-| [options.coerce] | <code>true</code> | If false then use strict equality |
-
-<a name="method.date"></a>
-
-### method.date([options]) ⇒ <code>function</code>
-Builds a method for getting/setting a date
-
-**Kind**: static method of [<code>method</code>](#method)  
-**Extends**: [<code>any</code>](#method.any)  
-
-| Param | Default |
-| --- | --- |
-| [options] | <code>Same as method.any except:</code> | 
-| [options.enforce] | <code>enforce.date</code> | 
-
-<a name="method.dockPoint"></a>
-
-### method.dockPoint([options]) ⇒ <code>function</code>
-Builds a method for getting/setting a DockPoint instance
-
-**Kind**: static method of [<code>method</code>](#method)  
-**Extends**: [<code>any</code>](#method.any)  
-
-| Param | Default | Description |
-| --- | --- | --- |
-| [options] | <code>Same as method.any except:</code> |  |
-| [options.enforce] | <code>enforce.dockPoint</code> |  |
-| [options.compare] | <code>DockPoint.isSame</code> |  |
-| [options.coerce] | <code>true</code> | If false then use strict equality |
-
-<a name="method.element"></a>
-
-### method.element([options]) ⇒ <code>function</code>
-Builds a method for getting/setting a DOM element
-
-**Kind**: static method of [<code>method</code>](#method)  
-**Extends**: [<code>any</code>](#method.any)  
-
-| Param | Default |
-| --- | --- |
-| [options] | <code>Same as method.any except:</code> | 
-| [options.enforce] | <code>enforce.element</code> | 
-
-<a name="method.enum"></a>
-
-### method.enum([options]) ⇒ <code>function</code>
-Builds a method for getting/setting an enumerable value
+Builds a chainable method for getting/setting an array
 
 **Kind**: static method of [<code>method</code>](#method)  
 **Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [options] |  | <code>Same as method.any except:</code> |  |
-| [options.enforce] |  | <code>enforce.enum</code> |  |
+| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options.init] | <code>\*</code> | <code>[]</code> |  |
+| [options.enforce] | <code>function</code> | <code>enforce.array</code> |  |
+| [options.compare] | <code>function</code> | <code>deepCompare</code> | Performs a deep comparison between values with [lodash.isEqual](https://lodash.com/docs/#isEqual) |
+| [options.deep] | <code>Boolean</code> | <code>true</code> | If false then only use strict equality |
+| [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+
+<a name="method.bool"></a>
+
+### method.bool([options]) ⇒ <code>function</code>
+Builds a chainable method for getting/setting a boolean
+
+**Kind**: static method of [<code>method</code>](#method)  
+**Extends**: [<code>any</code>](#method.any)  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options.init] | <code>\*</code> | <code>false</code> |  |
+| [options.enforce] | <code>function</code> | <code>enforce.bool</code> |  |
+| [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+
+<a name="method.cssSize"></a>
+
+### method.cssSize([options]) ⇒ <code>function</code>
+Builds a chainable method for getting/setting a [CssSize](docs/CssSize.md)
+
+**Kind**: static method of [<code>method</code>](#method)  
+**Extends**: [<code>any</code>](#method.any)  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options.enforce] | <code>function</code> | <code>enforce.cssSize</code> |  |
+| [options.compare] | <code>function</code> | <code>CssSize.isSame</code> |  |
+| [options.coerce] | <code>Boolean</code> | <code>true</code> | If false then don't coerce the value |
+
+<a name="method.date"></a>
+
+### method.date([options]) ⇒ <code>function</code>
+Builds a chainable method for getting/setting a date
+
+**Kind**: static method of [<code>method</code>](#method)  
+**Extends**: [<code>any</code>](#method.any)  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options.enforce] | <code>function</code> | <code>enforce.date</code> |  |
+| [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+
+<a name="method.dockPoint"></a>
+
+### method.dockPoint([options]) ⇒ <code>function</code>
+Builds a chainable method for getting/setting a [DockPoint](docs/DockPoint.md)
+
+**Kind**: static method of [<code>method</code>](#method)  
+**Extends**: [<code>any</code>](#method.any)  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options.enforce] | <code>function</code> | <code>enforce.dockPoint</code> |  |
+| [options.compare] | <code>function</code> | <code>DockPoint.isSame</code> |  |
+| [options.coerce] | <code>Boolean</code> | <code>true</code> | If false then don't coerce the value |
+
+<a name="method.element"></a>
+
+### method.element([options]) ⇒ <code>function</code>
+Builds a chainable method for getting/setting a DOM element
+
+**Kind**: static method of [<code>method</code>](#method)  
+**Extends**: [<code>any</code>](#method.any)  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options.enforce] | <code>function</code> | <code>enforce.element</code> |  |
+
+<a name="method.enum"></a>
+
+### method.enum([options]) ⇒ <code>function</code>
+Builds a chainable method for getting/setting an enumerable value in an [Enum](docs/Enum.md)
+
+**Kind**: static method of [<code>method</code>](#method)  
+**Extends**: [<code>any</code>](#method.any)  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options.enforce] | <code>function</code> | <code>enforce.enum</code> |  |
 | options.enum | <code>Enum</code> |  | An enum to restrict the values to. |
 
 <a name="method.func"></a>
 
 ### method.func([options]) ⇒ <code>function</code>
-Builds a method for getting/setting a function
+Builds a chainable method for getting/setting a function
 
 **Kind**: static method of [<code>method</code>](#method)  
 **Extends**: [<code>any</code>](#method.any)  
 
-| Param | Default |
-| --- | --- |
-| [options] | <code>Same as method.any except:</code> | 
-| [options.enforce] | <code>enforce.func</code> | 
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options.enforce] | <code>function</code> | <code>enforce.func</code> |  |
 
 <a name="method.instance"></a>
 
 ### method.instance([options]) ⇒ <code>function</code>
-Builds a method for getting/setting an instance of a specific constructor
+Builds a chainable method for getting/setting an instance of a specific constructor
 
 **Kind**: static method of [<code>method</code>](#method)  
 **Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [options] |  | <code>Same as method.any except:</code> |  |
-| [options.enforce] |  | <code>instanceOf</code> |  |
-| [options.instance] | <code>Constructor</code> |  | The item to run instanceOf against |
+| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options.enforce] | <code>function</code> | <code>enforce.instance</code> |  |
+| [options.instance] | <code>Constructor</code> |  | The item to run enforce.instance against |
 
 <a name="method.int"></a>
 
 ### method.int([options]) ⇒ <code>function</code>
-Builds a method for getting/setting an integer
+Builds a chainable method for getting/setting an integer
 
 **Kind**: static method of [<code>method</code>](#method)  
 **Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [options] |  | <code>Same as method.any except:</code> |  |
-| [options.enforce] |  | <code>enforce.int</code> |  |
+| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options.enforce] | <code>function</code> | <code>enforce.int</code> |  |
+| [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 | [options.min] | <code>Number</code> |  | Passed to enforce.int |
 | [options.max] | <code>Number</code> |  | Passed to enforce.int |
 
 <a name="method.keyValue"></a>
 
 ### method.keyValue([options]) ⇒ <code>function</code>
-Builds a method that accepts either:- two args, a key and a value- one arg, an object with multiple key/value pairs
+Builds a chainable method that accepts either:- two args, a key and a value- one arg, an object with multiple key/value pairs
 
 **Kind**: static method of [<code>method</code>](#method)  
 **Returns**: <code>function</code> - accepts a new value and returns the methods constructor (allows chaining), or if no args are passed returns the output of options.get  
@@ -216,53 +220,55 @@ Builds a method that accepts either:- two args, a key and a value- one arg, an
 <a name="method.number"></a>
 
 ### method.number([options]) ⇒ <code>function</code>
-Builds a method for getting/setting a number
+Builds a chainable method for getting/setting a number
 
 **Kind**: static method of [<code>method</code>](#method)  
 **Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [options] |  | <code>Same as method.any except:</code> |  |
-| [options.enforce] |  | <code>enforce.number</code> |  |
+| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options.enforce] | <code>function</code> | <code>enforce.number</code> |  |
+| [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 | [options.min] | <code>Number</code> |  | Passed to enforce.number |
 | [options.max] | <code>Number</code> |  | Passed to enforce.number |
 
 <a name="method.object"></a>
 
 ### method.object([options]) ⇒ <code>function</code>
-Builds a method for getting/setting a plain object
+Builds a chainable method for getting/setting a plain object
 
 **Kind**: static method of [<code>method</code>](#method)  
 **Extends**: [<code>any</code>](#method.any)  
 
-| Param | Default | Description |
-| --- | --- | --- |
-| [options] | <code>Same as method.any except:</code> |  |
-| [options.enforce] | <code>enforce.object</code> |  |
-| [options.compare] | <code>deepCompare</code> | Performs a deep comparison between values with [lodash.isEqual](https://lodash.com/docs/#isEqual) |
-| [options.deep] | <code>true</code> | If false then only use strict equality |
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options.enforce] | <code>function</code> | <code>enforce.object</code> |  |
+| [options.compare] | <code>function</code> | <code>deepCompare</code> | Performs a deep comparison between values with [lodash.isEqual](https://lodash.com/docs/#isEqual) |
+| [options.deep] | <code>Boolean</code> | <code>true</code> | If false then only use strict equality |
+| [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 <a name="method.point"></a>
 
 ### method.point([options]) ⇒ <code>function</code>
-Builds a method for getting/setting a Point instance
+Builds a chainable method for getting/setting a [Point](docs/Point.md)
 
 **Kind**: static method of [<code>method</code>](#method)  
 **Extends**: [<code>any</code>](#method.any)  
 
-| Param | Default | Description |
-| --- | --- | --- |
-| [options] | <code>Same as method.any except:</code> |  |
-| [options.init] | <code>Point</code> |  |
-| [options.enforce] | <code>enforce.point</code> |  |
-| [options.compare] | <code>Point.isSame</code> |  |
-| [options.coerce] | <code>true</code> | If false then use strict equality |
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options.init] | <code>\*</code> | <code>Point</code> |  |
+| [options.enforce] | <code>function</code> | <code>enforce.point</code> |  |
+| [options.compare] | <code>function</code> | <code>Point.isSame</code> |  |
+| [options.coerce] | <code>Boolean</code> | <code>true</code> | If false then don't coerce the value |
 
 <a name="method.queue"></a>
 
 ### method.queue([options]) ⇒ <code>function</code>
-Builds a method that implements a Queue
+Builds a chainable method that implements a [Queue](docs/Queue.md)
 
 **Kind**: static method of [<code>method</code>](#method)  
 **Returns**: <code>function</code> - accepts a new value and returns the methods constructor (allows chaining), or if no args are passed returns the instance of Queue  
@@ -275,61 +281,63 @@ Builds a method that implements a Queue
 <a name="method.regExp"></a>
 
 ### method.regExp([options]) ⇒ <code>function</code>
-Builds a method for getting/setting a RegExp
+Builds a chainable method for getting/setting a RegExp
 
 **Kind**: static method of [<code>method</code>](#method)  
 **Extends**: [<code>any</code>](#method.any)  
 
-| Param | Default |
-| --- | --- |
-| [options] | <code>Same as method.any except:</code> | 
-| [options.init] | <code>&#x27;&#x27;</code> | 
-| [options.enforce] | <code>enforce.string</code> | 
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options.init] | <code>\*</code> | <code>&#x27;&#x27;</code> |  |
+| [options.enforce] | <code>function</code> | <code>enforce.string</code> |  |
+| [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 <a name="method.string"></a>
 
 ### method.string([options]) ⇒ <code>function</code>
-Builds a method for getting/setting a string
+Builds a chainable method for getting/setting a string
 
 **Kind**: static method of [<code>method</code>](#method)  
 **Extends**: [<code>any</code>](#method.any)  
 
-| Param | Default |
-| --- | --- |
-| [options] | <code>Same as method.any except:</code> | 
-| [options.init] | <code>&#x27;&#x27;</code> | 
-| [options.enforce] | <code>enforce.string</code> | 
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options.init] | <code>\*</code> | <code>&#x27;&#x27;</code> |  |
+| [options.enforce] | <code>function</code> | <code>enforce.string</code> |  |
+| [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 <a name="method.thickness"></a>
 
 ### method.thickness([options]) ⇒ <code>function</code>
-Builds a method for getting/setting a thickness instance
+Builds a chainable method for getting/setting a [Thickness](docs/Thickness.md)
 
 **Kind**: static method of [<code>method</code>](#method)  
 **Extends**: [<code>any</code>](#method.any)  
 
-| Param | Default | Description |
-| --- | --- | --- |
-| [options] | <code>Same as method.any except:</code> |  |
-| [options.enforce] | <code>enforce.thickness</code> |  |
-| [options.compare] | <code>Thickness.isSame</code> |  |
-| [options.coerce] | <code>true</code> | If false then use strict equality |
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options.enforce] | <code>function</code> | <code>enforce.thickness</code> |  |
+| [options.compare] | <code>function</code> | <code>Thickness.isSame</code> |  |
+| [options.coerce] | <code>Boolean</code> | <code>true</code> | If false then don't coerce the value |
 
 <a name="method.vector"></a>
 
 ### method.vector([options]) ⇒ <code>function</code>
-Builds a method for getting/setting a Vector instance
+Builds a chainable method for getting/setting a [Vector](docs/Vector.md)
 
 **Kind**: static method of [<code>method</code>](#method)  
 **Extends**: [<code>any</code>](#method.any)  
 
-| Param | Default | Description |
-| --- | --- | --- |
-| [options] | <code>Same as method.any except:</code> |  |
-| [options.init] | <code>Vector</code> |  |
-| [options.enforce] | <code>enforce.vector</code> |  |
-| [options.compare] | <code>Vector.isSame</code> |  |
-| [options.coerce] | <code>true</code> | If false then use strict equality |
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options.init] | <code>\*</code> | <code>Vector</code> |  |
+| [options.enforce] | <code>function</code> | <code>enforce.vector</code> |  |
+| [options.compare] | <code>function</code> | <code>Vector.isSame</code> |  |
+| [options.coerce] | <code>Boolean</code> | <code>true</code> | If false then don't coerce the value |
 
 
 ## License

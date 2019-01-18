@@ -2,7 +2,7 @@ import Point from '../types/Point';
 import { buildCustomTypeCheck } from './checks';
 
 /**
- * Check if a value is a Point
+ * Check if a value is a [Point](docs/Point.md)
  *
  * @example
  * ``` javascript
@@ -21,7 +21,7 @@ import { buildCustomTypeCheck } from './checks';
  * @function isPoint
  *
  * @arg {*} value
- * @arg {Boolean} [coerce=false] - If true then see if this value can be coerced into a Point
+ * @arg {Boolean} [coerce=false] - If true then see if the value can be coerced into a Point
  *
  * @returns {Boolean}
  */

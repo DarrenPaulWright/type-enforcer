@@ -2,13 +2,13 @@ import enforceFunc from '../../enforcer/types/enforceFunc';
 import { buildMethod } from './methodAny';
 
 /**
- * Builds a method for getting/setting a function
+ * Builds a chainable method for getting/setting a function
  *
  * @function method.func
  * @extends method.any
  *
- * @arg [options=Same as method.any except:]
- * @arg [options.enforce=enforce.func]
+ * @arg {Object} [options] - Same as {@link method.any} with the following differences:
+ * @arg {Function} [options.enforce=enforce.func]
  *
  * @returns {Function}
  */

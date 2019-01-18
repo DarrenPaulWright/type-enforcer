@@ -18,13 +18,13 @@ Type enforcement library for javascript
 <dd><p>Check if a value is a <a href="https://lodash.com/docs/#isBoolean">boolean</a></p>
 </dd>
 <dt><a href="#isCssSize">isCssSize(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if a value is a CssSize</p>
+<dd><p>Check if a value is a <a href="docs/CssSize.md">CssSize</a></p>
 </dd>
 <dt><a href="#isDate">isDate(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
 <dd><p>Check if a value is a <a href="https://lodash.com/docs/#isDate">date</a></p>
 </dd>
 <dt><a href="#isDockPoint">isDockPoint(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if a value is a DockPoint</p>
+<dd><p>Check if a value is a <a href="docs/DockPoint.md">DockPoint</a></p>
 </dd>
 <dt><a href="#isElement">isElement(value)</a> ⇒ <code>Boolean</code></dt>
 <dd><p>Check if a value is a <a href="https://lodash.com/docs/#isElement">DOM element</a></p>
@@ -48,7 +48,7 @@ Type enforcement library for javascript
 <dd><p>Check if a value is a <a href="https://lodash.com/docs/#isPlainObject">plain object</a></p>
 </dd>
 <dt><a href="#isPoint">isPoint(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if a value is a Point</p>
+<dd><p>Check if a value is a <a href="docs/Point.md">Point</a></p>
 </dd>
 <dt><a href="#isRegExp">isRegExp(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
 <dd><p>Check if a value is a <a href="https://lodash.com/docs/#isRegExp">RegExp</a></p>
@@ -57,10 +57,10 @@ Type enforcement library for javascript
 <dd><p>Check if a value is a <a href="https://lodash.com/docs/#isString">string</a></p>
 </dd>
 <dt><a href="#isThickness">isThickness(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if a value is a Thickness</p>
+<dd><p>Check if a value is a <a href="docs/Thickness.md">Thickness</a></p>
 </dd>
 <dt><a href="#isVector">isVector(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if a value is a Vector</p>
+<dd><p>Check if a value is a <a href="docs/Vector.md">Vector</a></p>
 </dd>
 </dl>
 
@@ -74,7 +74,7 @@ Check if a value is an [array](https://lodash.com/docs/#isArray)
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | value | <code>\*</code> |  |  |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if this value can be coerced into an array |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into an array |
 
 **Example**  
 ``` javascriptimport { isArray } from 'type-enforcer';isArray([]);// => trueisArray('[]');// => falseisArray('[]', true);// => true```
@@ -88,21 +88,21 @@ Check if a value is a [boolean](https://lodash.com/docs/#isBoolean)
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | value | <code>\*</code> |  |  |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if this value can be coerced into a boolean. Always returns true, as _everything_ can be coerced into a boolean. |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a boolean. Always returns true, as _everything_ can be coerced into a boolean. |
 
 **Example**  
 ``` javascriptimport { isBool } from 'type-enforcer';isBool(false);// => trueisBool(undefined);// => falseisBool(undefined, true);// => true```
 <a name="isCssSize"></a>
 
 ## isCssSize(value, [coerce]) ⇒ <code>Boolean</code>
-Check if a value is a CssSize
+Check if a value is a [CssSize](docs/CssSize.md)
 
 **Kind**: global function  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | value | <code>\*</code> |  |  |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if this value can be coerced into a CssSize |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a CssSize |
 
 **Example**  
 ``` javascriptimport { isCssSize } from 'type-enforcer';isCssSize(new CssSize());// => trueisCssSize('14px');// => falseisCssSize('14px', true);// => true```
@@ -116,21 +116,21 @@ Check if a value is a [date](https://lodash.com/docs/#isDate)
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | value | <code>\*</code> |  |  |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if this value can be coerced into a Date |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a Date |
 
 **Example**  
 ``` javascriptimport { isDate } from 'type-enforcer';isDate(new Date());// => trueisDate('10/12/1980');// => falseisDate('10/12/1980', true);// => true```
 <a name="isDockPoint"></a>
 
 ## isDockPoint(value, [coerce]) ⇒ <code>Boolean</code>
-Check if a value is a DockPoint
+Check if a value is a [DockPoint](docs/DockPoint.md)
 
 **Kind**: global function  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | value | <code>\*</code> |  |  |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if this value can be coerced into a DockPoint |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a DockPoint |
 
 **Example**  
 ``` javascriptimport { isDockPoint } from 'type-enforcer';isDockPoint(new DockPoint());// => trueisDockPoint('top');// => falseisDockPoint('top', true);// => true```
@@ -184,7 +184,7 @@ Check if a value is an [integer](https://lodash.com/docs/#isInteger)
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | value | <code>\*</code> |  |  |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if this value can be coerced into an Integer |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into an Integer |
 
 **Example**  
 ``` javascriptimport { isInt } from 'type-enforcer';isInt(42);// => trueisInt('42');// => falseisInt('42', true);// => true```
@@ -211,7 +211,7 @@ Check if a value is a [number](https://lodash.com/docs/#isNumber)
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | value | <code>\*</code> |  |  |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if this value can be coerced into a Number |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a Number |
 
 **Example**  
 ``` javascriptimport { isNumber } from 'type-enforcer';isNumber(3.14159);// => trueisNumber('3.14159');// => falseisNumber('3.14159', true);// => true```
@@ -225,21 +225,21 @@ Check if a value is a [plain object](https://lodash.com/docs/#isPlainObject)
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | value | <code>\*</code> |  |  |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if this value can be coerced into an Object |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into an Object |
 
 **Example**  
 ``` javascriptimport { isObject } from 'type-enforcer';isObject({});// => trueisObject('{}');// => falseisObject('{}', true);// => true```
 <a name="isPoint"></a>
 
 ## isPoint(value, [coerce]) ⇒ <code>Boolean</code>
-Check if a value is a Point
+Check if a value is a [Point](docs/Point.md)
 
 **Kind**: global function  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | value | <code>\*</code> |  |  |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if this value can be coerced into a Point |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a Point |
 
 **Example**  
 ``` javascriptimport { isPoint } from 'type-enforcer';isPoint(new Point());// => trueisPoint('1,2');// => falseisPoint('1,2', true);// => true```
@@ -253,7 +253,7 @@ Check if a value is a [RegExp](https://lodash.com/docs/#isRegExp)
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | value | <code>\*</code> |  |  |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if this value can be coerced into a RegExp |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a RegExp |
 
 **Example**  
 ``` javascriptimport { isRegExp } from 'type-enforcer';isRegExp(/*+/g);// => trueisInt('/*+/g');// => falseisInt('/*+/g', true);// => true```
@@ -267,35 +267,35 @@ Check if a value is a [string](https://lodash.com/docs/#isString)
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | value | <code>\*</code> |  |  |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if this value can be coerced into a String |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a String |
 
 **Example**  
 ``` javascriptimport { isString } from 'type-enforcer';isString('type');// => trueisString(new Date());// => falseisString(new Date(), true);// => true```
 <a name="isThickness"></a>
 
 ## isThickness(value, [coerce]) ⇒ <code>Boolean</code>
-Check if a value is a Thickness
+Check if a value is a [Thickness](docs/Thickness.md)
 
 **Kind**: global function  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | value | <code>\*</code> |  |  |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if this value can be coerced into a Thickness |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a Thickness |
 
 **Example**  
 ``` javascriptimport { isThickness } from 'type-enforcer';isThickness(new Thickness());// => trueisThickness('12px 20px');// => falseisThickness('12px 20px', true);// => true```
 <a name="isVector"></a>
 
 ## isVector(value, [coerce]) ⇒ <code>Boolean</code>
-Check if a value is a Vector
+Check if a value is a [Vector](docs/Vector.md)
 
 **Kind**: global function  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | value | <code>\*</code> |  |  |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if this value can be coerced into a Vector |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a Vector |
 
 **Example**  
 ``` javascriptimport { isVector } from 'type-enforcer';isVector(new Vector());// => trueisVector('[[1,2],[3,4]]');// => falseisVector('[[1,2],[3,4]]', true);// => true```

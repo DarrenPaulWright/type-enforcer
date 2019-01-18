@@ -3,12 +3,12 @@ import Thickness from '../../types/Thickness';
 import enforcer from './enforcer';
 
 /**
- * If the first value is a thickness then return that, otherwise return the alt value.
+ * Enforce that a value is a [Thickness](docs/Thickness.md). Uses [isThickness](docs/checks.md#isThickness).
  *
  * @function enforce.thickness
  *
  * @arg {*} value
- * @arg {Thickness} alt
+ * @arg {Thickness} alt - Returned if the value is not the correct type
  * @arg {Boolean} [coerce=false] - If true then coerce the value when possible
  *
  * @returns {Thickness}

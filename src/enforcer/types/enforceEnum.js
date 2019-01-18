@@ -1,11 +1,11 @@
 /**
- * If the first value exists in the provided enum then return that, otherwise return the alt value.
+ * Enforce that a value exists in the provided [Enum](docs/Enum.md)
  *
  * @function enforce.enum
  *
  * @arg {*} value
  * @arg {Enum} enumerable
- * @arg {String} alt
+ * @arg {String} alt - Returned if the value is not the correct type
  *
  * @returns {String}
  */

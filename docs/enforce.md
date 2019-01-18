@@ -16,243 +16,246 @@ Utility functions for enforcing data types.## Usage``` javascriptimport { en
 **Kind**: global typedef  
 
 * [enforce](#enforce) : <code>object</code>
-    * [.array(value, alt)](#enforce.array) ⇒ <code>Array</code>
-    * [.bool(value, alt)](#enforce.bool) ⇒ <code>Boolean</code>
-    * [.cssSize(value, alt, [options])](#enforce.cssSize) ⇒ <code>CssSize</code>
-    * [.date(value, alt)](#enforce.date) ⇒ <code>Date</code>
-    * [.dockPoint(value, alt, [options])](#enforce.dockPoint) ⇒ <code>DockPoint</code>
+    * [.array(value, alt, [coerce])](#enforce.array) ⇒ <code>Array</code>
+    * [.bool(value, alt, [coerce])](#enforce.bool) ⇒ <code>Boolean</code>
+    * [.cssSize(value, alt, [coerce])](#enforce.cssSize) ⇒ <code>CssSize</code>
+    * [.date(value, alt, [coerce])](#enforce.date) ⇒ <code>Date</code>
+    * [.dockPoint(value, alt, [coerce])](#enforce.dockPoint) ⇒ <code>DockPoint</code>
     * [.element(value, alt)](#enforce.element) ⇒ <code>Element</code>
     * [.enum(value, enumerable, alt)](#enforce.enum) ⇒ <code>String</code>
     * [.func(value, alt)](#enforce.func) ⇒ <code>function</code>
     * [.instance(value, constructor, alt)](#enforce.instance) ⇒ <code>Object</code>
-    * [.int(value, alt, [minValue], [maxValue])](#enforce.int) ⇒ <code>int</code>
-    * [.number(value, alt, [minValue], [maxValue])](#enforce.number) ⇒ <code>Number</code>
-    * [.object(value, alt)](#enforce.object) ⇒ <code>Object</code>
-    * [.point(value, alt, [options])](#enforce.point) ⇒ <code>Point</code>
-    * [.regExp(value, alt)](#enforce.regExp) ⇒ <code>RegExp</code>
-    * [.string(value, alt)](#enforce.string) ⇒ <code>String</code>
-    * [.thickness(value, alt, [options])](#enforce.thickness) ⇒ <code>Thickness</code>
-    * [.vector(value, alt, [options])](#enforce.vector) ⇒ <code>Vector</code>
+    * [.int(value, alt, [coerce], [minValue], [maxValue])](#enforce.int) ⇒ <code>int</code>
+    * [.number(value, alt, [coerce], [minValue], [maxValue])](#enforce.number) ⇒ <code>Number</code>
+    * [.object(value, alt, [coerce])](#enforce.object) ⇒ <code>Object</code>
+    * [.point(value, alt, [coerce])](#enforce.point) ⇒ <code>Point</code>
+    * [.regExp(value, alt, [coerce])](#enforce.regExp) ⇒ <code>RegExp</code>
+    * [.string(value, alt, [coerce])](#enforce.string) ⇒ <code>String</code>
+    * [.thickness(value, alt, [coerce])](#enforce.thickness) ⇒ <code>Thickness</code>
+    * [.vector(value, alt, [coerce])](#enforce.vector) ⇒ <code>Vector</code>
 
 <a name="enforce.array"></a>
 
-### enforce.array(value, alt) ⇒ <code>Array</code>
-If the first value is an [array](https://lodash.com/docs/#isArray), then return that, otherwise return the alt value.
+### enforce.array(value, alt, [coerce]) ⇒ <code>Array</code>
+Enforce that a value is an array. Uses [isArray](docs/checks.md#isArray).
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
 
-| Param | Type |
-| --- | --- |
-| value | <code>\*</code> | 
-| alt | <code>Array</code> | 
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | <code>\*</code> |  |  |
+| alt | <code>Array</code> |  | Returned if the value is not the correct type |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 <a name="enforce.bool"></a>
 
-### enforce.bool(value, alt) ⇒ <code>Boolean</code>
-If the first value is a [boolean](https://lodash.com/docs/#isBoolean), then return that, otherwise return the alt value.
+### enforce.bool(value, alt, [coerce]) ⇒ <code>Boolean</code>
+Enforce that a value is a boolean. Uses [isBool](docs/checks.md#isBool).
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
 
-| Param | Type |
-| --- | --- |
-| value | <code>\*</code> | 
-| alt | <code>Boolean</code> | 
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | <code>\*</code> |  |  |
+| alt | <code>Boolean</code> |  | Returned if the value is not the correct type |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 <a name="enforce.cssSize"></a>
 
-### enforce.cssSize(value, alt, [options]) ⇒ <code>CssSize</code>
-If the first value is a valid CssSize then return that, otherwise return the alt value.
+### enforce.cssSize(value, alt, [coerce]) ⇒ <code>CssSize</code>
+Enforce that a value is a [CssSize](docs/CssSize.md). Uses [isCssSize](docs/checks.md#isCssSize).
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | value | <code>\*</code> |  |  |
-| alt | <code>CssSize</code> |  |  |
-| [options] | <code>Object</code> |  |  |
-| [options.coerce] | <code>Boolean</code> | <code>true</code> | If false, then will only accept a specific instance |
+| alt | <code>CssSize</code> |  | Returned if the value is not the correct type |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 <a name="enforce.date"></a>
 
-### enforce.date(value, alt) ⇒ <code>Date</code>
-If the first value is a [date](https://lodash.com/docs/#isDate) then return that, otherwise return the alt value.
-
-**Kind**: static method of [<code>enforce</code>](#enforce)  
-
-| Param | Type |
-| --- | --- |
-| value | <code>\*</code> | 
-| alt | <code>Date</code> | 
-
-<a name="enforce.dockPoint"></a>
-
-### enforce.dockPoint(value, alt, [options]) ⇒ <code>DockPoint</code>
-If the first value is a valid dockPoint then return that, otherwise return the alt value.
+### enforce.date(value, alt, [coerce]) ⇒ <code>Date</code>
+Enforce that a value is a date. Uses [isDate](docs/checks.md#isDate).
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | value | <code>\*</code> |  |  |
-| alt | <code>String</code> |  |  |
-| [options] | <code>Object</code> |  |  |
-| [options.coerce] | <code>Boolean</code> | <code>true</code> | If false, then will only accept a specific instance |
+| alt | <code>Date</code> |  | Returned if the value is not the correct type |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+
+<a name="enforce.dockPoint"></a>
+
+### enforce.dockPoint(value, alt, [coerce]) ⇒ <code>DockPoint</code>
+Enforce that a value is a [DockPoint](docs/DockPoint.md). Uses [isDockPoint](docs/checks.md#isDockPoint).
+
+**Kind**: static method of [<code>enforce</code>](#enforce)  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | <code>\*</code> |  |  |
+| alt | <code>String</code> |  | Returned if the value is not the correct type |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 <a name="enforce.element"></a>
 
 ### enforce.element(value, alt) ⇒ <code>Element</code>
-If the first value is a [DOM element](https://lodash.com/docs/#isElement) then return that, otherwise return the alt value.
+Enforce that a value is a DOM element. Uses [isElement](docs/checks.md#isElement).
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
 
-| Param | Type |
-| --- | --- |
-| value | <code>\*</code> | 
-| alt | <code>Element</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| value | <code>\*</code> |  |
+| alt | <code>Element</code> | Returned if the value is not the correct type |
 
 <a name="enforce.enum"></a>
 
 ### enforce.enum(value, enumerable, alt) ⇒ <code>String</code>
-If the first value exists in the provided enum then return that, otherwise return the alt value.
+Enforce that a value exists in the provided [Enum](docs/Enum.md)
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
 
-| Param | Type |
-| --- | --- |
-| value | <code>\*</code> | 
-| enumerable | <code>Enum</code> | 
-| alt | <code>String</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| value | <code>\*</code> |  |
+| enumerable | <code>Enum</code> |  |
+| alt | <code>String</code> | Returned if the value is not the correct type |
 
 <a name="enforce.func"></a>
 
 ### enforce.func(value, alt) ⇒ <code>function</code>
-If the first value is a [function](https://lodash.com/docs/#isFunction) then return that, otherwise return the alt value.
+Enforce that a value is a function. Uses [isFunction](docs/checks.md#isFunction).
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
 
-| Param | Type |
-| --- | --- |
-| value | <code>\*</code> | 
-| alt | <code>function</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| value | <code>\*</code> |  |
+| alt | <code>function</code> | Returned if the value is not the correct type |
 
 <a name="enforce.instance"></a>
 
 ### enforce.instance(value, constructor, alt) ⇒ <code>Object</code>
-If the first value is an instance of constructor then return that, otherwise return the alt value.
+Enforce that a value is an instance of a constructor. Uses [isInstanceOf](docs/checks.md#isInstanceOf).
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
 
-| Param | Type |
-| --- | --- |
-| value | <code>\*</code> | 
-| constructor | <code>function</code> | 
-| alt | <code>Object</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| value | <code>\*</code> |  |
+| constructor | <code>function</code> |  |
+| alt | <code>Object</code> | Returned if the value is not the correct type |
 
 <a name="enforce.int"></a>
 
-### enforce.int(value, alt, [minValue], [maxValue]) ⇒ <code>int</code>
-If the first value is an [integer](https://lodash.com/docs/#isInteger) then return that, otherwise return the alt value.
+### enforce.int(value, alt, [coerce], [minValue], [maxValue]) ⇒ <code>int</code>
+Enforce that a value is an integer. Uses [isInt](docs/checks.md#isInt).
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
 
-| Param | Type |
-| --- | --- |
-| value | <code>\*</code> | 
-| alt | <code>int</code> | 
-| [minValue] | <code>int</code> | 
-| [maxValue] | <code>int</code> | 
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | <code>\*</code> |  |  |
+| alt | <code>int</code> |  | Returned if the value is not the correct type |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+| [minValue] | <code>int</code> |  |  |
+| [maxValue] | <code>int</code> |  |  |
 
 <a name="enforce.number"></a>
 
-### enforce.number(value, alt, [minValue], [maxValue]) ⇒ <code>Number</code>
-If the first value is a [number](https://lodash.com/docs/#isNumber) (excluding NaN) then return that, otherwise return the alt value.
+### enforce.number(value, alt, [coerce], [minValue], [maxValue]) ⇒ <code>Number</code>
+Enforce that a value is a number (excluding NaN). Uses [isNumber](docs/checks.md#isNumber).
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
 
-| Param | Type | Default |
-| --- | --- | --- |
-| value | <code>\*</code> |  | 
-| alt | <code>Number</code> |  | 
-| [minValue] | <code>Number</code> | <code>-Infinity</code> | 
-| [maxValue] | <code>Number</code> | <code>Infinity</code> | 
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | <code>\*</code> |  |  |
+| alt | <code>Number</code> |  | Returned if the value is not the correct type |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+| [minValue] | <code>Number</code> | <code>-Infinity</code> |  |
+| [maxValue] | <code>Number</code> | <code>Infinity</code> |  |
 
 <a name="enforce.object"></a>
 
-### enforce.object(value, alt) ⇒ <code>Object</code>
-If the first value is a [plain object](https://lodash.com/docs/#isPlainObject) then return that, otherwise return the alt value.
+### enforce.object(value, alt, [coerce]) ⇒ <code>Object</code>
+Enforce that a value is an object. Uses [isObject](docs/checks.md#isObject).
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
 
-| Param | Type |
-| --- | --- |
-| value | <code>\*</code> | 
-| alt | <code>Object</code> | 
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | <code>\*</code> |  |  |
+| alt | <code>Object</code> |  | Returned if the value is not the correct type |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 <a name="enforce.point"></a>
 
-### enforce.point(value, alt, [options]) ⇒ <code>Point</code>
-If the first value is a point then return that, otherwise return the alt value.
+### enforce.point(value, alt, [coerce]) ⇒ <code>Point</code>
+Enforce that a value is a [Point](docs/Point.md). Uses [isPoint](docs/checks.md#isPoint).
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | value | <code>\*</code> |  |  |
-| alt | <code>Point</code> |  |  |
-| [options] | <code>Object</code> |  |  |
-| [options.coerce] | <code>Boolean</code> | <code>true</code> | If false, then will only accept a specific instance |
+| alt | <code>Point</code> |  | Returned if the value is not the correct type |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 <a name="enforce.regExp"></a>
 
-### enforce.regExp(value, alt) ⇒ <code>RegExp</code>
-If the first value is a [RegExp](https://lodash.com/docs/#isRegExp) then return that, otherwise return the alt value.
+### enforce.regExp(value, alt, [coerce]) ⇒ <code>RegExp</code>
+Enforce that a value is a RegExp. Uses [isRegExp](docs/checks.md#isRegExp).
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
 
-| Param | Type |
-| --- | --- |
-| value | <code>\*</code> | 
-| alt | <code>RegExp</code> | 
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | <code>\*</code> |  |  |
+| alt | <code>RegExp</code> |  | Returned if the value is not the correct type |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 <a name="enforce.string"></a>
 
-### enforce.string(value, alt) ⇒ <code>String</code>
-If the first value is a [string](https://lodash.com/docs/#isString) then return that, otherwise return the alt value.
+### enforce.string(value, alt, [coerce]) ⇒ <code>String</code>
+Enforce that a value is a string. Uses [isString](docs/checks.md#isString).
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
 
-| Param | Type |
-| --- | --- |
-| value | <code>\*</code> | 
-| alt | <code>String</code> | 
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | <code>\*</code> |  |  |
+| alt | <code>String</code> |  | Returned if the value is not the correct type |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 <a name="enforce.thickness"></a>
 
-### enforce.thickness(value, alt, [options]) ⇒ <code>Thickness</code>
-If the first value is a thickness then return that, otherwise return the alt value.
+### enforce.thickness(value, alt, [coerce]) ⇒ <code>Thickness</code>
+Enforce that a value is a [Thickness](docs/Thickness.md). Uses [isThickness](docs/checks.md#isThickness).
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | value | <code>\*</code> |  |  |
-| alt | <code>Thickness</code> |  |  |
-| [options] | <code>Object</code> |  |  |
-| [options.coerce] | <code>Boolean</code> | <code>true</code> | If false, then will only accept a specific instance |
+| alt | <code>Thickness</code> |  | Returned if the value is not the correct type |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 <a name="enforce.vector"></a>
 
-### enforce.vector(value, alt, [options]) ⇒ <code>Vector</code>
-If the first value is a vector then return that, otherwise return the alt value.
+### enforce.vector(value, alt, [coerce]) ⇒ <code>Vector</code>
+Enforce that a value is a [Vector](docs/Vector.md). Uses [isVector](docs/checks.md#isVector).
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | value | <code>\*</code> |  |  |
-| alt | <code>Vector</code> |  |  |
-| [options] | <code>Object</code> |  |  |
-| [options.coerce] | <code>Boolean</code> | <code>true</code> | If false, then will only accept a specific instance |
+| alt | <code>Vector</code> |  | Returned if the value is not the correct type |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 
 ## License

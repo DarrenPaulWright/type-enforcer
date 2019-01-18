@@ -2,14 +2,15 @@ import enforceBool from '../../enforcer/types/enforceBool';
 import { buildMethod, mapEnforcer } from './methodAny';
 
 /**
- * Builds a method for getting/setting a boolean
+ * Builds a chainable method for getting/setting a boolean
  *
  * @function method.bool
  * @extends method.any
  *
- * @arg [options=Same as method.any except:]
- * @arg [options.init=false]
- * @arg [options.enforce=enforce.bool]
+ * @arg {Object} [options] - Same as {@link method.any} with the following differences:
+ * @arg {*} [options.init=false]
+ * @arg {Function} [options.enforce=enforce.bool]
+ * @arg {Boolean} [options.coerce=false] - If true then coerce the value when possible
  *
  * @returns {Function}
  */

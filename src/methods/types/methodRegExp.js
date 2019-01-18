@@ -2,14 +2,15 @@ import enforceRegExp from '../../enforcer/types/enforceRegExp';
 import { buildMethod, mapEnforcer } from './methodAny';
 
 /**
- * Builds a method for getting/setting a RegExp
+ * Builds a chainable method for getting/setting a RegExp
  *
  * @function method.regExp
  * @extends method.any
  *
- * @arg [options=Same as method.any except:]
- * @arg [options.init='']
- * @arg [options.enforce=enforce.string]
+ * @arg {Object} [options] - Same as {@link method.any} with the following differences:
+ * @arg {*} [options.init='']
+ * @arg {Function} [options.enforce=enforce.string]
+ * @arg {Boolean} [options.coerce=false] - If true then coerce the value when possible
  *
  * @returns {Function}
  */

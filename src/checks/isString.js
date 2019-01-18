@@ -21,7 +21,7 @@ import { buildCheckWithCoerce } from './checks';
  * @function isString
  *
  * @arg {*} value
- * @arg {Boolean} [coerce=false] - If true then see if this value can be coerced into a String
+ * @arg {Boolean} [coerce=false] - If true then see if the value can be coerced into a String
  *
  * @returns {Boolean}
  */

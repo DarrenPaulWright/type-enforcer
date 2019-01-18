@@ -2,12 +2,12 @@ import isElement from '../../checks/isElement';
 import enforcer from './enforcer';
 
 /**
- * If the first value is a [DOM element]{@link https://lodash.com/docs/#isElement} then return that, otherwise return the alt value.
+ * Enforce that a value is a DOM element. Uses [isElement](docs/checks.md#isElement).
  *
  * @function enforce.element
  *
  * @arg {*} value
- * @arg {Element} alt
+ * @arg {Element} alt - Returned if the value is not the correct type
  *
  * @returns {Element}
  */

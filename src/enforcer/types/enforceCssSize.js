@@ -3,12 +3,12 @@ import CssSize from '../../types/CssSize';
 import enforcer from './enforcer';
 
 /**
- * If the first value is a valid CssSize then return that, otherwise return the alt value.
+ * Enforce that a value is a [CssSize](docs/CssSize.md). Uses [isCssSize](docs/checks.md#isCssSize).
  *
  * @function enforce.cssSize
  *
  * @arg {*} value
- * @arg {CssSize} alt
+ * @arg {CssSize} alt - Returned if the value is not the correct type
  * @arg {Boolean} [coerce=false] - If true then coerce the value when possible
  *
  * @returns {CssSize}

@@ -2,13 +2,12 @@ import isBoolean from '../../checks/isBool';
 import enforcer from './enforcer';
 
 /**
- * If the first value is a [boolean]{@link https://lodash.com/docs/#isBoolean}, then return that, otherwise return the
- * alt value.
+ * Enforce that a value is a boolean. Uses [isBool](docs/checks.md#isBool).
  *
  * @function enforce.bool
  *
  * @arg {*} value
- * @arg {Boolean} alt
+ * @arg {Boolean} alt - Returned if the value is not the correct type
  * @arg {Boolean} [coerce=false] - If true then coerce the value when possible
  *
  * @returns {Boolean}

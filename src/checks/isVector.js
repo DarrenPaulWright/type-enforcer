@@ -2,7 +2,7 @@ import Vector from '../types/Vector';
 import { buildCustomTypeCheck } from './checks';
 
 /**
- * Check if a value is a Vector
+ * Check if a value is a [Vector](docs/Vector.md)
  *
  * @example
  * ``` javascript
@@ -21,7 +21,7 @@ import { buildCustomTypeCheck } from './checks';
  * @function isVector
  *
  * @arg {*} value
- * @arg {Boolean} [coerce=false] - If true then see if this value can be coerced into a Vector
+ * @arg {Boolean} [coerce=false] - If true then see if the value can be coerced into a Vector
  *
  * @returns {Boolean}
  */

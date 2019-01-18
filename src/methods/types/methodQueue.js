@@ -1,7 +1,7 @@
 import Queue from '../../types/Queue';
 
 /**
- * Builds a method that implements a Queue
+ * Builds a chainable method that implements a [Queue](docs/Queue.md)
  *
  * @function method.queue
  *

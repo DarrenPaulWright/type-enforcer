@@ -2,7 +2,7 @@ import { forOwn } from 'lodash';
 import isObject from '../../checks/isObject';
 
 /**
- * Builds a method that accepts either:
+ * Builds a chainable method that accepts either:
  * - two args, a key and a value
  * - one arg, an object with multiple key/value pairs
  *

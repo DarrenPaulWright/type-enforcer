@@ -4,16 +4,16 @@ import Vector from '../../types/Vector';
 import { buildMethod, compareCustomType, mapEnforcerDefaultCoerceTrue } from './methodAny';
 
 /**
- * Builds a method for getting/setting a Vector instance
+ * Builds a chainable method for getting/setting a [Vector](docs/Vector.md)
  *
  * @function method.vector
  * @extends method.any
  *
- * @arg [options=Same as method.any except:]
- * @arg [options.init=Vector]
- * @arg [options.enforce=enforce.vector]
- * @arg [options.compare=Vector.isSame]
- * @arg [options.coerce=true] - If false then use strict equality
+ * @arg {Object} [options] - Same as {@link method.any} with the following differences:
+ * @arg {*} [options.init=Vector]
+ * @arg {Function} [options.enforce=enforce.vector]
+ * @arg {Function} [options.compare=Vector.isSame]
+ * @arg {Boolean} [options.coerce=true] - If false then don't coerce the value
  *
  * @returns {Function}
  */

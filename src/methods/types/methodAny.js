@@ -115,7 +115,7 @@ export const buildMethod = (defaultSettings = {}, onInit) => {
 };
 
 /**
- * Builds a method for getting/setting any data type
+ * Builds a chainable method for getting/setting any data type
  *
  * @function method.any
  *

@@ -2,6 +2,8 @@ const _ = require('lodash');
 const testRunnerConfig = require('test-runner-config');
 const config = require('./testRunner.config.js');
 
+const singleRun = process.argv.includes('--single-run');
+
 const exclude = (file) => {
 	return {pattern: file, included: false};
 };
@@ -19,6 +21,11 @@ _.each(testRunnerConfig.getKarmaFiles(config, {
 	}
 });
 
+const reporters = ['brief', 'coverage'];
+if (singleRun) {
+	reporters.push('coveralls');
+}
+
 module.exports = function(config) {
 	config.set({
 		browsers: ['ChromeHeadless', 'FirefoxHeadless'],
@@ -31,9 +38,13 @@ module.exports = function(config) {
 		files: files.files,
 		frameworks: ['jasmine'],
 		preprocessors: preprocessors,
-		reporters: ['brief', 'coverage'],
+		reporters: reporters,
 		briefReporter: {
-			renderOnRunCompleteOnly: process.argv.includes('--single-run')
+			renderOnRunCompleteOnly: singleRun
+		},
+		coverageReporter: {
+			type : 'lcov',
+			dir : 'coverage/'
 		},
 		webpack: {
 			mode: 'development',

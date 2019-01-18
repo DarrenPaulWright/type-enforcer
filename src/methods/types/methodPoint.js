@@ -1,8 +1,7 @@
 import isPoint from '../../checks/isPoint';
-import enforceBool from '../../enforcer/types/enforceBool';
 import enforcePoint from '../../enforcer/types/enforcePoint';
 import Point from '../../types/Point';
-import { buildMethod, compareCustomType } from './methodAny';
+import { buildMethod, compareCustomType, mapEnforcerDefaultCoerceTrue } from './methodAny';
 
 /**
  * Builds a method for getting/setting a Point instance
@@ -20,8 +19,6 @@ import { buildMethod, compareCustomType } from './methodAny';
  */
 export default buildMethod({
 	init: new Point(),
-	enforce: (newValue, oldValue, options) => {
-		return enforcePoint(newValue, oldValue, enforceBool(options.coerce, true));
-	},
+	enforce: mapEnforcerDefaultCoerceTrue(enforcePoint),
 	compare: compareCustomType(Point, isPoint)
 });

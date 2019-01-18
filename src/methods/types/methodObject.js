@@ -1,5 +1,5 @@
 import enforceObject from '../../enforcer/types/enforceObject';
-import { buildMethod, deepCompare, setDeepOnInit } from './methodAny';
+import { buildMethod, deepCompare, mapEnforcer, setDeepOnInit } from './methodAny';
 
 /**
  * Builds a method for getting/setting a plain object
@@ -15,6 +15,6 @@ import { buildMethod, deepCompare, setDeepOnInit } from './methodAny';
  * @returns {Function}
  */
 export default buildMethod({
-	enforce: enforceObject,
+	enforce: mapEnforcer(enforceObject),
 	compare: deepCompare
 }, setDeepOnInit);

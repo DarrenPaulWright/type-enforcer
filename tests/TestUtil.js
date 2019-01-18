@@ -223,7 +223,7 @@ export const boolData = {
 	name: 'bool',
 	true: validBooleans,
 	false: difference(testValues, validBooleans),
-	coerceTrue: testValues,
+	coerceTrue: difference(testValues, validBooleans),
 	coerceFalse: []
 };
 export const cssSizeData = {

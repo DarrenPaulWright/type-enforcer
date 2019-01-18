@@ -1,8 +1,7 @@
 import isThickness from '../../checks/isThickness';
-import enforceBool from '../../enforcer/types/enforceBool';
 import enforceThickness from '../../enforcer/types/enforceThickness';
 import Thickness from '../../types/Thickness';
-import { buildMethod, compareCustomType } from './methodAny';
+import { buildMethod, compareCustomType, mapEnforcerDefaultCoerceTrue } from './methodAny';
 
 /**
  * Builds a method for getting/setting a thickness instance
@@ -18,8 +17,6 @@ import { buildMethod, compareCustomType } from './methodAny';
  * @returns {Function}
  */
 export default buildMethod({
-	enforce: (newValue, oldValue, options) => {
-		return enforceThickness(newValue, oldValue, enforceBool(options.coerce, true));
-	},
+	enforce: mapEnforcerDefaultCoerceTrue(enforceThickness),
 	compare: compareCustomType(Thickness, isThickness)
 });

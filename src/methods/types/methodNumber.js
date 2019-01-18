@@ -1,5 +1,5 @@
 import enforceNumber from '../../enforcer/types/enforceNumber';
-import { buildMethod } from './methodAny';
+import { buildMethod, mapEnforcerNumeric } from './methodAny';
 
 /**
  * Builds a method for getting/setting a number
@@ -15,5 +15,5 @@ import { buildMethod } from './methodAny';
  * @returns {Function}
  */
 export default buildMethod({
-	enforce: (newValue, oldValue, options) => enforceNumber(newValue, oldValue, options.coerce, options.min, options.max)
+	enforce: mapEnforcerNumeric(enforceNumber)
 });

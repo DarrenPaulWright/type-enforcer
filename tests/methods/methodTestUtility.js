@@ -269,6 +269,48 @@ export const testMethodType = (settings) => {
 
 		runTests(TestConstructor4, settings.true[0], settings.true[1], settings.coerce);
 	});
+
+	if (settings.coerce !== false) {
+		describe('(prototype) (coerce=true)', () => {
+			class TestConstructor2 {
+			}
+
+			addMethodsTo(TestConstructor2.prototype, {
+				init: undefined,
+				coerce: true
+			});
+
+			each(settings.coerceTrue, (value) => {
+				it(`should return coerced ${value} after attempting to set to ${value}`, () => {
+					const testConstructor = new TestConstructor2();
+
+					testConstructor.testMethod(value);
+
+					assert.notEqual(testConstructor.testMethod(), undefined);
+				});
+			});
+		});
+
+		describe('(prototype) (coerce=false)', () => {
+			class TestConstructor2 {
+			}
+
+			addMethodsTo(TestConstructor2.prototype, {
+				init: undefined,
+				coerce: false
+			});
+
+			each(settings.coerceTrue, (value) => {
+				it(`should return coerced ${value} after attempting to set to ${value}`, () => {
+					const testConstructor = new TestConstructor2();
+
+					testConstructor.testMethod(value);
+
+					assert.equal(testConstructor.testMethod(), undefined);
+				});
+			});
+		});
+	}
 };
 
 export const testVariant = (settings) => {

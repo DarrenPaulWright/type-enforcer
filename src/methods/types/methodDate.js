@@ -1,5 +1,5 @@
 import enforceDate from '../../enforcer/types/enforceDate';
-import { buildMethod } from './methodAny';
+import { buildMethod, mapEnforcer } from './methodAny';
 
 /**
  * Builds a method for getting/setting a date
@@ -13,5 +13,5 @@ import { buildMethod } from './methodAny';
  * @returns {Function}
  */
 export default buildMethod({
-	enforce: enforceDate
+	enforce: mapEnforcer(enforceDate)
 });

@@ -4,7 +4,9 @@ import { testMethodType } from '../methodTestUtility';
 
 describe('method', () => {
 	describe('.func', () => {
-		testMethodType(assign({}, data));
+		testMethodType(assign({
+			coerce: false
+		}, data));
 	});
 });
 

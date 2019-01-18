@@ -1,5 +1,5 @@
 import enforceString from '../../enforcer/types/enforceString';
-import { buildMethod } from './methodAny';
+import { buildMethod, mapEnforcer } from './methodAny';
 
 /**
  * Builds a method for getting/setting a string
@@ -14,6 +14,6 @@ import { buildMethod } from './methodAny';
  * @returns {Function}
  */
 export default buildMethod({
-	enforce: enforceString,
+	enforce: mapEnforcer(enforceString),
 	init: ''
 });

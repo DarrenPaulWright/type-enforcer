@@ -1,8 +1,7 @@
 import isCssSize from '../../checks/isCssSize';
-import enforceBool from '../../enforcer/types/enforceBool';
 import enforceCssSize from '../../enforcer/types/enforceCssSize';
 import CssSize from '../../types/CssSize';
-import { buildMethod, compareCustomType } from './methodAny';
+import { buildMethod, compareCustomType, mapEnforcerDefaultCoerceTrue } from './methodAny';
 
 /**
  * Builds a method for getting/setting a CssSize instance
@@ -18,8 +17,6 @@ import { buildMethod, compareCustomType } from './methodAny';
  * @returns {Function}
  */
 export default buildMethod({
-	enforce: (newValue, oldValue, options) => {
-		return enforceCssSize(newValue, oldValue, enforceBool(options.coerce, true));
-	},
+	enforce: mapEnforcerDefaultCoerceTrue(enforceCssSize),
 	compare: compareCustomType(CssSize, isCssSize)
 });

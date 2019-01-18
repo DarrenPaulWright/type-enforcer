@@ -1,5 +1,5 @@
 import enforceBool from '../../enforcer/types/enforceBool';
-import { buildMethod } from './methodAny';
+import { buildMethod, mapEnforcer } from './methodAny';
 
 /**
  * Builds a method for getting/setting a boolean
@@ -14,6 +14,6 @@ import { buildMethod } from './methodAny';
  * @returns {Function}
  */
 export default buildMethod({
-	enforce: enforceBool,
+	enforce: mapEnforcer(enforceBool),
 	init: false
 });

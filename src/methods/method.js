@@ -8,7 +8,7 @@ import methodElement from './types/methodElement';
 import methodEnum from './types/methodEnum';
 import methodFunction from './types/methodFunction';
 import methodInstance from './types/methodInstance';
-import methodInt from './types/methodInt';
+import methodInteger from './types/methodInteger';
 import methodKeyValue from './types/methodKeyValue';
 import methodNumber from './types/methodNumber';
 import methodObject from './types/methodObject';
@@ -61,7 +61,7 @@ export default {
 	element: methodElement,
 	enum: methodEnum,
 	function: methodFunction,
-	int: methodInt,
+	integer: methodInteger,
 	instance: methodInstance,
 	keyValue: methodKeyValue,
 	number: methodNumber,

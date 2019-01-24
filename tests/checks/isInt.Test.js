@@ -1,35 +1,35 @@
-import { isInt } from '../../src';
-import { multiTest, intData as data } from '../TestUtil';
+import { isInteger } from '../../src';
+import { intData as data, multiTest } from '../TestUtil';
 
-describe('isInt', () => {
+describe('isInteger', () => {
 	multiTest({
 		values: data.true,
-		test: (value) => isInt(value),
+		test: (value) => isInteger(value),
 		assertion: 'isTrue'
 	});
 	multiTest({
 		values: data.false,
-		test: (value) => isInt(value),
+		test: (value) => isInteger(value),
 		assertion: 'isFalse'
 	});
 	multiTest({
 		values: data.coerceTrue,
-		test: (value) => isInt(value),
+		test: (value) => isInteger(value),
 		assertion: 'isFalse'
 	});
 	multiTest({
 		values: data.true,
-		test: (value) => isInt(value, true),
+		test: (value) => isInteger(value, true),
 		assertion: 'isTrue'
 	});
 	multiTest({
 		values: data.coerceTrue,
-		test: (value) => isInt(value, true),
+		test: (value) => isInteger(value, true),
 		assertion: 'isTrue'
 	});
 	multiTest({
 		values: data.coerceFalse,
-		test: (value) => isInt(value, true),
+		test: (value) => isInteger(value, true),
 		assertion: 'isFalse'
 	});
 });

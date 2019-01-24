@@ -1,10 +1,10 @@
-import isInt from '../../checks/isInt';
+import isInteger from '../../checks/isInteger';
 import enforcer from './enforcer';
 
 /**
- * Enforce that a value is an integer. Uses [isInt](docs/checks.md#isInt).
+ * Enforce that a value is an integer. Uses [isInteger](docs/checks.md#isInteger).
  *
- * @function enforce.int
+ * @function enforce.integer
  *
  * @arg {*} value
  * @arg {int} alt - Returned if the value is not the correct type
@@ -14,4 +14,4 @@ import enforcer from './enforcer';
  *
  * @returns {int}
  */
-export default enforcer(isInt, Number, true);
+export default enforcer(isInteger, Number, true);

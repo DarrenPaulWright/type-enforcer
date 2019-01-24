@@ -267,7 +267,7 @@ export const functionData = {
 	coerceFalse: []
 };
 export const intData = {
-	name: 'int',
+	name: 'integer',
 	skip: ['number'],
 	true: validInts,
 	false: difference(testValues, validInts),

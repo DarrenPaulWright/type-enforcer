@@ -1,5 +1,5 @@
 import { isFunction } from '../../src';
-import { multiTest, functionData as data } from '../TestUtil';
+import { functionData as data, multiTest } from '../TestUtil';
 
 describe('isFunction', () => {
 	multiTest({

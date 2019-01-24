@@ -69,7 +69,7 @@ export { default as isDockPoint } from './checks/isDockPoint';
 export { default as isElement } from './checks/isElement';
 export { default as isFunction } from './checks/isFunction';
 export { default as isInstanceOf } from './checks/isInstanceOf';
-export { default as isInt } from './checks/isInt';
+export { default as isInteger } from './checks/isInteger';
 export { default as isJson } from './checks/isJson';
 export { default as isNumber } from './checks/isNumber';
 export { default as isObject } from './checks/isObject';

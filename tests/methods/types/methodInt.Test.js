@@ -3,7 +3,7 @@ import { intData as data } from '../../TestUtil';
 import { testMethodType } from '../methodTestUtility';
 
 describe('method', () => {
-	describe('.int', () => {
+	describe('.integer', () => {
 		testMethodType(assign({}, data, {
 			extraProps: {
 				min: 0,

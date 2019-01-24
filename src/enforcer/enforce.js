@@ -7,7 +7,7 @@ import enforceElement from './types/enforceElement';
 import enforceEnum from './types/enforceEnum';
 import enforceFunction from './types/enforceFunction';
 import enforceInstance from './types/enforceInstance';
-import enforceInt from './types/enforceInt';
+import enforceInteger from './types/enforceInteger';
 import enforceNumber from './types/enforceNumber';
 import enforceObject from './types/enforceObject';
 import enforcePoint from './types/enforcePoint';
@@ -36,7 +36,7 @@ export default {
 	enum: enforceEnum,
 	function: enforceFunction,
 	instance: enforceInstance,
-	int: enforceInt,
+	integer: enforceInteger,
 	number: enforceNumber,
 	object: enforceObject,
 	point: enforcePoint,

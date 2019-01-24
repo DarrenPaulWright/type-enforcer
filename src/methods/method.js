@@ -1,14 +1,14 @@
 import methodAny from './types/methodAny';
 import methodArray from './types/methodArray';
-import methodBool from './types/methodBool';
+import methodBoolean from './types/methodBoolean';
 import methodCssSize from './types/methodCssSize';
 import methodDate from './types/methodDate';
 import methodDockPoint from './types/methodDockPoint';
 import methodElement from './types/methodElement';
 import methodEnum from './types/methodEnum';
-import methodFunc from './types/methodFunc';
+import methodFunction from './types/methodFunction';
 import methodInstance from './types/methodInstance';
-import methodInt from './types/methodInt';
+import methodInteger from './types/methodInteger';
 import methodKeyValue from './types/methodKeyValue';
 import methodNumber from './types/methodNumber';
 import methodObject from './types/methodObject';
@@ -53,15 +53,15 @@ import methodVector from './types/methodVector';
 export default {
 	any: methodAny,
 	array: methodArray,
-	bool: methodBool,
+	boolean: methodBoolean,
 	queue: methodQueue,
 	cssSize: methodCssSize,
 	date: methodDate,
 	dockPoint: methodDockPoint,
 	element: methodElement,
 	enum: methodEnum,
-	func: methodFunc,
-	int: methodInt,
+	function: methodFunction,
+	integer: methodInteger,
 	instance: methodInstance,
 	keyValue: methodKeyValue,
 	number: methodNumber,

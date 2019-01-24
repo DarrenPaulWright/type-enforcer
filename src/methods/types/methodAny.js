@@ -1,5 +1,5 @@
 import { assign, castArray, cloneDeep, isEqual } from 'lodash';
-import enforceBool from '../../enforcer/types/enforceBool';
+import enforceBoolean from '../../enforcer/types/enforceBoolean';
 import before from '../variants/before';
 import beforeSet from '../variants/beforeSet';
 import get from '../variants/get';
@@ -52,7 +52,7 @@ export const mapEnforcerNumeric = (enforcer) => (newValue, oldValue, options) =>
 };
 
 export const mapEnforcerDefaultCoerceTrue = (enforcer) => (newValue, oldValue, options) => {
-	return enforcer(newValue, oldValue, enforceBool(options.coerce, true));
+	return enforcer(newValue, oldValue, enforceBoolean(options.coerce, true));
 };
 
 export const buildMethod = (defaultSettings = {}, onInit) => {

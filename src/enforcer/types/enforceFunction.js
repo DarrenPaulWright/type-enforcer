@@ -1,10 +1,10 @@
-import isFunction from '../../checks/isFunc';
+import isFunction from '../../checks/isFunction';
 import enforcer from './enforcer';
 
 /**
  * Enforce that a value is a function. Uses [isFunction](docs/checks.md#isFunction).
  *
- * @function enforce.func
+ * @function enforce.function
  *
  * @arg {*} value
  * @arg {Function} alt - Returned if the value is not the correct type

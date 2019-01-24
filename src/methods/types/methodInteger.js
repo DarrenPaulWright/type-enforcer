@@ -1,4 +1,4 @@
-import enforceInt from '../../enforcer/types/enforceInt';
+import enforceInteger from '../../enforcer/types/enforceInteger';
 import { buildMethod, mapEnforcerNumeric } from './methodAny';
 
 /**
@@ -16,5 +16,5 @@ import { buildMethod, mapEnforcerNumeric } from './methodAny';
  * @returns {Function}
  */
 export default buildMethod({
-	enforce: mapEnforcerNumeric(enforceInt)
+	enforce: mapEnforcerNumeric(enforceInteger)
 });

@@ -11,46 +11,20 @@ Type enforcement library for javascript
 <a name="method"></a>
 
 ## method : <code>object</code>
-Enforce data types and remove common boilerplate code on class methods.
-
-## Usage
-``` javascript
-import { method } from 'type-enforcer';
-```
-
-Use it as a prototype:
-``` javascript
-const Thing = function() {};
-
-Thing.prototype.myMethod = method.string([options]);
-```
-
-or in a class:
-``` javascript
-class Thing() {}
-
-Thing.prototype.myMethod = method.string([options]);
-```
-
-or as a non-prototype method:
-``` javascript
-const Thing = function() {
-    this.myMethod = method.string([options]);
-};
-```
+Enforce data types and remove common boilerplate code on class methods.## Usage``` javascriptimport { method } from 'type-enforcer';```Use it as a prototype:``` javascriptconst Thing = function() {};Thing.prototype.myMethod = method.string([options]);```or in a class:``` javascriptclass Thing() {}Thing.prototype.myMethod = method.string([options]);```or as a non-prototype method:``` javascriptconst Thing = function() {    this.myMethod = method.string([options]);};```
 
 **Kind**: global typedef  
 
 * [method](#method) : <code>object</code>
     * [.any([options])](#method.any) ⇒ <code>function</code>
     * [.array([options])](#method.array) ⇒ <code>function</code>
-    * [.bool([options])](#method.bool) ⇒ <code>function</code>
+    * [.boolean([options])](#method.boolean) ⇒ <code>function</code>
     * [.cssSize([options])](#method.cssSize) ⇒ <code>function</code>
     * [.date([options])](#method.date) ⇒ <code>function</code>
     * [.dockPoint([options])](#method.dockPoint) ⇒ <code>function</code>
     * [.element([options])](#method.element) ⇒ <code>function</code>
     * [.enum([options])](#method.enum) ⇒ <code>function</code>
-    * [.func([options])](#method.func) ⇒ <code>function</code>
+    * [.function([options])](#method.function) ⇒ <code>function</code>
     * [.instance([options])](#method.instance) ⇒ <code>function</code>
     * [.int([options])](#method.int) ⇒ <code>function</code>
     * [.keyValue([options])](#method.keyValue) ⇒ <code>function</code>
@@ -100,9 +74,9 @@ Builds a chainable method for getting/setting an array
 | [options.deep] | <code>Boolean</code> | <code>true</code> | If false then only use strict equality |
 | [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
-<a name="method.bool"></a>
+<a name="method.boolean"></a>
 
-### method.bool([options]) ⇒ <code>function</code>
+### method.boolean([options]) ⇒ <code>function</code>
 Builds a chainable method for getting/setting a boolean
 
 **Kind**: static method of [<code>method</code>](#method)  
@@ -112,7 +86,7 @@ Builds a chainable method for getting/setting a boolean
 | --- | --- | --- | --- |
 | [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
 | [options.init] | <code>\*</code> | <code>false</code> |  |
-| [options.enforce] | <code>function</code> | <code>enforce.bool</code> |  |
+| [options.enforce] | <code>function</code> | <code>enforce.boolean</code> |  |
 | [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 <a name="method.cssSize"></a>
@@ -186,9 +160,9 @@ Builds a chainable method for getting/setting an enumerable value in an [Enum](d
 | [options.enforce] | <code>function</code> | <code>enforce.enum</code> |  |
 | options.enum | <code>Enum</code> |  | An enum to restrict the values to. |
 
-<a name="method.func"></a>
+<a name="method.function"></a>
 
-### method.func([options]) ⇒ <code>function</code>
+### method.function([options]) ⇒ <code>function</code>
 Builds a chainable method for getting/setting a function
 
 **Kind**: static method of [<code>method</code>](#method)  
@@ -197,7 +171,7 @@ Builds a chainable method for getting/setting a function
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
-| [options.enforce] | <code>function</code> | <code>enforce.func</code> |  |
+| [options.enforce] | <code>function</code> | <code>enforce.function</code> |  |
 
 <a name="method.instance"></a>
 
@@ -232,9 +206,7 @@ Builds a chainable method for getting/setting an integer
 <a name="method.keyValue"></a>
 
 ### method.keyValue([options]) ⇒ <code>function</code>
-Builds a chainable method that accepts either:
-- two args, a key and a value
-- one arg, an object with multiple key/value pairs
+Builds a chainable method that accepts either:- two args, a key and a value- one arg, an object with multiple key/value pairs
 
 **Kind**: static method of [<code>method</code>](#method)  
 **Returns**: <code>function</code> - accepts a new value and returns the methods constructor (allows chaining), or if no args are passed returns the output of options.get  

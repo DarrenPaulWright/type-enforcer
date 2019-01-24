@@ -1,13 +1,13 @@
 import enforceArray from './types/enforceArray';
-import enforceBool from './types/enforceBool';
+import enforceBoolean from './types/enforceBoolean';
 import enforceCssSize from './types/enforceCssSize';
 import enforceDate from './types/enforceDate';
 import enforceDockPoint from './types/enforceDockPoint';
 import enforceElement from './types/enforceElement';
 import enforceEnum from './types/enforceEnum';
-import enforceFunc from './types/enforceFunc';
+import enforceFunction from './types/enforceFunction';
 import enforceInstance from './types/enforceInstance';
-import enforceInt from './types/enforceInt';
+import enforceInteger from './types/enforceInteger';
 import enforceNumber from './types/enforceNumber';
 import enforceObject from './types/enforceObject';
 import enforcePoint from './types/enforcePoint';
@@ -28,15 +28,15 @@ import enforceVector from './types/enforceVector';
  */
 export default {
 	array: enforceArray,
-	bool: enforceBool,
+	boolean: enforceBoolean,
 	cssSize: enforceCssSize,
 	date: enforceDate,
 	dockPoint: enforceDockPoint,
 	element: enforceElement,
 	enum: enforceEnum,
-	func: enforceFunc,
+	function: enforceFunction,
 	instance: enforceInstance,
-	int: enforceInt,
+	integer: enforceInteger,
 	number: enforceNumber,
 	object: enforceObject,
 	point: enforcePoint,

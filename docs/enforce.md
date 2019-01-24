@@ -11,26 +11,21 @@ Type enforcement library for javascript
 <a name="enforce"></a>
 
 ## enforce : <code>object</code>
-Utility functions for enforcing data types.
-
-## Usage
-``` javascript
-import { enforce } from 'type-enforcer';
-```
+Utility functions for enforcing data types.## Usage``` javascriptimport { enforce } from 'type-enforcer';```
 
 **Kind**: global typedef  
 
 * [enforce](#enforce) : <code>object</code>
     * [.array(value, alt, [coerce])](#enforce.array) ⇒ <code>Array</code>
-    * [.bool(value, alt, [coerce])](#enforce.bool) ⇒ <code>Boolean</code>
+    * [.boolean(value, alt, [coerce])](#enforce.boolean) ⇒ <code>Boolean</code>
     * [.cssSize(value, alt, [coerce])](#enforce.cssSize) ⇒ <code>CssSize</code>
     * [.date(value, alt, [coerce])](#enforce.date) ⇒ <code>Date</code>
     * [.dockPoint(value, alt, [coerce])](#enforce.dockPoint) ⇒ <code>DockPoint</code>
     * [.element(value, alt)](#enforce.element) ⇒ <code>Element</code>
     * [.enum(value, enumerable, alt)](#enforce.enum) ⇒ <code>String</code>
-    * [.func(value, alt)](#enforce.func) ⇒ <code>function</code>
+    * [.function(value, alt)](#enforce.function) ⇒ <code>function</code>
     * [.instance(value, constructor, alt)](#enforce.instance) ⇒ <code>Object</code>
-    * [.int(value, alt, [coerce], [minValue], [maxValue])](#enforce.int) ⇒ <code>int</code>
+    * [.integer(value, alt, [coerce], [minValue], [maxValue])](#enforce.integer) ⇒ <code>int</code>
     * [.number(value, alt, [coerce], [minValue], [maxValue])](#enforce.number) ⇒ <code>Number</code>
     * [.object(value, alt, [coerce])](#enforce.object) ⇒ <code>Object</code>
     * [.point(value, alt, [coerce])](#enforce.point) ⇒ <code>Point</code>
@@ -52,10 +47,10 @@ Enforce that a value is an array. Uses [isArray](docs/checks.md#isArray).
 | alt | <code>Array</code> |  | Returned if the value is not the correct type |
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
-<a name="enforce.bool"></a>
+<a name="enforce.boolean"></a>
 
-### enforce.bool(value, alt, [coerce]) ⇒ <code>Boolean</code>
-Enforce that a value is a boolean. Uses [isBool](docs/checks.md#isBool).
+### enforce.boolean(value, alt, [coerce]) ⇒ <code>Boolean</code>
+Enforce that a value is a boolean. Uses [isBoolean](docs/checks.md#isBoolean).
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
 
@@ -129,9 +124,9 @@ Enforce that a value exists in the provided [Enum](docs/Enum.md)
 | enumerable | <code>Enum</code> |  |
 | alt | <code>String</code> | Returned if the value is not the correct type |
 
-<a name="enforce.func"></a>
+<a name="enforce.function"></a>
 
-### enforce.func(value, alt) ⇒ <code>function</code>
+### enforce.function(value, alt) ⇒ <code>function</code>
 Enforce that a value is a function. Uses [isFunction](docs/checks.md#isFunction).
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
@@ -154,10 +149,10 @@ Enforce that a value is an instance of a constructor. Uses [isInstanceOf](docs/c
 | constructor | <code>function</code> |  |
 | alt | <code>Object</code> | Returned if the value is not the correct type |
 
-<a name="enforce.int"></a>
+<a name="enforce.integer"></a>
 
-### enforce.int(value, alt, [coerce], [minValue], [maxValue]) ⇒ <code>int</code>
-Enforce that a value is an integer. Uses [isInt](docs/checks.md#isInt).
+### enforce.integer(value, alt, [coerce], [minValue], [maxValue]) ⇒ <code>int</code>
+Enforce that a value is an integer. Uses [isInteger](docs/checks.md#isInteger).
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
 

@@ -1,25 +1,25 @@
-import { isBool } from '../../src';
-import { multiTest, boolData as data } from '../TestUtil';
+import { isBoolean } from '../../src';
+import { boolData as data, multiTest } from '../TestUtil';
 
-describe('isBool', () => {
+describe('isBoolean', () => {
 	multiTest({
 		values: data.true,
-		test: (value) => isBool(value),
+		test: (value) => isBoolean(value),
 		assertion: 'isTrue'
 	});
 	multiTest({
 		values: data.false,
-		test: (value) => isBool(value),
+		test: (value) => isBoolean(value),
 		assertion: 'isFalse'
 	});
 	multiTest({
 		values: data.coerceTrue,
-		test: (value) => isBool(value, true),
+		test: (value) => isBoolean(value, true),
 		assertion: 'isTrue'
 	});
 	multiTest({
 		values: data.coerceFalse,
-		test: (value) => isBool(value, true),
+		test: (value) => isBoolean(value, true),
 		assertion: 'isFalse'
 	});
 });

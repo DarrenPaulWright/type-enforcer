@@ -19,11 +19,12 @@ const files = testRunnerConfig.getWallabyFiles(config, {
 
 module.exports = function(wallaby) {
 	const webpackPostprocessor = wallabyWebpack();
-
+ 
 	return {
 		name: 'type-enforcer',
 		files: files.files,
 		tests: files.tests,
+		testFramework: 'mocha',
 		env: {
 			kind: 'chrome'
 		},
@@ -34,7 +35,7 @@ module.exports = function(wallaby) {
 		setup: function() {
 			window.__moduleBundler.loadTests();
 		},
-		lowCoverageThreshold: 99,
-		debug: true
+		// debug: true,
+		lowCoverageThreshold: 99
 	};
 };

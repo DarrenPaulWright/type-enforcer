@@ -11,10 +11,10 @@ import { buildCheckWithCoerce } from './checks';
  * isRegExp(/*+/g);
  * // => true
  *
- * isInt('/*+/g');
+ * isRegExp('/*+/g');
  * // => false
  *
- * isInt('/*+/g', true);
+ * isRegExp('/*+/g', true);
  * // => true
  * ```
  *

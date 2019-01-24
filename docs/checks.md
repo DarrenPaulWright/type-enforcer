@@ -14,7 +14,7 @@ Type enforcement library for javascript
 <dt><a href="#isArray">isArray(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
 <dd><p>Check if a value is an <a href="https://lodash.com/docs/#isArray">array</a></p>
 </dd>
-<dt><a href="#isBool">isBool(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
+<dt><a href="#isBoolean">isBoolean(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
 <dd><p>Check if a value is a <a href="https://lodash.com/docs/#isBoolean">boolean</a></p>
 </dd>
 <dt><a href="#isCssSize">isCssSize(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
@@ -29,13 +29,13 @@ Type enforcement library for javascript
 <dt><a href="#isElement">isElement(value)</a> ⇒ <code>Boolean</code></dt>
 <dd><p>Check if a value is a <a href="https://lodash.com/docs/#isElement">DOM element</a></p>
 </dd>
-<dt><a href="#isFunc">isFunc(value)</a> ⇒ <code>Boolean</code></dt>
+<dt><a href="#isFunction">isFunction(value)</a> ⇒ <code>Boolean</code></dt>
 <dd><p>Check if a value is a <a href="https://lodash.com/docs/#isFunction">function</a></p>
 </dd>
 <dt><a href="#isInstanceOf">isInstanceOf(object, constructor)</a> ⇒ <code>Boolean</code></dt>
 <dd><p>Check if a value is an instance of a constructor.</p>
 </dd>
-<dt><a href="#isInt">isInt(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
+<dt><a href="#isInteger">isInteger(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
 <dd><p>Check if a value is an <a href="https://lodash.com/docs/#isInteger">integer</a></p>
 </dd>
 <dt><a href="#isJson">isJson(value)</a> ⇒ <code>Boolean</code></dt>
@@ -78,9 +78,9 @@ Check if a value is an [array](https://lodash.com/docs/#isArray)
 
 **Example**  
 ``` javascriptimport { isArray } from 'type-enforcer';isArray([]);// => trueisArray('[]');// => falseisArray('[]', true);// => true```
-<a name="isBool"></a>
+<a name="isBoolean"></a>
 
-## isBool(value, [coerce]) ⇒ <code>Boolean</code>
+## isBoolean(value, [coerce]) ⇒ <code>Boolean</code>
 Check if a value is a [boolean](https://lodash.com/docs/#isBoolean)
 
 **Kind**: global function  
@@ -91,7 +91,7 @@ Check if a value is a [boolean](https://lodash.com/docs/#isBoolean)
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a boolean. Always returns true, as _everything_ can be coerced into a boolean. |
 
 **Example**  
-``` javascriptimport { isBool } from 'type-enforcer';isBool(false);// => trueisBool(undefined);// => falseisBool(undefined, true);// => true```
+``` javascriptimport { isBoolean } from 'type-enforcer';isBoolean(false);// => trueisBoolean(undefined);// => falseisBoolean(undefined, true);// => true```
 <a name="isCssSize"></a>
 
 ## isCssSize(value, [coerce]) ⇒ <code>Boolean</code>
@@ -147,9 +147,9 @@ Check if a value is a [DOM element](https://lodash.com/docs/#isElement)
 
 **Example**  
 ``` javascriptimport { isElement } from 'type-enforcer';isElement(document.createElement('div'));// => true```
-<a name="isFunc"></a>
+<a name="isFunction"></a>
 
-## isFunc(value) ⇒ <code>Boolean</code>
+## isFunction(value) ⇒ <code>Boolean</code>
 Check if a value is a [function](https://lodash.com/docs/#isFunction)
 
 **Kind**: global function  
@@ -159,7 +159,7 @@ Check if a value is a [function](https://lodash.com/docs/#isFunction)
 | value | <code>\*</code> | 
 
 **Example**  
-``` javascriptimport { isFunc } from 'type-enforcer';isFunc(() => {});// => true```
+``` javascriptimport { isFunction } from 'type-enforcer';isFunction(() => {});// => true```
 <a name="isInstanceOf"></a>
 
 ## isInstanceOf(object, constructor) ⇒ <code>Boolean</code>
@@ -173,24 +173,10 @@ Check if a value is an instance of a constructor.
 | constructor | <code>function</code> | 
 
 **Example**  
-``` javascript
-import { isInstanceOf } from 'type-enforcer';
-```
+``` javascriptimport { isInstanceOf } from 'type-enforcer';```Fixes issues with primitives and instanceOf``` javascriptisInstanceOf(false, Boolean); => trueisInstanceOf(42, Number); => trueisInstanceOf('test', String); => true```
+<a name="isInteger"></a>
 
-Fixes issues with primitives and instanceOf
-``` javascript
-isInstanceOf(false, Boolean);
- => true
-
-isInstanceOf(42, Number);
- => true
-
-isInstanceOf('test', String);
- => true
-```
-<a name="isInt"></a>
-
-## isInt(value, [coerce]) ⇒ <code>Boolean</code>
+## isInteger(value, [coerce]) ⇒ <code>Boolean</code>
 Check if a value is an [integer](https://lodash.com/docs/#isInteger)
 
 **Kind**: global function  
@@ -201,7 +187,7 @@ Check if a value is an [integer](https://lodash.com/docs/#isInteger)
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into an Integer |
 
 **Example**  
-``` javascriptimport { isInt } from 'type-enforcer';isInt(42);// => trueisInt('42');// => falseisInt('42', true);// => true```
+``` javascriptimport { isInteger } from 'type-enforcer';isInteger(42);// => trueisInteger('42');// => falseisInteger('42', true);// => true```
 <a name="isJson"></a>
 
 ## isJson(value) ⇒ <code>Boolean</code>
@@ -214,9 +200,7 @@ Check if a value can be parsed as JSON
 | value | <code>\*</code> | 
 
 **Example**  
-``` javascript
-import { isJson } from 'type-enforcer';
-```
+``` javascriptimport { isJson } from 'type-enforcer';```
 <a name="isNumber"></a>
 
 ## isNumber(value, [coerce]) ⇒ <code>Boolean</code>
@@ -230,18 +214,7 @@ Check if a value is a [number](https://lodash.com/docs/#isNumber)
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a Number |
 
 **Example**  
-``` javascript
-import { isNumber } from 'type-enforcer';
-
-isNumber(3.14159);
-// => true
-
-isNumber('3.14159');
-// => false
-
-isNumber('3.14159', true);
-// => true
-```
+``` javascriptimport { isNumber } from 'type-enforcer';isNumber(3.14159);// => trueisNumber('3.14159');// => falseisNumber('3.14159', true);// => true```
 <a name="isObject"></a>
 
 ## isObject(value, [coerce]) ⇒ <code>Boolean</code>
@@ -283,7 +256,7 @@ Check if a value is a [RegExp](https://lodash.com/docs/#isRegExp)
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a RegExp |
 
 **Example**  
-``` javascriptimport { isRegExp } from 'type-enforcer';isRegExp(/*+/g);// => trueisInt('/*+/g');// => falseisInt('/*+/g', true);// => true```
+``` javascriptimport { isRegExp } from 'type-enforcer';isRegExp(/*+/g);// => trueisRegExp('/*+/g');// => falseisRegExp('/*+/g', true);// => true```
 <a name="isString"></a>
 
 ## isString(value, [coerce]) ⇒ <code>Boolean</code>

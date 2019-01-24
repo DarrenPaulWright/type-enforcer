@@ -9,7 +9,7 @@ const validFloat = 34.23463456;
 
 describe('enforce', () => {
 	describe('.number', () => {
-		it('should return the setter value when an int is provided', () => {
+		it('should return the setter value when an integer is provided', () => {
 			assert.deepEqual(enforce.number(validInt, validFloat), validInt);
 			assert.notDeepEqual(enforce.number(validInt, validFloat), validFloat);
 		});

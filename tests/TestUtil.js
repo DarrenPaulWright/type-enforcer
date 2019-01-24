@@ -220,7 +220,7 @@ export const arrayData = {
 };
 export const boolData = {
 	value: Boolean,
-	name: 'bool',
+	name: 'boolean',
 	true: validBooleans,
 	false: difference(testValues, validBooleans),
 	coerceTrue: difference(testValues, validBooleans),
@@ -260,14 +260,14 @@ export const elementData = {
 };
 export const functionData = {
 	value: Function,
-	name: 'func',
+	name: 'function',
 	true: validFunctions,
 	false: difference(testValues, validFunctions),
 	coerceTrue: [],
 	coerceFalse: []
 };
 export const intData = {
-	name: 'int',
+	name: 'integer',
 	skip: ['number'],
 	true: validInts,
 	false: difference(testValues, validInts),

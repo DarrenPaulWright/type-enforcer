@@ -7,22 +7,28 @@ const typeOfMap = new Enum({
 });
 
 /**
- * @description Check if a value is an instance of a constructor.
+ * @description Check if a value is an instance of a constructor. Fixes issues with native instanceOf and primitives Boolean, Number, and String (see example).
  *
  * @example
  * ``` javascript
  * import { isInstanceOf } from 'type-enforcer';
- * ```
  *
- * Fixes issues with primitives and instanceOf
- * ``` javascript
  * isInstanceOf(false, Boolean);
  *  => true
  *
+ * false instanceof Boolean
+ *  => false
+ * isInstanceOf(false, Boolean);
+ *  => true
+ *
+ * 42 instanceof Number
+ *  => false
  * isInstanceOf(42, Number);
  *  => true
  *
- * isInstanceOf('test', String);
+ * 'a string' instanceof String
+ *  => false
+ * isInstanceOf('a string', String);
  *  => true
  * ```
  *

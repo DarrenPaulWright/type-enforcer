@@ -16,22 +16,13 @@ const LEFT = Symbol();
 /**
  * Replicates the functionality of css border-width, margin, and padding, or anything that requires top, right, bottom, and left css sizes.
  *
- * ## Usage
+ * @example
  * ``` javascript
  * import { Thickness } from 'type-enforcer';
- * ```
  *
- * The sizes can be provided as individual parameters, an array, or a space separated string in the following arrangements:
- * - If one size is provided it gets applied to all sides
- * - If two sizes are provided the first gets applied to top and bottom, the second size gets applied right and left
- * - If three sizes are provided the first gets applied to top, the second to right and left, and the third to bottom
- * - If four sizes are provided then they get applied to top, right, bottom, and left respectively
- *
- * Examples:
- * ``` javascript
  * const thickness1 = new Thickness();
  * console.log(thickness1.toString());
- * // => '0 0 0 0'
+ * // => '0'
  *
  * const thickness2 = new Thickness(1, 2, 3, 4);
  * console.log(thickness2.toString());
@@ -39,7 +30,7 @@ const LEFT = Symbol();
  *
  * const thickness3 = new Thickness([5, 6, 7]);
  * console.log(thickness3.toString());
- * // => '5px 6px 7px 6px'
+ * // => '5px 6px 7px'
  *
  * const thickness4 = new Thickness('20px 30px');
  * console.log(thickness4.toString());
@@ -53,10 +44,10 @@ const LEFT = Symbol();
  *
  * @class Thickness
  *
- * @arg {String|Number|Array} [top]
- * @arg {String|Number} [right]
- * @arg {String|Number} [bottom]
- * @arg {String|Number} [left]
+ * @arg {String|Number|Array} [top] - If only one size is provided it gets applied to all sides. See examples for different arrangements of args.
+ * @arg {String|Number} [right] - If two sizes are provided the first gets applied to top and bottom, the second size gets applied right and left
+ * @arg {String|Number} [bottom] - If three sizes are provided the first gets applied to top, the second to right and left, and the third to bottom
+ * @arg {String|Number} [left] - If four sizes are provided then they get applied to top, right, bottom, and left respectively
  */
 export default class Thickness {
 	constructor(...args) {

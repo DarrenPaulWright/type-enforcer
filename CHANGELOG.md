@@ -4,16 +4,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
-## Unreleased
+## [Unreleased]
+### Changed
 - Removed dependencies on babel plugin proposals.
 - Improved docs.
 
-## 0.2.1 - 2019-01-24
+## [0.2.1] - 2019-01-24
+### Changed
 - Changed isBool to isBoolean, enforce.bool to enforce.boolean, and method.bool to method.boolean
 - Changed isFunc to isFunction, enforce.func to enforce.function, and method.func to method.function
 - Changed isInt to isInteger, enforce.int to enforce.integer, and method.int to method.integer
 
-## 0.2.0 - 2019-01-18
+## [0.2.0] - 2019-01-18
 ### Added
 - 99.9% test-coverage
   - testing in chrome and firefox
@@ -50,7 +52,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [Queue](docs/Queue.md)
   - removed method "getCallbacks"
 
-## 0.1.6 - 2019-01-02
+## [0.1.6] - 2019-01-02
 ### Added
 - Snyk.io badge for security checks 
 - enforce.instance
@@ -59,26 +61,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Changed CallbackQueue to Queue.
 
-## 0.1.5 - 2018-12-30
+## [0.1.5] - 2018-12-30
 ### Changed
 - .babelrc became babel.config.js so the babel plugins are handled properly when using this library as an npm package
 
-## 0.1.4 - 2018-12-30
+## [0.1.4] - 2018-12-30
 ### Changed
 - Moved necessary Babel plugins to dependencies in package.json
 
-## 0.1.3 - 2018-12-29
+## [0.1.3] - 2018-12-29
 ### Changed
 - Documentation
 
-## 0.1.2 - 2018-12-29
+## [0.1.2] - 2018-12-29
 ### Changed
 - Documentation
 
-## 0.1.1 - 2018-12-29
+## [0.1.1] - 2018-12-29
 ### Changed
 - Documentation
 
 ## 0.1.0 - 2018-12-29
 ### Added
 - Initial enforcers, methods, and documentation
+
+[Unreleased]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.2.1...HEAD
+[0.2.1]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.2.0...v0.2.1
+[0.2.0]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.1.6...v0.2.0
+[0.1.6]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.1.5...v0.1.6
+[0.1.5]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.1.4...v0.1.5
+[0.1.4]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.1.3...v0.1.4
+[0.1.3]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.1.2...v0.1.3
+[0.1.2]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.1.1...v0.1.2
+[0.1.1]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.1.0...v0.1.1

@@ -36,15 +36,15 @@ module.exports = function(config) {
 			}
 		},
 		files: files.files,
-		frameworks: ['jasmine'],
+		frameworks: ['mocha'],
 		preprocessors: preprocessors,
 		reporters: reporters,
 		briefReporter: {
 			renderOnRunCompleteOnly: singleRun
 		},
 		coverageReporter: {
-			type : 'lcov',
-			dir : 'coverage/'
+			type: 'lcov',
+			dir: 'coverage/'
 		},
 		webpack: {
 			mode: 'development',

@@ -4,6 +4,23 @@ import enforcer from './enforcer';
 /**
  * Enforce that a value is an object. Uses [isObject](docs/checks.md#isObject).
  *
+ * @example
+ * ``` javascript
+ * import { enforce } from 'type-enforcer';
+ *
+ * const a = {};
+ * const b = {};
+ *
+ * enforce.object(a, b);
+ * // => a
+ *
+ * enforce.object('{}', b);
+ * // => b
+ *
+ * enforce.object('{}', b, true);
+ * // => {}
+ * ```
+ *
  * @function enforce.object
  *
  * @arg {*} value

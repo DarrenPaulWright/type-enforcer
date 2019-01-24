@@ -5,6 +5,20 @@ import enforcer from './enforcer';
 /**
  * Enforce that a value is a [Vector](docs/Vector.md). Uses [isVector](docs/checks.md#isVector).
  *
+ * @example
+ * ``` javascript
+ * import { enforce } from 'type-enforcer';
+ *
+ * enforce.vector(new Vector('[[1,2],[3,4]]'), new Vector());
+ * // => vector of '[[1,2],[3,4]]'
+ *
+ * enforce.vector('[[1,2],[3,4]]', new Vector());
+ * // => vector of '[[0,0],[0,0]]'
+ *
+ * enforce.vector('[[1,2],[3,4]]', new Vector(), true);
+ * // => vector of '[[1,2],[3,4]]'
+ * ```
+ *
  * @function enforce.vector
  *
  * @arg {*} value

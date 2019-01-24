@@ -5,16 +5,16 @@ import { boolData as data, multiTest } from '../../TestUtil';
 import { runNegativeTests } from '../enforceTestUtility';
 
 describe('enforce', () => {
-	describe('.bool', () => {
+	describe('.boolean', () => {
 		it('should return the setter value when a boolean is provided', () => {
-			assert.deepEqual(enforce.bool(true, false), true);
-			assert.deepEqual(enforce.bool(false, true), false);
+			assert.deepEqual(enforce.boolean(true, false), true);
+			assert.deepEqual(enforce.boolean(false, true), false);
 		});
 		it('should NOT return the setter value when the string \'true\' is provided', () => {
-			assert.deepEqual(enforce.bool('true', false), false);
+			assert.deepEqual(enforce.boolean('true', false), false);
 		});
 		it('should NOT return the setter value when the string \'false\' is provided', () => {
-			assert.deepEqual(enforce.bool('false', true), true);
+			assert.deepEqual(enforce.boolean('false', true), true);
 		});
 
 		multiTest({
@@ -25,7 +25,7 @@ describe('enforce', () => {
 				}
 			}),
 			message: (input) => `should return a coerced ${input} when coerce is true`,
-			test: (value) => enforce.bool(value, 'alt value', true),
+			test: (value) => enforce.boolean(value, 'alt value', true),
 			inputKey: 'input',
 			outputKey: 'output'
 		});
@@ -38,7 +38,7 @@ describe('enforce', () => {
 				}
 			}),
 			message: (input) => `should NOT return a coerced ${input} when coerce is false`,
-			test: (value) => enforce.bool(value, value, false),
+			test: (value) => enforce.boolean(value, value, false),
 			inputKey: 'input',
 			outputKey: 'output',
 			assertion: 'deepEqual'
@@ -47,10 +47,10 @@ describe('enforce', () => {
 		multiTest({
 			values: data.coerceFalse,
 			message: (input) => `should return the alt value when ${input} is provided and coerce is true`,
-			test: (value) => enforce.bool(value, 'testAlt', true),
+			test: (value) => enforce.boolean(value, 'testAlt', true),
 			output: 'testAlt'
 		});
 
-		runNegativeTests('bool', true);
+		runNegativeTests('boolean', true);
 	});
 });

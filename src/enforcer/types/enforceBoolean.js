@@ -1,10 +1,10 @@
-import isBoolean from '../../checks/isBool';
+import isBoolean from '../../checks/isBoolean';
 import enforcer from './enforcer';
 
 /**
- * Enforce that a value is a boolean. Uses [isBool](docs/checks.md#isBool).
+ * Enforce that a value is a boolean. Uses [isBoolean](docs/checks.md#isBoolean).
  *
- * @function enforce.bool
+ * @function enforce.boolean
  *
  * @arg {*} value
  * @arg {Boolean} alt - Returned if the value is not the correct type

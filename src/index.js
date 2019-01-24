@@ -62,7 +62,7 @@
  * @name Installation
  */
 export { default as isArray } from './checks/isArray';
-export { default as isBool } from './checks/isBool';
+export { default as isBoolean } from './checks/isBoolean';
 export { default as isCssSize } from './checks/isCssSize';
 export { default as isDate } from './checks/isDate';
 export { default as isDockPoint } from './checks/isDockPoint';

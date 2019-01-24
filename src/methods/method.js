@@ -1,6 +1,6 @@
 import methodAny from './types/methodAny';
 import methodArray from './types/methodArray';
-import methodBool from './types/methodBool';
+import methodBoolean from './types/methodBoolean';
 import methodCssSize from './types/methodCssSize';
 import methodDate from './types/methodDate';
 import methodDockPoint from './types/methodDockPoint';
@@ -53,7 +53,7 @@ import methodVector from './types/methodVector';
 export default {
 	any: methodAny,
 	array: methodArray,
-	bool: methodBool,
+	boolean: methodBoolean,
 	queue: methodQueue,
 	cssSize: methodCssSize,
 	date: methodDate,

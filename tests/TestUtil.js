@@ -220,7 +220,7 @@ export const arrayData = {
 };
 export const boolData = {
 	value: Boolean,
-	name: 'bool',
+	name: 'boolean',
 	true: validBooleans,
 	false: difference(testValues, validBooleans),
 	coerceTrue: difference(testValues, validBooleans),

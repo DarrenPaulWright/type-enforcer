@@ -1,5 +1,5 @@
 import enforceArray from './types/enforceArray';
-import enforceBool from './types/enforceBool';
+import enforceBoolean from './types/enforceBoolean';
 import enforceCssSize from './types/enforceCssSize';
 import enforceDate from './types/enforceDate';
 import enforceDockPoint from './types/enforceDockPoint';
@@ -28,7 +28,7 @@ import enforceVector from './types/enforceVector';
  */
 export default {
 	array: enforceArray,
-	bool: enforceBool,
+	boolean: enforceBoolean,
 	cssSize: enforceCssSize,
 	date: enforceDate,
 	dockPoint: enforceDockPoint,

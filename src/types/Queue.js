@@ -1,5 +1,5 @@
 import { forOwn } from 'lodash';
-import isFunc from '../checks/isFunc';
+import isFunction from '../checks/isFunction';
 
 const CALLBACKS = Symbol();
 const CURRENT_ID = Symbol();
@@ -35,10 +35,10 @@ export default class Queue {
 	 * @returns {Number} A unique ID for this callback.
 	 */
 	add(callback, data) {
-		if (isFunc(callback)) {
+		if (isFunction(callback)) {
 			const newID = (++this[CURRENT_ID] + '');
 			this[CALLBACKS][newID] = {
-				func: callback,
+				function: callback,
 				data: data
 			};
 			this[TOTAL]++;
@@ -96,13 +96,13 @@ export default class Queue {
 		this[IS_BUSY] = true;
 		if (ID) {
 			if (this[CALLBACKS][ID]) {
-				this[CALLBACKS][ID].func.apply(context, extraArguments);
+				this[CALLBACKS][ID].function.apply(context, extraArguments);
 			}
 		}
 		else {
 			forOwn(this[CALLBACKS], (callback) => {
 				if (callback) {
-					callback.func.apply(context, extraArguments);
+					callback.function.apply(context, extraArguments);
 				}
 			});
 		}
@@ -127,7 +127,7 @@ export default class Queue {
 
 		this[IS_BUSY] = true;
 		forOwn(this[CALLBACKS], (callback, ID) => {
-			callback.func.apply(context, extraArguments);
+			callback.function.apply(context, extraArguments);
 			self.discard(ID);
 			return false;
 		});

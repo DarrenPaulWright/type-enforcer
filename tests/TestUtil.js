@@ -260,7 +260,7 @@ export const elementData = {
 };
 export const functionData = {
 	value: Function,
-	name: 'func',
+	name: 'function',
 	true: validFunctions,
 	false: difference(testValues, validFunctions),
 	coerceTrue: [],

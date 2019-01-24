@@ -78,7 +78,7 @@ describe('method', () => {
 				}
 			}
 
-			TestConstructor.prototype.onRemove = method.func();
+			TestConstructor.prototype.onRemove = method.function();
 			TestConstructor.prototype.testMethod = method.queue({
 				set: function() {
 				}
@@ -89,7 +89,7 @@ describe('method', () => {
 
 		describe('(property, with onRemove)', () => {
 			const TestConstructor = function() {
-				this.onRemove = method.func();
+				this.onRemove = method.function();
 
 				this.isRemoved = () => {
 					return false;

@@ -1,5 +1,5 @@
 import { isBoolean } from '../../src';
-import { multiTest, boolData as data } from '../TestUtil';
+import { boolData as data, multiTest } from '../TestUtil';
 
 describe('isBoolean', () => {
 	multiTest({

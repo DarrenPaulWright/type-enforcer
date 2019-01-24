@@ -5,7 +5,7 @@ import enforceDate from './types/enforceDate';
 import enforceDockPoint from './types/enforceDockPoint';
 import enforceElement from './types/enforceElement';
 import enforceEnum from './types/enforceEnum';
-import enforceFunc from './types/enforceFunc';
+import enforceFunction from './types/enforceFunction';
 import enforceInstance from './types/enforceInstance';
 import enforceInt from './types/enforceInt';
 import enforceNumber from './types/enforceNumber';
@@ -34,7 +34,7 @@ export default {
 	dockPoint: enforceDockPoint,
 	element: enforceElement,
 	enum: enforceEnum,
-	func: enforceFunc,
+	function: enforceFunction,
 	instance: enforceInstance,
 	int: enforceInt,
 	number: enforceNumber,

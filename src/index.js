@@ -67,7 +67,7 @@ export { default as isCssSize } from './checks/isCssSize';
 export { default as isDate } from './checks/isDate';
 export { default as isDockPoint } from './checks/isDockPoint';
 export { default as isElement } from './checks/isElement';
-export { default as isFunc } from './checks/isFunc';
+export { default as isFunction } from './checks/isFunction';
 export { default as isInstanceOf } from './checks/isInstanceOf';
 export { default as isInt } from './checks/isInt';
 export { default as isJson } from './checks/isJson';

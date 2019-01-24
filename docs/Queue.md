@@ -26,12 +26,7 @@ Type enforcement library for javascript
 <a name="new_Queue_new"></a>
 
 ### new Queue()
-A simple queue for callbacks that allows for adding, removing, and triggering all or specific callbacks
-
-## Usage
-``` javascript
-import { Queue } from 'type-enforcer';
-```
+A simple queue for callbacks that allows for adding, removing, and triggering all or specific callbacks## Usage``` javascriptimport { Queue } from 'type-enforcer';```
 
 <a name="Queue+length"></a>
 

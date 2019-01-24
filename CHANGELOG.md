@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
-## Unreleased
+## 0.2.1 - 2019-01-24
 - Changed isBool to isBoolean, enforce.bool to enforce.boolean, and method.bool to method.boolean
 - Changed isFunc to isFunction, enforce.func to enforce.function, and method.func to method.function
 - Changed isInt to isInteger, enforce.int to enforce.integer, and method.int to method.integer

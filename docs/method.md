@@ -57,6 +57,8 @@ Builds a chainable method for getting/setting any data type
 | [options.other] | <code>Array</code> \| <code>\*</code> |  | Another value/type or array of other values/types that can be set |
 | [options.stringify] | <code>Boolean</code> | <code>false</code> | If true, then call toString() on the value before returning it (if the value has a toString method) |
 
+**Example**  
+``` javascriptimport { method } from 'type-enforcer';const Widget = function() {    someMethod = method.any({        set: function(newValue) {            console.log(this);            console.log(newValue);        }    });    anotherMethod = method.any();    thirdMethod = method.any({        get: function(newValue) {            return 'item 2';        }    });};const widget = new Widget();widget.someMethod('a').anotherMethod(42).thirdMethod('item 1');// => console.log widget and 'a'widget.someMethod();// => 'a'widget.anotherMethod();// => 42widget.thirdMethod();// => 'item 2'```
 <a name="method.array"></a>
 
 ### method.array([options]) ⇒ <code>function</code>

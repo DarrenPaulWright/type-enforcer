@@ -117,6 +117,40 @@ export const buildMethod = (defaultSettings = {}, onInit) => {
 /**
  * Builds a chainable method for getting/setting any data type
  *
+ * @example
+ * ``` javascript
+ * import { method } from 'type-enforcer';
+ *
+ * const Widget = function() {
+ *     someMethod = method.any({
+ *         set: function(newValue) {
+ *             console.log(this);
+ *             console.log(newValue);
+ *         }
+ *     });
+ *     anotherMethod = method.any();
+ *     thirdMethod = method.any({
+ *         get: function(newValue) {
+ *             return 'item 2';
+ *         }
+ *     });
+ * };
+ *
+ * const widget = new Widget();
+ *
+ * widget.someMethod('a').anotherMethod(42).thirdMethod('item 1');
+ * // => console.log widget and 'a'
+ *
+ * widget.someMethod();
+ * // => 'a'
+ *
+ * widget.anotherMethod();
+ * // => 42
+ *
+ * widget.thirdMethod();
+ * // => 'item 2'
+ * ```
+ *
  * @function method.any
  *
  * @arg {Object}   [options]

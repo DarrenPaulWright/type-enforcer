@@ -5,6 +5,20 @@ import enforcer from './enforcer';
 /**
  * Enforce that a value is a [DockPoint](docs/DockPoint.md). Uses [isDockPoint](docs/checks.md#isDockPoint).
  *
+ * @example
+ * ``` javascript
+ * import { enforce } from 'type-enforcer';
+ *
+ * enforce.dockPoint(new DockPoint(DockPoint.POINTS.TOP), new DockPoint(DockPoint.POINTS.BOTTOM));
+ * // => dockPoint of top
+ *
+ * enforce.dockPoint('top', new DockPoint(DockPoint.POINTS.BOTTOM));
+ * // => dockPoint of bottom
+ *
+ * enforce.dockPoint('top', new DockPoint(DockPoint.POINTS.BOTTOM), true);
+ * // => dockPoint of top
+ * ```
+ *
  * @function enforce.dockPoint
  *
  * @arg {*} value

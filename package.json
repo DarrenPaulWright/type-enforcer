@@ -1,6 +1,6 @@
 {
 	"name": "type-enforcer",
-	"version": "0.2.1",
+	"version": "0.2.2",
 	"description": "Type enforcement library for javascript",
 	"main": "src/index.js",
 	"scripts": {
@@ -38,8 +38,6 @@
 	},
 	"homepage": "https://github.com/DarrenPaulWright/type-enforcer#readme",
 	"dependencies": {
-		"@babel/plugin-proposal-class-properties": "^7.3.0",
-		"@babel/plugin-proposal-private-methods": "^7.3.0",
 		"lodash": "^4.17.11"
 	},
 	"devDependencies": {

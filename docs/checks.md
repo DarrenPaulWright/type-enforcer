@@ -33,7 +33,7 @@ Type enforcement library for javascript
 <dd><p>Check if a value is a <a href="https://lodash.com/docs/#isFunction">function</a></p>
 </dd>
 <dt><a href="#isInstanceOf">isInstanceOf(object, constructor)</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if a value is an instance of a constructor.</p>
+<dd><p>Check if a value is an instance of a constructor. Fixes issues with native instanceOf and primitives Boolean, Number, and String (see example).</p>
 </dd>
 <dt><a href="#isInteger">isInteger(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
 <dd><p>Check if a value is an <a href="https://lodash.com/docs/#isInteger">integer</a></p>
@@ -91,7 +91,7 @@ Check if a value is a [boolean](https://lodash.com/docs/#isBoolean)
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a boolean. Always returns true, as _everything_ can be coerced into a boolean. |
 
 **Example**  
-``` javascriptimport { isBoolean } from 'type-enforcer';isBoolean(false);// => trueisBoolean(undefined);// => falseisBoolean(undefined, true);// => true```
+``` javascriptimport { isBoolean } from 'type-enforcer';isBoolean(false);// => trueisBoolean('a string');// => falseisBoolean('a string', true);// => true```
 <a name="isCssSize"></a>
 
 ## isCssSize(value, [coerce]) ⇒ <code>Boolean</code>
@@ -163,7 +163,7 @@ Check if a value is a [function](https://lodash.com/docs/#isFunction)
 <a name="isInstanceOf"></a>
 
 ## isInstanceOf(object, constructor) ⇒ <code>Boolean</code>
-Check if a value is an instance of a constructor.
+Check if a value is an instance of a constructor. Fixes issues with native instanceOf and primitives Boolean, Number, and String (see example).
 
 **Kind**: global function  
 
@@ -173,7 +173,7 @@ Check if a value is an instance of a constructor.
 | constructor | <code>function</code> | 
 
 **Example**  
-``` javascriptimport { isInstanceOf } from 'type-enforcer';```Fixes issues with primitives and instanceOf``` javascriptisInstanceOf(false, Boolean); => trueisInstanceOf(42, Number); => trueisInstanceOf('test', String); => true```
+``` javascriptimport { isInstanceOf } from 'type-enforcer';isInstanceOf(false, Boolean); => truefalse instanceof Boolean => falseisInstanceOf(false, Boolean); => true42 instanceof Number => falseisInstanceOf(42, Number); => true'a string' instanceof String => falseisInstanceOf('a string', String); => true```
 <a name="isInteger"></a>
 
 ## isInteger(value, [coerce]) ⇒ <code>Boolean</code>

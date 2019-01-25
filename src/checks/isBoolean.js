@@ -11,10 +11,10 @@ import { buildCheckWithCoerce } from './checks';
  * isBoolean(false);
  * // => true
  *
- * isBoolean(undefined);
+ * isBoolean('a string');
  * // => false
  *
- * isBoolean(undefined, true);
+ * isBoolean('a string', true);
  * // => true
  * ```
  *

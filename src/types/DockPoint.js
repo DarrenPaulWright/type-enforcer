@@ -3,21 +3,45 @@ import methodEnum from '../methods/types/methodEnum';
 import Enum from './Enum';
 
 const SEPARATOR = '.';
+const BASIC_POINTS = new Enum({
+	TOP: 'top',
+	RIGHT: 'right',
+	BOTTOM: 'bottom',
+	LEFT: 'left',
+	CENTER: 'center',
+	NONE: ''
+});
+const POINTS = new Enum(assign({}, BASIC_POINTS, {
+	TOP_LEFT: BASIC_POINTS.TOP + SEPARATOR + BASIC_POINTS.LEFT,
+	TOP_CENTER: BASIC_POINTS.TOP + SEPARATOR + BASIC_POINTS.CENTER,
+	TOP_RIGHT: BASIC_POINTS.TOP + SEPARATOR + BASIC_POINTS.RIGHT,
+	RIGHT_TOP: BASIC_POINTS.RIGHT + SEPARATOR + BASIC_POINTS.TOP,
+	RIGHT_CENTER: BASIC_POINTS.RIGHT + SEPARATOR + BASIC_POINTS.CENTER,
+	RIGHT_BOTTOM: BASIC_POINTS.RIGHT + SEPARATOR + BASIC_POINTS.BOTTOM,
+	BOTTOM_RIGHT: BASIC_POINTS.BOTTOM + SEPARATOR + BASIC_POINTS.RIGHT,
+	BOTTOM_CENTER: BASIC_POINTS.BOTTOM + SEPARATOR + BASIC_POINTS.CENTER,
+	BOTTOM_LEFT: BASIC_POINTS.BOTTOM + SEPARATOR + BASIC_POINTS.LEFT,
+	LEFT_BOTTOM: BASIC_POINTS.LEFT + SEPARATOR + BASIC_POINTS.BOTTOM,
+	LEFT_CENTER: BASIC_POINTS.LEFT + SEPARATOR + BASIC_POINTS.CENTER,
+	LEFT_TOP: BASIC_POINTS.LEFT + SEPARATOR + BASIC_POINTS.TOP
+}));
+const HORIZONTAL_POINTS = [BASIC_POINTS.LEFT, BASIC_POINTS.RIGHT];
+const VERTICAL_POINTS = [BASIC_POINTS.TOP, BASIC_POINTS.BOTTOM];
 
 const getOpposite = (direction) => {
 	switch (direction) {
-		case DockPoint.BASIC_POINTS.TOP:
-			return DockPoint.BASIC_POINTS.BOTTOM;
-		case DockPoint.BASIC_POINTS.RIGHT:
-			return DockPoint.BASIC_POINTS.LEFT;
-		case DockPoint.BASIC_POINTS.BOTTOM:
-			return DockPoint.BASIC_POINTS.TOP;
-		case DockPoint.BASIC_POINTS.LEFT:
-			return DockPoint.BASIC_POINTS.RIGHT;
-		case DockPoint.BASIC_POINTS.CENTER:
-			return DockPoint.BASIC_POINTS.CENTER;
+		case BASIC_POINTS.TOP:
+			return BASIC_POINTS.BOTTOM;
+		case BASIC_POINTS.RIGHT:
+			return BASIC_POINTS.LEFT;
+		case BASIC_POINTS.BOTTOM:
+			return BASIC_POINTS.TOP;
+		case BASIC_POINTS.LEFT:
+			return BASIC_POINTS.RIGHT;
+		case BASIC_POINTS.CENTER:
+			return BASIC_POINTS.CENTER;
 		default:
-			return DockPoint.BASIC_POINTS.NONE;
+			return BASIC_POINTS.NONE;
 	}
 };
 
@@ -34,43 +58,6 @@ const getOpposite = (direction) => {
  * @arg {String} [value=DockPoint.POINTS.TOP_CENTER] - Anything from DockPoint.POINTS
  */
 export default class DockPoint {
-	/**
-	 * @const BASIC_POINTS
-	 * @static
-	 * @memberof DockPoint
-	 * @type {Enum}
-	 */
-	static BASIC_POINTS = new Enum({
-		TOP: 'top',
-		RIGHT: 'right',
-		BOTTOM: 'bottom',
-		LEFT: 'left',
-		CENTER: 'center',
-		NONE: ''
-	});
-	/**
-	 * @const POINTS
-	 * @static
-	 * @memberof DockPoint
-	 * @type {Enum}
-	 */
-	static POINTS = new Enum(assign({}, DockPoint.BASIC_POINTS, {
-		TOP_LEFT: DockPoint.BASIC_POINTS.TOP + SEPARATOR + DockPoint.BASIC_POINTS.LEFT,
-		TOP_CENTER: DockPoint.BASIC_POINTS.TOP + SEPARATOR + DockPoint.BASIC_POINTS.CENTER,
-		TOP_RIGHT: DockPoint.BASIC_POINTS.TOP + SEPARATOR + DockPoint.BASIC_POINTS.RIGHT,
-		RIGHT_TOP: DockPoint.BASIC_POINTS.RIGHT + SEPARATOR + DockPoint.BASIC_POINTS.TOP,
-		RIGHT_CENTER: DockPoint.BASIC_POINTS.RIGHT + SEPARATOR + DockPoint.BASIC_POINTS.CENTER,
-		RIGHT_BOTTOM: DockPoint.BASIC_POINTS.RIGHT + SEPARATOR + DockPoint.BASIC_POINTS.BOTTOM,
-		BOTTOM_RIGHT: DockPoint.BASIC_POINTS.BOTTOM + SEPARATOR + DockPoint.BASIC_POINTS.RIGHT,
-		BOTTOM_CENTER: DockPoint.BASIC_POINTS.BOTTOM + SEPARATOR + DockPoint.BASIC_POINTS.CENTER,
-		BOTTOM_LEFT: DockPoint.BASIC_POINTS.BOTTOM + SEPARATOR + DockPoint.BASIC_POINTS.LEFT,
-		LEFT_BOTTOM: DockPoint.BASIC_POINTS.LEFT + SEPARATOR + DockPoint.BASIC_POINTS.BOTTOM,
-		LEFT_CENTER: DockPoint.BASIC_POINTS.LEFT + SEPARATOR + DockPoint.BASIC_POINTS.CENTER,
-		LEFT_TOP: DockPoint.BASIC_POINTS.LEFT + SEPARATOR + DockPoint.BASIC_POINTS.TOP
-	}));
-	#horizontal = [DockPoint.BASIC_POINTS.LEFT, DockPoint.BASIC_POINTS.RIGHT];
-	#vertical = [DockPoint.BASIC_POINTS.TOP, DockPoint.BASIC_POINTS.BOTTOM];
-
 	constructor(value) {
 		this.value(value);
 	}
@@ -113,7 +100,7 @@ export default class DockPoint {
 	 * @instance
 	 */
 	swapHorizontal() {
-		if (this.#horizontal.includes(this.primary())) {
+		if (HORIZONTAL_POINTS.includes(this.primary())) {
 			this.primary(this.oppositePrimary);
 		}
 		else {
@@ -128,7 +115,7 @@ export default class DockPoint {
 	 * @instance
 	 */
 	swapVertical() {
-		if (this.#vertical.includes(this.primary())) {
+		if (VERTICAL_POINTS.includes(this.primary())) {
 			this.primary(this.oppositePrimary);
 		}
 		else {
@@ -187,6 +174,21 @@ export default class DockPoint {
 	}
 }
 
+/**
+ * @const BASIC_POINTS
+ * @static
+ * @memberof DockPoint
+ * @type {Enum}
+ */
+DockPoint.BASIC_POINTS = BASIC_POINTS;
+/**
+ * @const POINTS
+ * @static
+ * @memberof DockPoint
+ * @type {Enum}
+ */
+DockPoint.POINTS = POINTS;
+
 assign(DockPoint.prototype, {
 	/**
 	 * The primary value
@@ -200,8 +202,8 @@ assign(DockPoint.prototype, {
 	 * @returns {this|String} DockPoint.BASIC_POINTS
 	 */
 	primary: methodEnum({
-		init: DockPoint.BASIC_POINTS.NONE,
-		enum: DockPoint.BASIC_POINTS
+		init: BASIC_POINTS.NONE,
+		enum: BASIC_POINTS
 	}),
 	/**
 	 * The secondary value
@@ -215,8 +217,8 @@ assign(DockPoint.prototype, {
 	 * @returns {this|String} DockPoint.BASIC_POINTS
 	 */
 	secondary: methodEnum({
-		init: DockPoint.BASIC_POINTS.NONE,
-		enum: DockPoint.BASIC_POINTS
+		init: BASIC_POINTS.NONE,
+		enum: BASIC_POINTS
 	}),
 	/**
 	 * The full value
@@ -234,11 +236,11 @@ assign(DockPoint.prototype, {
 		set: function(value) {
 			value = value.split(SEPARATOR);
 			this.primary(value[0])
-				.secondary(value[1] || DockPoint.BASIC_POINTS.NONE);
+				.secondary(value[1] || BASIC_POINTS.NONE);
 		},
 		get: function() {
 			let value = this.primary();
-			if (this.secondary() !== DockPoint.BASIC_POINTS.NONE) {
+			if (this.secondary() !== BASIC_POINTS.NONE) {
 				value += SEPARATOR + this.secondary();
 			}
 			return value;

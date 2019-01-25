@@ -4,6 +4,20 @@ import enforcer from './enforcer';
 /**
  * Enforce that a value is a date. Uses [isDate](docs/checks.md#isDate).
  *
+ * @example
+ * ``` javascript
+ * import { enforce } from 'type-enforcer';
+ *
+ * enforce.date(new Date('10/12/1980'), new Date('1/1/2000'));
+ * // => date of 10/12/1980
+ *
+ * enforce.date('10/12/1980', new Date('1/1/2000'));
+ * // => date of 1/1/2000
+ *
+ * enforce.date('10/12/1980', new Date('1/1/2000'), true);
+ * // => date of 10/12/1980
+ * ```
+ *
  * @function enforce.date
  *
  * @arg {*} value

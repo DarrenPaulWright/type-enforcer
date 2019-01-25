@@ -6,6 +6,20 @@ const SEPARATOR = '/';
 /**
  * Enforce that a value is a RegExp. Uses [isRegExp](docs/checks.md#isRegExp).
  *
+ * @example
+ * ``` javascript
+ * import { enforce } from 'type-enforcer';
+ *
+ * enforce.regExp(/*+/g, /[a-z]+/);
+ * // => /*+/g
+ *
+ * enforce.regExp('/*+/g', /[a-z]+/);
+ * // => /[a-z]+/
+ *
+ * enforce.regExp('/*+/g', /[a-z]+/, true);
+ * // => /*+/g
+ * ```
+ *
  * @function enforce.regExp
  *
  * @arg {*} value

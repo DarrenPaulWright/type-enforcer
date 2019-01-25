@@ -4,6 +4,20 @@ import enforcer from './enforcer';
 /**
  * Enforce that a value is a boolean. Uses [isBoolean](docs/checks.md#isBoolean).
  *
+ * @example
+ * ``` javascript
+ * import { enforce } from 'type-enforcer';
+ *
+ * enforce.boolean(false, true);
+ * // => false
+ *
+ * enforce.boolean('', true);
+ * // => true
+ *
+ * enforce.boolean('', true, true);
+ * // => false
+ * ```
+ *
  * @function enforce.boolean
  *
  * @arg {*} value

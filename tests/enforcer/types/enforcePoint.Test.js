@@ -1,11 +1,15 @@
 import { assert } from 'chai';
 import { map } from 'lodash';
-import { enforce, Point } from '../../../src';
-import { pointData as data, multiTest, validPoints } from '../../TestUtil';
+import { enforce, enforcePoint, Point } from '../../../src';
+import { multiTest, pointData as data, validPoints } from '../../TestUtil';
 import { runNegativeTests } from '../enforceTestUtility';
 
 describe('enforce', () => {
 	describe('.point', () => {
+		it('should exist in the exported "enforce" object', () => {
+			assert.deepEqual(enforcePoint, enforce.point);
+		});
+
 		it('should return the setter value when a valid Point is provided', () => {
 			assert.isTrue(enforce.point(validPoints[0], validPoints[1]) instanceof Point);
 			assert.equal(enforce.point(validPoints[0], validPoints[1]).toString(), validPoints[0]);
@@ -16,7 +20,7 @@ describe('enforce', () => {
 				return {
 					input: item,
 					output: new Point(item)
-				}
+				};
 			}),
 			message: (input) => `should return a coerced ${input} when coerce is true`,
 			test: (value) => enforce.point(value, value, true),
@@ -30,7 +34,7 @@ describe('enforce', () => {
 				return {
 					input: item,
 					output: item
-				}
+				};
 			}),
 			message: (input) => `should NOT return a coerced ${input} when coerce is false`,
 			test: (value) => enforce.point(value, value, false),

@@ -1,6 +1,6 @@
 import isDockPoint from '../../checks/types/isDockPoint';
 import DockPoint from '../../types/DockPoint';
-import enforcer from './enforcer';
+import { coercibleEnforcer } from './enforcer';
 
 /**
  * Enforce that a value is a [DockPoint](docs/DockPoint.md). Uses [isDockPoint](docs/checks.md#isDockPoint).
@@ -27,4 +27,4 @@ import enforcer from './enforcer';
  *
  * @returns {DockPoint}
  */
-export default enforcer(isDockPoint, (value) => new DockPoint(value));
+export default coercibleEnforcer(isDockPoint, (value) => new DockPoint(value));

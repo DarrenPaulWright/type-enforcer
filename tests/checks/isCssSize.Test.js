@@ -1,7 +1,12 @@
-import { isCssSize } from '../../src';
+import { assert } from 'chai';
+import { is, isCssSize } from '../../src';
 import { cssSizeData as data, multiTest } from '../TestUtil';
 
 describe('isCssSize', () => {
+	it('should exist in the exported "is" object', () => {
+		assert.deepEqual(isCssSize, is.cssSize);
+	});
+
 	multiTest({
 		values: data.true,
 		test: (value) => isCssSize(value),

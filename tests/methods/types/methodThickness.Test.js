@@ -1,11 +1,15 @@
 import { assert } from 'chai';
 import { assign } from 'lodash';
-import { method, Thickness } from '../../../src';
+import { method, methodThickness, Thickness } from '../../../src';
 import { thicknessData as data } from '../../TestUtil';
 import { testMethodType } from '../methodTestUtility';
 
 describe('method', () => {
 	describe('.thickness (stringify)', () => {
+		it('should exist in the exported "method" object', () => {
+			assert.deepEqual(methodThickness, method.thickness);
+		});
+
 		testMethodType({
 			name: 'thickness',
 			true: ['12px', '20px'],

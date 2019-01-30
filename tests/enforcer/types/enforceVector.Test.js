@@ -1,11 +1,15 @@
 import { assert } from 'chai';
 import { map } from 'lodash';
-import { enforce, Vector } from '../../../src';
-import { multiTest, vectorData as data, validVectors } from '../../TestUtil';
+import { enforce, enforceVector, Vector } from '../../../src';
+import { multiTest, validVectors, vectorData as data } from '../../TestUtil';
 import { runNegativeTests } from '../enforceTestUtility';
 
 describe('enforce', () => {
 	describe('.vector', () => {
+		it('should exist in the exported "enforce" object', () => {
+			assert.deepEqual(enforceVector, enforce.vector);
+		});
+
 		it('should return the setter value when a valid Vector is provided', () => {
 			assert.isTrue(enforce.vector(validVectors[0], validVectors[1]) instanceof Vector);
 			assert.equal(enforce.vector(validVectors[0], validVectors[1]).toString(), validVectors[0]);
@@ -16,7 +20,7 @@ describe('enforce', () => {
 				return {
 					input: item,
 					output: new Vector(item)
-				}
+				};
 			}),
 			message: (input) => `should return a coerced ${input} when coerce is true`,
 			test: (value) => enforce.vector(value, value, true),
@@ -30,7 +34,7 @@ describe('enforce', () => {
 				return {
 					input: item,
 					output: item
-				}
+				};
 			}),
 			message: (input) => `should NOT return a coerced ${input} when coerce is false`,
 			test: (value) => enforce.vector(value, value, false),

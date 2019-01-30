@@ -1,8 +1,13 @@
-import { Enum } from '../../../src';
+import { assert } from 'chai';
+import { Enum, method, methodEnum } from '../../../src';
 import { testMethodType } from '../methodTestUtility';
 
 describe('method', () => {
 	describe('.enum', () => {
+		it('should exist in the exported "method" object', () => {
+			assert.deepEqual(methodEnum, method.enum);
+		});
+
 		testMethodType({
 			name: 'enum',
 			true: ['test2', 'test3'],

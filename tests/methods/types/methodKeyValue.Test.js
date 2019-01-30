@@ -1,11 +1,15 @@
 import { assert } from 'chai';
-import { method } from '../../../src';
+import { method, methodKeyValue } from '../../../src';
 
 describe('method', () => {
 	describe('.keyValue', () => {
 		let testKey = '';
 		let testValue = '';
 		let count = 0;
+
+		it('should exist in the exported "method" object', () => {
+			assert.deepEqual(methodKeyValue, method.keyValue);
+		});
 
 		const runTests = (TestConstructor) => {
 			it('should return whatever the get callback returns', () => {

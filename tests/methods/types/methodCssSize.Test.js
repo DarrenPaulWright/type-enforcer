@@ -1,11 +1,15 @@
 import { assert } from 'chai';
 import { assign } from 'lodash';
-import { CssSize, method } from '../../../src';
+import { CssSize, method, methodCssSize } from '../../../src';
 import { cssSizeData as data } from '../../TestUtil';
 import { testMethodType } from '../methodTestUtility';
 
 describe('method', () => {
 	describe('.cssSize (stringify)', () => {
+		it('should exist in the exported "method" object', () => {
+			assert.deepEqual(methodCssSize, method.cssSize);
+		});
+
 		testMethodType({
 			name: 'cssSize',
 			true: ['14px', '20px'],

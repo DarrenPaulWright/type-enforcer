@@ -1,5 +1,5 @@
 import isDate from '../../checks/types/isDate';
-import enforcer from './enforcer';
+import { coercibleEnforcer } from './enforcer';
 
 /**
  * Enforce that a value is a date. Uses [isDate](docs/checks.md#isDate).
@@ -26,4 +26,4 @@ import enforcer from './enforcer';
  *
  * @returns {Date}
  */
-export default enforcer(isDate, (value) => new Date(value));
+export default coercibleEnforcer(isDate, (value) => new Date(value));

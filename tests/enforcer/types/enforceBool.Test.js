@@ -1,11 +1,15 @@
 import { assert } from 'chai';
 import { map } from 'lodash';
-import { enforce } from '../../../src';
+import { enforce, enforceBoolean } from '../../../src';
 import { boolData as data, multiTest } from '../../TestUtil';
 import { runNegativeTests } from '../enforceTestUtility';
 
 describe('enforce', () => {
 	describe('.boolean', () => {
+		it('should exist in the exported "enforce" object', () => {
+			assert.deepEqual(enforceBoolean, enforce.boolean);
+		});
+
 		it('should return the setter value when a boolean is provided', () => {
 			assert.deepEqual(enforce.boolean(true, false), true);
 			assert.deepEqual(enforce.boolean(false, true), false);
@@ -22,7 +26,7 @@ describe('enforce', () => {
 				return {
 					input: item,
 					output: !!item
-				}
+				};
 			}),
 			message: (input) => `should return a coerced ${input} when coerce is true`,
 			test: (value) => enforce.boolean(value, 'alt value', true),
@@ -35,7 +39,7 @@ describe('enforce', () => {
 				return {
 					input: item,
 					output: item
-				}
+				};
 			}),
 			message: (input) => `should NOT return a coerced ${input} when coerce is false`,
 			test: (value) => enforce.boolean(value, value, false),

@@ -1,11 +1,15 @@
 import { assert } from 'chai';
 import { map } from 'lodash';
-import { AUTO, CssSize, enforce, INHERIT, INITIAL } from '../../../src';
+import { AUTO, CssSize, enforce, enforceCssSize, INHERIT, INITIAL } from '../../../src';
 import { cssSizeData as data, multiTest, validCssSizes } from '../../TestUtil';
 import { runNegativeTests } from '../enforceTestUtility';
 
 describe('enforce', () => {
 	describe('.cssSize', () => {
+		it('should exist in the exported "enforce" object', () => {
+			assert.deepEqual(enforceCssSize, enforce.cssSize);
+		});
+
 		it('should return the setter value when a valid css size is provided', () => {
 			assert.isTrue(enforce.cssSize(AUTO, validCssSizes[0], true) instanceof CssSize);
 			assert.equal(enforce.cssSize(AUTO, validCssSizes[0], true).toString(), AUTO);

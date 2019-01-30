@@ -1,5 +1,5 @@
 import isString from '../../checks/types/isString';
-import enforcer from './enforcer';
+import { coercibleEnforcer } from './enforcer';
 
 /**
  * Enforce that a value is a string. Uses [isString](docs/checks.md#isString).
@@ -26,4 +26,4 @@ import enforcer from './enforcer';
  *
  * @returns {String}
  */
-export default enforcer(isString, (value) => value + '');
+export default coercibleEnforcer(isString, (value) => value + '');

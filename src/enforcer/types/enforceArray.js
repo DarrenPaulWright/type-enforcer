@@ -1,5 +1,5 @@
 import isArray from '../../checks/types/isArray';
-import enforcer from './enforcer';
+import { coercibleEnforcer } from './enforcer';
 
 /**
  * Enforce that a value is an array. Uses [isArray](docs/checks.md#isArray).
@@ -26,4 +26,4 @@ import enforcer from './enforcer';
  *
  * @returns {Array}
  */
-export default enforcer(isArray, Array);
+export default coercibleEnforcer(isArray, Array);

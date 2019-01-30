@@ -1,7 +1,12 @@
-import { isDate } from '../../src';
+import { assert } from 'chai';
+import { is, isDate } from '../../src';
 import { dateData as data, multiTest } from '../TestUtil';
 
 describe('isDate', () => {
+	it('should exist in the exported "is" object', () => {
+		assert.deepEqual(isDate, is.date);
+	});
+
 	multiTest({
 		values: data.true,
 		test: (value) => isDate(value),

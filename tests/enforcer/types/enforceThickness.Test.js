@@ -1,11 +1,15 @@
 import { assert } from 'chai';
 import { map } from 'lodash';
-import { enforce, INHERIT, INITIAL, Thickness } from '../../../src';
-import { thicknessData as data, multiTest, validThicknesses } from '../../TestUtil';
+import { enforce, enforceThickness, INHERIT, INITIAL, Thickness } from '../../../src';
+import { multiTest, thicknessData as data, validThicknesses } from '../../TestUtil';
 import { runNegativeTests } from '../enforceTestUtility';
 
 describe('enforce', () => {
 	describe('.thickness', () => {
+		it('should exist in the exported "enforce" object', () => {
+			assert.deepEqual(enforceThickness, enforce.thickness);
+		});
+
 		it('should return the setter value when a valid css size is provided', () => {
 			assert.isTrue(enforce.thickness(validThicknesses[0], validThicknesses[1]) instanceof Thickness);
 			assert.equal(enforce.thickness(validThicknesses[0], validThicknesses[1]).toString(), validThicknesses[0]);
@@ -24,7 +28,7 @@ describe('enforce', () => {
 				return {
 					input: item,
 					output: new Thickness(item)
-				}
+				};
 			}),
 			message: (input) => `should return a coerced ${input} when coerce is true`,
 			test: (value) => enforce.thickness(value, value, true),
@@ -38,7 +42,7 @@ describe('enforce', () => {
 				return {
 					input: item,
 					output: item
-				}
+				};
 			}),
 			message: (input) => `should NOT return a coerced ${input} when coerce is false`,
 			test: (value) => enforce.thickness(value, value, false),

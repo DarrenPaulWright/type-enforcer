@@ -1,6 +1,6 @@
 import isThickness from '../../checks/types/isThickness';
 import Thickness from '../../types/Thickness';
-import enforcer from './enforcer';
+import { coercibleEnforcer } from './enforcer';
 
 /**
  * Enforce that a value is a [Thickness](docs/Thickness.md). Uses [isThickness](docs/checks.md#isThickness).
@@ -27,4 +27,4 @@ import enforcer from './enforcer';
  *
  * @returns {Thickness}
  */
-export default enforcer(isThickness, (value) => new Thickness(value));
+export default coercibleEnforcer(isThickness, (value) => new Thickness(value));

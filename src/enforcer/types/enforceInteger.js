@@ -1,5 +1,5 @@
 import isInteger from '../../checks/types/isInteger';
-import enforcer from './enforcer';
+import { numericEnforcer } from './enforcer';
 
 /**
  * Enforce that a value is an integer. Uses [isInteger](docs/checks.md#isInteger).
@@ -28,4 +28,4 @@ import enforcer from './enforcer';
  *
  * @returns {int}
  */
-export default enforcer(isInteger, Number, true);
+export default numericEnforcer(isInteger, Number);

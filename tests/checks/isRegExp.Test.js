@@ -1,7 +1,12 @@
-import { isRegExp } from '../../src';
+import { assert } from 'chai';
+import { is, isRegExp } from '../../src';
 import { multiTest, regExpData as data } from '../TestUtil';
 
 describe('isRegExp', () => {
+	it('should exist in the exported "is" object', () => {
+		assert.deepEqual(isRegExp, is.regExp);
+	});
+
 	multiTest({
 		values: data.true,
 		test: (value) => isRegExp(value),

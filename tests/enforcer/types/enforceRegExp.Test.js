@@ -1,11 +1,15 @@
 import { assert } from 'chai';
 import { map } from 'lodash';
-import { enforce } from '../../../src';
-import { regExpData as data, multiTest, validRegExps } from '../../TestUtil';
+import { enforce, enforceRegExp } from '../../../src';
+import { multiTest, regExpData as data, validRegExps } from '../../TestUtil';
 import { runNegativeTests } from '../enforceTestUtility';
 
 describe('enforce', () => {
 	describe('.regExp', () => {
+		it('should exist in the exported "enforce" object', () => {
+			assert.deepEqual(enforceRegExp, enforce.regExp);
+		});
+
 		it('should return the setter value when a RegExp is provided', () => {
 			assert.deepEqual(enforce.regExp(validRegExps[1], validRegExps[0]), validRegExps[1]);
 			assert.notDeepEqual(enforce.regExp(validRegExps[1], validRegExps[0]), validRegExps[0]);
@@ -34,7 +38,7 @@ describe('enforce', () => {
 				return {
 					input: item,
 					output: item
-				}
+				};
 			}),
 			message: (input) => `should NOT return a coerced ${input} when coerce is false`,
 			test: (value) => enforce.regExp(value, value, false),

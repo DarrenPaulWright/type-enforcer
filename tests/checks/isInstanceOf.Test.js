@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import { each } from 'lodash';
-import isInstanceOf from '../../src/checks/isInstanceOf';
+import { isInstanceOf } from '../../src';
 import { testTypes } from '../TestUtil';
 
 describe('isInstanceOf', () => {

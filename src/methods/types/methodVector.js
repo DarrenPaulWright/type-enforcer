@@ -1,4 +1,4 @@
-import isVector from '../../checks/isVector';
+import isVector from '../../checks/types/isVector';
 import enforceVector from '../../enforcer/types/enforceVector';
 import Vector from '../../types/Vector';
 import { buildMethod, compareCustomType, mapEnforcerDefaultCoerceTrue } from './methodAny';

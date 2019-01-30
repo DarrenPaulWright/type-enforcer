@@ -48,7 +48,7 @@ export const mapEnforcer = (enforcer) => (newValue, oldValue, options) => {
 };
 
 export const mapEnforcerNumeric = (enforcer) => (newValue, oldValue, options) => {
-	return enforcer(newValue, oldValue, options.coerce, options.min, options.max)
+	return enforcer(newValue, oldValue, options.coerce, options.min, options.max);
 };
 
 export const mapEnforcerDefaultCoerceTrue = (enforcer) => (newValue, oldValue, options) => {

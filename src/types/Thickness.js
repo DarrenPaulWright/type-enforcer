@@ -1,5 +1,5 @@
 import { assign, each, join } from 'lodash';
-import isString from '../checks/isString';
+import isString from '../checks/types/isString';
 import methodElement from '../methods/types/methodElement';
 import CssSize from './CssSize';
 

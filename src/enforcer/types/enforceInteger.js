@@ -1,4 +1,4 @@
-import isInteger from '../../checks/isInteger';
+import isInteger from '../../checks/types/isInteger';
 import enforcer from './enforcer';
 
 /**

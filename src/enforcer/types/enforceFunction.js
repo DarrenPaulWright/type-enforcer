@@ -1,4 +1,4 @@
-import isFunction from '../../checks/isFunction';
+import isFunction from '../../checks/types/isFunction';
 import enforcer from './enforcer';
 
 /**

@@ -1,4 +1,4 @@
-import isCssSize from '../../checks/isCssSize';
+import isCssSize from '../../checks/types/isCssSize';
 import CssSize from '../../types/CssSize';
 import enforcer from './enforcer';
 

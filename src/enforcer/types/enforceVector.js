@@ -1,4 +1,4 @@
-import isVector from '../../checks/isVector';
+import isVector from '../../checks/types/isVector';
 import Vector from '../../types/Vector';
 import enforcer from './enforcer';
 

@@ -1,4 +1,4 @@
-import isDockPoint from '../../checks/isDockPoint';
+import isDockPoint from '../../checks/types/isDockPoint';
 import DockPoint from '../../types/DockPoint';
 import enforcer from './enforcer';
 

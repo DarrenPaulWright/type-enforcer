@@ -1,4 +1,4 @@
-import isBoolean from '../../checks/isBoolean';
+import isBoolean from '../../checks/types/isBoolean';
 import enforcer from './enforcer';
 
 /**

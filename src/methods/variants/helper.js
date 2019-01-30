@@ -1,4 +1,4 @@
-import isInstanceOf from '../../checks/isInstanceOf';
+import isInstanceOf from '../../checks/types/isInstanceOf';
 
 export const getStoredValue = function(key, init) {
 	if (this && !Object.getOwnPropertySymbols(this).includes(key)) {

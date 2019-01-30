@@ -1,4 +1,4 @@
-import isPoint from '../../checks/isPoint';
+import isPoint from '../../checks/types/isPoint';
 import enforcePoint from '../../enforcer/types/enforcePoint';
 import Point from '../../types/Point';
 import { buildMethod, compareCustomType, mapEnforcerDefaultCoerceTrue } from './methodAny';

@@ -1,4 +1,4 @@
-import isThickness from '../../checks/isThickness';
+import isThickness from '../../checks/types/isThickness';
 import Thickness from '../../types/Thickness';
 import enforcer from './enforcer';
 

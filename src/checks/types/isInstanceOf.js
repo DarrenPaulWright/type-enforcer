@@ -1,4 +1,4 @@
-import Enum from '../types/Enum';
+import Enum from '../../types/Enum';
 
 const typeOfMap = new Enum({
 	boolean: Boolean,

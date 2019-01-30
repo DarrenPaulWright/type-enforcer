@@ -15,8 +15,7 @@
 export default (value) => {
 	try {
 		JSON.parse(value);
-	}
-	catch (e) {
+	} catch (e) {
 		return false;
 	}
 	return true;

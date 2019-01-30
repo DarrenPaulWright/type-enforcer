@@ -1,4 +1,4 @@
-import isElement from '../../checks/isElement';
+import isElement from '../../checks/types/isElement';
 import enforcer from './enforcer';
 
 /**

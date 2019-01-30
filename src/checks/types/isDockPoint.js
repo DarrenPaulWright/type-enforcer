@@ -1,4 +1,4 @@
-import DockPoint from '../types/DockPoint';
+import DockPoint from '../../types/DockPoint';
 import { buildCustomTypeCheck } from './checks';
 
 /**

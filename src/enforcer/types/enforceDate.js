@@ -1,4 +1,4 @@
-import isDate from '../../checks/isDate';
+import isDate from '../../checks/types/isDate';
 import enforcer from './enforcer';
 
 /**

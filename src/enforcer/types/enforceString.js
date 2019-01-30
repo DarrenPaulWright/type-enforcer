@@ -1,4 +1,4 @@
-import isString from '../../checks/isString';
+import isString from '../../checks/types/isString';
 import enforcer from './enforcer';
 
 /**

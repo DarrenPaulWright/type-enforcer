@@ -39,23 +39,25 @@
  *
  * @name Installation
  */
-export { default as isArray } from './checks/isArray';
-export { default as isBoolean } from './checks/isBoolean';
-export { default as isCssSize } from './checks/isCssSize';
-export { default as isDate } from './checks/isDate';
-export { default as isDockPoint } from './checks/isDockPoint';
-export { default as isElement } from './checks/isElement';
-export { default as isFunction } from './checks/isFunction';
-export { default as isInstanceOf } from './checks/isInstanceOf';
-export { default as isInteger } from './checks/isInteger';
-export { default as isJson } from './checks/isJson';
-export { default as isNumber } from './checks/isNumber';
-export { default as isObject } from './checks/isObject';
-export { default as isPoint } from './checks/isPoint';
-export { default as isRegExp } from './checks/isRegExp';
-export { default as isString } from './checks/isString';
-export { default as isThickness } from './checks/isThickness';
-export { default as isVector } from './checks/isVector';
+export { default as is } from './checks/is';
+export { default as isArray } from './checks/types/isArray';
+export { default as isBoolean } from './checks/types/isBoolean';
+export { default as isCssSize } from './checks/types/isCssSize';
+export { default as isDate } from './checks/types/isDate';
+export { default as isDockPoint } from './checks/types/isDockPoint';
+export { default as isElement } from './checks/types/isElement';
+export { default as isFunction } from './checks/types/isFunction';
+export { default as isInstanceOf } from './checks/types/isInstanceOf';
+export { default as isInteger } from './checks/types/isInteger';
+export { default as isJson } from './checks/types/isJson';
+export { default as isNumber } from './checks/types/isNumber';
+export { default as isObject } from './checks/types/isObject';
+export { default as isPoint } from './checks/types/isPoint';
+export { default as isRegExp } from './checks/types/isRegExp';
+export { default as isString } from './checks/types/isString';
+export { default as isThickness } from './checks/types/isThickness';
+export { default as isVector } from './checks/types/isVector';
+
 
 export * from './types/CssSize';
 export { default as CssSize } from './types/CssSize';

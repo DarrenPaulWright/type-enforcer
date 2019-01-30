@@ -1,4 +1,4 @@
-import isPoint from '../../checks/isPoint';
+import isPoint from '../../checks/types/isPoint';
 import Point from '../../types/Point';
 import enforcer from './enforcer';
 

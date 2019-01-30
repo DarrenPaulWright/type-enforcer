@@ -1,4 +1,4 @@
-import Thickness from '../types/Thickness';
+import Thickness from '../../types/Thickness';
 import { buildCustomTypeCheck } from './checks';
 
 /**

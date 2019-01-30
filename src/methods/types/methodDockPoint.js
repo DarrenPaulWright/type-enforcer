@@ -1,4 +1,4 @@
-import isDockPoint from '../../checks/isDockPoint';
+import isDockPoint from '../../checks/types/isDockPoint';
 import enforceDockPoint from '../../enforcer/types/enforceDockPoint';
 import DockPoint from '../../types/DockPoint';
 import { buildMethod, compareCustomType, mapEnforcerDefaultCoerceTrue } from './methodAny';

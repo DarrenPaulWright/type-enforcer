@@ -1,4 +1,4 @@
-import isArray from '../../checks/isArray';
+import isArray from '../../checks/types/isArray';
 import enforcer from './enforcer';
 
 /**

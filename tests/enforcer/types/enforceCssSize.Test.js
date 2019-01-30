@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 import { map } from 'lodash';
 import { AUTO, CssSize, enforce, INHERIT, INITIAL } from '../../../src';
-import { validCssSizes, cssSizeData as data, multiTest } from '../../TestUtil';
+import { cssSizeData as data, multiTest, validCssSizes } from '../../TestUtil';
 import { runNegativeTests } from '../enforceTestUtility';
 
 describe('enforce', () => {
@@ -22,7 +22,7 @@ describe('enforce', () => {
 				return {
 					input: item,
 					output: new CssSize(item)
-				}
+				};
 			}),
 			message: (input) => `should return a coerced ${input} when coerce is true`,
 			test: (value) => enforce.cssSize(value, value, true),
@@ -36,7 +36,7 @@ describe('enforce', () => {
 				return {
 					input: item,
 					output: item
-				}
+				};
 			}),
 			message: (input) => `should NOT return a coerced ${input} when coerce is false`,
 			test: (value) => enforce.cssSize(value, value, false),

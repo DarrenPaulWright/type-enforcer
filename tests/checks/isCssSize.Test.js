@@ -1,5 +1,5 @@
 import { isCssSize } from '../../src';
-import { multiTest, cssSizeData as data } from '../TestUtil';
+import { cssSizeData as data, multiTest } from '../TestUtil';
 
 describe('isCssSize', () => {
 	multiTest({

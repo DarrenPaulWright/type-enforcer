@@ -1,5 +1,5 @@
 import { isDockPoint } from '../../src';
-import { multiTest, dockPointData as data } from '../TestUtil';
+import { dockPointData as data, multiTest } from '../TestUtil';
 
 describe('isDockPoint', () => {
 	multiTest({

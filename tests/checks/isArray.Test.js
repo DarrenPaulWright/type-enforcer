@@ -1,5 +1,5 @@
 import { isArray } from '../../src';
-import { multiTest, arrayData as data } from '../TestUtil';
+import { arrayData as data, multiTest } from '../TestUtil';
 
 describe('isArray', () => {
 	multiTest({

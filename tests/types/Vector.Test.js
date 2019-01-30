@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { Point, Vector } from '../../src/index';
+import { Point, Vector } from '../../src';
 import TestUtil, { multiTest, vectorData as data } from '../TestUtil';
 
 const testUtil = new TestUtil(Vector);

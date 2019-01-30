@@ -25,7 +25,7 @@ describe('method', () => {
 			}]
 		}));
 
-		it('should NOT save a coercable value if coerce is false', () => {
+		it('should NOT save a coercible value if coerce is false', () => {
 			const TestConstructor = function() {
 				this.testMethod = method.vector({
 					init: undefined,

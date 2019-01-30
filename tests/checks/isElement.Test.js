@@ -1,5 +1,5 @@
 import { isElement } from '../../src';
-import { multiTest, elementData as data } from '../TestUtil';
+import { elementData as data, multiTest } from '../TestUtil';
 
 describe('isElement', () => {
 	multiTest({

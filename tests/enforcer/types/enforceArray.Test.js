@@ -16,7 +16,7 @@ describe('enforce', () => {
 				return {
 					input: item,
 					output: new Array(item)
-				}
+				};
 			}),
 			message: (input) => `should return a coerced ${input} when coerce is true`,
 			test: (value) => enforce.array(value, value, true),
@@ -30,7 +30,7 @@ describe('enforce', () => {
 				return {
 					input: item,
 					output: item
-				}
+				};
 			}),
 			message: (input) => `should NOT return a coerced ${input} when coerce is false`,
 			test: (value) => enforce.array(value, value, false),

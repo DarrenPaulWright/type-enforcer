@@ -1,5 +1,5 @@
 import { isDate } from '../../src';
-import { multiTest, dateData as data } from '../TestUtil';
+import { dateData as data, multiTest } from '../TestUtil';
 
 describe('isDate', () => {
 	multiTest({

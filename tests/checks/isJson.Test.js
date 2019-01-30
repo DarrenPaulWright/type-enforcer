@@ -11,7 +11,8 @@ import {
 	validPoints,
 	validRegExps,
 	validStrings,
-	validThicknesses, validVectors
+	validThicknesses,
+	validVectors
 } from '../TestUtil';
 
 export const testValues = concat(

@@ -23,6 +23,10 @@ import isVector from './types/isVector';
  * ``` javascript
  * import { is } from 'type-enforcer';
  * ```
+ * Or import individual functions
+ * ``` javascript
+ * import { isString } from 'type-enforcer';
+ * ```
  *
  * @typedef {object} is
  */

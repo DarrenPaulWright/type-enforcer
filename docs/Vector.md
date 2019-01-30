@@ -30,7 +30,12 @@ Type enforcement library for javascript
 <a name="new_Vector_new"></a>
 
 ### new Vector([start], [end])
-Vector model with helper types## Usage``` javascriptimport { Vector } from 'type-enforcer';```
+Vector model with helper types
+
+## Usage
+``` javascript
+import { Vector } from 'type-enforcer';
+```
 
 
 | Param | Type |

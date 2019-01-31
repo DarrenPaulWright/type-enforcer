@@ -6,7 +6,7 @@
 [![size][size]][size-url]
 [![Known Vulnerabilities](https://snyk.io/test/github/DarrenPaulWright/type-enforcer/badge.svg?targetFile=package.json)](https://snyk.io/test/github/DarrenPaulWright/type-enforcer?targetFile=package.json)
 
-Type enforcement library for javascript
+A type enforcement library for javascript
 
 <a name="Vector"></a>
 
@@ -30,12 +30,7 @@ Type enforcement library for javascript
 <a name="new_Vector_new"></a>
 
 ### new Vector([start], [end])
-Vector model with helper types
-
-## Usage
-``` javascript
-import { Vector } from 'type-enforcer';
-```
+Vector model with helper types## Usage``` javascriptimport { Vector } from 'type-enforcer';```
 
 
 | Param | Type |

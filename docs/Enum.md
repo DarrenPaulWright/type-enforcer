@@ -6,7 +6,7 @@
 [![size][size]][size-url]
 [![Known Vulnerabilities](https://snyk.io/test/github/DarrenPaulWright/type-enforcer/badge.svg?targetFile=package.json)](https://snyk.io/test/github/DarrenPaulWright/type-enforcer?targetFile=package.json)
 
-Type enforcement library for javascript
+A type enforcement library for javascript
 
 <a name="Enum"></a>
 
@@ -22,12 +22,7 @@ Type enforcement library for javascript
 <a name="new_Enum_new"></a>
 
 ### new Enum(object)
-Freezes an enumerable object and adds a "has" method
-
-## Usage
-``` javascript
-import { Enum } from 'type-enforcer';
-```
+Freezes an enumerable object and adds a "has" method## Usage``` javascriptimport { Enum } from 'type-enforcer';```
 
 
 | Param | Type |
@@ -59,17 +54,7 @@ Get the key of a provided value
 <a name="Enum+each"></a>
 
 ### enum.each(callback)
-Calls a callback with each of the enum values
-``` javascript
-const items = new Enum({
-    THING: 'thing'
-});
-
-items.each((value) => {
-    console.log(value);
-});
-// => 'thing'
-```
+Calls a callback with each of the enum values``` javascriptconst items = new Enum({    THING: 'thing'});items.each((value) => {    console.log(value);});// => 'thing'```
 
 **Kind**: instance method of [<code>Enum</code>](#Enum)  
 

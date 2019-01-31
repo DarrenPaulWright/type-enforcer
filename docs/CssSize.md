@@ -6,7 +6,7 @@
 [![size][size]][size-url]
 [![Known Vulnerabilities](https://snyk.io/test/github/DarrenPaulWright/type-enforcer/badge.svg?targetFile=package.json)](https://snyk.io/test/github/DarrenPaulWright/type-enforcer?targetFile=package.json)
 
-Type enforcement library for javascript
+A type enforcement library for javascript
 
 <a name="CssSize"></a>
 
@@ -32,12 +32,7 @@ Type enforcement library for javascript
 <a name="new_CssSize_new"></a>
 
 ### new CssSize([size])
-A class for css sizes
-
-## Usage
-``` javascript
-import { CssSize } from 'type-enforcer';
-```
+A class for css sizes## Usage``` javascriptimport { CssSize } from 'type-enforcer';```
 
 
 | Param | Type | Default |

@@ -6,7 +6,7 @@
 [![size][size]][size-url]
 [![Known Vulnerabilities](https://snyk.io/test/github/DarrenPaulWright/type-enforcer/badge.svg?targetFile=package.json)](https://snyk.io/test/github/DarrenPaulWright/type-enforcer?targetFile=package.json)
 
-Type enforcement library for javascript
+A type enforcement library for javascript
 
 <a name="Queue"></a>
 
@@ -26,12 +26,7 @@ Type enforcement library for javascript
 <a name="new_Queue_new"></a>
 
 ### new Queue()
-A simple queue for callbacks that allows for adding, removing, and triggering all or specific callbacks
-
-## Usage
-``` javascript
-import { Queue } from 'type-enforcer';
-```
+A simple queue for callbacks that allows for adding, removing, and triggering all or specific callbacks## Usage``` javascriptimport { Queue } from 'type-enforcer';```
 
 <a name="Queue+length"></a>
 

@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { method, methodQueue, Queue } from '../../../src';
+import { method, methodQueue, Queue, Removable } from '../../../src';
 
 describe('method', () => {
 	describe('.queue', () => {
@@ -76,11 +76,7 @@ describe('method', () => {
 		};
 
 		describe('(prototype, with onRemove)', () => {
-			class TestConstructor {
-				isRemoved() {
-					return false;
-				}
-			}
+			class TestConstructor extends Removable {}
 
 			TestConstructor.prototype.onRemove = method.function();
 			TestConstructor.prototype.testMethod = method.queue({
@@ -95,9 +91,7 @@ describe('method', () => {
 			const TestConstructor = function() {
 				this.onRemove = method.function();
 
-				this.isRemoved = () => {
-					return false;
-				};
+				this.isRemoved = false;
 
 				this.testMethod = method.queue({
 					set: function() {

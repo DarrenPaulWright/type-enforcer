@@ -6,7 +6,7 @@
 [![size][size]][size-url]
 [![Known Vulnerabilities](https://snyk.io/test/github/DarrenPaulWright/type-enforcer/badge.svg?targetFile=package.json)](https://snyk.io/test/github/DarrenPaulWright/type-enforcer?targetFile=package.json)
 
-Type enforcement library for javascript
+A type enforcement library for javascript
 
 <a name="Thickness"></a>
 
@@ -43,30 +43,7 @@ Replicates the functionality of css border-width, margin, and padding, or anythi
 | [left] | <code>String</code> \| <code>Number</code> | If four sizes are provided then they get applied to top, right, bottom, and left respectively |
 
 **Example**  
-``` javascript
-import { Thickness } from 'type-enforcer';
-
-const thickness1 = new Thickness();
-console.log(thickness1.toString());
-// => '0'
-
-const thickness2 = new Thickness(1, 2, 3, 4);
-console.log(thickness2.toString());
-// => '1px 2px 3px 4px'
-
-const thickness3 = new Thickness([5, 6, 7]);
-console.log(thickness3.toString());
-// => '5px 6px 7px'
-
-const thickness4 = new Thickness('20px 30px');
-console.log(thickness4.toString());
-// => '20px 30px'
-
-const thickness5 = new Thickness('20px');
-thickness5.bottom = 5;
-console.log(thickness5.toString());
-// => '20px 20px 5px'
-```
+``` javascriptimport { Thickness } from 'type-enforcer';const thickness1 = new Thickness();console.log(thickness1.toString());// => '0'const thickness2 = new Thickness(1, 2, 3, 4);console.log(thickness2.toString());// => '1px 2px 3px 4px'const thickness3 = new Thickness([5, 6, 7]);console.log(thickness3.toString());// => '5px 6px 7px'const thickness4 = new Thickness('20px 30px');console.log(thickness4.toString());// => '20px 30px'const thickness5 = new Thickness('20px');thickness5.bottom = 5;console.log(thickness5.toString());// => '20px 20px 5px'```
 <a name="Thickness+top"></a>
 
 ### thickness.top : <code>CssSize</code>

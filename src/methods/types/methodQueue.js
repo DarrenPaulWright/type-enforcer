@@ -1,3 +1,4 @@
+import isFunction from '../../checks/types/isFunction';
 import Queue from '../../types/Queue';
 
 /**
@@ -13,8 +14,8 @@ import Queue from '../../types/Queue';
 export default (options = {}) => {
 	const key = Symbol();
 
-	return function(newValue) {
-		if (this && !this[key] && (!this.isRemoved || !this.isRemoved())) {
+	return function(callback) {
+		if (this && !this[key] && !this.isRemoved) {
 			this[key] = new Queue();
 
 			if (this.onRemove) {
@@ -25,8 +26,8 @@ export default (options = {}) => {
 		}
 
 		if (arguments.length) {
-			if (typeof newValue === 'function') {
-				this[key].add(newValue);
+			if (isFunction(callback)) {
+				this[key].add(callback);
 
 				if (options.set) {
 					options.set.call(this, this[key]);

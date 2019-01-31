@@ -1,11 +1,15 @@
 import { assert } from 'chai';
 import { assign } from 'lodash';
-import { method, Vector } from '../../../src';
+import { method, methodVector, Vector } from '../../../src';
 import { vectorData as data } from '../../TestUtil';
 import { testMethodType } from '../methodTestUtility';
 
 describe('method', () => {
 	describe('.vector (stringify)', () => {
+		it('should exist in the exported "method" object', () => {
+			assert.deepEqual(methodVector, method.vector);
+		});
+
 		testMethodType({
 			name: 'vector',
 			init: '[[0,0],[0,0]]',
@@ -25,7 +29,7 @@ describe('method', () => {
 			}]
 		}));
 
-		it('should NOT save a coercable value if coerce is false', () => {
+		it('should NOT save a coercible value if coerce is false', () => {
 			const TestConstructor = function() {
 				this.testMethod = method.vector({
 					init: undefined,

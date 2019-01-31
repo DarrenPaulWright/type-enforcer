@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { Thickness } from '../../src/index';
+import { Thickness } from '../../src';
 import { multiTest, thicknessData as data } from '../TestUtil';
 
 describe('Thickness', () => {

@@ -1,5 +1,5 @@
-import isObject from '../../checks/isObject';
-import enforcer from './enforcer';
+import isObject from '../../checks/types/isObject';
+import { coercibleEnforcer } from './enforcer';
 
 /**
  * Enforce that a value is an object. Uses [isObject](docs/checks.md#isObject).
@@ -29,4 +29,4 @@ import enforcer from './enforcer';
  *
  * @returns {Object}
  */
-export default enforcer(isObject, Object);
+export default coercibleEnforcer(isObject, Object);

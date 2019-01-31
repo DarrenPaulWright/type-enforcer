@@ -1,5 +1,5 @@
-import isElement from '../../checks/isElement';
-import enforcer from './enforcer';
+import isElement from '../../checks/types/isElement';
+import { baseEnforcer } from './enforcer';
 
 /**
  * Enforce that a value is a DOM element. Uses [isElement](docs/checks.md#isElement).
@@ -25,4 +25,4 @@ import enforcer from './enforcer';
  *
  * @returns {Element}
  */
-export default enforcer(isElement);
+export default baseEnforcer(isElement);

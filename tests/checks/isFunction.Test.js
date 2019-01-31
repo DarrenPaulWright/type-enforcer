@@ -1,7 +1,12 @@
-import { isFunction } from '../../src';
+import { assert } from 'chai';
+import { is, isFunction } from '../../src';
 import { functionData as data, multiTest } from '../TestUtil';
 
 describe('isFunction', () => {
+	it('should exist in the exported "is" object', () => {
+		assert.deepEqual(isFunction, is.function);
+	});
+
 	multiTest({
 		values: data.true,
 		test: (value) => isFunction(value),

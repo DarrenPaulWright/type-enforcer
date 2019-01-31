@@ -1,7 +1,12 @@
-import { isBoolean } from '../../src';
+import { assert } from 'chai';
+import { is, isBoolean } from '../../src';
 import { boolData as data, multiTest } from '../TestUtil';
 
 describe('isBoolean', () => {
+	it('should exist in the exported "is" object', () => {
+		assert.deepEqual(isBoolean, is.boolean);
+	});
+
 	multiTest({
 		values: data.true,
 		test: (value) => isBoolean(value),

@@ -1,8 +1,7 @@
 import { assert } from 'chai';
 import { assign, each, join, map, startCase } from 'lodash';
 import powerset from 'powerset';
-import { method, Point } from '../../src';
-import enforceString from '../../src/enforcer/types/enforceString';
+import { enforceString, method, Point } from '../../src';
 import { processOutput } from '../../src/methods/variants/helper';
 
 const TEST_METHOD = 'testMethod';

@@ -11,7 +11,38 @@ Type enforcement library for javascript
 <a name="method"></a>
 
 ## method : <code>object</code>
-Enforce data types and remove common boilerplate code on class methods.## Usage``` javascriptimport { method } from 'type-enforcer';```Use it as a prototype:``` javascriptconst Thing = function() {};Thing.prototype.myMethod = method.string([options]);```or in a class:``` javascriptclass Thing() {}Thing.prototype.myMethod = method.string([options]);```or as a non-prototype method:``` javascriptconst Thing = function() {    this.myMethod = method.string([options]);};```
+Enforce data types and remove common boilerplate code on class methods.
+
+## Usage
+``` javascript
+import { method } from 'type-enforcer';
+```
+Or import individual functions
+``` javascript
+import { methodString } from 'type-enforcer';
+```
+
+
+Use it as a prototype:
+``` javascript
+const Thing = function() {};
+
+Thing.prototype.myMethod = method.string([options]);
+```
+
+or in a class:
+``` javascript
+class Thing() {}
+
+Thing.prototype.myMethod = method.string([options]);
+```
+
+or as a non-prototype method:
+``` javascript
+const Thing = function() {
+    this.myMethod = method.string([options]);
+};
+```
 
 **Kind**: global typedef  
 
@@ -58,7 +89,38 @@ Builds a chainable method for getting/setting any data type
 | [options.stringify] | <code>Boolean</code> | <code>false</code> | If true, then call toString() on the value before returning it (if the value has a toString method) |
 
 **Example**  
-``` javascriptimport { method } from 'type-enforcer';const Widget = function() {    someMethod = method.any({        set: function(newValue) {            console.log(this);            console.log(newValue);        }    });    anotherMethod = method.any();    thirdMethod = method.any({        get: function(newValue) {            return 'item 2';        }    });};const widget = new Widget();widget.someMethod('a').anotherMethod(42).thirdMethod('item 1');// => console.log widget and 'a'widget.someMethod();// => 'a'widget.anotherMethod();// => 42widget.thirdMethod();// => 'item 2'```
+``` javascript
+import { method } from 'type-enforcer';
+
+const Widget = function() {
+    someMethod = method.any({
+        set: function(newValue) {
+            console.log(this);
+            console.log(newValue);
+        }
+    });
+    anotherMethod = method.any();
+    thirdMethod = method.any({
+        get: function(newValue) {
+            return 'item 2';
+        }
+    });
+};
+
+const widget = new Widget();
+
+widget.someMethod('a').anotherMethod(42).thirdMethod('item 1');
+// => console.log widget and 'a'
+
+widget.someMethod();
+// => 'a'
+
+widget.anotherMethod();
+// => 42
+
+widget.thirdMethod();
+// => 'item 2'
+```
 <a name="method.array"></a>
 
 ### method.array([options]) ⇒ <code>function</code>
@@ -208,7 +270,9 @@ Builds a chainable method for getting/setting an integer
 <a name="method.keyValue"></a>
 
 ### method.keyValue([options]) ⇒ <code>function</code>
-Builds a chainable method that accepts either:- two args, a key and a value- one arg, an object with multiple key/value pairs
+Builds a chainable method that accepts either:
+- two args, a key and a value
+- one arg, an object with multiple key/value pairs
 
 **Kind**: static method of [<code>method</code>](#method)  
 **Returns**: <code>function</code> - accepts a new value and returns the methods constructor (allows chaining), or if no args are passed returns the output of options.get  

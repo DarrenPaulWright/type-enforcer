@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import { assign, map } from 'lodash';
-import { AUTO, CssSize, PIXELS } from '../../src/index';
+import { AUTO, CssSize, PIXELS } from '../../src';
 import {
 	cssSizeData as data,
 	fixedCssUnits,
@@ -301,7 +301,7 @@ describe('CssSize', () => {
 			values2: map(data.coerceFalse, (value) => {
 				return {
 					size: value
-				}
+				};
 			}),
 			eachPair: true,
 			message: (input1, input2) => `should return false when the value is ${input1} and the test value is ${input2}`,

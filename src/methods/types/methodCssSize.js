@@ -1,4 +1,4 @@
-import isCssSize from '../../checks/isCssSize';
+import isCssSize from '../../checks/types/isCssSize';
 import enforceCssSize from '../../enforcer/types/enforceCssSize';
 import CssSize from '../../types/CssSize';
 import { buildMethod, compareCustomType, mapEnforcerDefaultCoerceTrue } from './methodAny';

@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { method, Queue } from '../../../src';
+import { method, methodQueue, Queue } from '../../../src';
 
 describe('method', () => {
 	describe('.queue', () => {
@@ -7,6 +7,10 @@ describe('method', () => {
 		const testFunc = () => {
 			didExecute++;
 		};
+
+		it('should exist in the exported "method" object', () => {
+			assert.deepEqual(methodQueue, method.queue);
+		});
 
 		const runTests = (TestConstructor, isRemovable) => {
 			it('should build a method', () => {

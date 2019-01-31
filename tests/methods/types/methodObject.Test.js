@@ -1,11 +1,15 @@
 import { assert } from 'chai';
 import { assign } from 'lodash';
-import { method } from '../../../src';
+import { method, methodObject } from '../../../src';
 import { objectData as data } from '../../TestUtil';
 import { testMethodType } from '../methodTestUtility';
 
 describe('method', () => {
 	describe('.object', () => {
+		it('should exist in the exported "method" object', () => {
+			assert.deepEqual(methodObject, method.object);
+		});
+
 		testMethodType(assign({}, data));
 
 		it('should NOT call the set callback if the same object is provided and deep=false', () => {

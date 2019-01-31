@@ -1,6 +1,6 @@
-import isArray from '../checks/isArray';
-import isNumber from '../checks/isNumber';
-import isString from '../checks/isString';
+import isArray from '../checks/types/isArray';
+import isNumber from '../checks/types/isNumber';
+import isString from '../checks/types/isString';
 import angle from '../utility/angle';
 
 const SEPARATOR = ',';

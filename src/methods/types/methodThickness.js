@@ -1,4 +1,4 @@
-import isThickness from '../../checks/isThickness';
+import isThickness from '../../checks/types/isThickness';
 import enforceThickness from '../../enforcer/types/enforceThickness';
 import Thickness from '../../types/Thickness';
 import { buildMethod, compareCustomType, mapEnforcerDefaultCoerceTrue } from './methodAny';

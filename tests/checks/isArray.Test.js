@@ -1,7 +1,12 @@
-import { isArray } from '../../src';
-import { multiTest, arrayData as data } from '../TestUtil';
+import { assert } from 'chai';
+import { is, isArray } from '../../src';
+import { arrayData as data, multiTest } from '../TestUtil';
 
 describe('isArray', () => {
+	it('should exist in the exported "is" object', () => {
+		assert.deepEqual(isArray, is.array);
+	});
+
 	multiTest({
 		values: data.true,
 		test: (value) => isArray(value),

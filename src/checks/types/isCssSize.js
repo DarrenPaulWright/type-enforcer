@@ -1,4 +1,4 @@
-import CssSize from '../types/CssSize';
+import CssSize from '../../types/CssSize';
 import { buildCustomTypeCheck } from './checks';
 
 /**

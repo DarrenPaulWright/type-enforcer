@@ -1,7 +1,12 @@
-import { isDockPoint } from '../../src';
-import { multiTest, dockPointData as data } from '../TestUtil';
+import { assert } from 'chai';
+import { is, isDockPoint } from '../../src';
+import { dockPointData as data, multiTest } from '../TestUtil';
 
 describe('isDockPoint', () => {
+	it('should exist in the exported "is" object', () => {
+		assert.deepEqual(isDockPoint, is.dockPoint);
+	});
+
 	multiTest({
 		values: data.true,
 		test: (value) => isDockPoint(value),

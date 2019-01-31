@@ -1,9 +1,13 @@
 import { assert } from 'chai';
 import { each } from 'lodash';
-import isInstanceOf from '../../src/checks/isInstanceOf';
+import { is, isInstanceOf } from '../../src';
 import { testTypes } from '../TestUtil';
 
 describe('isInstanceOf', () => {
+	it('should exist in the exported "is" object', () => {
+		assert.deepEqual(isInstanceOf, is.instanceOf);
+	});
+
 	each(testTypes, (baseType) => {
 		each(baseType.true, (newValue) => {
 			if (baseType.value) {

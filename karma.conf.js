@@ -5,7 +5,10 @@ const config = require('./testRunner.config.js');
 const singleRun = process.argv.includes('--single-run');
 
 const exclude = (file) => {
-	return {pattern: file, included: false};
+	return {
+		pattern: file,
+		included: false
+	};
 };
 
 const files = testRunnerConfig.getKarmaFiles(config, {
@@ -53,16 +56,14 @@ module.exports = function(config) {
 					test: /\.js$/,
 					enforce: 'pre',
 					exclude: /node_modules/,
-					use: [
-						{
-							loader: 'eslint-loader',
-							options: {
-								configFile: '.eslintrc.json',
-								cache: true,
-								emitWarning: true
-							}
+					use: [{
+						loader: 'eslint-loader',
+						options: {
+							configFile: '.eslintrc.json',
+							cache: true,
+							emitWarning: true
 						}
-					]
+					}]
 				}, {
 					test: /\.js/,
 					exclude: /node_modules/,

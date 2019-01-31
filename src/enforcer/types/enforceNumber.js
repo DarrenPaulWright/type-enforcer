@@ -1,5 +1,5 @@
-import isNumber from '../../checks/isNumber';
-import enforcer from './enforcer';
+import isNumber from '../../checks/types/isNumber';
+import { numericEnforcer } from './enforcer';
 
 /**
  * Enforce that a value is a number (excluding NaN). Uses [isNumber](docs/checks.md#isNumber).
@@ -28,4 +28,4 @@ import enforcer from './enforcer';
  *
  * @returns {Number}
  */
-export default enforcer(isNumber, Number, true);
+export default numericEnforcer(isNumber, Number);

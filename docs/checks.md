@@ -64,6 +64,20 @@ Type enforcement library for javascript
 </dd>
 </dl>
 
+## Typedefs
+
+<dl>
+<dt><a href="#is">is</a> : <code>object</code></dt>
+<dd><p>Utility functions for checking if something is a particular data type.</p>
+<h2 id="usage">Usage</h2>
+<pre><code class="lang-javascript">import { is } from &#39;type-enforcer&#39;;
+</code></pre>
+<p>Or import individual functions</p>
+<pre><code class="lang-javascript">import { isString } from &#39;type-enforcer&#39;;
+</code></pre>
+</dd>
+</dl>
+
 <a name="isArray"></a>
 
 ## isArray(value, [coerce]) ⇒ <code>Boolean</code>
@@ -91,7 +105,18 @@ Check if a value is a [boolean](https://lodash.com/docs/#isBoolean)
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a boolean. Always returns true, as _everything_ can be coerced into a boolean. |
 
 **Example**  
-``` javascriptimport { isBoolean } from 'type-enforcer';isBoolean(false);// => trueisBoolean('a string');// => falseisBoolean('a string', true);// => true```
+``` javascript
+import { isBoolean } from 'type-enforcer';
+
+isBoolean(false);
+// => true
+
+isBoolean('a string');
+// => false
+
+isBoolean('a string', true);
+// => true
+```
 <a name="isCssSize"></a>
 
 ## isCssSize(value, [coerce]) ⇒ <code>Boolean</code>
@@ -159,7 +184,12 @@ Check if a value is a [function](https://lodash.com/docs/#isFunction)
 | value | <code>\*</code> | 
 
 **Example**  
-``` javascriptimport { isFunction } from 'type-enforcer';isFunction(() => {});// => true```
+``` javascript
+import { isFunction } from 'type-enforcer';
+
+isFunction(() => {});
+// => true
+```
 <a name="isInstanceOf"></a>
 
 ## isInstanceOf(object, constructor) ⇒ <code>Boolean</code>
@@ -173,7 +203,27 @@ Check if a value is an instance of a constructor. Fixes issues with native insta
 | constructor | <code>function</code> | 
 
 **Example**  
-``` javascriptimport { isInstanceOf } from 'type-enforcer';isInstanceOf(false, Boolean); => truefalse instanceof Boolean => falseisInstanceOf(false, Boolean); => true42 instanceof Number => falseisInstanceOf(42, Number); => true'a string' instanceof String => falseisInstanceOf('a string', String); => true```
+``` javascript
+import { isInstanceOf } from 'type-enforcer';
+
+isInstanceOf(false, Boolean);
+ => true
+
+false instanceof Boolean
+ => false
+isInstanceOf(false, Boolean);
+ => true
+
+42 instanceof Number
+ => false
+isInstanceOf(42, Number);
+ => true
+
+'a string' instanceof String
+ => false
+isInstanceOf('a string', String);
+ => true
+```
 <a name="isInteger"></a>
 
 ## isInteger(value, [coerce]) ⇒ <code>Boolean</code>
@@ -187,7 +237,18 @@ Check if a value is an [integer](https://lodash.com/docs/#isInteger)
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into an Integer |
 
 **Example**  
-``` javascriptimport { isInteger } from 'type-enforcer';isInteger(42);// => trueisInteger('42');// => falseisInteger('42', true);// => true```
+``` javascript
+import { isInteger } from 'type-enforcer';
+
+isInteger(42);
+// => true
+
+isInteger('42');
+// => false
+
+isInteger('42', true);
+// => true
+```
 <a name="isJson"></a>
 
 ## isJson(value) ⇒ <code>Boolean</code>
@@ -200,7 +261,9 @@ Check if a value can be parsed as JSON
 | value | <code>\*</code> | 
 
 **Example**  
-``` javascriptimport { isJson } from 'type-enforcer';```
+``` javascript
+import { isJson } from 'type-enforcer';
+```
 <a name="isNumber"></a>
 
 ## isNumber(value, [coerce]) ⇒ <code>Boolean</code>
@@ -214,7 +277,18 @@ Check if a value is a [number](https://lodash.com/docs/#isNumber)
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a Number |
 
 **Example**  
-``` javascriptimport { isNumber } from 'type-enforcer';isNumber(3.14159);// => trueisNumber('3.14159');// => falseisNumber('3.14159', true);// => true```
+``` javascript
+import { isNumber } from 'type-enforcer';
+
+isNumber(3.14159);
+// => true
+
+isNumber('3.14159');
+// => false
+
+isNumber('3.14159', true);
+// => true
+```
 <a name="isObject"></a>
 
 ## isObject(value, [coerce]) ⇒ <code>Boolean</code>
@@ -299,6 +373,12 @@ Check if a value is a [Vector](docs/Vector.md)
 
 **Example**  
 ``` javascriptimport { isVector } from 'type-enforcer';isVector(new Vector());// => trueisVector('[[1,2],[3,4]]');// => falseisVector('[[1,2],[3,4]]', true);// => true```
+<a name="is"></a>
+
+## is : <code>object</code>
+Utility functions for checking if something is a particular data type.## Usage``` javascriptimport { is } from 'type-enforcer';```Or import individual functions``` javascriptimport { isString } from 'type-enforcer';```
+
+**Kind**: global typedef  
 
 ## License
 

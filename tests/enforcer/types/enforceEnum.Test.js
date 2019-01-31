@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { enforce, Enum } from '../../../src';
+import { enforce, enforceEnum, Enum } from '../../../src';
 import { runNegativeTests } from '../enforceTestUtility';
 
 const validEnumObject = new Enum({
@@ -12,6 +12,10 @@ const validEnum2 = validEnumObject.test2;
 
 describe('enforce', () => {
 	describe('.enum', () => {
+		it('should exist in the exported "enforce" object', () => {
+			assert.deepEqual(enforceEnum, enforce.enum);
+		});
+
 		it('should return the setter value when an array is provided', () => {
 			assert.deepEqual(enforce.enum(validEnum1, validEnumObject, validEnum2), validEnum1);
 			assert.notDeepEqual(enforce.enum(validEnum1, validEnumObject, validEnum2), validEnum2);

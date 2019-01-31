@@ -1,11 +1,15 @@
 import { assert } from 'chai';
 import { map } from 'lodash';
-import { DockPoint, enforce } from '../../../src';
-import { multiTest, dockPointData as data, validDockPoints } from '../../TestUtil';
+import { DockPoint, enforce, enforceDockPoint } from '../../../src';
+import { dockPointData as data, multiTest, validDockPoints } from '../../TestUtil';
 import { runNegativeTests } from '../enforceTestUtility';
 
 describe('enforce', () => {
 	describe('.dockPoint', () => {
+		it('should exist in the exported "enforce" object', () => {
+			assert.deepEqual(enforceDockPoint, enforce.dockPoint);
+		});
+
 		it('should return the setter value when a valid DockPoint is provided', () => {
 			assert.isTrue(enforce.dockPoint(validDockPoints[0], validDockPoints[1]) instanceof DockPoint);
 			assert.equal(enforce.dockPoint(validDockPoints[0], validDockPoints[1]).toString(), validDockPoints[0]);
@@ -16,7 +20,7 @@ describe('enforce', () => {
 				return {
 					input: item,
 					output: new DockPoint(item)
-				}
+				};
 			}),
 			message: (input) => `should return a coerced ${input} when coerce is true`,
 			test: (value) => enforce.dockPoint(value, value, true),
@@ -30,7 +34,7 @@ describe('enforce', () => {
 				return {
 					input: item,
 					output: item
-				}
+				};
 			}),
 			message: (input) => `should NOT return a coerced ${input} when coerce is false`,
 			test: (value) => enforce.dockPoint(value, value, false),

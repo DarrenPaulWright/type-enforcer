@@ -1,11 +1,15 @@
 import { assert } from 'chai';
 import { assign } from 'lodash';
-import { method, Point } from '../../../src';
+import { method, methodPoint, Point } from '../../../src';
 import { pointData as data } from '../../TestUtil';
 import { testMethodType } from '../methodTestUtility';
 
 describe('method', () => {
 	describe('.point (stringify)', () => {
+		it('should exist in the exported "method" object', () => {
+			assert.deepEqual(methodPoint, method.point);
+		});
+
 		testMethodType({
 			name: 'point',
 			init: '0,0',
@@ -25,7 +29,7 @@ describe('method', () => {
 			}]
 		}));
 
-		it('should NOT save a coercable value if coerce is false', () => {
+		it('should NOT save a coercible value if coerce is false', () => {
 			const TestConstructor = function() {
 				this.testMethod = method.point({
 					init: undefined,

@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import { map } from 'lodash';
-import { enforce } from '../../../src';
+import { enforce, enforceNumber } from '../../../src';
 import { multiTest, numberData as data } from '../../TestUtil';
 import { runNegativeTests } from '../enforceTestUtility';
 
@@ -9,6 +9,10 @@ const validFloat = 34.23463456;
 
 describe('enforce', () => {
 	describe('.number', () => {
+		it('should exist in the exported "enforce" object', () => {
+			assert.deepEqual(enforceNumber, enforce.number);
+		});
+
 		it('should return the setter value when an integer is provided', () => {
 			assert.deepEqual(enforce.number(validInt, validFloat), validInt);
 			assert.notDeepEqual(enforce.number(validInt, validFloat), validFloat);
@@ -28,7 +32,7 @@ describe('enforce', () => {
 				return {
 					input: item,
 					output: Number(item)
-				}
+				};
 			}),
 			message: (input) => `should return a coerced ${input} when coerce is true`,
 			test: (value) => enforce.number(value, value, true),
@@ -42,7 +46,7 @@ describe('enforce', () => {
 				return {
 					input: item,
 					output: item
-				}
+				};
 			}),
 			message: (input) => `should NOT return a coerced ${input} when coerce is false`,
 			test: (value) => enforce.number(value, value, false),

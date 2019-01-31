@@ -1,4 +1,4 @@
-import Vector from '../types/Vector';
+import Vector from '../../types/Vector';
 import { buildCustomTypeCheck } from './checks';
 
 /**

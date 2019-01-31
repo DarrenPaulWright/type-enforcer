@@ -1,11 +1,15 @@
 import { assert } from 'chai';
 import { assign } from 'lodash';
-import { DockPoint, method } from '../../../src';
+import { DockPoint, method, methodDockPoint } from '../../../src';
 import { dockPointData as data } from '../../TestUtil';
 import { testMethodType } from '../methodTestUtility';
 
 describe('method', () => {
 	describe('.dockPoint (stringify)', () => {
+		it('should exist in the exported "method" object', () => {
+			assert.deepEqual(methodDockPoint, method.dockPoint);
+		});
+
 		testMethodType({
 			name: 'dockPoint',
 			true: [DockPoint.POINTS.TOP_CENTER, DockPoint.POINTS.BOTTOM_LEFT],
@@ -23,7 +27,7 @@ describe('method', () => {
 			}]
 		}));
 
-		it('should NOT save a coercable value if coerce is false', () => {
+		it('should NOT save a coercible value if coerce is false', () => {
 			const TestConstructor = function() {
 				this.testMethod = method.dockPoint({
 					coerce: false

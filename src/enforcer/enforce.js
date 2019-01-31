@@ -23,6 +23,10 @@ import enforceVector from './types/enforceVector';
  * ``` javascript
  * import { enforce } from 'type-enforcer';
  * ```
+ * Or import individual functions
+ * ``` javascript
+ * import { enforceString } from 'type-enforcer';
+ * ```
  *
  * @typedef {object} enforce
  */

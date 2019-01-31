@@ -1,23 +1,27 @@
 import { clamp } from 'lodash';
 
-export default (check, doCoercion, isNumeric) => {
-	if (isNumeric) {
-		return (value, alt, coerce, minValue = -Infinity, maxValue = Infinity) => {
-			if (coerce === true && check(value, true) && !check(value)) {
-				return clamp(doCoercion(value), minValue, maxValue);
-			}
-			return check(value) ? clamp(value, minValue, maxValue) : alt;
-		};
-	}
-	else if (doCoercion) {
-		return (value, alt, coerce) => {
-			if (coerce === true && check(value, true) && !check(value)) {
-				return doCoercion(value);
-			}
-			return check(value) ? value : alt;
+const shouldCoerce = (coerce, check, value) => {
+	return (coerce === true && check(value, true) && !check(value));
+};
+
+export const numericEnforcer = (check, doCoercion) => {
+	return (value, alt, coerce, minValue = -Infinity, maxValue = Infinity) => {
+		if (shouldCoerce(coerce, check, value)) {
+			return clamp(doCoercion(value), minValue, maxValue);
 		}
-	}
-	else {
-		return (value, alt) => check(value) ? value : alt;
-	}
+		return check(value) ? clamp(value, minValue, maxValue) : alt;
+	};
+};
+
+export const coercibleEnforcer = (check, doCoercion) => {
+	return (value, alt, coerce) => {
+		if (shouldCoerce(coerce, check, value)) {
+			return doCoercion(value);
+		}
+		return check(value) ? value : alt;
+	};
+};
+
+export const baseEnforcer = (check) => {
+	return (value, alt) => check(value) ? value : alt;
 };

@@ -1,9 +1,15 @@
+import { assert } from 'chai';
 import { assign } from 'lodash';
+import { method, methodInteger } from '../../../src';
 import { intData as data } from '../../TestUtil';
 import { testMethodType } from '../methodTestUtility';
 
 describe('method', () => {
 	describe('.integer', () => {
+		it('should exist in the exported "method" object', () => {
+			assert.deepEqual(methodInteger, method.integer);
+		});
+
 		testMethodType(assign({}, data, {
 			extraProps: {
 				min: 0,

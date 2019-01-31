@@ -1,5 +1,6 @@
+import { assert } from 'chai';
 import { concat } from 'lodash';
-import { isJson } from '../../src';
+import { is, isJson } from '../../src';
 import {
 	multiTest,
 	validCssSizes,
@@ -11,7 +12,8 @@ import {
 	validPoints,
 	validRegExps,
 	validStrings,
-	validThicknesses, validVectors
+	validThicknesses,
+	validVectors
 } from '../TestUtil';
 
 export const testValues = concat(
@@ -34,6 +36,10 @@ const data = {
 };
 
 describe('isJson', () => {
+	it('should exist in the exported "is" object', () => {
+		assert.deepEqual(isJson, is.json);
+	});
+
 	multiTest({
 		values: data.true,
 		test: (value) => isJson(value),

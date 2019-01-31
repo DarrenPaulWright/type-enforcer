@@ -26,6 +26,11 @@ import methodVector from './types/methodVector';
  * ``` javascript
  * import { method } from 'type-enforcer';
  * ```
+ * Or import individual functions
+ * ``` javascript
+ * import { methodString } from 'type-enforcer';
+ * ```
+ *
  *
  * Use it as a prototype:
  * ``` javascript

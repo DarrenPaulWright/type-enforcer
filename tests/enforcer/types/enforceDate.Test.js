@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import { map } from 'lodash';
-import { enforce } from '../../../src';
+import { enforce, enforceDate } from '../../../src';
 import { dateData as data, multiTest, validDates } from '../../TestUtil';
 import { runNegativeTests } from '../enforceTestUtility';
 
@@ -8,6 +8,10 @@ const validDateString = '2012/03/27';
 
 describe('enforce', () => {
 	describe('.date', () => {
+		it('should exist in the exported "enforce" object', () => {
+			assert.deepEqual(enforceDate, enforce.date);
+		});
+
 		it('should return the setter value when a valid date is provided', () => {
 			assert.deepEqual(enforce.date(validDates[1], validDates[0]), validDates[1]);
 			assert.notDeepEqual(enforce.date(validDates[1], validDates[0]), validDates[0]);
@@ -21,7 +25,7 @@ describe('enforce', () => {
 				return {
 					input: item,
 					output: new Date(item)
-				}
+				};
 			}),
 			message: (input) => `should return a coerced ${input} when coerce is true`,
 			test: (value) => enforce.date(value, value, true),
@@ -35,7 +39,7 @@ describe('enforce', () => {
 				return {
 					input: item,
 					output: item
-				}
+				};
 			}),
 			message: (input) => `should NOT return a coerced ${input} when coerce is false`,
 			test: (value) => enforce.date(value, value, false),

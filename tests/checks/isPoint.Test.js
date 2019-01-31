@@ -1,7 +1,12 @@
-import { isPoint } from '../../src';
+import { assert } from 'chai';
+import { is, isPoint } from '../../src';
 import { multiTest, pointData as data } from '../TestUtil';
 
 describe('isPoint', () => {
+	it('should exist in the exported "is" object', () => {
+		assert.deepEqual(isPoint, is.point);
+	});
+
 	multiTest({
 		values: data.true,
 		test: (value) => isPoint(value),

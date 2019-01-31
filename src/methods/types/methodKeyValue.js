@@ -1,5 +1,5 @@
 import { forOwn } from 'lodash';
-import isObject from '../../checks/isObject';
+import isObject from '../../checks/types/isObject';
 
 /**
  * Builds a chainable method that accepts either:

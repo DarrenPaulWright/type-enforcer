@@ -186,9 +186,9 @@ const coerceNumberFalse = [
 	'1\'000\'000,00'
 ];
 
-const coercableDockPoints = [];
+const coercibleDockPoints = [];
 DockPoint.POINTS.each((value) => {
-	coercableDockPoints.push(value);
+	coercibleDockPoints.push(value);
 });
 
 export const testValues = concat(
@@ -247,7 +247,7 @@ export const dockPointData = {
 	name: 'dockPoint',
 	true: validDockPoints,
 	false: difference(testValues, validDockPoints, ['']),
-	coerceTrue: coercableDockPoints,
+	coerceTrue: coercibleDockPoints,
 	coerceFalse: difference(testValues, validDockPoints, [''])
 };
 export const elementData = {

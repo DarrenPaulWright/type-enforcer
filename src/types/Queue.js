@@ -1,5 +1,5 @@
 import { forOwn } from 'lodash';
-import isFunction from '../checks/isFunction';
+import isFunction from '../checks/types/isFunction';
 
 const CALLBACKS = Symbol();
 const CURRENT_ID = Symbol();

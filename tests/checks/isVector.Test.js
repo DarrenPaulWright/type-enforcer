@@ -1,7 +1,12 @@
-import { isVector } from '../../src';
+import { assert } from 'chai';
+import { is, isVector } from '../../src';
 import { multiTest, vectorData as data } from '../TestUtil';
 
 describe('isVector', () => {
+	it('should exist in the exported "is" object', () => {
+		assert.deepEqual(isVector, is.vector);
+	});
+
 	multiTest({
 		values: data.true,
 		test: (value) => isVector(value),

@@ -1,4 +1,4 @@
-import { clamp } from 'lodash';
+const clamp = (value, min, max) => value < min ? min : value > max ? max : value;
 
 const shouldCoerce = (coerce, check, value) => {
 	return (coerce === true && check(value, true) && !check(value));

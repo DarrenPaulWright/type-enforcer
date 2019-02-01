@@ -1,4 +1,5 @@
-import { cloneDeep, isEqual } from 'lodash';
+import deepEqual from 'deep-equal';
+import { cloneDeep } from 'lodash';
 import isArray from '../../checks/types/isArray';
 import enforceBoolean from '../../enforcer/types/enforceBoolean';
 import before from '../variants/before';
@@ -21,7 +22,7 @@ const notEnforced = (newValue) => newValue;
 
 const simpleCompare = (newValue, oldValue) => newValue !== oldValue;
 
-export const deepCompare = (newValue, oldValue) => !isEqual(newValue, oldValue);
+export const deepCompare = (newValue, oldValue) => !deepEqual(newValue, oldValue, {strict: true});
 
 export const compareCustomType = (Type, check) => (newValue, oldValue) => {
 	if (check(oldValue)) {

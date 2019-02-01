@@ -1,4 +1,5 @@
-import { castArray, cloneDeep, isEqual } from 'lodash';
+import { cloneDeep, isEqual } from 'lodash';
+import isArray from '../../checks/types/isArray';
 import enforceBoolean from '../../enforcer/types/enforceBoolean';
 import before from '../variants/before';
 import beforeSet from '../variants/beforeSet';
@@ -69,8 +70,8 @@ export const buildMethod = (defaultSettings = {}, onInit) => {
 			options = onInit(options);
 		}
 
-		if ('other' in options) {
-			options.other = castArray(options.other);
+		if ('other' in options && !isArray(options.other)) {
+			options.other = [options.other];
 		}
 
 		if (options.get) {

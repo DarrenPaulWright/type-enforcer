@@ -1,4 +1,4 @@
-import { join, throttle } from 'lodash';
+import { throttle } from 'lodash';
 import methodElement from '../methods/types/methodElement';
 import isElementInDom from '../utility/isElementInDom';
 
@@ -41,8 +41,8 @@ const START_SIZE = '^(';
 const START_UNIT = NUMERIC_VALUE + '(';
 const END = ')$';
 
-const VALID_SIZES_STRING = START_SIZE + join(validSizes, OR) + END;
-const ALL_UNITS_STRING = START_UNIT + join(units, OR) + END;
+const VALID_SIZES_STRING = START_SIZE + validSizes.join(OR) + END;
+const ALL_UNITS_STRING = START_UNIT + units.join(OR) + END;
 
 const NUMERIC_REGEX = new RegExp(NUMERIC_VALUE);
 const CSS_SIZE_REGEX = new RegExp(VALID_SIZES_STRING + OR + ALL_UNITS_STRING);

@@ -1,5 +1,3 @@
-import { forOwn } from 'lodash';
-
 const KEYS = Symbol();
 const VALUES = Symbol();
 
@@ -20,9 +18,9 @@ export default class Enum {
 		Object.assign(this, object);
 		this[KEYS] = [];
 		this[VALUES] = [];
-		forOwn(object, (value, key) => {
+		Object.keys(object).forEach((key) => {
 			this[KEYS].push(key);
-			this[VALUES].push(value);
+			this[VALUES].push(object[key]);
 		});
 		Object.freeze(this);
 		object = null;

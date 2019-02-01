@@ -1,4 +1,3 @@
-import { forOwn } from 'lodash';
 import isObject from '../../checks/types/isObject';
 
 /**
@@ -18,8 +17,8 @@ export default (options = {}) => {
 	return function(...args) {
 		if (options.set && (args.length === 2 || isObject(args[0]))) {
 			if (isObject(args[0])) {
-				forOwn(args[0], (value, key) => {
-					options.set.call(this, key, value);
+				Object.keys(args[0]).forEach((key) => {
+					options.set.call(this, key, args[0][key]);
 				});
 			}
 			else {

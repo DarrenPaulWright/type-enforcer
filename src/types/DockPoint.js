@@ -1,4 +1,3 @@
-import { assign } from 'lodash';
 import methodEnum from '../methods/types/methodEnum';
 import Enum from './Enum';
 
@@ -11,7 +10,7 @@ const BASIC_POINTS = new Enum({
 	CENTER: 'center',
 	NONE: ''
 });
-const POINTS = new Enum(assign({}, BASIC_POINTS, {
+const POINTS = new Enum(Object.assign({}, BASIC_POINTS, {
 	TOP_LEFT: BASIC_POINTS.TOP + SEPARATOR + BASIC_POINTS.LEFT,
 	TOP_CENTER: BASIC_POINTS.TOP + SEPARATOR + BASIC_POINTS.CENTER,
 	TOP_RIGHT: BASIC_POINTS.TOP + SEPARATOR + BASIC_POINTS.RIGHT,
@@ -189,7 +188,7 @@ DockPoint.BASIC_POINTS = BASIC_POINTS;
  */
 DockPoint.POINTS = POINTS;
 
-assign(DockPoint.prototype, {
+Object.assign(DockPoint.prototype, {
 	/**
 	 * The primary value
 	 *

@@ -1,4 +1,4 @@
-import { assign, each, join } from 'lodash';
+import { each, join } from 'lodash';
 import isString from '../checks/types/isString';
 import methodElement from '../methods/types/methodElement';
 import CssSize from './CssSize';
@@ -277,7 +277,7 @@ export default class Thickness {
 
 }
 
-assign(Thickness.prototype, {
+Object.assign(Thickness.prototype, {
 	/**
 	 * Set the element to measure font based units against
 	 *

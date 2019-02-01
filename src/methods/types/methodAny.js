@@ -1,4 +1,4 @@
-import { assign, castArray, cloneDeep, isEqual } from 'lodash';
+import { castArray, cloneDeep, isEqual } from 'lodash';
 import enforceBoolean from '../../enforcer/types/enforceBoolean';
 import before from '../variants/before';
 import beforeSet from '../variants/beforeSet';
@@ -56,7 +56,7 @@ export const mapEnforcerDefaultCoerceTrue = (enforcer) => (newValue, oldValue, o
 };
 
 export const buildMethod = (defaultSettings = {}, onInit) => {
-	defaultSettings = assign({
+	defaultSettings = Object.assign({
 		enforce: notEnforced,
 		compare: simpleCompare
 	}, defaultSettings);
@@ -64,7 +64,7 @@ export const buildMethod = (defaultSettings = {}, onInit) => {
 	return (options) => {
 		let method;
 
-		options = assign(cloneDeep(defaultSettings), options);
+		options = Object.assign(cloneDeep(defaultSettings), options);
 		if (onInit) {
 			options = onInit(options);
 		}

@@ -1,4 +1,4 @@
-import { assign, concat, each, join, throttle } from 'lodash';
+import { concat, each, join, throttle } from 'lodash';
 import methodElement from '../methods/types/methodElement';
 import isElementInDom from '../utility/isElementInDom';
 
@@ -330,7 +330,7 @@ export default class CssSize {
 	}
 }
 
-assign(CssSize.prototype, {
+Object.assign(CssSize.prototype, {
 	/**
 	 * Set the element to measure font based units against
 	 *

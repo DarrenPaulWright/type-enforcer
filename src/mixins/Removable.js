@@ -1,4 +1,3 @@
-import { assign, delay } from 'lodash';
 import { methodQueue } from '../';
 
 const IS_REMOVED = Symbol();
@@ -47,7 +46,7 @@ export default class Removable {
 	}
 }
 
-assign(Removable.prototype, {
+Object.assign(Removable.prototype, {
 	/**
 	 * Adds a callback to a [Queue](docs/Queue.md) that gets triggered when the "remove" method is called
 	 *

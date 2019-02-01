@@ -1,4 +1,3 @@
-import { assign } from 'lodash';
 import isArray from '../checks/types/isArray';
 import isJson from '../checks/types/isJson';
 import enforceNumber from '../enforcer/types/enforceNumber';
@@ -139,7 +138,7 @@ export default class Vector {
 	}
 }
 
-assign(Vector.prototype, {
+Object.assign(Vector.prototype, {
 	/**
 	 * The start point
 	 *

@@ -1,4 +1,4 @@
-import { assign, each, forOwn } from 'lodash';
+import { each, forOwn } from 'lodash';
 
 const KEYS = Symbol();
 const VALUES = Symbol();
@@ -17,7 +17,7 @@ const VALUES = Symbol();
  */
 export default class Enum {
 	constructor(object) {
-		assign(this, object);
+		Object.assign(this, object);
 		this[KEYS] = [];
 		this[VALUES] = [];
 		forOwn(object, (value, key) => {

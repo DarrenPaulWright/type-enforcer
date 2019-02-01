@@ -1,4 +1,4 @@
-import { concat, each, join, throttle } from 'lodash';
+import { each, join, throttle } from 'lodash';
 import methodElement from '../methods/types/methodElement';
 import isElementInDom from '../utility/isElementInDom';
 
@@ -25,15 +25,15 @@ export const VIEWPORT_WIDTH = 'vw'; // 1/100 of the viewport width
 export const VIEWPORT_MIN = 'vmin'; // min of vh and vw
 
 const unitlessSizes = [AUTO, INITIAL, INHERIT, NONE];
-const validSizes = concat(unitlessSizes, [ZERO_PIXELS]);
+const validSizes = [].concat(unitlessSizes, [ZERO_PIXELS]);
 
 const viewPortUnits = [VIEWPORT_HEIGHT, VIEWPORT_WIDTH, VIEWPORT_MIN];
 const fontBasedUnits = [EM, EX, CH];
 const pixelBasedUnits = [PIXELS, INCHES, CENTIMETERS, MILLIMETERS, PICAS, POINTS];
 const rootBasedUnits = [ROOT_EM];
-const fixedUnits = concat(rootBasedUnits, pixelBasedUnits, fontBasedUnits, viewPortUnits);
+const fixedUnits = [].concat(rootBasedUnits, pixelBasedUnits, fontBasedUnits, viewPortUnits);
 const percentUnits = [PERCENT];
-const units = concat(percentUnits, fixedUnits);
+const units = [].concat(percentUnits, fixedUnits);
 
 const OR = '|';
 const NUMERIC_VALUE = '^[-+]?[0-9]*.?[0-9]+';

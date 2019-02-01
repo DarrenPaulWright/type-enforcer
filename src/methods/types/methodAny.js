@@ -1,5 +1,5 @@
+import clone from 'clone';
 import deepEqual from 'deep-equal';
-import { cloneDeep } from 'lodash';
 import isArray from '../../checks/types/isArray';
 import enforceBoolean from '../../enforcer/types/enforceBoolean';
 import before from '../variants/before';
@@ -66,7 +66,7 @@ export const buildMethod = (defaultSettings = {}, onInit) => {
 	return (options) => {
 		let method;
 
-		options = Object.assign(cloneDeep(defaultSettings), options);
+		options = Object.assign(clone(defaultSettings), options);
 		if (onInit) {
 			options = onInit(options);
 		}

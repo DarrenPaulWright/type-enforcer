@@ -1,6 +1,6 @@
-import { throttle } from 'lodash';
 import methodElement from '../methods/types/methodElement';
 import isElementInDom from '../utility/isElementInDom';
+import throttle from '../utility/throttle';
 
 export const AUTO = 'auto';
 export const INITIAL = 'initial';

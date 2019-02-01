@@ -1,4 +1,4 @@
-import { each, forOwn } from 'lodash';
+import { forOwn } from 'lodash';
 
 const KEYS = Symbol();
 const VALUES = Symbol();
@@ -75,6 +75,6 @@ export default class Enum {
 	 * @arg {Function} callback
 	 */
 	each(callback) {
-		each(this[VALUES], callback);
+		this[VALUES].forEach(callback);
 	}
 }

@@ -1,4 +1,4 @@
-import { each, join, throttle } from 'lodash';
+import { join, throttle } from 'lodash';
 import methodElement from '../methods/types/methodElement';
 import isElementInDom from '../utility/isElementInDom';
 
@@ -59,7 +59,7 @@ const measureUnits = (units, save, element) => {
 		document.body.appendChild(thisElement);
 	}
 
-	each(units, (baseUnit) => {
+	units.forEach((baseUnit) => {
 		thisElement.style.height = '1' + baseUnit;
 		save[baseUnit] = parseFloat(window.getComputedStyle(thisElement).height || 0);
 	});

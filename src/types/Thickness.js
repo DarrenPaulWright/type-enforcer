@@ -1,4 +1,4 @@
-import { each, join } from 'lodash';
+import { join } from 'lodash';
 import isString from '../checks/types/isString';
 import methodElement from '../methods/types/methodElement';
 import CssSize from './CssSize';
@@ -125,7 +125,7 @@ export default class Thickness {
 			else {
 				let isValid = true;
 
-				each(args, (arg) => {
+				Array.from(args).forEach((arg) => {
 					if (!CssSize.isValid(arg)) {
 						isValid = false;
 						return false;

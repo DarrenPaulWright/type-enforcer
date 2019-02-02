@@ -10,7 +10,9 @@ describe('method', () => {
 
 		testMethodType({
 			name: 'any',
-			true: ['string', 123]
+			true: ['string', 123],
+			false: [],
+			coerceTrue: []
 		});
 	});
 });

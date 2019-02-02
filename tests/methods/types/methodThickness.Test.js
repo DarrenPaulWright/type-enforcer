@@ -13,6 +13,8 @@ describe('method', () => {
 		testMethodType({
 			name: 'thickness',
 			true: ['12px', '20px'],
+			false: [],
+			coerceTrue: [],
 			extraProps: {
 				stringify: true
 			},

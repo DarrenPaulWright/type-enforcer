@@ -12,6 +12,8 @@ describe('method', () => {
 		testMethodType({
 			name: 'instance',
 			true: [validCssSizes[0], validCssSizes[1]],
+			false: [],
+			coerceTrue: [],
 			coerce: false,
 			extraProps: {
 				instance: CssSize

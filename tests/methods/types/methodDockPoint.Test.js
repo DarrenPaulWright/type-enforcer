@@ -13,6 +13,8 @@ describe('method', () => {
 		testMethodType({
 			name: 'dockPoint',
 			true: [DockPoint.POINTS.TOP_CENTER, DockPoint.POINTS.BOTTOM_LEFT],
+			false: [],
+			coerceTrue: [],
 			extraProps: {
 				stringify: true
 			}

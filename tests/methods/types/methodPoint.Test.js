@@ -14,6 +14,8 @@ describe('method', () => {
 			name: 'point',
 			init: '0,0',
 			true: ['1,2', '3,4'],
+			false: [],
+			coerceTrue: [],
 			extraProps: {
 				stringify: true
 			}

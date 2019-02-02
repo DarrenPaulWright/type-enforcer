@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { assign, each, join, map } from 'lodash';
+import { assign, join, map } from 'lodash';
 import powerset from 'powerset';
 import { enforceString, method, Point } from '../../src';
 import { processOutput } from '../../src/methods/variants/helper';
@@ -31,7 +31,7 @@ export const testMethodType = (settings) => {
 	};
 
 	const runTests = (TestConstructor, init, testItem, coerce) => {
-		each(everyMethodVariant, (methodData) => {
+		everyMethodVariant.forEach((methodData) => {
 			const methodName = methodData.name;
 			const hasGet = methodData.options.includes('get');
 			const hasOther = methodData.options.includes('other');
@@ -161,7 +161,7 @@ export const testMethodType = (settings) => {
 					}
 				}
 
-				each(coerce, (item) => {
+				coerce.forEach((item) => {
 					if (!hasGet) {
 						it('should coerce ' + item.value + ' to ' + item.coerced, () => {
 							const testConstructor = new TestConstructor();
@@ -209,10 +209,10 @@ export const testMethodType = (settings) => {
 	};
 
 	const addMethodsTo = (applyTo, extraProps = {}) => {
-		each(everyMethodVariant, (methodData) => {
+		everyMethodVariant.forEach((methodData) => {
 			const options = assign({}, settings.extraProps, extraProps);
 
-			each(methodData.options, (option) => {
+			methodData.options.forEach((option) => {
 				options[option] = getOptionCallback(option, extraProps.init);
 			});
 
@@ -228,7 +228,7 @@ export const testMethodType = (settings) => {
 
 		addMethodsTo(TestConstructor1.prototype);
 
-		runTests(TestConstructor1, settings.init, settings.true[0], settings.coerce);
+		runTests(TestConstructor1, settings.init, settings.true[0], settings.coerce || []);
 	});
 
 	describe('(prototype) (init)', () => {
@@ -239,9 +239,9 @@ export const testMethodType = (settings) => {
 			init: settings.true[0]
 		});
 
-		runTests(TestConstructor2, settings.true[0], settings.true[1], settings.coerce);
+		runTests(TestConstructor2, settings.true[0], settings.true[1], settings.coerce || []);
 
-		each(settings.false, (falseValue) => {
+		settings.false.forEach((falseValue) => {
 			it(`should return ${settings.true[0]} after attempting to set to ${falseValue}`, () => {
 				const testConstructor = new TestConstructor2();
 
@@ -257,7 +257,7 @@ export const testMethodType = (settings) => {
 			addMethodsTo(this);
 		};
 
-		runTests(TestConstructor3, settings.init, settings.true[0], settings.coerce);
+		runTests(TestConstructor3, settings.init, settings.true[0], settings.coerce || []);
 	});
 
 	describe('(property) (init)', () => {
@@ -267,7 +267,7 @@ export const testMethodType = (settings) => {
 			});
 		};
 
-		runTests(TestConstructor4, settings.true[0], settings.true[1], settings.coerce);
+		runTests(TestConstructor4, settings.true[0], settings.true[1], settings.coerce || []);
 	});
 
 	if (settings.coerce !== false) {
@@ -280,7 +280,7 @@ export const testMethodType = (settings) => {
 				coerce: true
 			});
 
-			each(settings.coerceTrue, (value) => {
+			settings.coerceTrue.forEach((value) => {
 				it(`should return coerced ${value} after attempting to set to ${value}`, () => {
 					const testConstructor = new TestConstructor2();
 
@@ -300,7 +300,7 @@ export const testMethodType = (settings) => {
 				coerce: false
 			});
 
-			each(settings.coerceTrue, (value) => {
+			settings.coerceTrue.forEach((value) => {
 				it(`should return coerced ${value} after attempting to set to ${value}`, () => {
 					const testConstructor = new TestConstructor2();
 

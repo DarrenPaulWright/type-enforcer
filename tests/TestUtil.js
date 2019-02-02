@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { concat, difference, each, isPlainObject, map } from 'lodash';
+import { concat, difference, isPlainObject, map } from 'lodash';
 import {
 	AUTO,
 	CENTIMETERS,
@@ -490,7 +490,7 @@ export const multiTest = (settings) => {
 		eachPair(settings.values, settings.values2 || settings.values, testDoubleArrayValue, true);
 	}
 	else {
-		each(settings.values, testSingleArrayValue);
+		settings.values.forEach(testSingleArrayValue);
 	}
 };
 

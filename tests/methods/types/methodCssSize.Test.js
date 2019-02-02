@@ -13,6 +13,8 @@ describe('method', () => {
 		testMethodType({
 			name: 'cssSize',
 			true: ['14px', '20px'],
+			false: [],
+			coerceTrue: [],
 			extraProps: {
 				stringify: true
 			}

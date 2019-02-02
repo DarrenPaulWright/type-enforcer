@@ -1,5 +1,4 @@
 import { assert } from 'chai';
-import { assign } from 'lodash';
 import { method, methodObject } from '../../../src';
 import { objectData as data } from '../../TestUtil';
 import { testMethodType } from '../methodTestUtility';
@@ -10,7 +9,7 @@ describe('method', () => {
 			assert.deepEqual(methodObject, method.object);
 		});
 
-		testMethodType(assign({}, data));
+		testMethodType(Object.assign({}, data));
 
 		it('should NOT call the set callback if the same object is provided and deep=false', () => {
 			let testSet = '';

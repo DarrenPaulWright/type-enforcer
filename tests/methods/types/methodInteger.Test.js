@@ -1,5 +1,4 @@
 import { assert } from 'chai';
-import { assign } from 'lodash';
 import { method, methodInteger } from '../../../src';
 import { integerData as data } from '../../TestUtil';
 import { testMethodType } from '../methodTestUtility';
@@ -10,7 +9,7 @@ describe('method', () => {
 			assert.deepEqual(methodInteger, method.integer);
 		});
 
-		testMethodType(assign({}, data, {
+		testMethodType(Object.assign({}, data, {
 			extraProps: {
 				min: 0,
 				max: 10

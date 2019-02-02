@@ -1,5 +1,4 @@
 import { assert } from 'chai';
-import { assign } from 'lodash';
 import { method, methodPoint, Point } from '../../../src';
 import { pointData as data } from '../../TestUtil';
 import { testMethodType } from '../methodTestUtility';
@@ -23,7 +22,7 @@ describe('method', () => {
 	});
 
 	describe('.point', () => {
-		testMethodType(assign({}, data, {
+		testMethodType(Object.assign({}, data, {
 			init: new Point(),
 			coerce: [{
 				value: '5,6',

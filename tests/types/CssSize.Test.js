@@ -1,5 +1,4 @@
 import { assert } from 'chai';
-import { assign } from 'lodash';
 import { AUTO, CssSize, PIXELS } from '../../src';
 import {
 	cssSizeData as data,
@@ -160,7 +159,7 @@ describe('CssSize', () => {
 			'2ex': precision(measure.ex),
 			'2ch': precision(measure.ch)
 		};
-		const elementSizeMapOnDom = assign({}, sizeMap, {
+		const elementSizeMapOnDom = Object.assign({}, sizeMap, {
 			'2em': precision(measure.emLarge),
 			'2ex': precision(measure.exLarge),
 			'2ch': precision(measure.chLarge)

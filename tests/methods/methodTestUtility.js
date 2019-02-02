@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { assign, join } from 'lodash';
+import { join } from 'lodash';
 import powerset from 'powerset';
 import { enforceString, method, Point } from '../../src';
 import { processOutput } from '../../src/methods/variants/helper';
@@ -210,7 +210,7 @@ export const testMethodType = (settings) => {
 
 	const addMethodsTo = (applyTo, extraProps = {}) => {
 		everyMethodVariant.forEach((methodData) => {
-			const options = assign({}, settings.extraProps, extraProps);
+			const options = Object.assign({}, settings.extraProps, extraProps);
 
 			methodData.options.forEach((option) => {
 				options[option] = getOptionCallback(option, extraProps.init);
@@ -219,7 +219,7 @@ export const testMethodType = (settings) => {
 			applyTo[methodData.name] = method[settings.name](options);
 		});
 
-		applyTo[TEST_METHOD + '2'] = method[settings.name](assign({}, settings.extraProps, extraProps));
+		applyTo[TEST_METHOD + '2'] = method[settings.name](Object.assign({}, settings.extraProps, extraProps));
 	};
 
 	describe('(prototype)', () => {
@@ -329,7 +329,7 @@ export const testVariant = (settings) => {
 
 	it('should return the constructor after setting a value', () => {
 		const Constructor = function() {
-			this.testMethod = settings.variant(assign({}, defaultOptions));
+			this.testMethod = settings.variant(Object.assign({}, defaultOptions));
 		};
 		const constructor = new Constructor();
 
@@ -342,7 +342,7 @@ export const testVariant = (settings) => {
 		if (settings.options.length !== 1) {
 			it('should call the "enforce" callback with newValue, oldValue, and options', () => {
 				let testVar = '';
-				const variantOptions = assign({}, defaultOptions, {
+				const variantOptions = Object.assign({}, defaultOptions, {
 					enforce: function(newValue, oldValue, options) {
 						if (newValue === '2' && oldValue === '1' && options === variantOptions) {
 							testVar = newValue;
@@ -365,7 +365,7 @@ export const testVariant = (settings) => {
 
 			it('should call the "compare" callback with the value returned from enforce and the oldValue', () => {
 				let testVar = '';
-				const variantOptions = assign({}, defaultOptions, {
+				const variantOptions = Object.assign({}, defaultOptions, {
 					enforce: function() {
 						return '3';
 					},
@@ -393,7 +393,7 @@ export const testVariant = (settings) => {
 			it('should call the "get" callback with context', () => {
 				let testVar = '';
 				const Constructor = function() {
-					this.testMethod = settings.variant(assign({}, defaultOptions, {
+					this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
 						get: function() {
 							testVar = this;
 							return 'something';
@@ -408,7 +408,7 @@ export const testVariant = (settings) => {
 
 			it('should run toString on the result of the "get" callback', () => {
 				const Constructor = function() {
-					this.testMethod = settings.variant(assign({}, defaultOptions, {
+					this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
 						get: function() {
 							return new Point(1, 2);
 						},
@@ -424,7 +424,7 @@ export const testVariant = (settings) => {
 	else {
 		it('should call the "enforce" callback with newValue, oldValue, and options', () => {
 			let testVar = '';
-			const variantOptions = assign({}, defaultOptions, {
+			const variantOptions = Object.assign({}, defaultOptions, {
 				enforce: function(newValue, oldValue, options) {
 					if (newValue === '2' && oldValue === '1' && options === variantOptions) {
 						testVar = newValue;
@@ -446,7 +446,7 @@ export const testVariant = (settings) => {
 
 		it('should call the "compare" callback with the value returned from enforce and the oldValue', () => {
 			let testVar = '';
-			const variantOptions = assign({}, defaultOptions, {
+			const variantOptions = Object.assign({}, defaultOptions, {
 				enforce: function(newValue, oldValue, options) {
 					if (newValue === '2' && oldValue === '1' && options === variantOptions) {
 						testVar = newValue;
@@ -474,7 +474,7 @@ export const testVariant = (settings) => {
 
 		it('should NOT set a property Symbol on the constructor before the value is set', () => {
 			const Constructor = function() {
-				this.testMethod = settings.variant(assign({}, defaultOptions));
+				this.testMethod = settings.variant(Object.assign({}, defaultOptions));
 			};
 			const constructor = new Constructor();
 
@@ -483,7 +483,7 @@ export const testVariant = (settings) => {
 
 		it('should set a property Symbol on the constructor after the value is set', () => {
 			const Constructor = function() {
-				this.testMethod = settings.variant(assign({}, defaultOptions));
+				this.testMethod = settings.variant(Object.assign({}, defaultOptions));
 			};
 			const constructor = new Constructor();
 
@@ -494,7 +494,7 @@ export const testVariant = (settings) => {
 
 		it('should save a value', () => {
 			const Constructor = function() {
-				this.testMethod = settings.variant(assign({}, defaultOptions));
+				this.testMethod = settings.variant(Object.assign({}, defaultOptions));
 			};
 			const constructor = new Constructor();
 
@@ -505,7 +505,7 @@ export const testVariant = (settings) => {
 
 		it('should run toString on returned value if stringify is true', () => {
 			const Constructor = function() {
-				this.testMethod = settings.variant(assign({}, defaultOptions, {
+				this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
 					init: new Point(1, 2),
 					stringify: true
 				}));
@@ -521,7 +521,7 @@ export const testVariant = (settings) => {
 			it('should call the "before" callback with the oldValue with context if "compare" returns true', () => {
 				let testVar = '';
 				const Constructor = function() {
-					this.testMethod = settings.variant(assign({}, defaultOptions, {
+					this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
 						before: function(oldValue) {
 							if (oldValue === '1') {
 								testVar = this;
@@ -542,7 +542,7 @@ export const testVariant = (settings) => {
 			it('should NOT call the "before" callback if "compare" returns false', () => {
 				let testVar = '';
 				const Constructor = function() {
-					this.testMethod = settings.variant(assign({}, defaultOptions, {
+					this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
 						before: function(oldValue) {
 							if (oldValue === '1') {
 								testVar = this;
@@ -563,7 +563,7 @@ export const testVariant = (settings) => {
 			it('should call the "before" callback if "compare" returns false and isForceSave is true', () => {
 				let testVar = '';
 				const Constructor = function() {
-					this.testMethod = settings.variant(assign({}, defaultOptions, {
+					this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
 						before: function(oldValue) {
 							if (oldValue === '1') {
 								testVar = this;
@@ -585,7 +585,7 @@ export const testVariant = (settings) => {
 			it('should call the "before" callback with the oldValue with context if "compare" returns true', () => {
 				let testVar = '';
 				const Constructor = function() {
-					this.testMethod = settings.variant(assign({}, defaultOptions, {
+					this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
 						before: function(oldValue) {
 							if (oldValue === '1') {
 								testVar = this;
@@ -605,7 +605,7 @@ export const testVariant = (settings) => {
 			it('should NOT call the "before" callback if "compare" returns false', () => {
 				let testVar = '';
 				const Constructor = function() {
-					this.testMethod = settings.variant(assign({}, defaultOptions, {
+					this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
 						before: function(oldValue) {
 							if (oldValue === '1') {
 								testVar = this;
@@ -625,7 +625,7 @@ export const testVariant = (settings) => {
 			it('should call the "before" callback if "compare" returns false and isForceSave is true', () => {
 				let testVar = '';
 				const Constructor = function() {
-					this.testMethod = settings.variant(assign({}, defaultOptions, {
+					this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
 						before: function(oldValue) {
 							if (oldValue === '1') {
 								testVar = this;
@@ -649,7 +649,7 @@ export const testVariant = (settings) => {
 			it('should call the "set" callback with the newValue with context if "compare" returns true', () => {
 				let testVar = '';
 				const Constructor = function() {
-					this.testMethod = settings.variant(assign({}, defaultOptions, {
+					this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
 						set: function(newValue) {
 							if (newValue === '2') {
 								testVar = this;
@@ -669,7 +669,7 @@ export const testVariant = (settings) => {
 			it('should NOT call the "set" callback if "compare" returns false', () => {
 				let testVar = '';
 				const Constructor = function() {
-					this.testMethod = settings.variant(assign({}, defaultOptions, {
+					this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
 						set: function(newValue) {
 							if (newValue === '1') {
 								testVar = this;
@@ -689,7 +689,7 @@ export const testVariant = (settings) => {
 			it('should call the "set" callback if "compare" returns false and isForceSave is true', () => {
 				let testVar = '';
 				const Constructor = function() {
-					this.testMethod = settings.variant(assign({}, defaultOptions, {
+					this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
 						set: function(newValue) {
 							if (newValue === '1') {
 								testVar = this;
@@ -710,7 +710,7 @@ export const testVariant = (settings) => {
 			it('should call the "set" callback with the newValue with context if "compare" returns true', () => {
 				let testVar = '';
 				const Constructor = function() {
-					this.testMethod = settings.variant(assign({}, defaultOptions, {
+					this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
 						set: function(newValue) {
 							if (newValue === '2') {
 								testVar = this;
@@ -732,7 +732,7 @@ export const testVariant = (settings) => {
 			it('should NOT call the "set" callback if "compare" returns false', () => {
 				let testVar = '';
 				const Constructor = function() {
-					this.testMethod = settings.variant(assign({}, defaultOptions, {
+					this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
 						set: function(newValue) {
 							if (newValue === '2') {
 								testVar = this;
@@ -754,7 +754,7 @@ export const testVariant = (settings) => {
 			it('should call the "set" callback if "compare" returns false and isForceSave is true', () => {
 				let testVar = '';
 				const Constructor = function() {
-					this.testMethod = settings.variant(assign({}, defaultOptions, {
+					this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
 						set: function(newValue) {
 							if (newValue === '1') {
 								testVar = this;
@@ -780,7 +780,7 @@ export const testVariant = (settings) => {
 			it('should call the "compare" callback with a different type if other has that type', () => {
 				let testVar = '';
 				const Constructor = function() {
-					this.testMethod = settings.variant(assign({}, defaultOptions, {
+					this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
 						enforce: enforceString,
 						compare: function(newValue) {
 							testVar = newValue;
@@ -801,7 +801,7 @@ export const testVariant = (settings) => {
 			it('should call the "compare" callback with a different value if other has that value', () => {
 				let testVar = '';
 				const Constructor = function() {
-					this.testMethod = settings.variant(assign({}, defaultOptions, {
+					this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
 						enforce: enforceString,
 						compare: function(newValue) {
 							testVar = newValue;
@@ -823,7 +823,7 @@ export const testVariant = (settings) => {
 			it('should set the value with a different type if other has that type', () => {
 				let testVar = '';
 				const Constructor = function() {
-					this.testMethod = settings.variant(assign({}, defaultOptions, {
+					this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
 						enforce: enforceString,
 						compare: function(newValue) {
 							testVar = newValue;
@@ -843,7 +843,7 @@ export const testVariant = (settings) => {
 			it('should set the value with a different value if other has that value', () => {
 				let testVar = '';
 				const Constructor = function() {
-					this.testMethod = settings.variant(assign({}, defaultOptions, {
+					this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
 						enforce: enforceString,
 						compare: function(newValue) {
 							testVar = newValue;

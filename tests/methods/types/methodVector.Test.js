@@ -1,5 +1,4 @@
 import { assert } from 'chai';
-import { assign } from 'lodash';
 import { method, methodVector, Vector } from '../../../src';
 import { vectorData as data } from '../../TestUtil';
 import { testMethodType } from '../methodTestUtility';
@@ -23,7 +22,7 @@ describe('method', () => {
 	});
 
 	describe('.vector', () => {
-		testMethodType(assign({}, data, {
+		testMethodType(Object.assign({}, data, {
 			init: new Vector(),
 			coerce: [{
 				value: '[[3,4],[5,6]]',

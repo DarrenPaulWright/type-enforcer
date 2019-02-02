@@ -1,5 +1,4 @@
 import { assert } from 'chai';
-import { assign } from 'lodash';
 import { method, methodFunction } from '../../../src';
 import { functionData as data } from '../../TestUtil';
 import { testMethodType } from '../methodTestUtility';
@@ -10,7 +9,7 @@ describe('method', () => {
 			assert.deepEqual(methodFunction, method.function);
 		});
 
-		testMethodType(assign({
+		testMethodType(Object.assign({
 			coerce: false
 		}, data));
 	});

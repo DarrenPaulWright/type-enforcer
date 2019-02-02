@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { assign, join, map } from 'lodash';
+import { assign, join } from 'lodash';
 import powerset from 'powerset';
 import { enforceString, method, Point } from '../../src';
 import { processOutput } from '../../src/methods/variants/helper';
@@ -7,9 +7,9 @@ import startCase from '../../src/utility/startCase';
 
 const TEST_METHOD = 'testMethod';
 const variantSet = powerset(['get', 'other', 'before', 'set']);
-const everyMethodVariant = map(variantSet, (combination) => {
+const everyMethodVariant = variantSet.map((combination) => {
 	return {
-		name: TEST_METHOD + join(map(combination, startCase), ''),
+		name: TEST_METHOD + join(combination.map(startCase), ''),
 		options: combination
 	};
 });

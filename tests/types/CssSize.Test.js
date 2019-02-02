@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { assign, map } from 'lodash';
+import { assign } from 'lodash';
 import { AUTO, CssSize, PIXELS } from '../../src';
 import {
 	cssSizeData as data,
@@ -298,7 +298,7 @@ describe('CssSize', () => {
 
 		multiTest({
 			values: validCssValuesShortList,
-			values2: map(data.coerceFalse, (value) => {
+			values2: data.coerceFalse.map((value) => {
 				return {
 					size: value
 				};

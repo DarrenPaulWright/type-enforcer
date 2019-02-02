@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { concat, difference, isPlainObject, map } from 'lodash';
+import { concat, difference, isPlainObject } from 'lodash';
 import {
 	AUTO,
 	CENTIMETERS,
@@ -50,7 +50,7 @@ export const validPoints = [new Point(1, 2), new Point([3, 4])];
 export const validThicknesses = [new Thickness('12px'), new Thickness('20px')];
 export const validVectors = [new Vector([1, 2], [3, 4]), new Vector([3, 4], [5, 6])];
 
-export const unitlessCssSizes = map([AUTO, INITIAL, INHERIT, NONE], (size) => ({
+export const unitlessCssSizes = [AUTO, INITIAL, INHERIT, NONE].map((size) => ({
 	size: size,
 	value: undefined,
 	unit: undefined
@@ -90,17 +90,17 @@ export const fixedCssUnits = ['',
 export const percentCssUnits = [PERCENT];
 const cssUnits = concat(percentCssUnits, fixedCssUnits);
 
-const positiveUnits = map(cssUnits, (unit) => ({
+const positiveUnits = cssUnits.map((unit) => ({
 	size: '47.3' + unit,
 	value: '47.3',
 	unit: unit || PIXELS
 }));
-const negativeUnits = map(cssUnits, (unit) => ({
+const negativeUnits = cssUnits.map((unit) => ({
 	size: '-327.2' + unit,
 	value: '-327.2',
 	unit: unit || PIXELS
 }));
-const notationUnits = map(cssUnits, (unit) => ({
+const notationUnits = cssUnits.map((unit) => ({
 	size: '1E2' + unit,
 	value: '1E2',
 	unit: unit || PIXELS
@@ -232,7 +232,7 @@ export const cssSizeData = {
 	name: 'cssSize',
 	true: validCssSizes,
 	false: difference(testValues, validCssSizes),
-	coerceTrue: map(validCssValues, (item) => item.size),
+	coerceTrue: validCssValues.map((item) => item.size),
 	coerceFalse: difference(testValues, validCssSizes, validIntegers, validNumbers)
 };
 export const dateData = {

@@ -1,5 +1,4 @@
 import { assert } from 'chai';
-import { map } from 'lodash';
 import { enforce, enforceThickness, INHERIT, INITIAL, Thickness } from '../../../src';
 import { multiTest, thicknessData as data, validThicknesses } from '../../TestUtil';
 import { runNegativeTests } from '../enforceTestUtility';
@@ -24,7 +23,7 @@ describe('enforce', () => {
 		});
 
 		multiTest({
-			values: map(data.coerceTrue, (item) => {
+			values: data.coerceTrue.map((item) => {
 				return {
 					input: item,
 					output: new Thickness(item)
@@ -38,7 +37,7 @@ describe('enforce', () => {
 		});
 
 		multiTest({
-			values: map(data.coerceTrue, (item) => {
+			values: data.coerceTrue.map((item) => {
 				return {
 					input: item,
 					output: item

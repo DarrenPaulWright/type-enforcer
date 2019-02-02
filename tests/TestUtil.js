@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { concat, difference, each, forOwn, isPlainObject, map } from 'lodash';
+import { concat, difference, each, isPlainObject, map } from 'lodash';
 import {
 	AUTO,
 	CENTIMETERS,
@@ -26,6 +26,7 @@ import {
 	VIEWPORT_WIDTH,
 	ZERO_PIXELS
 } from '../src';
+import forOwn from '../src/utility/forOwn';
 
 export const validArrays = [[1], [2], [], new Array()];
 export const validBooleans = [true, false, new Boolean(true)];

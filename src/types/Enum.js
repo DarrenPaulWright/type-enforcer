@@ -1,3 +1,5 @@
+import forOwn from '../utility/forOwn';
+
 const KEYS = Symbol();
 const VALUES = Symbol();
 
@@ -18,9 +20,9 @@ export default class Enum {
 		Object.assign(this, object);
 		this[KEYS] = [];
 		this[VALUES] = [];
-		Object.keys(object).forEach((key) => {
+		forOwn(object, (value, key) => {
 			this[KEYS].push(key);
-			this[VALUES].push(object[key]);
+			this[VALUES].push(value);
 		});
 		Object.freeze(this);
 		object = null;

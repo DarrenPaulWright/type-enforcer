@@ -1,4 +1,5 @@
 import isObject from '../../checks/types/isObject';
+import forOwn from '../../utility/forOwn';
 
 /**
  * Builds a chainable method that accepts either:
@@ -17,8 +18,8 @@ export default (options = {}) => {
 	return function(...args) {
 		if (options.set && (args.length === 2 || isObject(args[0]))) {
 			if (isObject(args[0])) {
-				Object.keys(args[0]).forEach((key) => {
-					options.set.call(this, key, args[0][key]);
+				forOwn(args[0], (value, key) => {
+					options.set.call(this, key, value);
 				});
 			}
 			else {

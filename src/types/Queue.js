@@ -1,17 +1,10 @@
 import isFunction from '../checks/types/isFunction';
+import forOwn from '../utility/forOwn';
 
 const CALLBACKS = Symbol();
 const CURRENT_ID = Symbol();
 const TOTAL = Symbol();
 const IS_BUSY = Symbol();
-
-const forOwn = (object, callback) => {
-	Object.keys(object).some((key) => {
-		if (object[key]) {
-			return callback(object[key], key);
-		}
-	});
-};
 
 /**
  * A simple queue for callbacks that allows for adding, removing, and triggering all or specific callbacks
@@ -136,7 +129,7 @@ export default class Queue {
 		forOwn(this[CALLBACKS], (callback, ID) => {
 			callback.function.apply(context, extraArguments);
 			self.discard(ID);
-			return true;
+			return false;
 		});
 		this[IS_BUSY] = false;
 

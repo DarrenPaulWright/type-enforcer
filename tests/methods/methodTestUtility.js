@@ -1,8 +1,9 @@
 import { assert } from 'chai';
-import { assign, each, join, map, startCase } from 'lodash';
+import { assign, each, join, map } from 'lodash';
 import powerset from 'powerset';
 import { enforceString, method, Point } from '../../src';
 import { processOutput } from '../../src/methods/variants/helper';
+import startCase from '../../src/utility/startCase';
 
 const TEST_METHOD = 'testMethod';
 const variantSet = powerset(['get', 'other', 'before', 'set']);

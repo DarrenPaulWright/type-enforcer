@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 import { map } from 'lodash';
 import { enforce, enforceInteger } from '../../../src';
-import { intData as data, multiTest } from '../../TestUtil';
+import { integerData as data, multiTest } from '../../TestUtil';
 import { runNegativeTests } from '../enforceTestUtility';
 
 const validInt = 11;

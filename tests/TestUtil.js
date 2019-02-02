@@ -35,7 +35,7 @@ export const validElements = [document.createElement('div'), document.createElem
 export const validFunctions = [function() {
 }, () => {
 }];
-export const validInts = [1, 5];
+export const validIntegers = [1, 5];
 export const validNumbers = [1.3, 2.5, -10.00000001, 3.14159, new Number(42.2)];
 export const validObjects = [{}, {
 	test1: 1
@@ -199,7 +199,7 @@ export const testValues = concat(
 	validDates,
 	validElements,
 	validFunctions,
-	validInts,
+	validIntegers,
 	validNumbers,
 	validObjects,
 	validRegExps,
@@ -219,7 +219,7 @@ export const arrayData = {
 	coerceTrue: ['["test"]', '[]'],
 	coerceFalse: difference(testValues, validArrays, validVectors)
 };
-export const boolData = {
+export const booleanData = {
 	value: Boolean,
 	name: 'boolean',
 	true: validBooleans,
@@ -233,7 +233,7 @@ export const cssSizeData = {
 	true: validCssSizes,
 	false: difference(testValues, validCssSizes),
 	coerceTrue: map(validCssValues, (item) => item.size),
-	coerceFalse: difference(testValues, validCssSizes, validInts, validNumbers)
+	coerceFalse: difference(testValues, validCssSizes, validIntegers, validNumbers)
 };
 export const dateData = {
 	value: Date,
@@ -241,7 +241,7 @@ export const dateData = {
 	true: validDates,
 	false: difference(testValues, validDates),
 	coerceTrue: ['10/12/1980', 'January 8, 2014'],
-	coerceFalse: difference(testValues, validDates, validArrays, validNumbers, validInts, validRegExps, validPoints)
+	coerceFalse: difference(testValues, validDates, validArrays, validNumbers, validIntegers, validRegExps, validPoints)
 };
 export const dockPointData = {
 	value: DockPoint,
@@ -267,11 +267,11 @@ export const functionData = {
 	coerceTrue: [],
 	coerceFalse: []
 };
-export const intData = {
+export const integerData = {
 	name: 'integer',
 	skip: ['number'],
-	true: validInts,
-	false: difference(testValues, validInts),
+	true: validIntegers,
+	false: difference(testValues, validIntegers),
 	coerceTrue: coerceNumberTrue,
 	coerceFalse: concat(coerceNumberFalse, coerceInfinity)
 };
@@ -279,7 +279,7 @@ export const numberData = {
 	value: Number,
 	name: 'number',
 	true: validNumbers,
-	false: difference(testValues, validNumbers, validInts),
+	false: difference(testValues, validNumbers, validIntegers),
 	coerceTrue: concat(coerceNumberTrue, coerceInfinity),
 	coerceFalse: coerceNumberFalse
 };
@@ -327,7 +327,7 @@ export const thicknessData = {
 	true: validThicknesses,
 	false: difference(testValues, validThicknesses),
 	coerceTrue: ['1px', '1px 2px 3px 4px'],
-	coerceFalse: difference(testValues, validThicknesses, validCssSizes, validInts, validNumbers, validArrays)
+	coerceFalse: difference(testValues, validThicknesses, validCssSizes, validIntegers, validNumbers, validArrays)
 };
 export const vectorData = {
 	value: Vector,
@@ -340,13 +340,13 @@ export const vectorData = {
 
 export const testTypes = [
 	arrayData,
-	boolData,
+	booleanData,
 	cssSizeData,
 	dateData,
 	dockPointData,
 	elementData,
 	functionData,
-	intData,
+	integerData,
 	numberData,
 	objectData,
 	pointData,

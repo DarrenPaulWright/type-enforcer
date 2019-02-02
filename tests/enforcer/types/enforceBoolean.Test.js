@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 import { map } from 'lodash';
 import { enforce, enforceBoolean } from '../../../src';
-import { boolData as data, multiTest } from '../../TestUtil';
+import { booleanData as data, multiTest } from '../../TestUtil';
 import { runNegativeTests } from '../enforceTestUtility';
 
 describe('enforce', () => {

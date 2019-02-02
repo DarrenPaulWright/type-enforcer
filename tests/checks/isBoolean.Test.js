@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import { is, isBoolean } from '../../src';
-import { boolData as data, multiTest } from '../TestUtil';
+import { booleanData as data, multiTest } from '../TestUtil';
 
 describe('isBoolean', () => {
 	it('should exist in the exported "is" object', () => {

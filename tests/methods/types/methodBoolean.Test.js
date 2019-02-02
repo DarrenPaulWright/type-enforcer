@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 import { assign } from 'lodash';
 import { method, methodBoolean } from '../../../src';
-import { boolData as data } from '../../TestUtil';
+import { booleanData as data } from '../../TestUtil';
 import { testMethodType } from '../methodTestUtility';
 
 describe('method', () => {

@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { difference, isPlainObject } from 'lodash';
+import { difference } from 'lodash';
 import {
 	AUTO,
 	CENTIMETERS,
@@ -11,6 +11,7 @@ import {
 	INCHES,
 	INHERIT,
 	INITIAL,
+	isObject,
 	MILLIMETERS,
 	NONE,
 	PERCENT,
@@ -478,7 +479,7 @@ export const multiTest = (settings) => {
 		}
 	};
 
-	if (isPlainObject(settings.values)) {
+	if (isObject(settings.values)) {
 		forOwn(settings.values, (value, key) => {
 			testSingleValue(key, value, value);
 		});

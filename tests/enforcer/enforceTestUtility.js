@@ -1,5 +1,4 @@
 import { assert } from 'chai';
-import { concat } from 'lodash';
 import { enforce, Enum } from '../../src';
 import { testTypes, validVectors } from '../TestUtil';
 
@@ -12,7 +11,7 @@ const validEnum1 = validEnumObject.test1;
 
 export const runNegativeTests = (methodName, defaultValue, otherArg) => {
 	testTypes.forEach((data) => {
-		if (data.name && !concat([data.name], data.skip).includes(methodName)) {
+		if (data.name && !([data.name].concat(data.skip).includes(methodName))) {
 			data.true.forEach((testItem) => {
 				it(`should return the default value when ${testItem} is provided`, () => {
 					if (otherArg) {

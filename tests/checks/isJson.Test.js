@@ -1,5 +1,4 @@
 import { assert } from 'chai';
-import { concat } from 'lodash';
 import { is, isJson } from '../../src';
 import {
 	multiTest,
@@ -16,7 +15,7 @@ import {
 	validVectors
 } from '../TestUtil';
 
-export const testValues = concat(
+export const testValues = [].concat(
 	[undefined],
 	validDates,
 	validElements,
@@ -31,8 +30,8 @@ export const testValues = concat(
 );
 
 const data = {
-	true: concat(['[]', '{}'], validVectors),
-	false: concat(testValues, ['json'])
+	true: ['[]', '{}'].concat(validVectors),
+	false: [].concat(testValues, ['json'])
 };
 
 describe('isJson', () => {

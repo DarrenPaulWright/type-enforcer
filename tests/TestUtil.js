@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { concat, difference, isPlainObject } from 'lodash';
+import { difference, isPlainObject } from 'lodash';
 import {
 	AUTO,
 	CENTIMETERS,
@@ -72,7 +72,7 @@ const otherValidSizes = [{
 	value: -32.9,
 	unit: PIXELS
 }];
-const validSizes = concat(unitlessCssSizes, otherValidSizes);
+const validSizes = [].concat(unitlessCssSizes, otherValidSizes);
 export const fixedCssUnits = ['',
 	PIXELS,
 	CENTIMETERS,
@@ -88,7 +88,7 @@ export const fixedCssUnits = ['',
 	VIEWPORT_WIDTH,
 	VIEWPORT_MIN];
 export const percentCssUnits = [PERCENT];
-const cssUnits = concat(percentCssUnits, fixedCssUnits);
+const cssUnits = [].concat(percentCssUnits, fixedCssUnits);
 
 const positiveUnits = cssUnits.map((unit) => ({
 	size: '47.3' + unit,
@@ -106,8 +106,8 @@ const notationUnits = cssUnits.map((unit) => ({
 	unit: unit || PIXELS
 }));
 
-export const validCssValuesShortList = concat(positiveUnits, validSizes);
-export const validCssValues = concat(validCssValuesShortList, negativeUnits, notationUnits);
+export const validCssValuesShortList = [].concat(positiveUnits, validSizes);
+export const validCssValues = [].concat(validCssValuesShortList, negativeUnits, notationUnits);
 
 // the following numeric strings are pulled from https://github.com/minimaxir/big-list-of-naughty-strings
 const coerceInfinity = [
@@ -192,7 +192,7 @@ DockPoint.POINTS.each((value) => {
 	coercibleDockPoints.push(value);
 });
 
-export const testValues = concat(
+export const testValues = [].concat(
 	[null, undefined],
 	validArrays,
 	validBooleans,
@@ -273,14 +273,14 @@ export const integerData = {
 	true: validIntegers,
 	false: difference(testValues, validIntegers),
 	coerceTrue: coerceNumberTrue,
-	coerceFalse: concat(coerceNumberFalse, coerceInfinity)
+	coerceFalse: [].concat(coerceNumberFalse, coerceInfinity)
 };
 export const numberData = {
 	value: Number,
 	name: 'number',
 	true: validNumbers,
 	false: difference(testValues, validNumbers, validIntegers),
-	coerceTrue: concat(coerceNumberTrue, coerceInfinity),
+	coerceTrue: [].concat(coerceNumberTrue, coerceInfinity),
 	coerceFalse: coerceNumberFalse
 };
 export const objectData = {
@@ -335,7 +335,7 @@ export const vectorData = {
 	true: validVectors,
 	false: difference(testValues, validVectors),
 	coerceTrue: ['[[1,2],[3,4]]'],
-	coerceFalse: concat(difference(testValues, validVectors), ['[[1,2],[3,4],[5,6]]', '[[1,2,7],[3,4,8]]'])
+	coerceFalse: [].concat(difference(testValues, validVectors), ['[[1,2],[3,4],[5,6]]', '[[1,2,7],[3,4,8]]'])
 };
 
 export const testTypes = [

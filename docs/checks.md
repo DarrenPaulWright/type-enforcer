@@ -12,49 +12,49 @@ A type enforcement library for javascript
 
 <dl>
 <dt><a href="#isArray">isArray(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if a value is an <a href="https://lodash.com/docs/#isArray">array</a></p>
+<dd><p>Check if a value is an array</p>
 </dd>
 <dt><a href="#isBoolean">isBoolean(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if a value is a <a href="https://lodash.com/docs/#isBoolean">boolean</a></p>
+<dd><p>Check if a value is a boolean</p>
 </dd>
 <dt><a href="#isCssSize">isCssSize(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
 <dd><p>Check if a value is a <a href="docs/CssSize.md">CssSize</a></p>
 </dd>
 <dt><a href="#isDate">isDate(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if a value is a <a href="https://lodash.com/docs/#isDate">date</a></p>
+<dd><p>Check if a value is a date</p>
 </dd>
 <dt><a href="#isDockPoint">isDockPoint(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
 <dd><p>Check if a value is a <a href="docs/DockPoint.md">DockPoint</a></p>
 </dd>
 <dt><a href="#isElement">isElement(value)</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if a value is a <a href="https://lodash.com/docs/#isElement">DOM element</a></p>
+<dd><p>Check if a value is a DOM element</p>
 </dd>
 <dt><a href="#isFunction">isFunction(value)</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if a value is a <a href="https://lodash.com/docs/#isFunction">function</a></p>
+<dd><p>Check if a value is a function</p>
 </dd>
 <dt><a href="#isInstanceOf">isInstanceOf(object, constructor)</a> ⇒ <code>Boolean</code></dt>
 <dd><p>Check if a value is an instance of a constructor. Fixes issues with native instanceOf and primitives Boolean, Number, and String (see example).</p>
 </dd>
 <dt><a href="#isInteger">isInteger(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if a value is an <a href="https://lodash.com/docs/#isInteger">integer</a></p>
+<dd><p>Check if a value is an integer</p>
 </dd>
 <dt><a href="#isJson">isJson(value)</a> ⇒ <code>Boolean</code></dt>
 <dd><p>Check if a value can be parsed as JSON</p>
 </dd>
 <dt><a href="#isNumber">isNumber(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if a value is a <a href="https://lodash.com/docs/#isNumber">number</a></p>
+<dd><p>Check if a value is a number</p>
 </dd>
 <dt><a href="#isObject">isObject(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if a value is a <a href="https://lodash.com/docs/#isPlainObject">plain object</a></p>
+<dd><p>Check if a value is a plain object</p>
 </dd>
 <dt><a href="#isPoint">isPoint(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
 <dd><p>Check if a value is a <a href="docs/Point.md">Point</a></p>
 </dd>
 <dt><a href="#isRegExp">isRegExp(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if a value is a <a href="https://lodash.com/docs/#isRegExp">RegExp</a></p>
+<dd><p>Check if a value is a RegExp</p>
 </dd>
 <dt><a href="#isString">isString(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if a value is a <a href="https://lodash.com/docs/#isString">string</a></p>
+<dd><p>Check if a value is a string</p>
 </dd>
 <dt><a href="#isThickness">isThickness(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
 <dd><p>Check if a value is a <a href="docs/Thickness.md">Thickness</a></p>
@@ -81,7 +81,7 @@ A type enforcement library for javascript
 <a name="isArray"></a>
 
 ## isArray(value, [coerce]) ⇒ <code>Boolean</code>
-Check if a value is an [array](https://lodash.com/docs/#isArray)
+Check if a value is an array
 
 **Kind**: global function  
 
@@ -95,7 +95,7 @@ Check if a value is an [array](https://lodash.com/docs/#isArray)
 <a name="isBoolean"></a>
 
 ## isBoolean(value, [coerce]) ⇒ <code>Boolean</code>
-Check if a value is a [boolean](https://lodash.com/docs/#isBoolean)
+Check if a value is a boolean
 
 **Kind**: global function  
 
@@ -123,7 +123,7 @@ Check if a value is a [CssSize](docs/CssSize.md)
 <a name="isDate"></a>
 
 ## isDate(value, [coerce]) ⇒ <code>Boolean</code>
-Check if a value is a [date](https://lodash.com/docs/#isDate)
+Check if a value is a date
 
 **Kind**: global function  
 
@@ -151,7 +151,7 @@ Check if a value is a [DockPoint](docs/DockPoint.md)
 <a name="isElement"></a>
 
 ## isElement(value) ⇒ <code>Boolean</code>
-Check if a value is a [DOM element](https://lodash.com/docs/#isElement)
+Check if a value is a DOM element
 
 **Kind**: global function  
 
@@ -164,7 +164,7 @@ Check if a value is a [DOM element](https://lodash.com/docs/#isElement)
 <a name="isFunction"></a>
 
 ## isFunction(value) ⇒ <code>Boolean</code>
-Check if a value is a [function](https://lodash.com/docs/#isFunction)
+Check if a value is a function
 
 **Kind**: global function  
 
@@ -191,7 +191,7 @@ Check if a value is an instance of a constructor. Fixes issues with native insta
 <a name="isInteger"></a>
 
 ## isInteger(value, [coerce]) ⇒ <code>Boolean</code>
-Check if a value is an [integer](https://lodash.com/docs/#isInteger)
+Check if a value is an integer
 
 **Kind**: global function  
 
@@ -218,7 +218,7 @@ Check if a value can be parsed as JSON
 <a name="isNumber"></a>
 
 ## isNumber(value, [coerce]) ⇒ <code>Boolean</code>
-Check if a value is a [number](https://lodash.com/docs/#isNumber)
+Check if a value is a number
 
 **Kind**: global function  
 
@@ -232,7 +232,7 @@ Check if a value is a [number](https://lodash.com/docs/#isNumber)
 <a name="isObject"></a>
 
 ## isObject(value, [coerce]) ⇒ <code>Boolean</code>
-Check if a value is a [plain object](https://lodash.com/docs/#isPlainObject)
+Check if a value is a plain object
 
 **Kind**: global function  
 
@@ -260,7 +260,7 @@ Check if a value is a [Point](docs/Point.md)
 <a name="isRegExp"></a>
 
 ## isRegExp(value, [coerce]) ⇒ <code>Boolean</code>
-Check if a value is a [RegExp](https://lodash.com/docs/#isRegExp)
+Check if a value is a RegExp
 
 **Kind**: global function  
 
@@ -274,7 +274,7 @@ Check if a value is a [RegExp](https://lodash.com/docs/#isRegExp)
 <a name="isString"></a>
 
 ## isString(value, [coerce]) ⇒ <code>Boolean</code>
-Check if a value is a [string](https://lodash.com/docs/#isString)
+Check if a value is a string
 
 **Kind**: global function  
 

@@ -72,7 +72,7 @@ Builds a chainable method for getting/setting an array
 | [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
 | [options.init] | <code>\*</code> | <code>[]</code> |  |
 | [options.enforce] | <code>function</code> | <code>enforce.array</code> |  |
-| [options.compare] | <code>function</code> | <code>deepCompare</code> | Performs a deep comparison between values with [lodash.isEqual](https://lodash.com/docs/#isEqual) |
+| [options.compare] | <code>function</code> | <code>deepCompare</code> | Performs a deep comparison between values |
 | [options.deep] | <code>Boolean</code> | <code>true</code> | If false then only use strict equality |
 | [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
@@ -247,7 +247,7 @@ Builds a chainable method for getting/setting a plain object
 | --- | --- | --- | --- |
 | [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
 | [options.enforce] | <code>function</code> | <code>enforce.object</code> |  |
-| [options.compare] | <code>function</code> | <code>deepCompare</code> | Performs a deep comparison between values with [lodash.isEqual](https://lodash.com/docs/#isEqual) |
+| [options.compare] | <code>function</code> | <code>deepCompare</code> | Performs a deep comparison between values |
 | [options.deep] | <code>Boolean</code> | <code>true</code> | If false then only use strict equality |
 | [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 

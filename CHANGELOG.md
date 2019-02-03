@@ -4,20 +4,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
-## [0.3.0]
+## [0.3.0] - 2019-2-3
 ### Changed
 - Removed Dependency on Lodash
 
-## [0.2.4]
+## [0.2.4] - 2019-01-31
 ### Added
 - [Removable](docs/Removable.md)
 
-## [0.2.3]
+## [0.2.3] - 2019-01-30
 ### Changed
 - Exporting the check functions as a object
 - Exporting individual enforcers and methods
 
-## [0.2.2]
+## [0.2.2] - 2019-01-24
 ### Changed
 - Removed dependencies on babel plugin proposals.
 - Improved docs.

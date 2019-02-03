@@ -12,6 +12,7 @@ module.exports = [{
 	type: 'helper',
 	files: [
 		'tests/TestUtil.js',
+		'tests/testValues.js',
 		'tests/enforcer/enforceTestUtility.js',
 		'tests/methods/methodTestUtility.js'
 	]

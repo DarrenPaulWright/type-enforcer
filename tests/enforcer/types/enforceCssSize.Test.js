@@ -1,6 +1,7 @@
 import { assert } from 'chai';
 import { AUTO, CssSize, enforce, enforceCssSize, INHERIT, INITIAL } from '../../../src';
-import { cssSizeData as data, multiTest, validCssSizes } from '../../TestUtil';
+import { multiTest } from '../../TestUtil';
+import { cssSizeData as data, validCssSizes } from '../../testValues';
 import { runNegativeTests } from '../enforceTestUtility';
 
 describe('enforce', () => {

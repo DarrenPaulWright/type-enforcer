@@ -1,6 +1,7 @@
 import { assert } from 'chai';
 import { enforce, enforceDate } from '../../../src';
-import { dateData as data, multiTest, validDates } from '../../TestUtil';
+import { multiTest } from '../../TestUtil';
+import { dateData as data, validDates } from '../../testValues';
 import { runNegativeTests } from '../enforceTestUtility';
 
 const validDateString = '2012/03/27';

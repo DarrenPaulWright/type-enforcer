@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import { DockPoint, method, methodDockPoint } from '../../../src';
-import { dockPointData as data } from '../../TestUtil';
+import { dockPointData as data } from '../../testValues';
 import { testMethodType } from '../methodTestUtility';
 
 describe('method', () => {

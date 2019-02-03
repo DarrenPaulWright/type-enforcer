@@ -1,14 +1,14 @@
 import { assert } from 'chai';
 import { AUTO, CssSize, PIXELS } from '../../src';
+import { multiTest } from '../TestUtil';
 import {
 	cssSizeData as data,
 	fixedCssUnits,
-	multiTest,
 	percentCssUnits,
 	unitlessCssSizes,
 	validCssValues,
 	validCssValuesShortList
-} from '../TestUtil';
+} from '../testValues';
 
 const zeros = [0, '0'];
 

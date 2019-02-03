@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import { is, isInstanceOf } from '../../src';
-import { testTypes } from '../TestUtil';
+import { testTypes } from '../testValues';
 
 describe('isInstanceOf', () => {
 	it('should exist in the exported "is" object', () => {

@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import { CssSize, method, methodInstance } from '../../../src';
-import { validCssSizes } from '../../TestUtil';
+import { validCssSizes } from '../../testValues';
 import { testMethodType } from '../methodTestUtility';
 
 describe('method', () => {

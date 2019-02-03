@@ -1,8 +1,7 @@
 import { assert } from 'chai';
 import { Point, Vector } from '../../src';
-import TestUtil, { multiTest, vectorData as data } from '../TestUtil';
-
-const testUtil = new TestUtil(Vector);
+import { multiTest, testMethod } from '../TestUtil';
+import { vectorData as data } from '../testValues';
 
 describe('Vector', () => {
 	describe('init', () => {
@@ -68,7 +67,8 @@ describe('Vector', () => {
 	});
 
 	describe('.start', () => {
-		testUtil.testMethod({
+		testMethod({
+			Constructor: Vector,
 			methodName: 'start',
 			defaultValue: new Point(),
 			testValue: new Point(1, 2),
@@ -120,7 +120,8 @@ describe('Vector', () => {
 	});
 
 	describe('.end', () => {
-		testUtil.testMethod({
+		testMethod({
+			Constructor: Vector,
 			methodName: 'end',
 			defaultValue: new Point(),
 			testValue: new Point(1, 2),
@@ -199,7 +200,8 @@ describe('Vector', () => {
 	});
 
 	describe('.length', () => {
-		testUtil.testMethod({
+		testMethod({
+			Constructor: Vector,
 			methodName: 'length',
 			defaultValue: 0,
 			testValue: 1,
@@ -224,7 +226,8 @@ describe('Vector', () => {
 	});
 
 	describe('.angle', () => {
-		testUtil.testMethod({
+		testMethod({
+			Constructor: Vector,
 			methodName: 'angle',
 			defaultValue: 0,
 			testValue: 1,
@@ -265,7 +268,8 @@ describe('Vector', () => {
 	});
 
 	describe('.offset', () => {
-		testUtil.testMethod({
+		testMethod({
+			Constructor: Vector,
 			methodName: 'offset',
 			defaultValue: new Point(),
 			testValue: new Point(1, 2),

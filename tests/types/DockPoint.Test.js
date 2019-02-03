@@ -1,12 +1,12 @@
 import { assert } from 'chai';
 import { DockPoint } from '../../src';
-import TestUtil, { multiTest, dockPointData as data } from '../TestUtil';
-
-const testUtil = new TestUtil(DockPoint);
+import { multiTest, testMethod } from '../TestUtil';
+import { dockPointData as data } from '../testValues';
 
 describe('DockPoint', () => {
 	describe('.primary', () => {
-		testUtil.testMethod({
+		testMethod({
+			Constructor: DockPoint,
 			methodName: 'primary',
 			defaultValue: DockPoint.POINTS.NONE,
 			testValue: DockPoint.POINTS.LEFT,
@@ -26,7 +26,8 @@ describe('DockPoint', () => {
 	});
 
 	describe('.secondary', () => {
-		testUtil.testMethod({
+		testMethod({
+			Constructor: DockPoint,
 			methodName: 'secondary',
 			defaultValue: DockPoint.POINTS.NONE,
 			testValue: DockPoint.POINTS.LEFT,

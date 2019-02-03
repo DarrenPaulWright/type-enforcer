@@ -1,6 +1,7 @@
 import { assert } from 'chai';
 import { is, isCssSize } from '../../src';
-import { cssSizeData as data, multiTest } from '../TestUtil';
+import { multiTest } from '../TestUtil';
+import { cssSizeData as data } from '../testValues';
 
 describe('isCssSize', () => {
 	it('should exist in the exported "is" object', () => {

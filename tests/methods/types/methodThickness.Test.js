@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import { method, methodThickness, Thickness } from '../../../src';
-import { thicknessData as data } from '../../TestUtil';
+import { thicknessData as data } from '../../testValues';
 import { testMethodType } from '../methodTestUtility';
 
 describe('method', () => {

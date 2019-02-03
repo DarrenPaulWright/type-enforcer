@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import { hasOtherValidValue } from '../../../src/methods/variants/helper';
-import { testTypes, testValues } from '../../TestUtil';
+import { testTypes, testValues } from '../../testValues';
 
 describe('hasOtherValidValue', () => {
 	testValues.forEach((baseValue) => {

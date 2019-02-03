@@ -1,6 +1,7 @@
 import { assert } from 'chai';
 import { is, isRegExp } from '../../src';
-import { multiTest, regExpData as data } from '../TestUtil';
+import { multiTest } from '../TestUtil';
+import { regExpData as data } from '../testValues';
 
 describe('isRegExp', () => {
 	it('should exist in the exported "is" object', () => {

@@ -1,6 +1,7 @@
 import { assert } from 'chai';
 import { enforce, enforceVector, Vector } from '../../../src';
-import { multiTest, validVectors, vectorData as data } from '../../TestUtil';
+import { multiTest } from '../../TestUtil';
+import { validVectors, vectorData as data } from '../../testValues';
 import { runNegativeTests } from '../enforceTestUtility';
 
 describe('enforce', () => {

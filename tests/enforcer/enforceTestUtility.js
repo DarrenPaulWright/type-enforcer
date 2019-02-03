@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import { enforce, Enum } from '../../src';
-import { testTypes, validVectors } from '../TestUtil';
+import { testTypes, validVectors } from '../testValues';
 
 const validEnumObject = new Enum({
 	test1: 'test 1',

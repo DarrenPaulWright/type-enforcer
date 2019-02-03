@@ -1,6 +1,7 @@
 import { assert } from 'chai';
 import { DockPoint, enforce, enforceDockPoint } from '../../../src';
-import { dockPointData as data, multiTest, validDockPoints } from '../../TestUtil';
+import { multiTest } from '../../TestUtil';
+import { dockPointData as data, validDockPoints } from '../../testValues';
 import { runNegativeTests } from '../enforceTestUtility';
 
 describe('enforce', () => {

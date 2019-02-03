@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import { method, methodObject } from '../../../src';
-import { objectData as data } from '../../TestUtil';
+import { objectData as data } from '../../testValues';
 import { testMethodType } from '../methodTestUtility';
 
 describe('method', () => {

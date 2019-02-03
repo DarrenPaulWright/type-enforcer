@@ -1,6 +1,7 @@
 import { assert } from 'chai';
 import { enforce, enforceThickness, INHERIT, INITIAL, Thickness } from '../../../src';
-import { multiTest, thicknessData as data, validThicknesses } from '../../TestUtil';
+import { multiTest } from '../../TestUtil';
+import { thicknessData as data, validThicknesses } from '../../testValues';
 import { runNegativeTests } from '../enforceTestUtility';
 
 describe('enforce', () => {

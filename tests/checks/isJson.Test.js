@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 import { is, isJson } from '../../src';
+import { multiTest } from '../TestUtil';
 import {
-	multiTest,
 	validCssSizes,
 	validDates,
 	validDockPoints,
@@ -13,7 +13,7 @@ import {
 	validStrings,
 	validThicknesses,
 	validVectors
-} from '../TestUtil';
+} from '../testValues';
 
 export const testValues = [].concat(
 	[undefined],

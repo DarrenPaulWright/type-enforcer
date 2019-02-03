@@ -1,6 +1,7 @@
 import { assert } from 'chai';
 import { enforce, enforceNumber } from '../../../src';
-import { multiTest, numberData as data } from '../../TestUtil';
+import { multiTest } from '../../TestUtil';
+import { numberData as data } from '../../testValues';
 import { runNegativeTests } from '../enforceTestUtility';
 
 const validInt = 11;

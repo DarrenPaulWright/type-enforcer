@@ -1,6 +1,7 @@
 import { assert } from 'chai';
 import { enforce, enforceBoolean } from '../../../src';
-import { booleanData as data, multiTest } from '../../TestUtil';
+import { multiTest } from '../../TestUtil';
+import { booleanData as data } from '../../testValues';
 import { runNegativeTests } from '../enforceTestUtility';
 
 describe('enforce', () => {

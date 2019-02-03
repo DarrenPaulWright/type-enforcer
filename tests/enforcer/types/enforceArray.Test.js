@@ -1,6 +1,7 @@
 import { assert } from 'chai';
 import { enforce, enforceArray } from '../../../src';
-import { arrayData as data, multiTest, validArrays } from '../../TestUtil';
+import { multiTest } from '../../TestUtil';
+import { arrayData as data, validArrays } from '../../testValues';
 import { runNegativeTests } from '../enforceTestUtility';
 
 describe('enforce', () => {

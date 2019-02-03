@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import { method, methodRegExp } from '../../../src';
-import { regExpData as data } from '../../TestUtil';
+import { regExpData as data } from '../../testValues';
 import { testMethodType } from '../methodTestUtility';
 
 describe('method', () => {

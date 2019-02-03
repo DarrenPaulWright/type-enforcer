@@ -1,8 +1,8 @@
-import { isInteger } from 'lodash';
 import { buildCheckWithCoerce } from './checks';
+import isNumber from './isNumber';
 
 /**
- * Check if a value is an [integer]{@link https://lodash.com/docs/#isInteger}
+ * Check if a value is an integer
  *
  * @example
  * ``` javascript
@@ -25,4 +25,4 @@ import { buildCheckWithCoerce } from './checks';
  *
  * @returns {Boolean}
  */
-export default buildCheckWithCoerce(isInteger, (value) => !isNaN(value) && !isNaN(parseInt(value)));
+export default buildCheckWithCoerce((item) => Number.isInteger(item) || isNumber(item) && Number.isInteger(Number.parseFloat(item)), (value) => !isNaN(value) && !isNaN(parseInt(value)));

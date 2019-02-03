@@ -5,8 +5,7 @@ module.exports = function(api) {
 		]
 	];
 	const plugins = [
-		'lodash',
-		['istanbul', {"exclude": ["tests/**/*.js"]}]
+		['istanbul', {'exclude': ['tests/**/*.js']}]
 	];
 
 	api.cache(true);

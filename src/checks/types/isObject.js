@@ -1,9 +1,12 @@
-import { isPlainObject } from 'lodash';
 import { buildCheckWithCoerce } from './checks';
 import isJson from './isJson';
 
+// const isPlainObject = (item) => item && typeof item === 'object' && item instanceof Object;
+// const isPlainObject = (item) => isInstanceOf(item, Object);
+const isPlainObject = (item) => item && typeof item === 'object' && toString.call(item) === '[object Object]' && item.constructor === Object;
+
 /**
- * Check if a value is a [plain object]{@link https://lodash.com/docs/#isPlainObject}
+ * Check if a value is a plain object
  *
  * @example
  * ``` javascript

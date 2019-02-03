@@ -1,5 +1,13 @@
 import Enum from '../../types/Enum';
 
+const objectStringMap = {};
+objectStringMap[Array] = '[object Array]';
+objectStringMap[Boolean] = '[object Boolean]';
+objectStringMap[Date] = '[object Date]';
+objectStringMap[Number] = '[object Number]';
+objectStringMap[Object] = '[object Object]';
+objectStringMap[RegExp] = '[object RegExp]';
+
 const typeOfMap = new Enum({
 	boolean: Boolean,
 	number: Number,
@@ -43,5 +51,7 @@ export default (object, constructor) => {
 	if (object === undefined || !(typeof constructor === 'function' && constructor.prototype)) {
 		return false;
 	}
-	return object instanceof constructor || typeof object === typeOfMap.key(constructor);
+	return object instanceof constructor
+		|| (objectStringMap[constructor] && toString.call(object) === objectStringMap[constructor])
+		|| typeof object === typeOfMap.key(constructor);
 };

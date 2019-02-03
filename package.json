@@ -40,8 +40,7 @@
 	"homepage": "https://github.com/DarrenPaulWright/type-enforcer#readme",
 	"dependencies": {
 		"clone": "^2.1.2",
-		"deep-equal": "^1.0.1",
-		"lodash": "^4.17.11"
+		"deep-equal": "^1.0.1"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.2.2",
@@ -49,7 +48,6 @@
 		"babel-eslint": "^10.0.1",
 		"babel-loader": "^8.0.5",
 		"babel-plugin-istanbul": "^5.1.0",
-		"babel-plugin-lodash": "^3.3.4",
 		"chai": "^4.2.0",
 		"eslint": "^5.12.1",
 		"eslint-loader": "^2.1.1",

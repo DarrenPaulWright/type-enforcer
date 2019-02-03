@@ -1,7 +1,5 @@
-import { isFunction } from 'lodash';
-
 /**
- * Check if a value is a [function]{@link https://lodash.com/docs/#isFunction}
+ * Check if a value is a function
  *
  * @example
  * ``` javascript
@@ -17,4 +15,4 @@ import { isFunction } from 'lodash';
  *
  * @returns {Boolean}
  */
-export default (value) => isFunction(value);
+export default (value) => typeof value === 'function';

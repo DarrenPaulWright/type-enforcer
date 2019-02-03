@@ -1,8 +1,8 @@
-import { isBoolean } from 'lodash';
 import { buildCheckWithCoerce } from './checks';
+import isInstanceOf from './isInstanceOf';
 
 /**
- * Check if a value is a [boolean]{@link https://lodash.com/docs/#isBoolean}
+ * Check if a value is a boolean
  *
  * @example
  * ``` javascript
@@ -25,4 +25,4 @@ import { buildCheckWithCoerce } from './checks';
  *
  * @returns {Boolean}
  */
-export default buildCheckWithCoerce(isBoolean, () => true);
+export default buildCheckWithCoerce((item) => item === true || item === false || isInstanceOf(item, Boolean), () => true);

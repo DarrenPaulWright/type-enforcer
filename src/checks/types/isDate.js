@@ -1,8 +1,8 @@
-import { isDate } from 'lodash';
 import { buildCheckWithCoerce } from './checks';
+import isInstanceOf from './isInstanceOf';
 
 /**
- * Check if a value is a [date]{@link https://lodash.com/docs/#isDate}
+ * Check if a value is a date
  *
  * @example
  * ``` javascript
@@ -25,4 +25,4 @@ import { buildCheckWithCoerce } from './checks';
  *
  * @returns {Boolean}
  */
-export default buildCheckWithCoerce(isDate, (value) => !isNaN(Date.parse(value)));
+export default buildCheckWithCoerce((item) => isInstanceOf(item, Date), (value) => !isNaN(Date.parse(value)));

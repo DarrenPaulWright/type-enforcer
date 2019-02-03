@@ -1,8 +1,8 @@
-import { isString } from 'lodash';
 import { buildCheckWithCoerce } from './checks';
+import isInstanceOf from './isInstanceOf';
 
 /**
- * Check if a value is a [string]{@link https://lodash.com/docs/#isString}
+ * Check if a value is a string
  *
  * @example
  * ``` javascript
@@ -25,4 +25,4 @@ import { buildCheckWithCoerce } from './checks';
  *
  * @returns {Boolean}
  */
-export default buildCheckWithCoerce(isString, (value) => value !== null && value !== undefined && !!value.toString);
+export default buildCheckWithCoerce((item) => isInstanceOf(item, String), (value) => value !== null && value !== undefined && !!value.toString);

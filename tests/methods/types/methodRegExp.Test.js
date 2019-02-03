@@ -1,7 +1,6 @@
 import { assert } from 'chai';
-import { assign } from 'lodash';
 import { method, methodRegExp } from '../../../src';
-import { regExpData as data } from '../../TestUtil';
+import { regExpData as data } from '../../testValues';
 import { testMethodType } from '../methodTestUtility';
 
 describe('method', () => {
@@ -10,7 +9,7 @@ describe('method', () => {
 			assert.deepEqual(methodRegExp, method.regExp);
 		});
 
-		testMethodType(assign({}, data));
+		testMethodType(Object.assign({}, data));
 	});
 });
 

@@ -1,7 +1,7 @@
 import { assert } from 'chai';
-import { map } from 'lodash';
 import { DockPoint, enforce, enforceDockPoint } from '../../../src';
-import { dockPointData as data, multiTest, validDockPoints } from '../../TestUtil';
+import { multiTest } from '../../TestUtil';
+import { dockPointData as data, validDockPoints } from '../../testValues';
 import { runNegativeTests } from '../enforceTestUtility';
 
 describe('enforce', () => {
@@ -16,7 +16,7 @@ describe('enforce', () => {
 		});
 
 		multiTest({
-			values: map(data.coerceTrue, (item) => {
+			values: data.coerceTrue.map((item) => {
 				return {
 					input: item,
 					output: new DockPoint(item)
@@ -30,7 +30,7 @@ describe('enforce', () => {
 		});
 
 		multiTest({
-			values: map(data.coerceTrue, (item) => {
+			values: data.coerceTrue.map((item) => {
 				return {
 					input: item,
 					output: item

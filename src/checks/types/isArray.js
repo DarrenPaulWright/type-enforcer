@@ -1,9 +1,8 @@
-import { isArray } from 'lodash';
 import { buildCheckWithCoerce } from './checks';
 import isJson from './isJson';
 
 /**
- * Check if a value is an [array]{@link https://lodash.com/docs/#isArray}
+ * Check if a value is an array
  *
  * @example
  * ``` javascript
@@ -26,4 +25,4 @@ import isJson from './isJson';
  *
  * @returns {Boolean}
  */
-export default buildCheckWithCoerce(isArray, (value) => isJson(value) && isArray(JSON.parse(value)));
+export default buildCheckWithCoerce((item) => Array.isArray(item), (value) => isJson(value) && Array.isArray(JSON.parse(value)));

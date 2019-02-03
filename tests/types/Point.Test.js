@@ -1,6 +1,7 @@
 import { assert } from 'chai';
 import { Point } from '../../src';
-import { multiTest, pointData as data } from '../TestUtil';
+import { multiTest } from '../TestUtil';
+import { pointData as data } from '../testValues';
 
 describe('Point', () => {
 	describe('Init', () => {

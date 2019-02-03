@@ -1,7 +1,6 @@
 import { assert } from 'chai';
-import { assign } from 'lodash';
 import { CssSize, method, methodCssSize } from '../../../src';
-import { cssSizeData as data } from '../../TestUtil';
+import { cssSizeData as data } from '../../testValues';
 import { testMethodType } from '../methodTestUtility';
 
 describe('method', () => {
@@ -13,6 +12,8 @@ describe('method', () => {
 		testMethodType({
 			name: 'cssSize',
 			true: ['14px', '20px'],
+			false: [],
+			coerceTrue: [],
 			extraProps: {
 				stringify: true
 			}
@@ -20,7 +21,7 @@ describe('method', () => {
 	});
 
 	describe('.cssSize', () => {
-		testMethodType(assign({}, data, {
+		testMethodType(Object.assign({}, data, {
 			coerce: [{
 				value: '16px',
 				coerced: new CssSize('16px')

@@ -1,8 +1,9 @@
-import { isRegExp, isString } from 'lodash';
 import { buildCheckWithCoerce } from './checks';
+import isInstanceOf from './isInstanceOf';
+import isString from './isString';
 
 /**
- * Check if a value is a [RegExp]{@link https://lodash.com/docs/#isRegExp}
+ * Check if a value is a RegExp
  *
  * @example
  * ``` javascript
@@ -25,4 +26,4 @@ import { buildCheckWithCoerce } from './checks';
  *
  * @returns {Boolean}
  */
-export default buildCheckWithCoerce(isRegExp, (value) => isString(value));
+export default buildCheckWithCoerce((item) => isInstanceOf(item, RegExp), (value) => isString(value));

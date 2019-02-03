@@ -1,7 +1,5 @@
-import { isElement } from 'lodash';
-
 /**
- * Check if a value is a [DOM element]{@link https://lodash.com/docs/#isElement}
+ * Check if a value is a DOM element
  *
  * @example
  * ``` javascript
@@ -17,4 +15,4 @@ import { isElement } from 'lodash';
  *
  * @returns {Boolean}
  */
-export default (value) => isElement(value);
+export default (value) => !!value && typeof value === 'object' && value.nodeType === 1;

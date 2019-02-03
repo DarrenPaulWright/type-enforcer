@@ -1,6 +1,6 @@
-import { assign, concat, each, join, throttle } from 'lodash';
 import methodElement from '../methods/types/methodElement';
 import isElementInDom from '../utility/isElementInDom';
+import throttle from '../utility/throttle';
 
 export const AUTO = 'auto';
 export const INITIAL = 'initial';
@@ -25,15 +25,15 @@ export const VIEWPORT_WIDTH = 'vw'; // 1/100 of the viewport width
 export const VIEWPORT_MIN = 'vmin'; // min of vh and vw
 
 const unitlessSizes = [AUTO, INITIAL, INHERIT, NONE];
-const validSizes = concat(unitlessSizes, [ZERO_PIXELS]);
+const validSizes = [].concat(unitlessSizes, [ZERO_PIXELS]);
 
 const viewPortUnits = [VIEWPORT_HEIGHT, VIEWPORT_WIDTH, VIEWPORT_MIN];
 const fontBasedUnits = [EM, EX, CH];
 const pixelBasedUnits = [PIXELS, INCHES, CENTIMETERS, MILLIMETERS, PICAS, POINTS];
 const rootBasedUnits = [ROOT_EM];
-const fixedUnits = concat(rootBasedUnits, pixelBasedUnits, fontBasedUnits, viewPortUnits);
+const fixedUnits = [].concat(rootBasedUnits, pixelBasedUnits, fontBasedUnits, viewPortUnits);
 const percentUnits = [PERCENT];
-const units = concat(percentUnits, fixedUnits);
+const units = [].concat(percentUnits, fixedUnits);
 
 const OR = '|';
 const NUMERIC_VALUE = '^[-+]?[0-9]*.?[0-9]+';
@@ -41,8 +41,8 @@ const START_SIZE = '^(';
 const START_UNIT = NUMERIC_VALUE + '(';
 const END = ')$';
 
-const VALID_SIZES_STRING = START_SIZE + join(validSizes, OR) + END;
-const ALL_UNITS_STRING = START_UNIT + join(units, OR) + END;
+const VALID_SIZES_STRING = START_SIZE + validSizes.join(OR) + END;
+const ALL_UNITS_STRING = START_UNIT + units.join(OR) + END;
 
 const NUMERIC_REGEX = new RegExp(NUMERIC_VALUE);
 const CSS_SIZE_REGEX = new RegExp(VALID_SIZES_STRING + OR + ALL_UNITS_STRING);
@@ -59,7 +59,7 @@ const measureUnits = (units, save, element) => {
 		document.body.appendChild(thisElement);
 	}
 
-	each(units, (baseUnit) => {
+	units.forEach((baseUnit) => {
 		thisElement.style.height = '1' + baseUnit;
 		save[baseUnit] = parseFloat(window.getComputedStyle(thisElement).height || 0);
 	});
@@ -330,7 +330,7 @@ export default class CssSize {
 	}
 }
 
-assign(CssSize.prototype, {
+Object.assign(CssSize.prototype, {
 	/**
 	 * Set the element to measure font based units against
 	 *

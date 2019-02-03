@@ -1,4 +1,3 @@
-import { assign, each, join } from 'lodash';
 import isString from '../checks/types/isString';
 import methodElement from '../methods/types/methodElement';
 import CssSize from './CssSize';
@@ -125,7 +124,7 @@ export default class Thickness {
 			else {
 				let isValid = true;
 
-				each(args, (arg) => {
+				Array.from(args).forEach((arg) => {
 					if (!CssSize.isValid(arg)) {
 						isValid = false;
 						return false;
@@ -263,21 +262,21 @@ export default class Thickness {
 			return this[TOP].toPixels();
 		}
 		else if (topBottomSame && leftRightSame) {
-			return join([this[TOP].toPixels(), this[RIGHT].toPixels()], SPACE);
+			return [this[TOP].toPixels(), this[RIGHT].toPixels()].join(SPACE);
 		}
 		else if (leftRightSame) {
-			return join([this[TOP].toPixels(), this[RIGHT].toPixels(), this[BOTTOM].toPixels()], SPACE);
+			return [this[TOP].toPixels(), this[RIGHT].toPixels(), this[BOTTOM].toPixels()].join(SPACE);
 		}
 
-		return join([this[TOP].toPixels(),
+		return [this[TOP].toPixels(),
 			this[RIGHT].toPixels(),
 			this[BOTTOM].toPixels(),
-			this[LEFT].toPixels()], SPACE);
+			this[LEFT].toPixels()].join(SPACE);
 	}
 
 }
 
-assign(Thickness.prototype, {
+Object.assign(Thickness.prototype, {
 	/**
 	 * Set the element to measure font based units against
 	 *

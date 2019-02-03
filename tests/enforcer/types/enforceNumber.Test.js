@@ -1,7 +1,7 @@
 import { assert } from 'chai';
-import { map } from 'lodash';
 import { enforce, enforceNumber } from '../../../src';
-import { multiTest, numberData as data } from '../../TestUtil';
+import { multiTest } from '../../TestUtil';
+import { numberData as data } from '../../testValues';
 import { runNegativeTests } from '../enforceTestUtility';
 
 const validInt = 11;
@@ -28,7 +28,7 @@ describe('enforce', () => {
 		});
 
 		multiTest({
-			values: map(data.coerceTrue, (item) => {
+			values: data.coerceTrue.map((item) => {
 				return {
 					input: item,
 					output: Number(item)
@@ -42,7 +42,7 @@ describe('enforce', () => {
 		});
 
 		multiTest({
-			values: map(data.coerceTrue, (item) => {
+			values: data.coerceTrue.map((item) => {
 				return {
 					input: item,
 					output: item

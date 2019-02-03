@@ -1,8 +1,8 @@
-import { isNumber } from 'lodash';
 import { buildCheckWithCoerce } from './checks';
+import isInstanceOf from './isInstanceOf';
 
 /**
- * Check if a value is a [number]{@link https://lodash.com/docs/#isNumber}
+ * Check if a value is a number
  *
  * @example
  * ``` javascript
@@ -25,4 +25,4 @@ import { buildCheckWithCoerce } from './checks';
  *
  * @returns {Boolean}
  */
-export default buildCheckWithCoerce(isNumber, (value) => !isNaN(value));
+export default buildCheckWithCoerce((item) => isInstanceOf(item, Number), (value) => !isNaN(value));

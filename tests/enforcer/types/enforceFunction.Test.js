@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import { enforce, enforceFunction } from '../../../src';
-import { validFunctions } from '../../TestUtil';
+import { validFunctions } from '../../testValues';
 import { runNegativeTests } from '../enforceTestUtility';
 
 describe('enforce', () => {

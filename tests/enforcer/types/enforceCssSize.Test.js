@@ -1,7 +1,7 @@
 import { assert } from 'chai';
-import { map } from 'lodash';
 import { AUTO, CssSize, enforce, enforceCssSize, INHERIT, INITIAL } from '../../../src';
-import { cssSizeData as data, multiTest, validCssSizes } from '../../TestUtil';
+import { multiTest } from '../../TestUtil';
+import { cssSizeData as data, validCssSizes } from '../../testValues';
 import { runNegativeTests } from '../enforceTestUtility';
 
 describe('enforce', () => {
@@ -22,7 +22,7 @@ describe('enforce', () => {
 		});
 
 		multiTest({
-			values: map(data.coerceTrue, (item) => {
+			values: data.coerceTrue.map((item) => {
 				return {
 					input: item,
 					output: new CssSize(item)
@@ -36,7 +36,7 @@ describe('enforce', () => {
 		});
 
 		multiTest({
-			values: map(data.coerceTrue, (item) => {
+			values: data.coerceTrue.map((item) => {
 				return {
 					input: item,
 					output: item

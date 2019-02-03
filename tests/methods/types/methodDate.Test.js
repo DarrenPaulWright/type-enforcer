@@ -1,7 +1,6 @@
 import { assert } from 'chai';
-import { assign } from 'lodash';
 import { method, methodDate } from '../../../src';
-import { dateData as data } from '../../TestUtil';
+import { dateData as data } from '../../testValues';
 import { testMethodType } from '../methodTestUtility';
 
 describe('method', () => {
@@ -10,6 +9,6 @@ describe('method', () => {
 			assert.deepEqual(methodDate, method.date);
 		});
 
-		testMethodType(assign({}, data));
+		testMethodType(Object.assign({}, data));
 	});
 });

@@ -1,7 +1,6 @@
 import { assert } from 'chai';
-import { assign } from 'lodash';
 import { method, methodThickness, Thickness } from '../../../src';
-import { thicknessData as data } from '../../TestUtil';
+import { thicknessData as data } from '../../testValues';
 import { testMethodType } from '../methodTestUtility';
 
 describe('method', () => {
@@ -13,6 +12,8 @@ describe('method', () => {
 		testMethodType({
 			name: 'thickness',
 			true: ['12px', '20px'],
+			false: [],
+			coerceTrue: [],
 			extraProps: {
 				stringify: true
 			},
@@ -27,7 +28,7 @@ describe('method', () => {
 	});
 
 	describe('.thickness', () => {
-		testMethodType(assign({}, data, {
+		testMethodType(Object.assign({}, data, {
 			coerce: [{
 				value: '12px 4rem',
 				coerced: new Thickness('12px 64px')

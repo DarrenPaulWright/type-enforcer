@@ -11,7 +11,9 @@ describe('method', () => {
 		testMethodType({
 			name: 'enum',
 			true: ['test2', 'test3'],
+			false: [],
 			coerce: false,
+			coerceTrue: [],
 			extraProps: {
 				enum: new Enum({
 					test1: 'test1',

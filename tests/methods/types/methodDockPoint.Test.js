@@ -1,7 +1,6 @@
 import { assert } from 'chai';
-import { assign } from 'lodash';
 import { DockPoint, method, methodDockPoint } from '../../../src';
-import { dockPointData as data } from '../../TestUtil';
+import { dockPointData as data } from '../../testValues';
 import { testMethodType } from '../methodTestUtility';
 
 describe('method', () => {
@@ -13,6 +12,8 @@ describe('method', () => {
 		testMethodType({
 			name: 'dockPoint',
 			true: [DockPoint.POINTS.TOP_CENTER, DockPoint.POINTS.BOTTOM_LEFT],
+			false: [],
+			coerceTrue: [],
 			extraProps: {
 				stringify: true
 			}
@@ -20,7 +21,7 @@ describe('method', () => {
 	});
 
 	describe('.dockPoint', () => {
-		testMethodType(assign({}, data, {
+		testMethodType(Object.assign({}, data, {
 			coerce: [{
 				value: DockPoint.POINTS.TOP_RIGHT,
 				coerced: new DockPoint(DockPoint.POINTS.TOP_RIGHT)

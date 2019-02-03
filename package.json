@@ -1,6 +1,6 @@
 {
 	"name": "type-enforcer",
-	"version": "0.2.4",
+	"version": "0.3.0",
 	"description": "Type enforcement library for javascript",
 	"main": "src/index.js",
 	"scripts": {
@@ -39,7 +39,8 @@
 	},
 	"homepage": "https://github.com/DarrenPaulWright/type-enforcer#readme",
 	"dependencies": {
-		"lodash": "^4.17.11"
+		"clone": "^2.1.2",
+		"deep-equal": "^1.0.1"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.2.2",
@@ -47,7 +48,6 @@
 		"babel-eslint": "^10.0.1",
 		"babel-loader": "^8.0.5",
 		"babel-plugin-istanbul": "^5.1.0",
-		"babel-plugin-lodash": "^3.3.4",
 		"chai": "^4.2.0",
 		"eslint": "^5.12.1",
 		"eslint-loader": "^2.1.1",

@@ -1,6 +1,7 @@
 import { assert } from 'chai';
 import { is, isFunction } from '../../src';
-import { functionData as data, multiTest } from '../TestUtil';
+import { multiTest } from '../TestUtil';
+import { functionData as data } from '../testValues';
 
 describe('isFunction', () => {
 	it('should exist in the exported "is" object', () => {

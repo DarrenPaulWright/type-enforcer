@@ -1,4 +1,6 @@
-import { assign, castArray, cloneDeep, isEqual } from 'lodash';
+import clone from 'clone';
+import deepEqual from 'deep-equal';
+import isArray from '../../checks/types/isArray';
 import enforceBoolean from '../../enforcer/types/enforceBoolean';
 import before from '../variants/before';
 import beforeSet from '../variants/beforeSet';
@@ -20,7 +22,7 @@ const notEnforced = (newValue) => newValue;
 
 const simpleCompare = (newValue, oldValue) => newValue !== oldValue;
 
-export const deepCompare = (newValue, oldValue) => !isEqual(newValue, oldValue);
+export const deepCompare = (newValue, oldValue) => !deepEqual(newValue, oldValue, {strict: true});
 
 export const compareCustomType = (Type, check) => (newValue, oldValue) => {
 	if (check(oldValue)) {
@@ -56,7 +58,7 @@ export const mapEnforcerDefaultCoerceTrue = (enforcer) => (newValue, oldValue, o
 };
 
 export const buildMethod = (defaultSettings = {}, onInit) => {
-	defaultSettings = assign({
+	defaultSettings = Object.assign({
 		enforce: notEnforced,
 		compare: simpleCompare
 	}, defaultSettings);
@@ -64,13 +66,13 @@ export const buildMethod = (defaultSettings = {}, onInit) => {
 	return (options) => {
 		let method;
 
-		options = assign(cloneDeep(defaultSettings), options);
+		options = Object.assign(clone(defaultSettings), options);
 		if (onInit) {
 			options = onInit(options);
 		}
 
-		if ('other' in options) {
-			options.other = castArray(options.other);
+		if ('other' in options && !isArray(options.other)) {
+			options.other = [options.other];
 		}
 
 		if (options.get) {

@@ -1,7 +1,6 @@
 import { assert } from 'chai';
-import { concat, each } from 'lodash';
 import { enforce, Enum } from '../../src';
-import { testTypes, validVectors } from '../TestUtil';
+import { testTypes, validVectors } from '../testValues';
 
 const validEnumObject = new Enum({
 	test1: 'test 1',
@@ -11,9 +10,9 @@ const validEnumObject = new Enum({
 const validEnum1 = validEnumObject.test1;
 
 export const runNegativeTests = (methodName, defaultValue, otherArg) => {
-	each(testTypes, (data) => {
-		if (data.name && !concat([data.name], data.skip).includes(methodName)) {
-			each(data.true, (testItem) => {
+	testTypes.forEach((data) => {
+		if (data.name && !([data.name].concat(data.skip).includes(methodName))) {
+			data.true.forEach((testItem) => {
 				it(`should return the default value when ${testItem} is provided`, () => {
 					if (otherArg) {
 						assert.deepEqual(enforce[methodName](testItem, otherArg, defaultValue), defaultValue);

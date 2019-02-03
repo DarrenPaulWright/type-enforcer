@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import { CssSize, method, methodInstance } from '../../../src';
-import { validCssSizes } from '../../TestUtil';
+import { validCssSizes } from '../../testValues';
 import { testMethodType } from '../methodTestUtility';
 
 describe('method', () => {
@@ -12,6 +12,8 @@ describe('method', () => {
 		testMethodType({
 			name: 'instance',
 			true: [validCssSizes[0], validCssSizes[1]],
+			false: [],
+			coerceTrue: [],
 			coerce: false,
 			extraProps: {
 				instance: CssSize

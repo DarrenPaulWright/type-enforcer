@@ -1,4 +1,3 @@
-const _ = require('lodash');
 const testRunnerConfig = require('test-runner-config');
 const config = require('./testRunner.config.js');
 
@@ -15,10 +14,10 @@ const files = testRunnerConfig.getKarmaFiles(config, {
 	src: exclude
 });
 const preprocessors = {};
-_.each(testRunnerConfig.getKarmaFiles(config, {
+testRunnerConfig.getKarmaFiles(config, {
 	css: exclude,
 	src: exclude
-}).files, (pattern) => {
+}).files.forEach((pattern) => {
 	if (pattern.included !== false) {
 		preprocessors[pattern] = ['webpack'];
 	}

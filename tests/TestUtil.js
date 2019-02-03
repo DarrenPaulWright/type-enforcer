@@ -1,5 +1,4 @@
 import { assert } from 'chai';
-import { difference } from 'lodash';
 import {
 	AUTO,
 	CENTIMETERS,
@@ -27,6 +26,7 @@ import {
 	VIEWPORT_WIDTH,
 	ZERO_PIXELS
 } from '../src';
+import difference from '../src/utility/difference';
 import forOwn from '../src/utility/forOwn';
 
 export const validArrays = [[1], [2], [], new Array()];

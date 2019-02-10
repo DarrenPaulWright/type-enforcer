@@ -8,11 +8,19 @@
 
 A type enforcement library for javascript
 
-<a name="Installation"></a>
+<a name="castArray"></a>
 
-## Installation
-With npm```npm install type-enforcer```## CompatibilityRequires:- Babel >= 7.2## Docs### Data Types- [CssSize](docs/CssSize.md)- [DockPoint](docs/DockPoint.md)- [Enum](docs/Enum.md)- [Point](docs/Point.md)- [Queue](docs/Queue.md)- [Thickness](docs/Thickness.md)- [Vector](docs/Vector.md)### Checks- [checks](docs/checks.md)### Enforcement- [enforce](docs/enforce.md)### Methods- [method](docs/method.md)### Mixins- [Removable](docs/Removable.md)### Other- [castArray](docs/castArray.md)## ContributingIf you add a new type be sure to add an enforce function and a method. When done, add any new types to package.json scripts (docs-newType), and add that to the docs script, then run```npm run docs```to generate new docs. If a new file is generated, add a link to it in the description in index.js and run the docs command again
+## castArray(value) ⇒ <code>Array</code>
+Convert non-arrays to arrays.
 
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| value | <code>\*</code> | 
+
+**Example**  
+``` javascriptimport { castArray } from 'type-enforcer';castArray('string');// => ['string']isArray(['string']);// => ['string']```
 
 ## License
 

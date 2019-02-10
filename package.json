@@ -1,6 +1,6 @@
 {
 	"name": "type-enforcer",
-	"version": "0.3.0",
+	"version": "0.3.1",
 	"description": "Type enforcement library for javascript",
 	"main": "src/index.js",
 	"scripts": {
@@ -21,7 +21,8 @@
 		"docs-thickness": "jsdoc2md src/types/Thickness.js > docs/Thickness.md --template docs.hbs",
 		"docs-vector": "jsdoc2md src/types/Vector.js > docs/Vector.md --template docs.hbs",
 		"docs-removable": "jsdoc2md src/mixins/Removable.js > docs/Removable.md --template docs.hbs",
-		"docs": "npm run docs-readme && npm run docs-enforce && npm run docs-method && npm run docs-checks && npm run docs-queue && npm run docs-csssize && npm run docs-dockpoint && npm run docs-enum && npm run docs-point && npm run docs-thickness && npm run docs-vector && npm run docs-removable"
+		"docs-castarray": "jsdoc2md src/utility/castArray.js > docs/castArray.md --template docs.hbs",
+		"docs": "npm run docs-readme && npm run docs-enforce && npm run docs-method && npm run docs-checks && npm run docs-queue && npm run docs-csssize && npm run docs-dockpoint && npm run docs-enum && npm run docs-point && npm run docs-thickness && npm run docs-vector && npm run docs-removable && npm run docs-castarray"
 	},
 	"repository": {
 		"type": "git",

@@ -32,6 +32,9 @@
  * ### Mixins
  * - [Removable](docs/Removable.md)
  *
+ * ### Other
+ * - [castArray](docs/castArray.md)
+ *
  * ## Contributing
  *
  * If you add a new type be sure to add an enforce function and a method. When done, add any new types to package.json scripts (docs-newType), and add that to the docs script, then run
@@ -112,3 +115,4 @@ export { default as Thickness } from './types/Thickness';
 export { default as Vector } from './types/Vector';
 
 export { default as Removable } from './mixins/Removable';
+export { default as castArray } from './utility/castArray';

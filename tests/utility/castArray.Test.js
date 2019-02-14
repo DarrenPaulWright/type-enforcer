@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 import castArray from '../../src/utility/castArray';
 
-describe.only('castArray', () => {
+describe('castArray', () => {
 	it('should wrap a string in an array', () => {
 		assert.deepEqual(castArray('string'), ['string']);
 	});

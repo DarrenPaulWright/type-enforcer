@@ -86,4 +86,14 @@ describe('Removable', () => {
 
 		assert.isTrue(testClass.isRemoved);
 	});
+
+	it('should not throw an error if remove is called without adding any onRemove callbacks', () => {
+		class TestClass extends Removable {}
+
+		const testClass = new TestClass();
+
+		assert.doesNotThrow(() => {
+			testClass.remove();
+		});
+	});
 });

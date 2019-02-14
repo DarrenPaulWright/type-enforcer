@@ -17,7 +17,7 @@ describe('isElementInDom', () => {
 	});
 	it('should return true for an element that is in the Dom', () => {
 		const element = document.createElement('div');
-		document.body.appendChild(element)
+		document.body.appendChild(element);
 		assert.isTrue(isElementInDom(element));
 	});
 });

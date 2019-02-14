@@ -1,6 +1,6 @@
 {
 	"name": "type-enforcer",
-	"version": "0.3.1",
+	"version": "0.3.2",
 	"description": "Type enforcement library for javascript",
 	"main": "src/index.js",
 	"scripts": {
@@ -40,8 +40,7 @@
 	},
 	"homepage": "https://github.com/DarrenPaulWright/type-enforcer#readme",
 	"dependencies": {
-		"clone": "^2.1.2",
-		"deep-equal": "^1.0.1"
+		"object-agent": "^0.2.1"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.2.2",

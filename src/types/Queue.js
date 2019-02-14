@@ -1,5 +1,5 @@
+import { forOwn } from 'object-agent';
 import isFunction from '../checks/types/isFunction';
-import forOwn from '../utility/forOwn';
 
 const CALLBACKS = Symbol();
 const CURRENT_ID = Symbol();
@@ -101,9 +101,7 @@ export default class Queue {
 		}
 		else {
 			forOwn(this[CALLBACKS], (callback) => {
-				if (callback) {
-					callback.function.apply(context, extraArguments);
-				}
+				callback.function.apply(context, extraArguments);
 			});
 		}
 		this[IS_BUSY] = false;
@@ -129,7 +127,7 @@ export default class Queue {
 		forOwn(this[CALLBACKS], (callback, ID) => {
 			callback.function.apply(context, extraArguments);
 			self.discard(ID);
-			return false;
+			return true;
 		});
 		this[IS_BUSY] = false;
 

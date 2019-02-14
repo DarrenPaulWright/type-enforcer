@@ -2,7 +2,8 @@ import { assert } from 'chai';
 import powerset from 'powerset';
 import { enforceString, method, Point } from '../../src';
 import { processOutput } from '../../src/methods/variants/helper';
-import startCase from '../../src/utility/startCase';
+
+const startCase = (string) => string.split(' ').map((word) => word.charAt(0).toUpperCase()).join(' ');
 
 const TEST_METHOD = 'testMethod';
 const variantSet = powerset(['get', 'other', 'before', 'set']);

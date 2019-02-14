@@ -24,7 +24,11 @@ import {
 	VIEWPORT_WIDTH,
 	ZERO_PIXELS
 } from '../src';
-import difference from '../src/utility/difference';
+
+const difference = (array1, ...args) => {
+	let diffArrays = [].concat(...args);
+	return array1.filter((item1) => diffArrays.every((item2) => item1 !== item2));
+};
 
 export const validArrays = [[1], [2], [], new Array(), Array()];
 export const validBooleans = [true, false, new Boolean(true), Boolean()];

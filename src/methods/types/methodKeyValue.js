@@ -1,5 +1,5 @@
-import { forOwn } from 'object-agent';
 import isObject from '../../checks/types/isObject';
+import forOwn from '../../utility/forOwn';
 
 /**
  * Builds a chainable method that accepts either:

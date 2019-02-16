@@ -40,7 +40,7 @@
 	},
 	"homepage": "https://github.com/DarrenPaulWright/type-enforcer#readme",
 	"dependencies": {
-		"object-agent": "^0.2.1"
+		"deep-equal": "^1.0.1"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.2.2",

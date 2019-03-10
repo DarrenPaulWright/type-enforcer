@@ -2,7 +2,7 @@ import { buildCheckWithCoerce } from './checks';
 import isNumber from './isNumber';
 
 /**
- * Check if a value is an integer
+ * Check if a value is a finite integer
  *
  * @example
  * ``` javascript
@@ -16,6 +16,9 @@ import isNumber from './isNumber';
  *
  * isInteger('42', true);
  * // => true
+ *
+ * isInteger('42.5', true);
+ * // => false
  * ```
  *
  * @function isInteger
@@ -25,4 +28,7 @@ import isNumber from './isNumber';
  *
  * @returns {Boolean}
  */
-export default buildCheckWithCoerce((item) => Number.isInteger(item) || isNumber(item) && Number.isInteger(Number.parseFloat(item)), (value) => !isNaN(value) && !isNaN(parseInt(value)));
+export default buildCheckWithCoerce((item) => Number.isInteger(item) || isNumber(item) && Number.isInteger(Number.parseFloat(item)), (value) => {
+	const parsed = parseFloat(value);
+	return !isNaN(value) && parsed === (parsed | 0);
+});

@@ -6,6 +6,7 @@ import methodDate from './types/methodDate';
 import methodDockPoint from './types/methodDockPoint';
 import methodElement from './types/methodElement';
 import methodEnum from './types/methodEnum';
+import methodFloat from './types/methodFloat';
 import methodFunction from './types/methodFunction';
 import methodInstance from './types/methodInstance';
 import methodInteger from './types/methodInteger';
@@ -65,6 +66,7 @@ export default {
 	dockPoint: methodDockPoint,
 	element: methodElement,
 	enum: methodEnum,
+	float: methodFloat,
 	function: methodFunction,
 	integer: methodInteger,
 	instance: methodInstance,

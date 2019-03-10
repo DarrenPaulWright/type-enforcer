@@ -1,3 +1,4 @@
+import isFloat from '../checks/types/isFloat';
 import methodElement from '../methods/types/methodElement';
 import isElementInDom from '../utility/isElementInDom';
 import throttle from '../utility/throttle';
@@ -94,7 +95,7 @@ const getMeasurement = (save, units, unit, element) => {
 	return save[unit];
 };
 
-const isNonZeroNumber = (size) => !!size && size !== ZERO_PIXELS && !isNaN(size);
+const isNonZeroNumber = (size) => !!size && size !== ZERO_PIXELS && isFloat(size, true);
 
 let currentWindowWidth;
 let currentWindowHeight;

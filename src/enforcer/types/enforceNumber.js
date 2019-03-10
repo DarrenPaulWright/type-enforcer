@@ -16,6 +16,9 @@ import { numericEnforcer } from './enforcer';
  *
  * enforce.number('3.14159', 13.2, true);
  * // => 3.14159
+ *
+ * enforce.number(Infinity, 13.2, true);
+ * // => Infinity
  * ```
  *
  * @function enforce.number

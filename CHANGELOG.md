@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+## [0.4.0]
+### Added
+- Float type (check, enforcer, and method)
+
+### Changed
+- Integer coercion is now more strict
+
 ## [0.3.3] - 2019-2-15
 ### Changed
 - Switching dependencies to deep-equal instead of object-agent
@@ -27,7 +34,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.3] - 2019-01-30
 ### Changed
-- Exporting the check functions as a object
+- Exporting the check functions as an object
 - Exporting individual enforcers and methods
 
 ## [0.2.2] - 2019-01-24
@@ -111,7 +118,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Initial enforcers, methods, and documentation
 
-[0.3.2]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.3.2...c0.3.3
+[0.4.0]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.3.3...c0.4.0
+[0.3.3]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.3.2...c0.3.3
 [0.3.2]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.3.1...c0.3.2
 [0.3.1]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.3.0...c0.3.1
 [0.3.0]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.2.4...c0.3.0

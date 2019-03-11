@@ -1,6 +1,6 @@
 import { assert } from 'chai';
+import { forOwn } from 'object-agent';
 import { isObject } from '../src';
-import forOwn from '../src/utility/forOwn';
 
 export const eachPair = (array1, array2, callback, isUnique = false) => {
 	let i;

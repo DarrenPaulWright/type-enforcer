@@ -29,6 +29,9 @@ A type enforcement library for javascript
 <dt><a href="#isElement">isElement(value)</a> ⇒ <code>Boolean</code></dt>
 <dd><p>Check if a value is a DOM element</p>
 </dd>
+<dt><a href="#isFloat">isFloat(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
+<dd><p>Check if a value is a finite float</p>
+</dd>
 <dt><a href="#isFunction">isFunction(value)</a> ⇒ <code>Boolean</code></dt>
 <dd><p>Check if a value is a function</p>
 </dd>
@@ -36,7 +39,7 @@ A type enforcement library for javascript
 <dd><p>Check if a value is an instance of a constructor. Fixes issues with native instanceOf and primitives Boolean, Number, and String (see example).</p>
 </dd>
 <dt><a href="#isInteger">isInteger(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if a value is an integer</p>
+<dd><p>Check if a value is a finite integer</p>
 </dd>
 <dt><a href="#isJson">isJson(value)</a> ⇒ <code>Boolean</code></dt>
 <dd><p>Check if a value can be parsed as JSON</p>
@@ -161,6 +164,20 @@ Check if a value is a DOM element
 
 **Example**  
 ``` javascriptimport { isElement } from 'type-enforcer';isElement(document.createElement('div'));// => true```
+<a name="isFloat"></a>
+
+## isFloat(value, [coerce]) ⇒ <code>Boolean</code>
+Check if a value is a finite float
+
+**Kind**: global function  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | <code>\*</code> |  |  |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a float |
+
+**Example**  
+``` javascriptimport { isFloat } from 'type-enforcer';isFloat(3.14159);// => trueisFloat('3.14159');// => falseisFloat('3.14159', true);// => true```
 <a name="isFunction"></a>
 
 ## isFunction(value) ⇒ <code>Boolean</code>
@@ -191,7 +208,7 @@ Check if a value is an instance of a constructor. Fixes issues with native insta
 <a name="isInteger"></a>
 
 ## isInteger(value, [coerce]) ⇒ <code>Boolean</code>
-Check if a value is an integer
+Check if a value is a finite integer
 
 **Kind**: global function  
 
@@ -201,7 +218,7 @@ Check if a value is an integer
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into an Integer |
 
 **Example**  
-``` javascriptimport { isInteger } from 'type-enforcer';isInteger(42);// => trueisInteger('42');// => falseisInteger('42', true);// => true```
+``` javascriptimport { isInteger } from 'type-enforcer';isInteger(42);// => trueisInteger('42');// => falseisInteger('42', true);// => trueisInteger('42.5', true);// => false```
 <a name="isJson"></a>
 
 ## isJson(value) ⇒ <code>Boolean</code>

@@ -1,43 +1,43 @@
 import { assert } from 'chai';
-import { is, isNumber } from '../../src';
+import { is, isFloat } from '../../src';
 import { multiTest } from '../TestUtil';
-import { numberData as data } from '../testValues';
+import { floatData as data } from '../testValues';
 
-describe('isNumber', () => {
+describe('isFloat', () => {
 	it('should exist in the exported "is" object', () => {
-		assert.deepEqual(isNumber, is.number);
+		assert.deepEqual(isFloat, is.float);
 	});
 
 	multiTest({
 		values: data.true,
-		test: (value) => isNumber(value),
+		test: (value) => isFloat(value),
 		assertion: 'isTrue'
 	});
 	multiTest({
 		values: data.false,
-		test: (value) => isNumber(value),
+		test: (value) => isFloat(value),
 		assertion: 'isFalse'
 	});
 	multiTest({
 		values: data.coerceTrue,
-		test: (value) => isNumber(value),
+		test: (value) => isFloat(value),
 		assertion: 'isFalse'
 	});
 
 	describe('coerce', () => {
 		multiTest({
 			values: data.true,
-			test: (value) => isNumber(value, true),
+			test: (value) => isFloat(value, true),
 			assertion: 'isTrue'
 		});
 		multiTest({
 			values: data.coerceTrue,
-			test: (value) => isNumber(value, true),
+			test: (value) => isFloat(value, true),
 			assertion: 'isTrue'
 		});
 		multiTest({
 			values: data.coerceFalse,
-			test: (value) => isNumber(value, true),
+			test: (value) => isFloat(value, true),
 			assertion: 'isFalse'
 		});
 	});

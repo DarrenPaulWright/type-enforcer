@@ -1,4 +1,4 @@
-import forOwn from '../utility/forOwn';
+import { forOwn } from 'object-agent';
 
 const KEYS = Symbol();
 const VALUES = Symbol();

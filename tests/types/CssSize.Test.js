@@ -272,7 +272,7 @@ describe('CssSize', () => {
 		const isValid = (value1, value2) => {
 			return (value1 !== value2 &&
 				!(value1.size === 0 && value2.size === '0' || value1.size === '0' && value2.size === 0) &&
-				!(value1.size + PIXELS === value2.size || value1.size === value2.size + PIXELS))
+				!(value1.size + PIXELS === value2.size || value1.size === value2.size + PIXELS));
 		};
 
 		multiTest({

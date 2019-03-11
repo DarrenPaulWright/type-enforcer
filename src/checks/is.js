@@ -4,6 +4,7 @@ import isCssSize from './types/isCssSize';
 import isDate from './types/isDate';
 import isDockPoint from './types/isDockPoint';
 import isElement from './types/isElement';
+import isFloat from './types/isFloat';
 import isFunction from './types/isFunction';
 import isInstanceOf from './types/isInstanceOf';
 import isInteger from './types/isInteger';
@@ -37,6 +38,7 @@ export default {
 	date: isDate,
 	dockPoint: isDockPoint,
 	element: isElement,
+	float: isFloat,
 	function: isFunction,
 	instanceOf: isInstanceOf,
 	integer: isInteger,

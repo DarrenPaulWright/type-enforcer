@@ -1,24 +1,24 @@
-import isInteger from '../../checks/types/isInteger';
+import isFloat from '../../checks/types/isFloat';
 import { numericEnforcer } from './enforcer';
 
 /**
- * Enforce that a value is a finite integer. Uses [isInteger](docs/checks.md#isInteger).
+ * Enforce that a value is a finite float. Uses [isFloat](docs/checks.md#isFloat).
  *
  * @example
  * ``` javascript
  * import { enforce } from 'type-enforcer';
  *
- * enforce.integer(42, 12);
- * // => 42
+ * enforce.float(3.14159, 13.2);
+ * // => 3.14159
  *
- * enforce.integer('42', 12);
- * // => 12
+ * enforce.float('3.14159', 13.2);
+ * // => 13.2
  *
- * enforce.integer('42', 12, true);
- * // => 42
+ * enforce.float('3.14159', 13.2, true);
+ * // => 3.14159
  * ```
  *
- * @function enforce.integer
+ * @function enforce.float
  *
  * @arg {*} value
  * @arg {int} alt - Returned if the value is not the correct type
@@ -28,4 +28,4 @@ import { numericEnforcer } from './enforcer';
  *
  * @returns {int}
  */
-export default numericEnforcer(isInteger, (item) => item - 0);
+export default numericEnforcer(isFloat, Number);

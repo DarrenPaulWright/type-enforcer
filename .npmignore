@@ -9,3 +9,4 @@ tests/
 karma.conf.js
 testRunner.config.js
 wallaby.conf.js
+.git

@@ -23,6 +23,7 @@ Utility functions for enforcing data types.## Usage``` javascriptimport { en
     * [.dockPoint(value, alt, [coerce])](#enforce.dockPoint) ⇒ <code>DockPoint</code>
     * [.element(value, alt)](#enforce.element) ⇒ <code>Element</code>
     * [.enum(value, enumerable, alt)](#enforce.enum) ⇒ <code>String</code>
+    * [.float(value, alt, [coerce], [minValue], [maxValue])](#enforce.float) ⇒ <code>int</code>
     * [.function(value, alt)](#enforce.function) ⇒ <code>function</code>
     * [.instance(value, constructor, alt)](#enforce.instance) ⇒ <code>Object</code>
     * [.integer(value, alt, [coerce], [minValue], [maxValue])](#enforce.integer) ⇒ <code>int</code>
@@ -138,6 +139,23 @@ Enforce that a value exists in the provided [Enum](docs/Enum.md)
 
 **Example**  
 ``` javascriptimport { enforce, Enum } from 'type-enforcer';const values = new Enum({    a: 'item a',    b: 'item b'});enforce.enum(values.a, values, values.b);// => 'item a'enforce.enum(values.c, values, values.b);// => 'item b'```
+<a name="enforce.float"></a>
+
+### enforce.float(value, alt, [coerce], [minValue], [maxValue]) ⇒ <code>int</code>
+Enforce that a value is a finite float. Uses [isFloat](docs/checks.md#isFloat).
+
+**Kind**: static method of [<code>enforce</code>](#enforce)  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | <code>\*</code> |  |  |
+| alt | <code>int</code> |  | Returned if the value is not the correct type |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+| [minValue] | <code>int</code> |  |  |
+| [maxValue] | <code>int</code> |  |  |
+
+**Example**  
+``` javascriptimport { enforce } from 'type-enforcer';enforce.float(3.14159, 13.2);// => 3.14159enforce.float('3.14159', 13.2);// => 13.2enforce.float('3.14159', 13.2, true);// => 3.14159```
 <a name="enforce.function"></a>
 
 ### enforce.function(value, alt) ⇒ <code>function</code>
@@ -170,7 +188,7 @@ Enforce that a value is an instance of a constructor. Uses [isInstanceOf](docs/c
 <a name="enforce.integer"></a>
 
 ### enforce.integer(value, alt, [coerce], [minValue], [maxValue]) ⇒ <code>int</code>
-Enforce that a value is an integer. Uses [isInteger](docs/checks.md#isInteger).
+Enforce that a value is a finite integer. Uses [isInteger](docs/checks.md#isInteger).
 
 **Kind**: static method of [<code>enforce</code>](#enforce)  
 
@@ -200,7 +218,7 @@ Enforce that a value is a number (excluding NaN). Uses [isNumber](docs/checks.md
 | [maxValue] | <code>Number</code> | <code>Infinity</code> |  |
 
 **Example**  
-``` javascriptimport { enforce } from 'type-enforcer';enforce.number(3.14159, 13.2);// => 3.14159enforce.number('3.14159', 13.2);// => 13.2enforce.number('3.14159', 13.2, true);// => 3.14159```
+``` javascriptimport { enforce } from 'type-enforcer';enforce.number(3.14159, 13.2);// => 3.14159enforce.number('3.14159', 13.2);// => 13.2enforce.number('3.14159', 13.2, true);// => 3.14159enforce.number(Infinity, 13.2, true);// => Infinity```
 <a name="enforce.object"></a>
 
 ### enforce.object(value, alt, [coerce]) ⇒ <code>Object</code>

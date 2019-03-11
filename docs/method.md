@@ -24,6 +24,7 @@ Enforce data types and remove common boilerplate code on class methods.## Usag
     * [.dockPoint([options])](#method.dockPoint) ⇒ <code>function</code>
     * [.element([options])](#method.element) ⇒ <code>function</code>
     * [.enum([options])](#method.enum) ⇒ <code>function</code>
+    * [.float([options])](#method.float) ⇒ <code>function</code>
     * [.function([options])](#method.function) ⇒ <code>function</code>
     * [.instance([options])](#method.instance) ⇒ <code>function</code>
     * [.int([options])](#method.int) ⇒ <code>function</code>
@@ -162,6 +163,22 @@ Builds a chainable method for getting/setting an enumerable value in an [Enum](d
 | [options.enforce] | <code>function</code> | <code>enforce.enum</code> |  |
 | options.enum | <code>Enum</code> |  | An enum to restrict the values to. |
 
+<a name="method.float"></a>
+
+### method.float([options]) ⇒ <code>function</code>
+Builds a chainable method for getting/setting a float
+
+**Kind**: static method of [<code>method</code>](#method)  
+**Extends**: [<code>any</code>](#method.any)  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options.enforce] | <code>function</code> | <code>enforce.float</code> |  |
+| [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+| [options.min] | <code>Number</code> |  | Passed to enforce.float |
+| [options.max] | <code>Number</code> |  | Passed to enforce.float |
+
 <a name="method.function"></a>
 
 ### method.function([options]) ⇒ <code>function</code>
@@ -278,7 +295,7 @@ Builds a chainable method that implements a [Queue](docs/Queue.md)
 | Param | Type | Description |
 | --- | --- | --- |
 | [options] | <code>Object</code> |  |
-| [options.set] | <code>function</code> | Called after a new callback is added to the queue. Provides a reference to the queue, sets the context to the methods constructor. |
+| [options.set] | <code>function</code> | Called after a new callback is added to the queue. Provides a reference to the queue, the new ID for the callback, the callback, and sets the context to the methods constructor. |
 
 <a name="method.regExp"></a>
 

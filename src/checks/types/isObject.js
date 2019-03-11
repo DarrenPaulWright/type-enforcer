@@ -1,9 +1,7 @@
 import { buildCheckWithCoerce } from './checks';
 import isJson from './isJson';
 
-// const isPlainObject = (item) => item && typeof item === 'object' && item instanceof Object;
-// const isPlainObject = (item) => isInstanceOf(item, Object);
-const isPlainObject = (item) => item && typeof item === 'object' && toString.call(item) === '[object Object]' && item.constructor === Object;
+const isPlainObject = (item) => item && item.constructor === Object;
 
 /**
  * Check if a value is a plain object

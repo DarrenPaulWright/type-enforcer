@@ -25,4 +25,4 @@ import isJson from './isJson';
  *
  * @returns {Boolean}
  */
-export default buildCheckWithCoerce((item) => Array.isArray(item), (value) => isJson(value) && Array.isArray(JSON.parse(value)));
+export default buildCheckWithCoerce(Array.isArray, (value) => isJson(value) && Array.isArray(JSON.parse(value)));

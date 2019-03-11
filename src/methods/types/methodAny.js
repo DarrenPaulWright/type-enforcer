@@ -1,4 +1,4 @@
-import deepEqual from 'deep-equal';
+import { deepEqual } from 'object-agent';
 import isArray from '../../checks/types/isArray';
 import enforceBoolean from '../../enforcer/types/enforceBoolean';
 import before from '../variants/before';

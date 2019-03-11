@@ -1,4 +1,4 @@
-import { deepEqual } from 'object-agent';
+import { clone, deepEqual } from 'object-agent';
 import isArray from '../../checks/types/isArray';
 import enforceBoolean from '../../enforcer/types/enforceBoolean';
 import before from '../variants/before';
@@ -65,7 +65,7 @@ export const buildMethod = (defaultSettings = {}, onInit) => {
 	return (options) => {
 		let method;
 
-		options = Object.assign({}, defaultSettings, options);
+		options = Object.assign(clone(defaultSettings), options);
 		if (onInit) {
 			options = onInit(options);
 		}

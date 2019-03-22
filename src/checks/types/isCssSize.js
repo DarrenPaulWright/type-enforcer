@@ -18,7 +18,8 @@ import { buildCustomTypeCheck } from './checks';
  * // => true
  * ```
  *
- * @function isCssSize
+ * @function is.cssSize
+ * @alias isCssSize
  *
  * @arg {*} value
  * @arg {Boolean} [coerce=false] - If true then see if the value can be coerced into a CssSize

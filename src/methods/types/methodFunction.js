@@ -6,6 +6,7 @@ import { buildMethod } from './methodAny';
  *
  * @function method.function
  * @extends method.any
+ * @alias methodFunction
  *
  * @arg {Object} [options] - Same as {@link method.any} with the following differences:
  * @arg {Function} [options.enforce=enforce.function]

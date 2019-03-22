@@ -19,6 +19,7 @@ import { coercibleEnforcer } from './enforcer';
  * ```
  *
  * @function enforce.array
+ * @alias enforceArray
  *
  * @arg {*} value
  * @arg {Array} alt - Returned if the value is not the correct type

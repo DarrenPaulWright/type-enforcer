@@ -20,13 +20,11 @@ import enforceVector from './types/enforceVector';
 /**
  * Utility functions for enforcing data types.
  *
- * ## Usage
  * ``` javascript
  * import { enforce } from 'type-enforcer';
- * ```
- * Or import individual functions
- * ``` javascript
- * import { enforceString } from 'type-enforcer';
+ *
+ * // Or import individual functions
+ * import { enforceBoolean, enforceString } from 'type-enforcer';
  * ```
  *
  * @typedef {object} enforce

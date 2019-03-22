@@ -22,6 +22,7 @@ import { coercibleEnforcer } from './enforcer';
  * ```
  *
  * @function enforce.object
+ * @alias enforceObject
  *
  * @arg {*} value
  * @arg {Object} alt - Returned if the value is not the correct type

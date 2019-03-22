@@ -19,7 +19,8 @@ import isString from './isString';
  * // => true
  * ```
  *
- * @function isRegExp
+ * @function is.regExp
+ * @alias isRegExp
  *
  * @arg {*} value
  * @arg {Boolean} [coerce=false] - If true then see if the value can be coerced into a RegExp

@@ -20,6 +20,7 @@ import { coercibleEnforcer } from './enforcer';
  * ```
  *
  * @function enforce.vector
+ * @alias enforceVector
  *
  * @arg {*} value
  * @arg {Vector}  alt - Returned if the value is not the correct type

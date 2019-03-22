@@ -1,17 +1,21 @@
 /**
- * With npm
+ * With npm:
  * ```
  * npm install type-enforcer
  * ```
  *
- * ## Compatibility
+ * <br>
  *
- * Requires:
- * - Babel >= 7.2
+ * ### Compatibility
  *
- * ## Docs
+ * > Requires:
+ * > - Babel >= 7.2
  *
- * ### Data Types
+ * <br>
+ *
+ * ### Docs
+ *
+ * #### Data Types
  * - [CssSize](docs/CssSize.md)
  * - [DockPoint](docs/DockPoint.md)
  * - [Enum](docs/Enum.md)
@@ -20,28 +24,20 @@
  * - [Thickness](docs/Thickness.md)
  * - [Vector](docs/Vector.md)
  *
- * ### Checks
+ * #### Checks
  * - [checks](docs/checks.md)
  *
- * ### Enforcement
+ * #### Enforcement
  * - [enforce](docs/enforce.md)
  *
- * ### Methods
+ * #### Methods
  * - [method](docs/method.md)
  *
- * ### Mixins
+ * #### Mixins
  * - [Removable](docs/Removable.md)
  *
- * ### Other
+ * #### Other
  * - [castArray](docs/castArray.md)
- *
- * ## Contributing
- *
- * If you add a new type be sure to add an enforce function and a method. When done, add any new types to package.json scripts (docs-newType), and add that to the docs script, then run
- * ```
- * npm run docs
- * ```
- * to generate new docs. If a new file is generated, add a link to it in the description in index.js and run the docs command again
  *
  * @name Installation
  */

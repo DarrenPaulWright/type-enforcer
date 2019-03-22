@@ -9,7 +9,8 @@
  * // => true
  * ```
  *
- * @function isElement
+ * @function is.element
+ * @alias isElement
  *
  * @arg {*} value
  *

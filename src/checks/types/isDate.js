@@ -18,7 +18,8 @@ import isInstanceOf from './isInstanceOf';
  * // => true
  * ```
  *
- * @function isDate
+ * @function is.date
+ * @alias isDate
  *
  * @arg {*} value
  * @arg {Boolean} [coerce=false] - If true then see if the value can be coerced into a Date

@@ -8,6 +8,7 @@ import { buildMethod, compareCustomType, mapEnforcerDefaultCoerceTrue } from './
  *
  * @function method.vector
  * @extends method.any
+ * @alias methodVector
  *
  * @arg {Object} [options] - Same as {@link method.any} with the following differences:
  * @arg {*} [options.init=Vector]

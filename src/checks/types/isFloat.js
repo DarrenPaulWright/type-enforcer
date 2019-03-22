@@ -20,7 +20,8 @@ const isFinite = (item) => item !== Infinity && item !== -Infinity;
  * // => true
  * ```
  *
- * @function isFloat
+ * @function is.float
+ * @alias isFloat
  *
  * @arg {*} value
  * @arg {Boolean} [coerce=false] - If true then see if the value can be coerced into a float

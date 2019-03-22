@@ -6,6 +6,7 @@ import { buildMethod, mapEnforcerNumeric } from './methodAny';
  *
  * @function method.float
  * @extends method.any
+ * @alias methodFloat
  *
  * @arg {Object} [options] - Same as {@link method.any} with the following differences:
  * @arg {Function} [options.enforce=enforce.float]

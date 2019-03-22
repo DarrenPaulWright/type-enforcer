@@ -6,6 +6,7 @@ import { buildMethod, mapEnforcer } from './methodAny';
  *
  * @function method.boolean
  * @extends method.any
+ * @alias methodBoolean
  *
  * @arg {Object} [options] - Same as {@link method.any} with the following differences:
  * @arg {*} [options.init=false]

@@ -8,6 +8,7 @@ import { buildMethod, compareCustomType, mapEnforcerDefaultCoerceTrue } from './
  *
  * @function method.thickness
  * @extends method.any
+ * @alias methodThickness
  *
  * @arg {Object} [options] - Same as {@link method.any} with the following differences:
  * @arg {Function} [options.enforce=enforce.thickness]

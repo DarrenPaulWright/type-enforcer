@@ -40,7 +40,8 @@ const typeOfMap = new Enum({
  *  => true
  * ```
  *
- * @function isInstanceOf
+ * @function is.instanceOf
+ * @alias isInstanceOf
  *
  * @arg {*} object
  * @arg {Function} constructor
@@ -51,7 +52,5 @@ export default (object, constructor) => {
 	if (object === undefined || !(typeof constructor === 'function' && constructor.prototype)) {
 		return false;
 	}
-	return object instanceof constructor
-		|| (objectStringMap[constructor] && toString.call(object) === objectStringMap[constructor])
-		|| typeof object === typeOfMap.key(constructor);
+	return object instanceof constructor || (objectStringMap[constructor] && toString.call(object) === objectStringMap[constructor]) || typeof object === typeOfMap.key(constructor);
 };

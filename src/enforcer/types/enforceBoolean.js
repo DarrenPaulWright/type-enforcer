@@ -19,6 +19,7 @@ import { coercibleEnforcer } from './enforcer';
  * ```
  *
  * @function enforce.boolean
+ * @alias enforceBoolean
  *
  * @arg {*} value
  * @arg {Boolean} alt - Returned if the value is not the correct type

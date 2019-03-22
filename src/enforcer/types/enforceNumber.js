@@ -22,6 +22,7 @@ import { numericEnforcer } from './enforcer';
  * ```
  *
  * @function enforce.number
+ * @alias enforceNumber
  *
  * @arg {*} value
  * @arg {Number} alt - Returned if the value is not the correct type

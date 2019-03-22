@@ -8,6 +8,7 @@ import { buildMethod, compareCustomType, mapEnforcerDefaultCoerceTrue } from './
  *
  * @function method.cssSize
  * @extends method.any
+ * @alias methodCssSize
  *
  * @arg {Object} [options] - Same as {@link method.any} with the following differences:
  * @arg {Function} [options.enforce=enforce.cssSize]

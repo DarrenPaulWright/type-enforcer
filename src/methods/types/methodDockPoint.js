@@ -8,6 +8,7 @@ import { buildMethod, compareCustomType, mapEnforcerDefaultCoerceTrue } from './
  *
  * @function method.dockPoint
  * @extends method.any
+ * @alias methodDockPoint
  *
  * @arg {Object} [options] - Same as {@link method.any} with the following differences:
  * @arg {Function} [options.enforce=enforce.dockPoint]

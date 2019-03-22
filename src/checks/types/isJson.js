@@ -6,7 +6,8 @@
  * import { isJson } from 'type-enforcer';
  * ```
  *
- * @function isJson
+ * @function is.json
+ * @alias isJson
  *
  * @arg {*} value
  *

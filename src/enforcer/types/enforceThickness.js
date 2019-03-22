@@ -20,6 +20,7 @@ import { coercibleEnforcer } from './enforcer';
  * ```
  *
  * @function enforce.thickness
+ * @alias enforceThickness
  *
  * @arg {*} value
  * @arg {Thickness} alt - Returned if the value is not the correct type

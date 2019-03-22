@@ -22,6 +22,7 @@ import { isInstanceOf } from '../../index';
  * ```
  *
  * @function enforce.instance
+ * @alias enforceInstance
  *
  * @arg {*} value
  * @arg {Function} constructor

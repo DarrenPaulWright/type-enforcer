@@ -1,67 +1,83 @@
-# type-enforcer
-[![npm][npm]][npm-url]
+# Type Enforcer
+
+> A type enforcement library for javascript
+>
+> [![npm][npm]][npm-url]
 [![build][build]][build-url]
-[![Coverage Status](https://coveralls.io/repos/github/DarrenPaulWright/type-enforcer/badge.svg?branch=master)](https://coveralls.io/github/DarrenPaulWright/type-enforcer?branch=master)
+[![coverage][coverage]][coverage-url]
 [![deps][deps]][deps-url]
 [![size][size]][size-url]
-[![Known Vulnerabilities](https://snyk.io/test/github/DarrenPaulWright/type-enforcer/badge.svg?targetFile=package.json)](https://snyk.io/test/github/DarrenPaulWright/type-enforcer?targetFile=package.json)
+[![vulnerabilities][vulnerabilities]][vulnerabilities-url]
+[![license][license]][license-url]
 
-A type enforcement library for javascript
-
-## Classes
+### Classes
 
 <dl>
 <dt><a href="#Removable">Removable</a></dt>
 <dd></dd>
 </dl>
 
-<a name="Removable"></a>
 
-## Removable
-**Kind**: global class  
+<br><a name="Removable"></a>
+
+### Removable
+
 
 * [Removable](#Removable)
     * [new Removable()](#new_Removable_new)
     * [.isRemoved](#Removable+isRemoved) ⇒ <code>Boolean</code>
 
-<a name="new_Removable_new"></a>
 
-### new Removable()
-A mixin that adds methods to a class to facilitate clean-up## Usage``` javascriptimport { Removable } from 'type-enforcer';class MyClass extends Removable {}```
+<br><a name="new_Removable_new"></a>
 
-<a name="Removable+isRemoved"></a>
+#### new Removable()
+> A mixin that adds methods to a class to facilitate clean-up
 
-### removable.isRemoved ⇒ <code>Boolean</code>
-If the returned value is true then remove has been called.
+``` javascript
+import { Removable } from 'type-enforcer';
 
-**Kind**: instance property of [<code>Removable</code>](#Removable)  
-<a name="remove"></a>
+class MyClass extends Removable {}
+```
+>
 
-## .remove()
-Calls all the onRemove callbacks and sets isRemoved to true
 
-**Kind**: instance function  
-<a name="onRemove"></a>
+<br><a name="Removable+isRemoved"></a>
 
-## .onRemove(callback) ⇒ <code>Queue</code>
-Adds a callback to a [Queue](docs/Queue.md) that gets triggered when the "remove" method is called
+#### removable.isRemoved ⇒ <code>Boolean</code>
+> If the returned value is true then remove has been called.
+>
 
-**Kind**: instance function  
+
+<br><a name="remove"></a>
+
+### .remove()
+> Calls all the onRemove callbacks and sets isRemoved to true
+>
+
+
+<br><a name="onRemove"></a>
+
+### .onRemove(callback) ⇒ <code>Queue</code>
+> Adds a callback to a [Queue](docs/Queue.md) that gets triggered when the "remove" method is called
+>
+
 
 | Param | Type |
 | --- | --- |
 | callback | <code>function</code> | 
 
 
-## License
-
-[MIT](LICENSE.md)
-
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg
 [npm-url]: https://npmjs.com/package/type-enforcer
-[build]: https://travis-ci.org/DarrenPaulWright/type-enforcer.svg?branch=master
+[build]: https://travis-ci.org/DarrenPaulWright/type-enforcer.svg?branch&#x3D;master
 [build-url]: https://travis-ci.org/DarrenPaulWright/type-enforcer
+[coverage]: https://coveralls.io/repos/github/DarrenPaulWright/type-enforcer/badge.svg?branch&#x3D;master
+[coverage-url]: https://coveralls.io/github/DarrenPaulWright/type-enforcer?branch&#x3D;master
 [deps]: https://david-dm.org/darrenpaulwright/type-enforcer.svg
 [deps-url]: https://david-dm.org/darrenpaulwright/type-enforcer
-[size]: https://packagephobia.now.sh/badge?p=type-enforcer
-[size-url]: https://packagephobia.now.sh/result?p=type-enforcer
+[size]: https://packagephobia.now.sh/badge?p&#x3D;type-enforcer
+[size-url]: https://packagephobia.now.sh/result?p&#x3D;type-enforcer
+[vulnerabilities]: https://snyk.io/test/github/DarrenPaulWright/type-enforcer/badge.svg?targetFile&#x3D;package.json
+[vulnerabilities-url]: https://snyk.io/test/github/DarrenPaulWright/type-enforcer?targetFile&#x3D;package.json
+[license]: https://img.shields.io/github/license/DarrenPaulWright/type-enforcer.svg
+[license-url]: https://npmjs.com/package/type-enforcer/LICENSE.md

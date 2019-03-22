@@ -18,7 +18,8 @@ import isInstanceOf from './isInstanceOf';
  * // => true
  * ```
  *
- * @function isBoolean
+ * @function is.boolean
+ * @alias isBoolean
  *
  * @arg {*} value
  * @arg {Boolean} [coerce=false] - If true then see if the value can be coerced into a boolean. Always returns true, as _everything_ can be coerced into a boolean.

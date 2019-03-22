@@ -21,7 +21,8 @@ import isNumber from './isNumber';
  * // => false
  * ```
  *
- * @function isInteger
+ * @function is.integer
+ * @alias isInteger
  *
  * @arg {*} value
  * @arg {Boolean} [coerce=false] - If true then see if the value can be coerced into an Integer

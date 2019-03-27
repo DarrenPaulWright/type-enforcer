@@ -15,7 +15,6 @@
 
 ### DockPoint
 
-
 * [DockPoint](#DockPoint)
     * [new DockPoint([value])](#new_DockPoint_new)
     * _instance_
@@ -39,11 +38,10 @@
 
 #### new DockPoint([value])
 > Allows the designation of a specific point relative to an object.
-
-``` javascript
-import { DockPoint } from 'type-enforcer';
-```
->
+> 
+> ``` javascript
+> import { DockPoint } from 'type-enforcer';
+> ```
 
 
 | Param | Type | Default | Description |
@@ -55,23 +53,20 @@ import { DockPoint } from 'type-enforcer';
 
 #### dockPoint.oppositePrimary ⇒ <code>String</code>
 > Get the opposite of the current primary
->
-> **Returns**: <code>String</code> - DockPoint.BASIC_POINTS<br>
 
+**Returns**: <code>String</code> - DockPoint.BASIC_POINTS  
 
 <br><a name="DockPoint+oppositeSecondary"></a>
 
 #### dockPoint.oppositeSecondary ⇒ <code>String</code>
 > Get the opposite of the current secondary
->
-> **Returns**: <code>String</code> - DockPoint.BASIC_POINTS<br>
 
+**Returns**: <code>String</code> - DockPoint.BASIC_POINTS  
 
 <br><a name="DockPoint+has"></a>
 
 #### dockPoint.has(value) ⇒ <code>boolean</code>
 > Determine either the primary or secondary is equivalent to a value
->
 
 
 | Param | Type | Description |
@@ -83,21 +78,18 @@ import { DockPoint } from 'type-enforcer';
 
 #### dockPoint.swapHorizontal()
 > Set the left or right value to the opposite, whether it's the primary or secondary
->
 
 
 <br><a name="DockPoint+swapVertical"></a>
 
 #### dockPoint.swapVertical()
 > Set the top or bottom value to the opposite, whether it's the primary or secondary
->
 
 
 <br><a name="DockPoint+isSame"></a>
 
 #### dockPoint.isSame(dockPoint) ⇒ <code>boolean</code>
 > Determine if another DockPoint is equivalent to this one
->
 
 
 | Param | Type |
@@ -109,16 +101,14 @@ import { DockPoint } from 'type-enforcer';
 
 #### dockPoint.toString() ⇒ <code>String</code>
 > Get the current value as a string
->
 
 
 <br><a name="DockPoint+primary"></a>
 
 #### dockPoint.primary([value]) ⇒ <code>this</code> \| <code>String</code>
 > The primary value
->
-> **Returns**: <code>this</code> \| <code>String</code> - DockPoint.BASIC_POINTS<br>
 
+**Returns**: <code>this</code> \| <code>String</code> - DockPoint.BASIC_POINTS  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -129,9 +119,8 @@ import { DockPoint } from 'type-enforcer';
 
 #### dockPoint.secondary([value]) ⇒ <code>this</code> \| <code>String</code>
 > The secondary value
->
-> **Returns**: <code>this</code> \| <code>String</code> - DockPoint.BASIC_POINTS<br>
 
+**Returns**: <code>this</code> \| <code>String</code> - DockPoint.BASIC_POINTS  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -142,9 +131,8 @@ import { DockPoint } from 'type-enforcer';
 
 #### dockPoint.value([value]) ⇒ <code>this</code> \| <code>String</code>
 > The full value
->
-> **Returns**: <code>this</code> \| <code>String</code> - DockPoint.POINTS<br>
 
+**Returns**: <code>this</code> \| <code>String</code> - DockPoint.POINTS  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -155,17 +143,14 @@ import { DockPoint } from 'type-enforcer';
 
 #### DockPoint.BASIC\_POINTS : <code>Enum</code>
 
-
 <br><a name="DockPoint.POINTS"></a>
 
 #### DockPoint.POINTS : <code>Enum</code>
-
 
 <br><a name="DockPoint.isValid"></a>
 
 #### DockPoint.isValid(value) ⇒ <code>boolean</code>
 > Determine if something is a valid dock point
->
 
 
 | Param | Type |

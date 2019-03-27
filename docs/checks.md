@@ -14,8 +14,7 @@
 <br><a name="is"></a>
 
 ### is : <code>object</code>
-> Utility functions for checking if something is a particular data type.``` javascriptimport { is } from 'type-enforcer';// Or import individual functionsimport { isBoolean, isString } from 'type-enforcer';```
->
+> Utility functions for checking if something is a particular data type.> > ``` javascript> import { is } from 'type-enforcer';> > // Or import individual functions> import { isBoolean, isString } from 'type-enforcer';> ```
 
 
 * [is](#is) : <code>object</code>
@@ -43,9 +42,8 @@
 
 #### is.array(value, [coerce]) ⇒ <code>Boolean</code>
 > Check if a value is an array
->
-> **Alias:** `isArray`
-<br>
+
+**Alias:** `isArray`
 
 
 | Param | Type | Default | Description |
@@ -60,9 +58,8 @@
 
 #### is.boolean(value, [coerce]) ⇒ <code>Boolean</code>
 > Check if a value is a boolean
->
-> **Alias:** `isBoolean`
-<br>
+
+**Alias:** `isBoolean`
 
 
 | Param | Type | Default | Description |
@@ -88,9 +85,8 @@ isBoolean('a string', true);
 
 #### is.cssSize(value, [coerce]) ⇒ <code>Boolean</code>
 > Check if a value is a [CssSize](docs/CssSize.md)
->
-> **Alias:** `isCssSize`
-<br>
+
+**Alias:** `isCssSize`
 
 
 | Param | Type | Default | Description |
@@ -105,9 +101,8 @@ isBoolean('a string', true);
 
 #### is.date(value, [coerce]) ⇒ <code>Boolean</code>
 > Check if a value is a date
->
-> **Alias:** `isDate`
-<br>
+
+**Alias:** `isDate`
 
 
 | Param | Type | Default | Description |
@@ -122,9 +117,8 @@ isBoolean('a string', true);
 
 #### is.dockPoint(value, [coerce]) ⇒ <code>Boolean</code>
 > Check if a value is a [DockPoint](docs/DockPoint.md)
->
-> **Alias:** `isDockPoint`
-<br>
+
+**Alias:** `isDockPoint`
 
 
 | Param | Type | Default | Description |
@@ -139,9 +133,8 @@ isBoolean('a string', true);
 
 #### is.element(value) ⇒ <code>Boolean</code>
 > Check if a value is a DOM element
->
-> **Alias:** `isElement`
-<br>
+
+**Alias:** `isElement`
 
 
 | Param | Type |
@@ -155,9 +148,8 @@ isBoolean('a string', true);
 
 #### is.float(value, [coerce]) ⇒ <code>Boolean</code>
 > Check if a value is a finite float
->
-> **Alias:** `isFloat`
-<br>
+
+**Alias:** `isFloat`
 
 
 | Param | Type | Default | Description |
@@ -183,9 +175,8 @@ isFloat('3.14159', true);
 
 #### is.function(value) ⇒ <code>Boolean</code>
 > Check if a value is a function
->
-> **Alias:** `isFunction`
-<br>
+
+**Alias:** `isFunction`
 
 
 | Param | Type |
@@ -204,9 +195,8 @@ isFunction(() => {});
 
 #### is.instanceOf(object, constructor) ⇒ <code>Boolean</code>
 > Check if a value is an instance of a constructor. Fixes issues with native instanceOf and primitives Boolean, Number, and String (see example).
->
-> **Alias:** `isInstanceOf`
-<br>
+
+**Alias:** `isInstanceOf`
 
 
 | Param | Type |
@@ -241,9 +231,8 @@ isInstanceOf('a string', String);
 
 #### is.integer(value, [coerce]) ⇒ <code>Boolean</code>
 > Check if a value is a finite integer
->
-> **Alias:** `isInteger`
-<br>
+
+**Alias:** `isInteger`
 
 
 | Param | Type | Default | Description |
@@ -272,9 +261,8 @@ isInteger('42.5', true);
 
 #### is.json(value) ⇒ <code>Boolean</code>
 > Check if a value can be parsed as JSON
->
-> **Alias:** `isJson`
-<br>
+
+**Alias:** `isJson`
 
 
 | Param | Type |
@@ -290,9 +278,8 @@ import { isJson } from 'type-enforcer';
 
 #### is.number(value, [coerce]) ⇒ <code>Boolean</code>
 > Check if a value is a number
->
-> **Alias:** `isNumber`
-<br>
+
+**Alias:** `isNumber`
 
 
 | Param | Type | Default | Description |
@@ -318,9 +305,8 @@ isNumber('3.14159', true);
 
 #### is.object(value, [coerce]) ⇒ <code>Boolean</code>
 > Check if a value is a plain object
->
-> **Alias:** `isObject`
-<br>
+
+**Alias:** `isObject`
 
 
 | Param | Type | Default | Description |
@@ -335,9 +321,8 @@ isNumber('3.14159', true);
 
 #### is.point(value, [coerce]) ⇒ <code>Boolean</code>
 > Check if a value is a [Point](docs/Point.md)
->
-> **Alias:** `isPoint`
-<br>
+
+**Alias:** `isPoint`
 
 
 | Param | Type | Default | Description |
@@ -352,9 +337,8 @@ isNumber('3.14159', true);
 
 #### is.regExp(value, [coerce]) ⇒ <code>Boolean</code>
 > Check if a value is a RegExp
->
-> **Alias:** `isRegExp`
-<br>
+
+**Alias:** `isRegExp`
 
 
 | Param | Type | Default | Description |
@@ -369,9 +353,8 @@ isNumber('3.14159', true);
 
 #### is.string(value, [coerce]) ⇒ <code>Boolean</code>
 > Check if a value is a string
->
-> **Alias:** `isString`
-<br>
+
+**Alias:** `isString`
 
 
 | Param | Type | Default | Description |
@@ -386,9 +369,8 @@ isNumber('3.14159', true);
 
 #### is.thickness(value, [coerce]) ⇒ <code>Boolean</code>
 > Check if a value is a [Thickness](docs/Thickness.md)
->
-> **Alias:** `isThickness`
-<br>
+
+**Alias:** `isThickness`
 
 
 | Param | Type | Default | Description |
@@ -403,9 +385,8 @@ isNumber('3.14159', true);
 
 #### is.vector(value, [coerce]) ⇒ <code>Boolean</code>
 > Check if a value is a [Vector](docs/Vector.md)
->
-> **Alias:** `isVector`
-<br>
+
+**Alias:** `isVector`
 
 
 | Param | Type | Default | Description |

@@ -15,7 +15,6 @@
 
 ### Point
 
-
 * [Point](#Point)
     * [new Point([x], [y])](#new_Point_new)
     * _instance_
@@ -36,7 +35,6 @@
 
 #### new Point([x], [y])
 > Point model with helper methods
->
 
 
 | Param | Type | Default |
@@ -73,7 +71,6 @@ console.log(point4.y);
 
 #### point.set(x, y) ⇒ <code>this</code>
 > Set x and y
->
 
 
 | Param | Type |
@@ -86,7 +83,6 @@ console.log(point4.y);
 
 #### point.toString([suffix]) ⇒ <code>String</code>
 > Get the point as a string with an optional suffix
->
 
 
 | Param | Type |
@@ -98,7 +94,6 @@ console.log(point4.y);
 
 #### point.isSame(point2) ⇒ <code>Boolean</code>
 > Determine if another point is the same as this one
->
 
 
 | Param | Type |
@@ -110,7 +105,6 @@ console.log(point4.y);
 
 #### point.add(point2) ⇒ <code>Boolean</code>
 > Adds the coordinates of another point to this one and returns a new point
->
 
 
 | Param | Type |
@@ -122,7 +116,6 @@ console.log(point4.y);
 
 #### point.subtract(point2) ⇒ <code>Boolean</code>
 > Subtracts the coordinates of another point from this one and returns a new point
->
 
 
 | Param | Type |
@@ -134,21 +127,18 @@ console.log(point4.y);
 
 #### point.distance() ⇒ <code>Number</code>
 > Finds the distance from point to origin
->
 
 
 <br><a name="Point+angle"></a>
 
 #### point.angle() ⇒ <code>Boolean</code>
 > Finds the angle to this point from origin
->
 
 
 <br><a name="Point+pointAtDistance"></a>
 
 #### point.pointAtDistance(angle, distance) ⇒ <code>Boolean</code>
 > Returns a new point at a specific angle and distance from this point
->
 
 
 | Param | Type |
@@ -161,14 +151,12 @@ console.log(point4.y);
 
 #### point.clone() ⇒ <code>Boolean</code>
 > Get a clone of this point
->
 
 
 <br><a name="Point.isValid"></a>
 
 #### Point.isValid(value) ⇒ <code>boolean</code>
 > Determine if something is a valid point
->
 
 
 | Param | Type |

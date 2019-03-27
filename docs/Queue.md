@@ -15,7 +15,6 @@
 
 ### Queue
 
-
 * [Queue](#Queue)
     * [new Queue()](#new_Queue_new)
     * [.length](#Queue+length) ⇒ <code>number</code>
@@ -31,34 +30,30 @@
 
 #### new Queue()
 > A simple queue for callbacks that allows for adding, removing, and triggering all or specific callbacks
-
-``` javascript
-import { Queue } from 'type-enforcer';
-```
->
+> 
+> ``` javascript
+> import { Queue } from 'type-enforcer';
+> ```
 
 
 <br><a name="Queue+length"></a>
 
 #### queue.length ⇒ <code>number</code>
 > The total number of current callbacks in this queue.
->
 
 
 <br><a name="Queue+isBusy"></a>
 
 #### queue.isBusy ⇒ <code>boolean</code>
 > See if this queue is currently executing callbacks.
->
 
 
 <br><a name="Queue+add"></a>
 
 #### queue.add(callback, data) ⇒ <code>Number</code>
 > Add a callback to the queue.
->
-> **Returns**: <code>Number</code> - A unique ID for this callback.<br>
 
+**Returns**: <code>Number</code> - A unique ID for this callback.  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -70,9 +65,8 @@ import { Queue } from 'type-enforcer';
 
 #### queue.discard(ID) ⇒ <code>Object</code>
 > Remove a specific callback from the queue.
->
-> **Returns**: <code>Object</code> - The data object added with this callback<br>
 
+**Returns**: <code>Object</code> - The data object added with this callback  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -83,14 +77,12 @@ import { Queue } from 'type-enforcer';
 
 #### queue.discardAll()
 > Remove ALL callbacks from the queue.
->
 
 
 <br><a name="Queue+trigger"></a>
 
 #### queue.trigger([ID], [extraArguments], [context]) ⇒ <code>this</code>
 > Triggers one or all callbacks.
->
 
 
 | Param | Type | Description |
@@ -104,7 +96,6 @@ import { Queue } from 'type-enforcer';
 
 #### queue.triggerFirst([extraArguments], [context]) ⇒ <code>this</code>
 > Triggers the first callback and removes it from the queue.
->
 
 
 | Param | Type | Description |

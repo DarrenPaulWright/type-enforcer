@@ -15,7 +15,6 @@
 
 ### CssSize
 
-
 * [CssSize](#CssSize)
     * [new CssSize([size])](#new_CssSize_new)
     * _instance_
@@ -37,11 +36,10 @@
 
 #### new CssSize([size])
 > A class for css sizes
-
-``` javascript
-import { CssSize } from 'type-enforcer';
-```
->
+> 
+> ``` javascript
+> import { CssSize } from 'type-enforcer';
+> ```
 
 
 | Param | Type | Default |
@@ -53,42 +51,36 @@ import { CssSize } from 'type-enforcer';
 
 #### cssSize.units ⇒ <code>String</code>
 > Get the units portion of the current value
->
 
 
 <br><a name="CssSize+value"></a>
 
 #### cssSize.value ⇒ <code>Number</code>
 > Get the numeric portion of the current value
->
 
 
 <br><a name="CssSize+isAuto"></a>
 
 #### cssSize.isAuto ⇒ <code>boolean</code>
 > Determine if the current value is 'auto'
->
 
 
 <br><a name="CssSize+isFixed"></a>
 
 #### cssSize.isFixed ⇒ <code>boolean</code>
 > Determine if the current value is a fixed size
->
 
 
 <br><a name="CssSize+isPercent"></a>
 
 #### cssSize.isPercent ⇒ <code>boolean</code>
 > Determine if the current value is a percent size
->
 
 
 <br><a name="CssSize+set"></a>
 
 #### cssSize.set(size) ⇒ <code>this</code>
 > Set the value
->
 
 
 | Param | Type | Description |
@@ -100,7 +92,6 @@ import { CssSize } from 'type-enforcer';
 
 #### cssSize.toPixels([isNumber]) ⇒ <code>Number</code> \| <code>String</code>
 > Get the pixel equivalent of the current value
->
 
 
 | Param | Type | Default | Description |
@@ -112,7 +103,6 @@ import { CssSize } from 'type-enforcer';
 
 #### cssSize.isSame(size) ⇒ <code>boolean</code>
 > Determine if another size is equivalent to this one
->
 
 
 | Param | Type |
@@ -124,14 +114,12 @@ import { CssSize } from 'type-enforcer';
 
 #### cssSize.toString() ⇒ <code>String</code>
 > Get the current value as a string
->
 
 
 <br><a name="CssSize+element"></a>
 
 #### cssSize.element([element]) ⇒ <code>this</code> \| <code>Element</code>
 > Set the element to measure font based units against
->
 
 
 | Param | Type | Description |
@@ -143,7 +131,6 @@ import { CssSize } from 'type-enforcer';
 
 #### CssSize.isValid(value) ⇒ <code>boolean</code>
 > Determine if something is a valid css size
->
 
 
 | Param | Type |

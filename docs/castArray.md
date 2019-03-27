@@ -15,7 +15,6 @@
 
 ### castArray(value) ⇒ <code>Array</code>
 > Casts a value to an array.
->
 
 
 | Param | Type |

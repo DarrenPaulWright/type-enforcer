@@ -15,7 +15,6 @@
 
 ### Vector
 
-
 * [Vector](#Vector)
     * [new Vector([start], [end])](#new_Vector_new)
     * _instance_
@@ -35,11 +34,10 @@
 
 #### new Vector([start], [end])
 > Vector model with helper types
-
-``` javascript
-import { Vector } from 'type-enforcer';
-```
->
+> 
+> ``` javascript
+> import { Vector } from 'type-enforcer';
+> ```
 
 
 | Param | Type |
@@ -52,7 +50,6 @@ import { Vector } from 'type-enforcer';
 
 #### vector.isSame(vector2) ⇒ <code>Boolean</code>
 > Determine if another vector is the same as this one
->
 
 
 | Param | Type |
@@ -64,21 +61,18 @@ import { Vector } from 'type-enforcer';
 
 #### vector.invert()
 > Switch the start and end points
->
 
 
 <br><a name="Vector+toString"></a>
 
 #### vector.toString()
 > Get a string representation of the vector
->
 
 
 <br><a name="Vector+start"></a>
 
 #### vector.start([point]) ⇒ <code>this</code> \| <code>Point</code>
 > The start point
->
 
 
 | Param | Type |
@@ -90,7 +84,6 @@ import { Vector } from 'type-enforcer';
 
 #### vector.end([point]) ⇒ <code>this</code> \| <code>Point</code>
 > The end point
->
 
 
 | Param | Type |
@@ -102,7 +95,6 @@ import { Vector } from 'type-enforcer';
 
 #### vector.length([length]) ⇒ <code>this</code> \| <code>Number</code>
 > The length of the vector. Resets the end point.
->
 
 
 | Param | Type |
@@ -114,7 +106,6 @@ import { Vector } from 'type-enforcer';
 
 #### vector.angle([angle]) ⇒ <code>this</code> \| <code>Number</code>
 > The angle from the start point to the end point. Resets the end point
->
 
 
 | Param | Type |
@@ -126,7 +117,6 @@ import { Vector } from 'type-enforcer';
 
 #### vector.offset([point]) ⇒ <code>this</code> \| <code>Point</code>
 > The x and y difference represented as a point
->
 
 
 | Param | Type |
@@ -138,7 +128,6 @@ import { Vector } from 'type-enforcer';
 
 #### Vector.isValid(value) ⇒ <code>boolean</code>
 > Determine if something is a valid Vector
->
 
 
 | Param | Type |

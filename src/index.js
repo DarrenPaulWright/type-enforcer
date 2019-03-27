@@ -4,17 +4,15 @@
  * npm install type-enforcer
  * ```
  *
- * <br>
+ * @name Installation
+ */
+/**
+ * Requires:
+ * - Babel >= 7.2
  *
- * ### Compatibility
- *
- * > Requires:
- * > - Babel >= 7.2
- *
- * <br>
- *
- * ### Docs
- *
+ * @name Compatibility
+ */
+/**
  * #### Data Types
  * - [CssSize](docs/CssSize.md)
  * - [DockPoint](docs/DockPoint.md)
@@ -39,7 +37,7 @@
  * #### Other
  * - [castArray](docs/castArray.md)
  *
- * @name Installation
+ * @name Docs
  */
 export { default as is } from './checks/is';
 export { default as isArray } from './checks/types/isArray';

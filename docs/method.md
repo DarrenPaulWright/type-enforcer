@@ -15,14 +15,13 @@
 
 ### method : <code>object</code>
 > Enforce data types and remove common boilerplate code on class methods.
-
-``` javascript
-import { method } from 'type-enforcer';
-
-// Or import individual functions
-import { methodBoolean, methodString } from 'type-enforcer';
-```
->
+> 
+> ``` javascript
+> import { method } from 'type-enforcer';
+> 
+> // Or import individual functions
+> import { methodBoolean, methodString } from 'type-enforcer';
+> ```
 
 **Example**  
 ``` javascript
@@ -72,11 +71,10 @@ const Thing = function() {
 
 #### method.any([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting any data type
->
-> **Alias:** `methodAny`
-<br>
-> **Returns**: <code>function</code> - if a "before" or "set" option is set, then this function accepts two args: a new value and forceSave override. If no args are provided then the current value is returned. If neither "before" nor "set" is set, then only one arg is accepted, the new value. Also returns the current value if no args are provided.<br>
 
+**Alias:** `methodAny`
+
+**Returns**: <code>function</code> - if a "before" or "set" option is set, then this function accepts two args: a new value and forceSave override. If no args are provided then the current value is returned. If neither "before" nor "set" is set, then only one arg is accepted, the new value. Also returns the current value if no args are provided.  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -128,11 +126,10 @@ widget.thirdMethod();
 
 #### method.array([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting an array
->
-> **Alias:** `methodArray`
-<br>
-> **Extends**: [<code>any</code>](#method.any)<br>
 
+**Alias:** `methodArray`
+
+**Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -148,11 +145,10 @@ widget.thirdMethod();
 
 #### method.boolean([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting a boolean
->
-> **Alias:** `methodBoolean`
-<br>
-> **Extends**: [<code>any</code>](#method.any)<br>
 
+**Alias:** `methodBoolean`
+
+**Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -166,11 +162,10 @@ widget.thirdMethod();
 
 #### method.cssSize([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting a [CssSize](docs/CssSize.md)
->
-> **Alias:** `methodCssSize`
-<br>
-> **Extends**: [<code>any</code>](#method.any)<br>
 
+**Alias:** `methodCssSize`
+
+**Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -184,11 +179,10 @@ widget.thirdMethod();
 
 #### method.date([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting a date
->
-> **Alias:** `methodDate`
-<br>
-> **Extends**: [<code>any</code>](#method.any)<br>
 
+**Alias:** `methodDate`
+
+**Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -201,11 +195,10 @@ widget.thirdMethod();
 
 #### method.dockPoint([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting a [DockPoint](docs/DockPoint.md)
->
-> **Alias:** `methodDockPoint`
-<br>
-> **Extends**: [<code>any</code>](#method.any)<br>
 
+**Alias:** `methodDockPoint`
+
+**Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -219,11 +212,10 @@ widget.thirdMethod();
 
 #### method.element([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting a DOM element
->
-> **Alias:** `methodElement`
-<br>
-> **Extends**: [<code>any</code>](#method.any)<br>
 
+**Alias:** `methodElement`
+
+**Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -235,11 +227,10 @@ widget.thirdMethod();
 
 #### method.enum([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting an enumerable value in an [Enum](docs/Enum.md)
->
-> **Alias:** `methodEnum`
-<br>
-> **Extends**: [<code>any</code>](#method.any)<br>
 
+**Alias:** `methodEnum`
+
+**Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -252,11 +243,10 @@ widget.thirdMethod();
 
 #### method.float([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting a float
->
-> **Alias:** `methodFloat`
-<br>
-> **Extends**: [<code>any</code>](#method.any)<br>
 
+**Alias:** `methodFloat`
+
+**Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -271,11 +261,10 @@ widget.thirdMethod();
 
 #### method.function([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting a function
->
-> **Alias:** `methodFunction`
-<br>
-> **Extends**: [<code>any</code>](#method.any)<br>
 
+**Alias:** `methodFunction`
+
+**Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -287,11 +276,10 @@ widget.thirdMethod();
 
 #### method.instance([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting an instance of a specific constructor
->
-> **Alias:** `methodInstance`
-<br>
-> **Extends**: [<code>any</code>](#method.any)<br>
 
+**Alias:** `methodInstance`
+
+**Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -304,11 +292,10 @@ widget.thirdMethod();
 
 #### method.int([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting an integer
->
-> **Alias:** `methodInteger`
-<br>
-> **Extends**: [<code>any</code>](#method.any)<br>
 
+**Alias:** `methodInteger`
+
+**Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -323,11 +310,10 @@ widget.thirdMethod();
 
 #### method.keyValue([options]) ⇒ <code>function</code>
 > Builds a chainable method that accepts either a key and a value or an object with multiple key/value pairs.
->
-> **Alias:** `methodKeyValue`
-<br>
-> **Returns**: <code>function</code> - Accepts a new value and returns the methods constructor (allows chaining), or if no args are passed returns the output of options.get<br>
 
+**Alias:** `methodKeyValue`
+
+**Returns**: <code>function</code> - Accepts a new value and returns the methods constructor (allows chaining), or if no args are passed returns the output of options.get  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -340,11 +326,10 @@ widget.thirdMethod();
 
 #### method.number([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting a number
->
-> **Alias:** `methodNumber`
-<br>
-> **Extends**: [<code>any</code>](#method.any)<br>
 
+**Alias:** `methodNumber`
+
+**Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -359,11 +344,10 @@ widget.thirdMethod();
 
 #### method.object([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting a plain object
->
-> **Alias:** `methodObject`
-<br>
-> **Extends**: [<code>any</code>](#method.any)<br>
 
+**Alias:** `methodObject`
+
+**Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -378,11 +362,10 @@ widget.thirdMethod();
 
 #### method.point([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting a [Point](docs/Point.md)
->
-> **Alias:** `methodPoint`
-<br>
-> **Extends**: [<code>any</code>](#method.any)<br>
 
+**Alias:** `methodPoint`
+
+**Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -397,11 +380,10 @@ widget.thirdMethod();
 
 #### method.queue([options]) ⇒ <code>function</code>
 > Builds a chainable method that implements a [Queue](docs/Queue.md)
->
-> **Alias:** `methodQueue`
-<br>
-> **Returns**: <code>function</code> - accepts a new value and returns the methods constructor (allows chaining), or if no args are passed returns the instance of Queue<br>
 
+**Alias:** `methodQueue`
+
+**Returns**: <code>function</code> - accepts a new value and returns the methods constructor (allows chaining), or if no args are passed returns the instance of Queue  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -413,11 +395,10 @@ widget.thirdMethod();
 
 #### method.regExp([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting a RegExp
->
-> **Alias:** `methodRegExp`
-<br>
-> **Extends**: [<code>any</code>](#method.any)<br>
 
+**Alias:** `methodRegExp`
+
+**Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -431,11 +412,10 @@ widget.thirdMethod();
 
 #### method.string([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting a string
->
-> **Alias:** `methodString`
-<br>
-> **Extends**: [<code>any</code>](#method.any)<br>
 
+**Alias:** `methodString`
+
+**Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -449,11 +429,10 @@ widget.thirdMethod();
 
 #### method.thickness([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting a [Thickness](docs/Thickness.md)
->
-> **Alias:** `methodThickness`
-<br>
-> **Extends**: [<code>any</code>](#method.any)<br>
 
+**Alias:** `methodThickness`
+
+**Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -467,11 +446,10 @@ widget.thirdMethod();
 
 #### method.vector([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting a [Vector](docs/Vector.md)
->
-> **Alias:** `methodVector`
-<br>
-> **Extends**: [<code>any</code>](#method.any)<br>
 
+**Alias:** `methodVector`
+
+**Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |

@@ -10,18 +10,10 @@
 [![vulnerabilities][vulnerabilities]][vulnerabilities-url]
 [![license][license]][license-url]
 
-### Classes
-
-<dl>
-<dt><a href="#Removable">Removable</a></dt>
-<dd></dd>
-</dl>
-
 
 <br><a name="Removable"></a>
 
 ### Removable
-
 
 * [Removable](#Removable)
     * [new Removable()](#new_Removable_new)
@@ -32,34 +24,30 @@
 
 #### new Removable()
 > A mixin that adds methods to a class to facilitate clean-up
-
-``` javascript
-import { Removable } from 'type-enforcer';
-
-class MyClass extends Removable {}
-```
->
+> 
+> ``` javascript
+> import { Removable } from 'type-enforcer';
+> 
+> class MyClass extends Removable {}
+> ```
 
 
 <br><a name="Removable+isRemoved"></a>
 
 #### removable.isRemoved ⇒ <code>Boolean</code>
 > If the returned value is true then remove has been called.
->
 
 
 <br><a name="remove"></a>
 
 ### .remove()
 > Calls all the onRemove callbacks and sets isRemoved to true
->
 
 
 <br><a name="onRemove"></a>
 
 ### .onRemove(callback) ⇒ <code>Queue</code>
 > Adds a callback to a [Queue](docs/Queue.md) that gets triggered when the "remove" method is called
->
 
 
 | Param | Type |

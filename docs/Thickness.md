@@ -15,7 +15,6 @@
 
 ### Thickness
 
-
 * [Thickness](#Thickness)
     * [new Thickness([top], [right], [bottom], [left])](#new_Thickness_new)
     * _instance_
@@ -37,7 +36,6 @@
 
 #### new Thickness([top], [right], [bottom], [left])
 > Replicates the functionality of css border-width, margin, and padding, or anything that requires top, right, bottom, and left css sizes.
->
 
 
 | Param | Type | Description |
@@ -77,51 +75,44 @@ console.log(thickness5.toString());
 
 #### thickness.top : <code>CssSize</code>
 > The top size
->
 
 
 <br><a name="Thickness+right"></a>
 
 #### thickness.right : <code>CssSize</code>
 > The right size
->
 
 
 <br><a name="Thickness+bottom"></a>
 
 #### thickness.bottom : <code>CssSize</code>
 > The bottom size
->
 
 
 <br><a name="Thickness+left"></a>
 
 #### thickness.left : <code>CssSize</code>
 > The left size
->
 
 
 <br><a name="Thickness+horizontal"></a>
 
 #### thickness.horizontal : <code>Number</code>
 > Get the sum of the right and left
->
 
-> `Read only`<br>
+`Read only`<br>
 
 <br><a name="Thickness+vertical"></a>
 
 #### thickness.vertical : <code>Number</code>
 > Get the sum of the top and bottom
->
 
-> `Read only`<br>
+`Read only`<br>
 
 <br><a name="Thickness+set"></a>
 
 #### thickness.set([top], [right], [bottom], [left]) ⇒ <code>boolean</code>
 > Set the sizes of all sides
->
 
 
 | Param | Type |
@@ -136,7 +127,6 @@ console.log(thickness5.toString());
 
 #### thickness.isSame(thickness) ⇒ <code>Boolean</code>
 > Determine if another thickness is the same as this one
->
 
 
 | Param | Type |
@@ -148,14 +138,12 @@ console.log(thickness5.toString());
 
 #### thickness.toString() ⇒ <code>String</code>
 > Get this thickness as a space separated string
->
 
 
 <br><a name="Thickness+element"></a>
 
 #### thickness.element([element]) ⇒ <code>this</code> \| <code>Element</code>
 > Set the element to measure font based units against
->
 
 
 | Param | Type | Description |
@@ -167,7 +155,6 @@ console.log(thickness5.toString());
 
 #### Thickness.isValid(value) ⇒ <code>boolean</code>
 > Determine if something is a valid Thickness
->
 
 
 | Param | Type |

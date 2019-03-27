@@ -15,7 +15,6 @@
 
 ### Enum
 
-
 * [Enum](#Enum)
     * [new Enum(object)](#new_Enum_new)
     * [.has(value)](#Enum+has) ⇒ <code>boolean</code>
@@ -27,11 +26,10 @@
 
 #### new Enum(object)
 > Freezes an enumerable object and adds a few helper methods
-
-``` javascript
-import { Enum } from 'type-enforcer';
-```
->
+> 
+> ``` javascript
+> import { Enum } from 'type-enforcer';
+> ```
 
 
 | Param | Type |
@@ -43,7 +41,6 @@ import { Enum } from 'type-enforcer';
 
 #### enum.has(value) ⇒ <code>boolean</code>
 > Check if a provided value is in this enum
->
 
 
 | Param | Type |
@@ -55,7 +52,6 @@ import { Enum } from 'type-enforcer';
 
 #### enum.key(value) ⇒ <code>String</code>
 > Get the key of a provided value
->
 
 
 | Param | Type |
@@ -67,17 +63,16 @@ import { Enum } from 'type-enforcer';
 
 #### enum.each(callback)
 > Calls a callback with each of the enum values
-``` javascript
-const items = new Enum({
-    THING: 'thing'
-});
-
-items.each((value) => {
-    console.log(value);
-});
-// => 'thing'
-```
->
+> ``` javascript
+> const items = new Enum({
+>     THING: 'thing'
+> });
+> 
+> items.each((value) => {
+>     console.log(value);
+> });
+> // => 'thing'
+> ```
 
 
 | Param | Type |

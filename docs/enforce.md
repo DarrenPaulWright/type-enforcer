@@ -15,14 +15,13 @@
 
 ### enforce : <code>object</code>
 > Utility functions for enforcing data types.
-
-``` javascript
-import { enforce } from 'type-enforcer';
-
-// Or import individual functions
-import { enforceBoolean, enforceString } from 'type-enforcer';
-```
->
+> 
+> ``` javascript
+> import { enforce } from 'type-enforcer';
+> 
+> // Or import individual functions
+> import { enforceBoolean, enforceString } from 'type-enforcer';
+> ```
 
 
 * [enforce](#enforce) : <code>object</code>
@@ -50,9 +49,8 @@ import { enforceBoolean, enforceString } from 'type-enforcer';
 
 #### enforce.array(value, alt, [coerce]) ⇒ <code>Array</code>
 > Enforce that a value is an array. Uses [isArray](docs/checks.md#isArray).
->
-> **Alias:** `enforceArray`
-<br>
+
+**Alias:** `enforceArray`
 
 
 | Param | Type | Default | Description |
@@ -79,9 +77,8 @@ enforce.array('[]', ['alt'], true);
 
 #### enforce.boolean(value, alt, [coerce]) ⇒ <code>Boolean</code>
 > Enforce that a value is a boolean. Uses [isBoolean](docs/checks.md#isBoolean).
->
-> **Alias:** `enforceBoolean`
-<br>
+
+**Alias:** `enforceBoolean`
 
 
 | Param | Type | Default | Description |
@@ -108,9 +105,8 @@ enforce.boolean('', true, true);
 
 #### enforce.cssSize(value, alt, [coerce]) ⇒ <code>CssSize</code>
 > Enforce that a value is a [CssSize](docs/CssSize.md). Uses [isCssSize](docs/checks.md#isCssSize).
->
-> **Alias:** `enforceCssSize`
-<br>
+
+**Alias:** `enforceCssSize`
 
 
 | Param | Type | Default | Description |
@@ -137,9 +133,8 @@ enforce.cssSize('14px', new CssSize(), true);
 
 #### enforce.date(value, alt, [coerce]) ⇒ <code>Date</code>
 > Enforce that a value is a date. Uses [isDate](docs/checks.md#isDate).
->
-> **Alias:** `enforceDate`
-<br>
+
+**Alias:** `enforceDate`
 
 
 | Param | Type | Default | Description |
@@ -166,9 +161,8 @@ enforce.date('10/12/1980', new Date('1/1/2000'), true);
 
 #### enforce.dockPoint(value, alt, [coerce]) ⇒ <code>DockPoint</code>
 > Enforce that a value is a [DockPoint](docs/DockPoint.md). Uses [isDockPoint](docs/checks.md#isDockPoint).
->
-> **Alias:** `enforceDockPoint`
-<br>
+
+**Alias:** `enforceDockPoint`
 
 
 | Param | Type | Default | Description |
@@ -195,9 +189,8 @@ enforce.dockPoint('top', new DockPoint(DockPoint.POINTS.BOTTOM), true);
 
 #### enforce.element(value, alt) ⇒ <code>Element</code>
 > Enforce that a value is a DOM element. Uses [isElement](docs/checks.md#isElement).
->
-> **Alias:** `enforceElement`
-<br>
+
+**Alias:** `enforceElement`
 
 
 | Param | Type | Description |
@@ -223,9 +216,8 @@ enforce.element('span', document.createElement('div'), true);
 
 #### enforce.enum(value, enumerable, alt) ⇒ <code>String</code>
 > Enforce that a value exists in the provided [Enum](docs/Enum.md)
->
-> **Alias:** `enforceEnum`
-<br>
+
+**Alias:** `enforceEnum`
 
 
 | Param | Type | Description |
@@ -254,9 +246,8 @@ enforce.enum(values.c, values, values.b);
 
 #### enforce.float(value, alt, [coerce], [minValue], [maxValue]) ⇒ <code>int</code>
 > Enforce that a value is a finite float. Uses [isFloat](docs/checks.md#isFloat).
->
-> **Alias:** `enforceFloat`
-<br>
+
+**Alias:** `enforceFloat`
 
 
 | Param | Type | Default | Description |
@@ -285,9 +276,8 @@ enforce.float('3.14159', 13.2, true);
 
 #### enforce.function(value, alt) ⇒ <code>function</code>
 > Enforce that a value is a function. Uses [isFunction](docs/checks.md#isFunction).
->
-> **Alias:** `enforceFunction`
-<br>
+
+**Alias:** `enforceFunction`
 
 
 | Param | Type | Description |
@@ -313,9 +303,8 @@ enforce.function('', b);
 
 #### enforce.instance(value, constructor, alt) ⇒ <code>Object</code>
 > Enforce that a value is an instance of a constructor. Uses [isInstanceOf](docs/checks.md#isInstanceOf).
->
-> **Alias:** `enforceInstance`
-<br>
+
+**Alias:** `enforceInstance`
 
 
 | Param | Type | Description |
@@ -346,9 +335,8 @@ enforce.instance(c, A, a);
 
 #### enforce.integer(value, alt, [coerce], [minValue], [maxValue]) ⇒ <code>int</code>
 > Enforce that a value is a finite integer. Uses [isInteger](docs/checks.md#isInteger).
->
-> **Alias:** `enforceInteger`
-<br>
+
+**Alias:** `enforceInteger`
 
 
 | Param | Type | Default | Description |
@@ -377,9 +365,8 @@ enforce.integer('42', 12, true);
 
 #### enforce.number(value, alt, [coerce], [minValue], [maxValue]) ⇒ <code>Number</code>
 > Enforce that a value is a number (excluding NaN). Uses [isNumber](docs/checks.md#isNumber).
->
-> **Alias:** `enforceNumber`
-<br>
+
+**Alias:** `enforceNumber`
 
 
 | Param | Type | Default | Description |
@@ -411,9 +398,8 @@ enforce.number(Infinity, 13.2, true);
 
 #### enforce.object(value, alt, [coerce]) ⇒ <code>Object</code>
 > Enforce that a value is an object. Uses [isObject](docs/checks.md#isObject).
->
-> **Alias:** `enforceObject`
-<br>
+
+**Alias:** `enforceObject`
 
 
 | Param | Type | Default | Description |
@@ -443,9 +429,8 @@ enforce.object('{}', b, true);
 
 #### enforce.point(value, alt, [coerce]) ⇒ <code>Point</code>
 > Enforce that a value is a [Point](docs/Point.md). Uses [isPoint](docs/checks.md#isPoint).
->
-> **Alias:** `enforcePoint`
-<br>
+
+**Alias:** `enforcePoint`
 
 
 | Param | Type | Default | Description |
@@ -472,9 +457,8 @@ enforce.point('1,2', new Point(), true);
 
 #### enforce.regExp(value, alt, [coerce]) ⇒ <code>RegExp</code>
 > Enforce that a value is a RegExp. Uses [isRegExp](docs/checks.md#isRegExp).
->
-> **Alias:** `enforceRegExp`
-<br>
+
+**Alias:** `enforceRegExp`
 
 
 | Param | Type | Default | Description |
@@ -501,9 +485,8 @@ enforce.regExp('/*+/g', /[a-z]+/, true);
 
 #### enforce.string(value, alt, [coerce]) ⇒ <code>String</code>
 > Enforce that a value is a string. Uses [isString](docs/checks.md#isString).
->
-> **Alias:** `enforceString`
-<br>
+
+**Alias:** `enforceString`
 
 
 | Param | Type | Default | Description |
@@ -530,9 +513,8 @@ enforce.string(new Point(), 'b', true);
 
 #### enforce.thickness(value, alt, [coerce]) ⇒ <code>Thickness</code>
 > Enforce that a value is a [Thickness](docs/Thickness.md). Uses [isThickness](docs/checks.md#isThickness).
->
-> **Alias:** `enforceThickness`
-<br>
+
+**Alias:** `enforceThickness`
 
 
 | Param | Type | Default | Description |
@@ -559,9 +541,8 @@ enforce.thickness('12px 20px', new Thickness(), true);
 
 #### enforce.vector(value, alt, [coerce]) ⇒ <code>Vector</code>
 > Enforce that a value is a [Vector](docs/Vector.md). Uses [isVector](docs/checks.md#isVector).
->
-> **Alias:** `enforceVector`
-<br>
+
+**Alias:** `enforceVector`
 
 
 | Param | Type | Default | Description |

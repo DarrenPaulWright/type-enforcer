@@ -23,32 +23,28 @@ import methodVector from './types/methodVector';
 /**
  * Enforce data types and remove common boilerplate code on class methods.
  *
- * ## Usage
  * ``` javascript
  * import { method } from 'type-enforcer';
- * ```
- * Or import individual functions
- * ``` javascript
- * import { methodString } from 'type-enforcer';
+ *
+ * // Or import individual functions
+ * import { methodBoolean, methodString } from 'type-enforcer';
  * ```
  *
- *
- * Use it as a prototype:
+ * @example
  * ``` javascript
+ * // Use it as a prototype:
  * const Thing = function() {};
  *
  * Thing.prototype.myMethod = method.string([options]);
- * ```
  *
- * or in a class:
- * ``` javascript
+ *
+ * // or in a class:
  * class Thing() {}
  *
  * Thing.prototype.myMethod = method.string([options]);
- * ```
  *
- * or as a non-prototype method:
- * ``` javascript
+ *
+ * // or as a non-prototype method:
  * const Thing = function() {
  *     this.myMethod = method.string([options]);
  * };

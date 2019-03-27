@@ -6,6 +6,7 @@ import { buildMethod, mapEnforcer } from './methodAny';
  *
  * @function method.date
  * @extends method.any
+ * @alias methodDate
  *
  * @arg {Object} [options] - Same as {@link method.any} with the following differences:
  * @arg {Function} [options.enforce=enforce.date]

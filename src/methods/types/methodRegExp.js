@@ -6,6 +6,7 @@ import { buildMethod, mapEnforcer } from './methodAny';
  *
  * @function method.regExp
  * @extends method.any
+ * @alias methodRegExp
  *
  * @arg {Object} [options] - Same as {@link method.any} with the following differences:
  * @arg {*} [options.init='']

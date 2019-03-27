@@ -6,6 +6,7 @@ import { buildMethod, deepCompare, mapEnforcer, setDeepOnInit } from './methodAn
  *
  * @function method.object
  * @extends method.any
+ * @alias methodObject
  *
  * @arg {Object} [options] - Same as {@link method.any} with the following differences:
  * @arg {Function} [options.enforce=enforce.object]

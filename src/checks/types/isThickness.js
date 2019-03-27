@@ -18,7 +18,8 @@ import { buildCustomTypeCheck } from './checks';
  * // => true
  * ```
  *
- * @function isThickness
+ * @function is.thickness
+ * @alias isThickness
  *
  * @arg {*} value
  * @arg {Boolean} [coerce=false] - If true then see if the value can be coerced into a Thickness

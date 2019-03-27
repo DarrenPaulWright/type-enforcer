@@ -20,6 +20,7 @@ import { coercibleEnforcer } from './enforcer';
  * ```
  *
  * @function enforce.point
+ * @alias enforcePoint
  *
  * @arg {*} value
  * @arg {Point} alt - Returned if the value is not the correct type

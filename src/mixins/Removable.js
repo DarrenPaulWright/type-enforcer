@@ -5,7 +5,6 @@ const IS_REMOVED = Symbol();
 /**
  * A mixin that adds methods to a class to facilitate clean-up
  *
- * ## Usage
  * ``` javascript
  * import { Removable } from 'type-enforcer';
  *

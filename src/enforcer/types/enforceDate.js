@@ -19,6 +19,7 @@ import { coercibleEnforcer } from './enforcer';
  * ```
  *
  * @function enforce.date
+ * @alias enforceDate
  *
  * @arg {*} value
  * @arg {Date} alt - Returned if the value is not the correct type

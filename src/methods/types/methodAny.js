@@ -153,6 +153,7 @@ export const buildMethod = (defaultSettings = {}, onInit) => {
  * ```
  *
  * @function method.any
+ * @alias methodAny
  *
  * @arg {Object}   [options]
  * @arg {*} [options.init] - The initial value

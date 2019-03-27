@@ -19,6 +19,7 @@ import { numericEnforcer } from './enforcer';
  * ```
  *
  * @function enforce.float
+ * @alias enforceFloat
  *
  * @arg {*} value
  * @arg {int} alt - Returned if the value is not the correct type

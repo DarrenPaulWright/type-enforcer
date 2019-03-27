@@ -1,92 +1,50 @@
-# type-enforcer
-[![npm][npm]][npm-url]
+# Type Enforcer
+
+> A type enforcement library for javascript
+>
+> [![npm][npm]][npm-url]
 [![build][build]][build-url]
-[![Coverage Status](https://coveralls.io/repos/github/DarrenPaulWright/type-enforcer/badge.svg?branch=master)](https://coveralls.io/github/DarrenPaulWright/type-enforcer?branch=master)
+[![coverage][coverage]][coverage-url]
 [![deps][deps]][deps-url]
 [![size][size]][size-url]
-[![Known Vulnerabilities](https://snyk.io/test/github/DarrenPaulWright/type-enforcer/badge.svg?targetFile=package.json)](https://snyk.io/test/github/DarrenPaulWright/type-enforcer?targetFile=package.json)
+[![vulnerabilities][vulnerabilities]][vulnerabilities-url]
+[![license][license]][license-url]
 
-A type enforcement library for javascript
 
-## Functions
+<br><a name="is"></a>
 
-<dl>
-<dt><a href="#isArray">isArray(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if a value is an array</p>
-</dd>
-<dt><a href="#isBoolean">isBoolean(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if a value is a boolean</p>
-</dd>
-<dt><a href="#isCssSize">isCssSize(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if a value is a <a href="docs/CssSize.md">CssSize</a></p>
-</dd>
-<dt><a href="#isDate">isDate(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if a value is a date</p>
-</dd>
-<dt><a href="#isDockPoint">isDockPoint(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if a value is a <a href="docs/DockPoint.md">DockPoint</a></p>
-</dd>
-<dt><a href="#isElement">isElement(value)</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if a value is a DOM element</p>
-</dd>
-<dt><a href="#isFloat">isFloat(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if a value is a finite float</p>
-</dd>
-<dt><a href="#isFunction">isFunction(value)</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if a value is a function</p>
-</dd>
-<dt><a href="#isInstanceOf">isInstanceOf(object, constructor)</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if a value is an instance of a constructor. Fixes issues with native instanceOf and primitives Boolean, Number, and String (see example).</p>
-</dd>
-<dt><a href="#isInteger">isInteger(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if a value is a finite integer</p>
-</dd>
-<dt><a href="#isJson">isJson(value)</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if a value can be parsed as JSON</p>
-</dd>
-<dt><a href="#isNumber">isNumber(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if a value is a number</p>
-</dd>
-<dt><a href="#isObject">isObject(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if a value is a plain object</p>
-</dd>
-<dt><a href="#isPoint">isPoint(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if a value is a <a href="docs/Point.md">Point</a></p>
-</dd>
-<dt><a href="#isRegExp">isRegExp(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if a value is a RegExp</p>
-</dd>
-<dt><a href="#isString">isString(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if a value is a string</p>
-</dd>
-<dt><a href="#isThickness">isThickness(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if a value is a <a href="docs/Thickness.md">Thickness</a></p>
-</dd>
-<dt><a href="#isVector">isVector(value, [coerce])</a> ⇒ <code>Boolean</code></dt>
-<dd><p>Check if a value is a <a href="docs/Vector.md">Vector</a></p>
-</dd>
-</dl>
+### is : <code>object</code>
+> Utility functions for checking if something is a particular data type.> > ``` javascript> import { is } from 'type-enforcer';> > // Or import individual functions> import { isBoolean, isString } from 'type-enforcer';> ```
 
-## Typedefs
 
-<dl>
-<dt><a href="#is">is</a> : <code>object</code></dt>
-<dd><p>Utility functions for checking if something is a particular data type.</p>
-<h2 id="usage">Usage</h2>
-<pre><code class="lang-javascript">import { is } from &#39;type-enforcer&#39;;
-</code></pre>
-<p>Or import individual functions</p>
-<pre><code class="lang-javascript">import { isString } from &#39;type-enforcer&#39;;
-</code></pre>
-</dd>
-</dl>
+* [is](#is) : <code>object</code>
+    * [.array(value, [coerce])](#is.array) ⇒ <code>Boolean</code>
+    * [.boolean(value, [coerce])](#is.boolean) ⇒ <code>Boolean</code>
+    * [.cssSize(value, [coerce])](#is.cssSize) ⇒ <code>Boolean</code>
+    * [.date(value, [coerce])](#is.date) ⇒ <code>Boolean</code>
+    * [.dockPoint(value, [coerce])](#is.dockPoint) ⇒ <code>Boolean</code>
+    * [.element(value)](#is.element) ⇒ <code>Boolean</code>
+    * [.float(value, [coerce])](#is.float) ⇒ <code>Boolean</code>
+    * [.function(value)](#is.function) ⇒ <code>Boolean</code>
+    * [.instanceOf(object, constructor)](#is.instanceOf) ⇒ <code>Boolean</code>
+    * [.integer(value, [coerce])](#is.integer) ⇒ <code>Boolean</code>
+    * [.json(value)](#is.json) ⇒ <code>Boolean</code>
+    * [.number(value, [coerce])](#is.number) ⇒ <code>Boolean</code>
+    * [.object(value, [coerce])](#is.object) ⇒ <code>Boolean</code>
+    * [.point(value, [coerce])](#is.point) ⇒ <code>Boolean</code>
+    * [.regExp(value, [coerce])](#is.regExp) ⇒ <code>Boolean</code>
+    * [.string(value, [coerce])](#is.string) ⇒ <code>Boolean</code>
+    * [.thickness(value, [coerce])](#is.thickness) ⇒ <code>Boolean</code>
+    * [.vector(value, [coerce])](#is.vector) ⇒ <code>Boolean</code>
 
-<a name="isArray"></a>
 
-## isArray(value, [coerce]) ⇒ <code>Boolean</code>
-Check if a value is an array
+<br><a name="is.array"></a>
 
-**Kind**: global function  
+#### is.array(value, [coerce]) ⇒ <code>Boolean</code>
+> Check if a value is an array
+
+**Alias:** `isArray`
+
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -95,12 +53,14 @@ Check if a value is an array
 
 **Example**  
 ``` javascriptimport { isArray } from 'type-enforcer';isArray([]);// => trueisArray('[]');// => falseisArray('[]', true);// => true```
-<a name="isBoolean"></a>
 
-## isBoolean(value, [coerce]) ⇒ <code>Boolean</code>
-Check if a value is a boolean
+<br><a name="is.boolean"></a>
 
-**Kind**: global function  
+#### is.boolean(value, [coerce]) ⇒ <code>Boolean</code>
+> Check if a value is a boolean
+
+**Alias:** `isBoolean`
+
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -108,13 +68,26 @@ Check if a value is a boolean
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a boolean. Always returns true, as _everything_ can be coerced into a boolean. |
 
 **Example**  
-``` javascriptimport { isBoolean } from 'type-enforcer';isBoolean(false);// => trueisBoolean('a string');// => falseisBoolean('a string', true);// => true```
-<a name="isCssSize"></a>
+``` javascript
+import { isBoolean } from 'type-enforcer';
 
-## isCssSize(value, [coerce]) ⇒ <code>Boolean</code>
-Check if a value is a [CssSize](docs/CssSize.md)
+isBoolean(false);
+// => true
 
-**Kind**: global function  
+isBoolean('a string');
+// => false
+
+isBoolean('a string', true);
+// => true
+```
+
+<br><a name="is.cssSize"></a>
+
+#### is.cssSize(value, [coerce]) ⇒ <code>Boolean</code>
+> Check if a value is a [CssSize](docs/CssSize.md)
+
+**Alias:** `isCssSize`
+
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -123,12 +96,14 @@ Check if a value is a [CssSize](docs/CssSize.md)
 
 **Example**  
 ``` javascriptimport { isCssSize } from 'type-enforcer';isCssSize(new CssSize());// => trueisCssSize('14px');// => falseisCssSize('14px', true);// => true```
-<a name="isDate"></a>
 
-## isDate(value, [coerce]) ⇒ <code>Boolean</code>
-Check if a value is a date
+<br><a name="is.date"></a>
 
-**Kind**: global function  
+#### is.date(value, [coerce]) ⇒ <code>Boolean</code>
+> Check if a value is a date
+
+**Alias:** `isDate`
+
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -137,12 +112,14 @@ Check if a value is a date
 
 **Example**  
 ``` javascriptimport { isDate } from 'type-enforcer';isDate(new Date());// => trueisDate('10/12/1980');// => falseisDate('10/12/1980', true);// => true```
-<a name="isDockPoint"></a>
 
-## isDockPoint(value, [coerce]) ⇒ <code>Boolean</code>
-Check if a value is a [DockPoint](docs/DockPoint.md)
+<br><a name="is.dockPoint"></a>
 
-**Kind**: global function  
+#### is.dockPoint(value, [coerce]) ⇒ <code>Boolean</code>
+> Check if a value is a [DockPoint](docs/DockPoint.md)
+
+**Alias:** `isDockPoint`
+
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -151,12 +128,14 @@ Check if a value is a [DockPoint](docs/DockPoint.md)
 
 **Example**  
 ``` javascriptimport { isDockPoint } from 'type-enforcer';isDockPoint(new DockPoint());// => trueisDockPoint('top');// => falseisDockPoint('top', true);// => true```
-<a name="isElement"></a>
 
-## isElement(value) ⇒ <code>Boolean</code>
-Check if a value is a DOM element
+<br><a name="is.element"></a>
 
-**Kind**: global function  
+#### is.element(value) ⇒ <code>Boolean</code>
+> Check if a value is a DOM element
+
+**Alias:** `isElement`
+
 
 | Param | Type |
 | --- | --- |
@@ -164,12 +143,14 @@ Check if a value is a DOM element
 
 **Example**  
 ``` javascriptimport { isElement } from 'type-enforcer';isElement(document.createElement('div'));// => true```
-<a name="isFloat"></a>
 
-## isFloat(value, [coerce]) ⇒ <code>Boolean</code>
-Check if a value is a finite float
+<br><a name="is.float"></a>
 
-**Kind**: global function  
+#### is.float(value, [coerce]) ⇒ <code>Boolean</code>
+> Check if a value is a finite float
+
+**Alias:** `isFloat`
+
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -177,26 +158,46 @@ Check if a value is a finite float
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a float |
 
 **Example**  
-``` javascriptimport { isFloat } from 'type-enforcer';isFloat(3.14159);// => trueisFloat('3.14159');// => falseisFloat('3.14159', true);// => true```
-<a name="isFunction"></a>
+``` javascript
+import { isFloat } from 'type-enforcer';
 
-## isFunction(value) ⇒ <code>Boolean</code>
-Check if a value is a function
+isFloat(3.14159);
+// => true
 
-**Kind**: global function  
+isFloat('3.14159');
+// => false
+
+isFloat('3.14159', true);
+// => true
+```
+
+<br><a name="is.function"></a>
+
+#### is.function(value) ⇒ <code>Boolean</code>
+> Check if a value is a function
+
+**Alias:** `isFunction`
+
 
 | Param | Type |
 | --- | --- |
 | value | <code>\*</code> | 
 
 **Example**  
-``` javascriptimport { isFunction } from 'type-enforcer';isFunction(() => {});// => true```
-<a name="isInstanceOf"></a>
+``` javascript
+import { isFunction } from 'type-enforcer';
 
-## isInstanceOf(object, constructor) ⇒ <code>Boolean</code>
-Check if a value is an instance of a constructor. Fixes issues with native instanceOf and primitives Boolean, Number, and String (see example).
+isFunction(() => {});
+// => true
+```
 
-**Kind**: global function  
+<br><a name="is.instanceOf"></a>
+
+#### is.instanceOf(object, constructor) ⇒ <code>Boolean</code>
+> Check if a value is an instance of a constructor. Fixes issues with native instanceOf and primitives Boolean, Number, and String (see example).
+
+**Alias:** `isInstanceOf`
+
 
 | Param | Type |
 | --- | --- |
@@ -204,13 +205,35 @@ Check if a value is an instance of a constructor. Fixes issues with native insta
 | constructor | <code>function</code> | 
 
 **Example**  
-``` javascriptimport { isInstanceOf } from 'type-enforcer';isInstanceOf(false, Boolean); => truefalse instanceof Boolean => falseisInstanceOf(false, Boolean); => true42 instanceof Number => falseisInstanceOf(42, Number); => true'a string' instanceof String => falseisInstanceOf('a string', String); => true```
-<a name="isInteger"></a>
+``` javascript
+import { isInstanceOf } from 'type-enforcer';
 
-## isInteger(value, [coerce]) ⇒ <code>Boolean</code>
-Check if a value is a finite integer
+isInstanceOf(false, Boolean);
+ => true
 
-**Kind**: global function  
+false instanceof Boolean
+ => false
+isInstanceOf(false, Boolean);
+ => true
+
+42 instanceof Number
+ => false
+isInstanceOf(42, Number);
+ => true
+
+'a string' instanceof String
+ => false
+isInstanceOf('a string', String);
+ => true
+```
+
+<br><a name="is.integer"></a>
+
+#### is.integer(value, [coerce]) ⇒ <code>Boolean</code>
+> Check if a value is a finite integer
+
+**Alias:** `isInteger`
+
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -218,26 +241,46 @@ Check if a value is a finite integer
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into an Integer |
 
 **Example**  
-``` javascriptimport { isInteger } from 'type-enforcer';isInteger(42);// => trueisInteger('42');// => falseisInteger('42', true);// => trueisInteger('42.5', true);// => false```
-<a name="isJson"></a>
+``` javascript
+import { isInteger } from 'type-enforcer';
 
-## isJson(value) ⇒ <code>Boolean</code>
-Check if a value can be parsed as JSON
+isInteger(42);
+// => true
 
-**Kind**: global function  
+isInteger('42');
+// => false
+
+isInteger('42', true);
+// => true
+
+isInteger('42.5', true);
+// => false
+```
+
+<br><a name="is.json"></a>
+
+#### is.json(value) ⇒ <code>Boolean</code>
+> Check if a value can be parsed as JSON
+
+**Alias:** `isJson`
+
 
 | Param | Type |
 | --- | --- |
 | value | <code>\*</code> | 
 
 **Example**  
-``` javascriptimport { isJson } from 'type-enforcer';```
-<a name="isNumber"></a>
+``` javascript
+import { isJson } from 'type-enforcer';
+```
 
-## isNumber(value, [coerce]) ⇒ <code>Boolean</code>
-Check if a value is a number
+<br><a name="is.number"></a>
 
-**Kind**: global function  
+#### is.number(value, [coerce]) ⇒ <code>Boolean</code>
+> Check if a value is a number
+
+**Alias:** `isNumber`
+
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -245,13 +288,26 @@ Check if a value is a number
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a Number |
 
 **Example**  
-``` javascriptimport { isNumber } from 'type-enforcer';isNumber(3.14159);// => trueisNumber('3.14159');// => falseisNumber('3.14159', true);// => true```
-<a name="isObject"></a>
+``` javascript
+import { isNumber } from 'type-enforcer';
 
-## isObject(value, [coerce]) ⇒ <code>Boolean</code>
-Check if a value is a plain object
+isNumber(3.14159);
+// => true
 
-**Kind**: global function  
+isNumber('3.14159');
+// => false
+
+isNumber('3.14159', true);
+// => true
+```
+
+<br><a name="is.object"></a>
+
+#### is.object(value, [coerce]) ⇒ <code>Boolean</code>
+> Check if a value is a plain object
+
+**Alias:** `isObject`
+
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -260,12 +316,14 @@ Check if a value is a plain object
 
 **Example**  
 ``` javascriptimport { isObject } from 'type-enforcer';isObject({});// => trueisObject('{}');// => falseisObject('{}', true);// => true```
-<a name="isPoint"></a>
 
-## isPoint(value, [coerce]) ⇒ <code>Boolean</code>
-Check if a value is a [Point](docs/Point.md)
+<br><a name="is.point"></a>
 
-**Kind**: global function  
+#### is.point(value, [coerce]) ⇒ <code>Boolean</code>
+> Check if a value is a [Point](docs/Point.md)
+
+**Alias:** `isPoint`
+
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -274,12 +332,14 @@ Check if a value is a [Point](docs/Point.md)
 
 **Example**  
 ``` javascriptimport { isPoint } from 'type-enforcer';isPoint(new Point());// => trueisPoint('1,2');// => falseisPoint('1,2', true);// => true```
-<a name="isRegExp"></a>
 
-## isRegExp(value, [coerce]) ⇒ <code>Boolean</code>
-Check if a value is a RegExp
+<br><a name="is.regExp"></a>
 
-**Kind**: global function  
+#### is.regExp(value, [coerce]) ⇒ <code>Boolean</code>
+> Check if a value is a RegExp
+
+**Alias:** `isRegExp`
+
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -288,12 +348,14 @@ Check if a value is a RegExp
 
 **Example**  
 ``` javascriptimport { isRegExp } from 'type-enforcer';isRegExp(/*+/g);// => trueisRegExp('/*+/g');// => falseisRegExp('/*+/g', true);// => true```
-<a name="isString"></a>
 
-## isString(value, [coerce]) ⇒ <code>Boolean</code>
-Check if a value is a string
+<br><a name="is.string"></a>
 
-**Kind**: global function  
+#### is.string(value, [coerce]) ⇒ <code>Boolean</code>
+> Check if a value is a string
+
+**Alias:** `isString`
+
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -302,12 +364,14 @@ Check if a value is a string
 
 **Example**  
 ``` javascriptimport { isString } from 'type-enforcer';isString('type');// => trueisString(new Date());// => falseisString(new Date(), true);// => true```
-<a name="isThickness"></a>
 
-## isThickness(value, [coerce]) ⇒ <code>Boolean</code>
-Check if a value is a [Thickness](docs/Thickness.md)
+<br><a name="is.thickness"></a>
 
-**Kind**: global function  
+#### is.thickness(value, [coerce]) ⇒ <code>Boolean</code>
+> Check if a value is a [Thickness](docs/Thickness.md)
+
+**Alias:** `isThickness`
+
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -316,12 +380,14 @@ Check if a value is a [Thickness](docs/Thickness.md)
 
 **Example**  
 ``` javascriptimport { isThickness } from 'type-enforcer';isThickness(new Thickness());// => trueisThickness('12px 20px');// => falseisThickness('12px 20px', true);// => true```
-<a name="isVector"></a>
 
-## isVector(value, [coerce]) ⇒ <code>Boolean</code>
-Check if a value is a [Vector](docs/Vector.md)
+<br><a name="is.vector"></a>
 
-**Kind**: global function  
+#### is.vector(value, [coerce]) ⇒ <code>Boolean</code>
+> Check if a value is a [Vector](docs/Vector.md)
+
+**Alias:** `isVector`
+
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -330,22 +396,18 @@ Check if a value is a [Vector](docs/Vector.md)
 
 **Example**  
 ``` javascriptimport { isVector } from 'type-enforcer';isVector(new Vector());// => trueisVector('[[1,2],[3,4]]');// => falseisVector('[[1,2],[3,4]]', true);// => true```
-<a name="is"></a>
-
-## is : <code>object</code>
-Utility functions for checking if something is a particular data type.## Usage``` javascriptimport { is } from 'type-enforcer';```Or import individual functions``` javascriptimport { isString } from 'type-enforcer';```
-
-**Kind**: global typedef  
-
-## License
-
-[MIT](LICENSE.md)
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg
 [npm-url]: https://npmjs.com/package/type-enforcer
-[build]: https://travis-ci.org/DarrenPaulWright/type-enforcer.svg?branch=master
+[build]: https://travis-ci.org/DarrenPaulWright/type-enforcer.svg?branch&#x3D;master
 [build-url]: https://travis-ci.org/DarrenPaulWright/type-enforcer
+[coverage]: https://coveralls.io/repos/github/DarrenPaulWright/type-enforcer/badge.svg?branch&#x3D;master
+[coverage-url]: https://coveralls.io/github/DarrenPaulWright/type-enforcer?branch&#x3D;master
 [deps]: https://david-dm.org/darrenpaulwright/type-enforcer.svg
 [deps-url]: https://david-dm.org/darrenpaulwright/type-enforcer
-[size]: https://packagephobia.now.sh/badge?p=type-enforcer
-[size-url]: https://packagephobia.now.sh/result?p=type-enforcer
+[size]: https://packagephobia.now.sh/badge?p&#x3D;type-enforcer
+[size-url]: https://packagephobia.now.sh/result?p&#x3D;type-enforcer
+[vulnerabilities]: https://snyk.io/test/github/DarrenPaulWright/type-enforcer/badge.svg?targetFile&#x3D;package.json
+[vulnerabilities-url]: https://snyk.io/test/github/DarrenPaulWright/type-enforcer?targetFile&#x3D;package.json
+[license]: https://img.shields.io/github/license/DarrenPaulWright/type-enforcer.svg
+[license-url]: https://npmjs.com/package/type-enforcer/LICENSE.md

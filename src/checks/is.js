@@ -20,13 +20,11 @@ import isVector from './types/isVector';
 /**
  * Utility functions for checking if something is a particular data type.
  *
- * ## Usage
  * ``` javascript
  * import { is } from 'type-enforcer';
- * ```
- * Or import individual functions
- * ``` javascript
- * import { isString } from 'type-enforcer';
+ *
+ * // Or import individual functions
+ * import { isBoolean, isString } from 'type-enforcer';
  * ```
  *
  * @typedef {object} is

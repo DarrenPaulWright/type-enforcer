@@ -21,6 +21,7 @@ const SEPARATOR = '/';
  * ```
  *
  * @function enforce.regExp
+ * @alias enforceRegExp
  *
  * @arg {*} value
  * @arg {RegExp} alt - Returned if the value is not the correct type

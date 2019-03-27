@@ -4,9 +4,8 @@ const KEYS = Symbol();
 const VALUES = Symbol();
 
 /**
- * Freezes an enumerable object and adds a "has" method
+ * Freezes an enumerable object and adds a few helper methods
  *
- * ## Usage
  * ``` javascript
  * import { Enum } from 'type-enforcer';
  * ```

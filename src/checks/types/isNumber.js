@@ -1,6 +1,8 @@
 import { buildCheckWithCoerce } from './checks';
 import isInstanceOf from './isInstanceOf';
 
+export const isFinite = (item) => item !== Infinity && item !== -Infinity;
+
 /**
  * Check if a value is a number
  *
@@ -18,11 +20,12 @@ import isInstanceOf from './isInstanceOf';
  * // => true
  * ```
  *
- * @function isNumber
+ * @function is.number
+ * @alias isNumber
  *
  * @arg {*} value
  * @arg {Boolean} [coerce=false] - If true then see if the value can be coerced into a Number
  *
  * @returns {Boolean}
  */
-export default buildCheckWithCoerce((item) => isInstanceOf(item, Number), (value) => !isNaN(value));
+export default buildCheckWithCoerce((item) => isInstanceOf(item, Number) && !isNaN(item), (value) => !isNaN(value));

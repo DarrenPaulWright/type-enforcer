@@ -1,19 +1,47 @@
-# type-enforcer
-[![npm][npm]][npm-url]
+# Type Enforcer
+
+> A type enforcement library for javascript
+>
+> [![npm][npm]][npm-url]
 [![build][build]][build-url]
-[![Coverage Status](https://coveralls.io/repos/github/DarrenPaulWright/type-enforcer/badge.svg?branch=master)](https://coveralls.io/github/DarrenPaulWright/type-enforcer?branch=master)
+[![coverage][coverage]][coverage-url]
 [![deps][deps]][deps-url]
 [![size][size]][size-url]
-[![Known Vulnerabilities](https://snyk.io/test/github/DarrenPaulWright/type-enforcer/badge.svg?targetFile=package.json)](https://snyk.io/test/github/DarrenPaulWright/type-enforcer?targetFile=package.json)
+[![vulnerabilities][vulnerabilities]][vulnerabilities-url]
+[![license][license]][license-url]
 
-A type enforcement library for javascript
 
-<a name="method"></a>
+<br><a name="method"></a>
 
-## method : <code>object</code>
-Enforce data types and remove common boilerplate code on class methods.## Usage``` javascriptimport { method } from 'type-enforcer';```Or import individual functions``` javascriptimport { methodString } from 'type-enforcer';```Use it as a prototype:``` javascriptconst Thing = function() {};Thing.prototype.myMethod = method.string([options]);```or in a class:``` javascriptclass Thing() {}Thing.prototype.myMethod = method.string([options]);```or as a non-prototype method:``` javascriptconst Thing = function() {    this.myMethod = method.string([options]);};```
+### method : <code>object</code>
+> Enforce data types and remove common boilerplate code on class methods.
+> 
+> ``` javascript
+> import { method } from 'type-enforcer';
+> 
+> // Or import individual functions
+> import { methodBoolean, methodString } from 'type-enforcer';
+> ```
 
-**Kind**: global typedef  
+**Example**  
+``` javascript
+// Use it as a prototype:
+const Thing = function() {};
+
+Thing.prototype.myMethod = method.string([options]);
+
+
+// or in a class:
+class Thing() {}
+
+Thing.prototype.myMethod = method.string([options]);
+
+
+// or as a non-prototype method:
+const Thing = function() {
+    this.myMethod = method.string([options]);
+};
+```
 
 * [method](#method) : <code>object</code>
     * [.any([options])](#method.any) ⇒ <code>function</code>
@@ -38,12 +66,14 @@ Enforce data types and remove common boilerplate code on class methods.## Usag
     * [.thickness([options])](#method.thickness) ⇒ <code>function</code>
     * [.vector([options])](#method.vector) ⇒ <code>function</code>
 
-<a name="method.any"></a>
 
-### method.any([options]) ⇒ <code>function</code>
-Builds a chainable method for getting/setting any data type
+<br><a name="method.any"></a>
 
-**Kind**: static method of [<code>method</code>](#method)  
+#### method.any([options]) ⇒ <code>function</code>
+> Builds a chainable method for getting/setting any data type
+
+**Alias:** `methodAny`
+
 **Returns**: <code>function</code> - if a "before" or "set" option is set, then this function accepts two args: a new value and forceSave override. If no args are provided then the current value is returned. If neither "before" nor "set" is set, then only one arg is accepted, the new value. Also returns the current value if no args are provided.  
 
 | Param | Type | Default | Description |
@@ -55,17 +85,50 @@ Builds a chainable method for getting/setting any data type
 | [options.before] | <code>function</code> |  | Called before a new valid value is set. Provides the prior value, sets the context to the methods constructor. |
 | [options.set] | <code>function</code> |  | Called after a new valid value is set. Provides the new value, sets the context to the methods constructor. |
 | [options.get] | <code>function</code> |  | Called to get the value, sets the context to the methods constructor. |
-| [options.other] | <code>Array</code> \| <code>\*</code> |  | Another value/type or array of other values/types that can be set |
+| [options.other] | <code>Array</code>, <code>\*</code> |  | Another value/type or array of other values/types that can be set |
 | [options.stringify] | <code>Boolean</code> | <code>false</code> | If true, then call toString() on the value before returning it (if the value has a toString method) |
 
 **Example**  
-``` javascriptimport { method } from 'type-enforcer';const Widget = function() {    someMethod = method.any({        set: function(newValue) {            console.log(this);            console.log(newValue);        }    });    anotherMethod = method.any();    thirdMethod = method.any({        get: function(newValue) {            return 'item 2';        }    });};const widget = new Widget();widget.someMethod('a').anotherMethod(42).thirdMethod('item 1');// => console.log widget and 'a'widget.someMethod();// => 'a'widget.anotherMethod();// => 42widget.thirdMethod();// => 'item 2'```
-<a name="method.array"></a>
+``` javascript
+import { method } from 'type-enforcer';
 
-### method.array([options]) ⇒ <code>function</code>
-Builds a chainable method for getting/setting an array
+const Widget = function() {
+    someMethod = method.any({
+        set: function(newValue) {
+            console.log(this);
+            console.log(newValue);
+        }
+    });
+    anotherMethod = method.any();
+    thirdMethod = method.any({
+        get: function(newValue) {
+            return 'item 2';
+        }
+    });
+};
 
-**Kind**: static method of [<code>method</code>](#method)  
+const widget = new Widget();
+
+widget.someMethod('a').anotherMethod(42).thirdMethod('item 1');
+// => console.log widget and 'a'
+
+widget.someMethod();
+// => 'a'
+
+widget.anotherMethod();
+// => 42
+
+widget.thirdMethod();
+// => 'item 2'
+```
+
+<br><a name="method.array"></a>
+
+#### method.array([options]) ⇒ <code>function</code>
+> Builds a chainable method for getting/setting an array
+
+**Alias:** `methodArray`
+
 **Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
@@ -77,12 +140,14 @@ Builds a chainable method for getting/setting an array
 | [options.deep] | <code>Boolean</code> | <code>true</code> | If false then only use strict equality |
 | [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
-<a name="method.boolean"></a>
 
-### method.boolean([options]) ⇒ <code>function</code>
-Builds a chainable method for getting/setting a boolean
+<br><a name="method.boolean"></a>
 
-**Kind**: static method of [<code>method</code>](#method)  
+#### method.boolean([options]) ⇒ <code>function</code>
+> Builds a chainable method for getting/setting a boolean
+
+**Alias:** `methodBoolean`
+
 **Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
@@ -92,12 +157,14 @@ Builds a chainable method for getting/setting a boolean
 | [options.enforce] | <code>function</code> | <code>enforce.boolean</code> |  |
 | [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
-<a name="method.cssSize"></a>
 
-### method.cssSize([options]) ⇒ <code>function</code>
-Builds a chainable method for getting/setting a [CssSize](docs/CssSize.md)
+<br><a name="method.cssSize"></a>
 
-**Kind**: static method of [<code>method</code>](#method)  
+#### method.cssSize([options]) ⇒ <code>function</code>
+> Builds a chainable method for getting/setting a [CssSize](docs/CssSize.md)
+
+**Alias:** `methodCssSize`
+
 **Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
@@ -107,12 +174,14 @@ Builds a chainable method for getting/setting a [CssSize](docs/CssSize.md)
 | [options.compare] | <code>function</code> | <code>CssSize.isSame</code> |  |
 | [options.coerce] | <code>Boolean</code> | <code>true</code> | If false then don't coerce the value |
 
-<a name="method.date"></a>
 
-### method.date([options]) ⇒ <code>function</code>
-Builds a chainable method for getting/setting a date
+<br><a name="method.date"></a>
 
-**Kind**: static method of [<code>method</code>](#method)  
+#### method.date([options]) ⇒ <code>function</code>
+> Builds a chainable method for getting/setting a date
+
+**Alias:** `methodDate`
+
 **Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
@@ -121,12 +190,14 @@ Builds a chainable method for getting/setting a date
 | [options.enforce] | <code>function</code> | <code>enforce.date</code> |  |
 | [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
-<a name="method.dockPoint"></a>
 
-### method.dockPoint([options]) ⇒ <code>function</code>
-Builds a chainable method for getting/setting a [DockPoint](docs/DockPoint.md)
+<br><a name="method.dockPoint"></a>
 
-**Kind**: static method of [<code>method</code>](#method)  
+#### method.dockPoint([options]) ⇒ <code>function</code>
+> Builds a chainable method for getting/setting a [DockPoint](docs/DockPoint.md)
+
+**Alias:** `methodDockPoint`
+
 **Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
@@ -136,12 +207,14 @@ Builds a chainable method for getting/setting a [DockPoint](docs/DockPoint.md)
 | [options.compare] | <code>function</code> | <code>DockPoint.isSame</code> |  |
 | [options.coerce] | <code>Boolean</code> | <code>true</code> | If false then don't coerce the value |
 
-<a name="method.element"></a>
 
-### method.element([options]) ⇒ <code>function</code>
-Builds a chainable method for getting/setting a DOM element
+<br><a name="method.element"></a>
 
-**Kind**: static method of [<code>method</code>](#method)  
+#### method.element([options]) ⇒ <code>function</code>
+> Builds a chainable method for getting/setting a DOM element
+
+**Alias:** `methodElement`
+
 **Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
@@ -149,12 +222,14 @@ Builds a chainable method for getting/setting a DOM element
 | [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
 | [options.enforce] | <code>function</code> | <code>enforce.element</code> |  |
 
-<a name="method.enum"></a>
 
-### method.enum([options]) ⇒ <code>function</code>
-Builds a chainable method for getting/setting an enumerable value in an [Enum](docs/Enum.md)
+<br><a name="method.enum"></a>
 
-**Kind**: static method of [<code>method</code>](#method)  
+#### method.enum([options]) ⇒ <code>function</code>
+> Builds a chainable method for getting/setting an enumerable value in an [Enum](docs/Enum.md)
+
+**Alias:** `methodEnum`
+
 **Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
@@ -163,12 +238,14 @@ Builds a chainable method for getting/setting an enumerable value in an [Enum](d
 | [options.enforce] | <code>function</code> | <code>enforce.enum</code> |  |
 | options.enum | <code>Enum</code> |  | An enum to restrict the values to. |
 
-<a name="method.float"></a>
 
-### method.float([options]) ⇒ <code>function</code>
-Builds a chainable method for getting/setting a float
+<br><a name="method.float"></a>
 
-**Kind**: static method of [<code>method</code>](#method)  
+#### method.float([options]) ⇒ <code>function</code>
+> Builds a chainable method for getting/setting a float
+
+**Alias:** `methodFloat`
+
 **Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
@@ -179,12 +256,14 @@ Builds a chainable method for getting/setting a float
 | [options.min] | <code>Number</code> |  | Passed to enforce.float |
 | [options.max] | <code>Number</code> |  | Passed to enforce.float |
 
-<a name="method.function"></a>
 
-### method.function([options]) ⇒ <code>function</code>
-Builds a chainable method for getting/setting a function
+<br><a name="method.function"></a>
 
-**Kind**: static method of [<code>method</code>](#method)  
+#### method.function([options]) ⇒ <code>function</code>
+> Builds a chainable method for getting/setting a function
+
+**Alias:** `methodFunction`
+
 **Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
@@ -192,12 +271,14 @@ Builds a chainable method for getting/setting a function
 | [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
 | [options.enforce] | <code>function</code> | <code>enforce.function</code> |  |
 
-<a name="method.instance"></a>
 
-### method.instance([options]) ⇒ <code>function</code>
-Builds a chainable method for getting/setting an instance of a specific constructor
+<br><a name="method.instance"></a>
 
-**Kind**: static method of [<code>method</code>](#method)  
+#### method.instance([options]) ⇒ <code>function</code>
+> Builds a chainable method for getting/setting an instance of a specific constructor
+
+**Alias:** `methodInstance`
+
 **Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
@@ -206,12 +287,14 @@ Builds a chainable method for getting/setting an instance of a specific construc
 | [options.enforce] | <code>function</code> | <code>enforce.instance</code> |  |
 | [options.instance] | <code>Constructor</code> |  | The item to run enforce.instance against |
 
-<a name="method.int"></a>
 
-### method.int([options]) ⇒ <code>function</code>
-Builds a chainable method for getting/setting an integer
+<br><a name="method.int"></a>
 
-**Kind**: static method of [<code>method</code>](#method)  
+#### method.int([options]) ⇒ <code>function</code>
+> Builds a chainable method for getting/setting an integer
+
+**Alias:** `methodInteger`
+
 **Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
@@ -222,13 +305,15 @@ Builds a chainable method for getting/setting an integer
 | [options.min] | <code>Number</code> |  | Passed to enforce.int |
 | [options.max] | <code>Number</code> |  | Passed to enforce.int |
 
-<a name="method.keyValue"></a>
 
-### method.keyValue([options]) ⇒ <code>function</code>
-Builds a chainable method that accepts either:- two args, a key and a value- one arg, an object with multiple key/value pairs
+<br><a name="method.keyValue"></a>
 
-**Kind**: static method of [<code>method</code>](#method)  
-**Returns**: <code>function</code> - accepts a new value and returns the methods constructor (allows chaining), or if no args are passed returns the output of options.get  
+#### method.keyValue([options]) ⇒ <code>function</code>
+> Builds a chainable method that accepts either a key and a value or an object with multiple key/value pairs.
+
+**Alias:** `methodKeyValue`
+
+**Returns**: <code>function</code> - Accepts a new value and returns the methods constructor (allows chaining), or if no args are passed returns the output of options.get  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -236,12 +321,14 @@ Builds a chainable method that accepts either:- two args, a key and a value- o
 | [options.set] | <code>function</code> | Called for each key/value pair applied. Provides two args, the key and value, and sets the context to the methods constructor. |
 | [options.get] | <code>function</code> | Called if the method is called with a single, non-object, arg. Provides the same arg, sets the context to the methods constructor. |
 
-<a name="method.number"></a>
 
-### method.number([options]) ⇒ <code>function</code>
-Builds a chainable method for getting/setting a number
+<br><a name="method.number"></a>
 
-**Kind**: static method of [<code>method</code>](#method)  
+#### method.number([options]) ⇒ <code>function</code>
+> Builds a chainable method for getting/setting a number
+
+**Alias:** `methodNumber`
+
 **Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
@@ -252,12 +339,14 @@ Builds a chainable method for getting/setting a number
 | [options.min] | <code>Number</code> |  | Passed to enforce.number |
 | [options.max] | <code>Number</code> |  | Passed to enforce.number |
 
-<a name="method.object"></a>
 
-### method.object([options]) ⇒ <code>function</code>
-Builds a chainable method for getting/setting a plain object
+<br><a name="method.object"></a>
 
-**Kind**: static method of [<code>method</code>](#method)  
+#### method.object([options]) ⇒ <code>function</code>
+> Builds a chainable method for getting/setting a plain object
+
+**Alias:** `methodObject`
+
 **Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
@@ -268,12 +357,14 @@ Builds a chainable method for getting/setting a plain object
 | [options.deep] | <code>Boolean</code> | <code>true</code> | If false then only use strict equality |
 | [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
-<a name="method.point"></a>
 
-### method.point([options]) ⇒ <code>function</code>
-Builds a chainable method for getting/setting a [Point](docs/Point.md)
+<br><a name="method.point"></a>
 
-**Kind**: static method of [<code>method</code>](#method)  
+#### method.point([options]) ⇒ <code>function</code>
+> Builds a chainable method for getting/setting a [Point](docs/Point.md)
+
+**Alias:** `methodPoint`
+
 **Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
@@ -284,12 +375,14 @@ Builds a chainable method for getting/setting a [Point](docs/Point.md)
 | [options.compare] | <code>function</code> | <code>Point.isSame</code> |  |
 | [options.coerce] | <code>Boolean</code> | <code>true</code> | If false then don't coerce the value |
 
-<a name="method.queue"></a>
 
-### method.queue([options]) ⇒ <code>function</code>
-Builds a chainable method that implements a [Queue](docs/Queue.md)
+<br><a name="method.queue"></a>
 
-**Kind**: static method of [<code>method</code>](#method)  
+#### method.queue([options]) ⇒ <code>function</code>
+> Builds a chainable method that implements a [Queue](docs/Queue.md)
+
+**Alias:** `methodQueue`
+
 **Returns**: <code>function</code> - accepts a new value and returns the methods constructor (allows chaining), or if no args are passed returns the instance of Queue  
 
 | Param | Type | Description |
@@ -297,12 +390,14 @@ Builds a chainable method that implements a [Queue](docs/Queue.md)
 | [options] | <code>Object</code> |  |
 | [options.set] | <code>function</code> | Called after a new callback is added to the queue. Provides a reference to the queue, the new ID for the callback, the callback, and sets the context to the methods constructor. |
 
-<a name="method.regExp"></a>
 
-### method.regExp([options]) ⇒ <code>function</code>
-Builds a chainable method for getting/setting a RegExp
+<br><a name="method.regExp"></a>
 
-**Kind**: static method of [<code>method</code>](#method)  
+#### method.regExp([options]) ⇒ <code>function</code>
+> Builds a chainable method for getting/setting a RegExp
+
+**Alias:** `methodRegExp`
+
 **Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
@@ -312,12 +407,14 @@ Builds a chainable method for getting/setting a RegExp
 | [options.enforce] | <code>function</code> | <code>enforce.string</code> |  |
 | [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
-<a name="method.string"></a>
 
-### method.string([options]) ⇒ <code>function</code>
-Builds a chainable method for getting/setting a string
+<br><a name="method.string"></a>
 
-**Kind**: static method of [<code>method</code>](#method)  
+#### method.string([options]) ⇒ <code>function</code>
+> Builds a chainable method for getting/setting a string
+
+**Alias:** `methodString`
+
 **Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
@@ -327,12 +424,14 @@ Builds a chainable method for getting/setting a string
 | [options.enforce] | <code>function</code> | <code>enforce.string</code> |  |
 | [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
-<a name="method.thickness"></a>
 
-### method.thickness([options]) ⇒ <code>function</code>
-Builds a chainable method for getting/setting a [Thickness](docs/Thickness.md)
+<br><a name="method.thickness"></a>
 
-**Kind**: static method of [<code>method</code>](#method)  
+#### method.thickness([options]) ⇒ <code>function</code>
+> Builds a chainable method for getting/setting a [Thickness](docs/Thickness.md)
+
+**Alias:** `methodThickness`
+
 **Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
@@ -342,12 +441,14 @@ Builds a chainable method for getting/setting a [Thickness](docs/Thickness.md)
 | [options.compare] | <code>function</code> | <code>Thickness.isSame</code> |  |
 | [options.coerce] | <code>Boolean</code> | <code>true</code> | If false then don't coerce the value |
 
-<a name="method.vector"></a>
 
-### method.vector([options]) ⇒ <code>function</code>
-Builds a chainable method for getting/setting a [Vector](docs/Vector.md)
+<br><a name="method.vector"></a>
 
-**Kind**: static method of [<code>method</code>](#method)  
+#### method.vector([options]) ⇒ <code>function</code>
+> Builds a chainable method for getting/setting a [Vector](docs/Vector.md)
+
+**Alias:** `methodVector`
+
 **Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
@@ -359,15 +460,17 @@ Builds a chainable method for getting/setting a [Vector](docs/Vector.md)
 | [options.coerce] | <code>Boolean</code> | <code>true</code> | If false then don't coerce the value |
 
 
-## License
-
-[MIT](LICENSE.md)
-
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg
 [npm-url]: https://npmjs.com/package/type-enforcer
-[build]: https://travis-ci.org/DarrenPaulWright/type-enforcer.svg?branch=master
+[build]: https://travis-ci.org/DarrenPaulWright/type-enforcer.svg?branch&#x3D;master
 [build-url]: https://travis-ci.org/DarrenPaulWright/type-enforcer
+[coverage]: https://coveralls.io/repos/github/DarrenPaulWright/type-enforcer/badge.svg?branch&#x3D;master
+[coverage-url]: https://coveralls.io/github/DarrenPaulWright/type-enforcer?branch&#x3D;master
 [deps]: https://david-dm.org/darrenpaulwright/type-enforcer.svg
 [deps-url]: https://david-dm.org/darrenpaulwright/type-enforcer
-[size]: https://packagephobia.now.sh/badge?p=type-enforcer
-[size-url]: https://packagephobia.now.sh/result?p=type-enforcer
+[size]: https://packagephobia.now.sh/badge?p&#x3D;type-enforcer
+[size-url]: https://packagephobia.now.sh/result?p&#x3D;type-enforcer
+[vulnerabilities]: https://snyk.io/test/github/DarrenPaulWright/type-enforcer/badge.svg?targetFile&#x3D;package.json
+[vulnerabilities-url]: https://snyk.io/test/github/DarrenPaulWright/type-enforcer?targetFile&#x3D;package.json
+[license]: https://img.shields.io/github/license/DarrenPaulWright/type-enforcer.svg
+[license-url]: https://npmjs.com/package/type-enforcer/LICENSE.md

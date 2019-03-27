@@ -45,7 +45,6 @@ const IS_BUSY = Symbol();
 /**
  * Vector model with helper types
  *
- * ## Usage
  * ``` javascript
  * import { Vector } from 'type-enforcer';
  * ```

@@ -9,7 +9,6 @@ const IS_BUSY = Symbol();
 /**
  * A simple queue for callbacks that allows for adding, removing, and triggering all or specific callbacks
  *
- * ## Usage
  * ``` javascript
  * import { Queue } from 'type-enforcer';
  * ```

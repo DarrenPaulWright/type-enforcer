@@ -1,18 +1,15 @@
-import Enum from '../../types/Enum';
+const objectStringMap = new Map();
+objectStringMap.set(Array, '[object Array]');
+objectStringMap.set(Boolean, '[object Boolean]');
+objectStringMap.set(Date, '[object Date]');
+objectStringMap.set(Number, '[object Number]');
+objectStringMap.set(Object, '[object Object]');
+objectStringMap.set(RegExp, '[object RegExp]');
 
-const objectStringMap = {};
-objectStringMap[Array] = '[object Array]';
-objectStringMap[Boolean] = '[object Boolean]';
-objectStringMap[Date] = '[object Date]';
-objectStringMap[Number] = '[object Number]';
-objectStringMap[Object] = '[object Object]';
-objectStringMap[RegExp] = '[object RegExp]';
-
-const typeOfMap = new Enum({
-	boolean: Boolean,
-	number: Number,
-	string: String
-});
+const typeOfMap = new Map();
+typeOfMap.set(Boolean, 'boolean');
+typeOfMap.set(Number, 'number');
+typeOfMap.set(String, 'string');
 
 /**
  * @description Check if a value is an instance of a constructor. Fixes issues with native instanceOf and primitives Boolean, Number, and String (see example).
@@ -40,7 +37,8 @@ const typeOfMap = new Enum({
  *  => true
  * ```
  *
- * @function isInstanceOf
+ * @function is.instanceOf
+ * @alias isInstanceOf
  *
  * @arg {*} object
  * @arg {Function} constructor
@@ -51,7 +49,8 @@ export default (object, constructor) => {
 	if (object === undefined || !(typeof constructor === 'function' && constructor.prototype)) {
 		return false;
 	}
-	return object instanceof constructor
-		|| (objectStringMap[constructor] && toString.call(object) === objectStringMap[constructor])
-		|| typeof object === typeOfMap.key(constructor);
+
+	const objectType = objectStringMap.get(constructor);
+
+	return object instanceof constructor || (objectType && toString.call(object) === objectType) || typeof object === typeOfMap.get(constructor);
 };

@@ -8,6 +8,7 @@ import { buildMethod, compareCustomType, mapEnforcerDefaultCoerceTrue } from './
  *
  * @function method.point
  * @extends method.any
+ * @alias methodPoint
  *
  * @arg {Object} [options] - Same as {@link method.any} with the following differences:
  * @arg {*} [options.init=Point]

@@ -1,5 +1,5 @@
 import { buildCheckWithCoerce } from './checks';
-import isNumber from './isNumber';
+import isNumber, { isFinite } from './isNumber';
 
 /**
  * Check if a value is a finite integer
@@ -21,14 +21,15 @@ import isNumber from './isNumber';
  * // => false
  * ```
  *
- * @function isInteger
+ * @function is.integer
+ * @alias isInteger
  *
  * @arg {*} value
  * @arg {Boolean} [coerce=false] - If true then see if the value can be coerced into an Integer
  *
  * @returns {Boolean}
  */
-export default buildCheckWithCoerce((item) => Number.isInteger(item) || isNumber(item) && Number.isInteger(Number.parseFloat(item)), (value) => {
+export default buildCheckWithCoerce((item) => isNumber(item) && item == (item | 0) && isFinite(item), (value) => {
 	const parsed = parseFloat(value);
-	return !isNaN(value) && parsed === (parsed | 0);
+	return !isNaN(value) && parsed == (parsed | 0) && isFinite(parsed);
 });

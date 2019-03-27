@@ -19,6 +19,7 @@ import { baseEnforcer } from './enforcer';
  * ```
  *
  * @function enforce.element
+ * @alias enforceElement
  *
  * @arg {*} value
  * @arg {Element} alt - Returned if the value is not the correct type

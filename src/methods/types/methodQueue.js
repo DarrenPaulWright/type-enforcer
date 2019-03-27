@@ -5,6 +5,7 @@ import Queue from '../../types/Queue';
  * Builds a chainable method that implements a [Queue](docs/Queue.md)
  *
  * @function method.queue
+ * @alias methodQueue
  *
  * @arg {Object}   [options]
  * @arg {Function} [options.set] - Called after a new callback is added to the queue. Provides a reference to the queue, the new ID for the callback, the callback, and sets the context to the methods constructor.

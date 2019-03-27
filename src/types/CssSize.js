@@ -122,7 +122,6 @@ const FONT_BASED_UNITS = Symbol();
 /**
  * A class for css sizes
  *
- * ## Usage
  * ``` javascript
  * import { CssSize } from 'type-enforcer';
  * ```

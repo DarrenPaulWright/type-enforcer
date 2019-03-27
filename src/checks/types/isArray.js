@@ -18,7 +18,8 @@ import isJson from './isJson';
  * // => true
  * ```
  *
- * @function isArray
+ * @function is.array
+ * @alias isArray
  *
  * @arg {*} value
  * @arg {Boolean} [coerce=false] - If true then see if the value can be coerced into an array

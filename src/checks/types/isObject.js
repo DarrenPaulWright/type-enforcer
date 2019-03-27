@@ -20,7 +20,8 @@ const isPlainObject = (item) => item && item.constructor === Object;
  * // => true
  * ```
  *
- * @function isObject
+ * @function is.object
+ * @alias isObject
  *
  * @arg {*} value
  * @arg {Boolean} [coerce=false] - If true then see if the value can be coerced into an Object

@@ -18,6 +18,7 @@
  * ```
  *
  * @function enforce.enum
+ * @alias enforceEnum
  *
  * @arg {*} value
  * @arg {Enum} enumerable

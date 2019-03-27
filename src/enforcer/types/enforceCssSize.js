@@ -20,6 +20,7 @@ import { coercibleEnforcer } from './enforcer';
  * ```
  *
  * @function enforce.cssSize
+ * @alias enforceCssSize
  *
  * @arg {*} value
  * @arg {CssSize} alt - Returned if the value is not the correct type

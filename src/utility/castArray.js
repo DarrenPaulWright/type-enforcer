@@ -41,7 +41,7 @@ export default (value) => {
 	if (value === undefined) {
 		return [];
 	}
-	if (typeof value === 'object' && value !== null && isNumber(value.length)) {
+	if (value !== null && typeof value === 'object' && isNumber(value.length)) {
 		return Array.prototype.slice.call(value);
 	}
 	return [value];

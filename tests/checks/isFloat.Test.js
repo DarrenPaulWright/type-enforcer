@@ -8,6 +8,11 @@ describe('isFloat', () => {
 		assert.deepEqual(isFloat, is.float);
 	});
 
+	it('should return false for NaN', () => {
+		assert.isFalse(isFloat(NaN));
+		assert.isFalse(isFloat(NaN), true);
+	});
+
 	multiTest({
 		values: data.true,
 		test: (value) => isFloat(value),

@@ -8,6 +8,11 @@ describe('isNumber', () => {
 		assert.deepEqual(isNumber, is.number);
 	});
 
+	it('should return false for NaN', () => {
+		assert.isFalse(isNumber(NaN));
+		assert.isFalse(isNumber(NaN), true);
+	});
+
 	multiTest({
 		values: data.true,
 		test: (value) => isNumber(value),

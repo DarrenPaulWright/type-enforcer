@@ -1,7 +1,5 @@
 import { buildCheckWithCoerce } from './checks';
-import isNumber from './isNumber';
-
-const isFinite = (item) => item !== Infinity && item !== -Infinity;
+import isNumber, { isFinite } from './isNumber';
 
 /**
  * Check if a value is a finite float
@@ -28,7 +26,7 @@ const isFinite = (item) => item !== Infinity && item !== -Infinity;
  *
  * @returns {Boolean}
  */
-export default buildCheckWithCoerce((item) => isNumber(item) && item !== Infinity && item !== -Infinity, (value) => {
+export default buildCheckWithCoerce((item) => isNumber(item) && isFinite(item), (value) => {
 	const parsed = parseFloat(value);
-	return !isNaN(value) && parsed !== Infinity && parsed !== -Infinity;
+	return !isNaN(value) && isFinite(parsed);
 });

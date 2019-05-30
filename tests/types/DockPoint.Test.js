@@ -121,6 +121,21 @@ describe('DockPoint', () => {
 		});
 	});
 
+	describe('.opposite', () => {
+		it('should return DockPoint.POINTS.BOTTOM_RIGHT if the value is TOP_LEFT', () => {
+			const dockPoint = new DockPoint(DockPoint.POINTS.TOP_LEFT);
+			assert.equal(dockPoint.opposite.value(), DockPoint.POINTS.BOTTOM_RIGHT);
+		});
+		it('should return DockPoint.POINTS.BOTTOM_CENTER if the value is TOP_CENTER', () => {
+			const dockPoint = new DockPoint(DockPoint.POINTS.TOP_CENTER);
+			assert.equal(dockPoint.opposite.value(), DockPoint.POINTS.BOTTOM_CENTER);
+		});
+		it('should return DockPoint.POINTS.BOTTOM if the value is TOP', () => {
+			const dockPoint = new DockPoint(DockPoint.POINTS.TOP);
+			assert.equal(dockPoint.opposite.value(), DockPoint.POINTS.BOTTOM);
+		});
+	});
+
 	describe('.oppositePrimary', () => {
 		it('should return DockPoint.POINTS.BOTTOM if the value is TOP', () => {
 			const dockPoint = new DockPoint(DockPoint.POINTS.TOP);

@@ -18,6 +18,7 @@
 * [DockPoint](#DockPoint)
     * [new DockPoint([value])](#new_DockPoint_new)
     * _instance_
+        * [.opposite](#DockPoint+opposite) ⇒ [<code>DockPoint</code>](#DockPoint)
         * [.oppositePrimary](#DockPoint+oppositePrimary) ⇒ <code>String</code>
         * [.oppositeSecondary](#DockPoint+oppositeSecondary) ⇒ <code>String</code>
         * [.has(value)](#DockPoint+has) ⇒ <code>boolean</code>
@@ -49,11 +50,19 @@
 | [value] | <code>String</code> | <code>DockPoint.POINTS.TOP_CENTER</code> | Anything from DockPoint.POINTS |
 
 
+<br><a name="DockPoint+opposite"></a>
+
+#### dockPoint.opposite ⇒ [<code>DockPoint</code>](#DockPoint)
+> Get a new DockPoint with the opposite value
+
+`Read only`<br>
+
 <br><a name="DockPoint+oppositePrimary"></a>
 
 #### dockPoint.oppositePrimary ⇒ <code>String</code>
 > Get the opposite of the current primary
 
+`Read only`<br>
 **Returns**: <code>String</code> - DockPoint.BASIC_POINTS  
 
 <br><a name="DockPoint+oppositeSecondary"></a>
@@ -61,6 +70,7 @@
 #### dockPoint.oppositeSecondary ⇒ <code>String</code>
 > Get the opposite of the current secondary
 
+`Read only`<br>
 **Returns**: <code>String</code> - DockPoint.BASIC_POINTS  
 
 <br><a name="DockPoint+has"></a>

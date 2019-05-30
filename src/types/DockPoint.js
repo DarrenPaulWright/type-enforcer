@@ -61,6 +61,49 @@ export default class DockPoint {
 	}
 
 	/**
+	 * Get a new DockPoint with the opposite value
+	 *
+	 * @memberof DockPoint
+	 * @readonly
+	 * @instance
+	 *
+	 * @returns {DockPoint}
+	 */
+	get opposite() {
+		let opposite = this.oppositePrimary;
+		if (this.secondary()) {
+			opposite += SEPARATOR + this.oppositeSecondary;
+		}
+		return new DockPoint(opposite);
+	}
+
+	/**
+	 * Get the opposite of the current primary
+	 *
+	 * @memberof DockPoint
+	 * @readonly
+	 * @instance
+	 *
+	 * @returns {String} DockPoint.BASIC_POINTS
+	 */
+	get oppositePrimary() {
+		return getOpposite(this.primary());
+	}
+
+	/**
+	 * Get the opposite of the current secondary
+	 *
+	 * @memberof DockPoint
+	 * @readonly
+	 * @instance
+	 *
+	 * @returns {String} DockPoint.BASIC_POINTS
+	 */
+	get oppositeSecondary() {
+		return getOpposite(this.secondary());
+	}
+
+	/**
 	 * Determine if something is a valid dock point
 	 *
 	 * @memberof DockPoint
@@ -119,30 +162,6 @@ export default class DockPoint {
 		else {
 			this.secondary(this.oppositeSecondary);
 		}
-	}
-
-	/**
-	 * Get the opposite of the current primary
-	 *
-	 * @memberof DockPoint
-	 * @instance
-	 *
-	 * @returns {String} DockPoint.BASIC_POINTS
-	 */
-	get oppositePrimary() {
-		return getOpposite(this.primary());
-	}
-
-	/**
-	 * Get the opposite of the current secondary
-	 *
-	 * @memberof DockPoint
-	 * @instance
-	 *
-	 * @returns {String} DockPoint.BASIC_POINTS
-	 */
-	get oppositeSecondary() {
-		return getOpposite(this.secondary());
 	}
 
 	/**

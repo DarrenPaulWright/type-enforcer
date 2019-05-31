@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import powerset from 'powerset';
+import { powerset } from 'object-agent';
 import { enforceString, method, Point } from '../../src';
 import { processOutput } from '../../src/methods/variants/helper';
 

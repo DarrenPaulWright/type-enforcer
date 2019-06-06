@@ -1,107 +1,107 @@
 {
-  "name": "type-enforcer",
-  "version": "0.4.3",
-  "description": "A type enforcement library for javascript",
-  "main": "src/index.js",
-  "scripts": {
-    "test": "karma start --single-run",
-    "test-watch": "karma start",
-    "patch": "npm version patch -m \"Increment patch version to %s\"",
-    "minor": "npm version minor -m \"Increment minor version to %s\"",
-    "major": "npm version major -m \"Increment major version to %s\"",
-    "docs-readme": "jsdoc2md src/index.js > README.md -t docs/docs.hbs --plugin dmd-readable -d 3",
-    "docs-enforce": "jsdoc2md src/enforcer/**/*.js > docs/enforce.md -t docs/docs.hbs --plugin dmd-readable -d 3",
-    "docs-method": "jsdoc2md src/methods/**/*.js > docs/method.md -t docs/docs.hbs --plugin dmd-readable -d 3",
-    "docs-checks": "jsdoc2md src/checks/**/*.js > docs/checks.md -t docs/docs.hbs --plugin dmd-readable -d 3",
-    "docs-queue": "jsdoc2md src/types/Queue.js > docs/Queue.md -t docs/docs.hbs --plugin dmd-readable -d 3",
-    "docs-csssize": "jsdoc2md src/types/CssSize.js > docs/CssSize.md -t docs/docs.hbs --plugin dmd-readable -d 3",
-    "docs-dockpoint": "jsdoc2md src/types/DockPoint.js > docs/DockPoint.md -t docs/docs.hbs --plugin dmd-readable -d 3",
-    "docs-enum": "jsdoc2md src/types/Enum.js > docs/Enum.md -t docs/docs.hbs --plugin dmd-readable -d 3",
-    "docs-point": "jsdoc2md src/types/Point.js > docs/Point.md -t docs/docs.hbs --plugin dmd-readable -d 3",
-    "docs-thickness": "jsdoc2md src/types/Thickness.js > docs/Thickness.md -t docs/docs.hbs --plugin dmd-readable -d 3",
-    "docs-vector": "jsdoc2md src/types/Vector.js > docs/Vector.md -t docs/docs.hbs --plugin dmd-readable -d 3",
-    "docs-removable": "jsdoc2md src/mixins/Removable.js > docs/Removable.md -t docs/docs.hbs --plugin dmd-readable -d 3",
-    "docs-castarray": "jsdoc2md src/utility/castArray.js > docs/castArray.md -t docs/docs.hbs --plugin dmd-readable -d 3",
-    "docs": "npm run docs-readme && npm run docs-enforce && npm run docs-method && npm run docs-checks && npm run docs-queue && npm run docs-csssize && npm run docs-dockpoint && npm run docs-enum && npm run docs-point && npm run docs-thickness && npm run docs-vector && npm run docs-removable && npm run docs-castarray"
-  },
-  "badges": [
-    {
-      "name": "npm",
-      "image": "https://img.shields.io/npm/v/type-enforcer.svg",
-      "url": "https://npmjs.com/package/type-enforcer"
-    },
-    {
-      "name": "build",
-      "image": "https://travis-ci.org/DarrenPaulWright/type-enforcer.svg?branch=master",
-      "url": "https://travis-ci.org/DarrenPaulWright/type-enforcer"
-    },
-    {
-      "name": "coverage",
-      "image": "https://coveralls.io/repos/github/DarrenPaulWright/type-enforcer/badge.svg?branch=master",
-      "url": "https://coveralls.io/github/DarrenPaulWright/type-enforcer?branch=master"
-    },
-    {
-      "name": "deps",
-      "image": "https://david-dm.org/darrenpaulwright/type-enforcer.svg",
-      "url": "https://david-dm.org/darrenpaulwright/type-enforcer"
-    },
-    {
-      "name": "size",
-      "image": "https://packagephobia.now.sh/badge?p=type-enforcer",
-      "url": "https://packagephobia.now.sh/result?p=type-enforcer"
-    },
-    {
-      "name": "vulnerabilities",
-      "image": "https://snyk.io/test/github/DarrenPaulWright/type-enforcer/badge.svg?targetFile=package.json",
-      "url": "https://snyk.io/test/github/DarrenPaulWright/type-enforcer?targetFile=package.json"
-    },
-    {
-      "name": "license",
-      "image": "https://img.shields.io/github/license/DarrenPaulWright/type-enforcer.svg",
-      "url": "https://npmjs.com/package/type-enforcer/LICENSE.md"
-    }
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/DarrenPaulWright/type-enforcer.git"
-  },
-  "keywords": [
-    "type",
-    "enforce",
-    "method"
-  ],
-  "author": "Darren Paul Wright <Darren@DarrenPaulWright.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/DarrenPaulWright/type-enforcer/issues"
-  },
-  "homepage": "https://github.com/DarrenPaulWright/type-enforcer#readme",
-  "dependencies": {
-    "object-agent": "^0.4.0"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.4.5",
-    "@babel/preset-env": "^7.4.5",
-    "babel-eslint": "^10.0.1",
-    "babel-loader": "^8.0.6",
-    "babel-plugin-istanbul": "^5.1.4",
-    "chai": "^4.2.0",
-    "dmd-readable": "^0.2.1",
-    "eslint": "^5.16.0",
-    "eslint-loader": "^2.1.2",
-    "eslint-plugin-babel": "^5.3.0",
-    "jsdoc-to-markdown": "^4.0.1",
-    "karma": "^3.1.4",
-    "karma-brief-reporter": "0.0.7",
-    "karma-chrome-launcher": "^2.2.0",
-    "karma-coverage": "^1.1.2",
-    "karma-coveralls": "^2.1.0",
-    "karma-firefox-launcher": "^1.1.0",
-    "karma-mocha": "^1.3.0",
-    "karma-webpack": "^3.0.5",
-    "mocha": "^5.2.0",
-    "test-runner-config": "^0.5.0",
-    "wallaby-webpack": "^3.9.15",
-    "webpack": "^4.32.2"
-  }
+	"name": "type-enforcer",
+	"version": "0.4.3",
+	"description": "A type enforcement library for javascript",
+	"main": "src/index.js",
+	"scripts": {
+		"test": "karma start --single-run",
+		"test-watch": "karma start",
+		"patch": "npm version patch -m \"Increment patch version to %s\" && npm publish",
+		"minor": "npm version minor -m \"Increment minor version to %s\" && npm publish",
+		"major": "npm version major -m \"Increment major version to %s\" && npm publish",
+		"docs-readme": "jsdoc2md src/index.js > README.md -t docs/docs.hbs --plugin dmd-readable -d 3",
+		"docs-enforce": "jsdoc2md src/enforcer/**/*.js > docs/enforce.md -t docs/docs.hbs --plugin dmd-readable -d 3",
+		"docs-method": "jsdoc2md src/methods/**/*.js > docs/method.md -t docs/docs.hbs --plugin dmd-readable -d 3",
+		"docs-checks": "jsdoc2md src/checks/**/*.js > docs/checks.md -t docs/docs.hbs --plugin dmd-readable -d 3",
+		"docs-queue": "jsdoc2md src/types/Queue.js > docs/Queue.md -t docs/docs.hbs --plugin dmd-readable -d 3",
+		"docs-csssize": "jsdoc2md src/types/CssSize.js > docs/CssSize.md -t docs/docs.hbs --plugin dmd-readable -d 3",
+		"docs-dockpoint": "jsdoc2md src/types/DockPoint.js > docs/DockPoint.md -t docs/docs.hbs --plugin dmd-readable -d 3",
+		"docs-enum": "jsdoc2md src/types/Enum.js > docs/Enum.md -t docs/docs.hbs --plugin dmd-readable -d 3",
+		"docs-point": "jsdoc2md src/types/Point.js > docs/Point.md -t docs/docs.hbs --plugin dmd-readable -d 3",
+		"docs-thickness": "jsdoc2md src/types/Thickness.js > docs/Thickness.md -t docs/docs.hbs --plugin dmd-readable -d 3",
+		"docs-vector": "jsdoc2md src/types/Vector.js > docs/Vector.md -t docs/docs.hbs --plugin dmd-readable -d 3",
+		"docs-removable": "jsdoc2md src/mixins/Removable.js > docs/Removable.md -t docs/docs.hbs --plugin dmd-readable -d 3",
+		"docs-castarray": "jsdoc2md src/utility/castArray.js > docs/castArray.md -t docs/docs.hbs --plugin dmd-readable -d 3",
+		"docs": "npm run docs-readme && npm run docs-enforce && npm run docs-method && npm run docs-checks && npm run docs-queue && npm run docs-csssize && npm run docs-dockpoint && npm run docs-enum && npm run docs-point && npm run docs-thickness && npm run docs-vector && npm run docs-removable && npm run docs-castarray"
+	},
+	"badges": [
+		{
+			"name": "npm",
+			"image": "https://img.shields.io/npm/v/type-enforcer.svg",
+			"url": "https://npmjs.com/package/type-enforcer"
+		},
+		{
+			"name": "build",
+			"image": "https://travis-ci.org/DarrenPaulWright/type-enforcer.svg?branch=master",
+			"url": "https://travis-ci.org/DarrenPaulWright/type-enforcer"
+		},
+		{
+			"name": "coverage",
+			"image": "https://coveralls.io/repos/github/DarrenPaulWright/type-enforcer/badge.svg?branch=master",
+			"url": "https://coveralls.io/github/DarrenPaulWright/type-enforcer?branch=master"
+		},
+		{
+			"name": "deps",
+			"image": "https://david-dm.org/darrenpaulwright/type-enforcer.svg",
+			"url": "https://david-dm.org/darrenpaulwright/type-enforcer"
+		},
+		{
+			"name": "size",
+			"image": "https://packagephobia.now.sh/badge?p=type-enforcer",
+			"url": "https://packagephobia.now.sh/result?p=type-enforcer"
+		},
+		{
+			"name": "vulnerabilities",
+			"image": "https://snyk.io/test/github/DarrenPaulWright/type-enforcer/badge.svg?targetFile=package.json",
+			"url": "https://snyk.io/test/github/DarrenPaulWright/type-enforcer?targetFile=package.json"
+		},
+		{
+			"name": "license",
+			"image": "https://img.shields.io/github/license/DarrenPaulWright/type-enforcer.svg",
+			"url": "https://npmjs.com/package/type-enforcer/LICENSE.md"
+		}
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/DarrenPaulWright/type-enforcer.git"
+	},
+	"keywords": [
+		"type",
+		"enforce",
+		"method"
+	],
+	"author": "Darren Paul Wright <Darren@DarrenPaulWright.com>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/DarrenPaulWright/type-enforcer/issues"
+	},
+	"homepage": "https://github.com/DarrenPaulWright/type-enforcer#readme",
+	"dependencies": {
+		"object-agent": "^0.5.2"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.4.5",
+		"@babel/preset-env": "^7.4.5",
+		"babel-eslint": "^10.0.1",
+		"babel-loader": "^8.0.6",
+		"babel-plugin-istanbul": "^5.1.4",
+		"chai": "^4.2.0",
+		"dmd-readable": "^0.2.2",
+		"eslint": "^5.16.0",
+		"eslint-loader": "^2.1.2",
+		"eslint-plugin-babel": "^5.3.0",
+		"jsdoc-to-markdown": "^5.0.0",
+		"karma": "^4.1.0",
+		"karma-brief-reporter": "0.1.1",
+		"karma-chrome-launcher": "^2.2.0",
+		"karma-coverage": "^1.1.2",
+		"karma-coveralls": "^2.1.0",
+		"karma-firefox-launcher": "^1.1.0",
+		"karma-mocha": "^1.3.0",
+		"karma-webpack": "^3.0.5",
+		"mocha": "^6.1.4",
+		"test-runner-config": "^0.5.0",
+		"wallaby-webpack": "^3.9.15",
+		"webpack": "^4.33.0"
+	}
 }

@@ -25,6 +25,20 @@ export const eachPair = (array1, array2, callback, isUnique = false) => {
 	}
 };
 
+export const displayValue = (value) => {
+	if (Object.is(value, -0)) {
+		return '-0';
+	}
+	if (value instanceof String || typeof value === 'string') {
+		return '\'' + value + '\'';
+	}
+	if (Array.isArray(value) || (value && value.constructor === Object)) {
+		return JSON.stringify(value);
+	}
+
+	return value + '';
+};
+
 /**
  * @function multiTest
  *
@@ -49,17 +63,17 @@ export const multiTest = (settings) => {
 		buildSingleMessage = settings.message;
 	}
 	else if (settings.assertion === 'isTrue') {
-		buildSingleMessage = (input) => `should return true for ${input}`;
+		buildSingleMessage = (input) => `should return true for ${displayValue(input)}`;
 	}
 	else if (settings.assertion === 'isFalse') {
-		buildSingleMessage = (input) => `should return false for ${input}`;
+		buildSingleMessage = (input) => `should return false for ${displayValue(input)}`;
 	}
 	else {
-		buildSingleMessage = (input, output) => `should return ${output} when set to ${input}`;
+		buildSingleMessage = (input, output) => `should return ${displayValue(output)} when set to ${input}`;
 	}
 
 	const buildDoubleMessage = settings.message || ((input1, input2, output) => {
-		return `should return ${output} when ${input1} and ${input2} are provided`;
+		return `should return ${displayValue(output)} when ${displayValue(input1)} and ${displayValue(input2)} are provided`;
 	});
 
 	const testSingleValue = (input, output, value) => {

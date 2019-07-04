@@ -36,6 +36,7 @@
  *
  * #### Other
  * - [castArray](docs/castArray.md)
+ * - [equality checks](docs/equality.md)
  *
  * @name Docs
  */
@@ -113,3 +114,8 @@ export { default as Vector } from './types/Vector';
 
 export { default as Removable } from './mixins/Removable';
 export { default as castArray } from './utility/castArray';
+
+export { default as abstractEquality } from './equality/abstractEquality';
+export { default as strictEquality } from './equality/strictEquality';
+export { default as sameValue } from './equality/sameValue';
+export { default as sameValueZero } from './equality/sameValueZero';

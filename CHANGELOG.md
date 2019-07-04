@@ -4,20 +4,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
-## [0.4.3] - 2019-3-27
+## [0.5.0] - 2019-07-04
+### Added
+- [abstractEquality, strictEquality, sameValue, sameValueZero](docs/equality.md)
+
+## [0.4.4] - 2019-06-06
+### Security
+- Updated dependencies
+
+## [0.4.3] - 2019-03-27
 ### Added
 - [DockPoint](docs/DockPoint.md) added read-only property 'opposite'
 
-## [0.4.2] - 2019-3-27
+## [0.4.2] - 2019-03-27
 ### Changed
 - [castArray](docs/castArray.md) returns an empty array when given undefined, and converts array-like objects into arrays.
 - isNumber returns false for NaN
 
-## [0.4.1] - 2019-3-11
+## [0.4.1] - 2019-03-11
 ### Changed
 - Fixed bug in methods where the init value could get modified.
 
-## [0.4.0] - 2019-3-11
+## [0.4.0] - 2019-03-11
 ### Added
 - Float type (check, enforcer, and method)
 
@@ -25,20 +33,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Integer coercion is now more strict
 - Switching dependencies back to object-agent
 
-## [0.3.3] - 2019-2-15
+## [0.3.3] - 2019-02-15
 ### Changed
 - Switching dependencies to deep-equal instead of object-agent
 
-## [0.3.2] - 2019-2-14
+## [0.3.2] - 2019-02-14
 ### Changed
 - Replaced dependencies on clone and deepEqual with object-agent
 - Added ID and callback args to the methodQueue set option
 
-## [0.3.1] - 2019-2-10
+## [0.3.1] - 2019-02-10
 ### Added
 - [castArray](docs/castArray.md)
 
-## [0.3.0] - 2019-2-3
+## [0.3.0] - 2019-02-03
 ### Changed
 - Removed Dependency on Lodash
 
@@ -132,6 +140,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Initial enforcers, methods, and documentation
 
+[0.5.0]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.4.4...c0.5.0
+[0.4.4]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.4.3...c0.4.4
 [0.4.3]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.4.2...c0.4.3
 [0.4.2]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.4.1...c0.4.2
 [0.4.1]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.4.0...c0.4.1

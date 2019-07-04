@@ -42,7 +42,7 @@ export default (value) => {
 		return [];
 	}
 	if (value !== null && typeof value === 'object' && isNumber(value.length)) {
-		return Array.prototype.slice.call(value);
+		return [].slice.call(value);
 	}
 	return [value];
 }

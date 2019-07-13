@@ -1,5 +1,6 @@
 import isFunction from '../../checks/types/isFunction';
 import Queue from '../../types/Queue';
+import privateProp from '../../utility/privateProp';
 
 /**
  * Builds a chainable method that implements a [Queue](docs/Queue.md)
@@ -17,7 +18,7 @@ export default (options = {}) => {
 
 	return function(callback) {
 		if (this && !this[key] && !this.isRemoved) {
-			this[key] = new Queue();
+			privateProp(this, key, new Queue());
 
 			if (this.onRemove) {
 				this.onRemove(() => {

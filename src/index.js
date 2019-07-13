@@ -1,19 +1,17 @@
 /**
- * With npm:
+ * @name Installation
+ * @summary
+ *
  * ```
  * npm install type-enforcer
  * ```
- *
- * @name Installation
+ * _Requires Babel 7.2+_
  */
+
 /**
- * Requires:
- * - Babel >= 7.2
- *
- * @name Compatibility
- */
-/**
- * #### Data Types
+ * @name Docs
+ * @summary
+ * #### Extra Data Types
  * - [CssSize](docs/CssSize.md)
  * - [DockPoint](docs/DockPoint.md)
  * - [Enum](docs/Enum.md)
@@ -22,23 +20,22 @@
  * - [Thickness](docs/Thickness.md)
  * - [Vector](docs/Vector.md)
  *
- * #### Checks
+ * #### Type Checks
  * - [checks](docs/checks.md)
  *
- * #### Enforcement
+ * #### Type Enforcement
  * - [enforce](docs/enforce.md)
+ * - [castArray](docs/castArray.md)
  *
- * #### Methods
+ * #### Type Enforcing Methods
  * - [method](docs/method.md)
  *
  * #### Mixins
  * - [Removable](docs/Removable.md)
  *
  * #### Other
- * - [castArray](docs/castArray.md)
+ * - [privateProp](docs/privateProp.md)
  * - [equality checks](docs/equality.md)
- *
- * @name Docs
  */
 export { default as is } from './checks/is';
 export { default as isArray } from './checks/types/isArray';
@@ -114,6 +111,7 @@ export { default as Vector } from './types/Vector';
 
 export { default as Removable } from './mixins/Removable';
 export { default as castArray } from './utility/castArray';
+export { default as privateProp } from './utility/privateProp';
 
 export { default as abstractEquality } from './equality/abstractEquality';
 export { default as strictEquality } from './equality/strictEquality';

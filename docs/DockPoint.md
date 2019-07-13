@@ -38,11 +38,7 @@
 <br><a name="new_DockPoint_new"></a>
 
 #### new DockPoint([value])
-> Allows the designation of a specific point relative to an object.
-> 
-> ``` javascript
-> import { DockPoint } from 'type-enforcer';
-> ```
+> Allows the designation of a specific point relative to an object.> > ``` javascript> import { DockPoint } from 'type-enforcer';> ```
 
 
 | Param | Type | Default | Description |
@@ -52,25 +48,25 @@
 
 <br><a name="DockPoint+opposite"></a>
 
-#### dockPoint.opposite ⇒ [<code>DockPoint</code>](#DockPoint)
+#### dockPoint.opposite ⇒ [<code>DockPoint</code>](#DockPoint)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_`🔒 Read only`_
+
 > Get a new DockPoint with the opposite value
 
-`Read only`<br>
 
 <br><a name="DockPoint+oppositePrimary"></a>
 
-#### dockPoint.oppositePrimary ⇒ <code>String</code>
+#### dockPoint.oppositePrimary ⇒ <code>String</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_`🔒 Read only`_
+
 > Get the opposite of the current primary
 
-`Read only`<br>
 **Returns**: <code>String</code> - DockPoint.BASIC_POINTS  
 
 <br><a name="DockPoint+oppositeSecondary"></a>
 
-#### dockPoint.oppositeSecondary ⇒ <code>String</code>
+#### dockPoint.oppositeSecondary ⇒ <code>String</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_`🔒 Read only`_
+
 > Get the opposite of the current secondary
 
-`Read only`<br>
 **Returns**: <code>String</code> - DockPoint.BASIC_POINTS  
 
 <br><a name="DockPoint+has"></a>

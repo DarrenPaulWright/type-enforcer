@@ -1,4 +1,5 @@
 import { methodQueue } from '../';
+import privateProp from '../utility/privateProp';
 
 const IS_REMOVED = Symbol();
 
@@ -22,7 +23,7 @@ export default class Removable {
 	 */
 	remove() {
 		if (this && !this[IS_REMOVED]) {
-			this[IS_REMOVED] = true;
+			privateProp(this, IS_REMOVED, true);
 
 			if (this.onRemove()) {
 				this.onRemove()

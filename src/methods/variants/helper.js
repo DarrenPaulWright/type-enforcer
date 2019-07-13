@@ -1,8 +1,9 @@
 import isInstanceOf from '../../checks/types/isInstanceOf';
+import privateProp from '../../utility/privateProp';
 
 export const getStoredValue = function(key, init) {
 	if (this && !Object.getOwnPropertySymbols(this).includes(key)) {
-		this[key] = init;
+		privateProp(this, key, init);
 	}
 	return this[key];
 };

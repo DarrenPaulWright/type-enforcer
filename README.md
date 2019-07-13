@@ -14,20 +14,12 @@
 <br><a name="Installation"></a>
 
 ### Installation
-> With npm:> ```> npm install type-enforcer> ```
-
-
-<br><a name="Compatibility"></a>
-
-### Compatibility
-> Requires:> - Babel >= 7.2
-
+```npm install type-enforcer```_Requires Babel 7.2+_
 
 <br><a name="Docs"></a>
 
 ### Docs
-> #### Data Types> - [CssSize](docs/CssSize.md)> - [DockPoint](docs/DockPoint.md)> - [Enum](docs/Enum.md)> - [Point](docs/Point.md)> - [Queue](docs/Queue.md)> - [Thickness](docs/Thickness.md)> - [Vector](docs/Vector.md)> > #### Checks> - [checks](docs/checks.md)> > #### Enforcement> - [enforce](docs/enforce.md)> > #### Methods> - [method](docs/method.md)> > #### Mixins> - [Removable](docs/Removable.md)> > #### Other> - [castArray](docs/castArray.md)> - [equality checks](docs/equality.md)
-
+#### Extra Data Types- [CssSize](docs/CssSize.md)- [DockPoint](docs/DockPoint.md)- [Enum](docs/Enum.md)- [Point](docs/Point.md)- [Queue](docs/Queue.md)- [Thickness](docs/Thickness.md)- [Vector](docs/Vector.md)#### Type Checks- [checks](docs/checks.md)#### Type Enforcement- [enforce](docs/enforce.md)#### Type Enforcing Methods- [method](docs/method.md)#### Mixins- [Removable](docs/Removable.md)#### Other- [castArray](docs/castArray.md)- [privateProp](docs/privateProp.md)- [equality checks](docs/equality.md)
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg
 [npm-url]: https://npmjs.com/package/type-enforcer

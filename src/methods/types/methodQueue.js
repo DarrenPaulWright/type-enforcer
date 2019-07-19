@@ -17,28 +17,30 @@ export default (options = {}) => {
 	const key = Symbol();
 
 	return function(callback) {
-		if (this && !this[key] && !this.isRemoved) {
-			privateProp(this, key, new Queue());
+		const self = this;
 
-			if (this.onRemove) {
-				this.onRemove(() => {
-					this[key].discardAll();
+		if (self && !self[key] && !self.isRemoved) {
+			privateProp(self, key, new Queue());
+
+			if (self.onRemove) {
+				self.onRemove(() => {
+					self[key].discardAll();
 				});
 			}
 		}
 
 		if (arguments.length) {
-			if (isFunction(callback)) {
-				const ID = this[key].add(callback);
+			if (isFunction(callback) && !self.isRemoved) {
+				const ID = self[key].add(callback);
 
 				if (options.set) {
-					options.set.call(this, this[key], ID, callback);
+					options.set.call(self, self[key], ID, callback);
 				}
 			}
 
-			return this;
+			return self;
 		}
 
-		return this[key];
+		return self[key];
 	};
 };

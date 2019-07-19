@@ -72,6 +72,16 @@ describe('method', () => {
 						testConstructor.onRemove();
 					}
 				});
+
+				it('should not throw an error if attempting to set after remove is called', () => {
+					const testConstructor = new TestConstructor();
+
+					testConstructor.remove();
+					const result = testConstructor.testMethod(testFunc);
+
+					assert.equal(result, testConstructor);
+				});
+
 			}
 		};
 
@@ -89,14 +99,20 @@ describe('method', () => {
 
 		describe('(property, with onRemove)', () => {
 			const TestConstructor = function() {
-				this.onRemove = method.function();
+				const self = this;
 
-				this.isRemoved = false;
+				self.onRemove = method.function();
 
-				this.testMethod = method.queue({
+				self.isRemoved = false;
+
+				self.testMethod = method.queue({
 					set: function() {
 					}
 				});
+
+				self.remove = () => {
+					self.isRemoved = true;
+				};
 			};
 
 			runTests(TestConstructor, true);

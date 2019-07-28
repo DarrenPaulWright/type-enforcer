@@ -34,6 +34,7 @@
  * - [Removable](docs/Removable.md)
  *
  * #### Other
+ * - [applySettings](docs/applySettings.md)
  * - [privateProp](docs/privateProp.md)
  * - [equality checks](docs/equality.md)
  */
@@ -110,6 +111,8 @@ export { default as Thickness } from './types/Thickness';
 export { default as Vector } from './types/Vector';
 
 export { default as Removable } from './mixins/Removable';
+
+export { default as applySettings } from './utility/applySettings';
 export { default as castArray } from './utility/castArray';
 export { default as privateProp } from './utility/privateProp';
 

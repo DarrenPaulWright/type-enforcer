@@ -19,7 +19,7 @@
 <br><a name="Docs"></a>
 
 ### Docs
-#### Extra Data Types- [CssSize](docs/CssSize.md)- [DockPoint](docs/DockPoint.md)- [Enum](docs/Enum.md)- [Point](docs/Point.md)- [Queue](docs/Queue.md)- [Thickness](docs/Thickness.md)- [Vector](docs/Vector.md)#### Type Checks- [checks](docs/checks.md)#### Type Enforcement- [enforce](docs/enforce.md)#### Type Enforcing Methods- [method](docs/method.md)#### Mixins- [Removable](docs/Removable.md)#### Other- [castArray](docs/castArray.md)- [privateProp](docs/privateProp.md)- [equality checks](docs/equality.md)
+#### Extra Data Types- [CssSize](docs/CssSize.md)- [DockPoint](docs/DockPoint.md)- [Enum](docs/Enum.md)- [Point](docs/Point.md)- [Queue](docs/Queue.md)- [Thickness](docs/Thickness.md)- [Vector](docs/Vector.md)#### Type Checks- [checks](docs/checks.md)#### Type Enforcement- [enforce](docs/enforce.md)- [castArray](docs/castArray.md)#### Type Enforcing Methods- [method](docs/method.md)#### Mixins- [Removable](docs/Removable.md)#### Other- [applySettings](docs/applySettings.md)- [privateProp](docs/privateProp.md)- [equality checks](docs/equality.md)
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg
 [npm-url]: https://npmjs.com/package/type-enforcer

@@ -27,4 +27,4 @@ import { coercibleEnforcer } from './enforcer';
  *
  * @returns {Array}
  */
-export default coercibleEnforcer(isArray, Array);
+export default coercibleEnforcer(isArray, JSON.parse);

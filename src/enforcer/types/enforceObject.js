@@ -30,4 +30,4 @@ import { coercibleEnforcer } from './enforcer';
  *
  * @returns {Object}
  */
-export default coercibleEnforcer(isObject, Object);
+export default coercibleEnforcer(isObject, JSON.parse);

@@ -19,7 +19,7 @@ describe('enforce', () => {
 			values: data.coerceTrue.map((item) => {
 				return {
 					input: item,
-					output: new Object(item)
+					output: JSON.parse(item)
 				};
 			}),
 			message: (input) => `should return a coerced ${input} when coerce is true`,

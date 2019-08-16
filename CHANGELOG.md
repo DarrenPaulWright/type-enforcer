@@ -4,6 +4,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+## [0.5.6] - 2019-08-15
+### Fixed
+- enforceArray and enforceObject now coerce values properly
+
+## [0.5.5] - 2019-07-29
+### Security
+- Updated dependencies
+
+## [0.5.4] - 2019-07-27
+### Added
+- [applySettings](docs/applySettings.md)
+
+## [0.5.3] - 2019-07-19
+### Fixed
+- methodQueue shouldn't throw an error if called after .remove() is called
+
+## [0.5.2] - 2019-07-16
+- Fixing build config
+
 ## [0.5.1] - 2019-07-13
 ### Added
 - [privateProp](docs/privateProp.md)
@@ -147,6 +166,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Initial enforcers, methods, and documentation
 
+[0.5.6]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.5.5...v0.5.6
+[0.5.5]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.5.4...v0.5.5
+[0.5.4]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.5.3...v0.5.4
+[0.5.3]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.5.2...v0.5.3
+[0.5.2]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.5.1...v0.5.2
 [0.5.1]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.5.0...v0.5.1
 [0.5.0]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.4.4...v0.5.0
 [0.4.4]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.4.3...v0.4.4

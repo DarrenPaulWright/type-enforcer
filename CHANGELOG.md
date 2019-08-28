@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+## [0.5.7] - 2019-08-28
+### Security
+- Updated dependencies
+
 ## [0.5.6] - 2019-08-15
 ### Fixed
 - enforceArray and enforceObject now coerce values properly
@@ -166,6 +170,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Initial enforcers, methods, and documentation
 
+[0.5.7]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.5.6...v0.5.7
 [0.5.6]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.5.5...v0.5.6
 [0.5.5]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.5.4...v0.5.5
 [0.5.4]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.5.3...v0.5.4

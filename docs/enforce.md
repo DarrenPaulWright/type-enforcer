@@ -14,14 +14,7 @@
 <br><a name="enforce"></a>
 
 ### enforce : <code>object</code>
-> Utility functions for enforcing data types.
-> 
-> ``` javascript
-> import { enforce } from 'type-enforcer';
-> 
-> // Or import individual functions
-> import { enforceBoolean, enforceString } from 'type-enforcer';
-> ```
+> Utility functions for enforcing data types.> > ``` javascript> import { enforce } from 'type-enforcer';> > // Or import individual functions> import { enforceBoolean, enforceString } from 'type-enforcer';> ```
 
 
 * [enforce](#enforce) : <code>object</code>
@@ -60,18 +53,7 @@
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 **Example**  
-``` javascript
-import { enforce } from 'type-enforcer';
-
-enforce.array(['a string'], ['alt']);
-// => ['a string']
-
-enforce.array('[]', ['alt']);
-// => ['alt']
-
-enforce.array('[]', ['alt'], true);
-// => []
-```
+``` javascriptimport { enforce } from 'type-enforcer';enforce.array(['a string'], ['alt']);// => ['a string']enforce.array('[]', ['alt']);// => ['alt']enforce.array('[]', ['alt'], true);// => []```
 
 <br><a name="enforce.boolean"></a>
 
@@ -88,18 +70,7 @@ enforce.array('[]', ['alt'], true);
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 **Example**  
-``` javascript
-import { enforce } from 'type-enforcer';
-
-enforce.boolean(false, true);
-// => false
-
-enforce.boolean('', true);
-// => true
-
-enforce.boolean('', true, true);
-// => false
-```
+``` javascriptimport { enforce } from 'type-enforcer';enforce.boolean(false, true);// => falseenforce.boolean('', true);// => trueenforce.boolean('', true, true);// => false```
 
 <br><a name="enforce.cssSize"></a>
 
@@ -116,18 +87,7 @@ enforce.boolean('', true, true);
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 **Example**  
-``` javascript
-import { enforce } from 'type-enforcer';
-
-enforce.cssSize(new CssSize('14px'), new CssSize());
-// => cssSize of 14px
-
-enforce.cssSize('14px', new CssSize());
-// => cssSize of 0
-
-enforce.cssSize('14px', new CssSize(), true);
-// => cssSize of 14px
-```
+``` javascriptimport { enforce } from 'type-enforcer';enforce.cssSize(new CssSize('14px'), new CssSize());// => cssSize of 14pxenforce.cssSize('14px', new CssSize());// => cssSize of 0enforce.cssSize('14px', new CssSize(), true);// => cssSize of 14px```
 
 <br><a name="enforce.date"></a>
 
@@ -144,18 +104,7 @@ enforce.cssSize('14px', new CssSize(), true);
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 **Example**  
-``` javascript
-import { enforce } from 'type-enforcer';
-
-enforce.date(new Date('10/12/1980'), new Date('1/1/2000'));
-// => date of 10/12/1980
-
-enforce.date('10/12/1980', new Date('1/1/2000'));
-// => date of 1/1/2000
-
-enforce.date('10/12/1980', new Date('1/1/2000'), true);
-// => date of 10/12/1980
-```
+``` javascriptimport { enforce } from 'type-enforcer';enforce.date(new Date('10/12/1980'), new Date('1/1/2000'));// => date of 10/12/1980enforce.date('10/12/1980', new Date('1/1/2000'));// => date of 1/1/2000enforce.date('10/12/1980', new Date('1/1/2000'), true);// => date of 10/12/1980```
 
 <br><a name="enforce.dockPoint"></a>
 
@@ -172,18 +121,7 @@ enforce.date('10/12/1980', new Date('1/1/2000'), true);
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 **Example**  
-``` javascript
-import { enforce } from 'type-enforcer';
-
-enforce.dockPoint(new DockPoint(DockPoint.POINTS.TOP), new DockPoint(DockPoint.POINTS.BOTTOM));
-// => dockPoint of top
-
-enforce.dockPoint('top', new DockPoint(DockPoint.POINTS.BOTTOM));
-// => dockPoint of bottom
-
-enforce.dockPoint('top', new DockPoint(DockPoint.POINTS.BOTTOM), true);
-// => dockPoint of top
-```
+``` javascriptimport { enforce } from 'type-enforcer';enforce.dockPoint(new DockPoint(DockPoint.POINTS.TOP), new DockPoint(DockPoint.POINTS.BOTTOM));// => dockPoint of topenforce.dockPoint('top', new DockPoint(DockPoint.POINTS.BOTTOM));// => dockPoint of bottomenforce.dockPoint('top', new DockPoint(DockPoint.POINTS.BOTTOM), true);// => dockPoint of top```
 
 <br><a name="enforce.element"></a>
 
@@ -199,18 +137,7 @@ enforce.dockPoint('top', new DockPoint(DockPoint.POINTS.BOTTOM), true);
 | alt | <code>Element</code> | Returned if the value is not the correct type |
 
 **Example**  
-``` javascript
-import { enforce } from 'type-enforcer';
-
-enforce.element(document.createElement('span'), document.createElement('div'));
-// => a span element
-
-enforce.element('span', document.createElement('div'));
-// => a div element
-
-enforce.element('span', document.createElement('div'), true);
-// => a span element
-```
+``` javascriptimport { enforce } from 'type-enforcer';enforce.element(document.createElement('span'), document.createElement('div'));// => a span elementenforce.element('span', document.createElement('div'));// => a div elementenforce.element('span', document.createElement('div'), true);// => a span element```
 
 <br><a name="enforce.enum"></a>
 
@@ -227,20 +154,7 @@ enforce.element('span', document.createElement('div'), true);
 | alt | <code>String</code> | Returned if the value is not the correct type |
 
 **Example**  
-``` javascript
-import { enforce, Enum } from 'type-enforcer';
-
-const values = new Enum({
-    a: 'item a',
-    b: 'item b'
-});
-
-enforce.enum(values.a, values, values.b);
-// => 'item a'
-
-enforce.enum(values.c, values, values.b);
-// => 'item b'
-```
+``` javascriptimport { enforce, Enum } from 'type-enforcer';const values = new Enum({    a: 'item a',    b: 'item b'});enforce.enum(values.a, values, values.b);// => 'item a'enforce.enum(values.c, values, values.b);// => 'item b'```
 
 <br><a name="enforce.float"></a>
 
@@ -259,18 +173,7 @@ enforce.enum(values.c, values, values.b);
 | [maxValue] | <code>int</code> |  |  |
 
 **Example**  
-``` javascript
-import { enforce } from 'type-enforcer';
-
-enforce.float(3.14159, 13.2);
-// => 3.14159
-
-enforce.float('3.14159', 13.2);
-// => 13.2
-
-enforce.float('3.14159', 13.2, true);
-// => 3.14159
-```
+``` javascriptimport { enforce } from 'type-enforcer';enforce.float(3.14159, 13.2);// => 3.14159enforce.float('3.14159', 13.2);// => 13.2enforce.float('3.14159', 13.2, true);// => 3.14159```
 
 <br><a name="enforce.function"></a>
 
@@ -286,18 +189,7 @@ enforce.float('3.14159', 13.2, true);
 | alt | <code>function</code> | Returned if the value is not the correct type |
 
 **Example**  
-``` javascript
-import { enforce } from 'type-enforcer';
-
-const a = () => {};
-const b = () => {};
-
-enforce.function(a, b);
-// => a
-
-enforce.function('', b);
-// => b
-```
+``` javascriptimport { enforce } from 'type-enforcer';const a = () => {};const b = () => {};enforce.function(a, b);// => aenforce.function('', b);// => b```
 
 <br><a name="enforce.instance"></a>
 
@@ -314,22 +206,7 @@ enforce.function('', b);
 | alt | <code>Object</code> | Returned if the value is not the correct type |
 
 **Example**  
-``` javascript
-import { enforce } from 'type-enforcer';
-
-class A {};
-class C {};
-
-const a = new A();
-const b = new A();
-const c = new C();
-
-enforce.instance(b, A, a);
- => b
-
-enforce.instance(c, A, a);
- => a
-```
+``` javascriptimport { enforce } from 'type-enforcer';class A {};class C {};const a = new A();const b = new A();const c = new C();enforce.instance(b, A, a); => benforce.instance(c, A, a); => a```
 
 <br><a name="enforce.integer"></a>
 
@@ -348,18 +225,7 @@ enforce.instance(c, A, a);
 | [maxValue] | <code>int</code> |  |  |
 
 **Example**  
-``` javascript
-import { enforce } from 'type-enforcer';
-
-enforce.integer(42, 12);
-// => 42
-
-enforce.integer('42', 12);
-// => 12
-
-enforce.integer('42', 12, true);
-// => 42
-```
+``` javascriptimport { enforce } from 'type-enforcer';enforce.integer(42, 12);// => 42enforce.integer('42', 12);// => 12enforce.integer('42', 12, true);// => 42```
 
 <br><a name="enforce.number"></a>
 
@@ -378,21 +244,7 @@ enforce.integer('42', 12, true);
 | [maxValue] | <code>Number</code> | <code>Infinity</code> |  |
 
 **Example**  
-``` javascript
-import { enforce } from 'type-enforcer';
-
-enforce.number(3.14159, 13.2);
-// => 3.14159
-
-enforce.number('3.14159', 13.2);
-// => 13.2
-
-enforce.number('3.14159', 13.2, true);
-// => 3.14159
-
-enforce.number(Infinity, 13.2, true);
-// => Infinity
-```
+``` javascriptimport { enforce } from 'type-enforcer';enforce.number(3.14159, 13.2);// => 3.14159enforce.number('3.14159', 13.2);// => 13.2enforce.number('3.14159', 13.2, true);// => 3.14159enforce.number(Infinity, 13.2, true);// => Infinity```
 
 <br><a name="enforce.object"></a>
 
@@ -409,21 +261,7 @@ enforce.number(Infinity, 13.2, true);
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 **Example**  
-``` javascript
-import { enforce } from 'type-enforcer';
-
-const a = {};
-const b = {};
-
-enforce.object(a, b);
-// => a
-
-enforce.object('{}', b);
-// => b
-
-enforce.object('{}', b, true);
-// => {}
-```
+``` javascriptimport { enforce } from 'type-enforcer';const a = {};const b = {};enforce.object(a, b);// => aenforce.object('{}', b);// => benforce.object('{}', b, true);// => {}```
 
 <br><a name="enforce.point"></a>
 
@@ -440,18 +278,7 @@ enforce.object('{}', b, true);
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 **Example**  
-``` javascript
-import { enforce } from 'type-enforcer';
-
-enforce.point(new Point(1, 2), new Point());
-// => point 1,2
-
-enforce.point('1,2', new Point());
-// => point 0,0
-
-enforce.point('1,2', new Point(), true);
-// => point 1,2
-```
+``` javascriptimport { enforce } from 'type-enforcer';enforce.point(new Point(1, 2), new Point());// => point 1,2enforce.point('1,2', new Point());// => point 0,0enforce.point('1,2', new Point(), true);// => point 1,2```
 
 <br><a name="enforce.regExp"></a>
 
@@ -468,18 +295,7 @@ enforce.point('1,2', new Point(), true);
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 **Example**  
-``` javascript
-import { enforce } from 'type-enforcer';
-
-enforce.regExp(/*+/g, /[a-z]+/);
-// => /*+/g
-
-enforce.regExp('/*+/g', /[a-z]+/);
-// => /[a-z]+/
-
-enforce.regExp('/*+/g', /[a-z]+/, true);
-// => /*+/g
-```
+``` javascriptimport { enforce } from 'type-enforcer';enforce.regExp(/*+/g, /[a-z]+/);// => /*+/genforce.regExp('/*+/g', /[a-z]+/);// => /[a-z]+/enforce.regExp('/*+/g', /[a-z]+/, true);// => /*+/g```
 
 <br><a name="enforce.string"></a>
 
@@ -496,18 +312,7 @@ enforce.regExp('/*+/g', /[a-z]+/, true);
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 **Example**  
-``` javascript
-import { enforce } from 'type-enforcer';
-
-enforce.string('a', 'b');
-// => 'a'
-
-enforce.string(new Point(), 'b');
-// => 'b'
-
-enforce.string(new Point(), 'b', true);
-// => '0,0'
-```
+``` javascriptimport { enforce } from 'type-enforcer';enforce.string('a', 'b');// => 'a'enforce.string(new Point(), 'b');// => 'b'enforce.string(new Point(), 'b', true);// => '0,0'```
 
 <br><a name="enforce.thickness"></a>
 
@@ -524,18 +329,7 @@ enforce.string(new Point(), 'b', true);
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 **Example**  
-``` javascript
-import { enforce } from 'type-enforcer';
-
-enforce.thickness(new Thickness('12px 20px'), new Thickness());
-// => thickness of '12px 20px'
-
-enforce.thickness('12px 20px', new Thickness());
-// => thickness of 0
-
-enforce.thickness('12px 20px', new Thickness(), true);
-// => thickness of '12px 20px'
-```
+``` javascriptimport { enforce } from 'type-enforcer';enforce.thickness(new Thickness('12px 20px'), new Thickness());// => thickness of '12px 20px'enforce.thickness('12px 20px', new Thickness());// => thickness of 0enforce.thickness('12px 20px', new Thickness(), true);// => thickness of '12px 20px'```
 
 <br><a name="enforce.vector"></a>
 
@@ -552,18 +346,7 @@ enforce.thickness('12px 20px', new Thickness(), true);
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 **Example**  
-``` javascript
-import { enforce } from 'type-enforcer';
-
-enforce.vector(new Vector('[[1,2],[3,4]]'), new Vector());
-// => vector of '[[1,2],[3,4]]'
-
-enforce.vector('[[1,2],[3,4]]', new Vector());
-// => vector of '[[0,0],[0,0]]'
-
-enforce.vector('[[1,2],[3,4]]', new Vector(), true);
-// => vector of '[[1,2],[3,4]]'
-```
+``` javascriptimport { enforce } from 'type-enforcer';enforce.vector(new Vector('[[1,2],[3,4]]'), new Vector());// => vector of '[[1,2],[3,4]]'enforce.vector('[[1,2],[3,4]]', new Vector());// => vector of '[[0,0],[0,0]]'enforce.vector('[[1,2],[3,4]]', new Vector(), true);// => vector of '[[1,2],[3,4]]'```
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg
 [npm-url]: https://npmjs.com/package/type-enforcer

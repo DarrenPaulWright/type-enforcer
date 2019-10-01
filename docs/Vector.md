@@ -33,11 +33,7 @@
 <br><a name="new_Vector_new"></a>
 
 #### new Vector([start], [end])
-> Vector model with helper types
-> 
-> ``` javascript
-> import { Vector } from 'type-enforcer';
-> ```
+> Vector model with helper types> > ``` javascript> import { Vector } from 'type-enforcer';> ```
 
 
 | Param | Type |

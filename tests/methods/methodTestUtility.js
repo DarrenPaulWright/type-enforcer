@@ -1,7 +1,6 @@
 import { assert } from 'chai';
 import { powerset } from 'object-agent';
 import { enforceString, method, Point } from '../../src';
-import { processOutput } from '../../src/methods/variants/helper';
 
 const startCase = (string) => string.split(' ').map((word) => word.charAt(0).toUpperCase()).join(' ');
 
@@ -13,6 +12,10 @@ const everyMethodVariant = variantSet.map((combination) => {
 		options: combination
 	};
 });
+
+const processOutput = (value, options = {}) => {
+	return (options.stringify && value && value.toString) ? value.toString() : value;
+};
 
 export const testMethodType = (settings) => {
 	let testBefore = '';
@@ -470,26 +473,6 @@ export const testVariant = (settings) => {
 				.testMethod('2');
 
 			assert.equal(testVar, '4');
-		});
-
-		it('should NOT set a property Symbol on the constructor before the value is set', () => {
-			const Constructor = function() {
-				this.testMethod = settings.variant(Object.assign({}, defaultOptions));
-			};
-			const constructor = new Constructor();
-
-			assert.equal(Object.getOwnPropertySymbols(constructor).length, 0);
-		});
-
-		it('should set a property Symbol on the constructor after the value is set', () => {
-			const Constructor = function() {
-				this.testMethod = settings.variant(Object.assign({}, defaultOptions));
-			};
-			const constructor = new Constructor();
-
-			constructor.testMethod('something');
-
-			assert.equal(Object.getOwnPropertySymbols(constructor).length, 1);
 		});
 
 		it('should save a value', () => {

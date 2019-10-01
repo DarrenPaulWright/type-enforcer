@@ -68,18 +68,7 @@
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a boolean. Always returns true, as _everything_ can be coerced into a boolean. |
 
 **Example**  
-``` javascript
-import { isBoolean } from 'type-enforcer';
-
-isBoolean(false);
-// => true
-
-isBoolean('a string');
-// => false
-
-isBoolean('a string', true);
-// => true
-```
+``` javascriptimport { isBoolean } from 'type-enforcer';isBoolean(false);// => trueisBoolean('a string');// => falseisBoolean('a string', true);// => true```
 
 <br><a name="is.cssSize"></a>
 
@@ -158,18 +147,7 @@ isBoolean('a string', true);
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a float |
 
 **Example**  
-``` javascript
-import { isFloat } from 'type-enforcer';
-
-isFloat(3.14159);
-// => true
-
-isFloat('3.14159');
-// => false
-
-isFloat('3.14159', true);
-// => true
-```
+``` javascriptimport { isFloat } from 'type-enforcer';isFloat(3.14159);// => trueisFloat('3.14159');// => falseisFloat('3.14159', true);// => true```
 
 <br><a name="is.function"></a>
 
@@ -184,12 +162,7 @@ isFloat('3.14159', true);
 | value | <code>\*</code> | 
 
 **Example**  
-``` javascript
-import { isFunction } from 'type-enforcer';
-
-isFunction(() => {});
-// => true
-```
+``` javascriptimport { isFunction } from 'type-enforcer';isFunction(() => {});// => true```
 
 <br><a name="is.instanceOf"></a>
 
@@ -205,27 +178,7 @@ isFunction(() => {});
 | constructor | <code>function</code> | 
 
 **Example**  
-``` javascript
-import { isInstanceOf } from 'type-enforcer';
-
-isInstanceOf(false, Boolean);
- => true
-
-false instanceof Boolean
- => false
-isInstanceOf(false, Boolean);
- => true
-
-42 instanceof Number
- => false
-isInstanceOf(42, Number);
- => true
-
-'a string' instanceof String
- => false
-isInstanceOf('a string', String);
- => true
-```
+``` javascriptimport { isInstanceOf } from 'type-enforcer';isInstanceOf(false, Boolean); => truefalse instanceof Boolean => falseisInstanceOf(false, Boolean); => true42 instanceof Number => falseisInstanceOf(42, Number); => true'a string' instanceof String => falseisInstanceOf('a string', String); => true```
 
 <br><a name="is.integer"></a>
 
@@ -241,21 +194,7 @@ isInstanceOf('a string', String);
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into an Integer |
 
 **Example**  
-``` javascript
-import { isInteger } from 'type-enforcer';
-
-isInteger(42);
-// => true
-
-isInteger('42');
-// => false
-
-isInteger('42', true);
-// => true
-
-isInteger('42.5', true);
-// => false
-```
+``` javascriptimport { isInteger } from 'type-enforcer';isInteger(42);// => trueisInteger('42');// => falseisInteger('42', true);// => trueisInteger('42.5', true);// => false```
 
 <br><a name="is.json"></a>
 
@@ -270,9 +209,7 @@ isInteger('42.5', true);
 | value | <code>\*</code> | 
 
 **Example**  
-``` javascript
-import { isJson } from 'type-enforcer';
-```
+``` javascriptimport { isJson } from 'type-enforcer';```
 
 <br><a name="is.number"></a>
 
@@ -288,18 +225,7 @@ import { isJson } from 'type-enforcer';
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a Number |
 
 **Example**  
-``` javascript
-import { isNumber } from 'type-enforcer';
-
-isNumber(3.14159);
-// => true
-
-isNumber('3.14159');
-// => false
-
-isNumber('3.14159', true);
-// => true
-```
+``` javascriptimport { isNumber } from 'type-enforcer';isNumber(3.14159);// => trueisNumber('3.14159');// => falseisNumber('3.14159', true);// => true```
 
 <br><a name="is.object"></a>
 

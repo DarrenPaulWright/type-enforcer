@@ -36,6 +36,7 @@
  * #### Other
  * - [applySettings](docs/applySettings.md)
  * - [privateProp](docs/privateProp.md)
+ * - [PrivateVars](docs/PrivateVars.md)
  * - [equality checks](docs/equality.md)
  */
 export { default as is } from './checks/is';
@@ -115,6 +116,7 @@ export { default as Removable } from './mixins/Removable';
 export { default as applySettings } from './utility/applySettings';
 export { default as castArray } from './utility/castArray';
 export { default as privateProp } from './utility/privateProp';
+export { default as PrivateVars } from './utility/PrivateVars';
 
 export { default as abstractEquality } from './equality/abstractEquality';
 export { default as strictEquality } from './equality/strictEquality';

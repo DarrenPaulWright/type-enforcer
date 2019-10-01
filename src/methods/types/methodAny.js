@@ -1,21 +1,10 @@
 import { clone, deepEqual } from 'object-agent';
 import isArray from '../../checks/types/isArray';
+import isInstanceOf from '../../checks/types/isInstanceOf';
 import enforceBoolean from '../../enforcer/types/enforceBoolean';
-import before from '../variants/before';
-import beforeSet from '../variants/beforeSet';
-import get from '../variants/get';
-import getBefore from '../variants/getBefore';
-import getBeforeSet from '../variants/getBeforeSet';
-import getOtherBefore from '../variants/getOtherBefore';
-import getOtherBeforeSet from '../variants/getOtherBeforeSet';
-import getOtherSet from '../variants/getOtherSet';
-import getSet from '../variants/getSet';
-import none from '../variants/none';
-import other from '../variants/other';
-import otherBefore from '../variants/otherBefore';
-import otherBeforeSet from '../variants/otherBeforeSet';
-import otherSet from '../variants/otherSet';
-import set from '../variants/set';
+import PrivateVars from '../../utility/PrivateVars';
+
+const _ = new PrivateVars();
 
 const notEnforced = (newValue) => newValue;
 
@@ -57,15 +46,19 @@ export const mapEnforcerDefaultCoerceTrue = (enforcer) => (newValue, oldValue, o
 };
 
 export const buildMethod = (defaultSettings = {}, onInit) => {
-	defaultSettings = Object.assign({
+	defaultSettings = {
 		enforce: notEnforced,
-		compare: simpleCompare
-	}, defaultSettings);
+		compare: simpleCompare,
+		...defaultSettings
+	};
 
 	return (options) => {
-		let method;
+		const key = Symbol();
 
-		options = Object.assign(clone(defaultSettings), options);
+		options = {
+			...clone(defaultSettings),
+			...options
+		};
 		if (onInit) {
 			options = onInit(options);
 		}
@@ -74,44 +67,45 @@ export const buildMethod = (defaultSettings = {}, onInit) => {
 			options.other = [options.other];
 		}
 
-		if (options.get) {
-			if (options.other) {
-				if (options.set) {
-					method = options.before ? getOtherBeforeSet : getOtherSet;
-				}
-				else {
-					method = options.before ? getOtherBefore : get;
-				}
-			}
-			else {
-				if (options.set) {
-					method = options.before ? getBeforeSet : getSet;
-				}
-				else {
-					method = options.before ? getBefore : get;
-				}
-			}
-		}
-		else {
-			if (options.other) {
-				if (options.set) {
-					method = options.before ? otherBeforeSet : otherSet;
-				}
-				else {
-					method = options.before ? otherBefore : other;
-				}
-			}
-			else {
-				if (options.set) {
-					method = options.before ? beforeSet : set;
-				}
-				else {
-					method = options.before ? before : none;
-				}
-			}
-		}
+		return function(newValue, isForcedSave) {
+			let value;
+			let vars;
 
-		return method(options);
+			if (options.get !== undefined) {
+				value = options.get.call(this);
+			}
+			else {
+				vars = _(this) || _.set(this);
+
+				if (!Object.getOwnPropertySymbols(vars).includes(key)) {
+					vars[key] = options.init;
+				}
+
+				value = vars[key];
+			}
+
+			if (arguments.length) {
+				if (!('other' in options) || !options.other.some((value) => newValue === value || isInstanceOf(newValue, value))) {
+					newValue = options.enforce(newValue, value, options);
+				}
+
+				if (options.compare(newValue, value) || isForcedSave) {
+					if (options.before !== undefined) {
+						options.before.call(this, value);
+					}
+					if (options.get === undefined) {
+						vars[key] = newValue;
+					}
+					if (options.set !== undefined) {
+						options.set.call(this, newValue);
+					}
+				}
+
+				return this;
+			}
+
+			return (options.stringify && value && value.toString) ? value.toString() : value;
+		};
 	};
 };
 

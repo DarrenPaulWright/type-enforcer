@@ -43,29 +43,7 @@
 | [y] | <code>Number</code> | <code>0</code> | 
 
 **Example**  
-``` javascript
-import { Point } from 'type-enforcer';
-
-const point1 = new Point();
-console.log(point1.toString());
-// => '0,0'
-
-const point2 = new Point({x:1, y:2});
-console.log(point2.toString());
-// => '1,2'
-
-const point3 = new Point([3, 4]);
-console.log(point3.toString());
-// => '3,4'
-
-const point4 = new Point(5, 6);
-console.log(point4.toString());
-// => '5,6'
-console.log(point4.x);
-// => 5
-console.log(point4.y);
-// => 6
-```
+``` javascriptimport { Point } from 'type-enforcer';const point1 = new Point();console.log(point1.toString());// => '0,0'const point2 = new Point({x:1, y:2});console.log(point2.toString());// => '1,2'const point3 = new Point([3, 4]);console.log(point3.toString());// => '3,4'const point4 = new Point(5, 6);console.log(point4.toString());// => '5,6'console.log(point4.x);// => 5console.log(point4.y);// => 6```
 
 <br><a name="Point+set"></a>
 

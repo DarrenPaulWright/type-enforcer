@@ -23,13 +23,7 @@
 <br><a name="new_Removable_new"></a>
 
 #### new Removable()
-> A mixin that adds methods to a class to facilitate clean-up
-> 
-> ``` javascript
-> import { Removable } from 'type-enforcer';
-> 
-> class MyClass extends Removable {}
-> ```
+> A mixin that adds methods to a class to facilitate clean-up> > ``` javascript> import { Removable } from 'type-enforcer';> > class MyClass extends Removable {}> ```
 
 
 <br><a name="Removable+isRemoved"></a>

@@ -57,12 +57,12 @@ describe('method', () => {
 			}
 
 			TestConstructor.prototype.testMethod = method.keyValue({
-				set: function(key, value) {
+				set(key, value) {
 					testKey = key;
 					testValue = value;
 					count++;
 				},
-				get: () => {
+				get() {
 					return 1;
 				}
 			});
@@ -73,12 +73,12 @@ describe('method', () => {
 		describe('(property)', () => {
 			const TestConstructor = function() {
 				this.testMethod = method.keyValue({
-					set: function(key, value) {
+					set(key, value) {
 						testKey = key;
 						testValue = value;
 						count++;
 					},
-					get: () => {
+					get() {
 						return 1;
 					}
 				});

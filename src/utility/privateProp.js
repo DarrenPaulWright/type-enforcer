@@ -10,7 +10,7 @@
  * @returns {Object}
  */
 export default (object, key, value) => Object.defineProperty(object, key, {
-	value: value,
+	value,
 	configurable: true,
 	writable: true,
 	enumerable: false

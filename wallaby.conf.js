@@ -32,7 +32,7 @@ module.exports = function(wallaby) {
 		compilers: {
 			'**/*.js': wallaby.compilers.babel()
 		},
-		setup: function() {
+		setup() {
 			window.__moduleBundler.loadTests();
 		},
 		// debug: true,

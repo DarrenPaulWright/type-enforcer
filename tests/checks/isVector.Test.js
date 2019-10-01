@@ -10,32 +10,44 @@ describe('isVector', () => {
 
 	multiTest({
 		values: data.true,
-		test: (value) => isVector(value),
+		test(value) {
+			return isVector(value);
+		},
 		assertion: 'isTrue'
 	});
 	multiTest({
 		values: data.false,
-		test: (value) => isVector(value),
+		test(value) {
+			return isVector(value);
+		},
 		assertion: 'isFalse'
 	});
 	multiTest({
 		values: data.coerceTrue,
-		test: (value) => isVector(value),
+		test(value) {
+			return isVector(value);
+		},
 		assertion: 'isFalse'
 	});
 	multiTest({
 		values: data.true,
-		test: (value) => isVector(value, true),
+		test(value) {
+			return isVector(value, true);
+		},
 		assertion: 'isTrue'
 	});
 	multiTest({
 		values: data.coerceTrue,
-		test: (value) => isVector(value, true),
+		test(value) {
+			return isVector(value, true);
+		},
 		assertion: 'isTrue'
 	});
 	multiTest({
 		values: data.coerceFalse,
-		test: (value) => isVector(value, true),
+		test(value) {
+			return isVector(value, true);
+		},
 		assertion: 'isFalse'
 	});
 });

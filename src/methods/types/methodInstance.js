@@ -15,5 +15,7 @@ import { buildMethod } from './methodAny';
  * @returns {Function}
  */
 export default buildMethod({
-	enforce: (newValue, oldValue, options) => enforceInstance(newValue, options.instance, oldValue)
+	enforce(newValue, oldValue, options) {
+		return enforceInstance(newValue, options.instance, oldValue);
+	}
 });

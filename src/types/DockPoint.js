@@ -250,12 +250,12 @@ Object.assign(DockPoint.prototype, {
 	 */
 	value: methodEnum({
 		enum: DockPoint.POINTS,
-		set: function(value) {
+		set(value) {
 			value = value.split(SEPARATOR);
 			this.primary(value[0])
 				.secondary(value[1] || BASIC_POINTS.NONE);
 		},
-		get: function() {
+		get() {
 			let value = this.primary();
 			if (this.secondary() !== BASIC_POINTS.NONE) {
 				value += SEPARATOR + this.secondary();

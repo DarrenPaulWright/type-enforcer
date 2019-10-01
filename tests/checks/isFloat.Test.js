@@ -15,34 +15,46 @@ describe('isFloat', () => {
 
 	multiTest({
 		values: data.true,
-		test: (value) => isFloat(value),
+		test(value) {
+			return isFloat(value);
+		},
 		assertion: 'isTrue'
 	});
 	multiTest({
 		values: data.false,
-		test: (value) => isFloat(value),
+		test(value) {
+			return isFloat(value);
+		},
 		assertion: 'isFalse'
 	});
 	multiTest({
 		values: data.coerceTrue,
-		test: (value) => isFloat(value),
+		test(value) {
+			return isFloat(value);
+		},
 		assertion: 'isFalse'
 	});
 
 	describe('coerce', () => {
 		multiTest({
 			values: data.true,
-			test: (value) => isFloat(value, true),
+			test(value) {
+				return isFloat(value, true);
+			},
 			assertion: 'isTrue'
 		});
 		multiTest({
 			values: data.coerceTrue,
-			test: (value) => isFloat(value, true),
+			test(value) {
+				return isFloat(value, true);
+			},
 			assertion: 'isTrue'
 		});
 		multiTest({
 			values: data.coerceFalse,
-			test: (value) => isFloat(value, true),
+			test(value) {
+				return isFloat(value, true);
+			},
 			assertion: 'isFalse'
 		});
 	});

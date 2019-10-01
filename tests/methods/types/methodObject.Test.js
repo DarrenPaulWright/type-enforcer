@@ -21,7 +21,7 @@ describe('method', () => {
 			const TestConstructor = function() {
 				this.testMethod = method.object({
 					init: testObject1,
-					set: function(newValue) {
+					set(newValue) {
 						testSet = newValue;
 					},
 					deep: false

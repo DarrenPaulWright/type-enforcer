@@ -289,7 +289,7 @@ Object.assign(Thickness.prototype, {
 	 * @returns {this|Element}
 	 */
 	element: methodElement({
-		set: function(element) {
+		set(element) {
 			this[TOP].element(element);
 			this[RIGHT].element(element);
 			this[BOTTOM].element(element);

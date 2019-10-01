@@ -41,12 +41,16 @@ describe('isJson', () => {
 
 	multiTest({
 		values: data.true,
-		test: (value) => isJson(value),
+		test(value) {
+			return isJson(value);
+		},
 		assertion: 'isTrue'
 	});
 	multiTest({
 		values: data.false,
-		test: (value) => isJson(value),
+		test(value) {
+			return isJson(value);
+		},
 		assertion: 'isFalse'
 	});
 });

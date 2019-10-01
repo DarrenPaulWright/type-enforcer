@@ -192,7 +192,9 @@ Object.assign(Vector.prototype, {
 	 * @returns {this|Number}
 	 */
 	angle: methodNumber({
-		enforce: (newValue, oldValue) => angle.normalize(enforceNumber(newValue, oldValue)),
+		enforce(newValue, oldValue) {
+			return angle.normalize(enforceNumber(newValue, oldValue));
+		},
 		set: setDestinationFromAngle
 	}),
 	/**

@@ -10,32 +10,44 @@ describe('isString', () => {
 
 	multiTest({
 		values: data.true,
-		test: (value) => isString(value),
+		test(value) {
+			return isString(value);
+		},
 		assertion: 'isTrue'
 	});
 	multiTest({
 		values: data.false,
-		test: (value) => isString(value),
+		test(value) {
+			return isString(value);
+		},
 		assertion: 'isFalse'
 	});
 	multiTest({
 		values: data.coerceTrue,
-		test: (value) => isString(value),
+		test(value) {
+			return isString(value);
+		},
 		assertion: 'isFalse'
 	});
 	multiTest({
 		values: data.true,
-		test: (value) => isString(value, true),
+		test(value) {
+			return isString(value, true);
+		},
 		assertion: 'isTrue'
 	});
 	multiTest({
 		values: data.coerceTrue,
-		test: (value) => isString(value, true),
+		test(value) {
+			return isString(value, true);
+		},
 		assertion: 'isTrue'
 	});
 	multiTest({
 		values: data.coerceFalse,
-		test: (value) => isString(value, true),
+		test(value) {
+			return isString(value, true);
+		},
 		assertion: 'isFalse'
 	});
 });

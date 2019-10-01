@@ -90,7 +90,7 @@ describe('method', () => {
 
 			TestConstructor.prototype.onRemove = method.function();
 			TestConstructor.prototype.testMethod = method.queue({
-				set: function() {
+				set() {
 				}
 			});
 
@@ -106,7 +106,7 @@ describe('method', () => {
 				self.isRemoved = false;
 
 				self.testMethod = method.queue({
-					set: function() {
+					set() {
 					}
 				});
 
@@ -123,7 +123,7 @@ describe('method', () => {
 			}
 
 			TestConstructor.prototype.testMethod = method.queue({
-				set: function() {
+				set() {
 				}
 			});
 
@@ -133,7 +133,7 @@ describe('method', () => {
 		describe('(property, without onRemove)', () => {
 			const TestConstructor = function() {
 				this.testMethod = method.queue({
-					set: function() {
+					set() {
 					}
 				});
 			};

@@ -10,32 +10,44 @@ describe('isPoint', () => {
 
 	multiTest({
 		values: data.true,
-		test: (value) => isPoint(value),
+		test(value) {
+			return isPoint(value);
+		},
 		assertion: 'isTrue'
 	});
 	multiTest({
 		values: data.false,
-		test: (value) => isPoint(value),
+		test(value) {
+			return isPoint(value);
+		},
 		assertion: 'isFalse'
 	});
 	multiTest({
 		values: data.coerceTrue,
-		test: (value) => isPoint(value),
+		test(value) {
+			return isPoint(value);
+		},
 		assertion: 'isFalse'
 	});
 	multiTest({
 		values: data.true,
-		test: (value) => isPoint(value, true),
+		test(value) {
+			return isPoint(value, true);
+		},
 		assertion: 'isTrue'
 	});
 	multiTest({
 		values: data.coerceTrue,
-		test: (value) => isPoint(value, true),
+		test(value) {
+			return isPoint(value, true);
+		},
 		assertion: 'isTrue'
 	});
 	multiTest({
 		values: data.coerceFalse,
-		test: (value) => isPoint(value, true),
+		test(value) {
+			return isPoint(value, true);
+		},
 		assertion: 'isFalse'
 	});
 });

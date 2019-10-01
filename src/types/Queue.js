@@ -38,7 +38,7 @@ export default class Queue {
 			const newID = (++this[CURRENT_ID] + '');
 			this[CALLBACKS][newID] = {
 				function: callback,
-				data: data
+				data
 			};
 			this[TOTAL]++;
 			return newID;

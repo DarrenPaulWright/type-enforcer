@@ -10,17 +10,23 @@ describe('isElement', () => {
 
 	multiTest({
 		values: data.true,
-		test: (value) => isElement(value),
+		test(value) {
+			return isElement(value);
+		},
 		assertion: 'isTrue'
 	});
 	multiTest({
 		values: data.false,
-		test: (value) => isElement(value),
+		test(value) {
+			return isElement(value);
+		},
 		assertion: 'isFalse'
 	});
 	multiTest({
 		values: data.true,
-		test: (value) => isElement(value, true),
+		test(value) {
+			return isElement(value, true);
+		},
 		assertion: 'isTrue'
 	});
 });

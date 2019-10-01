@@ -346,13 +346,15 @@ export const testVariant = (settings) => {
 			it('should call the "enforce" callback with newValue, oldValue, and options', () => {
 				let testVar = '';
 				const variantOptions = Object.assign({}, defaultOptions, {
-					enforce: function(newValue, oldValue, options) {
+					enforce(newValue, oldValue, options) {
 						if (newValue === '2' && oldValue === '1' && options === variantOptions) {
 							testVar = newValue;
 						}
 						return newValue;
 					},
-					get: () => '1'
+					get() {
+						return '1';
+					}
 				});
 				const Constructor = function() {
 					this.testMethod = settings.variant(variantOptions);
@@ -369,16 +371,18 @@ export const testVariant = (settings) => {
 			it('should call the "compare" callback with the value returned from enforce and the oldValue', () => {
 				let testVar = '';
 				const variantOptions = Object.assign({}, defaultOptions, {
-					enforce: function() {
+					enforce() {
 						return '3';
 					},
-					compare: (newValue, oldValue) => {
+					compare(newValue, oldValue) {
 						if (newValue === '3' && oldValue === '1') {
 							testVar = '4';
 						}
 						return true;
 					},
-					get: () => '1'
+					get() {
+						return '1';
+					}
 				});
 				const Constructor = function() {
 					this.testMethod = settings.variant(variantOptions);
@@ -397,7 +401,7 @@ export const testVariant = (settings) => {
 				let testVar = '';
 				const Constructor = function() {
 					this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
-						get: function() {
+						get() {
 							testVar = this;
 							return 'something';
 						}
@@ -412,7 +416,7 @@ export const testVariant = (settings) => {
 			it('should run toString on the result of the "get" callback', () => {
 				const Constructor = function() {
 					this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
-						get: function() {
+						get() {
 							return new Point(1, 2);
 						},
 						stringify: true
@@ -428,7 +432,7 @@ export const testVariant = (settings) => {
 		it('should call the "enforce" callback with newValue, oldValue, and options', () => {
 			let testVar = '';
 			const variantOptions = Object.assign({}, defaultOptions, {
-				enforce: function(newValue, oldValue, options) {
+				enforce(newValue, oldValue, options) {
 					if (newValue === '2' && oldValue === '1' && options === variantOptions) {
 						testVar = newValue;
 					}
@@ -450,13 +454,13 @@ export const testVariant = (settings) => {
 		it('should call the "compare" callback with the value returned from enforce and the oldValue', () => {
 			let testVar = '';
 			const variantOptions = Object.assign({}, defaultOptions, {
-				enforce: function(newValue, oldValue, options) {
+				enforce(newValue, oldValue, options) {
 					if (newValue === '2' && oldValue === '1' && options === variantOptions) {
 						testVar = newValue;
 					}
 					return newValue;
 				},
-				compare: (newValue, oldValue) => {
+				compare(newValue, oldValue) {
 					if (newValue === '2' && oldValue === '1') {
 						testVar = '4';
 					}
@@ -505,12 +509,14 @@ export const testVariant = (settings) => {
 				let testVar = '';
 				const Constructor = function() {
 					this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
-						before: function(oldValue) {
+						before(oldValue) {
 							if (oldValue === '1') {
 								testVar = this;
 							}
 						},
-						get: () => '1'
+						get() {
+							return '1';
+						}
 					}));
 				};
 				const constructor = new Constructor();
@@ -526,12 +532,14 @@ export const testVariant = (settings) => {
 				let testVar = '';
 				const Constructor = function() {
 					this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
-						before: function(oldValue) {
+						before(oldValue) {
 							if (oldValue === '1') {
 								testVar = this;
 							}
 						},
-						get: () => '1'
+						get() {
+							return '1';
+						}
 					}));
 				};
 				const constructor = new Constructor();
@@ -547,12 +555,14 @@ export const testVariant = (settings) => {
 				let testVar = '';
 				const Constructor = function() {
 					this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
-						before: function(oldValue) {
+						before(oldValue) {
 							if (oldValue === '1') {
 								testVar = this;
 							}
 						},
-						get: () => '1'
+						get() {
+							return '1';
+						}
 					}));
 				};
 				const constructor = new Constructor();
@@ -569,7 +579,7 @@ export const testVariant = (settings) => {
 				let testVar = '';
 				const Constructor = function() {
 					this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
-						before: function(oldValue) {
+						before(oldValue) {
 							if (oldValue === '1') {
 								testVar = this;
 							}
@@ -589,7 +599,7 @@ export const testVariant = (settings) => {
 				let testVar = '';
 				const Constructor = function() {
 					this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
-						before: function(oldValue) {
+						before(oldValue) {
 							if (oldValue === '1') {
 								testVar = this;
 							}
@@ -609,7 +619,7 @@ export const testVariant = (settings) => {
 				let testVar = '';
 				const Constructor = function() {
 					this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
-						before: function(oldValue) {
+						before(oldValue) {
 							if (oldValue === '1') {
 								testVar = this;
 							}
@@ -633,12 +643,14 @@ export const testVariant = (settings) => {
 				let testVar = '';
 				const Constructor = function() {
 					this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
-						set: function(newValue) {
+						set(newValue) {
 							if (newValue === '2') {
 								testVar = this;
 							}
 						},
-						get: () => '1'
+						get() {
+							return '1';
+						}
 					}));
 				};
 				const constructor = new Constructor();
@@ -653,12 +665,14 @@ export const testVariant = (settings) => {
 				let testVar = '';
 				const Constructor = function() {
 					this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
-						set: function(newValue) {
+						set(newValue) {
 							if (newValue === '1') {
 								testVar = this;
 							}
 						},
-						get: () => '1'
+						get() {
+							return '1';
+						}
 					}));
 				};
 				const constructor = new Constructor();
@@ -673,12 +687,14 @@ export const testVariant = (settings) => {
 				let testVar = '';
 				const Constructor = function() {
 					this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
-						set: function(newValue) {
+						set(newValue) {
 							if (newValue === '1') {
 								testVar = this;
 							}
 						},
-						get: () => '1'
+						get() {
+							return '1';
+						}
 					}));
 				};
 				const constructor = new Constructor();
@@ -694,7 +710,7 @@ export const testVariant = (settings) => {
 				let testVar = '';
 				const Constructor = function() {
 					this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
-						set: function(newValue) {
+						set(newValue) {
 							if (newValue === '2') {
 								testVar = this;
 							}
@@ -716,7 +732,7 @@ export const testVariant = (settings) => {
 				let testVar = '';
 				const Constructor = function() {
 					this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
-						set: function(newValue) {
+						set(newValue) {
 							if (newValue === '2') {
 								testVar = this;
 							}
@@ -738,7 +754,7 @@ export const testVariant = (settings) => {
 				let testVar = '';
 				const Constructor = function() {
 					this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
-						set: function(newValue) {
+						set(newValue) {
 							if (newValue === '1') {
 								testVar = this;
 							}
@@ -765,10 +781,12 @@ export const testVariant = (settings) => {
 				const Constructor = function() {
 					this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
 						enforce: enforceString,
-						compare: function(newValue) {
+						compare(newValue) {
 							testVar = newValue;
 						},
-						get: () => '1',
+						get() {
+							return '1';
+						},
 						other: [RegExp, Boolean]
 					}));
 				};
@@ -786,10 +804,12 @@ export const testVariant = (settings) => {
 				const Constructor = function() {
 					this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
 						enforce: enforceString,
-						compare: function(newValue) {
+						compare(newValue) {
 							testVar = newValue;
 						},
-						get: () => '1',
+						get() {
+							return '1';
+						},
 						other: [RegExp, null]
 					}));
 				};
@@ -808,7 +828,7 @@ export const testVariant = (settings) => {
 				const Constructor = function() {
 					this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
 						enforce: enforceString,
-						compare: function(newValue) {
+						compare(newValue) {
 							testVar = newValue;
 						},
 						other: [RegExp, Boolean]
@@ -828,7 +848,7 @@ export const testVariant = (settings) => {
 				const Constructor = function() {
 					this.testMethod = settings.variant(Object.assign({}, defaultOptions, {
 						enforce: enforceString,
-						compare: function(newValue) {
+						compare(newValue) {
 							testVar = newValue;
 						},
 						other: [RegExp, null]

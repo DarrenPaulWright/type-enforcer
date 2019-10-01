@@ -23,7 +23,7 @@ describe('method', () => {
 			const TestConstructor = function() {
 				this.testMethod = method.array({
 					init: testArray1,
-					set: function(newValue) {
+					set(newValue) {
 						testSet = newValue;
 					},
 					deep: false

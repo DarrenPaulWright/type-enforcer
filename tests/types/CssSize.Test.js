@@ -41,15 +41,21 @@ describe('CssSize', () => {
 		const testCallback = (value) => new CssSize(value).toString();
 		multiTest({
 			values: data.coerceTrue,
-			filter: (value) => !zeros.includes(value),
-			message: (input) => `should accept the value ${input} when instantiated`,
+			filter(value) {
+				return !zeros.includes(value);
+			},
+			message(input) {
+				return `should accept the value ${input} when instantiated`;
+			},
 			test: testCallback,
 			assertion: 'notEqual',
 			output: '0'
 		});
 		multiTest({
 			values: data.coerceFalse,
-			message: (input) => `should NOT accept the value ${input} when instantiated`,
+			message(input) {
+				return `should NOT accept the value ${input} when instantiated`;
+			},
 			test: testCallback,
 			output: '0'
 		});
@@ -78,15 +84,21 @@ describe('CssSize', () => {
 		const testCallback = (value) => new CssSize().set(value).toString();
 		multiTest({
 			values: data.coerceTrue,
-			filter: (value) => !zeros.includes(value),
-			message: (input) => `should accept the value ${input}`,
+			filter(value) {
+				return !zeros.includes(value);
+			},
+			message(input) {
+				return `should accept the value ${input}`;
+			},
 			test: testCallback,
 			assertion: 'notEqual',
 			output: '0'
 		});
 		multiTest({
 			values: data.coerceFalse,
-			message: (input) => `should NOT accept the value ${input}`,
+			message(input) {
+				return `should NOT accept the value ${input}`;
+			},
 			test: testCallback,
 			output: '0'
 		});
@@ -96,7 +108,9 @@ describe('CssSize', () => {
 		const testCallback = (value) => new CssSize(value).units;
 		multiTest({
 			values: validCssValues,
-			filter: (value) => !zeros.includes(value.size),
+			filter(value) {
+				return !zeros.includes(value.size);
+			},
 			test: testCallback,
 			inputKey: 'size',
 			outputKey: 'unit'
@@ -112,7 +126,9 @@ describe('CssSize', () => {
 		const testCallback = (value) => new CssSize(value).value;
 		multiTest({
 			values: validCssValues,
-			filter: (value) => !zeros.includes(value.size),
+			filter(value) {
+				return !zeros.includes(value.size);
+			},
 			test: testCallback,
 			inputKey: 'size',
 			outputKey: 'value'
@@ -186,7 +202,9 @@ describe('CssSize', () => {
 
 		multiTest({
 			values: unitlessCssSizes,
-			test: (input) => new CssSize(input).toPixels(),
+			test(input) {
+				return new CssSize(input).toPixels();
+			},
 			inputKey: 'size',
 			outputKey: 'size'
 		});
@@ -204,13 +222,17 @@ describe('CssSize', () => {
 		const testCallback = (value) => new CssSize(value).isAuto;
 		multiTest({
 			values: data.coerceTrue,
-			filter: (value) => value === AUTO,
+			filter(value) {
+				return value === AUTO;
+			},
 			test: testCallback,
 			output: true
 		});
 		multiTest({
 			values: data.coerceTrue,
-			filter: (value) => value !== AUTO && !zeros.includes(value),
+			filter(value) {
+				return value !== AUTO && !zeros.includes(value);
+			},
 			test: testCallback,
 			output: false
 		});
@@ -225,14 +247,18 @@ describe('CssSize', () => {
 		const testCallback = (value) => new CssSize(value).isFixed;
 		multiTest({
 			values: validCssValues,
-			filter: (value) => fixedCssUnits.includes(value.unit) && !zeros.includes(value.size),
+			filter(value) {
+				return fixedCssUnits.includes(value.unit) && !zeros.includes(value.size);
+			},
 			test: testCallback,
 			inputKey: 'size',
 			output: true
 		});
 		multiTest({
 			values: validCssValues,
-			filter: (value) => !fixedCssUnits.includes(value.unit) && !zeros.includes(value.size),
+			filter(value) {
+				return !fixedCssUnits.includes(value.unit) && !zeros.includes(value.size);
+			},
 			test: testCallback,
 			inputKey: 'size',
 			output: false
@@ -248,14 +274,18 @@ describe('CssSize', () => {
 		const testCallback = (value) => new CssSize(value).isPercent;
 		multiTest({
 			values: validCssValues,
-			filter: (value) => percentCssUnits.includes(value.unit) && !zeros.includes(value.size),
+			filter(value) {
+				return percentCssUnits.includes(value.unit) && !zeros.includes(value.size);
+			},
 			test: testCallback,
 			inputKey: 'size',
 			output: true
 		});
 		multiTest({
 			values: validCssValues,
-			filter: (value) => !percentCssUnits.includes(value.unit) && !zeros.includes(value.size),
+			filter(value) {
+				return !percentCssUnits.includes(value.unit) && !zeros.includes(value.size);
+			},
 			test: testCallback,
 			inputKey: 'size',
 			output: false
@@ -278,7 +308,9 @@ describe('CssSize', () => {
 		multiTest({
 			values: validCssValuesShortList,
 			eachPair: true,
-			message: (input1, input2) => `should return false when the value is ${input1} and the test value is ${input2}`,
+			message(input1, input2) {
+				return `should return false when the value is ${input1} and the test value is ${input2}`;
+			},
 			filter: isValid,
 			test: testCallback,
 			assertion: 'isFalse',
@@ -288,8 +320,12 @@ describe('CssSize', () => {
 		multiTest({
 			values: validCssValuesShortList,
 			eachPair: true,
-			message: (input1, input2) => `should return true when the value is ${input1} and the test value is ${input2}`,
-			filter: (value1, value2) => !isValid(value1, value2),
+			message(input1, input2) {
+				return `should return true when the value is ${input1} and the test value is ${input2}`;
+			},
+			filter(value1, value2) {
+				return !isValid(value1, value2);
+			},
 			test: testCallback,
 			assertion: 'isTrue',
 			inputKey: 'size'
@@ -303,7 +339,9 @@ describe('CssSize', () => {
 				};
 			}),
 			eachPair: true,
-			message: (input1, input2) => `should return false when the value is ${input1} and the test value is ${input2}`,
+			message(input1, input2) {
+				return `should return false when the value is ${input1} and the test value is ${input2}`;
+			},
 			test: testCallback,
 			assertion: 'isFalse',
 			inputKey: 'size'

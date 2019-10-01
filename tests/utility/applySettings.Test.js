@@ -5,17 +5,17 @@ describe('applySettings', () => {
 	it('should apply settings', () => {
 		let testVar = 0;
 		const target = {
-			first: (value) => {
+			first(value) {
 				if (value === 1) {
 					testVar += 1;
 				}
 			},
-			second: (value) => {
+			second(value) {
 				if (value === 2) {
 					testVar += 1;
 				}
 			},
-			third: (value) => {
+			third(value) {
 				if (value === 3) {
 					testVar += 1;
 				}
@@ -34,22 +34,22 @@ describe('applySettings', () => {
 	it('should apply settings in order', () => {
 		let testVar = 0;
 		const target = {
-			first: (value) => {
+			first(value) {
 				if (value === 1 && testVar === 3) {
 					testVar += 1;
 				}
 			},
-			second: (value) => {
+			second(value) {
 				if (value === 2) {
 					testVar += 1;
 				}
 			},
-			third: (value) => {
+			third(value) {
 				if (value === 3 && testVar === 0) {
 					testVar += 1;
 				}
 			},
-			fourth: (value) => {
+			fourth(value) {
 				if (value === 4) {
 					testVar += 1;
 				}

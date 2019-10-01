@@ -343,7 +343,7 @@ Object.assign(CssSize.prototype, {
 	 * @returns {this|Element}
 	 */
 	element: methodElement({
-		set: function() {
+		set() {
 			this[FONT_BASED_UNITS] = {};
 		}
 	})

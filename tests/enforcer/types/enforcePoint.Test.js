@@ -22,8 +22,12 @@ describe('enforce', () => {
 					output: new Point(item)
 				};
 			}),
-			message: (input) => `should return a coerced ${input} when coerce is true`,
-			test: (value) => enforce.point(value, value, true),
+			message(input) {
+				return `should return a coerced ${input} when coerce is true`;
+			},
+			test(value) {
+				return enforce.point(value, value, true);
+			},
 			inputKey: 'input',
 			outputKey: 'output',
 			assertion: 'deepEqual'
@@ -36,8 +40,12 @@ describe('enforce', () => {
 					output: item
 				};
 			}),
-			message: (input) => `should NOT return a coerced ${input} when coerce is false`,
-			test: (value) => enforce.point(value, value, false),
+			message(input) {
+				return `should NOT return a coerced ${input} when coerce is false`;
+			},
+			test(value) {
+				return enforce.point(value, value, false);
+			},
 			inputKey: 'input',
 			outputKey: 'output',
 			assertion: 'deepEqual'
@@ -45,8 +53,12 @@ describe('enforce', () => {
 
 		multiTest({
 			values: data.coerceFalse,
-			message: (input) => `should return the alt value when ${input} is provided and coerce is true`,
-			test: (value) => enforce.point(value, 'testAlt', true),
+			message(input) {
+				return `should return the alt value when ${input} is provided and coerce is true`;
+			},
+			test(value) {
+				return enforce.point(value, 'testAlt', true);
+			},
 			output: 'testAlt',
 			assertion: 'deepEqual'
 		});

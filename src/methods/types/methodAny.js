@@ -118,14 +118,14 @@ export const buildMethod = (defaultSettings = {}, onInit) => {
  *
  * const Widget = function() {
  *     someMethod = method.any({
- *         set: function(newValue) {
+ *         set(newValue) {
  *             console.log(this);
  *             console.log(newValue);
  *         }
  *     });
  *     anotherMethod = method.any();
  *     thirdMethod = method.any({
- *         get: function(newValue) {
+ *         get(newValue) {
  *             return 'item 2';
  *         }
  *     });

@@ -15,5 +15,7 @@ import { buildMethod } from './methodAny';
  * @returns {Function}
  */
 export default buildMethod({
-	enforce: (newValue, oldValue, options) => enforceEnum(newValue, options.enum, oldValue)
+	enforce(newValue, oldValue, options) {
+		return enforceEnum(newValue, options.enum, oldValue);
+	}
 });

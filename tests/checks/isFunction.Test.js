@@ -10,17 +10,23 @@ describe('isFunction', () => {
 
 	multiTest({
 		values: data.true,
-		test: (value) => isFunction(value),
+		test(value) {
+			return isFunction(value);
+		},
 		assertion: 'isTrue'
 	});
 	multiTest({
 		values: data.false,
-		test: (value) => isFunction(value),
+		test(value) {
+			return isFunction(value);
+		},
 		assertion: 'isFalse'
 	});
 	multiTest({
 		values: data.true,
-		test: (value) => isFunction(value, true),
+		test(value) {
+			return isFunction(value, true);
+		},
 		assertion: 'isTrue'
 	});
 });

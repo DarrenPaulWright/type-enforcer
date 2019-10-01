@@ -15,34 +15,46 @@ describe('isInteger', () => {
 
 	multiTest({
 		values: data.true,
-		test: (value) => isInteger(value),
+		test(value) {
+			return isInteger(value);
+		},
 		assertion: 'isTrue'
 	});
 	multiTest({
 		values: data.false,
-		test: (value) => isInteger(value),
+		test(value) {
+			return isInteger(value);
+		},
 		assertion: 'isFalse'
 	});
 	multiTest({
 		values: data.coerceTrue,
-		test: (value) => isInteger(value),
+		test(value) {
+			return isInteger(value);
+		},
 		assertion: 'isFalse'
 	});
 
 	describe('coerce', () => {
 		multiTest({
 			values: data.true,
-			test: (value) => isInteger(value, true),
+			test(value) {
+				return isInteger(value, true);
+			},
 			assertion: 'isTrue'
 		});
 		multiTest({
 			values: data.coerceTrue,
-			test: (value) => isInteger(value, true),
+			test(value) {
+				return isInteger(value, true);
+			},
 			assertion: 'isTrue'
 		});
 		multiTest({
 			values: data.coerceFalse,
-			test: (value) => isInteger(value, true),
+			test(value) {
+				return isInteger(value, true);
+			},
 			assertion: 'isFalse'
 		});
 	});

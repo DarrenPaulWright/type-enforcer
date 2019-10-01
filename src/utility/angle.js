@@ -15,7 +15,7 @@ const angle = {
 	 *
 	 * @returns {Number} - The normalized angle
 	 */
-	normalize: function(angle) {
+	normalize(angle) {
 		angle %= TWO_PI;
 		return (angle < 0) ? (angle + TWO_PI) : angle;
 	},
@@ -28,7 +28,7 @@ const angle = {
 	 *
 	 * @returns {Number} - The angle
 	 */
-	fromOrigin: function(point) {
+	fromOrigin(point) {
 		return angle.normalize(Math.atan2(point.y, point.x));
 	}
 };

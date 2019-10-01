@@ -4,43 +4,50 @@ import enforceNumber from '../enforcer/types/enforceNumber';
 import methodNumber from '../methods/types/methodNumber';
 import methodPoint from '../methods/types/methodPoint';
 import angle from '../utility/angle';
+import PrivateVars from '../utility/PrivateVars';
 import Point from './Point';
 
 const calculateLength = function() {
-	if (!this[IS_BUSY]) {
-		this[IS_BUSY] = true;
+	const _self = _(this);
+
+	if (!_self.isBusy) {
+		_self.isBusy = true;
 
 		this.offset(this.end().subtract(this.start()));
 		this.length(this.offset().distance());
 		this.angle(this.offset().angle());
 
-		this[IS_BUSY] = false;
+		_self.isBusy = false;
 	}
 };
 
 const setDestinationFromAngle = function() {
-	if (!this[IS_BUSY]) {
-		this[IS_BUSY] = true;
+	const _self = _(this);
+
+	if (!_self.isBusy) {
+		_self.isBusy = true;
 
 		this.end(this.start().pointAtDistance(this.angle(), this.length()))
 			.offset(this.end().subtract(this.start()));
 
-		this[IS_BUSY] = false;
+		_self.isBusy = false;
 	}
 };
 
 const setEndFromOffset = function() {
-	if (!this[IS_BUSY]) {
-		this[IS_BUSY] = true;
+	const _self = _(this);
+
+	if (!_self.isBusy) {
+		_self.isBusy = true;
 
 		this.end(this.start().add(this.offset()))
 			.length(this.offset().distance());
 
-		this[IS_BUSY] = false;
+		_self.isBusy = false;
 	}
 };
 
-const IS_BUSY = Symbol();
+const _ = new PrivateVars();
 
 /**
  * Vector model with helper types
@@ -56,7 +63,9 @@ const IS_BUSY = Symbol();
  */
 export default class Vector {
 	constructor(start, end) {
-		this[IS_BUSY] = true;
+		const _self = _.set(this, {
+			isBusy: true
+		});
 		if (start && !end) {
 			if (Vector.isValid(start)) {
 				start = JSON.parse(start);
@@ -66,7 +75,7 @@ export default class Vector {
 		}
 		this.start(start);
 		this.end(end);
-		this[IS_BUSY] = false;
+		_self.isBusy = false;
 
 		calculateLength.call(this);
 	}

@@ -1,6 +1,6 @@
 import isFunction from '../../checks/types/isFunction';
 import Queue from '../../types/Queue';
-import privateProp from '../../utility/privateProp';
+import { _ } from './methodAny';
 
 /**
  * Builds a chainable method that implements a [Queue](docs/Queue.md)
@@ -18,29 +18,30 @@ export default (options = {}) => {
 
 	return function(callback) {
 		const self = this;
+		const _self = _(self) || _.set(self);
 
-		if (self && !self[key] && !self.isRemoved) {
-			privateProp(self, key, new Queue());
+		if (self && !_self[key] && !self.isRemoved) {
+			_self[key] = new Queue();
 
 			if (self.onRemove) {
 				self.onRemove(() => {
-					self[key].discardAll();
+					_self[key].discardAll();
 				});
 			}
 		}
 
 		if (arguments.length) {
 			if (isFunction(callback) && !self.isRemoved) {
-				const ID = self[key].add(callback);
+				const ID = _self[key].add(callback);
 
 				if (options.set) {
-					options.set.call(self, self[key], ID, callback);
+					options.set.call(self, _self[key], ID, callback);
 				}
 			}
 
 			return self;
 		}
 
-		return self[key];
+		return _self[key];
 	};
 };

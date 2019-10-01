@@ -1,10 +1,8 @@
 import { forOwn } from 'object-agent';
 import isFunction from '../checks/types/isFunction';
+import PrivateVars from '../utility/PrivateVars';
 
-const CALLBACKS = Symbol();
-const CURRENT_ID = Symbol();
-const TOTAL = Symbol();
-const IS_BUSY = Symbol();
+const _ = new PrivateVars();
 
 /**
  * A simple queue for callbacks that allows for adding, removing, and triggering all or specific callbacks
@@ -17,8 +15,10 @@ const IS_BUSY = Symbol();
  */
 export default class Queue {
 	constructor() {
-		this[CURRENT_ID] = 0;
-		this[IS_BUSY] = false;
+		_.set(this, {
+			currentId: 0,
+			isBusy: false
+		});
 		this.discardAll();
 	}
 
@@ -34,13 +34,15 @@ export default class Queue {
 	 * @returns {Number} A unique ID for this callback.
 	 */
 	add(callback, data) {
+		const _self = _(this);
+
 		if (isFunction(callback)) {
-			const newID = (++this[CURRENT_ID] + '');
-			this[CALLBACKS][newID] = {
+			const newID = (++_(this).currentId + '');
+			_self.callbacks[newID] = {
 				function: callback,
 				data
 			};
-			this[TOTAL]++;
+			_self.total++;
 			return newID;
 		}
 	}
@@ -56,12 +58,13 @@ export default class Queue {
 	 * @returns {Object} The data object added with this callback
 	 */
 	discard(ID) {
+		const _self = _(this);
 		let data;
 
-		if (ID && this[CALLBACKS][ID]) {
-			data = this[CALLBACKS][ID].data;
-			delete this[CALLBACKS][ID];
-			this[TOTAL]--;
+		if (ID && _self.callbacks[ID]) {
+			data = _self.callbacks[ID].data;
+			delete _self.callbacks[ID];
+			_self.total--;
 		}
 
 		return data;
@@ -74,8 +77,10 @@ export default class Queue {
 	 * @instance
 	 */
 	discardAll() {
-		this[CALLBACKS] = {};
-		this[TOTAL] = 0;
+		const _self = _(this);
+
+		_self.callbacks = {};
+		_self.total = 0;
 	}
 
 	/**
@@ -92,18 +97,20 @@ export default class Queue {
 	 * @returns {this}
 	 */
 	trigger(ID, extraArguments, context) {
-		this[IS_BUSY] = true;
+		const _self = _(this);
+
+		_self.isBusy = true;
 		if (ID) {
-			if (this[CALLBACKS][ID]) {
-				this[CALLBACKS][ID].function.apply(context, extraArguments);
+			if (_self.callbacks[ID]) {
+				_self.callbacks[ID].function.apply(context, extraArguments);
 			}
 		}
 		else {
-			forOwn(this[CALLBACKS], (callback) => {
+			forOwn(_self.callbacks, (callback) => {
 				callback.function.apply(context, extraArguments);
 			});
 		}
-		this[IS_BUSY] = false;
+		_self.isBusy = false;
 
 		return this;
 	}
@@ -121,14 +128,15 @@ export default class Queue {
 	 */
 	triggerFirst(extraArguments, context) {
 		const self = this;
+		const _self = _(self);
 
-		this[IS_BUSY] = true;
-		forOwn(this[CALLBACKS], (callback, ID) => {
+		_self.isBusy = true;
+		forOwn(_self.callbacks, (callback, ID) => {
 			callback.function.apply(context, extraArguments);
 			self.discard(ID);
 			return true;
 		});
-		this[IS_BUSY] = false;
+		_self.isBusy = false;
 
 		return this;
 	}
@@ -142,7 +150,7 @@ export default class Queue {
 	 * @returns {number}
 	 */
 	get length() {
-		return this[TOTAL];
+		return _(this).total;
 	}
 
 	/**
@@ -154,6 +162,6 @@ export default class Queue {
 	 * @returns {boolean}
 	 */
 	get isBusy() {
-		return this[IS_BUSY];
+		return _(this).isBusy;
 	}
 }

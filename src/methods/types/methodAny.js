@@ -4,7 +4,7 @@ import isInstanceOf from '../../checks/types/isInstanceOf';
 import enforceBoolean from '../../enforcer/types/enforceBoolean';
 import PrivateVars from '../../utility/PrivateVars';
 
-const _ = new PrivateVars();
+export const _ = new PrivateVars();
 
 const notEnforced = (newValue) => newValue;
 

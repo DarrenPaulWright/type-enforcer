@@ -15,8 +15,10 @@ import isObject from '../../checks/types/isObject';
  */
 export default (options = {}) => {
 	return function(...args) {
-		if (options.set && (args.length === 2 || isObject(args[0]))) {
-			if (isObject(args[0])) {
+		const isAnObject = isObject(args[0]);
+
+		if (options.set && (args.length === 2 || isAnObject)) {
+			if (isAnObject) {
 				forOwn(args[0], (value, key) => {
 					options.set.call(this, key, value);
 				});
@@ -28,7 +30,7 @@ export default (options = {}) => {
 			return this;
 		}
 
-		if (options.get) {
+		if (options.get !== undefined) {
 			return options.get.apply(this, args);
 		}
 	};

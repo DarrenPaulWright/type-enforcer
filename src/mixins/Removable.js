@@ -1,7 +1,7 @@
 import { methodQueue } from '../';
-import privateProp from '../utility/privateProp';
+import PrivateVars from '../utility/PrivateVars';
 
-const IS_REMOVED = Symbol();
+const _ = new PrivateVars();
 
 /**
  * A mixin that adds methods to a class to facilitate clean-up
@@ -22,8 +22,8 @@ export default class Removable {
 	 * @instance
 	 */
 	remove() {
-		if (this && !this[IS_REMOVED]) {
-			privateProp(this, IS_REMOVED, true);
+		if (this && !this.isRemoved) {
+			_.set(this);
 
 			if (this.onRemove()) {
 				this.onRemove()
@@ -42,7 +42,7 @@ export default class Removable {
 	 * @returns {Boolean}
 	 */
 	get isRemoved() {
-		return !!this[IS_REMOVED];
+		return Boolean(_(this));
 	}
 }
 

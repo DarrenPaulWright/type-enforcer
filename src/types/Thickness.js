@@ -1,5 +1,6 @@
 import isString from '../checks/types/isString';
 import methodElement from '../methods/types/methodElement';
+import PrivateVars from '../utility/PrivateVars';
 import CssSize from './CssSize';
 
 const SEPARATOR = /[, ]+/;
@@ -7,10 +8,7 @@ const SPACE = ' ';
 const splitArgs = (args) => (typeof args[0] === 'string' && SEPARATOR.test(args[0])) ? args[0].trim()
 	.split(SEPARATOR) : args;
 
-const TOP = Symbol();
-const RIGHT = Symbol();
-const BOTTOM = Symbol();
-const LEFT = Symbol();
+const _ = new PrivateVars();
 
 /**
  * Replicates the functionality of css border-width, margin, and padding, or anything that requires top, right, bottom, and left css sizes.
@@ -50,10 +48,12 @@ const LEFT = Symbol();
  */
 export default class Thickness {
 	constructor(...args) {
-		this[TOP] = new CssSize();
-		this[RIGHT] = new CssSize();
-		this[BOTTOM] = new CssSize();
-		this[LEFT] = new CssSize();
+		_.set(this, {
+			top: new CssSize(),
+			right: new CssSize(),
+			bottom: new CssSize(),
+			left: new CssSize()
+		});
 
 		this.set.apply(this, args);
 	}
@@ -147,11 +147,11 @@ export default class Thickness {
 	 * @type {CssSize}
 	 */
 	get top() {
-		return this[TOP].toPixels(true);
+		return _(this).top.toPixels(true);
 	}
 
 	set top(size) {
-		this[TOP].set(size);
+		_(this).top.set(size);
 	}
 
 	/**
@@ -163,11 +163,11 @@ export default class Thickness {
 	 * @type {CssSize}
 	 */
 	get right() {
-		return this[RIGHT].toPixels(true);
+		return _(this).right.toPixels(true);
 	}
 
 	set right(size) {
-		this[RIGHT].set(size);
+		_(this).right.set(size);
 	}
 
 	/**
@@ -179,11 +179,11 @@ export default class Thickness {
 	 * @type {CssSize}
 	 */
 	get bottom() {
-		return this[BOTTOM].toPixels(true);
+		return _(this).bottom.toPixels(true);
 	}
 
 	set bottom(size) {
-		this[BOTTOM].set(size);
+		_(this).bottom.set(size);
 	}
 
 	/**
@@ -195,11 +195,11 @@ export default class Thickness {
 	 * @type {CssSize}
 	 */
 	get left() {
-		return this[LEFT].toPixels(true);
+		return _(this).left.toPixels(true);
 	}
 
 	set left(size) {
-		this[LEFT].set(size);
+		_(this).left.set(size);
 	}
 
 	/**
@@ -212,7 +212,8 @@ export default class Thickness {
 	 * @type {Number}
 	 */
 	get horizontal() {
-		return this.left + this.right;
+		const _self = _(this);
+		return _self.left.toPixels(true) + _self.right.toPixels(true);
 	}
 
 	/**
@@ -225,7 +226,8 @@ export default class Thickness {
 	 * @type {Number}
 	 */
 	get vertical() {
-		return this.top + this.bottom;
+		const _self = _(this);
+		return _self.top.toPixels(true) + _self.bottom.toPixels(true);
 	}
 
 	/**
@@ -254,24 +256,25 @@ export default class Thickness {
 	 * @returns {String}
 	 */
 	toString() {
-		const topBottomSame = this[TOP].isSame(this[BOTTOM]);
-		const leftRightSame = this[RIGHT].isSame(this[LEFT]);
-		const topRightSame = this[RIGHT].isSame(this[TOP]);
+		const _self = _(this);
+		const topBottomSame = _self.top.isSame(_self.bottom);
+		const leftRightSame = _self.right.isSame(_self.left);
+		const topRightSame = _self.right.isSame(_self.top);
 
 		if (topBottomSame && leftRightSame && topRightSame) {
-			return this[TOP].toPixels();
+			return _self.top.toPixels();
 		}
 		else if (topBottomSame && leftRightSame) {
-			return [this[TOP].toPixels(), this[RIGHT].toPixels()].join(SPACE);
+			return [_self.top.toPixels(), _self.right.toPixels()].join(SPACE);
 		}
 		else if (leftRightSame) {
-			return [this[TOP].toPixels(), this[RIGHT].toPixels(), this[BOTTOM].toPixels()].join(SPACE);
+			return [_self.top.toPixels(), _self.right.toPixels(), _self.bottom.toPixels()].join(SPACE);
 		}
 
-		return [this[TOP].toPixels(),
-			this[RIGHT].toPixels(),
-			this[BOTTOM].toPixels(),
-			this[LEFT].toPixels()].join(SPACE);
+		return [_self.top.toPixels(),
+			_self.right.toPixels(),
+			_self.bottom.toPixels(),
+			_self.left.toPixels()].join(SPACE);
 	}
 
 }
@@ -290,10 +293,11 @@ Object.assign(Thickness.prototype, {
 	 */
 	element: methodElement({
 		set(element) {
-			this[TOP].element(element);
-			this[RIGHT].element(element);
-			this[BOTTOM].element(element);
-			this[LEFT].element(element);
+			const _self = _(this);
+			_self.top.element(element);
+			_self.right.element(element);
+			_self.bottom.element(element);
+			_self.left.element(element);
 		}
 	})
 });

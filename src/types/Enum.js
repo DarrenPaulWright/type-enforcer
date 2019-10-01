@@ -1,7 +1,7 @@
 import { forOwn } from 'object-agent';
+import PrivateVars from '../utility/PrivateVars';
 
-const KEYS = Symbol();
-const VALUES = Symbol();
+const _ = new PrivateVars();
 
 /**
  * Freezes an enumerable object and adds a few helper methods
@@ -17,11 +17,13 @@ const VALUES = Symbol();
 export default class Enum {
 	constructor(object) {
 		Object.assign(this, object);
-		this[KEYS] = [];
-		this[VALUES] = [];
+		const _self = _.set(this, {
+			keys: [],
+			values: []
+		});
 		forOwn(object, (value, key) => {
-			this[KEYS].push(key);
-			this[VALUES].push(value);
+			_self.keys.push(key);
+			_self.values.push(value);
 		});
 		Object.freeze(this);
 		object = null;
@@ -38,7 +40,7 @@ export default class Enum {
 	 * @returns {boolean}
 	 */
 	has(value) {
-		return this[VALUES].includes(value);
+		return _(this).values.includes(value);
 	}
 
 	/**
@@ -52,7 +54,9 @@ export default class Enum {
 	 * @returns {String}
 	 */
 	key(value) {
-		return this[KEYS][this[VALUES].indexOf(value)];
+		const _self = _(this);
+
+		return _self.keys[_self.values.indexOf(value)];
 	}
 
 	/**
@@ -74,6 +78,6 @@ export default class Enum {
 	 * @arg {Function} callback
 	 */
 	each(callback) {
-		this[VALUES].forEach(callback);
+		_(this).values.forEach(callback);
 	}
 }

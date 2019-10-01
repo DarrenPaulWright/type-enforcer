@@ -1,6 +1,7 @@
 import isFloat from '../checks/types/isFloat';
 import methodElement from '../methods/types/methodElement';
 import isElementInDom from '../utility/isElementInDom';
+import PrivateVars from '../utility/PrivateVars';
 import throttle from '../utility/throttle';
 
 export const AUTO = 'auto';
@@ -113,11 +114,7 @@ const onResize = throttle(() => {
 window.addEventListener('resize', onResize, false);
 onResize();
 
-const SIZE = Symbol();
-const UNITS = Symbol();
-const VALUE = Symbol();
-const PIXELS_VALUE = Symbol();
-const FONT_BASED_UNITS = Symbol();
+const _ = new PrivateVars();
 
 /**
  * A class for css sizes
@@ -132,7 +129,9 @@ const FONT_BASED_UNITS = Symbol();
  */
 export default class CssSize {
 	constructor(size) {
-		this[SIZE] = ZERO_PIXELS;
+		_.set(this, {
+			size: ZERO_PIXELS
+		});
 		this.set(size);
 	}
 
@@ -166,12 +165,17 @@ export default class CssSize {
 	 * @returns {this}
 	 */
 	set(size) {
+		const _self = _(this);
+
 		if (CssSize.isValid(size)) {
-			this[SIZE] = size[SIZE] || (isNonZeroNumber(size) ? size + PIXELS : size + '');
-			this[UNITS] = undefined;
-			this[VALUE] = undefined;
-			this[PIXELS_VALUE] = undefined;
-			this[FONT_BASED_UNITS] = {};
+			_self.size = _(size) ? _(size).size : undefined;
+			if (!_self.size) {
+				_self.size = isNonZeroNumber(size) ? size + PIXELS : size + '';
+			}
+			_self.units = undefined;
+			_self.value = undefined;
+			_self.pixelsValue = undefined;
+			_self.fontBasedUnits = {};
 		}
 
 		return this;
@@ -186,11 +190,13 @@ export default class CssSize {
 	 * @returns {String}
 	 */
 	get units() {
-		if (this[UNITS] === undefined && !unitlessSizes.includes(this[SIZE])) {
-			this[UNITS] = this[SIZE].replace(NUMERIC_REGEX, '');
+		const _self = _(this);
+
+		if (_self.units === undefined && !unitlessSizes.includes(_self.size)) {
+			_self.units = _self.size.replace(NUMERIC_REGEX, '');
 		}
 
-		return this[UNITS];
+		return _self.units;
 	}
 
 	/**
@@ -202,14 +208,16 @@ export default class CssSize {
 	 * @returns {Number}
 	 */
 	get value() {
-		if (this[VALUE] === undefined) {
-			this[VALUE] = parseFloat(this[SIZE]);
-			if (isNaN(this[VALUE])) {
-				this[VALUE] = undefined;
+		const _self = _(this);
+
+		if (_self.value === undefined) {
+			_self.value = parseFloat(_self.size);
+			if (isNaN(_self.value)) {
+				_self.value = undefined;
 			}
 		}
 
-		return this[VALUE];
+		return _self.value;
 	}
 
 	/**
@@ -223,39 +231,41 @@ export default class CssSize {
 	 * @returns {Number|String}
 	 */
 	toPixels(isNumber = false) {
-		if (this[PIXELS_VALUE] === undefined) {
-			if (unitlessSizes.includes(this[SIZE])) {
-				this[PIXELS_VALUE] = this[SIZE];
+		const _self = _(this);
+
+		if (_self.pixelsValue === undefined) {
+			if (unitlessSizes.includes(_self.size)) {
+				_self.pixelsValue = _self.size;
 			}
 			else {
 				const units = this.units;
 
 				if (this.isPercent) {
-					this[PIXELS_VALUE] = this[SIZE];
+					_self.pixelsValue = _self.size;
 				}
 				else {
 					if (units === ROOT_EM) {
-						this[PIXELS_VALUE] = getOneRem();
+						_self.pixelsValue = getOneRem();
 					}
 					else if (pixelBasedUnits.includes(units)) {
-						this[PIXELS_VALUE] = getMeasurement(pixelBasedUnitMeasurements, pixelBasedUnits, units);
+						_self.pixelsValue = getMeasurement(pixelBasedUnitMeasurements, pixelBasedUnits, units);
 					}
 					else if (viewPortUnits.includes(units)) {
-						this[PIXELS_VALUE] = getMeasurement(viewPortUnitMeasurements, viewPortUnits, units);
+						_self.pixelsValue = getMeasurement(viewPortUnitMeasurements, viewPortUnits, units);
 					}
 					else if (fontBasedUnits.includes(units)) {
-						this[PIXELS_VALUE] = getMeasurement(this[FONT_BASED_UNITS], fontBasedUnits, units, this.element());
+						_self.pixelsValue = getMeasurement(_self.fontBasedUnits, fontBasedUnits, units, this.element());
 					}
 					else {
-						this[PIXELS_VALUE] = 1;
+						_self.pixelsValue = 1;
 					}
 
-					this[PIXELS_VALUE] *= this.value || 0;
+					_self.pixelsValue *= this.value || 0;
 				}
 			}
 		}
 
-		return (!isNumber && typeof this[PIXELS_VALUE] === 'number') ? this[PIXELS_VALUE] + (this[PIXELS_VALUE] !== 0 ? PIXELS : '') : this[PIXELS_VALUE];
+		return (!isNumber && typeof _self.pixelsValue === 'number') ? _self.pixelsValue + (_self.pixelsValue !== 0 ? PIXELS : '') : _self.pixelsValue;
 	}
 
 	/**
@@ -267,7 +277,7 @@ export default class CssSize {
 	 * @returns {boolean}
 	 */
 	get isAuto() {
-		return this[SIZE] === AUTO;
+		return _(this).size === AUTO;
 	}
 
 	/**
@@ -305,6 +315,8 @@ export default class CssSize {
 	 * @returns {boolean}
 	 */
 	isSame(size) {
+		const _self = _(this);
+
 		if (size instanceof CssSize) {
 			return size.toPixels(true) === this.toPixels(true);
 		}
@@ -312,9 +324,9 @@ export default class CssSize {
 			return parseFloat(size) === this.value && this.units === PIXELS;
 		}
 		if (size === 0 || size === ZERO_PIXELS) {
-			return this[SIZE] === ZERO_PIXELS;
+			return _self.size === ZERO_PIXELS;
 		}
-		return size === this[SIZE];
+		return size === _self.size;
 	}
 
 	/**
@@ -326,7 +338,7 @@ export default class CssSize {
 	 * @returns {String}
 	 */
 	toString() {
-		return this[SIZE] + '';
+		return _(this).size + '';
 	}
 }
 
@@ -344,7 +356,7 @@ Object.assign(CssSize.prototype, {
 	 */
 	element: methodElement({
 		set() {
-			this[FONT_BASED_UNITS] = {};
+			_(this).fontBasedUnits = {};
 		}
 	})
 });

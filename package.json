@@ -1,6 +1,6 @@
 {
 	"name": "type-enforcer",
-	"version": "0.5.7",
+	"version": "0.5.8",
 	"description": "A type enforcement library for javascript",
 	"main": "src/index.js",
 	"scripts": {

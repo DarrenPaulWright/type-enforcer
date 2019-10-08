@@ -9,9 +9,10 @@ describe('method', () => {
 			assert.deepEqual(methodElement, method.element);
 		});
 
-		testMethodType(Object.assign({
-			coerce: false
-		}, data));
+		testMethodType({
+			coerce: false,
+			...data
+		});
 	});
 });
 

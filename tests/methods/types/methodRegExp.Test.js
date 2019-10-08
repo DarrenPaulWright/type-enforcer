@@ -9,7 +9,7 @@ describe('method', () => {
 			assert.deepEqual(methodRegExp, method.regExp);
 		});
 
-		testMethodType(Object.assign({}, data));
+		testMethodType({...data});
 	});
 });
 

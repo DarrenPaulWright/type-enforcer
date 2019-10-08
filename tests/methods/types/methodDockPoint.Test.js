@@ -21,12 +21,13 @@ describe('method', () => {
 	});
 
 	describe('.dockPoint', () => {
-		testMethodType(Object.assign({}, data, {
+		testMethodType({
+			...data,
 			coerce: [{
 				value: DockPoint.POINTS.TOP_RIGHT,
 				coerced: new DockPoint(DockPoint.POINTS.TOP_RIGHT)
 			}]
-		}));
+		});
 
 		it('should NOT save a coercible value if coerce is false', () => {
 			const TestConstructor = function() {

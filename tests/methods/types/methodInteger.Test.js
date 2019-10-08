@@ -9,7 +9,8 @@ describe('method', () => {
 			assert.deepEqual(methodInteger, method.integer);
 		});
 
-		testMethodType(Object.assign({}, data, {
+		testMethodType({
+			...data,
 			extraProps: {
 				min: 0,
 				max: 10
@@ -21,7 +22,7 @@ describe('method', () => {
 				value: -3,
 				coerced: 0
 			}]
-		}));
+		});
 	});
 });
 

@@ -175,11 +175,12 @@ describe('CssSize', () => {
 			'2ex': precision(measure.ex),
 			'2ch': precision(measure.ch)
 		};
-		const elementSizeMapOnDom = Object.assign({}, sizeMap, {
+		const elementSizeMapOnDom = {
+			...sizeMap,
 			'2em': precision(measure.emLarge),
 			'2ex': precision(measure.exLarge),
 			'2ch': precision(measure.chLarge)
-		});
+		};
 
 		multiTest({
 			values: sizeMap,

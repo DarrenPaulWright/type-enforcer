@@ -21,12 +21,13 @@ describe('method', () => {
 	});
 
 	describe('.cssSize', () => {
-		testMethodType(Object.assign({}, data, {
+		testMethodType({
+			...data,
 			coerce: [{
 				value: '16px',
 				coerced: new CssSize('16px')
 			}]
-		}));
+		});
 
 		it('should NOT save a coercible value if coerce is false', () => {
 			const TestConstructor = function() {

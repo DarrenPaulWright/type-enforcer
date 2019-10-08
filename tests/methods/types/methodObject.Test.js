@@ -9,7 +9,7 @@ describe('method', () => {
 			assert.deepEqual(methodObject, method.object);
 		});
 
-		testMethodType(Object.assign({}, data));
+		testMethodType({...data});
 
 		it('should NOT call the set callback if the same object is provided and deep=false', () => {
 			let testSet = '';

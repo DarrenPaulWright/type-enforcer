@@ -9,6 +9,6 @@ describe('method', () => {
 			assert.deepEqual(methodDate, method.date);
 		});
 
-		testMethodType(Object.assign({}, data));
+		testMethodType({...data});
 	});
 });

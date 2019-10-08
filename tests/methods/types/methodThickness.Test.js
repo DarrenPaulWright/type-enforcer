@@ -28,7 +28,8 @@ describe('method', () => {
 	});
 
 	describe('.thickness', () => {
-		testMethodType(Object.assign({}, data, {
+		testMethodType({
+			...data,
 			coerce: [{
 				value: '12px 4rem',
 				coerced: new Thickness('12px 64px')
@@ -36,7 +37,7 @@ describe('method', () => {
 				value: 13,
 				coerced: new Thickness('13px')
 			}]
-		}));
+		});
 
 		it('should NOT save a coercible value if coerce is false', () => {
 			const TestConstructor = function() {

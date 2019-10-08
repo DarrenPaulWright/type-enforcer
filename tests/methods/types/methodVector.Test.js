@@ -22,13 +22,14 @@ describe('method', () => {
 	});
 
 	describe('.vector', () => {
-		testMethodType(Object.assign({}, data, {
+		testMethodType({
+			...data,
 			init: new Vector(),
 			coerce: [{
 				value: '[[3,4],[5,6]]',
 				coerced: new Vector('[[3,4],[5,6]]')
 			}]
-		}));
+		});
 
 		it('should NOT save a coercible value if coerce is false', () => {
 			const TestConstructor = function() {

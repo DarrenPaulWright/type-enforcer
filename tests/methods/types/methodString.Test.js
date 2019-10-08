@@ -9,9 +9,10 @@ describe('method', () => {
 			assert.deepEqual(methodString, method.string);
 		});
 
-		testMethodType(Object.assign({}, data, {
+		testMethodType({
+			...data,
 			init: ''
-		}));
+		});
 	});
 });
 

@@ -9,7 +9,7 @@ import { _ } from './methodAny';
  * @alias methodQueue
  *
  * @arg {Object}   [options]
- * @arg {Function} [options.set] - Called after a new callback is added to the queue. Provides a reference to the queue, the new ID for the callback, the callback, and sets the context to the methods constructor.
+ * @arg {Function} [options.set] - Called after a new callback is added to the queue. Provides a reference to the queue, the new id for the callback, the callback, and sets the context to the methods constructor.
  *
  * @returns {Function} accepts a new value and returns the methods constructor (allows chaining), or if no args are passed returns the instance of Queue
  */
@@ -32,10 +32,10 @@ export default (options = {}) => {
 
 		if (arguments.length) {
 			if (isFunction(callback) && !self.isRemoved) {
-				const ID = _self[key].add(callback);
+				const id = _self[key].add(callback);
 
 				if (options.set) {
-					options.set.call(self, _self[key], ID, callback);
+					options.set.call(self, _self[key], id, callback);
 				}
 			}
 

@@ -8,24 +8,24 @@ describe('Queue', () => {
 	describe('.add', () => {
 		it('should return an id when a function is provided', () => {
 			const queue = new Queue();
-			const ID = queue.add(emptyFunction);
+			const id = queue.add(emptyFunction);
 
-			assert.equal(ID, '1');
+			assert.equal(id, '1');
 		});
 
 		it('should return a different id when two functions are added', () => {
 			const queue = new Queue();
-			const ID = queue.add(emptyFunction);
-			const ID2 = queue.add(emptyFunction);
+			const id = queue.add(emptyFunction);
+			const id2 = queue.add(emptyFunction);
 
-			assert.notEqual(ID, ID2);
+			assert.notEqual(id, id2);
 		});
 
 		it('should return nothing when nothing is provided', () => {
 			const queue = new Queue();
-			const ID = queue.add();
+			const id = queue.add();
 
-			assert.equal(ID, undefined);
+			assert.equal(id, undefined);
 		});
 	});
 
@@ -33,15 +33,15 @@ describe('Queue', () => {
 		it('should decrement length', () => {
 			const queue = new Queue();
 			queue.add(emptyFunction);
-			const ID = queue.add(emptyFunction);
+			const id = queue.add(emptyFunction);
 			queue.add(emptyFunction);
 
-			queue.discard(ID);
+			queue.discard(id);
 
 			assert.equal(queue.length, 2);
 		});
 
-		it('should NOT decrement length if no ID is provided', () => {
+		it('should NOT decrement length if no id is provided', () => {
 			const queue = new Queue();
 			queue.add(emptyFunction);
 			queue.add(emptyFunction);
@@ -54,20 +54,20 @@ describe('Queue', () => {
 
 		it('should return provided data', () => {
 			const queue = new Queue();
-			const ID = queue.add(emptyFunction, 'something');
+			const id = queue.add(emptyFunction, 'something');
 			queue.add(emptyFunction);
 
-			const data = queue.discard(ID);
+			const data = queue.discard(id);
 
 			assert.equal(data, 'something');
 		});
 
 		it('should NOT return data if not provided', () => {
 			const queue = new Queue();
-			const ID = queue.add(emptyFunction);
+			const id = queue.add(emptyFunction);
 			queue.add(emptyFunction, 'something');
 
-			const data = queue.discard(ID);
+			const data = queue.discard(id);
 
 			assert.equal(data, undefined);
 		});
@@ -111,14 +111,14 @@ describe('Queue', () => {
 			queue.add(() => {
 				testVar = 1;
 			});
-			const ID = queue.add(() => {
+			const id = queue.add(() => {
 				testVar = 2;
 			});
 			queue.add(() => {
 				testVar = 3;
 			});
 
-			queue.trigger(ID);
+			queue.trigger(id);
 
 			assert.equal(testVar, 2);
 		});
@@ -146,13 +146,13 @@ describe('Queue', () => {
 			const queue = new Queue();
 			queue.add(() => {
 				testVar = 1;
-				queue.discard(ID1);
-				queue.discard(ID2);
+				queue.discard(id1);
+				queue.discard(id2);
 			});
-			const ID1 = queue.add(() => {
+			const id1 = queue.add(() => {
 				testVar = 2;
 			});
-			const ID2 = queue.add(() => {
+			const id2 = queue.add(() => {
 				testVar = 3;
 			});
 
@@ -167,14 +167,14 @@ describe('Queue', () => {
 			queue.add(() => {
 				testVar = 1;
 			});
-			const ID = queue.add((value1, value2) => {
+			const id = queue.add((value1, value2) => {
 				testVar = value2;
 			});
 			queue.add(() => {
 				testVar = 3;
 			});
 
-			queue.trigger(ID, [10, 5]);
+			queue.trigger(id, [10, 5]);
 
 			assert.equal(testVar, 5);
 		});
@@ -186,14 +186,14 @@ describe('Queue', () => {
 			queue.add(() => {
 				testVar = 1;
 			});
-			const ID = queue.add(function() {
+			const id = queue.add(function() {
 				testVar = this;
 			});
 			queue.add(() => {
 				testVar = 3;
 			});
 
-			queue.trigger(ID, [], instance);
+			queue.trigger(id, [], instance);
 
 			assert.equal(testVar, instance);
 		});
@@ -204,14 +204,14 @@ describe('Queue', () => {
 			queue.add(function() {
 				testVar = 1;
 			});
-			const ID = queue.add(() => {
+			const id = queue.add(() => {
 				testVar = queue.isBusy;
 			});
 			queue.add(() => {
 				testVar = 3;
 			});
 
-			queue.trigger(ID);
+			queue.trigger(id);
 
 			assert.equal(testVar, true);
 		});

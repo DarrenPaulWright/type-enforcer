@@ -74,7 +74,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.3.2] - 2019-02-14
 ### Changed
 - Replaced dependencies on clone and deepEqual with object-agent
-- Added ID and callback args to the methodQueue set option
+- Added id and callback args to the methodQueue set option
 
 ## [0.3.1] - 2019-02-10
 ### Added

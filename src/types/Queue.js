@@ -31,19 +31,19 @@ export default class Queue {
 	 * @arg {Function} callback - Callback function.
 	 * @arg {Object}   data - Any arbitrary data. Returned when the callback is discarded.
 	 *
-	 * @returns {Number} A unique ID for this callback.
+	 * @returns {Number} A unique id for this callback.
 	 */
 	add(callback, data) {
 		const _self = _(this);
 
 		if (isFunction(callback)) {
-			const newID = (++_(this).currentId + '');
-			_self.callbacks[newID] = {
+			const newId = (++_(this).currentId + '');
+			_self.callbacks[newId] = {
 				function: callback,
 				data
 			};
 			_self.total++;
-			return newID;
+			return newId;
 		}
 	}
 
@@ -53,17 +53,17 @@ export default class Queue {
 	 * @memberof Queue
 	 * @instance
 	 *
-	 * @arg {Number} ID - The ID returned by Queue.add().
+	 * @arg {Number} id - The id returned by Queue.add().
 	 *
 	 * @returns {Object} The data object added with this callback
 	 */
-	discard(ID) {
+	discard(id) {
 		const _self = _(this);
 		let data;
 
-		if (ID && _self.callbacks[ID]) {
-			data = _self.callbacks[ID].data;
-			delete _self.callbacks[ID];
+		if (id && _self.callbacks[id]) {
+			data = _self.callbacks[id].data;
+			delete _self.callbacks[id];
 			_self.total--;
 		}
 
@@ -89,20 +89,20 @@ export default class Queue {
 	 * @memberof Queue
 	 * @instance
 	 *
-	 * @arg {Number} [ID] - To trigger only a specific callback, provide the ID returned by Queue.add().
+	 * @arg {Number} [id] - To trigger only a specific callback, provide the id returned by Queue.add().
 	 *    Otherwise all callbacks are called.
 	 * @arg {Array} [extraArguments] - Array of arguments to apply to each callback.
 	 * @arg {Array} [context]
 	 *
 	 * @returns {this}
 	 */
-	trigger(ID, extraArguments, context) {
+	trigger(id, extraArguments, context) {
 		const _self = _(this);
 
 		_self.isBusy = true;
-		if (ID) {
-			if (_self.callbacks[ID]) {
-				_self.callbacks[ID].function.apply(context, extraArguments);
+		if (id) {
+			if (_self.callbacks[id]) {
+				_self.callbacks[id].function.apply(context, extraArguments);
 			}
 		}
 		else {
@@ -131,9 +131,9 @@ export default class Queue {
 		const _self = _(self);
 
 		_self.isBusy = true;
-		forOwn(_self.callbacks, (callback, ID) => {
+		forOwn(_self.callbacks, (callback, id) => {
 			callback.function.apply(context, extraArguments);
-			self.discard(ID);
+			self.discard(id);
 			return true;
 		});
 		_self.isBusy = false;

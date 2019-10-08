@@ -47,6 +47,23 @@ describe('method', () => {
 				}
 			});
 
+			it('should set the context of the callback when triggered', () => {
+				const testConstructor = new TestConstructor();
+
+				didExecute = 0;
+				testConstructor.testMethod(function() {
+					if (this === testConstructor) {
+						didExecute++;
+					}
+				});
+				testConstructor.testMethod().trigger();
+
+				assert.equal(didExecute, 1);
+				if (testConstructor.onRemove) {
+					testConstructor.onRemove();
+				}
+			});
+
 			it('should return an instance of Queue if no value is provided', () => {
 				const testConstructor = new TestConstructor();
 
@@ -122,24 +139,43 @@ describe('method', () => {
 			class TestConstructor {
 			}
 
-			TestConstructor.prototype.testMethod = method.queue({
-				set() {
-				}
-			});
+			TestConstructor.prototype.testMethod = method.queue();
 
 			runTests(TestConstructor);
 		});
 
 		describe('(property, without onRemove)', () => {
 			const TestConstructor = function() {
-				this.testMethod = method.queue({
-					set() {
-					}
-				});
+				this.testMethod = method.queue();
 			};
 
 			runTests(TestConstructor);
 		});
+
+		it('should set the context of the callback when triggered', () => {
+			class TestConstructor extends Removable {}
+
+			TestConstructor.prototype.onRemove = method.function();
+			TestConstructor.prototype.testMethod = method.queue({
+				bind: false
+			});
+
+			const testConstructor = new TestConstructor();
+
+			didExecute = 0;
+			testConstructor.testMethod(function() {
+				if (this !== testConstructor) {
+					didExecute++;
+				}
+			});
+			testConstructor.testMethod().trigger();
+
+			assert.equal(didExecute, 1);
+			if (testConstructor.onRemove) {
+				testConstructor.onRemove();
+			}
+		});
+
 	});
 });
 

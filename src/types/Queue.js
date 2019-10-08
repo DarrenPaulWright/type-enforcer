@@ -1,5 +1,6 @@
 import { forOwn } from 'object-agent';
 import isFunction from '../checks/types/isFunction';
+import castArray from '../utility/castArray';
 import PrivateVars from '../utility/PrivateVars';
 
 const _ = new PrivateVars();
@@ -23,6 +24,32 @@ export default class Queue {
 	}
 
 	/**
+	 * Binds all current and future callbacks to a specified context.
+	 *
+	 * @memberOf Queue
+	 * @instance
+	 *
+	 * @arg {object} context - Callback function.
+	 *
+	 * @returns {object|this} If setting a value then this is returned, otherwise the current context.
+	 */
+	bindTo(context) {
+		const _self = _(this);
+
+		if (context) {
+			_(this).bindTo = context;
+
+			forOwn(_self.callbacks, (callback) => {
+				callback.function = callback.function.bind(context);
+			});
+
+			return this;
+		}
+
+		return _(this).bindTo;
+	}
+
+	/**
 	 * Add a callback to the queue.
 	 *
 	 * @memberOf Queue
@@ -37,12 +64,14 @@ export default class Queue {
 		const _self = _(this);
 
 		if (isFunction(callback)) {
-			const newId = (++_(this).currentId + '');
+			const newId = (++_self.currentId + '');
+
 			_self.callbacks[newId] = {
-				function: callback,
+				function: _self.bindTo ? callback.bind(_self.bindTo) : callback,
 				data
 			};
 			_self.total++;
+
 			return newId;
 		}
 	}
@@ -92,22 +121,34 @@ export default class Queue {
 	 * @arg {Number} [id] - To trigger only a specific callback, provide the id returned by Queue.add().
 	 *    Otherwise all callbacks are called.
 	 * @arg {Array} [extraArguments] - Array of arguments to apply to each callback.
-	 * @arg {Array} [context]
+	 * @arg {Array} [context] - Ignored if bindTo is set
 	 *
 	 * @returns {this}
 	 */
 	trigger(id, extraArguments, context) {
 		const _self = _(this);
 
+		extraArguments = castArray(extraArguments);
+
 		_self.isBusy = true;
 		if (id) {
 			if (_self.callbacks[id]) {
-				_self.callbacks[id].function.apply(context, extraArguments);
+				if (context) {
+					_self.callbacks[id].function.apply(context, extraArguments);
+				}
+				else {
+					_self.callbacks[id].function(...extraArguments);
+				}
 			}
 		}
 		else {
 			forOwn(_self.callbacks, (callback) => {
-				callback.function.apply(context, extraArguments);
+				if (context) {
+					callback.function.apply(context, extraArguments);
+				}
+				else {
+					callback.function(...extraArguments);
+				}
 			});
 		}
 		_self.isBusy = false;
@@ -132,8 +173,8 @@ export default class Queue {
 
 		_self.isBusy = true;
 		forOwn(_self.callbacks, (callback, id) => {
-			callback.function.apply(context, extraArguments);
-			self.discard(id);
+			self.trigger(id, extraArguments, context)
+				.discard(id);
 			return true;
 		});
 		_self.isBusy = false;

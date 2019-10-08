@@ -23,6 +23,10 @@ export default (options = {}) => {
 		if (self && !_self[key] && !self.isRemoved) {
 			_self[key] = new Queue();
 
+			if (options.bind !== false) {
+				_self[key].bindTo(self);
+			}
+
 			if (self.onRemove) {
 				self.onRemove(() => {
 					_self[key].discardAll();

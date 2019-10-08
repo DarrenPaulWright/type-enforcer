@@ -292,4 +292,184 @@ describe('Queue', () => {
 			assert.equal(testVar, true);
 		});
 	});
+
+	describe('.bindTo', () => {
+		it('should set the context of each callback when trigger is called without an id', () => {
+			let testVar = 0;
+			const point = new Point();
+			const queue = new Queue().bindTo(point);
+			queue.add(function() {
+				if (this === point) {
+					testVar++;
+				}
+			});
+			queue.add(function() {
+				if (this === point) {
+					testVar++;
+				}
+			});
+			queue.add(function() {
+				if (this === point) {
+					testVar++;
+				}
+			});
+
+			queue.trigger();
+
+			assert.equal(testVar, 3);
+		});
+
+		it('should set the context of each callback if bindTo is called after callbacks are added', () => {
+			let testVar = 0;
+			const point = new Point();
+			const queue = new Queue();
+			queue.add(function() {
+				if (this === point) {
+					testVar++;
+				}
+			});
+			queue.add(function() {
+				if (this === point) {
+					testVar++;
+				}
+			});
+			queue.add(function() {
+				if (this === point) {
+					testVar++;
+				}
+			});
+
+			queue.bindTo(point).trigger();
+
+			assert.equal(testVar, 3);
+		});
+
+		it('should set the context of each callback when trigger is called without an id and context is provided', () => {
+			let testVar = 0;
+			const point = new Point();
+			const point2 = new Point();
+			const queue = new Queue().bindTo(point);
+			queue.add(function() {
+				if (this === point) {
+					testVar++;
+				}
+			});
+			queue.add(function() {
+				if (this === point) {
+					testVar++;
+				}
+			});
+			queue.add(function() {
+				if (this === point) {
+					testVar++;
+				}
+			});
+
+			queue.trigger(null, [], point2);
+
+			assert.equal(testVar, 3);
+		});
+
+		it('should set the context of the callback when trigger is called with an id', () => {
+			let testVar = 0;
+			const point = new Point();
+			const queue = new Queue().bindTo(point);
+			queue.add(function() {
+				if (this === point) {
+					testVar++;
+				}
+			});
+			const id = queue.add(function() {
+				if (this === point) {
+					testVar++;
+				}
+			});
+			queue.add(function() {
+				if (this === point) {
+					testVar++;
+				}
+			});
+
+			queue.trigger(id);
+
+			assert.equal(testVar, 1);
+		});
+
+		it('should set the context of the callback when trigger is called with an id and context is provided', () => {
+			let testVar = 0;
+			const point = new Point();
+			const point2 = new Point();
+			const queue = new Queue().bindTo(point);
+			queue.add(function() {
+				if (this === point) {
+					testVar++;
+				}
+			});
+			const id = queue.add(function() {
+				if (this === point) {
+					testVar++;
+				}
+			});
+			queue.add(function() {
+				if (this === point) {
+					testVar++;
+				}
+			});
+
+			queue.trigger(id, [], point2);
+
+			assert.equal(testVar, 1);
+		});
+
+		it('should set the context of the callback when triggerFirst is called', () => {
+			let testVar = 0;
+			const point = new Point();
+			const queue = new Queue().bindTo(point);
+			queue.add(function() {
+				if (this === point) {
+					testVar++;
+				}
+			});
+			queue.add(function() {
+				if (this === point) {
+					testVar++;
+				}
+			});
+			queue.add(function() {
+				if (this === point) {
+					testVar++;
+				}
+			});
+
+			queue.triggerFirst();
+
+			assert.equal(testVar, 1);
+		});
+
+		it('should set the context of the callback when triggerFirst is called and context is provided', () => {
+			let testVar = 0;
+			const point = new Point();
+			const point2 = new Point();
+			const queue = new Queue().bindTo(point);
+			queue.add(function() {
+				if (this === point) {
+					testVar++;
+				}
+			});
+			queue.add(function() {
+				if (this === point) {
+					testVar++;
+				}
+			});
+			queue.add(function() {
+				if (this === point) {
+					testVar++;
+				}
+			});
+
+			queue.triggerFirst([], point2);
+
+			assert.equal(testVar, 1);
+		});
+	});
 });

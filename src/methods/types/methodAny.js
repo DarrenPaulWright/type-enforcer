@@ -86,7 +86,7 @@ export const buildMethod = (defaultSettings = {}, onInit) => {
 
 			if (arguments.length) {
 				if (!options.other || !options.other.some((value) => newValue === value || isInstanceOf(newValue, value))) {
-					newValue = options.enforce(newValue, value, options);
+					newValue = options.enforce.call(this, newValue, value, options);
 				}
 
 				if (options.compare(newValue, value) || isForcedSave) {

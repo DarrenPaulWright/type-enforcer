@@ -10,9 +10,19 @@ import { buildMethod } from './methodAny';
  *
  * @arg {Object} [options] - Same as {@link method.any} with the following differences:
  * @arg {Function} [options.enforce=enforce.function]
+ * @arg {boolean} [options.bind=true] - Binds the set function to the same context as the method.
  *
  * @returns {Function}
  */
 export default buildMethod({
-	enforce: enforceFunction
+	enforce(newValue, value, options) {
+		newValue = enforceFunction(newValue, value);
+
+		if (options.bind === true) {
+			newValue = newValue.bind(this);
+		}
+
+		return newValue;
+	},
+	bind: true
 });

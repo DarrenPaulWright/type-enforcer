@@ -1,15 +1,15 @@
-const objectStringMap = new Map();
-objectStringMap.set(Array, '[object Array]');
-objectStringMap.set(Boolean, '[object Boolean]');
-objectStringMap.set(Date, '[object Date]');
-objectStringMap.set(Number, '[object Number]');
-objectStringMap.set(Object, '[object Object]');
-objectStringMap.set(RegExp, '[object RegExp]');
+const objectStringMap = new Map()
+	.set(Array, '[object Array]')
+	.set(Boolean, '[object Boolean]')
+	.set(Date, '[object Date]')
+	.set(Number, '[object Number]')
+	.set(Object, '[object Object]')
+	.set(RegExp, '[object RegExp]');
 
-const typeOfMap = new Map();
-typeOfMap.set(Boolean, 'boolean');
-typeOfMap.set(Number, 'number');
-typeOfMap.set(String, 'string');
+const typeOfMap = new Map()
+	.set(Boolean, 'boolean')
+	.set(Number, 'number')
+	.set(String, 'string');
 
 /**
  * @description Check if a value is an instance of a constructor. Fixes issues with native instanceOf and primitives Boolean, Number, and String (see example).

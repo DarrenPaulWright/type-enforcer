@@ -1,6 +1,8 @@
 import isArray from '../checks/types/isArray';
 import isNumber from '../checks/types/isNumber';
 
+const slice = [].slice;
+
 /**
  * Casts a value to an array.
  *
@@ -42,7 +44,7 @@ export default (value) => {
 		return [];
 	}
 	if (value !== null && typeof value === 'object' && isNumber(value.length)) {
-		return [].slice.call(value);
+		return slice.call(value);
 	}
 	return [value];
 }

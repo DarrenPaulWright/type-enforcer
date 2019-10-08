@@ -67,37 +67,42 @@ export const buildMethod = (defaultSettings = {}, onInit) => {
 			options.other = [options.other];
 		}
 
-		return function(newValue, isForcedSave) {
+		return function(newValue, isForcedSave = false) {
 			let value;
-			let vars;
+			let _self = _(this) || _.set(this);
 
-			if (options.get !== undefined) {
-				value = options.get.call(this);
+			if (!_self[key]) {
+				_self[key] = {
+					value: options.init,
+					enforce: options.enforce.bind(this),
+					compare: options.compare.bind(this),
+					before: options.before ? options.before.bind(this) : undefined,
+					get: options.get ? options.get.bind(this) : undefined,
+					set: options.set ? options.set.bind(this) : undefined
+				};
+			}
+
+			if (_self[key].get !== undefined) {
+				value = _self[key].get();
 			}
 			else {
-				vars = _(this) || _.set(this);
-
-				if (!Object.getOwnPropertySymbols(vars).includes(key)) {
-					vars[key] = options.init;
-				}
-
-				value = vars[key];
+				value = _self[key].value;
 			}
 
 			if (arguments.length) {
 				if (!options.other || !options.other.some((value) => newValue === value || isInstanceOf(newValue, value))) {
-					newValue = options.enforce.call(this, newValue, value, options);
+					newValue = _self[key].enforce(newValue, value, options);
 				}
 
-				if (options.compare(newValue, value) || isForcedSave) {
-					if (options.before !== undefined) {
-						options.before.call(this, value);
+				if (_self[key].compare(newValue, value) || isForcedSave) {
+					if (_self[key].before !== undefined) {
+						_self[key].before(value);
 					}
-					if (options.get === undefined) {
-						vars[key] = newValue;
+					if (_self[key].get === undefined) {
+						_self[key].value = newValue;
 					}
-					if (options.set !== undefined) {
-						options.set.call(this, newValue);
+					if (_self[key].set !== undefined) {
+						_self[key].set(newValue);
 					}
 				}
 

@@ -21,31 +21,34 @@ export default (options = {}) => {
 		const _self = _(self) || _.set(self);
 
 		if (self && !_self[key] && !self.isRemoved) {
-			_self[key] = new Queue();
+			_self[key] = {
+				queue: new Queue(),
+				set: options.set ? options.set.bind(self) : undefined
+			};
 
 			if (options.bind !== false) {
-				_self[key].bindTo(self);
+				_self[key].queue.bindTo(self);
 			}
 
 			if (self.onRemove) {
 				self.onRemove(() => {
-					_self[key].discardAll();
+					_self[key].queue.discardAll();
 				});
 			}
 		}
 
 		if (arguments.length) {
 			if (isFunction(callback) && !self.isRemoved) {
-				const id = _self[key].add(callback);
+				const id = _self[key].queue.add(callback);
 
-				if (options.set) {
-					options.set.call(self, _self[key], id, callback);
+				if (_self[key].set) {
+					_self[key].set(_self[key].queue, id, callback);
 				}
 			}
 
 			return self;
 		}
 
-		return _self[key];
+		return _self[key] ? _self[key].queue : undefined;
 	};
 };

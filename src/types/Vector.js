@@ -83,7 +83,7 @@ export default class Vector {
 	/**
 	 * Determine if something is a valid Vector
 	 *
-	 * @memberof Vector
+	 * @memberOf Vector
 	 *
 	 * @arg {*} value
 	 *
@@ -105,7 +105,7 @@ export default class Vector {
 	/**
 	 * Determine if another vector is the same as this one
 	 *
-	 * @memberof Vector
+	 * @memberOf Vector
 	 * @instance
 	 *
 	 * @arg {Vector} vector2
@@ -122,7 +122,7 @@ export default class Vector {
 	/**
 	 * Switch the start and end points
 	 *
-	 * @memberof Vector
+	 * @memberOf Vector
 	 * @instance
 	 */
 	invert() {
@@ -138,7 +138,7 @@ export default class Vector {
 	/**
 	 * Get a string representation of the vector
 	 *
-	 * @memberof Vector
+	 * @memberOf Vector
 	 * @instance
 	 */
 	toString() {
@@ -151,7 +151,7 @@ Object.assign(Vector.prototype, {
 	 * The start point
 	 *
 	 * @method
-	 * @memberof Vector
+	 * @memberOf Vector
 	 * @instance
 	 *
 	 * @arg {Point} [point]
@@ -165,7 +165,7 @@ Object.assign(Vector.prototype, {
 	 * The end point
 	 *
 	 * @method
-	 * @memberof Vector
+	 * @memberOf Vector
 	 * @instance
 	 *
 	 * @arg {Point} [point]
@@ -179,7 +179,7 @@ Object.assign(Vector.prototype, {
 	 * The length of the vector. Resets the end point.
 	 *
 	 * @method
-	 * @memberof Vector
+	 * @memberOf Vector
 	 * @instance
 	 *
 	 * @arg {Number} [length]
@@ -193,7 +193,7 @@ Object.assign(Vector.prototype, {
 	 * The angle from the start point to the end point. Resets the end point
 	 *
 	 * @method
-	 * @memberof Vector
+	 * @memberOf Vector
 	 * @instance
 	 *
 	 * @arg {Number} [angle]
@@ -210,7 +210,7 @@ Object.assign(Vector.prototype, {
 	 * The x and y difference represented as a point
 	 *
 	 * @method
-	 * @memberof Vector
+	 * @memberOf Vector
 	 * @instance
 	 *
 	 * @arg {Point} [point]

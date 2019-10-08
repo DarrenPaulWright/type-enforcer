@@ -61,7 +61,7 @@ export default class Thickness {
 	/**
 	 * Set the sizes of all sides
 	 *
-	 * @memberof Thickness
+	 * @memberOf Thickness
 	 * @instance
 	 *
 	 * @arg {String|Number|Array} [top]
@@ -108,7 +108,7 @@ export default class Thickness {
 	/**
 	 * Determine if something is a valid Thickness
 	 *
-	 * @memberof Thickness
+	 * @memberOf Thickness
 	 *
 	 * @arg {*} value
 	 *
@@ -141,7 +141,7 @@ export default class Thickness {
 	/**
 	 * The top size
 	 *
-	 * @memberof Thickness
+	 * @memberOf Thickness
 	 * @instance
 	 *
 	 * @type {CssSize}
@@ -157,7 +157,7 @@ export default class Thickness {
 	/**
 	 * The right size
 	 *
-	 * @memberof Thickness
+	 * @memberOf Thickness
 	 * @instance
 	 *
 	 * @type {CssSize}
@@ -173,7 +173,7 @@ export default class Thickness {
 	/**
 	 * The bottom size
 	 *
-	 * @memberof Thickness
+	 * @memberOf Thickness
 	 * @instance
 	 *
 	 * @type {CssSize}
@@ -189,7 +189,7 @@ export default class Thickness {
 	/**
 	 * The left size
 	 *
-	 * @memberof Thickness
+	 * @memberOf Thickness
 	 * @instance
 	 *
 	 * @type {CssSize}
@@ -205,7 +205,7 @@ export default class Thickness {
 	/**
 	 * Get the sum of the right and left
 	 *
-	 * @memberof Thickness
+	 * @memberOf Thickness
 	 * @instance
 	 * @readonly
 	 *
@@ -219,7 +219,7 @@ export default class Thickness {
 	/**
 	 * Get the sum of the top and bottom
 	 *
-	 * @memberof Thickness
+	 * @memberOf Thickness
 	 * @instance
 	 * @readonly
 	 *
@@ -233,7 +233,7 @@ export default class Thickness {
 	/**
 	 * Determine if another thickness is the same as this one
 	 *
-	 * @memberof Thickness
+	 * @memberOf Thickness
 	 * @instance
 	 *
 	 * @arg {Thickness} thickness
@@ -250,7 +250,7 @@ export default class Thickness {
 	/**
 	 * Get this thickness as a space separated string
 	 *
-	 * @memberof Thickness
+	 * @memberOf Thickness
 	 * @instance
 	 *
 	 * @returns {String}
@@ -284,7 +284,7 @@ Object.assign(Thickness.prototype, {
 	 * Set the element to measure font based units against
 	 *
 	 * @method
-	 * @memberof Thickness
+	 * @memberOf Thickness
 	 * @instance
 	 *
 	 * @arg {Element} [element] - A DOM element

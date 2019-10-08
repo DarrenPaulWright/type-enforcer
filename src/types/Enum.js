@@ -32,7 +32,7 @@ export default class Enum {
 	/**
 	 * Check if a provided value is in this enum
 	 *
-	 * @memberof Enum
+	 * @memberOf Enum
 	 * @instance
 	 *
 	 * @arg {String} value
@@ -46,7 +46,7 @@ export default class Enum {
 	/**
 	 * Get the key of a provided value
 	 *
-	 * @memberof Enum
+	 * @memberOf Enum
 	 * @instance
 	 *
 	 * @arg {String} value
@@ -72,7 +72,7 @@ export default class Enum {
 	 * // => 'thing'
 	 * ```
 	 *
-	 * @memberof Enum
+	 * @memberOf Enum
 	 * @instance
 	 *
 	 * @arg {Function} callback

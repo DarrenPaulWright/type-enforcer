@@ -25,7 +25,7 @@ export default class Queue {
 	/**
 	 * Add a callback to the queue.
 	 *
-	 * @memberof Queue
+	 * @memberOf Queue
 	 * @instance
 	 *
 	 * @arg {Function} callback - Callback function.
@@ -50,7 +50,7 @@ export default class Queue {
 	/**
 	 * Remove a specific callback from the queue.
 	 *
-	 * @memberof Queue
+	 * @memberOf Queue
 	 * @instance
 	 *
 	 * @arg {Number} id - The id returned by Queue.add().
@@ -73,7 +73,7 @@ export default class Queue {
 	/**
 	 * Remove ALL callbacks from the queue.
 	 *
-	 * @memberof Queue
+	 * @memberOf Queue
 	 * @instance
 	 */
 	discardAll() {
@@ -86,7 +86,7 @@ export default class Queue {
 	/**
 	 * Triggers one or all callbacks.
 	 *
-	 * @memberof Queue
+	 * @memberOf Queue
 	 * @instance
 	 *
 	 * @arg {Number} [id] - To trigger only a specific callback, provide the id returned by Queue.add().
@@ -118,7 +118,7 @@ export default class Queue {
 	/**
 	 * Triggers the first callback and removes it from the queue.
 	 *
-	 * @memberof Queue
+	 * @memberOf Queue
 	 * @instance
 	 *
 	 * @arg {Array} [extraArguments] - Array of arguments to apply to each callback.
@@ -144,7 +144,7 @@ export default class Queue {
 	/**
 	 * The total number of current callbacks in this queue.
 	 *
-	 * @memberof Queue
+	 * @memberOf Queue
 	 * @instance
 	 *
 	 * @returns {number}
@@ -156,7 +156,7 @@ export default class Queue {
 	/**
 	 * See if this queue is currently executing callbacks.
 	 *
-	 * @memberof Queue
+	 * @memberOf Queue
 	 * @instance
 	 *
 	 * @returns {boolean}

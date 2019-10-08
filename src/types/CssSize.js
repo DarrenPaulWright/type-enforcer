@@ -138,7 +138,7 @@ export default class CssSize {
 	/**
 	 * Determine if something is a valid css size
 	 *
-	 * @memberof CssSize
+	 * @memberOf CssSize
 	 *
 	 * @arg {*} value
 	 *
@@ -157,7 +157,7 @@ export default class CssSize {
 	/**
 	 * Set the value
 	 *
-	 * @memberof CssSize
+	 * @memberOf CssSize
 	 * @instance
 	 *
 	 * @arg {String} size - A valid css size, ie '32px', '1rem', 'auto', etc.
@@ -184,7 +184,7 @@ export default class CssSize {
 	/**
 	 * Get the units portion of the current value
 	 *
-	 * @memberof CssSize
+	 * @memberOf CssSize
 	 * @instance
 	 *
 	 * @returns {String}
@@ -202,7 +202,7 @@ export default class CssSize {
 	/**
 	 * Get the numeric portion of the current value
 	 *
-	 * @memberof CssSize
+	 * @memberOf CssSize
 	 * @instance
 	 *
 	 * @returns {Number}
@@ -223,7 +223,7 @@ export default class CssSize {
 	/**
 	 * Get the pixel equivalent of the current value
 	 *
-	 * @memberof CssSize
+	 * @memberOf CssSize
 	 * @instance
 	 *
 	 * @arg {boolean} [isNumber=false] - If true then return a number, else a string with 'px' on the end.
@@ -271,7 +271,7 @@ export default class CssSize {
 	/**
 	 * Determine if the current value is 'auto'
 	 *
-	 * @memberof CssSize
+	 * @memberOf CssSize
 	 * @instance
 	 *
 	 * @returns {boolean}
@@ -283,7 +283,7 @@ export default class CssSize {
 	/**
 	 * Determine if the current value is a fixed size
 	 *
-	 * @memberof CssSize
+	 * @memberOf CssSize
 	 * @instance
 	 *
 	 * @returns {boolean}
@@ -295,7 +295,7 @@ export default class CssSize {
 	/**
 	 * Determine if the current value is a percent size
 	 *
-	 * @memberof CssSize
+	 * @memberOf CssSize
 	 * @instance
 	 *
 	 * @returns {boolean}
@@ -307,7 +307,7 @@ export default class CssSize {
 	/**
 	 * Determine if another size is equivalent to this one
 	 *
-	 * @memberof CssSize
+	 * @memberOf CssSize
 	 * @instance
 	 *
 	 * @arg {CssSize|String} size
@@ -332,7 +332,7 @@ export default class CssSize {
 	/**
 	 * Get the current value as a string
 	 *
-	 * @memberof CssSize
+	 * @memberOf CssSize
 	 * @instance
 	 *
 	 * @returns {String}
@@ -347,7 +347,7 @@ Object.assign(CssSize.prototype, {
 	 * Set the element to measure font based units against
 	 *
 	 * @method
-	 * @memberof CssSize
+	 * @memberOf CssSize
 	 * @instance
 	 *
 	 * @arg {Element} [element] - A DOM element

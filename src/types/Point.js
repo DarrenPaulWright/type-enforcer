@@ -49,7 +49,7 @@ export default class Point {
 	/**
 	 * Determine if something is a valid point
 	 *
-	 * @memberof Point
+	 * @memberOf Point
 	 *
 	 * @arg {*} value
 	 *
@@ -71,7 +71,7 @@ export default class Point {
 	/**
 	 * Set x and y
 	 *
-	 * @memberof Point
+	 * @memberOf Point
 	 * @instance
 	 *
 	 * @arg {Number} x
@@ -103,7 +103,7 @@ export default class Point {
 	/**
 	 * Get the point as a string with an optional suffix
 	 *
-	 * @memberof Point
+	 * @memberOf Point
 	 * @instance
 	 *
 	 * @arg {String} [suffix]
@@ -117,7 +117,7 @@ export default class Point {
 	/**
 	 * Determine if another point is the same as this one
 	 *
-	 * @memberof Point
+	 * @memberOf Point
 	 * @instance
 	 *
 	 * @arg {Point} point2
@@ -137,7 +137,7 @@ export default class Point {
 	/**
 	 * Adds the coordinates of another point to this one and returns a new point
 	 *
-	 * @memberof Point
+	 * @memberOf Point
 	 * @instance
 	 *
 	 * @arg {Point} point2
@@ -151,7 +151,7 @@ export default class Point {
 	/**
 	 * Subtracts the coordinates of another point from this one and returns a new point
 	 *
-	 * @memberof Point
+	 * @memberOf Point
 	 * @instance
 	 *
 	 * @arg {Point} point2
@@ -165,7 +165,7 @@ export default class Point {
 	/**
 	 * Finds the distance from point to origin
 	 *
-	 * @memberof Point
+	 * @memberOf Point
 	 * @instance
 	 *
 	 * @returns {Number}
@@ -177,7 +177,7 @@ export default class Point {
 	/**
 	 * Finds the angle to this point from origin
 	 *
-	 * @memberof Point
+	 * @memberOf Point
 	 * @instance
 	 *
 	 * @returns {Boolean}
@@ -189,7 +189,7 @@ export default class Point {
 	/**
 	 * Returns a new point at a specific angle and distance from this point
 	 *
-	 * @memberof Point
+	 * @memberOf Point
 	 * @instance
 	 *
 	 * @arg {Number} angle
@@ -207,7 +207,7 @@ export default class Point {
 	/**
 	 * Get a clone of this point
 	 *
-	 * @memberof Point
+	 * @memberOf Point
 	 * @instance
 	 *
 	 * @returns {Boolean}

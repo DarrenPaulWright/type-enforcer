@@ -64,7 +64,7 @@ export default class DockPoint {
 	/**
 	 * Get a new DockPoint with the opposite value
 	 *
-	 * @memberof DockPoint
+	 * @memberOf DockPoint
 	 * @readonly
 	 * @instance
 	 *
@@ -81,7 +81,7 @@ export default class DockPoint {
 	/**
 	 * Get the opposite of the current primary
 	 *
-	 * @memberof DockPoint
+	 * @memberOf DockPoint
 	 * @readonly
 	 * @instance
 	 *
@@ -94,7 +94,7 @@ export default class DockPoint {
 	/**
 	 * Get the opposite of the current secondary
 	 *
-	 * @memberof DockPoint
+	 * @memberOf DockPoint
 	 * @readonly
 	 * @instance
 	 *
@@ -107,7 +107,7 @@ export default class DockPoint {
 	/**
 	 * Determine if something is a valid dock point
 	 *
-	 * @memberof DockPoint
+	 * @memberOf DockPoint
 	 *
 	 * @arg {*} value
 	 *
@@ -124,7 +124,7 @@ export default class DockPoint {
 	/**
 	 * Determine either the primary or secondary is equivalent to a value
 	 *
-	 * @memberof DockPoint
+	 * @memberOf DockPoint
 	 * @instance
 	 *
 	 * @arg {String} value - DockPoint.BASIC_POINTS
@@ -138,7 +138,7 @@ export default class DockPoint {
 	/**
 	 * Set the left or right value to the opposite, whether it's the primary or secondary
 	 *
-	 * @memberof DockPoint
+	 * @memberOf DockPoint
 	 * @instance
 	 */
 	swapHorizontal() {
@@ -153,7 +153,7 @@ export default class DockPoint {
 	/**
 	 * Set the top or bottom value to the opposite, whether it's the primary or secondary
 	 *
-	 * @memberof DockPoint
+	 * @memberOf DockPoint
 	 * @instance
 	 */
 	swapVertical() {
@@ -168,7 +168,7 @@ export default class DockPoint {
 	/**
 	 * Determine if another DockPoint is equivalent to this one
 	 *
-	 * @memberof DockPoint
+	 * @memberOf DockPoint
 	 * @instance
 	 *
 	 * @arg {*} dockPoint
@@ -182,7 +182,7 @@ export default class DockPoint {
 	/**
 	 * Get the current value as a string
 	 *
-	 * @memberof DockPoint
+	 * @memberOf DockPoint
 	 * @instance
 	 *
 	 * @returns {String}
@@ -195,14 +195,14 @@ export default class DockPoint {
 /**
  * @const BASIC_POINTS
  * @static
- * @memberof DockPoint
+ * @memberOf DockPoint
  * @type {Enum}
  */
 DockPoint.BASIC_POINTS = BASIC_POINTS;
 /**
  * @const POINTS
  * @static
- * @memberof DockPoint
+ * @memberOf DockPoint
  * @type {Enum}
  */
 DockPoint.POINTS = POINTS;
@@ -212,7 +212,7 @@ Object.assign(DockPoint.prototype, {
 	 * The primary value
 	 *
 	 * @method
-	 * @memberof DockPoint
+	 * @memberOf DockPoint
 	 * @instance
 	 *
 	 * @arg {String} [value] - DockPoint.BASIC_POINTS
@@ -227,7 +227,7 @@ Object.assign(DockPoint.prototype, {
 	 * The secondary value
 	 *
 	 * @method
-	 * @memberof DockPoint
+	 * @memberOf DockPoint
 	 * @instance
 	 *
 	 * @arg {String} [value] - DockPoint.BASIC_POINTS
@@ -242,7 +242,7 @@ Object.assign(DockPoint.prototype, {
 	 * The full value
 	 *
 	 * @method
-	 * @memberof DockPoint
+	 * @memberOf DockPoint
 	 * @instance
 	 *
 	 * @arg {String} [value] - DockPoint.POINTS

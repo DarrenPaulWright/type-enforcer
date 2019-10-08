@@ -7,5 +7,5 @@ export default (func, limit) => {
 			throttled = true;
 			setTimeout(() => throttled = false, limit);
 		}
-	}
+	};
 };

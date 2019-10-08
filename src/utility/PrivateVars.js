@@ -38,7 +38,7 @@
 export default class PrivateVars extends WeakMap {
 	constructor() {
 		super();
-		
+
 		const output = (self) => this.get(self);
 
 		/**

@@ -18,7 +18,7 @@ export default buildMethod({
 	enforce(newValue, value, options) {
 		newValue = enforceFunction(newValue, value);
 
-		if (options.bind === true) {
+		if (newValue && options.bind === true) {
 			newValue = newValue.bind(this);
 		}
 

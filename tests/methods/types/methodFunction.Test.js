@@ -43,14 +43,12 @@ describe('method', () => {
 			};
 			const testClass = new TestClass();
 
-			const testFunction = function() {
+			testClass.testMethod(function() {
 				testVar = this;
-			};
-
-			testClass.testMethod(testFunction);
+			});
 			testClass.testMethod()();
 
-			assert.equal(testVar, undefined);
+			assert.notEqual(testVar, testClass);
 		});
 
 		it('should NOT throw if set to something other than a function', () => {

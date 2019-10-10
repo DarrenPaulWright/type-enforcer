@@ -133,23 +133,25 @@ export default class Queue {
 		_self.isBusy = true;
 		if (id) {
 			if (_self.callbacks[id]) {
-				if (context) {
-					_self.callbacks[id].function.apply(context, extraArguments);
+				if (_self.bindTo || arguments.length < 3) {
+					_self.callbacks[id].function(...extraArguments);
 				}
 				else {
-					_self.callbacks[id].function(...extraArguments);
+					_self.callbacks[id].function.apply(context, extraArguments);
 				}
 			}
 		}
 		else {
-			forOwn(_self.callbacks, (callback) => {
-				if (context) {
-					callback.function.apply(context, extraArguments);
-				}
-				else {
+			if (_self.bindTo || arguments.length < 3) {
+				forOwn(_self.callbacks, (callback) => {
 					callback.function(...extraArguments);
-				}
-			});
+				});
+			}
+			else {
+				forOwn(_self.callbacks, (callback) => {
+					callback.function.apply(context, extraArguments);
+				});
+			}
 		}
 		_self.isBusy = false;
 

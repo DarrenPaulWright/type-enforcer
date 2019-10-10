@@ -19,10 +19,11 @@
     * [new Queue()](#new_Queue_new)
     * [.length](#Queue+length) ⇒ <code>number</code>
     * [.isBusy](#Queue+isBusy) ⇒ <code>boolean</code>
+    * [.bindTo(context)](#Queue+bindTo) ⇒ <code>object</code> \| <code>this</code>
     * [.add(callback, data)](#Queue+add) ⇒ <code>Number</code>
-    * [.discard(ID)](#Queue+discard) ⇒ <code>Object</code>
+    * [.discard(id)](#Queue+discard) ⇒ <code>Object</code>
     * [.discardAll()](#Queue+discardAll)
-    * [.trigger([ID], [extraArguments], [context])](#Queue+trigger) ⇒ <code>this</code>
+    * [.trigger([id], [extraArguments], [context])](#Queue+trigger) ⇒ <code>this</code>
     * [.triggerFirst([extraArguments], [context])](#Queue+triggerFirst) ⇒ <code>this</code>
 
 
@@ -44,12 +45,24 @@
 > See if this queue is currently executing callbacks.
 
 
+<br><a name="Queue+bindTo"></a>
+
+#### queue.bindTo(context) ⇒ <code>object</code> \| <code>this</code>
+> Binds all current and future callbacks to a specified context.
+
+**Returns**: <code>object</code> \| <code>this</code> - If setting a value then this is returned, otherwise the current context.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| context | <code>object</code> | Callback function. |
+
+
 <br><a name="Queue+add"></a>
 
 #### queue.add(callback, data) ⇒ <code>Number</code>
 > Add a callback to the queue.
 
-**Returns**: <code>Number</code> - A unique ID for this callback.  
+**Returns**: <code>Number</code> - A unique id for this callback.  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -59,14 +72,14 @@
 
 <br><a name="Queue+discard"></a>
 
-#### queue.discard(ID) ⇒ <code>Object</code>
+#### queue.discard(id) ⇒ <code>Object</code>
 > Remove a specific callback from the queue.
 
 **Returns**: <code>Object</code> - The data object added with this callback  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| ID | <code>Number</code> | The ID returned by Queue.add(). |
+| id | <code>Number</code> | The id returned by Queue.add(). |
 
 
 <br><a name="Queue+discardAll"></a>
@@ -77,15 +90,15 @@
 
 <br><a name="Queue+trigger"></a>
 
-#### queue.trigger([ID], [extraArguments], [context]) ⇒ <code>this</code>
+#### queue.trigger([id], [extraArguments], [context]) ⇒ <code>this</code>
 > Triggers one or all callbacks.
 
 
 | Param | Type | Description |
 | --- | --- | --- |
-| [ID] | <code>Number</code> | To trigger only a specific callback, provide the ID returned by Queue.add().    Otherwise all callbacks are called. |
+| [id] | <code>Number</code> | To trigger only a specific callback, provide the id returned by Queue.add().    Otherwise all callbacks are called. |
 | [extraArguments] | <code>Array</code> | Array of arguments to apply to each callback. |
-| [context] | <code>Array</code> |  |
+| [context] | <code>Array</code> | Ignored if bindTo is set |
 
 
 <br><a name="Queue+triggerFirst"></a>

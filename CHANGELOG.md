@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+## [0.6.2] - 2019-10-09
+### Changed
+- Don't use .apply in Queue.trigger if no context is provided
+
+## [0.6.1] - 2019-10-09
+### Fixed
+- methodFunction won't throw if attempting to set to something other than a function
+
+## [0.6.0] - 2019-10-08
+### Changed
+- preferring .bind over .call and .apply. Methods should be much faster now.
+- Added bindTo method to Queue for setting a context to bind all callbacks to
+- methodFunction and methodQueue now bind callbacks to "this"
+  - option "bind" can turn this off, defaults to true
+
 ## [0.5.8] - 2019-10-01
 ### Changed
 - methods now store values in a WeakMap
@@ -174,6 +189,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Initial enforcers, methods, and documentation
 
+[0.6.2]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.6.1...v0.6.2
+[0.6.1]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.6.0...v0.6.1
+[0.6.0]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.5.8...v0.6.0
 [0.5.8]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.5.7...v0.5.8
 [0.5.7]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.5.6...v0.5.7
 [0.5.6]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.5.5...v0.5.6

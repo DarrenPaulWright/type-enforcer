@@ -1,5 +1,5 @@
+import displayValue from 'display-value';
 import { combo } from 'object-agent';
-import { displayValue } from '../TestUtil';
 
 export const messageTrue = (input) => `should return true for ${displayValue(input[0])} and ${displayValue(input[1])}`;
 

@@ -1,4 +1,5 @@
 import { assert } from 'chai';
+import displayValue from 'display-value';
 import { forOwn } from 'object-agent';
 import { isObject } from '../src';
 
@@ -23,20 +24,6 @@ export const eachPair = (array1, array2, callback, isUnique = false) => {
 			break;
 		}
 	}
-};
-
-export const displayValue = (value) => {
-	if (Object.is(value, -0)) {
-		return '-0';
-	}
-	if (value instanceof String || typeof value === 'string') {
-		return '\'' + value + '\'';
-	}
-	if (Array.isArray(value) || (value && value.constructor === Object)) {
-		return JSON.stringify(value);
-	}
-
-	return value + '';
 };
 
 /**

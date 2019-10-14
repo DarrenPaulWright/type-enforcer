@@ -20,10 +20,7 @@
 * [is](#is) : <code>object</code>
     * [.array(value, [coerce])](#is.array) ⇒ <code>Boolean</code>
     * [.boolean(value, [coerce])](#is.boolean) ⇒ <code>Boolean</code>
-    * [.cssSize(value, [coerce])](#is.cssSize) ⇒ <code>Boolean</code>
     * [.date(value, [coerce])](#is.date) ⇒ <code>Boolean</code>
-    * [.dockPoint(value, [coerce])](#is.dockPoint) ⇒ <code>Boolean</code>
-    * [.element(value)](#is.element) ⇒ <code>Boolean</code>
     * [.float(value, [coerce])](#is.float) ⇒ <code>Boolean</code>
     * [.function(value)](#is.function) ⇒ <code>Boolean</code>
     * [.instanceOf(object, constructor)](#is.instanceOf) ⇒ <code>Boolean</code>
@@ -31,11 +28,8 @@
     * [.json(value)](#is.json) ⇒ <code>Boolean</code>
     * [.number(value, [coerce])](#is.number) ⇒ <code>Boolean</code>
     * [.object(value, [coerce])](#is.object) ⇒ <code>Boolean</code>
-    * [.point(value, [coerce])](#is.point) ⇒ <code>Boolean</code>
     * [.regExp(value, [coerce])](#is.regExp) ⇒ <code>Boolean</code>
     * [.string(value, [coerce])](#is.string) ⇒ <code>Boolean</code>
-    * [.thickness(value, [coerce])](#is.thickness) ⇒ <code>Boolean</code>
-    * [.vector(value, [coerce])](#is.vector) ⇒ <code>Boolean</code>
 
 
 <br><a name="is.array"></a>
@@ -70,22 +64,6 @@
 **Example**  
 ``` javascriptimport { isBoolean } from 'type-enforcer';isBoolean(false);// => trueisBoolean('a string');// => falseisBoolean('a string', true);// => true```
 
-<br><a name="is.cssSize"></a>
-
-#### is.cssSize(value, [coerce]) ⇒ <code>Boolean</code>
-> Check if a value is a [CssSize](docs/CssSize.md)
-
-**Alias:** `isCssSize`
-
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| value | <code>\*</code> |  |  |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a CssSize |
-
-**Example**  
-``` javascriptimport { isCssSize } from 'type-enforcer';isCssSize(new CssSize());// => trueisCssSize('14px');// => falseisCssSize('14px', true);// => true```
-
 <br><a name="is.date"></a>
 
 #### is.date(value, [coerce]) ⇒ <code>Boolean</code>
@@ -101,37 +79,6 @@
 
 **Example**  
 ``` javascriptimport { isDate } from 'type-enforcer';isDate(new Date());// => trueisDate('10/12/1980');// => falseisDate('10/12/1980', true);// => true```
-
-<br><a name="is.dockPoint"></a>
-
-#### is.dockPoint(value, [coerce]) ⇒ <code>Boolean</code>
-> Check if a value is a [DockPoint](docs/DockPoint.md)
-
-**Alias:** `isDockPoint`
-
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| value | <code>\*</code> |  |  |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a DockPoint |
-
-**Example**  
-``` javascriptimport { isDockPoint } from 'type-enforcer';isDockPoint(new DockPoint());// => trueisDockPoint('top');// => falseisDockPoint('top', true);// => true```
-
-<br><a name="is.element"></a>
-
-#### is.element(value) ⇒ <code>Boolean</code>
-> Check if a value is a DOM element
-
-**Alias:** `isElement`
-
-
-| Param | Type |
-| --- | --- |
-| value | <code>\*</code> | 
-
-**Example**  
-``` javascriptimport { isElement } from 'type-enforcer';isElement(document.createElement('div'));// => true```
 
 <br><a name="is.float"></a>
 
@@ -243,22 +190,6 @@
 **Example**  
 ``` javascriptimport { isObject } from 'type-enforcer';isObject({});// => trueisObject('{}');// => falseisObject('{}', true);// => true```
 
-<br><a name="is.point"></a>
-
-#### is.point(value, [coerce]) ⇒ <code>Boolean</code>
-> Check if a value is a [Point](docs/Point.md)
-
-**Alias:** `isPoint`
-
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| value | <code>\*</code> |  |  |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a Point |
-
-**Example**  
-``` javascriptimport { isPoint } from 'type-enforcer';isPoint(new Point());// => trueisPoint('1,2');// => falseisPoint('1,2', true);// => true```
-
 <br><a name="is.regExp"></a>
 
 #### is.regExp(value, [coerce]) ⇒ <code>Boolean</code>
@@ -290,38 +221,6 @@
 
 **Example**  
 ``` javascriptimport { isString } from 'type-enforcer';isString('type');// => trueisString(new Date());// => falseisString(new Date(), true);// => true```
-
-<br><a name="is.thickness"></a>
-
-#### is.thickness(value, [coerce]) ⇒ <code>Boolean</code>
-> Check if a value is a [Thickness](docs/Thickness.md)
-
-**Alias:** `isThickness`
-
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| value | <code>\*</code> |  |  |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a Thickness |
-
-**Example**  
-``` javascriptimport { isThickness } from 'type-enforcer';isThickness(new Thickness());// => trueisThickness('12px 20px');// => falseisThickness('12px 20px', true);// => true```
-
-<br><a name="is.vector"></a>
-
-#### is.vector(value, [coerce]) ⇒ <code>Boolean</code>
-> Check if a value is a [Vector](docs/Vector.md)
-
-**Alias:** `isVector`
-
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| value | <code>\*</code> |  |  |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a Vector |
-
-**Example**  
-``` javascriptimport { isVector } from 'type-enforcer';isVector(new Vector());// => trueisVector('[[1,2],[3,4]]');// => falseisVector('[[1,2],[3,4]]', true);// => true```
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg
 [npm-url]: https://npmjs.com/package/type-enforcer

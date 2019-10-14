@@ -1,7 +1,8 @@
 import { assert } from 'chai';
-import { enforce, enforceInstance, Vector } from '../../../src';
-import { validVectors } from '../../testValues';
+import { enforce, enforceInstance } from '../../../src';
 import { runNegativeTests } from '../enforceTestUtility';
+
+class TestClass {}
 
 describe('enforce', () => {
 	describe('.instance', () => {
@@ -10,10 +11,9 @@ describe('enforce', () => {
 		});
 
 		it('should return the setter value when a valid Vector is provided', () => {
-			assert.isTrue(enforce.instance(validVectors[0], Vector, validVectors[1]) instanceof Vector);
-			assert.equal(enforce.instance(validVectors[0], Vector, validVectors[1]).toString(), validVectors[0]);
+			assert.isTrue(enforce.instance(new TestClass(), TestClass, '') instanceof TestClass);
 		});
 
-		runNegativeTests('instance', validVectors[1], Vector);
+		runNegativeTests('instance', new TestClass(), TestClass);
 	});
 });

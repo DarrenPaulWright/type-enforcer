@@ -23,10 +23,7 @@
     * [.any([options])](#method.any) ⇒ <code>function</code>
     * [.array([options])](#method.array) ⇒ <code>function</code>
     * [.boolean([options])](#method.boolean) ⇒ <code>function</code>
-    * [.cssSize([options])](#method.cssSize) ⇒ <code>function</code>
     * [.date([options])](#method.date) ⇒ <code>function</code>
-    * [.dockPoint([options])](#method.dockPoint) ⇒ <code>function</code>
-    * [.element([options])](#method.element) ⇒ <code>function</code>
     * [.enum([options])](#method.enum) ⇒ <code>function</code>
     * [.float([options])](#method.float) ⇒ <code>function</code>
     * [.function([options])](#method.function) ⇒ <code>function</code>
@@ -35,12 +32,9 @@
     * [.keyValue([options])](#method.keyValue) ⇒ <code>function</code>
     * [.number([options])](#method.number) ⇒ <code>function</code>
     * [.object([options])](#method.object) ⇒ <code>function</code>
-    * [.point([options])](#method.point) ⇒ <code>function</code>
     * [.queue([options])](#method.queue) ⇒ <code>function</code>
     * [.regExp([options])](#method.regExp) ⇒ <code>function</code>
     * [.string([options])](#method.string) ⇒ <code>function</code>
-    * [.thickness([options])](#method.thickness) ⇒ <code>function</code>
-    * [.vector([options])](#method.vector) ⇒ <code>function</code>
 
 
 <br><a name="method.any"></a>
@@ -103,23 +97,6 @@
 | [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 
-<br><a name="method.cssSize"></a>
-
-#### method.cssSize([options]) ⇒ <code>function</code>
-> Builds a chainable method for getting/setting a [CssSize](docs/CssSize.md)
-
-**Alias:** `methodCssSize`
-
-**Extends**: [<code>any</code>](#method.any)  
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
-| [options.enforce] | <code>function</code> | <code>enforce.cssSize</code> |  |
-| [options.compare] | <code>function</code> | <code>CssSize.isSame</code> |  |
-| [options.coerce] | <code>Boolean</code> | <code>true</code> | If false then don't coerce the value |
-
-
 <br><a name="method.date"></a>
 
 #### method.date([options]) ⇒ <code>function</code>
@@ -134,38 +111,6 @@
 | [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
 | [options.enforce] | <code>function</code> | <code>enforce.date</code> |  |
 | [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
-
-
-<br><a name="method.dockPoint"></a>
-
-#### method.dockPoint([options]) ⇒ <code>function</code>
-> Builds a chainable method for getting/setting a [DockPoint](docs/DockPoint.md)
-
-**Alias:** `methodDockPoint`
-
-**Extends**: [<code>any</code>](#method.any)  
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
-| [options.enforce] | <code>function</code> | <code>enforce.dockPoint</code> |  |
-| [options.compare] | <code>function</code> | <code>DockPoint.isSame</code> |  |
-| [options.coerce] | <code>Boolean</code> | <code>true</code> | If false then don't coerce the value |
-
-
-<br><a name="method.element"></a>
-
-#### method.element([options]) ⇒ <code>function</code>
-> Builds a chainable method for getting/setting a DOM element
-
-**Alias:** `methodElement`
-
-**Extends**: [<code>any</code>](#method.any)  
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
-| [options.enforce] | <code>function</code> | <code>enforce.element</code> |  |
 
 
 <br><a name="method.enum"></a>
@@ -304,24 +249,6 @@
 | [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 
-<br><a name="method.point"></a>
-
-#### method.point([options]) ⇒ <code>function</code>
-> Builds a chainable method for getting/setting a [Point](docs/Point.md)
-
-**Alias:** `methodPoint`
-
-**Extends**: [<code>any</code>](#method.any)  
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
-| [options.init] | <code>\*</code> | <code>Point</code> |  |
-| [options.enforce] | <code>function</code> | <code>enforce.point</code> |  |
-| [options.compare] | <code>function</code> | <code>Point.isSame</code> |  |
-| [options.coerce] | <code>Boolean</code> | <code>true</code> | If false then don't coerce the value |
-
-
 <br><a name="method.queue"></a>
 
 #### method.queue([options]) ⇒ <code>function</code>
@@ -369,41 +296,6 @@
 | [options.init] | <code>\*</code> | <code>&#x27;&#x27;</code> |  |
 | [options.enforce] | <code>function</code> | <code>enforce.string</code> |  |
 | [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
-
-
-<br><a name="method.thickness"></a>
-
-#### method.thickness([options]) ⇒ <code>function</code>
-> Builds a chainable method for getting/setting a [Thickness](docs/Thickness.md)
-
-**Alias:** `methodThickness`
-
-**Extends**: [<code>any</code>](#method.any)  
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
-| [options.enforce] | <code>function</code> | <code>enforce.thickness</code> |  |
-| [options.compare] | <code>function</code> | <code>Thickness.isSame</code> |  |
-| [options.coerce] | <code>Boolean</code> | <code>true</code> | If false then don't coerce the value |
-
-
-<br><a name="method.vector"></a>
-
-#### method.vector([options]) ⇒ <code>function</code>
-> Builds a chainable method for getting/setting a [Vector](docs/Vector.md)
-
-**Alias:** `methodVector`
-
-**Extends**: [<code>any</code>](#method.any)  
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
-| [options.init] | <code>\*</code> | <code>Vector</code> |  |
-| [options.enforce] | <code>function</code> | <code>enforce.vector</code> |  |
-| [options.compare] | <code>function</code> | <code>Vector.isSame</code> |  |
-| [options.coerce] | <code>Boolean</code> | <code>true</code> | If false then don't coerce the value |
 
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg

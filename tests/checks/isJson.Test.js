@@ -1,36 +1,19 @@
 import { assert } from 'chai';
 import { is, isJson } from '../../src';
 import { multiTest } from '../TestUtil';
-import {
-	validCssSizes,
-	validDates,
-	validDockPoints,
-	validElements,
-	validFunctions,
-	validObjects,
-	validPoints,
-	validRegExps,
-	validStrings,
-	validThicknesses,
-	validVectors
-} from '../testValues';
+import { validDates, validFunctions, validObjects, validRegExps, validStrings } from '../testValues';
 
 export const testValues = [].concat(
 	[undefined],
 	validDates,
-	validElements,
 	validFunctions,
 	validObjects,
 	validRegExps,
-	validStrings,
-	validCssSizes,
-	validDockPoints,
-	validPoints,
-	validThicknesses
+	validStrings
 );
 
 const data = {
-	true: ['[]', '{}'].concat(validVectors),
+	true: ['[]', '{}'],
 	false: [].concat(testValues, ['json'])
 };
 

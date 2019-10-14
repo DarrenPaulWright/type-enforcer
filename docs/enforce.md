@@ -20,10 +20,7 @@
 * [enforce](#enforce) : <code>object</code>
     * [.array(value, alt, [coerce])](#enforce.array) ⇒ <code>Array</code>
     * [.boolean(value, alt, [coerce])](#enforce.boolean) ⇒ <code>Boolean</code>
-    * [.cssSize(value, alt, [coerce])](#enforce.cssSize) ⇒ <code>CssSize</code>
     * [.date(value, alt, [coerce])](#enforce.date) ⇒ <code>Date</code>
-    * [.dockPoint(value, alt, [coerce])](#enforce.dockPoint) ⇒ <code>DockPoint</code>
-    * [.element(value, alt)](#enforce.element) ⇒ <code>Element</code>
     * [.enum(value, enumerable, alt)](#enforce.enum) ⇒ <code>String</code>
     * [.float(value, alt, [coerce], [minValue], [maxValue])](#enforce.float) ⇒ <code>int</code>
     * [.function(value, alt)](#enforce.function) ⇒ <code>function</code>
@@ -31,11 +28,8 @@
     * [.integer(value, alt, [coerce], [minValue], [maxValue])](#enforce.integer) ⇒ <code>int</code>
     * [.number(value, alt, [coerce], [minValue], [maxValue])](#enforce.number) ⇒ <code>Number</code>
     * [.object(value, alt, [coerce])](#enforce.object) ⇒ <code>Object</code>
-    * [.point(value, alt, [coerce])](#enforce.point) ⇒ <code>Point</code>
     * [.regExp(value, alt, [coerce])](#enforce.regExp) ⇒ <code>RegExp</code>
     * [.string(value, alt, [coerce])](#enforce.string) ⇒ <code>String</code>
-    * [.thickness(value, alt, [coerce])](#enforce.thickness) ⇒ <code>Thickness</code>
-    * [.vector(value, alt, [coerce])](#enforce.vector) ⇒ <code>Vector</code>
 
 
 <br><a name="enforce.array"></a>
@@ -72,23 +66,6 @@
 **Example**  
 ``` javascriptimport { enforce } from 'type-enforcer';enforce.boolean(false, true);// => falseenforce.boolean('', true);// => trueenforce.boolean('', true, true);// => false```
 
-<br><a name="enforce.cssSize"></a>
-
-#### enforce.cssSize(value, alt, [coerce]) ⇒ <code>CssSize</code>
-> Enforce that a value is a [CssSize](docs/CssSize.md). Uses [isCssSize](docs/checks.md#isCssSize).
-
-**Alias:** `enforceCssSize`
-
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| value | <code>\*</code> |  |  |
-| alt | <code>CssSize</code> |  | Returned if the value is not the correct type |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
-
-**Example**  
-``` javascriptimport { enforce } from 'type-enforcer';enforce.cssSize(new CssSize('14px'), new CssSize());// => cssSize of 14pxenforce.cssSize('14px', new CssSize());// => cssSize of 0enforce.cssSize('14px', new CssSize(), true);// => cssSize of 14px```
-
 <br><a name="enforce.date"></a>
 
 #### enforce.date(value, alt, [coerce]) ⇒ <code>Date</code>
@@ -105,39 +82,6 @@
 
 **Example**  
 ``` javascriptimport { enforce } from 'type-enforcer';enforce.date(new Date('10/12/1980'), new Date('1/1/2000'));// => date of 10/12/1980enforce.date('10/12/1980', new Date('1/1/2000'));// => date of 1/1/2000enforce.date('10/12/1980', new Date('1/1/2000'), true);// => date of 10/12/1980```
-
-<br><a name="enforce.dockPoint"></a>
-
-#### enforce.dockPoint(value, alt, [coerce]) ⇒ <code>DockPoint</code>
-> Enforce that a value is a [DockPoint](docs/DockPoint.md). Uses [isDockPoint](docs/checks.md#isDockPoint).
-
-**Alias:** `enforceDockPoint`
-
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| value | <code>\*</code> |  |  |
-| alt | <code>String</code> |  | Returned if the value is not the correct type |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
-
-**Example**  
-``` javascriptimport { enforce } from 'type-enforcer';enforce.dockPoint(new DockPoint(DockPoint.POINTS.TOP), new DockPoint(DockPoint.POINTS.BOTTOM));// => dockPoint of topenforce.dockPoint('top', new DockPoint(DockPoint.POINTS.BOTTOM));// => dockPoint of bottomenforce.dockPoint('top', new DockPoint(DockPoint.POINTS.BOTTOM), true);// => dockPoint of top```
-
-<br><a name="enforce.element"></a>
-
-#### enforce.element(value, alt) ⇒ <code>Element</code>
-> Enforce that a value is a DOM element. Uses [isElement](docs/checks.md#isElement).
-
-**Alias:** `enforceElement`
-
-
-| Param | Type | Description |
-| --- | --- | --- |
-| value | <code>\*</code> |  |
-| alt | <code>Element</code> | Returned if the value is not the correct type |
-
-**Example**  
-``` javascriptimport { enforce } from 'type-enforcer';enforce.element(document.createElement('span'), document.createElement('div'));// => a span elementenforce.element('span', document.createElement('div'));// => a div elementenforce.element('span', document.createElement('div'), true);// => a span element```
 
 <br><a name="enforce.enum"></a>
 
@@ -263,23 +207,6 @@
 **Example**  
 ``` javascriptimport { enforce } from 'type-enforcer';const a = {};const b = {};enforce.object(a, b);// => aenforce.object('{}', b);// => benforce.object('{}', b, true);// => {}```
 
-<br><a name="enforce.point"></a>
-
-#### enforce.point(value, alt, [coerce]) ⇒ <code>Point</code>
-> Enforce that a value is a [Point](docs/Point.md). Uses [isPoint](docs/checks.md#isPoint).
-
-**Alias:** `enforcePoint`
-
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| value | <code>\*</code> |  |  |
-| alt | <code>Point</code> |  | Returned if the value is not the correct type |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
-
-**Example**  
-``` javascriptimport { enforce } from 'type-enforcer';enforce.point(new Point(1, 2), new Point());// => point 1,2enforce.point('1,2', new Point());// => point 0,0enforce.point('1,2', new Point(), true);// => point 1,2```
-
 <br><a name="enforce.regExp"></a>
 
 #### enforce.regExp(value, alt, [coerce]) ⇒ <code>RegExp</code>
@@ -313,40 +240,6 @@
 
 **Example**  
 ``` javascriptimport { enforce } from 'type-enforcer';enforce.string('a', 'b');// => 'a'enforce.string(new Point(), 'b');// => 'b'enforce.string(new Point(), 'b', true);// => '0,0'```
-
-<br><a name="enforce.thickness"></a>
-
-#### enforce.thickness(value, alt, [coerce]) ⇒ <code>Thickness</code>
-> Enforce that a value is a [Thickness](docs/Thickness.md). Uses [isThickness](docs/checks.md#isThickness).
-
-**Alias:** `enforceThickness`
-
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| value | <code>\*</code> |  |  |
-| alt | <code>Thickness</code> |  | Returned if the value is not the correct type |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
-
-**Example**  
-``` javascriptimport { enforce } from 'type-enforcer';enforce.thickness(new Thickness('12px 20px'), new Thickness());// => thickness of '12px 20px'enforce.thickness('12px 20px', new Thickness());// => thickness of 0enforce.thickness('12px 20px', new Thickness(), true);// => thickness of '12px 20px'```
-
-<br><a name="enforce.vector"></a>
-
-#### enforce.vector(value, alt, [coerce]) ⇒ <code>Vector</code>
-> Enforce that a value is a [Vector](docs/Vector.md). Uses [isVector](docs/checks.md#isVector).
-
-**Alias:** `enforceVector`
-
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| value | <code>\*</code> |  |  |
-| alt | <code>Vector</code> |  | Returned if the value is not the correct type |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
-
-**Example**  
-``` javascriptimport { enforce } from 'type-enforcer';enforce.vector(new Vector('[[1,2],[3,4]]'), new Vector());// => vector of '[[1,2],[3,4]]'enforce.vector('[[1,2],[3,4]]', new Vector());// => vector of '[[0,0],[0,0]]'enforce.vector('[[1,2],[3,4]]', new Vector(), true);// => vector of '[[1,2],[3,4]]'```
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg
 [npm-url]: https://npmjs.com/package/type-enforcer

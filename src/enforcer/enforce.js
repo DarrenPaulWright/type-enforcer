@@ -1,9 +1,6 @@
 import enforceArray from './types/enforceArray';
 import enforceBoolean from './types/enforceBoolean';
-import enforceCssSize from './types/enforceCssSize';
 import enforceDate from './types/enforceDate';
-import enforceDockPoint from './types/enforceDockPoint';
-import enforceElement from './types/enforceElement';
 import enforceEnum from './types/enforceEnum';
 import enforceFloat from './types/enforceFloat';
 import enforceFunction from './types/enforceFunction';
@@ -11,11 +8,8 @@ import enforceInstance from './types/enforceInstance';
 import enforceInteger from './types/enforceInteger';
 import enforceNumber from './types/enforceNumber';
 import enforceObject from './types/enforceObject';
-import enforcePoint from './types/enforcePoint';
 import enforceRegExp from './types/enforceRegExp';
 import enforceString from './types/enforceString';
-import enforceThickness from './types/enforceThickness';
-import enforceVector from './types/enforceVector';
 
 /**
  * Utility functions for enforcing data types.
@@ -32,10 +26,7 @@ import enforceVector from './types/enforceVector';
 export default {
 	array: enforceArray,
 	boolean: enforceBoolean,
-	cssSize: enforceCssSize,
 	date: enforceDate,
-	dockPoint: enforceDockPoint,
-	element: enforceElement,
 	enum: enforceEnum,
 	float: enforceFloat,
 	function: enforceFunction,
@@ -43,9 +34,6 @@ export default {
 	integer: enforceInteger,
 	number: enforceNumber,
 	object: enforceObject,
-	point: enforcePoint,
 	regExp: enforceRegExp,
-	string: enforceString,
-	thickness: enforceThickness,
-	vector: enforceVector
+	string: enforceString
 };

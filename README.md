@@ -19,7 +19,7 @@
 <br><a name="Docs"></a>
 
 ### Docs
-#### Extra Data Types- [CssSize](docs/CssSize.md)- [DockPoint](docs/DockPoint.md)- [Point](docs/Point.md)- [Thickness](docs/Thickness.md)- [Vector](docs/Vector.md)#### Type Checks- [checks](docs/checks.md)#### Type Enforcement- [enforce](docs/enforce.md)- [castArray](docs/castArray.md)#### Type Enforcing Methods- [method](docs/method.md)#### Mixins- [Removable](docs/Removable.md)#### Other- [Enum](docs/Enum.md)- [Queue](docs/Queue.md)- [applySettings](docs/applySettings.md)- [PrivateVars](docs/PrivateVars.md)- [equality checks](docs/equality.md)
+#### Type Checks- [checks](docs/checks.md)#### Type Enforcement- [enforce](docs/enforce.md)- [castArray](docs/castArray.md)#### Type Enforcing Methods- [method](docs/method.md)#### Mixins- [Removable](docs/Removable.md)#### Other- [Enum](docs/Enum.md)- [Queue](docs/Queue.md)- [applySettings](docs/applySettings.md)- [PrivateVars](docs/PrivateVars.md)- [equality checks](docs/equality.md)
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg
 [npm-url]: https://npmjs.com/package/type-enforcer

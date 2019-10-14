@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import { enforce, Enum } from '../../src';
-import { testTypes, validVectors } from '../testValues';
+import { testTypes } from '../testValues';
 
 const validEnumObject = new Enum({
 	test1: 'test 1',
@@ -8,6 +8,8 @@ const validEnumObject = new Enum({
 	test3: 'test 3'
 });
 const validEnum1 = validEnumObject.test1;
+
+class TestClass {}
 
 export const runNegativeTests = (methodName, defaultValue, otherArg) => {
 	testTypes.forEach((data) => {
@@ -39,10 +41,10 @@ export const runNegativeTests = (methodName, defaultValue, otherArg) => {
 	if (methodName !== 'instance') {
 		it('should return the default value when an instance is provided', () => {
 			if (otherArg) {
-				assert.deepEqual(enforce[methodName](validVectors[0], otherArg, defaultValue), defaultValue);
+				assert.deepEqual(enforce[methodName](new TestClass(), otherArg, defaultValue), defaultValue);
 			}
 			else {
-				assert.deepEqual(enforce[methodName](validVectors[0], defaultValue), defaultValue);
+				assert.deepEqual(enforce[methodName](new TestClass(), defaultValue), defaultValue);
 			}
 		});
 	}

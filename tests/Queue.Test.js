@@ -1,8 +1,10 @@
 import { assert } from 'chai';
-import { Point, Queue } from '../src';
+import { Queue } from '../src';
 
 const emptyFunction = () => {
 };
+
+class TestClass {}
 
 describe('Queue', () => {
 	describe('.add', () => {
@@ -181,7 +183,7 @@ describe('Queue', () => {
 
 		it('should call the callback with context when called with an id and context', () => {
 			let testVar = 0;
-			const instance = new Point();
+			const instance = new TestClass();
 			const queue = new Queue();
 			queue.add(() => {
 				testVar = 1;
@@ -257,7 +259,7 @@ describe('Queue', () => {
 
 		it('should call the callback with context when trigger is called with an id and context', () => {
 			let testVar = 0;
-			const instance = new Point();
+			const instance = new TestClass();
 			const queue = new Queue();
 			queue.add(function() {
 				testVar = this;
@@ -296,7 +298,7 @@ describe('Queue', () => {
 	describe('.bindTo', () => {
 		it('should set the context of each callback when trigger is called without an id', () => {
 			let testVar = 0;
-			const point = new Point();
+			const point = new TestClass();
 			const queue = new Queue().bindTo(point);
 			queue.add(function() {
 				if (this === point) {
@@ -321,7 +323,7 @@ describe('Queue', () => {
 
 		it('should set the context of each callback if bindTo is called after callbacks are added', () => {
 			let testVar = 0;
-			const point = new Point();
+			const point = new TestClass();
 			const queue = new Queue();
 			queue.add(function() {
 				if (this === point) {
@@ -346,8 +348,8 @@ describe('Queue', () => {
 
 		it('should set the context of each callback when trigger is called without an id and context is provided', () => {
 			let testVar = 0;
-			const point = new Point();
-			const point2 = new Point();
+			const point = new TestClass();
+			const point2 = new TestClass();
 			const queue = new Queue().bindTo(point);
 			queue.add(function() {
 				if (this === point) {
@@ -372,7 +374,7 @@ describe('Queue', () => {
 
 		it('should set the context of the callback when trigger is called with an id', () => {
 			let testVar = 0;
-			const point = new Point();
+			const point = new TestClass();
 			const queue = new Queue().bindTo(point);
 			queue.add(function() {
 				if (this === point) {
@@ -397,8 +399,8 @@ describe('Queue', () => {
 
 		it('should set the context of the callback when trigger is called with an id and context is provided', () => {
 			let testVar = 0;
-			const point = new Point();
-			const point2 = new Point();
+			const point = new TestClass();
+			const point2 = new TestClass();
 			const queue = new Queue().bindTo(point);
 			queue.add(function() {
 				if (this === point) {
@@ -423,7 +425,7 @@ describe('Queue', () => {
 
 		it('should set the context of the callback when triggerFirst is called', () => {
 			let testVar = 0;
-			const point = new Point();
+			const point = new TestClass();
 			const queue = new Queue().bindTo(point);
 			queue.add(function() {
 				if (this === point) {
@@ -448,8 +450,8 @@ describe('Queue', () => {
 
 		it('should set the context of the callback when triggerFirst is called and context is provided', () => {
 			let testVar = 0;
-			const point = new Point();
-			const point2 = new Point();
+			const point = new TestClass();
+			const point2 = new TestClass();
 			const queue = new Queue().bindTo(point);
 			queue.add(function() {
 				if (this === point) {

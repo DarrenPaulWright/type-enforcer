@@ -23,10 +23,9 @@
 		"docs-removable": "jsdoc2md src/mixins/Removable.js > docs/Removable.md -t docs/docs.hbs --plugin dmd-readable",
 		"docs-castarray": "jsdoc2md src/utility/castArray.js > docs/castArray.md -t docs/docs.hbs --plugin dmd-readable",
 		"docs-applySettings": "jsdoc2md src/utility/applySettings.js > docs/applySettings.md -t docs/docs.hbs --plugin dmd-readable",
-		"docs-privateProp": "jsdoc2md src/utility/privateProp.js > docs/privateProp.md -t docs/docs.hbs --plugin dmd-readable",
 		"docs-privateVars": "jsdoc2md src/utility/PrivateVars.js > docs/PrivateVars.md -t docs/docs.hbs --plugin dmd-readable",
 		"docs-equality": "jsdoc2md src/equality/*.js > docs/equality.md -t docs/docs.hbs --plugin dmd-readable",
-		"docs": "npm run docs-readme && npm run docs-enforce && npm run docs-method && npm run docs-checks && npm run docs-queue && npm run docs-csssize && npm run docs-dockpoint && npm run docs-enum && npm run docs-point && npm run docs-thickness && npm run docs-vector && npm run docs-removable && npm run docs-castarray && npm run docs-applySettings && npm run docs-privateProp && npm run docs-privateVars && npm run docs-equality"
+		"docs": "npm run docs-readme && npm run docs-enforce && npm run docs-method && npm run docs-checks && npm run docs-queue && npm run docs-csssize && npm run docs-dockpoint && npm run docs-enum && npm run docs-point && npm run docs-thickness && npm run docs-vector && npm run docs-removable && npm run docs-castarray && npm run docs-applySettings && npm run docs-privateVars && npm run docs-equality"
 	},
 	"badges": [
 		{

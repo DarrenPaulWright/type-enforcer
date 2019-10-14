@@ -35,7 +35,6 @@
  *
  * #### Other
  * - [applySettings](docs/applySettings.md)
- * - [privateProp](docs/privateProp.md)
  * - [PrivateVars](docs/PrivateVars.md)
  * - [equality checks](docs/equality.md)
  */

@@ -1,5 +1,5 @@
 import enforceEnum from '../../enforcer/types/enforceEnum';
-import { buildMethod } from './methodAny';
+import methodAny from './methodAny';
 
 /**
  * Builds a chainable method for getting/setting an enumerable value in an [Enum](docs/Enum.md)
@@ -14,7 +14,7 @@ import { buildMethod } from './methodAny';
  *
  * @returns {Function}
  */
-export default buildMethod({
+export default methodAny.extend({
 	enforce(newValue, oldValue, options) {
 		return enforceEnum(newValue, options.enum, oldValue);
 	}

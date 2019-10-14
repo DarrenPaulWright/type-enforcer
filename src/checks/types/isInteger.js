@@ -1,5 +1,4 @@
-import { buildCheckWithCoerce } from './checks';
-import isNumber, { isFinite } from './isNumber';
+import isFloat from './isFloat';
 
 /**
  * Check if a value is a finite integer
@@ -29,7 +28,11 @@ import isNumber, { isFinite } from './isNumber';
  *
  * @returns {Boolean}
  */
-export default buildCheckWithCoerce((item) => isNumber(item) && item == (item | 0) && isFinite(item), (value) => {
-	const parsed = parseFloat(value);
-	return !isNaN(value) && parsed == (parsed | 0) && isFinite(parsed);
-});
+const isInteger = (value, coerce) => {
+	if (isFloat(value) && value == (value | 0)) {
+		return true;
+	}
+	return coerce === true && !isNaN(value) && isInteger(parseFloat(value));
+};
+
+export default isInteger;

@@ -1,6 +1,3 @@
-import { buildCheckWithCoerce } from './checks';
-import isJson from './isJson';
-
 /**
  * Check if a value is an array
  *
@@ -26,4 +23,23 @@ import isJson from './isJson';
  *
  * @returns {Boolean}
  */
-export default buildCheckWithCoerce(Array.isArray, (value) => isJson(value) && Array.isArray(JSON.parse(value)));
+export default (value, coerce) => {
+	if (Array.isArray(value)) {
+		return true;
+	}
+
+	if (coerce === true) {
+		let json;
+
+		try {
+			json = JSON.parse(value);
+		}
+		catch (e) {
+			return false;
+		}
+
+		return Array.isArray(json);
+	}
+
+	return false;
+};

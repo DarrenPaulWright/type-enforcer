@@ -1,6 +1,5 @@
 import isVector from '../../checks/types/isVector';
 import Vector from '../../types/Vector';
-import { coercibleEnforcer } from './enforcer';
 
 /**
  * Enforce that a value is a [Vector](docs/Vector.md). Uses [isVector](docs/checks.md#isVector).
@@ -28,4 +27,9 @@ import { coercibleEnforcer } from './enforcer';
  *
  * @returns {Vector}
  */
-export default coercibleEnforcer(isVector, (value) => new Vector(value));
+export default (value, alt, coerce) => {
+	if (coerce === true && !isVector(value) && isVector(value, true)) {
+		return new Vector(value);
+	}
+	return isVector(value) ? value : alt;
+};

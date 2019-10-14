@@ -1,5 +1,4 @@
 import isElement from '../../checks/types/isElement';
-import { baseEnforcer } from './enforcer';
 
 /**
  * Enforce that a value is a DOM element. Uses [isElement](docs/checks.md#isElement).
@@ -26,4 +25,4 @@ import { baseEnforcer } from './enforcer';
  *
  * @returns {Element}
  */
-export default baseEnforcer(isElement);
+export default (value, alt) => isElement(value) ? value : alt;

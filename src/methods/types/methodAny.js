@@ -1,58 +1,12 @@
-import { clone, deepEqual } from 'object-agent';
+import { clone } from 'object-agent';
 import isArray from '../../checks/types/isArray';
 import isInstanceOf from '../../checks/types/isInstanceOf';
-import enforceBoolean from '../../enforcer/types/enforceBoolean';
 import PrivateVars from '../../utility/PrivateVars';
 
 export const _ = new PrivateVars();
 
-const notEnforced = (newValue) => newValue;
-
-const simpleCompare = (newValue, oldValue) => newValue !== oldValue;
-
-export const deepCompare = (newValue, oldValue) => !deepEqual(newValue, oldValue, {strict: true});
-
-export const compareCustomType = (Type, check) => (newValue, oldValue) => {
-	if (check(oldValue)) {
-		return !oldValue.isSame(newValue);
-	}
-	else if (check(newValue)) {
-		return !newValue.isSame(oldValue);
-	}
-	else {
-		return newValue !== oldValue;
-	}
-};
-
-export const setDeepOnInit = (options) => {
-	if (options.deep === false) {
-		options.compare = simpleCompare;
-	}
-	delete options.deep;
-
-	return options;
-};
-
-export const mapEnforcer = (enforcer) => (newValue, oldValue, options) => {
-	return enforcer(newValue, oldValue, options.coerce);
-};
-
-export const mapEnforcerNumeric = (enforcer) => (newValue, oldValue, options) => {
-	return enforcer(newValue, oldValue, options.coerce, options.min, options.max);
-};
-
-export const mapEnforcerDefaultCoerceTrue = (enforcer) => (newValue, oldValue, options) => {
-	return enforcer(newValue, oldValue, enforceBoolean(options.coerce, true));
-};
-
-export const buildMethod = (defaultSettings = {}, onInit) => {
-	defaultSettings = {
-		enforce: notEnforced,
-		compare: simpleCompare,
-		...defaultSettings
-	};
-
-	return (options) => {
+const buildMethod = (defaultSettings = {}, onInit) => {
+	const method = (options) => {
 		const key = Symbol();
 
 		options = {
@@ -60,7 +14,7 @@ export const buildMethod = (defaultSettings = {}, onInit) => {
 			...options
 		};
 		if (onInit) {
-			options = onInit(options);
+			onInit(options);
 		}
 
 		if ('other' in options && !isArray(options.other)) {
@@ -112,6 +66,22 @@ export const buildMethod = (defaultSettings = {}, onInit) => {
 			return (options.stringify && value && value.toString) ? value.toString() : value;
 		};
 	};
+
+	method.defaults = (settings) => {
+		defaultSettings = {
+			...defaultSettings,
+			...settings
+		};
+	};
+
+	method.extend = (newSettings = {}, newOnInit) => {
+		return buildMethod({
+			...defaultSettings,
+			...newSettings
+		}, newOnInit || onInit);
+	};
+
+	return method;
 };
 
 /**
@@ -166,4 +136,11 @@ export const buildMethod = (defaultSettings = {}, onInit) => {
  *
  * @returns {Function} if a "before" or "set" option is set, then this function accepts two args: a new value and forceSave override. If no args are provided then the current value is returned. If neither "before" nor "set" is set, then only one arg is accepted, the new value. Also returns the current value if no args are provided.
  */
-export default buildMethod();
+export default buildMethod({
+	enforce(newValue) {
+		return newValue;
+	},
+	compare(newValue, oldValue) {
+		return newValue !== oldValue;
+	}
+});

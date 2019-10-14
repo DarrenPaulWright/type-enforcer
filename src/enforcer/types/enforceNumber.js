@@ -1,5 +1,5 @@
 import isNumber from '../../checks/types/isNumber';
-import { numericEnforcer } from './enforcer';
+import clamp from '../../utility/clamp';
 
 /**
  * Enforce that a value is a number (excluding NaN). Uses [isNumber](docs/checks.md#isNumber).
@@ -32,4 +32,9 @@ import { numericEnforcer } from './enforcer';
  *
  * @returns {Number}
  */
-export default numericEnforcer(isNumber, Number);
+export default (value, alt, coerce, minValue = -Infinity, maxValue = Infinity) => {
+	if (coerce === true && !isNumber(value) && isNumber(value, true)) {
+		return clamp(Number(value), minValue, maxValue);
+	}
+	return isNumber(value) ? clamp(value, minValue, maxValue) : alt;
+};

@@ -1,7 +1,7 @@
 import isCssSize from '../../checks/types/isCssSize';
 import enforceCssSize from '../../enforcer/types/enforceCssSize';
-import CssSize from '../../types/CssSize';
-import { buildMethod, compareCustomType, mapEnforcerDefaultCoerceTrue } from './methodAny';
+import sameValueZero from '../../equality/sameValueZero';
+import methodAny from './methodAny';
 
 /**
  * Builds a chainable method for getting/setting a [CssSize](docs/CssSize.md)
@@ -17,7 +17,19 @@ import { buildMethod, compareCustomType, mapEnforcerDefaultCoerceTrue } from './
  *
  * @returns {Function}
  */
-export default buildMethod({
-	enforce: mapEnforcerDefaultCoerceTrue(enforceCssSize),
-	compare: compareCustomType(CssSize, isCssSize)
+export default methodAny.extend({
+	enforce: (newValue, oldValue, options) => {
+		return enforceCssSize(newValue, oldValue, options.coerce);
+	},
+	compare: (newValue, oldValue) => {
+		if (isCssSize(oldValue)) {
+			return !oldValue.isSame(newValue);
+		}
+		if (isCssSize(newValue)) {
+			return !newValue.isSame(oldValue);
+		}
+
+		return !sameValueZero(newValue, oldValue);
+	},
+	coerce: true
 });

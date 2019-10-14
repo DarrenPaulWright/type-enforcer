@@ -1,5 +1,4 @@
 import isArray from '../../checks/types/isArray';
-import { coercibleEnforcer } from './enforcer';
 
 /**
  * Enforce that a value is an array. Uses [isArray](docs/checks.md#isArray).
@@ -27,4 +26,9 @@ import { coercibleEnforcer } from './enforcer';
  *
  * @returns {Array}
  */
-export default coercibleEnforcer(isArray, JSON.parse);
+export default (value, alt, coerce) => {
+	if (coerce === true && !isArray(value) && isArray(value, true)) {
+		return JSON.parse(value);
+	}
+	return isArray(value) ? value : alt;
+};

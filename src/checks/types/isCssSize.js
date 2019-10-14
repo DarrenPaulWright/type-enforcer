@@ -1,5 +1,4 @@
 import CssSize from '../../types/CssSize';
-import { buildCustomTypeCheck } from './checks';
 
 /**
  * Check if a value is a [CssSize](docs/CssSize.md)
@@ -26,4 +25,6 @@ import { buildCustomTypeCheck } from './checks';
  *
  * @returns {Boolean}
  */
-export default buildCustomTypeCheck(CssSize);
+export default (value, coerce) => {
+	return (value instanceof CssSize) || (coerce === true && CssSize.isValid(value));
+};

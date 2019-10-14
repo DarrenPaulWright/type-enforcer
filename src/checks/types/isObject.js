@@ -1,8 +1,3 @@
-import { buildCheckWithCoerce } from './checks';
-import isJson from './isJson';
-
-const isPlainObject = (item) => item && item.constructor === Object;
-
 /**
  * Check if a value is a plain object
  *
@@ -28,4 +23,24 @@ const isPlainObject = (item) => item && item.constructor === Object;
  *
  * @returns {Boolean}
  */
-export default buildCheckWithCoerce(isPlainObject, (value) => isJson(value) && isPlainObject(JSON.parse(value)));
+const isObject = (value, coerce) => {
+	if (value && value.constructor === Object) {
+		return true;
+	}
+	if (coerce === true) {
+		let json;
+
+		try {
+			json = JSON.parse(value);
+		}
+		catch (e) {
+			return false;
+		}
+
+		return isObject(json);
+	}
+
+	return false;
+};
+
+export default isObject;

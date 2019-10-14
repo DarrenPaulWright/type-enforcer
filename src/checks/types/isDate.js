@@ -1,4 +1,3 @@
-import { buildCheckWithCoerce } from './checks';
 import isInstanceOf from './isInstanceOf';
 
 /**
@@ -26,4 +25,6 @@ import isInstanceOf from './isInstanceOf';
  *
  * @returns {Boolean}
  */
-export default buildCheckWithCoerce((item) => isInstanceOf(item, Date), (value) => !isNaN(Date.parse(value)));
+export default (value, coerce) => {
+	return isInstanceOf(value, Date) || (coerce === true && !isNaN(Date.parse(value)));
+};

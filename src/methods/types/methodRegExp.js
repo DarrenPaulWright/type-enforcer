@@ -1,5 +1,5 @@
 import enforceRegExp from '../../enforcer/types/enforceRegExp';
-import { buildMethod, mapEnforcer } from './methodAny';
+import methodAny from './methodAny';
 
 /**
  * Builds a chainable method for getting/setting a RegExp
@@ -15,6 +15,8 @@ import { buildMethod, mapEnforcer } from './methodAny';
  *
  * @returns {Function}
  */
-export default buildMethod({
-	enforce: mapEnforcer(enforceRegExp)
+export default methodAny.extend({
+	enforce: (newValue, oldValue, options) => {
+		return enforceRegExp(newValue, oldValue, options.coerce);
+	}
 });

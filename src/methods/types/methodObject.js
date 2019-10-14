@@ -1,5 +1,6 @@
+import { deepEqual } from 'object-agent';
 import enforceObject from '../../enforcer/types/enforceObject';
-import { buildMethod, deepCompare, mapEnforcer, setDeepOnInit } from './methodAny';
+import methodAny from './methodAny';
 
 /**
  * Builds a chainable method for getting/setting a plain object
@@ -16,7 +17,14 @@ import { buildMethod, deepCompare, mapEnforcer, setDeepOnInit } from './methodAn
  *
  * @returns {Function}
  */
-export default buildMethod({
-	enforce: mapEnforcer(enforceObject),
-	compare: deepCompare
-}, setDeepOnInit);
+export default methodAny.extend({
+	enforce: (newValue, oldValue, options) => {
+		return enforceObject(newValue, oldValue, options.coerce);
+	},
+	deep: true
+}, (options) => {
+	if (options.deep === true) {
+		options.compare = (newValue, oldValue) => !deepEqual(newValue, oldValue, {strict: true});
+	}
+	delete options.deep;
+});

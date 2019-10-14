@@ -1,6 +1,5 @@
 import isPoint from '../../checks/types/isPoint';
 import Point from '../../types/Point';
-import { coercibleEnforcer } from './enforcer';
 
 /**
  * Enforce that a value is a [Point](docs/Point.md). Uses [isPoint](docs/checks.md#isPoint).
@@ -28,4 +27,9 @@ import { coercibleEnforcer } from './enforcer';
  *
  * @returns {Point}
  */
-export default coercibleEnforcer(isPoint, (value) => new Point(value));
+export default (value, alt, coerce) => {
+	if (coerce === true && !isPoint(value) && isPoint(value, true)) {
+		return new Point(value);
+	}
+	return isPoint(value) ? value : alt;
+};

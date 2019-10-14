@@ -1,5 +1,5 @@
 import enforceDate from '../../enforcer/types/enforceDate';
-import { buildMethod, mapEnforcer } from './methodAny';
+import methodAny from './methodAny';
 
 /**
  * Builds a chainable method for getting/setting a date
@@ -14,6 +14,8 @@ import { buildMethod, mapEnforcer } from './methodAny';
  *
  * @returns {Function}
  */
-export default buildMethod({
-	enforce: mapEnforcer(enforceDate)
+export default methodAny.extend({
+	enforce: (newValue, oldValue, options) => {
+		return enforceDate(newValue, oldValue, options.coerce);
+	}
 });

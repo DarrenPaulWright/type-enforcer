@@ -1,7 +1,8 @@
 import isPoint from '../../checks/types/isPoint';
 import enforcePoint from '../../enforcer/types/enforcePoint';
+import sameValueZero from '../../equality/sameValueZero';
 import Point from '../../types/Point';
-import { buildMethod, compareCustomType, mapEnforcerDefaultCoerceTrue } from './methodAny';
+import methodAny from './methodAny';
 
 /**
  * Builds a chainable method for getting/setting a [Point](docs/Point.md)
@@ -18,8 +19,20 @@ import { buildMethod, compareCustomType, mapEnforcerDefaultCoerceTrue } from './
  *
  * @returns {Function}
  */
-export default buildMethod({
+export default methodAny.extend({
 	init: new Point(),
-	enforce: mapEnforcerDefaultCoerceTrue(enforcePoint),
-	compare: compareCustomType(Point, isPoint)
+	enforce: (newValue, oldValue, options) => {
+		return enforcePoint(newValue, oldValue, options.coerce);
+	},
+	compare: (newValue, oldValue) => {
+		if (isPoint(oldValue)) {
+			return !oldValue.isSame(newValue);
+		}
+		if (isPoint(newValue)) {
+			return !newValue.isSame(oldValue);
+		}
+
+		return !sameValueZero(newValue, oldValue);
+	},
+	coerce: true
 });

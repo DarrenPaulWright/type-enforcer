@@ -1,5 +1,4 @@
 import isFunction from '../../checks/types/isFunction';
-import { baseEnforcer } from './enforcer';
 
 /**
  * Enforce that a value is a function. Uses [isFunction](docs/checks.md#isFunction).
@@ -26,4 +25,4 @@ import { baseEnforcer } from './enforcer';
  *
  * @returns {Function}
  */
-export default baseEnforcer(isFunction);
+export default (value, alt) => isFunction(value) ? value : alt;

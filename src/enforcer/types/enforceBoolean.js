@@ -1,5 +1,4 @@
 import isBoolean from '../../checks/types/isBoolean';
-import { coercibleEnforcer } from './enforcer';
 
 /**
  * Enforce that a value is a boolean. Uses [isBoolean](docs/checks.md#isBoolean).
@@ -27,4 +26,9 @@ import { coercibleEnforcer } from './enforcer';
  *
  * @returns {Boolean}
  */
-export default coercibleEnforcer(isBoolean, (value) => !!value);
+export default (value, alt, coerce) => {
+	if (coerce === true && !isBoolean(value) && isBoolean(value, true)) {
+		return Boolean(value);
+	}
+	return isBoolean(value) ? value : alt;
+};

@@ -1,5 +1,4 @@
 import Point from '../../types/Point';
-import { buildCustomTypeCheck } from './checks';
 
 /**
  * Check if a value is a [Point](docs/Point.md)
@@ -26,4 +25,6 @@ import { buildCustomTypeCheck } from './checks';
  *
  * @returns {Boolean}
  */
-export default buildCustomTypeCheck(Point);
+export default (value, coerce) => {
+	return (value instanceof Point) || (coerce === true && Point.isValid(value));
+};

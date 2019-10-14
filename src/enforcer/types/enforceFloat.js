@@ -1,5 +1,5 @@
 import isFloat from '../../checks/types/isFloat';
-import { numericEnforcer } from './enforcer';
+import clamp from '../../utility/clamp';
 
 /**
  * Enforce that a value is a finite float. Uses [isFloat](docs/checks.md#isFloat).
@@ -29,4 +29,9 @@ import { numericEnforcer } from './enforcer';
  *
  * @returns {int}
  */
-export default numericEnforcer(isFloat, Number);
+export default (value, alt, coerce, minValue = -Infinity, maxValue = Infinity) => {
+	if (coerce === true && !isFloat(value) && isFloat(value, true)) {
+		return clamp(Number(value), minValue, maxValue);
+	}
+	return isFloat(value) ? clamp(value, minValue, maxValue) : alt;
+};

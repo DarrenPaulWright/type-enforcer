@@ -1,5 +1,4 @@
 import DockPoint from '../../types/DockPoint';
-import { buildCustomTypeCheck } from './checks';
 
 /**
  * Check if a value is a [DockPoint](docs/DockPoint.md)
@@ -26,4 +25,6 @@ import { buildCustomTypeCheck } from './checks';
  *
  * @returns {Boolean}
  */
-export default buildCustomTypeCheck(DockPoint);
+export default (value, coerce) => {
+	return (value instanceof DockPoint) || (coerce === true && DockPoint.isValid(value));
+};

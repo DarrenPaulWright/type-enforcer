@@ -1,5 +1,5 @@
 import enforceElement from '../../enforcer/types/enforceElement';
-import { buildMethod } from './methodAny';
+import methodAny from './methodAny';
 
 /**
  * Builds a chainable method for getting/setting a DOM element
@@ -13,6 +13,6 @@ import { buildMethod } from './methodAny';
  *
  * @returns {Function}
  */
-export default buildMethod({
+export default methodAny.extend({
 	enforce: enforceElement
 });

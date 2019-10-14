@@ -1,5 +1,5 @@
 import enforceInstance from '../../enforcer/types/enforceInstance';
-import { buildMethod } from './methodAny';
+import methodAny from './methodAny';
 
 /**
  * Builds a chainable method for getting/setting an instance of a specific constructor
@@ -14,7 +14,7 @@ import { buildMethod } from './methodAny';
  *
  * @returns {Function}
  */
-export default buildMethod({
+export default methodAny.extend({
 	enforce(newValue, oldValue, options) {
 		return enforceInstance(newValue, options.instance, oldValue);
 	}

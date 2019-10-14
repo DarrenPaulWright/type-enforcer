@@ -1,5 +1,5 @@
 import enforceBoolean from '../../enforcer/types/enforceBoolean';
-import { buildMethod, mapEnforcer } from './methodAny';
+import methodAny from './methodAny';
 
 /**
  * Builds a chainable method for getting/setting a boolean
@@ -15,7 +15,9 @@ import { buildMethod, mapEnforcer } from './methodAny';
  *
  * @returns {Function}
  */
-export default buildMethod({
-	enforce: mapEnforcer(enforceBoolean),
+export default methodAny.extend({
+	enforce: (newValue, oldValue, options) => {
+		return enforceBoolean(newValue, oldValue, options.coerce);
+	},
 	init: false
 });

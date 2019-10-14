@@ -1,5 +1,4 @@
 import Thickness from '../../types/Thickness';
-import { buildCustomTypeCheck } from './checks';
 
 /**
  * Check if a value is a [Thickness](docs/Thickness.md)
@@ -26,4 +25,6 @@ import { buildCustomTypeCheck } from './checks';
  *
  * @returns {Boolean}
  */
-export default buildCustomTypeCheck(Thickness);
+export default (value, coerce) => {
+	return (value instanceof Thickness) || (coerce === true && Thickness.isValid(value));
+};

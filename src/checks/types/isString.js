@@ -1,4 +1,3 @@
-import { buildCheckWithCoerce } from './checks';
 import isInstanceOf from './isInstanceOf';
 
 /**
@@ -26,4 +25,6 @@ import isInstanceOf from './isInstanceOf';
  *
  * @returns {Boolean}
  */
-export default buildCheckWithCoerce((item) => isInstanceOf(item, String), (value) => value !== null && value !== undefined && !!value.toString);
+export default (value, coerce) => {
+	return isInstanceOf(value, String) || (coerce === true && value !== null && value !== undefined && !!value.toString);
+};

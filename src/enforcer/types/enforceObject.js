@@ -1,5 +1,4 @@
 import isObject from '../../checks/types/isObject';
-import { coercibleEnforcer } from './enforcer';
 
 /**
  * Enforce that a value is an object. Uses [isObject](docs/checks.md#isObject).
@@ -30,4 +29,9 @@ import { coercibleEnforcer } from './enforcer';
  *
  * @returns {Object}
  */
-export default coercibleEnforcer(isObject, JSON.parse);
+export default (value, alt, coerce) => {
+	if (coerce === true && !isObject(value) && isObject(value, true)) {
+		return JSON.parse(value);
+	}
+	return isObject(value) ? value : alt;
+};

@@ -1,5 +1,4 @@
 import isRegExp from '../../checks/types/isRegExp';
-import { coercibleEnforcer } from './enforcer';
 
 const SEPARATOR = '/';
 
@@ -29,12 +28,15 @@ const SEPARATOR = '/';
  *
  * @returns {RegExp}
  */
-export default coercibleEnforcer(isRegExp, (value) => {
-	if (value.charAt(0) !== SEPARATOR) {
-		return RegExp(value);
+export default (value, alt, coerce) => {
+	if (coerce === true && !isRegExp(value) && isRegExp(value, true)) {
+		if (value.charAt(0) !== SEPARATOR) {
+			return RegExp(value);
+		}
+		else {
+			const index = value.lastIndexOf(SEPARATOR);
+			return RegExp(value.substring(1, index), value.substring(index + 1));
+		}
 	}
-	else {
-		const index = value.lastIndexOf(SEPARATOR);
-		return RegExp(value.substring(1, index), value.substring(index + 1));
-	}
-});
+	return isRegExp(value) ? value : alt;
+};

@@ -1,5 +1,5 @@
 import enforceFunction from '../../enforcer/types/enforceFunction';
-import { buildMethod } from './methodAny';
+import methodAny from './methodAny';
 
 /**
  * Builds a chainable method for getting/setting a function
@@ -14,15 +14,21 @@ import { buildMethod } from './methodAny';
  *
  * @returns {Function}
  */
-export default buildMethod({
-	enforce(newValue, value, options) {
-		newValue = enforceFunction(newValue, value);
-
-		if (newValue && options.bind === true) {
-			newValue = newValue.bind(this);
-		}
-
-		return newValue;
+export default methodAny.extend({
+	enforce: (newValue, oldValue, options) => {
+		return enforceFunction(newValue, oldValue, options.coerce);
 	},
 	bind: true
+}, (options) => {
+	if (options.bind === true) {
+		options.enforce = function(newValue, value, options) {
+			newValue = enforceFunction(newValue, value);
+
+			if (newValue && options.bind === true) {
+				newValue = newValue.bind(this);
+			}
+
+			return newValue;
+		};
+	}
 });

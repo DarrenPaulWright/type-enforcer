@@ -1,6 +1,5 @@
 import isCssSize from '../../checks/types/isCssSize';
 import CssSize from '../../types/CssSize';
-import { coercibleEnforcer } from './enforcer';
 
 /**
  * Enforce that a value is a [CssSize](docs/CssSize.md). Uses [isCssSize](docs/checks.md#isCssSize).
@@ -28,4 +27,9 @@ import { coercibleEnforcer } from './enforcer';
  *
  * @returns {CssSize}
  */
-export default coercibleEnforcer(isCssSize, (value) => new CssSize(value));
+export default (value, alt, coerce) => {
+	if (coerce === true && !isCssSize(value) && isCssSize(value, true)) {
+		return new CssSize(value);
+	}
+	return isCssSize(value) ? value : alt;
+};

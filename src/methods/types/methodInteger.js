@@ -1,5 +1,5 @@
 import enforceInteger from '../../enforcer/types/enforceInteger';
-import { buildMethod, mapEnforcerNumeric } from './methodAny';
+import methodAny from './methodAny';
 
 /**
  * Builds a chainable method for getting/setting an integer
@@ -16,6 +16,8 @@ import { buildMethod, mapEnforcerNumeric } from './methodAny';
  *
  * @returns {Function}
  */
-export default buildMethod({
-	enforce: mapEnforcerNumeric(enforceInteger)
+export default methodAny.extend({
+	enforce: (newValue, oldValue, options) => {
+		return enforceInteger(newValue, oldValue, options.coerce, options.min, options.max);
+	}
 });

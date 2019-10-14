@@ -1,5 +1,4 @@
 import Vector from '../../types/Vector';
-import { buildCustomTypeCheck } from './checks';
 
 /**
  * Check if a value is a [Vector](docs/Vector.md)
@@ -26,4 +25,6 @@ import { buildCustomTypeCheck } from './checks';
  *
  * @returns {Boolean}
  */
-export default buildCustomTypeCheck(Vector);
+export default (value, coerce) => {
+	return (value instanceof Vector) || (coerce === true && Vector.isValid(value));
+};

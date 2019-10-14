@@ -1,5 +1,5 @@
 import isInteger from '../../checks/types/isInteger';
-import { numericEnforcer } from './enforcer';
+import clamp from '../../utility/clamp';
 
 /**
  * Enforce that a value is a finite integer. Uses [isInteger](docs/checks.md#isInteger).
@@ -29,4 +29,9 @@ import { numericEnforcer } from './enforcer';
  *
  * @returns {int}
  */
-export default numericEnforcer(isInteger, (item) => item - 0);
+export default (value, alt, coerce, minValue = -Infinity, maxValue = Infinity) => {
+	if (coerce === true && !isInteger(value) && isInteger(value, true)) {
+		return clamp(Number(value), minValue, maxValue);
+	}
+	return isInteger(value) ? clamp(value, minValue, maxValue) : alt;
+};

@@ -1,7 +1,8 @@
 import isVector from '../../checks/types/isVector';
 import enforceVector from '../../enforcer/types/enforceVector';
+import sameValueZero from '../../equality/sameValueZero';
 import Vector from '../../types/Vector';
-import { buildMethod, compareCustomType, mapEnforcerDefaultCoerceTrue } from './methodAny';
+import methodAny from './methodAny';
 
 /**
  * Builds a chainable method for getting/setting a [Vector](docs/Vector.md)
@@ -18,8 +19,20 @@ import { buildMethod, compareCustomType, mapEnforcerDefaultCoerceTrue } from './
  *
  * @returns {Function}
  */
-export default buildMethod({
+export default methodAny.extend({
 	init: new Vector(),
-	enforce: mapEnforcerDefaultCoerceTrue(enforceVector),
-	compare: compareCustomType(Vector, isVector)
+	enforce: (newValue, oldValue, options) => {
+		return enforceVector(newValue, oldValue, options.coerce);
+	},
+	compare: (newValue, oldValue) => {
+		if (isVector(oldValue)) {
+			return !oldValue.isSame(newValue);
+		}
+		if (isVector(newValue)) {
+			return !newValue.isSame(oldValue);
+		}
+
+		return !sameValueZero(newValue, oldValue);
+	},
+	coerce: true
 });

@@ -1,5 +1,5 @@
 import enforceArray from '../../enforcer/types/enforceArray';
-import { buildMethod, deepCompare, mapEnforcer, setDeepOnInit } from './methodAny';
+import methodObject from './methodObject';
 
 /**
  * Builds a chainable method for getting/setting an array
@@ -17,8 +17,9 @@ import { buildMethod, deepCompare, mapEnforcer, setDeepOnInit } from './methodAn
  *
  * @returns {Function}
  */
-export default buildMethod({
-	enforce: mapEnforcer(enforceArray),
-	init: [],
-	compare: deepCompare
-}, setDeepOnInit);
+export default methodObject.extend({
+	enforce: (newValue, oldValue, options) => {
+		return enforceArray(newValue, oldValue, options.coerce);
+	},
+	init: []
+});

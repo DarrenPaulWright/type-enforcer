@@ -1,4 +1,3 @@
-import { buildCheckWithCoerce } from './checks';
 import isInstanceOf from './isInstanceOf';
 import isString from './isString';
 
@@ -27,4 +26,6 @@ import isString from './isString';
  *
  * @returns {Boolean}
  */
-export default buildCheckWithCoerce((item) => isInstanceOf(item, RegExp), (value) => isString(value));
+export default (value, coerce) => {
+	return isInstanceOf(value, RegExp) || (coerce === true && isString(value));
+};

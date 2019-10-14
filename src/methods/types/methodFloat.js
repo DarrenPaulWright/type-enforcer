@@ -1,5 +1,5 @@
 import enforceFloat from '../../enforcer/types/enforceFloat';
-import { buildMethod, mapEnforcerNumeric } from './methodAny';
+import methodAny from './methodAny';
 
 /**
  * Builds a chainable method for getting/setting a float
@@ -16,6 +16,8 @@ import { buildMethod, mapEnforcerNumeric } from './methodAny';
  *
  * @returns {Function}
  */
-export default buildMethod({
-	enforce: mapEnforcerNumeric(enforceFloat)
+export default methodAny.extend({
+	enforce: (newValue, oldValue, options) => {
+		return enforceFloat(newValue, oldValue, options.coerce, options.min, options.max);
+	}
 });

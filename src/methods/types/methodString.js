@@ -1,5 +1,5 @@
 import enforceString from '../../enforcer/types/enforceString';
-import { buildMethod, mapEnforcer } from './methodAny';
+import methodAny from './methodAny';
 
 /**
  * Builds a chainable method for getting/setting a string
@@ -15,7 +15,9 @@ import { buildMethod, mapEnforcer } from './methodAny';
  *
  * @returns {Function}
  */
-export default buildMethod({
-	enforce: mapEnforcer(enforceString),
+export default methodAny.extend({
+	enforce: (newValue, oldValue, options) => {
+		return enforceString(newValue, oldValue, options.coerce);
+	},
 	init: ''
 });

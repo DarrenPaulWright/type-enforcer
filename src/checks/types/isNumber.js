@@ -1,7 +1,4 @@
-import { buildCheckWithCoerce } from './checks';
 import isInstanceOf from './isInstanceOf';
-
-export const isFinite = (item) => item !== Infinity && item !== -Infinity;
 
 /**
  * Check if a value is a number
@@ -28,4 +25,6 @@ export const isFinite = (item) => item !== Infinity && item !== -Infinity;
  *
  * @returns {Boolean}
  */
-export default buildCheckWithCoerce((item) => isInstanceOf(item, Number) && !isNaN(item), (value) => !isNaN(value));
+export default (value, coerce) => {
+	return (isInstanceOf(value, Number) && !isNaN(value)) || (coerce === true && !isNaN(value));
+};

@@ -1,5 +1,5 @@
 import isFunction from '../../checks/types/isFunction';
-import Queue from '../../types/Queue';
+import Queue from '../../Queue';
 import { _ } from './methodAny';
 
 /**

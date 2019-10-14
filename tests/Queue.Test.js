@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { Point, Queue } from '../../src';
+import { Point, Queue } from '../src';
 
 const emptyFunction = () => {
 };

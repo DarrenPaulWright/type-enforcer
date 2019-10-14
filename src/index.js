@@ -14,9 +14,7 @@
  * #### Extra Data Types
  * - [CssSize](docs/CssSize.md)
  * - [DockPoint](docs/DockPoint.md)
- * - [Enum](docs/Enum.md)
  * - [Point](docs/Point.md)
- * - [Queue](docs/Queue.md)
  * - [Thickness](docs/Thickness.md)
  * - [Vector](docs/Vector.md)
  *
@@ -34,6 +32,8 @@
  * - [Removable](docs/Removable.md)
  *
  * #### Other
+ * - [Enum](docs/Enum.md)
+ * - [Queue](docs/Queue.md)
  * - [applySettings](docs/applySettings.md)
  * - [PrivateVars](docs/PrivateVars.md)
  * - [equality checks](docs/equality.md)
@@ -104,9 +104,9 @@ export { default as methodVector } from './methods/types/methodVector';
 export * from './types/CssSize';
 export { default as CssSize } from './types/CssSize';
 export { default as DockPoint } from './types/DockPoint';
-export { default as Enum } from './types/Enum';
+export { default as Enum } from './Enum';
 export { default as Point } from './types/Point';
-export { default as Queue } from './types/Queue';
+export { default as Queue } from './Queue';
 export { default as Thickness } from './types/Thickness';
 export { default as Vector } from './types/Vector';
 

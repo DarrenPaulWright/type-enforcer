@@ -1,5 +1,5 @@
 import { forOwn } from 'object-agent';
-import PrivateVars from '../utility/PrivateVars';
+import PrivateVars from './utility/PrivateVars';
 
 const _ = new PrivateVars();
 

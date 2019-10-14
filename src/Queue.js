@@ -1,7 +1,7 @@
 import { forOwn } from 'object-agent';
-import isFunction from '../checks/types/isFunction';
-import castArray from '../utility/castArray';
-import PrivateVars from '../utility/PrivateVars';
+import isFunction from './checks/types/isFunction';
+import castArray from './utility/castArray';
+import PrivateVars from './utility/PrivateVars';
 
 const _ = new PrivateVars();
 

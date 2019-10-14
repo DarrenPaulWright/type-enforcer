@@ -1,5 +1,5 @@
+import Enum from '../Enum';
 import methodEnum from '../methods/types/methodEnum';
-import Enum from './Enum';
 
 const SEPARATOR = '.';
 const BASIC_POINTS = new Enum({

@@ -27,8 +27,13 @@ import isSymbol from '../checks/isSymbol';
  * @returns {Object}
  */
 export default (value, alt, coerce) => {
-	if (coerce === true && !isSymbol(value) && isSymbol(value, true)) {
+	if (isSymbol(value)) {
+		return value;
+	}
+
+	if (coerce === true && isSymbol(value, true)) {
 		return Symbol(value + '');
 	}
-	return isSymbol(value) ? value : alt;
+
+	return alt;
 };

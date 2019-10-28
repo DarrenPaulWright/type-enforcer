@@ -27,8 +27,13 @@ import isDate from '../checks/isDate';
  * @returns {Date}
  */
 export default (value, alt, coerce) => {
-	if (coerce === true && !isDate(value) && isDate(value, true)) {
+	if (isDate(value)) {
+		return value;
+	}
+
+	if (coerce === true && isDate(value, true)) {
 		return new Date(value);
 	}
-	return isDate(value) ? value : alt;
+
+	return alt;
 };

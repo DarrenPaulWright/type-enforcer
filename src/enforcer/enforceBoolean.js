@@ -27,8 +27,13 @@ import isBoolean from '../checks/isBoolean';
  * @returns {Boolean}
  */
 export default (value, alt, coerce) => {
-	if (coerce === true && !isBoolean(value) && isBoolean(value, true)) {
+	if (isBoolean(value)) {
+		return value;
+	}
+
+	if (coerce === true && isBoolean(value, true)) {
 		return Boolean(value);
 	}
-	return isBoolean(value) ? value : alt;
+
+	return alt;
 };

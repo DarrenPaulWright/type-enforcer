@@ -30,8 +30,13 @@ import clamp from '../utility/clamp';
  * @returns {int}
  */
 export default (value, alt, coerce, minValue = -Infinity, maxValue = Infinity) => {
-	if (coerce === true && !isFloat(value) && isFloat(value, true)) {
+	if (isFloat(value)) {
+		return clamp(value, minValue, maxValue);
+	}
+
+	if (coerce === true && isFloat(value, true)) {
 		return clamp(Number(value), minValue, maxValue);
 	}
-	return isFloat(value) ? clamp(value, minValue, maxValue) : alt;
+	
+	return alt;
 };

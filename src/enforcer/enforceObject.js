@@ -30,8 +30,13 @@ import isObject from '../checks/isObject';
  * @returns {Object}
  */
 export default (value, alt, coerce) => {
-	if (coerce === true && !isObject(value) && isObject(value, true)) {
+	if (isObject(value)) {
+		return value;
+	}
+
+	if (coerce === true && isObject(value, true)) {
 		return JSON.parse(value);
 	}
-	return isObject(value) ? value : alt;
+
+	return alt;
 };

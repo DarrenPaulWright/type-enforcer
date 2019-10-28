@@ -29,7 +29,11 @@ const SEPARATOR = '/';
  * @returns {RegExp}
  */
 export default (value, alt, coerce) => {
-	if (coerce === true && !isRegExp(value) && isRegExp(value, true)) {
+	if (isRegExp(value)) {
+		return value;
+	}
+
+	if (coerce === true && isRegExp(value, true)) {
 		if (value.charAt(0) !== SEPARATOR) {
 			return RegExp(value);
 		}
@@ -38,5 +42,6 @@ export default (value, alt, coerce) => {
 			return RegExp(value.substring(1, index), value.substring(index + 1));
 		}
 	}
-	return isRegExp(value) ? value : alt;
+	
+	return alt;
 };

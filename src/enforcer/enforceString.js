@@ -28,6 +28,10 @@ import isSymbol from '../checks/isSymbol';
  * @returns {String}
  */
 export default (value, alt, coerce) => {
+	if (isString(value)) {
+		return value;
+	}
+
 	if (coerce === true) {
 		if (isSymbol(value)) {
 			return value.toString();
@@ -36,5 +40,6 @@ export default (value, alt, coerce) => {
 			return value + '';
 		}
 	}
-	return isString(value) ? value : alt;
+
+	return alt;
 };

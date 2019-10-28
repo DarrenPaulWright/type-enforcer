@@ -30,8 +30,13 @@ import clamp from '../utility/clamp';
  * @returns {int}
  */
 export default (value, alt, coerce, minValue = -Infinity, maxValue = Infinity) => {
-	if (coerce === true && !isInteger(value) && isInteger(value, true)) {
+	if (isInteger(value)) {
+		return clamp(value, minValue, maxValue);
+	}
+
+	if (coerce === true && isInteger(value, true)) {
 		return clamp(Number(value), minValue, maxValue);
 	}
-	return isInteger(value) ? clamp(value, minValue, maxValue) : alt;
+
+	return alt;
 };

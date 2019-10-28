@@ -15,7 +15,6 @@ const files = testRunnerConfig.getKarmaFiles(config, {
 });
 const preprocessors = {};
 testRunnerConfig.getKarmaFiles(config, {
-	css: exclude,
 	src: exclude
 }).files.forEach((pattern) => {
 	if (pattern.included !== false) {

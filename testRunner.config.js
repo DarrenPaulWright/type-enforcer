@@ -1,9 +1,4 @@
 module.exports = [{
-	type: 'css',
-	files: [
-		'tests/test.css'
-	]
-}, {
 	type: 'src',
 	files: [
 		'src/**/*.js'

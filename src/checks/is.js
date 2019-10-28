@@ -1,15 +1,15 @@
-import isArray from './types/isArray';
-import isBoolean from './types/isBoolean';
-import isDate from './types/isDate';
-import isFloat from './types/isFloat';
-import isFunction from './types/isFunction';
-import isInstanceOf from './types/isInstanceOf';
-import isInteger from './types/isInteger';
-import isJson from './types/isJson';
-import isNumber from './types/isNumber';
-import isObject from './types/isObject';
-import isRegExp from './types/isRegExp';
-import isString from './types/isString';
+import isArray from './isArray';
+import isBoolean from './isBoolean';
+import isDate from './isDate';
+import isFloat from './isFloat';
+import isFunction from './isFunction';
+import isInstanceOf from './isInstanceOf';
+import isInteger from './isInteger';
+import isJson from './isJson';
+import isNumber from './isNumber';
+import isObject from './isObject';
+import isRegExp from './isRegExp';
+import isString from './isString';
 
 /**
  * Utility functions for checking if something is a particular data type.

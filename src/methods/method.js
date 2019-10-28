@@ -1,18 +1,18 @@
-import methodAny from './types/methodAny';
-import methodArray from './types/methodArray';
-import methodBoolean from './types/methodBoolean';
-import methodDate from './types/methodDate';
-import methodEnum from './types/methodEnum';
-import methodFloat from './types/methodFloat';
-import methodFunction from './types/methodFunction';
-import methodInstance from './types/methodInstance';
-import methodInteger from './types/methodInteger';
-import methodKeyValue from './types/methodKeyValue';
-import methodNumber from './types/methodNumber';
-import methodObject from './types/methodObject';
-import methodQueue from './types/methodQueue';
-import methodRegExp from './types/methodRegExp';
-import methodString from './types/methodString';
+import methodAny from './methodAny';
+import methodArray from './methodArray';
+import methodBoolean from './methodBoolean';
+import methodDate from './methodDate';
+import methodEnum from './methodEnum';
+import methodFloat from './methodFloat';
+import methodFunction from './methodFunction';
+import methodInstanceOf from './methodInstanceOf';
+import methodInteger from './methodInteger';
+import methodKeyValue from './methodKeyValue';
+import methodNumber from './methodNumber';
+import methodObject from './methodObject';
+import methodQueue from './methodQueue';
+import methodRegExp from './methodRegExp';
+import methodString from './methodString';
 
 /**
  * Enforce data types and remove common boilerplate code on class methods.
@@ -56,7 +56,7 @@ export default {
 	float: methodFloat,
 	function: methodFunction,
 	integer: methodInteger,
-	instance: methodInstance,
+	instanceOf: methodInstanceOf,
 	keyValue: methodKeyValue,
 	number: methodNumber,
 	object: methodObject,

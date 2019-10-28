@@ -1,14 +1,31 @@
+import { Enum, Removable } from '../src';
+
 const difference = (array1, ...args) => {
 	let diffArrays = [].concat(...args);
-	return array1.filter((item1) => diffArrays.every((item2) => item1 !== item2));
+	return array1.filter((item) => !diffArrays.includes(item));
 };
+
+export class TestClass extends Removable {
+	constructor(value) {
+		super();
+		this.value = value;
+	}
+}
+
+export const validEnumObject = new Enum({
+	test1: 'test 1',
+	test2: 'test 2',
+	test3: 'test 3'
+});
 
 export const validArrays = [[1], [2], [], new Array(), Array()];
 export const validBooleans = [true, false, new Boolean(true), Boolean()];
 export const validDates = [new Date(), new Date('01/15/2010')];
+export const validEnums = [validEnumObject.test1, validEnumObject.test2];
 export const validFunctions = [function() {
 }, () => {
 }];
+export const validInstances = [new TestClass(1), new TestClass(2)];
 export const validIntegers = [1, 5, new Number(42), Number(11)];
 export const validFloats = [1.3, 2.5, -10.00000001, 3.14159, new Number(42.2), Number(11.3)];
 export const validInfinities = [Infinity, -Infinity];
@@ -94,21 +111,24 @@ const coerceNumberFalse = [
 	'1\'000,00',
 	'1.000.000,00',
 	'1 000 000,00',
-	'1\'000\'000,00'
+	'1\'000\'000,00',
+	NaN
 ];
 
-export const testValues = [].concat(
-	[null, undefined],
+const testValues = [null, undefined].concat(
 	validArrays,
 	validBooleans,
 	validDates,
+	validEnums,
 	validFunctions,
+	validInstances,
 	validIntegers,
 	validFloats,
 	validInfinities,
 	validObjects,
 	validRegExps,
-	validStrings
+	validStrings,
+	NaN
 );
 
 export const arrayData = {
@@ -133,13 +153,28 @@ export const dateData = {
 	true: validDates,
 	false: difference(testValues, validDates),
 	coerceTrue: ['10/12/1980', 'January 8, 2014'],
-	coerceFalse: difference(testValues, validDates, validArrays, validFloats, validIntegers, validRegExps)
+	coerceFalse: difference(testValues, validDates, validArrays, validFloats, validIntegers, validRegExps, validEnums)
+};
+export const enumData = {
+	name: 'enum',
+	true: validEnums,
+	false: difference(testValues, validEnums),
+	coerceTrue: [],
+	coerceFalse: []
 };
 export const functionData = {
 	value: Function,
 	name: 'function',
 	true: validFunctions,
 	false: difference(testValues, validFunctions),
+	coerceTrue: [],
+	coerceFalse: []
+};
+export const instanceData = {
+	value: TestClass,
+	name: 'instanceOf',
+	true: validInstances,
+	false: difference(testValues, validInstances),
 	coerceTrue: [],
 	coerceFalse: []
 };
@@ -150,6 +185,13 @@ export const integerData = {
 	false: difference(testValues, validIntegers, validInfinities),
 	coerceTrue: coerceIntegerTrue,
 	coerceFalse: coerceNumberFalse.concat(coerceFloatTrue, coerceInfinity)
+};
+export const jsonData = {
+	name: 'json',
+	true: ['[]', '{}', '{"test":"test"}'],
+	false: ['json'].concat(validDates, validFunctions, validObjects, validRegExps),
+	coerceTrue: [],
+	coerceFalse: []
 };
 export const floatData = {
 	name: 'float',
@@ -164,7 +206,7 @@ export const numberData = {
 	name: 'number',
 	skip: ['integer', 'float'],
 	true: validFloats.concat(validIntegers, validInfinities),
-	false: difference(testValues, validFloats, validIntegers, validInfinities),
+	false: difference(testValues, validFloats, validIntegers, validInfinities, [NaN]),
 	coerceTrue: coerceIntegerTrue.concat(coerceInfinity),
 	coerceFalse: coerceNumberFalse
 };
@@ -182,14 +224,14 @@ export const regExpData = {
 	true: validRegExps,
 	false: difference(testValues, validRegExps),
 	coerceTrue: ['test', '/[a-z]+/', '/[a-z]+/gi'],
-	coerceFalse: difference(testValues, validStrings, validRegExps)
+	coerceFalse: difference(testValues, validStrings, validEnums, validRegExps)
 };
 export const stringData = {
 	value: String,
 	name: 'string',
 	true: validStrings,
-	false: difference(testValues, validStrings),
-	coerceTrue: difference(testValues, validStrings, [null, undefined]),
+	false: difference(testValues, validStrings, validEnums),
+	coerceTrue: difference(testValues, validStrings, validEnums, [null, undefined]),
 	coerceFalse: [null, undefined]
 };
 
@@ -198,6 +240,7 @@ export const testTypes = [
 	booleanData,
 	dateData,
 	functionData,
+	instanceData,
 	integerData,
 	floatData,
 	numberData,

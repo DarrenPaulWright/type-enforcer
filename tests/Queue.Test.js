@@ -1,10 +1,9 @@
 import { assert } from 'chai';
 import { Queue } from '../src';
+import { TestClass } from './testValues';
 
 const emptyFunction = () => {
 };
-
-class TestClass {}
 
 describe('Queue', () => {
 	describe('.add', () => {

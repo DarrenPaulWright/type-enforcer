@@ -8,9 +8,10 @@ module.exports = [{
 	files: [
 		'tests/TestUtil.js',
 		'tests/testValues.js',
-		'tests/equality/compareValues.js',
-		'tests/enforcer/enforceTestUtility.js',
-		'tests/methods/methodTestUtility.js'
+		'tests/compareValues.js',
+		'tests/isTestUtility.js',
+		'tests/enforceTestUtility.js',
+		'tests/methodTestUtility.js'
 	]
 }, {
 	type: 'specs',

@@ -1,5 +1,5 @@
-import isArray from '../checks/types/isArray';
-import isNumber from '../checks/types/isNumber';
+import isArray from '../checks/isArray';
+import isNumber from '../checks/isNumber';
 
 const slice = [].slice;
 

@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+## [1.0.0]
+### Changed
+- enforceInstance is now enforceInstanceOf and methodInstance is methodInstanceOf
+- Moved CssSize, DockPoint, Thickness, and Element classes and functions to new type-enforcer-ui-addon
+- Moved Point and Vector classes and functions to new type-enforcer-math-addon
+
+### Removed
+- privateProp
+
 ## [0.6.2] - 2019-10-09
 ### Changed
 - Don't use .apply in Queue.trigger if no context is provided

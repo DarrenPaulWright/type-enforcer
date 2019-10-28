@@ -15,7 +15,7 @@
 		"docs-checks": "jsdoc2md src/checks/**/*.js > docs/checks.md -t docs/docs.hbs --plugin dmd-readable",
 		"docs-queue": "jsdoc2md src/Queue.js > docs/Queue.md -t docs/docs.hbs --plugin dmd-readable",
 		"docs-enum": "jsdoc2md src/Enum.js > docs/Enum.md -t docs/docs.hbs --plugin dmd-readable",
-		"docs-removable": "jsdoc2md src/mixins/Removable.js > docs/Removable.md -t docs/docs.hbs --plugin dmd-readable",
+		"docs-removable": "jsdoc2md src/Removable.js > docs/Removable.md -t docs/docs.hbs --plugin dmd-readable",
 		"docs-castarray": "jsdoc2md src/utility/castArray.js > docs/castArray.md -t docs/docs.hbs --plugin dmd-readable",
 		"docs-applySettings": "jsdoc2md src/utility/applySettings.js > docs/applySettings.md -t docs/docs.hbs --plugin dmd-readable",
 		"docs-privateVars": "jsdoc2md src/utility/PrivateVars.js > docs/PrivateVars.md -t docs/docs.hbs --plugin dmd-readable",

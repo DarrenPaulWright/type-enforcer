@@ -1,15 +1,15 @@
-import enforceArray from './types/enforceArray';
-import enforceBoolean from './types/enforceBoolean';
-import enforceDate from './types/enforceDate';
-import enforceEnum from './types/enforceEnum';
-import enforceFloat from './types/enforceFloat';
-import enforceFunction from './types/enforceFunction';
-import enforceInstance from './types/enforceInstance';
-import enforceInteger from './types/enforceInteger';
-import enforceNumber from './types/enforceNumber';
-import enforceObject from './types/enforceObject';
-import enforceRegExp from './types/enforceRegExp';
-import enforceString from './types/enforceString';
+import enforceArray from './enforceArray';
+import enforceBoolean from './enforceBoolean';
+import enforceDate from './enforceDate';
+import enforceEnum from './enforceEnum';
+import enforceFloat from './enforceFloat';
+import enforceFunction from './enforceFunction';
+import enforceInstanceOf from './enforceInstanceOf';
+import enforceInteger from './enforceInteger';
+import enforceNumber from './enforceNumber';
+import enforceObject from './enforceObject';
+import enforceRegExp from './enforceRegExp';
+import enforceString from './enforceString';
 
 /**
  * Utility functions for enforcing data types.
@@ -30,7 +30,7 @@ export default {
 	enum: enforceEnum,
 	float: enforceFloat,
 	function: enforceFunction,
-	instance: enforceInstance,
+	instanceOf: enforceInstanceOf,
 	integer: enforceInteger,
 	number: enforceNumber,
 	object: enforceObject,

@@ -14,10 +14,34 @@
 <br><a name="method"></a>
 
 ### method : <code>object</code>
-> Enforce data types and remove common boilerplate code on class methods.> > ``` javascript> import { method } from 'type-enforcer';> > // Or import individual functions> import { methodBoolean, methodString } from 'type-enforcer';> ```
+> Enforce data types and remove common boilerplate code on class methods.
+> 
+> ``` javascript
+> import { method } from 'type-enforcer';
+> 
+> // Or import individual functions
+> import { methodBoolean, methodString } from 'type-enforcer';
+> ```
 
 **Example**  
-``` javascript// Use it as a prototype:const Thing = function() {};Thing.prototype.myMethod = method.string([options]);// or in a class:class Thing() {}Thing.prototype.myMethod = method.string([options]);// or as a non-prototype method:const Thing = function() {    this.myMethod = method.string([options]);};```
+``` javascript
+// Use it as a prototype:
+const Thing = function() {};
+
+Thing.prototype.myMethod = method.string([options]);
+
+
+// or in a class:
+class Thing() {}
+
+Thing.prototype.myMethod = method.string([options]);
+
+
+// or as a non-prototype method:
+const Thing = function() {
+    this.myMethod = method.string([options]);
+};
+```
 
 * [method](#method) : <code>object</code>
     * [.any([options])](#method.any) ⇒ <code>function</code>
@@ -27,7 +51,7 @@
     * [.enum([options])](#method.enum) ⇒ <code>function</code>
     * [.float([options])](#method.float) ⇒ <code>function</code>
     * [.function([options])](#method.function) ⇒ <code>function</code>
-    * [.instance([options])](#method.instance) ⇒ <code>function</code>
+    * [.instanceOf([options])](#method.instanceOf) ⇒ <code>function</code>
     * [.int([options])](#method.int) ⇒ <code>function</code>
     * [.keyValue([options])](#method.keyValue) ⇒ <code>function</code>
     * [.number([options])](#method.number) ⇒ <code>function</code>
@@ -59,7 +83,38 @@
 | [options.stringify] | <code>Boolean</code> | <code>false</code> | If true, then call toString() on the value before returning it (if the value has a toString method) |
 
 **Example**  
-``` javascriptimport { method } from 'type-enforcer';const Widget = function() {    someMethod = method.any({        set(newValue) {            console.log(this);            console.log(newValue);        }    });    anotherMethod = method.any();    thirdMethod = method.any({        get(newValue) {            return 'item 2';        }    });};const widget = new Widget();widget.someMethod('a').anotherMethod(42).thirdMethod('item 1');// => console.log widget and 'a'widget.someMethod();// => 'a'widget.anotherMethod();// => 42widget.thirdMethod();// => 'item 2'```
+``` javascript
+import { method } from 'type-enforcer';
+
+const Widget = function() {
+    someMethod = method.any({
+        set(newValue) {
+            console.log(this);
+            console.log(newValue);
+        }
+    });
+    anotherMethod = method.any();
+    thirdMethod = method.any({
+        get(newValue) {
+            return 'item 2';
+        }
+    });
+};
+
+const widget = new Widget();
+
+widget.someMethod('a').anotherMethod(42).thirdMethod('item 1');
+// => console.log widget and 'a'
+
+widget.someMethod();
+// => 'a'
+
+widget.anotherMethod();
+// => 42
+
+widget.thirdMethod();
+// => 'item 2'
+```
 
 <br><a name="method.array"></a>
 
@@ -163,20 +218,20 @@
 | [options.bind] | <code>boolean</code> | <code>true</code> | Binds the set function to the same context as the method. |
 
 
-<br><a name="method.instance"></a>
+<br><a name="method.instanceOf"></a>
 
-#### method.instance([options]) ⇒ <code>function</code>
+#### method.instanceOf([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting an instance of a specific constructor
 
-**Alias:** `methodInstance`
+**Alias:** `methodInstanceOf`
 
 **Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
-| [options.enforce] | <code>function</code> | <code>enforce.instance</code> |  |
-| [options.instance] | <code>Constructor</code> |  | The item to run enforce.instance against |
+| [options.enforce] | <code>function</code> | <code>enforce.instanceOf</code> |  |
+| [options.instanceOf] | <code>Constructor</code> |  | The item to run enforce.instanceOf against |
 
 
 <br><a name="method.int"></a>

@@ -9,10 +9,11 @@ const objectStringMap = new Map()
 const typeOfMap = new Map()
 	.set(Boolean, 'boolean')
 	.set(Number, 'number')
-	.set(String, 'string');
+	.set(String, 'string')
+	.set(Symbol, 'symbol');
 
 /**
- * @description Check if a value is an instance of a constructor. Fixes issues with native instanceOf and primitives Boolean, Number, and String (see example).
+ * @description Check if a value is an instance of a constructor. Fixes issues with native instanceOf and primitives Boolean, Number, String, and Symbol (see example).
  *
  * @example
  * ``` javascript
@@ -34,6 +35,11 @@ const typeOfMap = new Map()
  * 'a string' instanceof String
  *  => false
  * isInstanceOf('a string', String);
+ *  => true
+ *
+ * Symbol() instanceof Symbol
+ *  => false
+ * isInstanceOf(Symbol(), Symbol);
  *  => true
  * ```
  *

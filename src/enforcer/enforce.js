@@ -10,6 +10,7 @@ import enforceNumber from './enforceNumber';
 import enforceObject from './enforceObject';
 import enforceRegExp from './enforceRegExp';
 import enforceString from './enforceString';
+import enforceSymbol from './enforceSymbol';
 
 /**
  * Utility functions for enforcing data types.
@@ -35,5 +36,6 @@ export default {
 	number: enforceNumber,
 	object: enforceObject,
 	regExp: enforceRegExp,
-	string: enforceString
+	string: enforceString,
+	symbol: enforceSymbol
 };

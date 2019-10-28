@@ -1,4 +1,6 @@
+import displayValue from 'display-value';
 import {
+	enforce,
 	enforceArray,
 	enforceBoolean,
 	enforceDate,
@@ -10,9 +12,11 @@ import {
 	enforceNumber,
 	enforceObject,
 	enforceRegExp,
-	enforceString
+	enforceString,
+	enforceSymbol
 } from '../src';
 import enforceTestUtility from './enforceTestUtility';
+import { multiTest } from './TestUtil';
 import {
 	arrayData,
 	booleanData,
@@ -26,6 +30,7 @@ import {
 	objectData,
 	regExpData,
 	stringData,
+	symbolData,
 	TestClass,
 	validEnumObject
 } from './testValues';
@@ -91,5 +96,26 @@ describe('enforce', () => {
 
 	describe('.string', () => {
 		enforceTestUtility(stringData, enforceString, (value) => value.toString());
+	});
+
+	describe('.symbol', () => {
+		enforceTestUtility(symbolData, enforceSymbol);
+
+		multiTest({
+			values: symbolData.coerceTrue.map((item) => {
+				return {
+					input: item,
+					output: Symbol(String(item)).toString().slice(7, -1)
+				};
+			}),
+			message(input) {
+				return `should return a coerced ${displayValue(input)} when coerce is true`;
+			},
+			test(value) {
+				return enforce.symbol(value, value, true).toString().slice(7, -1);
+			},
+			inputKey: 'input',
+			outputKey: 'output'
+		});
 	});
 });

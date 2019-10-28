@@ -34,6 +34,7 @@ export const validObjects = [{}, {
 }, new Object(), Object()];
 export const validRegExps = [/asdf/g, new RegExp('test 2'), RegExp()];
 export const validStrings = ['', 'test', new String('test2'), String('test3')];
+export const validSymbols = [Symbol(), Symbol('test')];
 
 // the following numeric strings are pulled from https://github.com/minimaxir/big-list-of-naughty-strings
 const coerceInfinity = [
@@ -234,6 +235,14 @@ export const stringData = {
 	coerceTrue: difference(testValues, validStrings, validEnums, [null, undefined]),
 	coerceFalse: [null, undefined]
 };
+export const symbolData = {
+	value: Symbol,
+	name: 'symbol',
+	true: validSymbols,
+	false: difference(testValues, validSymbols),
+	coerceTrue: stringData.coerceTrue,
+	coerceFalse: stringData.coerceFalse
+};
 
 export const testTypes = [
 	arrayData,
@@ -246,5 +255,6 @@ export const testTypes = [
 	numberData,
 	objectData,
 	regExpData,
-	stringData
+	stringData,
+	symbolData
 ];

@@ -30,6 +30,7 @@
     * [.object(value, [coerce])](#is.object) ⇒ <code>Boolean</code>
     * [.regExp(value, [coerce])](#is.regExp) ⇒ <code>Boolean</code>
     * [.string(value, [coerce])](#is.string) ⇒ <code>Boolean</code>
+    * [.symbol(value, [coerce])](#is.symbol) ⇒ <code>Boolean</code>
 
 
 <br><a name="is.array"></a>
@@ -114,7 +115,7 @@
 <br><a name="is.instanceOf"></a>
 
 #### is.instanceOf(object, constructor) ⇒ <code>Boolean</code>
-> Check if a value is an instance of a constructor. Fixes issues with native instanceOf and primitives Boolean, Number, and String (see example).
+> Check if a value is an instance of a constructor. Fixes issues with native instanceOf and primitives Boolean, Number, String, and Symbol (see example).
 
 **Alias:** `isInstanceOf`
 
@@ -125,7 +126,7 @@
 | constructor | <code>function</code> | 
 
 **Example**  
-``` javascriptimport { isInstanceOf } from 'type-enforcer';isInstanceOf(false, Boolean); => truefalse instanceof Boolean => falseisInstanceOf(false, Boolean); => true42 instanceof Number => falseisInstanceOf(42, Number); => true'a string' instanceof String => falseisInstanceOf('a string', String); => true```
+``` javascriptimport { isInstanceOf } from 'type-enforcer';isInstanceOf(false, Boolean); => truefalse instanceof Boolean => falseisInstanceOf(false, Boolean); => true42 instanceof Number => falseisInstanceOf(42, Number); => true'a string' instanceof String => falseisInstanceOf('a string', String); => trueSymbol() instanceof Symbol => falseisInstanceOf(Symbol(), Symbol); => true```
 
 <br><a name="is.integer"></a>
 
@@ -221,6 +222,22 @@
 
 **Example**  
 ``` javascriptimport { isString } from 'type-enforcer';isString('type');// => trueisString(new Date());// => falseisString(new Date(), true);// => true```
+
+<br><a name="is.symbol"></a>
+
+#### is.symbol(value, [coerce]) ⇒ <code>Boolean</code>
+> Check if a value is a Symbol
+
+**Alias:** `isSymbol`
+
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | <code>\*</code> |  |  |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a Symbol. Anything that can be coerced into a string can also be coerced into a Symbol. |
+
+**Example**  
+``` javascriptimport { isSymbol } from 'type-enforcer';isSymbol(Symbol());// => trueisSymbol(new Date());// => falseisSymbol('string', true);// => true```
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg
 [npm-url]: https://npmjs.com/package/type-enforcer

@@ -13,7 +13,8 @@ import {
 	isNumber,
 	isObject,
 	isRegExp,
-	isString
+	isString,
+	isSymbol
 } from '../src';
 import isTestUtility from './isTestUtility';
 import {
@@ -28,6 +29,7 @@ import {
 	objectData,
 	regExpData,
 	stringData,
+	symbolData,
 	testTypes
 } from './testValues';
 
@@ -100,5 +102,9 @@ describe('checks', () => {
 
 	describe('isString', () => {
 		isTestUtility(stringData, isString);
+	});
+
+	describe('isSymbol', () => {
+		isTestUtility(symbolData, isSymbol);
 	});
 });

@@ -16,6 +16,7 @@ import {
 	methodQueue,
 	methodRegExp,
 	methodString,
+	methodSymbol,
 	Queue,
 	Removable
 } from '../src';
@@ -33,6 +34,7 @@ import {
 	objectData,
 	regExpData,
 	stringData,
+	symbolData,
 	TestClass,
 	validEnumObject
 } from './testValues';
@@ -503,6 +505,10 @@ describe('method', () => {
 
 	describe('.string', () => {
 		testMethodType({...stringData, init: ''}, methodString);
+	});
+
+	describe('.symbol', () => {
+		testMethodType({...symbolData}, methodSymbol);
 	});
 });
 

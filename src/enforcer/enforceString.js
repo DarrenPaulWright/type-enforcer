@@ -1,4 +1,5 @@
 import isString from '../checks/isString';
+import isSymbol from '../checks/isSymbol';
 
 /**
  * Enforce that a value is a string. Uses [isString](docs/checks.md#isString).
@@ -28,6 +29,9 @@ import isString from '../checks/isString';
  */
 export default (value, alt, coerce) => {
 	if (coerce === true) {
+		if (isSymbol(value)) {
+			return value.toString();
+		}
 		if (!isString(value) && isString(value, true)) {
 			return value + '';
 		}

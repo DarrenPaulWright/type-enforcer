@@ -13,6 +13,7 @@ import methodObject from './methodObject';
 import methodQueue from './methodQueue';
 import methodRegExp from './methodRegExp';
 import methodString from './methodString';
+import methodSymbol from './methodSymbol';
 
 /**
  * Enforce data types and remove common boilerplate code on class methods.
@@ -61,5 +62,6 @@ export default {
 	number: methodNumber,
 	object: methodObject,
 	regExp: methodRegExp,
-	string: methodString
+	string: methodString,
+	symbol: methodSymbol
 };

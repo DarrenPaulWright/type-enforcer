@@ -10,6 +10,7 @@ import {
 	isInstanceOf,
 	isInteger,
 	isJson,
+	isMap,
 	isNumber,
 	isObject,
 	isRegExp,
@@ -25,6 +26,7 @@ import {
 	functionData,
 	integerData,
 	jsonData,
+	mapData,
 	numberData,
 	objectData,
 	regExpData,
@@ -81,6 +83,10 @@ describe('checks', () => {
 
 	describe('isJson', () => {
 		isTestUtility(jsonData, isJson);
+	});
+
+	describe('isMap', () => {
+		isTestUtility(mapData, isMap);
 	});
 
 	describe('isNumber', () => {

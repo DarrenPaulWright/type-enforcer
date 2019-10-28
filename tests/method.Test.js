@@ -11,6 +11,7 @@ import {
 	methodInstanceOf,
 	methodInteger,
 	methodKeyValue,
+	methodMap,
 	methodNumber,
 	methodObject,
 	methodQueue,
@@ -30,6 +31,7 @@ import {
 	functionData,
 	instanceData,
 	integerData,
+	mapData,
 	numberData,
 	objectData,
 	regExpData,
@@ -277,6 +279,10 @@ describe('method', () => {
 
 			runTests(TestConstructor);
 		});
+	});
+
+	describe('.map', () => {
+		testMethodType({...mapData}, methodMap);
 	});
 
 	describe('.number', () => {

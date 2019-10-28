@@ -1,21 +1,21 @@
-import enforceSymbol from '../enforcer/enforceSymbol';
+import enforceMap from '../enforcer/enforceMap';
 import methodAny from './methodAny';
 
 /**
- * Builds a chainable method for getting/setting a Symbol
+ * Builds a chainable method for getting/setting a Map
  *
- * @function method.symbol
+ * @function method.map
  * @extends method.any
- * @alias methodSymbol
+ * @alias methodMap
  *
  * @arg {Object} [options] - Same as {@link method.any} with the following differences:
- * @arg {Function} [options.enforce=enforce.symbol]
+ * @arg {Function} [options.enforce=enforce.map]
  * @arg {Boolean} [options.coerce=false] - If true then coerce the value when possible
  *
  * @returns {Function}
  */
 export default methodAny.extend({
 	enforce: (newValue, oldValue, options) => {
-		return enforceSymbol(newValue, oldValue, options.coerce);
+		return enforceMap(newValue, oldValue, options.coerce);
 	}
 });

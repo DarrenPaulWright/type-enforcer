@@ -8,6 +8,7 @@ import methodFunction from './methodFunction';
 import methodInstanceOf from './methodInstanceOf';
 import methodInteger from './methodInteger';
 import methodKeyValue from './methodKeyValue';
+import methodMap from './methodMap';
 import methodNumber from './methodNumber';
 import methodObject from './methodObject';
 import methodQueue from './methodQueue';
@@ -59,6 +60,7 @@ export default {
 	integer: methodInteger,
 	instanceOf: methodInstanceOf,
 	keyValue: methodKeyValue,
+	map: methodMap,
 	number: methodNumber,
 	object: methodObject,
 	regExp: methodRegExp,

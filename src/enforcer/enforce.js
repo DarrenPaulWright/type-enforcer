@@ -6,6 +6,7 @@ import enforceFloat from './enforceFloat';
 import enforceFunction from './enforceFunction';
 import enforceInstanceOf from './enforceInstanceOf';
 import enforceInteger from './enforceInteger';
+import enforceMap from './enforceMap';
 import enforceNumber from './enforceNumber';
 import enforceObject from './enforceObject';
 import enforceRegExp from './enforceRegExp';
@@ -33,6 +34,7 @@ export default {
 	function: enforceFunction,
 	instanceOf: enforceInstanceOf,
 	integer: enforceInteger,
+	map: enforceMap,
 	number: enforceNumber,
 	object: enforceObject,
 	regExp: enforceRegExp,

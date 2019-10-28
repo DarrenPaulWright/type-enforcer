@@ -26,6 +26,7 @@
     * [.function(value, alt)](#enforce.function) ⇒ <code>function</code>
     * [.instanceOf(value, constructor, alt)](#enforce.instanceOf) ⇒ <code>Object</code>
     * [.integer(value, alt, [coerce], [minValue], [maxValue])](#enforce.integer) ⇒ <code>int</code>
+    * [.map(value, alt, [coerce])](#enforce.map) ⇒ <code>Object</code>
     * [.number(value, alt, [coerce], [minValue], [maxValue])](#enforce.number) ⇒ <code>Number</code>
     * [.object(value, alt, [coerce])](#enforce.object) ⇒ <code>Object</code>
     * [.regExp(value, alt, [coerce])](#enforce.regExp) ⇒ <code>RegExp</code>
@@ -171,6 +172,23 @@
 
 **Example**  
 ``` javascriptimport { enforce } from 'type-enforcer';enforce.integer(42, 12);// => 42enforce.integer('42', 12);// => 12enforce.integer('42', 12, true);// => 42```
+
+<br><a name="enforce.map"></a>
+
+#### enforce.map(value, alt, [coerce]) ⇒ <code>Object</code>
+> Enforce that a value is a Map. Uses [isMap](docs/checks.md#isMap).
+
+**Alias:** `enforceMap`
+
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | <code>\*</code> |  |  |
+| alt | <code>Map</code> |  | Returned if the value is not the correct type |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+
+**Example**  
+``` javascriptimport { enforce } from 'type-enforcer';const a = new Map();const b = new Map();enforce.map(a, b);// => aenforce.map('map', b);// => b```
 
 <br><a name="enforce.number"></a>
 

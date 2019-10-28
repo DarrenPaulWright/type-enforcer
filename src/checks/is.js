@@ -6,6 +6,7 @@ import isFunction from './isFunction';
 import isInstanceOf from './isInstanceOf';
 import isInteger from './isInteger';
 import isJson from './isJson';
+import isMap from './isMap';
 import isNumber from './isNumber';
 import isObject from './isObject';
 import isRegExp from './isRegExp';
@@ -33,6 +34,7 @@ export default {
 	instanceOf: isInstanceOf,
 	integer: isInteger,
 	json: isJson,
+	map: isMap,
 	number: isNumber,
 	object: isObject,
 	regExp: isRegExp,

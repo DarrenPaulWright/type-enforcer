@@ -30,6 +30,7 @@
     * [.instanceOf([options])](#method.instanceOf) ⇒ <code>function</code>
     * [.int([options])](#method.int) ⇒ <code>function</code>
     * [.keyValue([options])](#method.keyValue) ⇒ <code>function</code>
+    * [.map([options])](#method.map) ⇒ <code>function</code>
     * [.number([options])](#method.number) ⇒ <code>function</code>
     * [.object([options])](#method.object) ⇒ <code>function</code>
     * [.queue([options])](#method.queue) ⇒ <code>function</code>
@@ -214,6 +215,22 @@
 | [options.get] | <code>function</code> | Called if the method is called with a single, non-object, arg. Provides the same arg, sets the context to the methods constructor. |
 
 
+<br><a name="method.map"></a>
+
+#### method.map([options]) ⇒ <code>function</code>
+> Builds a chainable method for getting/setting a Map
+
+**Alias:** `methodMap`
+
+**Extends**: [<code>any</code>](#method.any)  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options.enforce] | <code>function</code> | <code>enforce.map</code> |  |
+| [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+
+
 <br><a name="method.number"></a>
 
 #### method.number([options]) ⇒ <code>function</code>
@@ -302,7 +319,7 @@
 <br><a name="method.symbol"></a>
 
 #### method.symbol([options]) ⇒ <code>function</code>
-> Builds a chainable method for getting/setting a symbol
+> Builds a chainable method for getting/setting a Symbol
 
 **Alias:** `methodSymbol`
 

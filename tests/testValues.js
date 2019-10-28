@@ -29,6 +29,7 @@ export const validInstances = [new TestClass(1), new TestClass(2)];
 export const validIntegers = [1, 5, new Number(42), Number(11)];
 export const validFloats = [1.3, 2.5, -10.00000001, 3.14159, new Number(42.2), Number(11.3)];
 export const validInfinities = [Infinity, -Infinity];
+export const validMaps = [new Map(), new Map().set('test', 12)];
 export const validObjects = [{}, {
 	test1: 1
 }, new Object(), Object()];
@@ -115,6 +116,7 @@ const coerceNumberFalse = [
 	'1\'000\'000,00',
 	NaN
 ];
+const coerceObjectTrue = ['{}', '{"test":"test"}'];
 
 const testValues = [null, undefined].concat(
 	validArrays,
@@ -126,6 +128,7 @@ const testValues = [null, undefined].concat(
 	validIntegers,
 	validFloats,
 	validInfinities,
+	validMaps,
 	validObjects,
 	validRegExps,
 	validStrings,
@@ -211,12 +214,20 @@ export const numberData = {
 	coerceTrue: coerceIntegerTrue.concat(coerceInfinity),
 	coerceFalse: coerceNumberFalse
 };
+export const mapData = {
+	value: Map,
+	name: 'map',
+	true: validMaps,
+	false: difference(testValues, validMaps),
+	coerceTrue: coerceObjectTrue.concat(validObjects),
+	coerceFalse: difference(testValues, validMaps, validObjects)
+};
 export const objectData = {
 	value: Object,
 	name: 'object',
 	true: validObjects,
 	false: [null, undefined, true, false],
-	coerceTrue: ['{}', '{"test":"test"}'],
+	coerceTrue: coerceObjectTrue,
 	coerceFalse: validStrings
 };
 export const regExpData = {
@@ -253,6 +264,7 @@ export const testTypes = [
 	integerData,
 	floatData,
 	numberData,
+	mapData,
 	objectData,
 	regExpData,
 	stringData,

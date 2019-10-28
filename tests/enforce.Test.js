@@ -9,6 +9,7 @@ import {
 	enforceFunction,
 	enforceInstanceOf,
 	enforceInteger,
+	enforceMap,
 	enforceNumber,
 	enforceObject,
 	enforceRegExp,
@@ -26,6 +27,7 @@ import {
 	functionData,
 	instanceData,
 	integerData,
+	mapData,
 	numberData,
 	objectData,
 	regExpData,
@@ -72,6 +74,10 @@ describe('enforce', () => {
 
 	describe('.integer', () => {
 		enforceTestUtility(integerData, enforceInteger, Number);
+	});
+
+	describe('.map', () => {
+		enforceTestUtility(mapData, enforceMap);
 	});
 
 	describe('.number', () => {

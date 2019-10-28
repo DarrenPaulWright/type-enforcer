@@ -26,6 +26,7 @@
     * [.instanceOf(object, constructor)](#is.instanceOf) ⇒ <code>Boolean</code>
     * [.integer(value, [coerce])](#is.integer) ⇒ <code>Boolean</code>
     * [.json(value)](#is.json) ⇒ <code>Boolean</code>
+    * [.map(value, [coerce])](#is.map) ⇒ <code>Boolean</code>
     * [.number(value, [coerce])](#is.number) ⇒ <code>Boolean</code>
     * [.object(value, [coerce])](#is.object) ⇒ <code>Boolean</code>
     * [.regExp(value, [coerce])](#is.regExp) ⇒ <code>Boolean</code>
@@ -158,6 +159,22 @@
 
 **Example**  
 ``` javascriptimport { isJson } from 'type-enforcer';```
+
+<br><a name="is.map"></a>
+
+#### is.map(value, [coerce]) ⇒ <code>Boolean</code>
+> Check if a value is a Map
+
+**Alias:** `isMap`
+
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | <code>\*</code> |  |  |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a Map. Objects or Strings that can be coerced into Objects can be coerced into Maps. |
+
+**Example**  
+``` javascriptimport { isMap } from 'type-enforcer';isMap(new Map());// => trueisMap(new Date());// => falseisMap({'a': 12}, new Map(), true);// => Map with key 'a' set to 12```
 
 <br><a name="is.number"></a>
 

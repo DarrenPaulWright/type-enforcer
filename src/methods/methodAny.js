@@ -2,20 +2,22 @@ import { clone } from 'object-agent';
 import isArray from '../checks/isArray';
 import isInstanceOf from '../checks/isInstanceOf';
 import isString from '../checks/isString';
+import isSymbol from '../checks/isSymbol';
 import PrivateVars from '../utility/PrivateVars';
 
 export const _ = new PrivateVars();
 
+const bindCallback = (callback, self) => {
+	if (isString(callback) || isSymbol(callback)) {
+		callback = self[callback];
+	}
+
+	return callback ? callback.bind(self) : undefined;
+};
+
 const buildMethod = (defaultSettings = {}, onInit) => {
 	const method = (options) => {
 		const key = Symbol();
-		const bindCallback = (callback, self) => {
-			if (isString(callback) || typeof callback === 'symbol') {
-				callback = self[callback];
-			}
-
-			return callback ? callback.bind(self) : undefined;
-		};
 
 		options = {
 			...clone(defaultSettings),
@@ -134,11 +136,11 @@ const buildMethod = (defaultSettings = {}, onInit) => {
  *
  * @arg {Object}   [options]
  * @arg {*} [options.init] - The initial value
- * @arg {Function} [options.enforce] - Enforce this data type
- * @arg {Function} [options.compare] - Compares a new value to the current value. Return true if the two values are different.
- * @arg {Function} [options.before] - Called before a new valid value is set. Provides the prior value, sets the context to the methods constructor.
- * @arg {Function} [options.set] - Called after a new valid value is set. Provides the new value, sets the context to the methods constructor.
- * @arg {Function} [options.get] - Called to get the value, sets the context to the methods constructor.
+ * @arg {Function|String|Symbol} [options.enforce] - Enforce this data type.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name.
+ * @arg {Function|String|Symbol} [options.compare] - Compares a new value to the current value. Return true if the two values are different.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name.
+ * @arg {Function|String|Symbol} [options.before] - Called before a new valid value is set. Provides the prior value.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name.
+ * @arg {Function|String|Symbol} [options.set] - Called after a new valid value is set. Provides the new value.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name.
+ * @arg {Function|String|Symbol} [options.get] - Called to get the value.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name.
  * @arg {Array|*}  [options.other] - Another value/type or array of other values/types that can be set
  * @arg {Boolean}  [options.stringify=false] - If true, then call toString() on the value before returning it (if the value has a toString method)
  *
@@ -149,6 +151,6 @@ export default buildMethod({
 		return newValue;
 	},
 	compare(newValue, oldValue) {
-		return newValue !== oldValue;
+		return (newValue !== oldValue);
 	}
 });

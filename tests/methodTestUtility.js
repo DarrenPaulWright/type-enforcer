@@ -3,36 +3,53 @@ import displayValue from 'display-value';
 import { powerset } from 'object-agent';
 import { method } from '../src';
 
-const startCase = (string) => string.split(' ').map((word) => word.charAt(0).toUpperCase()).join(' ');
+const startCase = (string) => string.split(' ')
+	.map((word) => word.charAt(0).toUpperCase() + word.substring(1))
+	.join(' ');
 
 const TEST_METHOD = 'testMethod';
-const variantSet = powerset(['get', 'other', 'before', 'set']);
-const everyMethodVariant = variantSet.map((combination) => {
-	return {
-		name: TEST_METHOD + combination.map(startCase).join(''),
-		options: combination
-	};
-});
+const everyMethodVariant = powerset(['get', 'other', 'before', 'set'])
+	.map((combination) => {
+		return {
+			name: TEST_METHOD + combination.map(startCase).join(''),
+			options: combination
+		};
+	});
 
 const processOutput = (value, options = {}) => {
 	return (options.stringify && value && value.toString) ? value.toString() : value;
 };
 
+const beforeSymbol = Symbol();
+const setSymbol = Symbol();
+const getSymbol = Symbol();
+
 export const testMethodType = (settings, thisMethod) => {
 	let testBefore = '';
 	let testSet = '';
+	let testContext;
 	const testBeforeCallback = function(oldValue) {
+		testContext = this;
 		testBefore = processOutput(oldValue, settings.extraProps);
 	};
 	const testSetCallback = function(newValue) {
+		testContext = this;
 		testSet = processOutput(newValue, settings.extraProps);
 	};
 	const testGetCallback = function() {
+		testContext = this;
 		return settings.init;
 	};
 	const testGetCallbackWithTestItem = function() {
+		testContext = this;
 		return settings.true[0];
 	};
+
+	beforeEach(() => {
+		testBefore = null;
+		testSet = null;
+		testContext = null;
+	});
 
 	const runTests = (TestConstructor, init, testItem, coerce) => {
 		everyMethodVariant.forEach((methodData) => {
@@ -64,6 +81,7 @@ export const testMethodType = (settings, thisMethod) => {
 						testConstructor[methodName](testItem);
 
 						assert.deepEqual(testConstructor[methodName](), init);
+						assert.equal(testConstructor, testContext);
 					});
 				}
 				else {
@@ -84,6 +102,7 @@ export const testMethodType = (settings, thisMethod) => {
 						testConstructor[methodName](testItem);
 
 						assert.deepEqual(testSet, testItem);
+						assert.equal(testConstructor, testContext);
 					});
 
 					it('should execute the "set" callback when the value is set to the current value and a second parameter of "true" is provided', () => {
@@ -119,6 +138,7 @@ export const testMethodType = (settings, thisMethod) => {
 						testConstructor[methodName](testItem);
 
 						assert.deepEqual(testBefore, init);
+						assert.equal(testConstructor, testContext);
 					});
 				}
 
@@ -199,7 +219,31 @@ export const testMethodType = (settings, thisMethod) => {
 		});
 	};
 
-	const getOptionCallback = (option, withTestItem) => {
+	const getOptionCallback = (option, withTestItem, isReassigned, isSymbol) => {
+		if (isSymbol) {
+			switch (option) {
+				case 'get':
+					return withTestItem ? testGetCallbackWithTestItem : getSymbol;
+				case 'other':
+					return undefined;
+				case 'before':
+					return beforeSymbol;
+				case 'set':
+					return setSymbol;
+			}
+		}
+		if (isReassigned) {
+			switch (option) {
+				case 'get':
+					return withTestItem ? testGetCallbackWithTestItem : 'testGetCallback';
+				case 'other':
+					return undefined;
+				case 'before':
+					return 'testBeforeCallback';
+				case 'set':
+					return 'testSetCallback';
+			}
+		}
 		switch (option) {
 			case 'get':
 				return withTestItem ? testGetCallbackWithTestItem : testGetCallback;
@@ -212,7 +256,7 @@ export const testMethodType = (settings, thisMethod) => {
 		}
 	};
 
-	const addMethodsTo = (applyTo, extraProps = {}) => {
+	const addMethodsTo = (applyTo, extraProps = {}, isReassigned, isSymbol) => {
 		everyMethodVariant.forEach((methodData) => {
 			const options = {
 				...settings.extraProps,
@@ -220,7 +264,7 @@ export const testMethodType = (settings, thisMethod) => {
 			};
 
 			methodData.options.forEach((option) => {
-				options[option] = getOptionCallback(option, extraProps.init);
+				options[option] = getOptionCallback(option, extraProps.init, isReassigned, isSymbol);
 			});
 
 			applyTo[methodData.name] = method[settings.name](options);
@@ -241,6 +285,64 @@ export const testMethodType = (settings, thisMethod) => {
 		}
 
 		addMethodsTo(TestConstructor1.prototype);
+
+		runTests(TestConstructor1, settings.init, settings.true[0], settings.coerce || []);
+	});
+
+	describe('(prototype) (reassigned methods string property)', () => {
+		class TestConstructor1 {
+			constructor() {
+				this.testBeforeCallback = testBeforeCallback;
+				this.testSetCallback = testSetCallback;
+				this.testGetCallback = testGetCallback;
+			}
+		}
+
+		addMethodsTo(TestConstructor1.prototype, {}, true);
+
+		runTests(TestConstructor1, settings.init, settings.true[0], settings.coerce || []);
+	});
+
+	describe('(prototype) (reassigned methods symbol property)', () => {
+		class TestConstructor1 {
+			constructor() {
+				this[beforeSymbol] = testBeforeCallback;
+				this[setSymbol] = testSetCallback;
+				this[getSymbol] = testGetCallback;
+			}
+		}
+
+		addMethodsTo(TestConstructor1.prototype, {}, true, true);
+
+		runTests(TestConstructor1, settings.init, settings.true[0], settings.coerce || []);
+	});
+
+	describe('(prototype) (reassigned method string proto)', () => {
+		class TestConstructor1 {
+		}
+
+		Object.assign(TestConstructor1.prototype, {
+			testBeforeCallback: testBeforeCallback,
+			testSetCallback: testSetCallback,
+			testGetCallback: testGetCallback
+		});
+
+		addMethodsTo(TestConstructor1.prototype, {}, true);
+
+		runTests(TestConstructor1, settings.init, settings.true[0], settings.coerce || []);
+	});
+
+	describe('(prototype) (reassigned method symbol proto)', () => {
+		class TestConstructor1 {
+		}
+
+		Object.assign(TestConstructor1.prototype, {
+			[beforeSymbol]: testBeforeCallback,
+			[setSymbol]: testSetCallback,
+			[getSymbol]: testGetCallback
+		});
+
+		addMethodsTo(TestConstructor1.prototype, {}, true, true);
 
 		runTests(TestConstructor1, settings.init, settings.true[0], settings.coerce || []);
 	});

@@ -33,7 +33,7 @@ export const validObjects = [{}, {
 	test1: 1
 }, new Object(), Object()];
 export const validRegExps = [/asdf/g, new RegExp('test 2'), RegExp()];
-export const validStrings = ['', 'test', new String('test2'), String('test3')];
+export const validStrings = ['test', '', new String('test2'), String('test3')];
 export const validSymbols = [Symbol(), Symbol('test')];
 
 // the following numeric strings are pulled from https://github.com/minimaxir/big-list-of-naughty-strings

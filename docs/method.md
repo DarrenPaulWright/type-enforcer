@@ -51,11 +51,11 @@
 | --- | --- | --- | --- |
 | [options] | <code>Object</code> |  |  |
 | [options.init] | <code>\*</code> |  | The initial value |
-| [options.enforce] | <code>function</code> |  | Enforce this data type |
-| [options.compare] | <code>function</code> |  | Compares a new value to the current value. Return true if the two values are different. |
-| [options.before] | <code>function</code> |  | Called before a new valid value is set. Provides the prior value, sets the context to the methods constructor. |
-| [options.set] | <code>function</code> |  | Called after a new valid value is set. Provides the new value, sets the context to the methods constructor. |
-| [options.get] | <code>function</code> |  | Called to get the value, sets the context to the methods constructor. |
+| [options.enforce] | <code>function</code>, <code>String</code>, <code>Symbol</code> |  | Enforce this data type.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name. |
+| [options.compare] | <code>function</code>, <code>String</code>, <code>Symbol</code> |  | Compares a new value to the current value. Return true if the two values are different.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name. |
+| [options.before] | <code>function</code>, <code>String</code>, <code>Symbol</code> |  | Called before a new valid value is set. Provides the prior value.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name. |
+| [options.set] | <code>function</code>, <code>String</code>, <code>Symbol</code> |  | Called after a new valid value is set. Provides the new value.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name. |
+| [options.get] | <code>function</code>, <code>String</code>, <code>Symbol</code> |  | Called to get the value.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name. |
 | [options.other] | <code>Array</code>, <code>\*</code> |  | Another value/type or array of other values/types that can be set |
 | [options.stringify] | <code>Boolean</code> | <code>false</code> | If true, then call toString() on the value before returning it (if the value has a toString method) |
 

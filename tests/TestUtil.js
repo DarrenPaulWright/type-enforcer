@@ -1,30 +1,7 @@
 import { assert } from 'chai';
 import displayValue from 'display-value';
-import { forOwn } from 'object-agent';
-import { isObject } from '../src';
-
-export const eachPair = (array1, array2, callback, isUnique = false) => {
-	let i;
-	let j;
-	const length1 = array1.length;
-	const length2 = array2.length;
-	let doBreak = false;
-
-	isUnique = array1 === array2 && isUnique;
-
-	for (i = 0; i < length1; i++) {
-		for (j = isUnique ? i + 1 : 0; j < length2; j++) {
-			if (callback(array1[i], array2[j])) {
-				doBreak = true;
-				break;
-			}
-		}
-
-		if (doBreak) {
-			break;
-		}
-	}
-};
+import { forOwn, mix } from 'object-agent';
+import isObject from '../src/checks/isObject';
 
 /**
  * @function multiTest
@@ -39,7 +16,6 @@ export const eachPair = (array1, array2, callback, isUnique = false) => {
  * @arg {String}       [settings.outputKey]
  * @arg {*}            [settings.output]
  * @arg {Boolean}      [settings.eachPair=false] - values must be an array, runs tests on every combination of two items from values
- * @arg {Boolean}      [settings.eachUniquePair=false] - like eachPair, but runs unique pairs
  * @arg {String}       [settings.assertion='equal']
  */
 export const multiTest = (settings) => {
@@ -131,10 +107,10 @@ export const multiTest = (settings) => {
 		});
 	}
 	else if (settings.eachPair) {
-		eachPair(settings.values, settings.values2 || settings.values, testDoubleArrayValue);
-	}
-	else if (settings.eachUniquePair) {
-		eachPair(settings.values, settings.values2 || settings.values, testDoubleArrayValue, true);
+		mix(settings.values, settings.values2 || settings.values)
+			.forEach((values) => {
+				testDoubleArrayValue(values[0], values[1]);
+			});
 	}
 	else {
 		settings.values.forEach(testSingleArrayValue);

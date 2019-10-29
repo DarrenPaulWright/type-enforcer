@@ -1,6 +1,7 @@
 import { assert } from 'chai';
-import { Removable } from '../src';
-import { TestClass } from './testValues';
+import { Removable } from '../index';
+
+class TestClass extends Removable {}
 
 describe('Removable', () => {
 	it('should call a callback added to onRemove, with context, when remove is called', () => {

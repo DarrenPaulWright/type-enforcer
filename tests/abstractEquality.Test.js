@@ -1,4 +1,5 @@
-import { abstractEquality } from '../src';
+import { multiTest } from 'type-enforcer-test-helper';
+import { abstractEquality } from '../index';
 import {
 	abstractEqual,
 	alwaysEqual,
@@ -8,7 +9,6 @@ import {
 	sameValueEqual,
 	sameValueNotEqual
 } from './compareValues';
-import { multiTest } from './TestUtil';
 
 describe('abstractEquality', () => {
 	multiTest({

@@ -1,5 +1,25 @@
 import { assert } from 'chai';
 import {
+	arrayData,
+	booleanData,
+	dateData,
+	floatData,
+	functionData,
+	instanceData,
+	integerData,
+	mapData,
+	numberData,
+	objectData,
+	regExpData,
+	setData,
+	stringData,
+	symbolData,
+	TestClass,
+	testMethod,
+	weakMapData,
+	weakSetData
+} from 'type-enforcer-test-helper';
+import {
 	method,
 	methodAny,
 	methodArray,
@@ -23,42 +43,21 @@ import {
 	methodWeakSet,
 	Queue,
 	Removable
-} from '../src';
-import { testMethodType } from './methodTestUtility';
-import {
-	arrayData,
-	booleanData,
-	dateData,
-	enumData,
-	floatData,
-	functionData,
-	instanceData,
-	integerData,
-	mapData,
-	numberData,
-	objectData,
-	regExpData,
-	setData,
-	stringData,
-	symbolData,
-	TestClass,
-	validEnumObject,
-	weakMapData,
-	weakSetData
-} from './testValues';
+} from '../index';
+import { enumData, validEnumObject } from './testValues';
 
 describe('method', () => {
 	describe('.any', () => {
-		testMethodType({
+		testMethod({
 			name: 'any',
 			true: ['string', 123],
 			false: [],
 			coerceTrue: []
-		}, methodAny);
+		}, methodAny, method);
 	});
 
 	describe('.array', () => {
-		testMethodType({...arrayData, init: []}, methodArray);
+		testMethod({...arrayData, init: []}, methodArray, method);
 
 		it('should NOT call the set callback if the same array is provided and deep=false', () => {
 			let testSet = '';
@@ -85,25 +84,25 @@ describe('method', () => {
 	});
 
 	describe('.boolean', () => {
-		testMethodType({...booleanData, init: false}, methodBoolean);
+		testMethod({...booleanData, init: false}, methodBoolean, method);
 	});
 
 	describe('.date', () => {
-		testMethodType({...dateData}, methodDate);
+		testMethod({...dateData}, methodDate, method);
 	});
 
 	describe('.enum', () => {
-		testMethodType({
+		testMethod({
 			...enumData,
 			coerce: false,
 			extraProps: {
 				enum: validEnumObject
 			}
-		}, methodEnum);
+		}, methodEnum, method);
 	});
 
 	describe('.float', () => {
-		testMethodType({
+		testMethod({
 			...floatData,
 			extraProps: {
 				min: 1.2,
@@ -116,17 +115,17 @@ describe('method', () => {
 				value: -3,
 				coerced: 1.2
 			}]
-		}, methodFloat);
+		}, methodFloat, method);
 	});
 
 	describe('.function', () => {
-		testMethodType({
+		testMethod({
 			coerce: false,
 			extraProps: {
 				bind: false
 			},
 			...functionData
-		}, methodFunction);
+		}, methodFunction, method);
 
 		it('should bind the function to "this" by default', () => {
 			let testVar = '';
@@ -175,17 +174,17 @@ describe('method', () => {
 	});
 
 	describe('.instanceOf', () => {
-		testMethodType({
+		testMethod({
 			...instanceData,
 			coerce: false,
 			extraProps: {
 				instanceOf: TestClass
 			}
-		}, methodInstanceOf);
+		}, methodInstanceOf, method);
 	});
 
 	describe('.integer', () => {
-		testMethodType({
+		testMethod({
 			...integerData,
 			extraProps: {
 				min: 0,
@@ -198,7 +197,7 @@ describe('method', () => {
 				value: -3,
 				coerced: 0
 			}]
-		}, methodInteger);
+		}, methodInteger, method);
 	});
 
 	describe('.keyValue', () => {
@@ -288,11 +287,11 @@ describe('method', () => {
 	});
 
 	describe('.map', () => {
-		testMethodType({...mapData}, methodMap);
+		testMethod({...mapData}, methodMap, method);
 	});
 
 	describe('.number', () => {
-		testMethodType({
+		testMethod({
 			...numberData,
 			extraProps: {
 				min: 1.2,
@@ -305,11 +304,11 @@ describe('method', () => {
 				value: -3,
 				coerced: 1.2
 			}]
-		}, methodNumber);
+		}, methodNumber, method);
 	});
 
 	describe('.object', () => {
-		testMethodType({...objectData}, methodObject);
+		testMethod({...objectData}, methodObject, method);
 
 		it('should NOT call the set callback if the same object is provided and deep=false', () => {
 			let testSet = '';
@@ -512,27 +511,27 @@ describe('method', () => {
 	});
 
 	describe('.regExp', () => {
-		testMethodType({...regExpData}, methodRegExp);
+		testMethod({...regExpData}, methodRegExp, method);
 	});
 
 	describe('.set', () => {
-		testMethodType({...setData}, methodSet);
+		testMethod({...setData}, methodSet, method);
 	});
 
 	describe('.string', () => {
-		testMethodType({...stringData, init: ''}, methodString);
+		testMethod({...stringData, init: ''}, methodString, method);
 	});
 
 	describe('.symbol', () => {
-		testMethodType({...symbolData}, methodSymbol);
+		testMethod({...symbolData}, methodSymbol, method);
 	});
 
 	describe('.weakMap', () => {
-		testMethodType({...weakMapData}, methodWeakMap);
+		testMethod({...weakMapData}, methodWeakMap, method);
 	});
 
 	describe('.weakSet', () => {
-		testMethodType({...weakSetData}, methodWeakSet);
+		testMethod({...weakSetData}, methodWeakSet, method);
 	});
 });
 

@@ -1,5 +1,26 @@
 import displayValue from 'display-value';
 import {
+	arrayData,
+	booleanData,
+	dateData,
+	floatData,
+	functionData,
+	instanceData,
+	integerData,
+	mapData,
+	multiTest,
+	numberData,
+	objectData,
+	regExpData,
+	setData,
+	stringData,
+	symbolData,
+	TestClass,
+	testEnforce,
+	weakMapData,
+	weakSetData
+} from 'type-enforcer-test-helper';
+import {
 	enforce,
 	enforceArray,
 	enforceBoolean,
@@ -18,84 +39,62 @@ import {
 	enforceSymbol,
 	enforceWeakMap,
 	enforceWeakSet
-} from '../src';
-import enforceTestUtility from './enforceTestUtility';
-import { multiTest } from './TestUtil';
-import {
-	arrayData,
-	booleanData,
-	dateData,
-	enumData,
-	floatData,
-	functionData,
-	instanceData,
-	integerData,
-	mapData,
-	numberData,
-	objectData,
-	regExpData,
-	setData,
-	stringData,
-	symbolData,
-	TestClass,
-	validEnumObject,
-	weakMapData,
-	weakSetData
-} from './testValues';
+} from '../index';
+import { enumData, validEnumObject } from './testValues';
 
 describe('enforce', () => {
 	describe('.array', () => {
-		enforceTestUtility(arrayData, enforceArray, JSON.parse);
+		testEnforce(arrayData, enforceArray, enforce, JSON.parse);
 	});
 
 	describe('.boolean', () => {
-		enforceTestUtility(booleanData, enforceBoolean, Boolean);
+		testEnforce(booleanData, enforceBoolean, enforce, Boolean);
 	});
 
 	describe('.date', () => {
-		enforceTestUtility(dateData, enforceDate, (value) => new Date(value));
+		testEnforce(dateData, enforceDate, enforce, (value) => new Date(value));
 	});
 
 	describe('.enum', () => {
-		enforceTestUtility({
+		testEnforce({
 			...enumData,
 			extraArg: validEnumObject
-		}, enforceEnum);
+		}, enforceEnum, enforce);
 	});
 
 	describe('.float', () => {
-		enforceTestUtility(floatData, enforceFloat, Number);
+		testEnforce(floatData, enforceFloat, enforce, Number);
 	});
 
 	describe('.function', () => {
-		enforceTestUtility(functionData, enforceFunction);
+		testEnforce(functionData, enforceFunction, enforce);
 	});
 
 	describe('.instanceOf', () => {
-		enforceTestUtility({
+		testEnforce({
 			...instanceData,
 			extraArg: TestClass
-		}, enforceInstanceOf);
+		}, enforceInstanceOf, enforce);
 	});
 
 	describe('.integer', () => {
-		enforceTestUtility(integerData, enforceInteger, Number);
+		testEnforce(integerData, enforceInteger, enforce, Number);
 	});
 
 	describe('.map', () => {
-		enforceTestUtility(mapData, enforceMap);
+		testEnforce(mapData, enforceMap, enforce);
 	});
 
 	describe('.number', () => {
-		enforceTestUtility(numberData, enforceNumber, Number);
+		testEnforce(numberData, enforceNumber, enforce, Number);
 	});
 
 	describe('.object', () => {
-		enforceTestUtility(objectData, enforceObject, JSON.parse);
+		testEnforce(objectData, enforceObject, enforce, JSON.parse);
 	});
 
 	describe('.regExp', () => {
-		enforceTestUtility(regExpData, enforceRegExp, (value) => {
+		testEnforce(regExpData, enforceRegExp, enforce, (value) => {
 			if (value.charAt(0) !== '/') {
 				return RegExp(value);
 			}
@@ -107,15 +106,15 @@ describe('enforce', () => {
 	});
 
 	describe('.set', () => {
-		enforceTestUtility(setData, enforceSet, (value) => new Set(enforceArray(value, 0, true)));
+		testEnforce(setData, enforceSet, enforce, (value) => new Set(enforceArray(value, 0, true)));
 	});
 
 	describe('.string', () => {
-		enforceTestUtility(stringData, enforceString, (value) => value.toString());
+		testEnforce(stringData, enforceString, enforce, (value) => value.toString());
 	});
 
 	describe('.symbol', () => {
-		enforceTestUtility(symbolData, enforceSymbol);
+		testEnforce(symbolData, enforceSymbol, enforce);
 
 		multiTest({
 			values: symbolData.coerceTrue.map((item) => {
@@ -136,10 +135,10 @@ describe('enforce', () => {
 	});
 
 	describe('.weakMap', () => {
-		enforceTestUtility(weakMapData, enforceWeakMap);
+		testEnforce(weakMapData, enforceWeakMap, enforce);
 	});
 
 	describe('.weakSet', () => {
-		enforceTestUtility(weakSetData, enforceWeakSet);
+		testEnforce(weakSetData, enforceWeakSet, enforce);
 	});
 });

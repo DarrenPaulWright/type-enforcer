@@ -1,4 +1,4 @@
-import { methodQueue } from './index';
+import methodQueue from './methods/methodQueue';
 import PrivateVars from './utility/PrivateVars';
 
 const _ = new PrivateVars();

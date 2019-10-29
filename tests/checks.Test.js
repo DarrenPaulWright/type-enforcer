@@ -1,6 +1,26 @@
 import { assert } from 'chai';
 import displayValue from 'display-value';
 import {
+	arrayData,
+	booleanData,
+	dateData,
+	floatData,
+	functionData,
+	integerData,
+	jsonData,
+	mapData,
+	numberData,
+	objectData,
+	regExpData,
+	setData,
+	stringData,
+	symbolData,
+	testCheck,
+	testTypes,
+	weakMapData,
+	weakSetData
+} from 'type-enforcer-test-helper';
+import {
 	is,
 	isArray,
 	isBoolean,
@@ -19,46 +39,26 @@ import {
 	isSymbol,
 	isWeakMap,
 	isWeakSet
-} from '../src';
-import isTestUtility from './isTestUtility';
-import {
-	arrayData,
-	booleanData,
-	dateData,
-	floatData,
-	functionData,
-	integerData,
-	jsonData,
-	mapData,
-	numberData,
-	objectData,
-	regExpData,
-	setData,
-	stringData,
-	symbolData,
-	testTypes,
-	weakMapData,
-	weakSetData
-} from './testValues';
+} from '../index';
 
 describe('checks', () => {
 	describe('isArray', () => {
-		isTestUtility(arrayData, isArray);
+		testCheck(arrayData, isArray, is);
 	});
 	describe('isBoolean', () => {
-		isTestUtility(booleanData, isBoolean);
+		testCheck(booleanData, isBoolean, is);
 	});
 
 	describe('isDate', () => {
-		isTestUtility(dateData, isDate);
+		testCheck(dateData, isDate, is);
 	});
 
 	describe('isFloat', () => {
-		isTestUtility(floatData, isFloat);
+		testCheck(floatData, isFloat, is);
 	});
 
 	describe('isFunction', () => {
-		isTestUtility(functionData, isFunction);
+		testCheck(functionData, isFunction, is);
 	});
 
 	describe('isInstanceOf', () => {
@@ -75,7 +75,7 @@ describe('checks', () => {
 				});
 
 				baseType.false.forEach((newValue) => {
-					it('should return false for ' + displayValue(baseType.value) + ' and ' + displayValue(newValue), () => {
+					it('should return false for ' + displayValue(newValue) + ' and ' + displayValue(baseType.value), () => {
 						assert.isFalse(isInstanceOf(newValue, baseType.value));
 					});
 				});
@@ -84,19 +84,19 @@ describe('checks', () => {
 	});
 
 	describe('isInteger', () => {
-		isTestUtility(integerData, isInteger);
+		testCheck(integerData, isInteger, is);
 	});
 
 	describe('isJson', () => {
-		isTestUtility(jsonData, isJson);
+		testCheck(jsonData, isJson, is);
 	});
 
 	describe('isMap', () => {
-		isTestUtility(mapData, isMap);
+		testCheck(mapData, isMap, is);
 	});
 
 	describe('isNumber', () => {
-		isTestUtility(numberData, isNumber);
+		testCheck(numberData, isNumber, is);
 
 		it('should return false for NaN', () => {
 			assert.isFalse(isNumber(NaN));
@@ -105,30 +105,30 @@ describe('checks', () => {
 	});
 
 	describe('isObject', () => {
-		isTestUtility(objectData, isObject);
+		testCheck(objectData, isObject, is);
 	});
 
 	describe('isRegExp', () => {
-		isTestUtility(regExpData, isRegExp);
+		testCheck(regExpData, isRegExp, is);
 	});
 
 	describe('isSet', () => {
-		isTestUtility(setData, isSet);
+		testCheck(setData, isSet, is);
 	});
 
 	describe('isString', () => {
-		isTestUtility(stringData, isString);
+		testCheck(stringData, isString, is);
 	});
 
 	describe('isSymbol', () => {
-		isTestUtility(symbolData, isSymbol);
+		testCheck(symbolData, isSymbol, is);
 	});
 
 	describe('isWeakMap', () => {
-		isTestUtility(weakMapData, isWeakMap);
+		testCheck(weakMapData, isWeakMap, is);
 	});
 
 	describe('isWeakSet', () => {
-		isTestUtility(weakSetData, isWeakSet);
+		testCheck(weakSetData, isWeakSet, is);
 	});
 });

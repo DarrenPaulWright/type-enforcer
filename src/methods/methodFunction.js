@@ -21,7 +21,7 @@ export default methodAny.extend({
 	bind: true
 }, (options) => {
 	if (options.bind === true) {
-		options.enforce = function(newValue, value, options) {
+		options.enforce = function(newValue, value) {
 			newValue = enforceFunction(newValue, value);
 
 			if (newValue) {

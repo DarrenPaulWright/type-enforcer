@@ -16,7 +16,8 @@ import {
 	enforceSet,
 	enforceString,
 	enforceSymbol,
-	enforceWeakMap
+	enforceWeakMap,
+	enforceWeakSet
 } from '../src';
 import enforceTestUtility from './enforceTestUtility';
 import { multiTest } from './TestUtil';
@@ -38,7 +39,8 @@ import {
 	symbolData,
 	TestClass,
 	validEnumObject,
-	weakMapData
+	weakMapData,
+	weakSetData
 } from './testValues';
 
 describe('enforce', () => {
@@ -135,5 +137,9 @@ describe('enforce', () => {
 
 	describe('.weakMap', () => {
 		enforceTestUtility(weakMapData, enforceWeakMap);
+	});
+
+	describe('.weakSet', () => {
+		enforceTestUtility(weakSetData, enforceWeakSet);
 	});
 });

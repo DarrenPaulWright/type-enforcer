@@ -20,6 +20,7 @@ import {
 	methodString,
 	methodSymbol,
 	methodWeakMap,
+	methodWeakSet,
 	Queue,
 	Removable
 } from '../src';
@@ -42,7 +43,8 @@ import {
 	symbolData,
 	TestClass,
 	validEnumObject,
-	weakMapData
+	weakMapData,
+	weakSetData
 } from './testValues';
 
 describe('method', () => {
@@ -527,6 +529,10 @@ describe('method', () => {
 
 	describe('.weakMap', () => {
 		testMethodType({...weakMapData}, methodWeakMap);
+	});
+
+	describe('.weakSet', () => {
+		testMethodType({...weakSetData}, methodWeakSet);
 	});
 });
 

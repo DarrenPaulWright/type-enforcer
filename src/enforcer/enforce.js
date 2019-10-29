@@ -14,6 +14,7 @@ import enforceSet from './enforceSet';
 import enforceString from './enforceString';
 import enforceSymbol from './enforceSymbol';
 import enforceWeakMap from './enforceWeakMap';
+import enforceWeakSet from './enforceWeakSet';
 
 /**
  * Utility functions for enforcing data types.
@@ -43,5 +44,6 @@ export default {
 	set: enforceSet,
 	string: enforceString,
 	symbol: enforceSymbol,
-	weakMap: enforceWeakMap
+	weakMap: enforceWeakMap,
+	weakSet: enforceWeakSet
 };

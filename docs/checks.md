@@ -34,6 +34,7 @@
     * [.string(value, [coerce])](#is.string) ⇒ <code>Boolean</code>
     * [.symbol(value, [coerce])](#is.symbol) ⇒ <code>Boolean</code>
     * [.weakMap(value, [coerce])](#is.weakMap) ⇒ <code>Boolean</code>
+    * [.weakSet(value, [coerce])](#is.weakSet) ⇒ <code>Boolean</code>
 
 
 <br><a name="is.array"></a>
@@ -289,6 +290,22 @@
 
 **Example**  
 ``` javascriptimport { isWeakMap } from 'type-enforcer';const a = {};isWeakMap(new WeakMap());// => trueisWeakMap(new Date());// => falseisWeakMap([[a, 12]], true);// => true```
+
+<br><a name="is.weakSet"></a>
+
+#### is.weakSet(value, [coerce]) ⇒ <code>Boolean</code>
+> Check if a value is a WeakSet
+
+**Alias:** `isWeakSet`
+
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | <code>\*</code> |  |  |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a WeakSet. Arrays of objects can be coerced into WeakSets. |
+
+**Example**  
+``` javascriptimport { isWeakSet } from 'type-enforcer';const a = new Map();isWeakSet(new WeakSet());// => trueisWeakSet(new Date());// => falseisWeakSet([a], new WeakSet(), true);// => WeakSet with a```
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg
 [npm-url]: https://npmjs.com/package/type-enforcer

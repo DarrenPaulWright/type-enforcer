@@ -17,6 +17,7 @@ import methodSet from './methodSet';
 import methodString from './methodString';
 import methodSymbol from './methodSymbol';
 import methodWeakMap from './methodWeakMap';
+import methodWeakSet from './methodWeakSet';
 
 /**
  * Enforce data types and remove common boilerplate code on class methods.
@@ -69,5 +70,6 @@ export default {
 	set: methodSet,
 	string: methodString,
 	symbol: methodSymbol,
-	weakMap: methodWeakMap
+	weakMap: methodWeakMap,
+	weakSet: methodWeakSet
 };

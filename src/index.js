@@ -48,6 +48,7 @@ export { default as isSet } from './checks/isSet';
 export { default as isString } from './checks/isString';
 export { default as isSymbol } from './checks/isSymbol';
 export { default as isWeakMap } from './checks/isWeakMap';
+export { default as isWeakSet } from './checks/isWeakSet';
 
 export { default as enforce } from './enforcer/enforce';
 export { default as enforceArray } from './enforcer/enforceArray';
@@ -66,6 +67,7 @@ export { default as enforceSet } from './enforcer/enforceSet';
 export { default as enforceString } from './enforcer/enforceString';
 export { default as enforceSymbol } from './enforcer/enforceSymbol';
 export { default as enforceWeakMap } from './enforcer/enforceWeakMap';
+export { default as enforceWeakSet } from './enforcer/enforceWeakSet';
 
 export { default as method } from './methods/method';
 export { default as methodAny } from './methods/methodAny';
@@ -87,6 +89,7 @@ export { default as methodSet } from './methods/methodSet';
 export { default as methodString } from './methods/methodString';
 export { default as methodSymbol } from './methods/methodSymbol';
 export { default as methodWeakMap } from './methods/methodWeakMap';
+export { default as methodWeakSet } from './methods/methodWeakSet';
 
 export { default as Enum } from './Enum';
 export { default as Queue } from './Queue';

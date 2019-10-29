@@ -14,6 +14,7 @@ import isSet from './isSet';
 import isString from './isString';
 import isSymbol from './isSymbol';
 import isWeakMap from './isWeakMap';
+import isWeakSet from './isWeakSet';
 
 /**
  * Utility functions for checking if something is a particular data type.
@@ -43,5 +44,6 @@ export default {
 	set: isSet,
 	string: isString,
 	symbol: isSymbol,
-	weakMap: isWeakMap
+	weakMap: isWeakMap,
+	weakSet: isWeakSet
 };

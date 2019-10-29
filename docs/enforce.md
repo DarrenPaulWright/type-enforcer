@@ -34,6 +34,7 @@
     * [.string(value, alt, [coerce])](#enforce.string) ⇒ <code>String</code>
     * [.symbol(value, alt, [coerce])](#enforce.symbol) ⇒ <code>Object</code>
     * [.weakMap(value, alt, [coerce])](#enforce.weakMap) ⇒ <code>Object</code>
+    * [.weakSet(value, alt, [coerce])](#enforce.weakSet) ⇒ <code>Object</code>
 
 
 <br><a name="enforce.array"></a>
@@ -312,6 +313,23 @@
 
 **Example**  
 ``` javascriptimport { enforce } from 'type-enforcer';const a = new WeakMap();const b = new WeakMap();enforce.weakMap(a, b);// => aenforce.weakMap('weakMap', b);// => benforce.weakMap([[a, 12]], new WeakMap(), true);// => WeakMap with key a set to 12```
+
+<br><a name="enforce.weakSet"></a>
+
+#### enforce.weakSet(value, alt, [coerce]) ⇒ <code>Object</code>
+> Enforce that a value is a WeakSet. Uses [isWeakSet](docs/checks.md#isWeakSet).
+
+**Alias:** `enforceWeakSet`
+
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | <code>\*</code> |  |  |
+| alt | <code>WeakSet</code> |  | Returned if the value is not the correct type |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+
+**Example**  
+``` javascriptimport { enforce } from 'type-enforcer';const a = new WeakSet();const b = new WeakSet();enforce.weakSet(a, b);// => aenforce.weakSet('weakSet', b);// => benforce.weakSet([new Map()], b, true);// => WeakSet with a Map in it```
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg
 [npm-url]: https://npmjs.com/package/type-enforcer

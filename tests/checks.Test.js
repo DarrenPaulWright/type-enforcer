@@ -17,7 +17,8 @@ import {
 	isSet,
 	isString,
 	isSymbol,
-	isWeakMap
+	isWeakMap,
+	isWeakSet
 } from '../src';
 import isTestUtility from './isTestUtility';
 import {
@@ -36,7 +37,8 @@ import {
 	stringData,
 	symbolData,
 	testTypes,
-	weakMapData
+	weakMapData,
+	weakSetData
 } from './testValues';
 
 describe('checks', () => {
@@ -124,5 +126,9 @@ describe('checks', () => {
 
 	describe('isWeakMap', () => {
 		isTestUtility(weakMapData, isWeakMap);
+	});
+
+	describe('isWeakSet', () => {
+		isTestUtility(weakSetData, isWeakSet);
 	});
 });

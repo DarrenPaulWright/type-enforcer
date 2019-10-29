@@ -38,6 +38,7 @@ export const validSets = [new Set(), new Set([1, 2])];
 export const validStrings = ['test', '', new String('test2'), String('test3')];
 export const validSymbols = [Symbol(), Symbol('test')];
 export const validWeakMaps = [new WeakMap(), new WeakMap().set({}, 12)];
+export const validWeakSets = [new WeakSet(), new WeakSet([validEnumObject])];
 
 // the following numeric strings are pulled from https://github.com/minimaxir/big-list-of-naughty-strings
 const coerceInfinity = [
@@ -136,6 +137,7 @@ const testValues = [null, undefined].concat(
 	validSets,
 	validStrings,
 	validWeakMaps,
+	validWeakSets,
 	NaN
 );
 
@@ -275,6 +277,14 @@ export const weakMapData = {
 	coerceTrue: [[[TestClass, 2], [TestClass, 'test']]],
 	coerceFalse: difference(testValues, validWeakMaps, validArrays).concat(['test'])
 };
+export const weakSetData = {
+	value: WeakSet,
+	name: 'weakSet',
+	true: validWeakSets,
+	false: difference(testValues, validWeakSets),
+	coerceTrue: [[new TestClass(1)]],
+	coerceFalse: difference(testValues, validWeakSets, validArrays)
+};
 
 export const testTypes = [
 	arrayData,
@@ -291,5 +301,6 @@ export const testTypes = [
 	setData,
 	stringData,
 	symbolData,
-	weakMapData
+	weakMapData,
+	weakSetData
 ];

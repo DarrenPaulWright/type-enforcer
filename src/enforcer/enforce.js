@@ -12,6 +12,7 @@ import enforceObject from './enforceObject';
 import enforceRegExp from './enforceRegExp';
 import enforceString from './enforceString';
 import enforceSymbol from './enforceSymbol';
+import enforceWeakMap from './enforceWeakMap';
 
 /**
  * Utility functions for enforcing data types.
@@ -39,5 +40,6 @@ export default {
 	object: enforceObject,
 	regExp: enforceRegExp,
 	string: enforceString,
-	symbol: enforceSymbol
+	symbol: enforceSymbol,
+	weakMap: enforceWeakMap
 };

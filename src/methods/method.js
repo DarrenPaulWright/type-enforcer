@@ -15,6 +15,7 @@ import methodQueue from './methodQueue';
 import methodRegExp from './methodRegExp';
 import methodString from './methodString';
 import methodSymbol from './methodSymbol';
+import methodWeakMap from './methodWeakMap';
 
 /**
  * Enforce data types and remove common boilerplate code on class methods.
@@ -65,5 +66,6 @@ export default {
 	object: methodObject,
 	regExp: methodRegExp,
 	string: methodString,
-	symbol: methodSymbol
+	symbol: methodSymbol,
+	weakMap: methodWeakMap
 };

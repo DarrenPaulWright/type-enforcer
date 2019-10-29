@@ -17,7 +17,7 @@ import methodAny from './methodAny';
  * @returns {Function}
  */
 export default methodAny.extend({
-	enforce: (newValue, oldValue, options) => {
+	enforce(newValue, oldValue, options) {
 		return enforceInteger(newValue, oldValue, options.coerce, options.min, options.max);
 	}
 });

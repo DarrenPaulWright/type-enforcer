@@ -15,7 +15,7 @@ import methodAny from './methodAny';
  * @returns {Function}
  */
 export default methodAny.extend({
-	enforce: (newValue, oldValue, options) => {
+	enforce(newValue, oldValue, options) {
 		return enforceFunction(newValue, oldValue, options.coerce);
 	},
 	bind: true
@@ -24,7 +24,7 @@ export default methodAny.extend({
 		options.enforce = function(newValue, value, options) {
 			newValue = enforceFunction(newValue, value);
 
-			if (newValue && options.bind === true) {
+			if (newValue) {
 				newValue = newValue.bind(this);
 			}
 

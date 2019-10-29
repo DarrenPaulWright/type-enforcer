@@ -32,6 +32,7 @@
     * [.regExp(value, alt, [coerce])](#enforce.regExp) ⇒ <code>RegExp</code>
     * [.string(value, alt, [coerce])](#enforce.string) ⇒ <code>String</code>
     * [.symbol(value, alt, [coerce])](#enforce.symbol) ⇒ <code>Object</code>
+    * [.weakMap(value, alt, [coerce])](#enforce.weakMap) ⇒ <code>Object</code>
 
 
 <br><a name="enforce.array"></a>
@@ -276,6 +277,23 @@
 
 **Example**  
 ``` javascriptimport { enforce } from 'type-enforcer';enforce.symbol(Symbol('label'), Symbol('alt'));// => Symbol(label)enforce.symbol('symbol', Symbol('alt'));// => Symbol('alt')enforce.symbol('label', Symbol('alt'), true);// => Symbol(label)```
+
+<br><a name="enforce.weakMap"></a>
+
+#### enforce.weakMap(value, alt, [coerce]) ⇒ <code>Object</code>
+> Enforce that a value is a WeakMap. Uses [isWeakMap](docs/checks.md#isWeakMap).
+
+**Alias:** `enforceWeakMap`
+
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | <code>\*</code> |  |  |
+| alt | <code>WeakMap</code> |  | Returned if the value is not the correct type |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+
+**Example**  
+``` javascriptimport { enforce } from 'type-enforcer';const a = new WeakMap();const b = new WeakMap();enforce.weakMap(a, b);// => aenforce.weakMap('weakMap', b);// => benforce.weakMap([[a, 12]], new WeakMap(), true);// => WeakMap with key a set to 12```
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg
 [npm-url]: https://npmjs.com/package/type-enforcer

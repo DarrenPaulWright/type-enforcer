@@ -32,6 +32,7 @@
     * [.regExp(value, [coerce])](#is.regExp) ⇒ <code>Boolean</code>
     * [.string(value, [coerce])](#is.string) ⇒ <code>Boolean</code>
     * [.symbol(value, [coerce])](#is.symbol) ⇒ <code>Boolean</code>
+    * [.weakMap(value, [coerce])](#is.weakMap) ⇒ <code>Boolean</code>
 
 
 <br><a name="is.array"></a>
@@ -171,7 +172,7 @@
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | value | <code>\*</code> |  |  |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a Map. Objects or Strings that can be coerced into Objects can be coerced into Maps. |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a Map. Objects or Strings that can be coerced into Objects can be coerced into Maps, as well as anything that can be coerced into a WeakMap |
 
 **Example**  
 ``` javascriptimport { isMap } from 'type-enforcer';isMap(new Map());// => trueisMap(new Date());// => falseisMap({'a': 12}, new Map(), true);// => Map with key 'a' set to 12```
@@ -255,6 +256,22 @@
 
 **Example**  
 ``` javascriptimport { isSymbol } from 'type-enforcer';isSymbol(Symbol());// => trueisSymbol(new Date());// => falseisSymbol('string', true);// => true```
+
+<br><a name="is.weakMap"></a>
+
+#### is.weakMap(value, [coerce]) ⇒ <code>Boolean</code>
+> Check if a value is a WeakMap
+
+**Alias:** `isWeakMap`
+
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | <code>\*</code> |  |  |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a WeakMap. Must be an array of arrays, each inner array must be length 2, and the first item of each inner array must be an object to be coerced into a WeakMap. |
+
+**Example**  
+``` javascriptimport { isWeakMap } from 'type-enforcer';const a = {};isWeakMap(new WeakMap());// => trueisWeakMap(new Date());// => falseisWeakMap([[a, 12]], true);// => true```
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg
 [npm-url]: https://npmjs.com/package/type-enforcer

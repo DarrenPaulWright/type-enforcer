@@ -46,6 +46,7 @@ export { default as isObject } from './checks/isObject';
 export { default as isRegExp } from './checks/isRegExp';
 export { default as isString } from './checks/isString';
 export { default as isSymbol } from './checks/isSymbol';
+export { default as isWeakMap } from './checks/isWeakMap';
 
 export { default as enforce } from './enforcer/enforce';
 export { default as enforceArray } from './enforcer/enforceArray';
@@ -62,6 +63,7 @@ export { default as enforceObject } from './enforcer/enforceObject';
 export { default as enforceRegExp } from './enforcer/enforceRegExp';
 export { default as enforceString } from './enforcer/enforceString';
 export { default as enforceSymbol } from './enforcer/enforceSymbol';
+export { default as enforceWeakMap } from './enforcer/enforceWeakMap';
 
 export { default as method } from './methods/method';
 export { default as methodAny } from './methods/methodAny';
@@ -81,6 +83,7 @@ export { default as methodQueue } from './methods/methodQueue';
 export { default as methodRegExp } from './methods/methodRegExp';
 export { default as methodString } from './methods/methodString';
 export { default as methodSymbol } from './methods/methodSymbol';
+export { default as methodWeakMap } from './methods/methodWeakMap';
 
 export { default as Enum } from './Enum';
 export { default as Queue } from './Queue';

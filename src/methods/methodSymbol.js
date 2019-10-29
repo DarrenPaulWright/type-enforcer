@@ -15,7 +15,7 @@ import methodAny from './methodAny';
  * @returns {Function}
  */
 export default methodAny.extend({
-	enforce: (newValue, oldValue, options) => {
+	enforce(newValue, oldValue, options) {
 		return enforceSymbol(newValue, oldValue, options.coerce);
 	}
 });

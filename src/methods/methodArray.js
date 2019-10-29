@@ -18,7 +18,7 @@ import methodObject from './methodObject';
  * @returns {Function}
  */
 export default methodObject.extend({
-	enforce: (newValue, oldValue, options) => {
+	enforce(newValue, oldValue, options) {
 		return enforceArray(newValue, oldValue, options.coerce);
 	},
 	init: []

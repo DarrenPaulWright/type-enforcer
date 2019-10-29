@@ -15,7 +15,8 @@ import {
 	isObject,
 	isRegExp,
 	isString,
-	isSymbol
+	isSymbol,
+	isWeakMap
 } from '../src';
 import isTestUtility from './isTestUtility';
 import {
@@ -32,7 +33,8 @@ import {
 	regExpData,
 	stringData,
 	symbolData,
-	testTypes
+	testTypes,
+	weakMapData
 } from './testValues';
 
 describe('checks', () => {
@@ -112,5 +114,9 @@ describe('checks', () => {
 
 	describe('isSymbol', () => {
 		isTestUtility(symbolData, isSymbol);
+	});
+
+	describe('isWeakMap', () => {
+		isTestUtility(weakMapData, isWeakMap);
 	});
 });

@@ -36,6 +36,7 @@ export const validObjects = [{}, {
 export const validRegExps = [/asdf/g, new RegExp('test 2'), RegExp()];
 export const validStrings = ['test', '', new String('test2'), String('test3')];
 export const validSymbols = [Symbol(), Symbol('test')];
+export const validWeakMaps = [new WeakMap(), new WeakMap().set({}, 12)];
 
 // the following numeric strings are pulled from https://github.com/minimaxir/big-list-of-naughty-strings
 const coerceInfinity = [
@@ -132,6 +133,7 @@ const testValues = [null, undefined].concat(
 	validObjects,
 	validRegExps,
 	validStrings,
+	validWeakMaps,
 	NaN
 );
 
@@ -219,8 +221,9 @@ export const mapData = {
 	name: 'map',
 	true: validMaps,
 	false: difference(testValues, validMaps),
-	coerceTrue: coerceObjectTrue.concat(validObjects),
-	coerceFalse: difference(testValues, validMaps, validObjects)
+	coerceTrue: coerceObjectTrue.concat(validObjects, [[[TestClass, 2],
+		[TestClass, 'test']], '[["test 1", 2], ["test 2", "test"]]']),
+	coerceFalse: difference(testValues, validMaps, validObjects, validArrays).concat(['test'])
 };
 export const objectData = {
 	value: Object,
@@ -254,6 +257,14 @@ export const symbolData = {
 	coerceTrue: stringData.coerceTrue,
 	coerceFalse: stringData.coerceFalse
 };
+export const weakMapData = {
+	value: WeakMap,
+	name: 'weakMap',
+	true: validWeakMaps,
+	false: difference(testValues, validWeakMaps),
+	coerceTrue: [[[TestClass, 2], [TestClass, 'test']]],
+	coerceFalse: difference(testValues, validWeakMaps, validArrays).concat(['test'])
+};
 
 export const testTypes = [
 	arrayData,
@@ -268,5 +279,6 @@ export const testTypes = [
 	objectData,
 	regExpData,
 	stringData,
-	symbolData
+	symbolData,
+	weakMapData
 ];

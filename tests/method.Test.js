@@ -18,6 +18,7 @@ import {
 	methodRegExp,
 	methodString,
 	methodSymbol,
+	methodWeakMap,
 	Queue,
 	Removable
 } from '../src';
@@ -38,7 +39,8 @@ import {
 	stringData,
 	symbolData,
 	TestClass,
-	validEnumObject
+	validEnumObject,
+	weakMapData
 } from './testValues';
 
 describe('method', () => {
@@ -515,6 +517,10 @@ describe('method', () => {
 
 	describe('.symbol', () => {
 		testMethodType({...symbolData}, methodSymbol);
+	});
+
+	describe('.weakMap', () => {
+		testMethodType({...weakMapData}, methodWeakMap);
 	});
 });
 

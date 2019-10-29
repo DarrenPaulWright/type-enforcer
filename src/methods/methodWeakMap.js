@@ -1,22 +1,21 @@
-import enforceRegExp from '../enforcer/enforceRegExp';
+import enforceWeakMap from '../enforcer/enforceWeakMap';
 import methodAny from './methodAny';
 
 /**
- * Builds a chainable method for getting/setting a RegExp
+ * Builds a chainable method for getting/setting a WeakMap
  *
- * @function method.regExp
+ * @function method.weakMap
  * @extends method.any
- * @alias methodRegExp
+ * @alias methodWeakMap
  *
  * @arg {Object} [options] - Same as {@link method.any} with the following differences:
- * @arg {*} [options.init='']
- * @arg {Function} [options.enforce=enforce.string]
+ * @arg {Function} [options.enforce=enforce.weakMap]
  * @arg {Boolean} [options.coerce=false] - If true then coerce the value when possible
  *
  * @returns {Function}
  */
 export default methodAny.extend({
 	enforce(newValue, oldValue, options) {
-		return enforceRegExp(newValue, oldValue, options.coerce);
+		return enforceWeakMap(newValue, oldValue, options.coerce);
 	}
 });

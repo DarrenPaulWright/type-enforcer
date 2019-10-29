@@ -12,6 +12,7 @@ import isObject from './isObject';
 import isRegExp from './isRegExp';
 import isString from './isString';
 import isSymbol from './isSymbol';
+import isWeakMap from './isWeakMap';
 
 /**
  * Utility functions for checking if something is a particular data type.
@@ -39,5 +40,6 @@ export default {
 	object: isObject,
 	regExp: isRegExp,
 	string: isString,
-	symbol: isSymbol
+	symbol: isSymbol,
+	weakMap: isWeakMap
 };

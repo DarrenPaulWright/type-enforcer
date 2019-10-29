@@ -16,7 +16,7 @@ import methodAny from './methodAny';
  * @returns {Function}
  */
 export default methodAny.extend({
-	enforce: (newValue, oldValue, options) => {
+	enforce(newValue, oldValue, options) {
 		return enforceString(newValue, oldValue, options.coerce);
 	},
 	init: ''

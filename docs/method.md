@@ -37,6 +37,7 @@
     * [.regExp([options])](#method.regExp) ⇒ <code>function</code>
     * [.string([options])](#method.string) ⇒ <code>function</code>
     * [.symbol([options])](#method.symbol) ⇒ <code>function</code>
+    * [.weakMap([options])](#method.weakMap) ⇒ <code>function</code>
 
 
 <br><a name="method.any"></a>
@@ -329,6 +330,22 @@
 | --- | --- | --- | --- |
 | [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
 | [options.enforce] | <code>function</code> | <code>enforce.symbol</code> |  |
+| [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+
+
+<br><a name="method.weakMap"></a>
+
+#### method.weakMap([options]) ⇒ <code>function</code>
+> Builds a chainable method for getting/setting a WeakMap
+
+**Alias:** `methodWeakMap`
+
+**Extends**: [<code>any</code>](#method.any)  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options.enforce] | <code>function</code> | <code>enforce.weakMap</code> |  |
 | [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 

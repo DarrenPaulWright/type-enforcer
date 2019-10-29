@@ -10,6 +10,7 @@ import enforceMap from './enforceMap';
 import enforceNumber from './enforceNumber';
 import enforceObject from './enforceObject';
 import enforceRegExp from './enforceRegExp';
+import enforceSet from './enforceSet';
 import enforceString from './enforceString';
 import enforceSymbol from './enforceSymbol';
 import enforceWeakMap from './enforceWeakMap';
@@ -39,6 +40,7 @@ export default {
 	number: enforceNumber,
 	object: enforceObject,
 	regExp: enforceRegExp,
+	set: enforceSet,
 	string: enforceString,
 	symbol: enforceSymbol,
 	weakMap: enforceWeakMap

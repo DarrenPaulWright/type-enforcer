@@ -13,6 +13,7 @@ import {
 	enforceNumber,
 	enforceObject,
 	enforceRegExp,
+	enforceSet,
 	enforceString,
 	enforceSymbol,
 	enforceWeakMap
@@ -32,6 +33,7 @@ import {
 	numberData,
 	objectData,
 	regExpData,
+	setData,
 	stringData,
 	symbolData,
 	TestClass,
@@ -100,6 +102,10 @@ describe('enforce', () => {
 				return RegExp(value.substring(1, index), value.substring(index + 1));
 			}
 		});
+	});
+
+	describe('.set', () => {
+		enforceTestUtility(setData, enforceSet, (value) => new Set(enforceArray(value, 0, true)));
 	});
 
 	describe('.string', () => {

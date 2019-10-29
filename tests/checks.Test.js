@@ -14,6 +14,7 @@ import {
 	isNumber,
 	isObject,
 	isRegExp,
+	isSet,
 	isString,
 	isSymbol,
 	isWeakMap
@@ -31,6 +32,7 @@ import {
 	numberData,
 	objectData,
 	regExpData,
+	setData,
 	stringData,
 	symbolData,
 	testTypes,
@@ -106,6 +108,10 @@ describe('checks', () => {
 
 	describe('isRegExp', () => {
 		isTestUtility(regExpData, isRegExp);
+	});
+
+	describe('isSet', () => {
+		isTestUtility(setData, isSet);
 	});
 
 	describe('isString', () => {

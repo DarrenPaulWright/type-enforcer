@@ -13,6 +13,7 @@ import methodNumber from './methodNumber';
 import methodObject from './methodObject';
 import methodQueue from './methodQueue';
 import methodRegExp from './methodRegExp';
+import methodSet from './methodSet';
 import methodString from './methodString';
 import methodSymbol from './methodSymbol';
 import methodWeakMap from './methodWeakMap';
@@ -65,6 +66,7 @@ export default {
 	number: methodNumber,
 	object: methodObject,
 	regExp: methodRegExp,
+	set: methodSet,
 	string: methodString,
 	symbol: methodSymbol,
 	weakMap: methodWeakMap

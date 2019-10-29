@@ -10,6 +10,7 @@ import isMap from './isMap';
 import isNumber from './isNumber';
 import isObject from './isObject';
 import isRegExp from './isRegExp';
+import isSet from './isSet';
 import isString from './isString';
 import isSymbol from './isSymbol';
 import isWeakMap from './isWeakMap';
@@ -39,6 +40,7 @@ export default {
 	number: isNumber,
 	object: isObject,
 	regExp: isRegExp,
+	set: isSet,
 	string: isString,
 	symbol: isSymbol,
 	weakMap: isWeakMap

@@ -35,6 +35,7 @@
     * [.object([options])](#method.object) ⇒ <code>function</code>
     * [.queue([options])](#method.queue) ⇒ <code>function</code>
     * [.regExp([options])](#method.regExp) ⇒ <code>function</code>
+    * [.set([options])](#method.set) ⇒ <code>function</code>
     * [.string([options])](#method.string) ⇒ <code>function</code>
     * [.symbol([options])](#method.symbol) ⇒ <code>function</code>
     * [.weakMap([options])](#method.weakMap) ⇒ <code>function</code>
@@ -297,6 +298,22 @@
 | [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
 | [options.init] | <code>\*</code> | <code>&#x27;&#x27;</code> |  |
 | [options.enforce] | <code>function</code> | <code>enforce.string</code> |  |
+| [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+
+
+<br><a name="method.set"></a>
+
+#### method.set([options]) ⇒ <code>function</code>
+> Builds a chainable method for getting/setting a Set
+
+**Alias:** `methodSet`
+
+**Extends**: [<code>any</code>](#method.any)  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options.enforce] | <code>function</code> | <code>enforce.set</code> |  |
 | [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 

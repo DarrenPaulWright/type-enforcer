@@ -34,6 +34,7 @@ export const validObjects = [{}, {
 	test1: 1
 }, new Object(), Object()];
 export const validRegExps = [/asdf/g, new RegExp('test 2'), RegExp()];
+export const validSets = [new Set(), new Set([1, 2])];
 export const validStrings = ['test', '', new String('test2'), String('test3')];
 export const validSymbols = [Symbol(), Symbol('test')];
 export const validWeakMaps = [new WeakMap(), new WeakMap().set({}, 12)];
@@ -132,6 +133,7 @@ const testValues = [null, undefined].concat(
 	validMaps,
 	validObjects,
 	validRegExps,
+	validSets,
 	validStrings,
 	validWeakMaps,
 	NaN
@@ -241,6 +243,14 @@ export const regExpData = {
 	coerceTrue: ['test', '/[a-z]+/', '/[a-z]+/gi'],
 	coerceFalse: difference(testValues, validStrings, validEnums, validRegExps)
 };
+export const setData = {
+	value: Set,
+	name: 'set',
+	true: validSets,
+	false: difference(testValues, validSets),
+	coerceTrue: validArrays.concat(['[]', '[1, 2]']),
+	coerceFalse: difference(testValues, validSets, validArrays)
+};
 export const stringData = {
 	value: String,
 	name: 'string',
@@ -278,6 +288,7 @@ export const testTypes = [
 	mapData,
 	objectData,
 	regExpData,
+	setData,
 	stringData,
 	symbolData,
 	weakMapData

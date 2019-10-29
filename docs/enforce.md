@@ -30,6 +30,7 @@
     * [.number(value, alt, [coerce], [minValue], [maxValue])](#enforce.number) ⇒ <code>Number</code>
     * [.object(value, alt, [coerce])](#enforce.object) ⇒ <code>Object</code>
     * [.regExp(value, alt, [coerce])](#enforce.regExp) ⇒ <code>RegExp</code>
+    * [.set(value, alt, [coerce])](#enforce.set) ⇒ <code>Object</code>
     * [.string(value, alt, [coerce])](#enforce.string) ⇒ <code>String</code>
     * [.symbol(value, alt, [coerce])](#enforce.symbol) ⇒ <code>Object</code>
     * [.weakMap(value, alt, [coerce])](#enforce.weakMap) ⇒ <code>Object</code>
@@ -243,6 +244,23 @@
 
 **Example**  
 ``` javascriptimport { enforce } from 'type-enforcer';enforce.regExp(/*+/g, /[a-z]+/);// => /*+/genforce.regExp('/*+/g', /[a-z]+/);// => /[a-z]+/enforce.regExp('/*+/g', /[a-z]+/, true);// => /*+/g```
+
+<br><a name="enforce.set"></a>
+
+#### enforce.set(value, alt, [coerce]) ⇒ <code>Object</code>
+> Enforce that a value is a Set. Uses [isSet](docs/checks.md#isSet).
+
+**Alias:** `enforceSet`
+
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | <code>\*</code> |  |  |
+| alt | <code>Set</code> |  | Returned if the value is not the correct type |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+
+**Example**  
+``` javascriptimport { enforce } from 'type-enforcer';const a = new Set();const b = new Set();enforce.set(a, b);// => aenforce.set('set', b);// => benforce.set([1, 2], b, true);// => Set with 1 and 2```
 
 <br><a name="enforce.string"></a>
 

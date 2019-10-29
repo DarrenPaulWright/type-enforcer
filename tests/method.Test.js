@@ -16,6 +16,7 @@ import {
 	methodObject,
 	methodQueue,
 	methodRegExp,
+	methodSet,
 	methodString,
 	methodSymbol,
 	methodWeakMap,
@@ -36,6 +37,7 @@ import {
 	numberData,
 	objectData,
 	regExpData,
+	setData,
 	stringData,
 	symbolData,
 	TestClass,
@@ -509,6 +511,10 @@ describe('method', () => {
 
 	describe('.regExp', () => {
 		testMethodType({...regExpData}, methodRegExp);
+	});
+
+	describe('.set', () => {
+		testMethodType({...setData}, methodSet);
 	});
 
 	describe('.string', () => {

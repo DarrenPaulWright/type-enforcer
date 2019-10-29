@@ -30,6 +30,7 @@
     * [.number(value, [coerce])](#is.number) ⇒ <code>Boolean</code>
     * [.object(value, [coerce])](#is.object) ⇒ <code>Boolean</code>
     * [.regExp(value, [coerce])](#is.regExp) ⇒ <code>Boolean</code>
+    * [.set(value, [coerce])](#is.set) ⇒ <code>Boolean</code>
     * [.string(value, [coerce])](#is.string) ⇒ <code>Boolean</code>
     * [.symbol(value, [coerce])](#is.symbol) ⇒ <code>Boolean</code>
     * [.weakMap(value, [coerce])](#is.weakMap) ⇒ <code>Boolean</code>
@@ -224,6 +225,22 @@
 
 **Example**  
 ``` javascriptimport { isRegExp } from 'type-enforcer';isRegExp(/*+/g);// => trueisRegExp('/*+/g');// => falseisRegExp('/*+/g', true);// => true```
+
+<br><a name="is.set"></a>
+
+#### is.set(value, [coerce]) ⇒ <code>Boolean</code>
+> Check if a value is a Set
+
+**Alias:** `isSet`
+
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | <code>\*</code> |  |  |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a Set. Arrays or Strings that can be coerced into Arrays can be coerced into Sets. |
+
+**Example**  
+``` javascriptimport { isSet } from 'type-enforcer';isSet(new Set());// => trueisSet(new Date());// => falseisSet([1, 2], new Set(), true);// => Set with key 1 and 2```
 
 <br><a name="is.string"></a>
 

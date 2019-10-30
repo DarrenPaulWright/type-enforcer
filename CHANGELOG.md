@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - isWeakMap, enforceWeakMap, methodWeakMap
 - isSet, enforceSet, methodSet
 - isWeakSet, enforceWeakSet, methodWeakSet
+- Function 'addon' for addon libraries to extend type-enforcer
 
 ### Changed
 - enforceInstance is now enforceInstanceOf and methodInstance is methodInstanceOf

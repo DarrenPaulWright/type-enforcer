@@ -6,9 +6,7 @@
 	"scripts": {
 		"test": "karma start --single-run",
 		"test-watch": "karma start",
-		"patch": "npm version patch -m \"Increment patch version to %s\" && npm publish",
-		"minor": "npm version minor -m \"Increment minor version to %s\" && npm publish",
-		"major": "npm version major -m \"Increment major version to %s\" && npm publish",
+		"version": "npm run docs && git add docs",
 		"docs-readme": "jsdoc2md index.js > README.md -t docs/docs.hbs --plugin dmd-readable",
 		"docs-enforce": "jsdoc2md src/enforcer/**/*.js > docs/enforce.md -t docs/docs.hbs --plugin dmd-readable",
 		"docs-method": "jsdoc2md src/methods/**/*.js > docs/method.md -t docs/docs.hbs --plugin dmd-readable",

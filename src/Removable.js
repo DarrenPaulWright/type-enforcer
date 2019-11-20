@@ -22,13 +22,15 @@ export default class Removable {
 	 * @instance
 	 */
 	remove() {
-		if (this && !this.isRemoved) {
-			_.set(this);
+		const self = this;
 
-			if (this.onRemove()) {
-				this.onRemove()
-					.trigger(null, null, this)
-					.discardAll();
+		if (self && !self.isRemoved) {
+			_.set(self, true);
+
+			const onRemove = self.onRemove();
+
+			if (onRemove) {
+				onRemove.trigger().discardAll();
 			}
 		}
 	}

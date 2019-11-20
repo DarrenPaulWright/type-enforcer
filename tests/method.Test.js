@@ -78,6 +78,8 @@ describe('method', () => {
 			const testConstructor = new TestConstructor();
 
 			testConstructor.testMethod(testArray2);
+			testSet = '';
+			testConstructor.testMethod(testArray2);
 
 			assert.deepEqual(testSet, '');
 		});
@@ -328,6 +330,8 @@ describe('method', () => {
 			};
 			const testConstructor = new TestConstructor();
 
+			testConstructor.testMethod(testObject2);
+			testSet = '';
 			testConstructor.testMethod(testObject2);
 
 			assert.deepEqual(testSet, '');

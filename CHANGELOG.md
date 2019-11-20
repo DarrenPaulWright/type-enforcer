@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - privateProp
 - Moved CssSize, DockPoint, Thickness, and Element classes and functions to new type-enforcer-ui-addon
 - Moved Point and Vector classes and functions to new type-enforcer-math-addon
+- Queue no longer stores extra data with a callback
 
 ## [0.6.4] - 2019-10-22
 ### Security

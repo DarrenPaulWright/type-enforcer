@@ -1,4 +1,5 @@
 import isDate from '../checks/isDate';
+import enforceObject from './enforceObject';
 
 /**
  * Enforce that a value is a date. Uses [isDate](docs/checks.md#isDate).
@@ -26,14 +27,4 @@ import isDate from '../checks/isDate';
  *
  * @returns {Date}
  */
-export default (value, alt, coerce) => {
-	if (isDate(value)) {
-		return value;
-	}
-
-	if (coerce === true && isDate(value, true)) {
-		return new Date(value);
-	}
-
-	return alt;
-};
+export default enforceObject.extend(isDate, (value) => new Date(value));

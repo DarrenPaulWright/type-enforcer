@@ -78,7 +78,7 @@
 	},
 	"homepage": "https://github.com/DarrenPaulWright/type-enforcer#readme",
 	"dependencies": {
-		"object-agent": "^1.3.0"
+		"object-agent": "^1.4.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.7.2",

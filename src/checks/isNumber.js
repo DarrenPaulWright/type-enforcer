@@ -1,5 +1,3 @@
-import isInstanceOf from './isInstanceOf';
-
 /**
  * Check if a value is a number
  *
@@ -26,5 +24,5 @@ import isInstanceOf from './isInstanceOf';
  * @returns {Boolean}
  */
 export default (value, coerce) => {
-	return (isInstanceOf(value, Number) && !isNaN(value)) || (coerce === true && !isNaN(value));
+	return ((typeof value === 'number' || value instanceof Number) && value === value) || (coerce === true && !isNaN(value));
 };

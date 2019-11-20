@@ -1,4 +1,3 @@
-import isInstanceOf from './isInstanceOf';
 import isString from './isString';
 
 /**
@@ -27,5 +26,5 @@ import isString from './isString';
  * @returns {Boolean}
  */
 export default (value, coerce) => {
-	return isInstanceOf(value, RegExp) || (coerce === true && isString(value));
+	return value instanceof RegExp || (coerce === true && isString(value));
 };

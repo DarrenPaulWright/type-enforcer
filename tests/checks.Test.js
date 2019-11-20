@@ -45,6 +45,7 @@ describe('checks', () => {
 	describe('isArray', () => {
 		testCheck(arrayData, isArray, is);
 	});
+
 	describe('isBoolean', () => {
 		testCheck(booleanData, isBoolean, is);
 	});

@@ -1,3 +1,5 @@
+import isJson from './isJson';
+
 /**
  * Check if a value is an array
  *
@@ -24,22 +26,5 @@
  * @returns {Boolean}
  */
 export default (value, coerce) => {
-	if (Array.isArray(value)) {
-		return true;
-	}
-
-	if (coerce === true) {
-		let json;
-
-		try {
-			json = JSON.parse(value);
-		}
-		catch (e) {
-			return false;
-		}
-
-		return Array.isArray(json);
-	}
-
-	return false;
+	return Array.isArray(value) || (coerce === true && typeof value === 'string' && value.charAt(0) === '[' && isJson(value));
 };

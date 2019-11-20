@@ -1,5 +1,4 @@
 import { forOwn } from 'object-agent';
-import isFunction from './checks/isFunction';
 import castArray from './utility/castArray';
 import PrivateVars from './utility/PrivateVars';
 
@@ -37,16 +36,16 @@ export default class Queue {
 		const _self = _(this);
 
 		if (context) {
-			_(this).bindTo = context;
+			_self.bindTo = context;
 
-			forOwn(_self.callbacks, (callback) => {
-				callback.function = callback.function.bind(context);
+			forOwn(_self.callbacks, (callback, id) => {
+				_self.callbacks[id] = callback.bind(context);
 			});
 
 			return this;
 		}
 
-		return _(this).bindTo;
+		return _self.bindTo;
 	}
 
 	/**
@@ -56,23 +55,18 @@ export default class Queue {
 	 * @instance
 	 *
 	 * @arg {Function} callback - Callback function.
-	 * @arg {Object}   data - Any arbitrary data. Returned when the callback is discarded.
 	 *
 	 * @returns {Number} A unique id for this callback.
 	 */
-	add(callback, data) {
-		const _self = _(this);
+	add(callback) {
+		if (callback !== undefined) {
+			const _self = _(this);
+			const id = ++_self.currentId + '';
 
-		if (isFunction(callback)) {
-			const newId = (++_self.currentId + '');
-
-			_self.callbacks[newId] = {
-				function: _self.bindTo ? callback.bind(_self.bindTo) : callback,
-				data
-			};
+			_self.callbacks[id] = _self.bindTo ? callback.bind(_self.bindTo) : callback;
 			_self.total++;
 
-			return newId;
+			return id;
 		}
 	}
 
@@ -84,19 +78,17 @@ export default class Queue {
 	 *
 	 * @arg {Number} id - The id returned by Queue.add().
 	 *
-	 * @returns {Object} The data object added with this callback
+	 * @returns {this}
 	 */
 	discard(id) {
 		const _self = _(this);
-		let data;
 
-		if (id && _self.callbacks[id]) {
-			data = _self.callbacks[id].data;
+		if (id && _self.callbacks[id] !== undefined) {
 			delete _self.callbacks[id];
 			_self.total--;
 		}
 
-		return data;
+		return this;
 	}
 
 	/**
@@ -127,32 +119,18 @@ export default class Queue {
 	 */
 	trigger(id, extraArguments, context) {
 		const _self = _(this);
+		const apply = (_self.bindTo || arguments.length < 3) ? (callback) => {
+			callback(...extraArguments);
+		} : (callback) => {
+			callback.apply(context, extraArguments);
+		};
 
 		extraArguments = castArray(extraArguments);
 
 		_self.isBusy = true;
-		if (id) {
-			if (_self.callbacks[id]) {
-				if (_self.bindTo || arguments.length < 3) {
-					_self.callbacks[id].function(...extraArguments);
-				}
-				else {
-					_self.callbacks[id].function.apply(context, extraArguments);
-				}
-			}
-		}
-		else {
-			if (_self.bindTo || arguments.length < 3) {
-				forOwn(_self.callbacks, (callback) => {
-					callback.function(...extraArguments);
-				});
-			}
-			else {
-				forOwn(_self.callbacks, (callback) => {
-					callback.function.apply(context, extraArguments);
-				});
-			}
-		}
+
+		id ? _self.callbacks[id] !== undefined && apply(_self.callbacks[id]) : forOwn(_self.callbacks, apply);
+
 		_self.isBusy = false;
 
 		return this;
@@ -174,11 +152,13 @@ export default class Queue {
 		const _self = _(self);
 
 		_self.isBusy = true;
+
 		forOwn(_self.callbacks, (callback, id) => {
 			self.trigger(id, extraArguments, context)
 				.discard(id);
 			return true;
 		});
+		
 		_self.isBusy = false;
 
 		return this;

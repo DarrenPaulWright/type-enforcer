@@ -1,4 +1,4 @@
-import isFloat from './isFloat';
+import isNumber from './isNumber';
 
 /**
  * Check if a value is a finite integer
@@ -29,10 +29,7 @@ import isFloat from './isFloat';
  * @returns {Boolean}
  */
 const isInteger = (value, coerce) => {
-	if (isFloat(value) && value == (value | 0)) {
-		return true;
-	}
-	return coerce === true && !isNaN(value) && isInteger(parseFloat(value));
+	return (isNumber(value) && value !== Infinity && value !== -Infinity && value == (value | 0)) || (coerce === true && !isNaN(value) && isInteger(parseFloat(value)));
 };
 
 export default isInteger;

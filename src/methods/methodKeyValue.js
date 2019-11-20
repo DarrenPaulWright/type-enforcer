@@ -1,6 +1,6 @@
 import { forOwn } from 'object-agent';
 import isObject from '../checks/isObject';
-import { _ } from './methodAny';
+import methodAny, { _ } from './methodAny';
 
 /**
  * Builds a chainable method that accepts either a key and a value or an object with multiple key/value pairs.
@@ -20,17 +20,18 @@ export default (options = {}) => {
 	return function(...args) {
 		const self = this;
 		const _self = _(self) || _.set(self);
-		const isAnObject = isObject(args[0]);
 
 		if (self && !_self[key] && !self.isRemoved) {
 			_self[key] = {
-				get: options.get ? options.get.bind(self) : undefined,
-				set: options.set ? options.set.bind(self) : undefined
+				get: methodAny.bindCallback(options.get, self),
+				set: methodAny.bindCallback(options.set, self)
 			};
 		}
 
 		if (self && _self[key]) {
-			if (_self[key].set && (args.length === 2 || isAnObject)) {
+			const isAnObject = isObject(args[0]);
+
+			if ((args.length > 1 || isAnObject) && _self[key].set !== false) {
 				if (isAnObject) {
 					forOwn(args[0], (value, innerKey) => {
 						_self[key].set(innerKey, value);
@@ -40,10 +41,10 @@ export default (options = {}) => {
 					_self[key].set(...args);
 				}
 
-				return this;
+				return self;
 			}
 
-			if (_self[key].get !== undefined) {
+			if (_self[key].get !== false) {
 				return _self[key].get(...args);
 			}
 		}

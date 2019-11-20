@@ -1,4 +1,5 @@
 import isSymbol from '../checks/isSymbol';
+import enforceObject from './enforceObject';
 
 /**
  * Enforce that a value is a Symbol. Uses [isSymbol](docs/checks.md#isSymbol).
@@ -26,14 +27,4 @@ import isSymbol from '../checks/isSymbol';
  *
  * @returns {Object}
  */
-export default (value, alt, coerce) => {
-	if (isSymbol(value)) {
-		return value;
-	}
-
-	if (coerce === true && isSymbol(value, true)) {
-		return Symbol(value + '');
-	}
-
-	return alt;
-};
+export default enforceObject.extend(isSymbol, (value) => Symbol(value + ''));

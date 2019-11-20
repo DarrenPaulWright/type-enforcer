@@ -1,11 +1,3 @@
-const objectStringMap = new Map()
-	.set(Array, '[object Array]')
-	.set(Boolean, '[object Boolean]')
-	.set(Date, '[object Date]')
-	.set(Number, '[object Number]')
-	.set(Object, '[object Object]')
-	.set(RegExp, '[object RegExp]');
-
 const typeOfMap = new Map()
 	.set(Boolean, 'boolean')
 	.set(Number, 'number')
@@ -52,15 +44,5 @@ const typeOfMap = new Map()
  * @returns {Boolean}
  */
 export default (object, constructor) => {
-	if (object === undefined || !(typeof constructor === 'function' && constructor.prototype)) {
-		return false;
-	}
-
-	if (object instanceof constructor) {
-		return true;
-	}
-
-	const objectType = objectStringMap.get(constructor);
-
-	return (objectType && toString.call(object) === objectType) || typeof object === typeOfMap.get(constructor);
+	return constructor && constructor.prototype && (object instanceof constructor || typeof object === typeOfMap.get(constructor));
 };

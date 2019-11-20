@@ -1,5 +1,5 @@
 import isFloat from '../checks/isFloat';
-import clamp from '../utility/clamp';
+import enforceNumber from './enforceNumber';
 
 /**
  * Enforce that a value is a finite float. Uses [isFloat](docs/checks.md#isFloat).
@@ -29,14 +29,4 @@ import clamp from '../utility/clamp';
  *
  * @returns {int}
  */
-export default (value, alt, coerce, minValue = -Infinity, maxValue = Infinity) => {
-	if (isFloat(value)) {
-		return clamp(value, minValue, maxValue);
-	}
-
-	if (coerce === true && isFloat(value, true)) {
-		return clamp(Number(value), minValue, maxValue);
-	}
-	
-	return alt;
-};
+export default enforceNumber.extend(isFloat, Number);

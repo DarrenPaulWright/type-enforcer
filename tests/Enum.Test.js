@@ -12,6 +12,17 @@ describe('Enum', () => {
 		assert.isTrue(ENUM.TEST2 === 'test2');
 	});
 
+	it('should be frozen', () => {
+		const ENUM = new Enum({
+			TEST1: 'test1',
+			TEST2: 'test2'
+		});
+
+		ENUM.TEST3 = 'test3';
+
+		assert.isTrue(ENUM.TEST3 === undefined);
+	});
+
 	describe('.key', () => {
 		it('should return the appropriate key for a valid value', () => {
 			const ENUM = new Enum({

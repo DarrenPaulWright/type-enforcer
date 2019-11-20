@@ -1,5 +1,3 @@
-import isInstanceOf from './isInstanceOf';
-
 /**
  * Check if a value is a date
  *
@@ -26,5 +24,5 @@ import isInstanceOf from './isInstanceOf';
  * @returns {Boolean}
  */
 export default (value, coerce) => {
-	return isInstanceOf(value, Date) || (coerce === true && !isNaN(Date.parse(value)));
+	return value instanceof Date || (coerce === true && typeof value !== 'symbol' && !isNaN(Date.parse(value)));
 };

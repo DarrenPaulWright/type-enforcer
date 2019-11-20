@@ -1,5 +1,15 @@
 import isObject from '../checks/isObject';
 
+const simpleEnforcer = (check, doCoercion) => {
+	const enforcer = (value, alt, coerce) => {
+		return check(value) ? value : (coerce === true && check(value, coerce)) ? doCoercion(value) : alt;
+	};
+
+	enforcer.extend = simpleEnforcer;
+
+	return enforcer;
+};
+
 /**
  * Enforce that a value is an object. Uses [isObject](docs/checks.md#isObject).
  *
@@ -29,14 +39,4 @@ import isObject from '../checks/isObject';
  *
  * @returns {Object}
  */
-export default (value, alt, coerce) => {
-	if (isObject(value)) {
-		return value;
-	}
-
-	if (coerce === true && isObject(value, true)) {
-		return JSON.parse(value);
-	}
-
-	return alt;
-};
+export default simpleEnforcer(isObject, JSON.parse);

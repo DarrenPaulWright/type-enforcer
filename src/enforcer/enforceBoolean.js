@@ -1,4 +1,5 @@
 import isBoolean from '../checks/isBoolean';
+import enforceObject from './enforceObject';
 
 /**
  * Enforce that a value is a boolean. Uses [isBoolean](docs/checks.md#isBoolean).
@@ -26,14 +27,4 @@ import isBoolean from '../checks/isBoolean';
  *
  * @returns {Boolean}
  */
-export default (value, alt, coerce) => {
-	if (isBoolean(value)) {
-		return value;
-	}
-
-	if (coerce === true && isBoolean(value, true)) {
-		return Boolean(value);
-	}
-
-	return alt;
-};
+export default enforceObject.extend(isBoolean, Boolean);

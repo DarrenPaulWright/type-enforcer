@@ -1,4 +1,5 @@
 import isWeakMap from '../checks/isWeakMap';
+import enforceObject from './enforceObject';
 
 /**
  * Enforce that a value is a WeakMap. Uses [isWeakMap](docs/checks.md#isWeakMap).
@@ -29,16 +30,8 @@ import isWeakMap from '../checks/isWeakMap';
  *
  * @returns {Object}
  */
-export default (value, alt, coerce) => {
-	if (isWeakMap(value)) {
-		return value;
-	}
-
-	if (coerce === true && isWeakMap(value, true)) {
-		return value.reduce((result, item) => {
-			return result.set(item[0], value[1]);
-		}, new WeakMap());
-	}
-
-	return alt;
-};
+export default enforceObject.extend(isWeakMap, (value) => {
+	return value.reduce((result, item) => {
+		return result.set(item[0], value[1]);
+	}, new WeakMap());
+});

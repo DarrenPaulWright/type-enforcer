@@ -1,3 +1,5 @@
+import isJson from './isJson';
+
 /**
  * Check if a value is a plain object
  *
@@ -23,24 +25,6 @@
  *
  * @returns {Boolean}
  */
-const isObject = (value, coerce) => {
-	if (value && value.constructor === Object) {
-		return true;
-	}
-	if (coerce === true) {
-		let json;
-
-		try {
-			json = JSON.parse(value);
-		}
-		catch (e) {
-			return false;
-		}
-
-		return isObject(json);
-	}
-
-	return false;
+export default (value, coerce) => {
+	return Boolean(value) && (value.constructor === Object || (coerce === true && typeof value === 'string' && value.charAt(0) === '{' && isJson(value)));
 };
-
-export default isObject;

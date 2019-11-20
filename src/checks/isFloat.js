@@ -1,6 +1,6 @@
 import isNumber from './isNumber';
 
-export const isFinite = (item) => item !== Infinity && item !== -Infinity;
+const isFinite = (value) => value !== Infinity && value !== -Infinity;
 
 /**
  * Check if a value is a finite float
@@ -27,11 +27,6 @@ export const isFinite = (item) => item !== Infinity && item !== -Infinity;
  *
  * @returns {Boolean}
  */
-const isFloat = (value, coerce) => {
-	if (isNumber(value) && isFinite(value)) {
-		return true;
-	}
-	return coerce === true && !isNaN(value) && isFinite(parseFloat(value));
+export default (value, coerce) => {
+	return (isNumber(value) && value !== Infinity && value !== -Infinity) || (coerce === true && !isNaN(value) && isFinite(parseFloat(value)));
 };
-
-export default isFloat;

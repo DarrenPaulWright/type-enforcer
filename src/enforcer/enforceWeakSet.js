@@ -1,4 +1,5 @@
 import isWeakSet from '../checks/isWeakSet';
+import enforceObject from './enforceObject';
 
 /**
  * Enforce that a value is a WeakSet. Uses [isWeakSet](docs/checks.md#isWeakSet).
@@ -29,14 +30,4 @@ import isWeakSet from '../checks/isWeakSet';
  *
  * @returns {Object}
  */
-export default (value, alt, coerce) => {
-	if (isWeakSet(value)) {
-		return value;
-	}
-
-	if (coerce === true && isWeakSet(value, true)) {
-		return new WeakSet(value);
-	}
-
-	return alt;
-};
+export default enforceObject.extend(isWeakSet, (value) => new WeakSet(value));

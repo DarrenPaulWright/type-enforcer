@@ -1,6 +1,6 @@
 import isFunction from '../checks/isFunction';
 import Queue from '../Queue';
-import { _ } from './methodAny';
+import methodAny, { _ } from './methodAny';
 
 /**
  * Builds a chainable method that implements a [Queue](docs/Queue.md)
@@ -23,7 +23,7 @@ export default (options = {}) => {
 		if (self && !_self[key] && !self.isRemoved) {
 			_self[key] = {
 				queue: new Queue(),
-				set: options.set ? options.set.bind(self) : undefined
+				set: methodAny.bindCallback(options.set, self)
 			};
 
 			if (options.bind !== false) {

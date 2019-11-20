@@ -1,4 +1,3 @@
-import { forOwn } from 'object-agent';
 import PrivateVars from './utility/PrivateVars';
 
 const _ = new PrivateVars();
@@ -17,16 +16,13 @@ const _ = new PrivateVars();
 export default class Enum {
 	constructor(object) {
 		Object.assign(this, object);
+
 		const _self = _.set(this, {
-			keys: [],
-			values: []
+			keys: Object.keys(object),
+			values: Object.values(object)
 		});
-		forOwn(object, (value, key) => {
-			_self.keys.push(key);
-			_self.values.push(value);
-		});
+
 		Object.freeze(this);
-		object = null;
 	}
 
 	/**

@@ -52,26 +52,6 @@ describe('Queue', () => {
 
 			assert.equal(queue.length, 3);
 		});
-
-		it('should return provided data', () => {
-			const queue = new Queue();
-			const id = queue.add(emptyFunction, 'something');
-			queue.add(emptyFunction);
-
-			const data = queue.discard(id);
-
-			assert.equal(data, 'something');
-		});
-
-		it('should NOT return data if not provided', () => {
-			const queue = new Queue();
-			const id = queue.add(emptyFunction);
-			queue.add(emptyFunction, 'something');
-
-			const data = queue.discard(id);
-
-			assert.equal(data, undefined);
-		});
 	});
 
 	describe('.discardAll', () => {

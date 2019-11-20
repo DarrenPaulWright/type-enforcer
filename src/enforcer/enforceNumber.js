@@ -1,6 +1,16 @@
 import isNumber from '../checks/isNumber';
 import clamp from '../utility/clamp';
 
+const numericEnforcer = (check, doCoercion) => {
+	const enforcer = (value, alt, coerce, minValue = -Infinity, maxValue = Infinity) => {
+		return check(value) ? clamp(value, minValue, maxValue) : (coerce === true && check(value, true)) ? clamp(doCoercion(value), minValue, maxValue) : alt;
+	};
+
+	enforcer.extend = (check, doCoercion) => numericEnforcer(check, doCoercion);
+
+	return enforcer;
+};
+
 /**
  * Enforce that a value is a number (excluding NaN). Uses [isNumber](docs/checks.md#isNumber).
  *
@@ -32,14 +42,4 @@ import clamp from '../utility/clamp';
  *
  * @returns {Number}
  */
-export default (value, alt, coerce, minValue = -Infinity, maxValue = Infinity) => {
-	if (isNumber(value)) {
-		return clamp(value, minValue, maxValue);
-	}
-
-	if (coerce === true && isNumber(value, true)) {
-		return clamp(Number(value), minValue, maxValue);
-	}
-	
-	return alt;
-};
+export default numericEnforcer(isNumber, Number);

@@ -1,4 +1,4 @@
-import enforceInstance from '../enforcer/enforceInstanceOf';
+import enforceInstanceOf from '../enforcer/enforceInstanceOf';
 import methodAny from './methodAny';
 
 /**
@@ -16,6 +16,6 @@ import methodAny from './methodAny';
  */
 export default methodAny.extend({
 	enforce(newValue, oldValue, options) {
-		return enforceInstance(newValue, options.instanceOf, oldValue);
+		return enforceInstanceOf(newValue, options.instanceOf, oldValue);
 	}
 });

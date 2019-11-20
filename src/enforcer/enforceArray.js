@@ -1,4 +1,5 @@
 import isArray from '../checks/isArray';
+import enforceObject from './enforceObject';
 
 /**
  * Enforce that a value is an array. Uses [isArray](docs/checks.md#isArray).
@@ -26,14 +27,4 @@ import isArray from '../checks/isArray';
  *
  * @returns {Array}
  */
-export default (value, alt, coerce) => {
-	if (isArray(value)) {
-		return value;
-	}
-
-	if (coerce === true && isArray(value, true)) {
-		return JSON.parse(value);
-	}
-
-	return alt;
-};
+export default enforceObject.extend(isArray, JSON.parse);

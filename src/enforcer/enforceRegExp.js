@@ -1,4 +1,5 @@
 import isRegExp from '../checks/isRegExp';
+import enforceObject from './enforceObject';
 
 const SEPARATOR = '/';
 
@@ -28,20 +29,12 @@ const SEPARATOR = '/';
  *
  * @returns {RegExp}
  */
-export default (value, alt, coerce) => {
-	if (isRegExp(value)) {
-		return value;
+export default enforceObject.extend(isRegExp, (value) => {
+	if (value.charAt(0) !== SEPARATOR) {
+		return RegExp(value);
 	}
-
-	if (coerce === true && isRegExp(value, true)) {
-		if (value.charAt(0) !== SEPARATOR) {
-			return RegExp(value);
-		}
-		else {
-			const index = value.lastIndexOf(SEPARATOR);
-			return RegExp(value.substring(1, index), value.substring(index + 1));
-		}
+	else {
+		const index = value.lastIndexOf(SEPARATOR);
+		return RegExp(value.substring(1, index), value.substring(index + 1));
 	}
-	
-	return alt;
-};
+});

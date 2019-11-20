@@ -1,94 +1,85 @@
 import { clone } from 'object-agent';
-import isArray from '../checks/isArray';
+import isFunction from '../checks/isFunction';
 import isInstanceOf from '../checks/isInstanceOf';
-import isString from '../checks/isString';
-import isSymbol from '../checks/isSymbol';
 import PrivateVars from '../utility/PrivateVars';
 
 export const _ = new PrivateVars();
 
-const bindCallback = (callback, self) => {
-	if (isString(callback) || isSymbol(callback)) {
-		callback = self[callback];
+const hasOther = (newValue, other) => {
+	for (let index = 0; index < other.length; index++) {
+		if (newValue === other[index] || isInstanceOf(newValue, other[index])) {
+			return true;
+		}
 	}
-
-	return callback ? callback.bind(self) : undefined;
 };
 
-const buildMethod = (defaultSettings = {}, onInit) => {
+const buildMethod = (defaultOptions, onInit) => {
 	const method = (options) => {
 		const key = Symbol();
 
-		options = {
-			...clone(defaultSettings),
-			...options
-		};
-		if (onInit) {
-			onInit(options);
-		}
+		options = Object.assign({}, defaultOptions, options);
 
-		if ('other' in options && !isArray(options.other)) {
+		if ('other' in options && !Array.isArray(options.other)) {
 			options.other = [options.other];
 		}
 
-		return function(newValue, isForcedSave = false) {
-			let value;
-			let _self = _(this) || _.set(this);
+		if (onInit !== undefined) {
+			onInit(options);
+		}
+
+		return function(newValue, isForcedSave) {
+			const self = this;
+			let _self = _(self) || _.set(self);
 
 			if (!_self[key]) {
 				_self[key] = {
-					value: options.init,
-					enforce: bindCallback(options.enforce, this),
-					compare: bindCallback(options.compare, this),
-					before: bindCallback(options.before, this),
-					get: bindCallback(options.get, this),
-					set: bindCallback(options.set, this)
+					value: options.init ? clone(options.init) : options.init,
+					enforce: method.bindCallback(options.enforce, self),
+					compare: method.bindCallback(options.compare, self),
+					before: method.bindCallback(options.before, self),
+					get: method.bindCallback(options.get, self),
+					set: method.bindCallback(options.set, self)
 				};
 			}
 
-			if (_self[key].get !== undefined) {
-				value = _self[key].get();
-			}
-			else {
-				value = _self[key].value;
-			}
+			const value = _self[key].get ? _self[key].get() : _self[key].value;
 
 			if (arguments.length) {
-				if (!options.other || !options.other.some((value) => newValue === value || isInstanceOf(newValue, value))) {
-					newValue = _self[key].enforce(newValue, value, options);
+				_self = _self[key];
+
+				if (!options.other || !hasOther(newValue, options.other)) {
+					newValue = _self.enforce(newValue, value, options);
 				}
 
-				if (_self[key].compare(newValue, value) || isForcedSave) {
-					if (_self[key].before !== undefined) {
-						_self[key].before(value);
+				if (_self.compare(newValue, value) || isForcedSave) {
+					if (_self.before !== false) {
+						_self.before(value);
 					}
-					if (_self[key].get === undefined) {
-						_self[key].value = newValue;
+					if (_self.get === false) {
+						_self.value = newValue;
 					}
-					if (_self[key].set !== undefined) {
-						_self[key].set(newValue);
+					if (_self.set !== false) {
+						_self.set(newValue);
 					}
 				}
 
-				return this;
+				return self;
 			}
 
 			return (options.stringify && value && value.toString) ? value.toString() : value;
 		};
 	};
 
-	method.defaults = (settings) => {
-		defaultSettings = {
-			...defaultSettings,
-			...settings
-		};
+	method.bindCallback = (callback, self) => {
+		return !callback ? false : (isFunction(callback) ? callback : self[callback]).bind(self);
 	};
 
-	method.extend = (newSettings = {}, newOnInit) => {
-		return buildMethod({
-			...defaultSettings,
-			...newSettings
-		}, newOnInit || onInit);
+	method.defaults = (settings) => {
+		Object.assign(defaultOptions, settings);
+	};
+
+	method.extend = (options = {}, newOnInit) => {
+		return buildMethod(Object.assign({}, defaultOptions, options), newOnInit || onInit);
 	};
 
 	return method;
@@ -147,10 +138,6 @@ const buildMethod = (defaultSettings = {}, onInit) => {
  * @returns {Function} if a "before" or "set" option is set, then this function accepts two args: a new value and forceSave override. If no args are provided then the current value is returned. If neither "before" nor "set" is set, then only one arg is accepted, the new value. Also returns the current value if no args are provided.
  */
 export default buildMethod({
-	enforce(newValue) {
-		return newValue;
-	},
-	compare(newValue, oldValue) {
-		return (newValue !== oldValue);
-	}
+	enforce: (newValue) => newValue,
+	compare: (newValue, oldValue) => newValue !== oldValue
 });

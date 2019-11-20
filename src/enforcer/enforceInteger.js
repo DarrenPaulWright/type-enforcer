@@ -1,5 +1,5 @@
 import isInteger from '../checks/isInteger';
-import clamp from '../utility/clamp';
+import enforceNumber from './enforceNumber';
 
 /**
  * Enforce that a value is a finite integer. Uses [isInteger](docs/checks.md#isInteger).
@@ -29,14 +29,5 @@ import clamp from '../utility/clamp';
  *
  * @returns {int}
  */
-export default (value, alt, coerce, minValue = -Infinity, maxValue = Infinity) => {
-	if (isInteger(value)) {
-		return clamp(value, minValue, maxValue);
-	}
+export default enforceNumber.extend(isInteger, Number);
 
-	if (coerce === true && isInteger(value, true)) {
-		return clamp(Number(value), minValue, maxValue);
-	}
-
-	return alt;
-};

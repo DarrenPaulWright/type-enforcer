@@ -1,5 +1,6 @@
 import isSet from '../checks/isSet';
 import enforceArray from './enforceArray';
+import enforceObject from './enforceObject';
 
 /**
  * Enforce that a value is a Set. Uses [isSet](docs/checks.md#isSet).
@@ -30,14 +31,4 @@ import enforceArray from './enforceArray';
  *
  * @returns {Object}
  */
-export default (value, alt, coerce) => {
-	if (isSet(value)) {
-		return value;
-	}
-
-	if (coerce === true && isSet(value, true)) {
-		return new Set(enforceArray(value, 0, true));
-	}
-
-	return alt;
-};
+export default enforceObject.extend(isSet, (value) => new Set(enforceArray(value, 0, true)));

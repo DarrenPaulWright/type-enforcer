@@ -1,5 +1,3 @@
-import isInstanceOf from './isInstanceOf';
-
 /**
  * Check if a value is a boolean
  *
@@ -26,5 +24,5 @@ import isInstanceOf from './isInstanceOf';
  * @returns {Boolean}
  */
 export default (value, coerce) => {
-	return value === true || value === false || isInstanceOf(value, Boolean) || coerce === true;
+	return value === true || value === false || coerce === true || value instanceof Boolean;
 };

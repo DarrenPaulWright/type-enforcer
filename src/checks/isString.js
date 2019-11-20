@@ -1,5 +1,3 @@
-import isInstanceOf from './isInstanceOf';
-
 /**
  * Check if a value is a string
  *
@@ -26,5 +24,5 @@ import isInstanceOf from './isInstanceOf';
  * @returns {Boolean}
  */
 export default (value, coerce) => {
-	return isInstanceOf(value, String) || (coerce === true && value !== null && value !== undefined && !!value.toString);
+	return typeof value === 'string' || value instanceof String || (coerce === true && value !== null && value !== undefined && value.toString !== undefined);
 };

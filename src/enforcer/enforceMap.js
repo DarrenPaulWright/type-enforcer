@@ -28,16 +28,8 @@ import enforceObject from './enforceObject';
  *
  * @returns {Object}
  */
-export default (value, alt, coerce) => {
-	if (isMap(value)) {
-		return value;
-	}
-
-	if (coerce === true && isMap(value, true)) {
-		return forOwnReduce(enforceObject(value, 0, true), (result, value, key) => {
-			return result.set(key, value);
-		}, new Map());
-	}
-
-	return alt;
-};
+export default enforceObject.extend(isMap, (value) => {
+	return forOwnReduce(enforceObject(value, 0, true), (result, value, key) => {
+		return result.set(key, value);
+	}, new Map());
+});

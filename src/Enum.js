@@ -15,9 +15,7 @@ const _ = new PrivateVars();
  */
 export default class Enum {
 	constructor(object) {
-		Object.assign(this, object);
-
-		const _self = _.set(this, {
+		_.set(Object.assign(this, object), {
 			keys: Object.keys(object),
 			values: Object.values(object)
 		});

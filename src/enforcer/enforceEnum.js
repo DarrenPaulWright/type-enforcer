@@ -26,4 +26,4 @@
  *
  * @returns {String}
  */
-export default (value, enumerable, alt) => (enumerable && enumerable.has(value)) ? value : alt;
+export default (value, enumerable, alt) => (enumerable !== undefined && enumerable.has(value)) ? value : alt;

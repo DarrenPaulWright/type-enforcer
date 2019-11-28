@@ -8,7 +8,13 @@ suite(`Enum`, () => {
 	const data = {
 		one: 'one',
 		two: 'two',
-		three: 'three'
+		three: 'three',
+		four: 'four',
+		five: 'five',
+		six: 'six',
+		seven: 'seven',
+		eight: 'eight',
+		nine: 'nine'
 	};
 
 	benchmark(`init`, () => {

@@ -7,11 +7,10 @@ import { forOwn } from 'object-agent';
  *
  * @arg {Object} target - The target to apply the settings to.
  * @arg {Object} settings
- * @arg {Array}  [priority=[]] - Array of method names to apply first, if they are actually in the settings. Methods are called in the order provided in this array.
- * @arg {Array}  [defered=[]] - Array of method names to apply last, if they are actually in the settings. Methods are called in the order provided in this array.
+ * @arg {Array}  [priority] - Array of method names to apply first, if they are actually in the settings. Methods are called in the order provided in this array.
+ * @arg {Array}  [deferred] - Array of method names to apply last, if they are actually in the settings. Methods are called in the order provided in this array.
  */
-
-export default (target, settings, priority, defered) => {
+export default (target, settings, priority, deferred) => {
 	const apply = (method) => {
 		method in settings && target[method] !== undefined && target[method](settings[method]);
 	};
@@ -19,10 +18,10 @@ export default (target, settings, priority, defered) => {
 	priority !== undefined && priority.forEach(apply);
 
 	forOwn(settings, (setting, method) => {
-		(defered === undefined || defered.indexOf(method) === -1) &&
+		(deferred === undefined || deferred.indexOf(method) === -1) &&
 		(priority === undefined || priority.indexOf(method) === -1) &&
 		target[method] !== undefined && target[method](setting);
 	});
 
-	defered !== undefined && defered.forEach(apply);
+	deferred !== undefined && deferred.forEach(apply);
 };

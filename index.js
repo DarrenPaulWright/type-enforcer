@@ -31,6 +31,12 @@
  *
  * <br>
  *
+ * ### Type Enforcer Addon Libraries:
+ * - [type-enforcer-math](https://github.com/DarrenPaulWright/type-enforcer-math) (Point and Vector moved here at v1.0.0)
+ * - [type-enforcer-ui](https://github.com/DarrenPaulWright/type-enforcer-ui) (CssSize, DockPoint, Thickness, and Element moved here at v1.0.0)
+ *
+ * <br>
+ *
  * ### Extending & Modifying Type Enforcer
  *
  * #### Enforcers

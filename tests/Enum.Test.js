@@ -18,7 +18,11 @@ describe('Enum', () => {
 			TEST2: 'test2'
 		});
 
-		ENUM.TEST3 = 'test3';
+		try {
+			ENUM.TEST3 = 'test3';
+		}
+		catch (e) { // eslint-disable-line no-empty
+		}
 
 		assert.isTrue(ENUM.TEST3 === undefined);
 	});

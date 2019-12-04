@@ -1,24 +1,23 @@
-import methodAny from './types/methodAny';
-import methodArray from './types/methodArray';
-import methodBoolean from './types/methodBoolean';
-import methodCssSize from './types/methodCssSize';
-import methodDate from './types/methodDate';
-import methodDockPoint from './types/methodDockPoint';
-import methodElement from './types/methodElement';
-import methodEnum from './types/methodEnum';
-import methodFloat from './types/methodFloat';
-import methodFunction from './types/methodFunction';
-import methodInstance from './types/methodInstance';
-import methodInteger from './types/methodInteger';
-import methodKeyValue from './types/methodKeyValue';
-import methodNumber from './types/methodNumber';
-import methodObject from './types/methodObject';
-import methodPoint from './types/methodPoint';
-import methodQueue from './types/methodQueue';
-import methodRegExp from './types/methodRegExp';
-import methodString from './types/methodString';
-import methodThickness from './types/methodThickness';
-import methodVector from './types/methodVector';
+import methodAny from './methodAny';
+import methodArray from './methodArray';
+import methodBoolean from './methodBoolean';
+import methodDate from './methodDate';
+import methodEnum from './methodEnum';
+import methodFloat from './methodFloat';
+import methodFunction from './methodFunction';
+import methodInstanceOf from './methodInstanceOf';
+import methodInteger from './methodInteger';
+import methodKeyValue from './methodKeyValue';
+import methodMap from './methodMap';
+import methodNumber from './methodNumber';
+import methodObject from './methodObject';
+import methodQueue from './methodQueue';
+import methodRegExp from './methodRegExp';
+import methodSet from './methodSet';
+import methodString from './methodString';
+import methodSymbol from './methodSymbol';
+import methodWeakMap from './methodWeakMap';
+import methodWeakSet from './methodWeakSet';
 
 /**
  * Enforce data types and remove common boilerplate code on class methods.
@@ -57,21 +56,20 @@ export default {
 	array: methodArray,
 	boolean: methodBoolean,
 	queue: methodQueue,
-	cssSize: methodCssSize,
 	date: methodDate,
-	dockPoint: methodDockPoint,
-	element: methodElement,
 	enum: methodEnum,
 	float: methodFloat,
 	function: methodFunction,
 	integer: methodInteger,
-	instance: methodInstance,
+	instanceOf: methodInstanceOf,
 	keyValue: methodKeyValue,
+	map: methodMap,
 	number: methodNumber,
 	object: methodObject,
-	point: methodPoint,
 	regExp: methodRegExp,
+	set: methodSet,
 	string: methodString,
-	thickness: methodThickness,
-	vector: methodVector
+	symbol: methodSymbol,
+	weakMap: methodWeakMap,
+	weakSet: methodWeakSet
 };

@@ -1,8 +1,3 @@
-import isArray from '../checks/types/isArray';
-import isNumber from '../checks/types/isNumber';
-
-const slice = [].slice;
-
 /**
  * Casts a value to an array.
  *
@@ -36,15 +31,4 @@ const slice = [].slice;
  *
  * @returns {Array}
  */
-export default (value) => {
-	if (isArray(value)) {
-		return value;
-	}
-	if (value === undefined) {
-		return [];
-	}
-	if (value !== null && typeof value === 'object' && isNumber(value.length)) {
-		return slice.call(value);
-	}
-	return [value];
-}
+export default (value) => Array.isArray(value) ? value : (value === undefined) ? [] : (value !== null && typeof value === 'object' && typeof value.length === 'number') ? Array.prototype.slice.call(value) : [value];

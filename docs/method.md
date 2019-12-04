@@ -14,33 +14,56 @@
 <br><a name="method"></a>
 
 ### method : <code>object</code>
-> Enforce data types and remove common boilerplate code on class methods.> > ``` javascript> import { method } from 'type-enforcer';> > // Or import individual functions> import { methodBoolean, methodString } from 'type-enforcer';> ```
+> Enforce data types and remove common boilerplate code on class methods.
+> 
+> ``` javascript
+> import { method } from 'type-enforcer';
+> 
+> // Or import individual functions
+> import { methodBoolean, methodString } from 'type-enforcer';
+> ```
 
 **Example**  
-``` javascript// Use it as a prototype:const Thing = function() {};Thing.prototype.myMethod = method.string([options]);// or in a class:class Thing() {}Thing.prototype.myMethod = method.string([options]);// or as a non-prototype method:const Thing = function() {    this.myMethod = method.string([options]);};```
+``` javascript
+// Use it as a prototype:
+const Thing = function() {};
+
+Thing.prototype.myMethod = method.string([options]);
+
+
+// or in a class:
+class Thing() {}
+
+Thing.prototype.myMethod = method.string([options]);
+
+
+// or as a non-prototype method:
+const Thing = function() {
+    this.myMethod = method.string([options]);
+};
+```
 
 * [method](#method) : <code>object</code>
     * [.any([options])](#method.any) ⇒ <code>function</code>
     * [.array([options])](#method.array) ⇒ <code>function</code>
     * [.boolean([options])](#method.boolean) ⇒ <code>function</code>
-    * [.cssSize([options])](#method.cssSize) ⇒ <code>function</code>
     * [.date([options])](#method.date) ⇒ <code>function</code>
-    * [.dockPoint([options])](#method.dockPoint) ⇒ <code>function</code>
-    * [.element([options])](#method.element) ⇒ <code>function</code>
     * [.enum([options])](#method.enum) ⇒ <code>function</code>
     * [.float([options])](#method.float) ⇒ <code>function</code>
     * [.function([options])](#method.function) ⇒ <code>function</code>
-    * [.instance([options])](#method.instance) ⇒ <code>function</code>
+    * [.instanceOf([options])](#method.instanceOf) ⇒ <code>function</code>
     * [.int([options])](#method.int) ⇒ <code>function</code>
     * [.keyValue([options])](#method.keyValue) ⇒ <code>function</code>
+    * [.map([options])](#method.map) ⇒ <code>function</code>
     * [.number([options])](#method.number) ⇒ <code>function</code>
     * [.object([options])](#method.object) ⇒ <code>function</code>
-    * [.point([options])](#method.point) ⇒ <code>function</code>
     * [.queue([options])](#method.queue) ⇒ <code>function</code>
     * [.regExp([options])](#method.regExp) ⇒ <code>function</code>
+    * [.set([options])](#method.set) ⇒ <code>function</code>
     * [.string([options])](#method.string) ⇒ <code>function</code>
-    * [.thickness([options])](#method.thickness) ⇒ <code>function</code>
-    * [.vector([options])](#method.vector) ⇒ <code>function</code>
+    * [.symbol([options])](#method.symbol) ⇒ <code>function</code>
+    * [.weakMap([options])](#method.weakMap) ⇒ <code>function</code>
+    * [.weakSet([options])](#method.weakSet) ⇒ <code>function</code>
 
 
 <br><a name="method.any"></a>
@@ -56,16 +79,47 @@
 | --- | --- | --- | --- |
 | [options] | <code>Object</code> |  |  |
 | [options.init] | <code>\*</code> |  | The initial value |
-| [options.enforce] | <code>function</code> |  | Enforce this data type |
-| [options.compare] | <code>function</code> |  | Compares a new value to the current value. Return true if the two values are different. |
-| [options.before] | <code>function</code> |  | Called before a new valid value is set. Provides the prior value, sets the context to the methods constructor. |
-| [options.set] | <code>function</code> |  | Called after a new valid value is set. Provides the new value, sets the context to the methods constructor. |
-| [options.get] | <code>function</code> |  | Called to get the value, sets the context to the methods constructor. |
+| [options.enforce] | <code>function</code>, <code>String</code>, <code>Symbol</code> |  | Enforce this data type.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name. |
+| [options.compare] | <code>function</code>, <code>String</code>, <code>Symbol</code> |  | Compares a new value to the current value. Return true if the two values are different.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name. |
+| [options.before] | <code>function</code>, <code>String</code>, <code>Symbol</code> |  | Called before a new valid value is set. Provides the prior value.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name. |
+| [options.set] | <code>function</code>, <code>String</code>, <code>Symbol</code> |  | Called after a new valid value is set. Provides the new value.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name. |
+| [options.get] | <code>function</code>, <code>String</code>, <code>Symbol</code> |  | Called to get the value.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name. |
 | [options.other] | <code>Array</code>, <code>\*</code> |  | Another value/type or array of other values/types that can be set |
 | [options.stringify] | <code>Boolean</code> | <code>false</code> | If true, then call toString() on the value before returning it (if the value has a toString method) |
 
 **Example**  
-``` javascriptimport { method } from 'type-enforcer';const Widget = function() {    someMethod = method.any({        set(newValue) {            console.log(this);            console.log(newValue);        }    });    anotherMethod = method.any();    thirdMethod = method.any({        get(newValue) {            return 'item 2';        }    });};const widget = new Widget();widget.someMethod('a').anotherMethod(42).thirdMethod('item 1');// => console.log widget and 'a'widget.someMethod();// => 'a'widget.anotherMethod();// => 42widget.thirdMethod();// => 'item 2'```
+``` javascript
+import { method } from 'type-enforcer';
+
+const Widget = function() {
+    someMethod = method.any({
+        set(newValue) {
+            console.log(this);
+            console.log(newValue);
+        }
+    });
+    anotherMethod = method.any();
+    thirdMethod = method.any({
+        get(newValue) {
+            return 'item 2';
+        }
+    });
+};
+
+const widget = new Widget();
+
+widget.someMethod('a').anotherMethod(42).thirdMethod('item 1');
+// => console.log widget and 'a'
+
+widget.someMethod();
+// => 'a'
+
+widget.anotherMethod();
+// => 42
+
+widget.thirdMethod();
+// => 'item 2'
+```
 
 <br><a name="method.array"></a>
 
@@ -103,23 +157,6 @@
 | [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 
-<br><a name="method.cssSize"></a>
-
-#### method.cssSize([options]) ⇒ <code>function</code>
-> Builds a chainable method for getting/setting a [CssSize](docs/CssSize.md)
-
-**Alias:** `methodCssSize`
-
-**Extends**: [<code>any</code>](#method.any)  
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
-| [options.enforce] | <code>function</code> | <code>enforce.cssSize</code> |  |
-| [options.compare] | <code>function</code> | <code>CssSize.isSame</code> |  |
-| [options.coerce] | <code>Boolean</code> | <code>true</code> | If false then don't coerce the value |
-
-
 <br><a name="method.date"></a>
 
 #### method.date([options]) ⇒ <code>function</code>
@@ -134,38 +171,6 @@
 | [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
 | [options.enforce] | <code>function</code> | <code>enforce.date</code> |  |
 | [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
-
-
-<br><a name="method.dockPoint"></a>
-
-#### method.dockPoint([options]) ⇒ <code>function</code>
-> Builds a chainable method for getting/setting a [DockPoint](docs/DockPoint.md)
-
-**Alias:** `methodDockPoint`
-
-**Extends**: [<code>any</code>](#method.any)  
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
-| [options.enforce] | <code>function</code> | <code>enforce.dockPoint</code> |  |
-| [options.compare] | <code>function</code> | <code>DockPoint.isSame</code> |  |
-| [options.coerce] | <code>Boolean</code> | <code>true</code> | If false then don't coerce the value |
-
-
-<br><a name="method.element"></a>
-
-#### method.element([options]) ⇒ <code>function</code>
-> Builds a chainable method for getting/setting a DOM element
-
-**Alias:** `methodElement`
-
-**Extends**: [<code>any</code>](#method.any)  
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
-| [options.enforce] | <code>function</code> | <code>enforce.element</code> |  |
 
 
 <br><a name="method.enum"></a>
@@ -218,20 +223,20 @@
 | [options.bind] | <code>boolean</code> | <code>true</code> | Binds the set function to the same context as the method. |
 
 
-<br><a name="method.instance"></a>
+<br><a name="method.instanceOf"></a>
 
-#### method.instance([options]) ⇒ <code>function</code>
+#### method.instanceOf([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting an instance of a specific constructor
 
-**Alias:** `methodInstance`
+**Alias:** `methodInstanceOf`
 
 **Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
-| [options.enforce] | <code>function</code> | <code>enforce.instance</code> |  |
-| [options.instance] | <code>Constructor</code> |  | The item to run enforce.instance against |
+| [options.enforce] | <code>function</code> | <code>enforce.instanceOf</code> |  |
+| [options.instanceOf] | <code>Constructor</code> |  | The item to run enforce.instanceOf against |
 
 
 <br><a name="method.int"></a>
@@ -266,6 +271,22 @@
 | [options] | <code>Object</code> |  |
 | [options.set] | <code>function</code> | Called for each key/value pair applied. Provides two args, the key and value, and sets the context to the methods constructor. |
 | [options.get] | <code>function</code> | Called if the method is called with a single, non-object, arg. Provides the same arg, sets the context to the methods constructor. |
+
+
+<br><a name="method.map"></a>
+
+#### method.map([options]) ⇒ <code>function</code>
+> Builds a chainable method for getting/setting a Map
+
+**Alias:** `methodMap`
+
+**Extends**: [<code>any</code>](#method.any)  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options.enforce] | <code>function</code> | <code>enforce.map</code> |  |
+| [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 
 <br><a name="method.number"></a>
@@ -304,24 +325,6 @@
 | [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 
-<br><a name="method.point"></a>
-
-#### method.point([options]) ⇒ <code>function</code>
-> Builds a chainable method for getting/setting a [Point](docs/Point.md)
-
-**Alias:** `methodPoint`
-
-**Extends**: [<code>any</code>](#method.any)  
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
-| [options.init] | <code>\*</code> | <code>Point</code> |  |
-| [options.enforce] | <code>function</code> | <code>enforce.point</code> |  |
-| [options.compare] | <code>function</code> | <code>Point.isSame</code> |  |
-| [options.coerce] | <code>Boolean</code> | <code>true</code> | If false then don't coerce the value |
-
-
 <br><a name="method.queue"></a>
 
 #### method.queue([options]) ⇒ <code>function</code>
@@ -354,6 +357,22 @@
 | [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 
+<br><a name="method.set"></a>
+
+#### method.set([options]) ⇒ <code>function</code>
+> Builds a chainable method for getting/setting a Set
+
+**Alias:** `methodSet`
+
+**Extends**: [<code>any</code>](#method.any)  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options.enforce] | <code>function</code> | <code>enforce.set</code> |  |
+| [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+
+
 <br><a name="method.string"></a>
 
 #### method.string([options]) ⇒ <code>function</code>
@@ -371,39 +390,52 @@
 | [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 
-<br><a name="method.thickness"></a>
+<br><a name="method.symbol"></a>
 
-#### method.thickness([options]) ⇒ <code>function</code>
-> Builds a chainable method for getting/setting a [Thickness](docs/Thickness.md)
+#### method.symbol([options]) ⇒ <code>function</code>
+> Builds a chainable method for getting/setting a Symbol
 
-**Alias:** `methodThickness`
-
-**Extends**: [<code>any</code>](#method.any)  
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
-| [options.enforce] | <code>function</code> | <code>enforce.thickness</code> |  |
-| [options.compare] | <code>function</code> | <code>Thickness.isSame</code> |  |
-| [options.coerce] | <code>Boolean</code> | <code>true</code> | If false then don't coerce the value |
-
-
-<br><a name="method.vector"></a>
-
-#### method.vector([options]) ⇒ <code>function</code>
-> Builds a chainable method for getting/setting a [Vector](docs/Vector.md)
-
-**Alias:** `methodVector`
+**Alias:** `methodSymbol`
 
 **Extends**: [<code>any</code>](#method.any)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
-| [options.init] | <code>\*</code> | <code>Vector</code> |  |
-| [options.enforce] | <code>function</code> | <code>enforce.vector</code> |  |
-| [options.compare] | <code>function</code> | <code>Vector.isSame</code> |  |
-| [options.coerce] | <code>Boolean</code> | <code>true</code> | If false then don't coerce the value |
+| [options.enforce] | <code>function</code> | <code>enforce.symbol</code> |  |
+| [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+
+
+<br><a name="method.weakMap"></a>
+
+#### method.weakMap([options]) ⇒ <code>function</code>
+> Builds a chainable method for getting/setting a WeakMap
+
+**Alias:** `methodWeakMap`
+
+**Extends**: [<code>any</code>](#method.any)  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options.enforce] | <code>function</code> | <code>enforce.weakMap</code> |  |
+| [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+
+
+<br><a name="method.weakSet"></a>
+
+#### method.weakSet([options]) ⇒ <code>function</code>
+> Builds a chainable method for getting/weakSetting a WeakSet
+
+**Alias:** `methodWeakSet`
+
+**Extends**: [<code>any</code>](#method.any)  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options.enforce] | <code>function</code> | <code>enforce.weakSet</code> |  |
+| [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg

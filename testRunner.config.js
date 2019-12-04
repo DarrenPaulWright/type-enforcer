@@ -1,21 +1,14 @@
 module.exports = [{
-	type: 'css',
-	files: [
-		'tests/test.css'
-	]
-}, {
 	type: 'src',
 	files: [
+		'index.js',
 		'src/**/*.js'
 	]
 }, {
 	type: 'helper',
 	files: [
-		'tests/TestUtil.js',
 		'tests/testValues.js',
-		'tests/equality/compareValues.js',
-		'tests/enforcer/enforceTestUtility.js',
-		'tests/methods/methodTestUtility.js'
+		'tests/compareValues.js'
 	]
 }, {
 	type: 'specs',

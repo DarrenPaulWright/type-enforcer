@@ -14,28 +14,34 @@
 <br><a name="is"></a>
 
 ### is : <code>object</code>
-> Utility functions for checking if something is a particular data type.> > ``` javascript> import { is } from 'type-enforcer';> > // Or import individual functions> import { isBoolean, isString } from 'type-enforcer';> ```
+> Utility functions for checking if something is a particular data type.
+> 
+> ``` javascript
+> import { is } from 'type-enforcer';
+> 
+> // Or import individual functions
+> import { isBoolean, isString } from 'type-enforcer';
+> ```
 
 
 * [is](#is) : <code>object</code>
     * [.array(value, [coerce])](#is.array) ⇒ <code>Boolean</code>
     * [.boolean(value, [coerce])](#is.boolean) ⇒ <code>Boolean</code>
-    * [.cssSize(value, [coerce])](#is.cssSize) ⇒ <code>Boolean</code>
     * [.date(value, [coerce])](#is.date) ⇒ <code>Boolean</code>
-    * [.dockPoint(value, [coerce])](#is.dockPoint) ⇒ <code>Boolean</code>
-    * [.element(value)](#is.element) ⇒ <code>Boolean</code>
     * [.float(value, [coerce])](#is.float) ⇒ <code>Boolean</code>
     * [.function(value)](#is.function) ⇒ <code>Boolean</code>
     * [.instanceOf(object, constructor)](#is.instanceOf) ⇒ <code>Boolean</code>
     * [.integer(value, [coerce])](#is.integer) ⇒ <code>Boolean</code>
     * [.json(value)](#is.json) ⇒ <code>Boolean</code>
+    * [.map(value, [coerce])](#is.map) ⇒ <code>Boolean</code>
     * [.number(value, [coerce])](#is.number) ⇒ <code>Boolean</code>
     * [.object(value, [coerce])](#is.object) ⇒ <code>Boolean</code>
-    * [.point(value, [coerce])](#is.point) ⇒ <code>Boolean</code>
     * [.regExp(value, [coerce])](#is.regExp) ⇒ <code>Boolean</code>
+    * [.set(value, [coerce])](#is.set) ⇒ <code>Boolean</code>
     * [.string(value, [coerce])](#is.string) ⇒ <code>Boolean</code>
-    * [.thickness(value, [coerce])](#is.thickness) ⇒ <code>Boolean</code>
-    * [.vector(value, [coerce])](#is.vector) ⇒ <code>Boolean</code>
+    * [.symbol(value, [coerce])](#is.symbol) ⇒ <code>Boolean</code>
+    * [.weakMap(value, [coerce])](#is.weakMap) ⇒ <code>Boolean</code>
+    * [.weakSet(value, [coerce])](#is.weakSet) ⇒ <code>Boolean</code>
 
 
 <br><a name="is.array"></a>
@@ -52,7 +58,18 @@
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into an array |
 
 **Example**  
-``` javascriptimport { isArray } from 'type-enforcer';isArray([]);// => trueisArray('[]');// => falseisArray('[]', true);// => true```
+``` javascript
+import { isArray } from 'type-enforcer';
+
+isArray([]);
+// => true
+
+isArray('[]');
+// => false
+
+isArray('[]', true);
+// => true
+```
 
 <br><a name="is.boolean"></a>
 
@@ -68,23 +85,18 @@
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a boolean. Always returns true, as _everything_ can be coerced into a boolean. |
 
 **Example**  
-``` javascriptimport { isBoolean } from 'type-enforcer';isBoolean(false);// => trueisBoolean('a string');// => falseisBoolean('a string', true);// => true```
+``` javascript
+import { isBoolean } from 'type-enforcer';
 
-<br><a name="is.cssSize"></a>
+isBoolean(false);
+// => true
 
-#### is.cssSize(value, [coerce]) ⇒ <code>Boolean</code>
-> Check if a value is a [CssSize](docs/CssSize.md)
+isBoolean('a string');
+// => false
 
-**Alias:** `isCssSize`
-
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| value | <code>\*</code> |  |  |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a CssSize |
-
-**Example**  
-``` javascriptimport { isCssSize } from 'type-enforcer';isCssSize(new CssSize());// => trueisCssSize('14px');// => falseisCssSize('14px', true);// => true```
+isBoolean('a string', true);
+// => true
+```
 
 <br><a name="is.date"></a>
 
@@ -100,38 +112,18 @@
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a Date |
 
 **Example**  
-``` javascriptimport { isDate } from 'type-enforcer';isDate(new Date());// => trueisDate('10/12/1980');// => falseisDate('10/12/1980', true);// => true```
+``` javascript
+import { isDate } from 'type-enforcer';
 
-<br><a name="is.dockPoint"></a>
+isDate(new Date());
+// => true
 
-#### is.dockPoint(value, [coerce]) ⇒ <code>Boolean</code>
-> Check if a value is a [DockPoint](docs/DockPoint.md)
+isDate('10/12/1980');
+// => false
 
-**Alias:** `isDockPoint`
-
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| value | <code>\*</code> |  |  |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a DockPoint |
-
-**Example**  
-``` javascriptimport { isDockPoint } from 'type-enforcer';isDockPoint(new DockPoint());// => trueisDockPoint('top');// => falseisDockPoint('top', true);// => true```
-
-<br><a name="is.element"></a>
-
-#### is.element(value) ⇒ <code>Boolean</code>
-> Check if a value is a DOM element
-
-**Alias:** `isElement`
-
-
-| Param | Type |
-| --- | --- |
-| value | <code>\*</code> | 
-
-**Example**  
-``` javascriptimport { isElement } from 'type-enforcer';isElement(document.createElement('div'));// => true```
+isDate('10/12/1980', true);
+// => true
+```
 
 <br><a name="is.float"></a>
 
@@ -147,7 +139,18 @@
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a float |
 
 **Example**  
-``` javascriptimport { isFloat } from 'type-enforcer';isFloat(3.14159);// => trueisFloat('3.14159');// => falseisFloat('3.14159', true);// => true```
+``` javascript
+import { isFloat } from 'type-enforcer';
+
+isFloat(3.14159);
+// => true
+
+isFloat('3.14159');
+// => false
+
+isFloat('3.14159', true);
+// => true
+```
 
 <br><a name="is.function"></a>
 
@@ -162,12 +165,17 @@
 | value | <code>\*</code> | 
 
 **Example**  
-``` javascriptimport { isFunction } from 'type-enforcer';isFunction(() => {});// => true```
+``` javascript
+import { isFunction } from 'type-enforcer';
+
+isFunction(() => {});
+// => true
+```
 
 <br><a name="is.instanceOf"></a>
 
 #### is.instanceOf(object, constructor) ⇒ <code>Boolean</code>
-> Check if a value is an instance of a constructor. Fixes issues with native instanceOf and primitives Boolean, Number, and String (see example).
+> Check if a value is an instance of a constructor. Fixes issues with native instanceOf and primitives Boolean, Number, String, and Symbol (see example).
 
 **Alias:** `isInstanceOf`
 
@@ -178,7 +186,32 @@
 | constructor | <code>function</code> | 
 
 **Example**  
-``` javascriptimport { isInstanceOf } from 'type-enforcer';isInstanceOf(false, Boolean); => truefalse instanceof Boolean => falseisInstanceOf(false, Boolean); => true42 instanceof Number => falseisInstanceOf(42, Number); => true'a string' instanceof String => falseisInstanceOf('a string', String); => true```
+``` javascript
+import { isInstanceOf } from 'type-enforcer';
+
+isInstanceOf(false, Boolean);
+ => true
+
+false instanceof Boolean
+ => false
+isInstanceOf(false, Boolean);
+ => true
+
+42 instanceof Number
+ => false
+isInstanceOf(42, Number);
+ => true
+
+'a string' instanceof String
+ => false
+isInstanceOf('a string', String);
+ => true
+
+Symbol() instanceof Symbol
+ => false
+isInstanceOf(Symbol(), Symbol);
+ => true
+```
 
 <br><a name="is.integer"></a>
 
@@ -194,7 +227,21 @@
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into an Integer |
 
 **Example**  
-``` javascriptimport { isInteger } from 'type-enforcer';isInteger(42);// => trueisInteger('42');// => falseisInteger('42', true);// => trueisInteger('42.5', true);// => false```
+``` javascript
+import { isInteger } from 'type-enforcer';
+
+isInteger(42);
+// => true
+
+isInteger('42');
+// => false
+
+isInteger('42', true);
+// => true
+
+isInteger('42.5', true);
+// => false
+```
 
 <br><a name="is.json"></a>
 
@@ -209,7 +256,36 @@
 | value | <code>\*</code> | 
 
 **Example**  
-``` javascriptimport { isJson } from 'type-enforcer';```
+``` javascript
+import { isJson } from 'type-enforcer';
+```
+
+<br><a name="is.map"></a>
+
+#### is.map(value, [coerce]) ⇒ <code>Boolean</code>
+> Check if a value is a Map
+
+**Alias:** `isMap`
+
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | <code>\*</code> |  |  |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a Map. Objects or Strings that can be coerced into Objects can be coerced into Maps, as well as anything that can be coerced into a WeakMap |
+
+**Example**  
+``` javascript
+import { isMap } from 'type-enforcer';
+
+isMap(new Map());
+// => true
+
+isMap(new Date());
+// => false
+
+isMap({'a': 12}, new Map(), true);
+// => Map with key 'a' set to 12
+```
 
 <br><a name="is.number"></a>
 
@@ -225,7 +301,18 @@
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a Number |
 
 **Example**  
-``` javascriptimport { isNumber } from 'type-enforcer';isNumber(3.14159);// => trueisNumber('3.14159');// => falseisNumber('3.14159', true);// => true```
+``` javascript
+import { isNumber } from 'type-enforcer';
+
+isNumber(3.14159);
+// => true
+
+isNumber('3.14159');
+// => false
+
+isNumber('3.14159', true);
+// => true
+```
 
 <br><a name="is.object"></a>
 
@@ -241,23 +328,18 @@
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into an Object |
 
 **Example**  
-``` javascriptimport { isObject } from 'type-enforcer';isObject({});// => trueisObject('{}');// => falseisObject('{}', true);// => true```
+``` javascript
+import { isObject } from 'type-enforcer';
 
-<br><a name="is.point"></a>
+isObject({});
+// => true
 
-#### is.point(value, [coerce]) ⇒ <code>Boolean</code>
-> Check if a value is a [Point](docs/Point.md)
+isObject('{}');
+// => false
 
-**Alias:** `isPoint`
-
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| value | <code>\*</code> |  |  |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a Point |
-
-**Example**  
-``` javascriptimport { isPoint } from 'type-enforcer';isPoint(new Point());// => trueisPoint('1,2');// => falseisPoint('1,2', true);// => true```
+isObject('{}', true);
+// => true
+```
 
 <br><a name="is.regExp"></a>
 
@@ -273,7 +355,45 @@
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a RegExp |
 
 **Example**  
-``` javascriptimport { isRegExp } from 'type-enforcer';isRegExp(/*+/g);// => trueisRegExp('/*+/g');// => falseisRegExp('/*+/g', true);// => true```
+``` javascript
+import { isRegExp } from 'type-enforcer';
+
+isRegExp(/*+/g);
+// => true
+
+isRegExp('/*+/g');
+// => false
+
+isRegExp('/*+/g', true);
+// => true
+```
+
+<br><a name="is.set"></a>
+
+#### is.set(value, [coerce]) ⇒ <code>Boolean</code>
+> Check if a value is a Set
+
+**Alias:** `isSet`
+
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | <code>\*</code> |  |  |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a Set. Arrays or Strings that can be coerced into Arrays can be coerced into Sets. |
+
+**Example**  
+``` javascript
+import { isSet } from 'type-enforcer';
+
+isSet(new Set());
+// => true
+
+isSet(new Date());
+// => false
+
+isSet([1, 2], new Set(), true);
+// => Set with key 1 and 2
+```
 
 <br><a name="is.string"></a>
 
@@ -289,39 +409,103 @@
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a String |
 
 **Example**  
-``` javascriptimport { isString } from 'type-enforcer';isString('type');// => trueisString(new Date());// => falseisString(new Date(), true);// => true```
+``` javascript
+import { isString } from 'type-enforcer';
 
-<br><a name="is.thickness"></a>
+isString('type');
+// => true
 
-#### is.thickness(value, [coerce]) ⇒ <code>Boolean</code>
-> Check if a value is a [Thickness](docs/Thickness.md)
+isString(new Date());
+// => false
 
-**Alias:** `isThickness`
+isString(new Date(), true);
+// => true
+```
 
+<br><a name="is.symbol"></a>
 
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| value | <code>\*</code> |  |  |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a Thickness |
+#### is.symbol(value, [coerce]) ⇒ <code>Boolean</code>
+> Check if a value is a Symbol
 
-**Example**  
-``` javascriptimport { isThickness } from 'type-enforcer';isThickness(new Thickness());// => trueisThickness('12px 20px');// => falseisThickness('12px 20px', true);// => true```
-
-<br><a name="is.vector"></a>
-
-#### is.vector(value, [coerce]) ⇒ <code>Boolean</code>
-> Check if a value is a [Vector](docs/Vector.md)
-
-**Alias:** `isVector`
+**Alias:** `isSymbol`
 
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | value | <code>\*</code> |  |  |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a Vector |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a Symbol. Anything that can be coerced into a string can also be coerced into a Symbol. |
 
 **Example**  
-``` javascriptimport { isVector } from 'type-enforcer';isVector(new Vector());// => trueisVector('[[1,2],[3,4]]');// => falseisVector('[[1,2],[3,4]]', true);// => true```
+``` javascript
+import { isSymbol } from 'type-enforcer';
+
+isSymbol(Symbol());
+// => true
+
+isSymbol(new Date());
+// => false
+
+isSymbol('string', true);
+// => true
+```
+
+<br><a name="is.weakMap"></a>
+
+#### is.weakMap(value, [coerce]) ⇒ <code>Boolean</code>
+> Check if a value is a WeakMap
+
+**Alias:** `isWeakMap`
+
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | <code>\*</code> |  |  |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a WeakMap. Must be an array of arrays, each inner array must be length 2, and the first item of each inner array must be an object to be coerced into a WeakMap. |
+
+**Example**  
+``` javascript
+import { isWeakMap } from 'type-enforcer';
+
+const a = {};
+
+isWeakMap(new WeakMap());
+// => true
+
+isWeakMap(new Date());
+// => false
+
+isWeakMap([[a, 12]], true);
+// => true
+```
+
+<br><a name="is.weakSet"></a>
+
+#### is.weakSet(value, [coerce]) ⇒ <code>Boolean</code>
+> Check if a value is a WeakSet
+
+**Alias:** `isWeakSet`
+
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | <code>\*</code> |  |  |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a WeakSet. Arrays of objects can be coerced into WeakSets. |
+
+**Example**  
+``` javascript
+import { isWeakSet } from 'type-enforcer';
+
+const a = new Map();
+
+isWeakSet(new WeakSet());
+// => true
+
+isWeakSet(new Date());
+// => false
+
+isWeakSet([a], new WeakSet(), true);
+// => WeakSet with a
+```
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg
 [npm-url]: https://npmjs.com/package/type-enforcer

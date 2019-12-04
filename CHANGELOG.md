@@ -4,6 +4,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+## [1.0.0]
+### Added
+- isSymbol, enforceSymbol, methodSymbol
+- isMap, enforceMap, methodMap
+- isWeakMap, enforceWeakMap, methodWeakMap
+- isSet, enforceSet, methodSet
+- isWeakSet, enforceWeakSet, methodWeakSet
+- Function 'addon' for addon libraries to extend type-enforcer
+
+### Changed
+- enforceInstance is now enforceInstanceOf and methodInstance is methodInstanceOf
+- Various performance improvements
+
+### Removed
+- privateProp
+- Moved CssSize, DockPoint, Thickness, and Element classes and functions to new type-enforcer-ui-addon
+- Moved Point and Vector classes and functions to new type-enforcer-math-addon
+- Queue no longer stores extra data with a callback
+
 ## [0.6.4] - 2019-10-22
 ### Security
 - Updated dependencies

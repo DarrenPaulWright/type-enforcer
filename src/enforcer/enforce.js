@@ -1,21 +1,20 @@
-import enforceArray from './types/enforceArray';
-import enforceBoolean from './types/enforceBoolean';
-import enforceCssSize from './types/enforceCssSize';
-import enforceDate from './types/enforceDate';
-import enforceDockPoint from './types/enforceDockPoint';
-import enforceElement from './types/enforceElement';
-import enforceEnum from './types/enforceEnum';
-import enforceFloat from './types/enforceFloat';
-import enforceFunction from './types/enforceFunction';
-import enforceInstance from './types/enforceInstance';
-import enforceInteger from './types/enforceInteger';
-import enforceNumber from './types/enforceNumber';
-import enforceObject from './types/enforceObject';
-import enforcePoint from './types/enforcePoint';
-import enforceRegExp from './types/enforceRegExp';
-import enforceString from './types/enforceString';
-import enforceThickness from './types/enforceThickness';
-import enforceVector from './types/enforceVector';
+import enforceArray from './enforceArray';
+import enforceBoolean from './enforceBoolean';
+import enforceDate from './enforceDate';
+import enforceEnum from './enforceEnum';
+import enforceFloat from './enforceFloat';
+import enforceFunction from './enforceFunction';
+import enforceInstanceOf from './enforceInstanceOf';
+import enforceInteger from './enforceInteger';
+import enforceMap from './enforceMap';
+import enforceNumber from './enforceNumber';
+import enforceObject from './enforceObject';
+import enforceRegExp from './enforceRegExp';
+import enforceSet from './enforceSet';
+import enforceString from './enforceString';
+import enforceSymbol from './enforceSymbol';
+import enforceWeakMap from './enforceWeakMap';
+import enforceWeakSet from './enforceWeakSet';
 
 /**
  * Utility functions for enforcing data types.
@@ -32,20 +31,19 @@ import enforceVector from './types/enforceVector';
 export default {
 	array: enforceArray,
 	boolean: enforceBoolean,
-	cssSize: enforceCssSize,
 	date: enforceDate,
-	dockPoint: enforceDockPoint,
-	element: enforceElement,
 	enum: enforceEnum,
 	float: enforceFloat,
 	function: enforceFunction,
-	instance: enforceInstance,
+	instanceOf: enforceInstanceOf,
 	integer: enforceInteger,
+	map: enforceMap,
 	number: enforceNumber,
 	object: enforceObject,
-	point: enforcePoint,
 	regExp: enforceRegExp,
+	set: enforceSet,
 	string: enforceString,
-	thickness: enforceThickness,
-	vector: enforceVector
+	symbol: enforceSymbol,
+	weakMap: enforceWeakMap,
+	weakSet: enforceWeakSet
 };

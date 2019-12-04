@@ -39,7 +39,7 @@ export default class PrivateVars extends WeakMap {
 	constructor() {
 		super();
 
-		const output = (self) => this.get(self);
+		const output = this.get.bind(this);
 
 		/**
 		 * Sets a value in the WeakMap

@@ -74,8 +74,8 @@ const buildMethod = (defaultOptions, onInit) => {
 		return !callback ? false : (isFunction(callback) ? callback : self[callback]).bind(self);
 	};
 
-	method.defaults = (settings) => {
-		Object.assign(defaultOptions, settings);
+	method.defaults = (options) => {
+		Object.assign(defaultOptions, options);
 	};
 
 	method.extend = (options = {}, newOnInit) => {

@@ -13,16 +13,16 @@
 
 <br><a name="applySettings"></a>
 
-### applySettings(target, settings, [priorityList], [deferedList])
+### applySettings(target, settings, [priority], [deferred])
 > Iterates over the provided settings and calls any methods of the same name, passing the value in as the argument.
 
 
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| target | <code>Object</code> |  | The target to apply the settings to. |
-| settings | <code>Object</code> |  |  |
-| [priorityList] | <code>Array</code> | <code>[]</code> | Array of method names to apply first, if they are actually in the settings. Methods are called in the order provided in this array. |
-| [deferedList] | <code>Array</code> | <code>[]</code> | Array of method names to apply last, if they are actually in the settings. Methods are called in the order provided in this array. |
+| Param | Type | Description |
+| --- | --- | --- |
+| target | <code>Object</code> | The target to apply the settings to. |
+| settings | <code>Object</code> |  |
+| [priority] | <code>Array</code> | Array of method names to apply first, if they are actually in the settings. Methods are called in the order provided in this array. |
+| [deferred] | <code>Array</code> | Array of method names to apply last, if they are actually in the settings. Methods are called in the order provided in this array. |
 
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg

@@ -14,7 +14,14 @@
 <br><a name="enforce"></a>
 
 ### enforce : <code>object</code>
-> Utility functions for enforcing data types.> > ``` javascript> import { enforce } from 'type-enforcer';> > // Or import individual functions> import { enforceBoolean, enforceString } from 'type-enforcer';> ```
+> Utility functions for enforcing data types.
+> 
+> ``` javascript
+> import { enforce } from 'type-enforcer';
+> 
+> // Or import individual functions
+> import { enforceBoolean, enforceString } from 'type-enforcer';
+> ```
 
 
 * [enforce](#enforce) : <code>object</code>
@@ -52,7 +59,18 @@
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 **Example**  
-``` javascriptimport { enforce } from 'type-enforcer';enforce.array(['a string'], ['alt']);// => ['a string']enforce.array('[]', ['alt']);// => ['alt']enforce.array('[]', ['alt'], true);// => []```
+``` javascript
+import { enforce } from 'type-enforcer';
+
+enforce.array(['a string'], ['alt']);
+// => ['a string']
+
+enforce.array('[]', ['alt']);
+// => ['alt']
+
+enforce.array('[]', ['alt'], true);
+// => []
+```
 
 <br><a name="enforce.boolean"></a>
 
@@ -69,7 +87,18 @@
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 **Example**  
-``` javascriptimport { enforce } from 'type-enforcer';enforce.boolean(false, true);// => falseenforce.boolean('', true);// => trueenforce.boolean('', true, true);// => false```
+``` javascript
+import { enforce } from 'type-enforcer';
+
+enforce.boolean(false, true);
+// => false
+
+enforce.boolean('', true);
+// => true
+
+enforce.boolean('', true, true);
+// => false
+```
 
 <br><a name="enforce.date"></a>
 
@@ -86,7 +115,18 @@
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 **Example**  
-``` javascriptimport { enforce } from 'type-enforcer';enforce.date(new Date('10/12/1980'), new Date('1/1/2000'));// => date of 10/12/1980enforce.date('10/12/1980', new Date('1/1/2000'));// => date of 1/1/2000enforce.date('10/12/1980', new Date('1/1/2000'), true);// => date of 10/12/1980```
+``` javascript
+import { enforce } from 'type-enforcer';
+
+enforce.date(new Date('10/12/1980'), new Date('1/1/2000'));
+// => date of 10/12/1980
+
+enforce.date('10/12/1980', new Date('1/1/2000'));
+// => date of 1/1/2000
+
+enforce.date('10/12/1980', new Date('1/1/2000'), true);
+// => date of 10/12/1980
+```
 
 <br><a name="enforce.enum"></a>
 
@@ -103,7 +143,20 @@
 | alt | <code>String</code> | Returned if the value is not the correct type |
 
 **Example**  
-``` javascriptimport { enforce, Enum } from 'type-enforcer';const values = new Enum({    a: 'item a',    b: 'item b'});enforce.enum(values.a, values, values.b);// => 'item a'enforce.enum(values.c, values, values.b);// => 'item b'```
+``` javascript
+import { enforce, Enum } from 'type-enforcer';
+
+const values = new Enum({
+    a: 'item a',
+    b: 'item b'
+});
+
+enforce.enum(values.a, values, values.b);
+// => 'item a'
+
+enforce.enum(values.c, values, values.b);
+// => 'item b'
+```
 
 <br><a name="enforce.float"></a>
 
@@ -122,7 +175,18 @@
 | [maxValue] | <code>int</code> |  |  |
 
 **Example**  
-``` javascriptimport { enforce } from 'type-enforcer';enforce.float(3.14159, 13.2);// => 3.14159enforce.float('3.14159', 13.2);// => 13.2enforce.float('3.14159', 13.2, true);// => 3.14159```
+``` javascript
+import { enforce } from 'type-enforcer';
+
+enforce.float(3.14159, 13.2);
+// => 3.14159
+
+enforce.float('3.14159', 13.2);
+// => 13.2
+
+enforce.float('3.14159', 13.2, true);
+// => 3.14159
+```
 
 <br><a name="enforce.function"></a>
 
@@ -138,7 +202,18 @@
 | alt | <code>function</code> | Returned if the value is not the correct type |
 
 **Example**  
-``` javascriptimport { enforce } from 'type-enforcer';const a = () => {};const b = () => {};enforce.function(a, b);// => aenforce.function('', b);// => b```
+``` javascript
+import { enforce } from 'type-enforcer';
+
+const a = () => {};
+const b = () => {};
+
+enforce.function(a, b);
+// => a
+
+enforce.function('', b);
+// => b
+```
 
 <br><a name="enforce.instanceOf"></a>
 
@@ -155,7 +230,22 @@
 | alt | <code>Object</code> | Returned if the value is not the correct type |
 
 **Example**  
-``` javascriptimport { enforce } from 'type-enforcer';class A {};class C {};const a = new A();const b = new A();const c = new C();enforce.instanceOf(b, A, a); => benforce.instanceOf(c, A, a); => a```
+``` javascript
+import { enforce } from 'type-enforcer';
+
+class A {};
+class C {};
+
+const a = new A();
+const b = new A();
+const c = new C();
+
+enforce.instanceOf(b, A, a);
+ => b
+
+enforce.instanceOf(c, A, a);
+ => a
+```
 
 <br><a name="enforce.integer"></a>
 
@@ -174,7 +264,18 @@
 | [maxValue] | <code>int</code> |  |  |
 
 **Example**  
-``` javascriptimport { enforce } from 'type-enforcer';enforce.integer(42, 12);// => 42enforce.integer('42', 12);// => 12enforce.integer('42', 12, true);// => 42```
+``` javascript
+import { enforce } from 'type-enforcer';
+
+enforce.integer(42, 12);
+// => 42
+
+enforce.integer('42', 12);
+// => 12
+
+enforce.integer('42', 12, true);
+// => 42
+```
 
 <br><a name="enforce.map"></a>
 
@@ -191,7 +292,18 @@
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 **Example**  
-``` javascriptimport { enforce } from 'type-enforcer';const a = new Map();const b = new Map();enforce.map(a, b);// => aenforce.map('map', b);// => b```
+``` javascript
+import { enforce } from 'type-enforcer';
+
+const a = new Map();
+const b = new Map();
+
+enforce.map(a, b);
+// => a
+
+enforce.map('map', b);
+// => b
+```
 
 <br><a name="enforce.number"></a>
 
@@ -210,7 +322,21 @@
 | [maxValue] | <code>Number</code> | <code>Infinity</code> |  |
 
 **Example**  
-``` javascriptimport { enforce } from 'type-enforcer';enforce.number(3.14159, 13.2);// => 3.14159enforce.number('3.14159', 13.2);// => 13.2enforce.number('3.14159', 13.2, true);// => 3.14159enforce.number(Infinity, 13.2, true);// => Infinity```
+``` javascript
+import { enforce } from 'type-enforcer';
+
+enforce.number(3.14159, 13.2);
+// => 3.14159
+
+enforce.number('3.14159', 13.2);
+// => 13.2
+
+enforce.number('3.14159', 13.2, true);
+// => 3.14159
+
+enforce.number(Infinity, 13.2, true);
+// => Infinity
+```
 
 <br><a name="enforce.object"></a>
 
@@ -227,7 +353,21 @@
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 **Example**  
-``` javascriptimport { enforce } from 'type-enforcer';const a = {};const b = {};enforce.object(a, b);// => aenforce.object('{}', b);// => benforce.object('{}', b, true);// => {}```
+``` javascript
+import { enforce } from 'type-enforcer';
+
+const a = {};
+const b = {};
+
+enforce.object(a, b);
+// => a
+
+enforce.object('{}', b);
+// => b
+
+enforce.object('{}', b, true);
+// => {}
+```
 
 <br><a name="enforce.regExp"></a>
 
@@ -244,7 +384,18 @@
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 **Example**  
-``` javascriptimport { enforce } from 'type-enforcer';enforce.regExp(/*+/g, /[a-z]+/);// => /*+/genforce.regExp('/*+/g', /[a-z]+/);// => /[a-z]+/enforce.regExp('/*+/g', /[a-z]+/, true);// => /*+/g```
+``` javascript
+import { enforce } from 'type-enforcer';
+
+enforce.regExp(/*+/g, /[a-z]+/);
+// => /*+/g
+
+enforce.regExp('/*+/g', /[a-z]+/);
+// => /[a-z]+/
+
+enforce.regExp('/*+/g', /[a-z]+/, true);
+// => /*+/g
+```
 
 <br><a name="enforce.set"></a>
 
@@ -261,7 +412,21 @@
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 **Example**  
-``` javascriptimport { enforce } from 'type-enforcer';const a = new Set();const b = new Set();enforce.set(a, b);// => aenforce.set('set', b);// => benforce.set([1, 2], b, true);// => Set with 1 and 2```
+``` javascript
+import { enforce } from 'type-enforcer';
+
+const a = new Set();
+const b = new Set();
+
+enforce.set(a, b);
+// => a
+
+enforce.set('set', b);
+// => b
+
+enforce.set([1, 2], b, true);
+// => Set with 1 and 2
+```
 
 <br><a name="enforce.string"></a>
 
@@ -278,7 +443,18 @@
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 **Example**  
-``` javascriptimport { enforce } from 'type-enforcer';enforce.string('a', 'b');// => 'a'enforce.string(new Point(), 'b');// => 'b'enforce.string(new Point(), 'b', true);// => '0,0'```
+``` javascript
+import { enforce } from 'type-enforcer';
+
+enforce.string('a', 'b');
+// => 'a'
+
+enforce.string(new Point(), 'b');
+// => 'b'
+
+enforce.string(new Point(), 'b', true);
+// => '0,0'
+```
 
 <br><a name="enforce.symbol"></a>
 
@@ -295,7 +471,18 @@
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 **Example**  
-``` javascriptimport { enforce } from 'type-enforcer';enforce.symbol(Symbol('label'), Symbol('alt'));// => Symbol(label)enforce.symbol('symbol', Symbol('alt'));// => Symbol('alt')enforce.symbol('label', Symbol('alt'), true);// => Symbol(label)```
+``` javascript
+import { enforce } from 'type-enforcer';
+
+enforce.symbol(Symbol('label'), Symbol('alt'));
+// => Symbol(label)
+
+enforce.symbol('symbol', Symbol('alt'));
+// => Symbol('alt')
+
+enforce.symbol('label', Symbol('alt'), true);
+// => Symbol(label)
+```
 
 <br><a name="enforce.weakMap"></a>
 
@@ -312,7 +499,21 @@
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 **Example**  
-``` javascriptimport { enforce } from 'type-enforcer';const a = new WeakMap();const b = new WeakMap();enforce.weakMap(a, b);// => aenforce.weakMap('weakMap', b);// => benforce.weakMap([[a, 12]], new WeakMap(), true);// => WeakMap with key a set to 12```
+``` javascript
+import { enforce } from 'type-enforcer';
+
+const a = new WeakMap();
+const b = new WeakMap();
+
+enforce.weakMap(a, b);
+// => a
+
+enforce.weakMap('weakMap', b);
+// => b
+
+enforce.weakMap([[a, 12]], new WeakMap(), true);
+// => WeakMap with key a set to 12
+```
 
 <br><a name="enforce.weakSet"></a>
 
@@ -329,7 +530,21 @@
 | [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 **Example**  
-``` javascriptimport { enforce } from 'type-enforcer';const a = new WeakSet();const b = new WeakSet();enforce.weakSet(a, b);// => aenforce.weakSet('weakSet', b);// => benforce.weakSet([new Map()], b, true);// => WeakSet with a Map in it```
+``` javascript
+import { enforce } from 'type-enforcer';
+
+const a = new WeakSet();
+const b = new WeakSet();
+
+enforce.weakSet(a, b);
+// => a
+
+enforce.weakSet('weakSet', b);
+// => b
+
+enforce.weakSet([new Map()], b, true);
+// => WeakSet with a Map in it
+```
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg
 [npm-url]: https://npmjs.com/package/type-enforcer

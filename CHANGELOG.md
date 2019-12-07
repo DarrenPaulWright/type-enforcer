@@ -4,14 +4,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
-## [1.0.0]
+## [1.0.2] - 2019-12-06
+### Security
+- Updated dependencies
+
+## [1.0.0] - 2019-12-04
 ### Added
 - isSymbol, enforceSymbol, methodSymbol
 - isMap, enforceMap, methodMap
 - isWeakMap, enforceWeakMap, methodWeakMap
 - isSet, enforceSet, methodSet
 - isWeakSet, enforceWeakSet, methodWeakSet
-- Function 'addon' for addon libraries to extend type-enforcer
 
 ### Changed
 - enforceInstance is now enforceInstanceOf and methodInstance is methodInstanceOf
@@ -19,8 +22,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 - privateProp
-- Moved CssSize, DockPoint, Thickness, and Element classes and functions to new type-enforcer-ui-addon
-- Moved Point and Vector classes and functions to new type-enforcer-math-addon
+- Moved CssSize, DockPoint, Thickness, and Element classes and functions to new type-enforcer-ui
+- Moved Point and Vector classes and functions to new type-enforcer-math
 - Queue no longer stores extra data with a callback
 
 ## [0.6.4] - 2019-10-22
@@ -216,6 +219,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Initial enforcers, methods, and documentation
 
+[1.0.2]: https://github.com/DarrenPaulWright/type-enforcer/compare/v1.0.1...v1.0.2
+[1.0.0]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.6.4...v1.0.0
 [0.6.4]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.6.3...v0.6.4
 [0.6.3]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.6.2...v0.6.3
 [0.6.2]: https://github.com/DarrenPaulWright/type-enforcer/compare/v0.6.1...v0.6.2

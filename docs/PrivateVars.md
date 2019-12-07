@@ -22,34 +22,7 @@
 
 **Returns**: <code>function</code> - Gets a value from a WeakMap if a key is provided  
 **Example**  
-``` javascript
-import { PrivateVars } from 'type-enforcer';
-
-const _ = new PrivateVars();
-
-class Widget {
-    constructor() {
-        _.set(this);
-    }
-
-    foo(bar) {
-        if (bar) {
-            _(this).bar = bar;
-
-            return this;
-        }
-
-        return _(this).bar;
-    }
-}
-
-const widget = new Widget();
-
-widget.foo('something');
-
-widget.foo();
-// => 'something'
-```
+``` javascriptimport { PrivateVars } from 'type-enforcer';const _ = new PrivateVars();class Widget {    constructor() {        _.set(this);    }    foo(bar) {        if (bar) {            _(this).bar = bar;            return this;        }        return _(this).bar;    }}const widget = new Widget();widget.foo('something');widget.foo();// => 'something'```
 
 <br><a name="set"></a>
 

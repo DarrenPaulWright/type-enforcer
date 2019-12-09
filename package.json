@@ -23,7 +23,8 @@
 		"docs:applySettings": "jsdoc2md src/utility/applySettings.js > docs/applySettings.md",
 		"docs:privateVars": "jsdoc2md src/utility/PrivateVars.js > docs/PrivateVars.md",
 		"docs:equality": "jsdoc2md src/equality/*.js > docs/equality.md",
-		"docs": "run-p \"docs:* -- -t docs/docs.hbs --plugin dmd-readable\""
+		"docs": "run-p \"docs:* -- -t docs/docs.hbs --plugin dmd-readable\"",
+		"deps": "ncu -u && npm install && npm test && git add ./ && git commit -m \"Updating dependencies\" && npm version patch && npm publish && git push"
 	},
 	"badges": [
 		{
@@ -78,11 +79,11 @@
 	},
 	"homepage": "https://github.com/DarrenPaulWright/type-enforcer#readme",
 	"dependencies": {
-		"object-agent": "^1.4.2"
+		"object-agent": "^1.4.3"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.7.5",
-		"@babel/preset-env": "^7.7.5",
+		"@babel/preset-env": "^7.7.6",
 		"dmd-readable": "^1.0.1",
 		"jsdoc-to-markdown": "^5.0.3",
 		"karma-webpack-bundle": "^0.0.5",

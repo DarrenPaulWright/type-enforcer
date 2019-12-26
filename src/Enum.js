@@ -3,13 +3,12 @@ import PrivateVars from './utility/PrivateVars';
 const _ = new PrivateVars();
 
 /**
- * Freezes an enumerable object and adds a few helper methods
- *
  * ``` javascript
  * import { Enum } from 'type-enforcer';
  * ```
  *
  * @class Enum
+ * @classdesc Freezes an enumerable object and adds a few helper methods
  *
  * @arg {Object} object
  */

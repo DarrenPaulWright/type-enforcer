@@ -39,7 +39,7 @@ import {
 	isSymbol,
 	isWeakMap,
 	isWeakSet
-} from '../index';
+} from '../';
 
 describe('checks', () => {
 	describe('isArray', () => {

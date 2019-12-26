@@ -4,8 +4,6 @@ import PrivateVars from './utility/PrivateVars';
 const _ = new PrivateVars();
 
 /**
- * A mixin that adds methods to a class to facilitate clean-up
- *
  * ``` javascript
  * import { Removable } from 'type-enforcer';
  *
@@ -13,6 +11,7 @@ const _ = new PrivateVars();
  * ```
  *
  * @class Removable
+ * @classdesc A mixin that adds methods to a class to facilitate clean-up
  */
 export default class Removable {
 	/**

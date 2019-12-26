@@ -13,11 +13,46 @@
 
 <br><a name="method"></a>
 
-### method : <code>object</code>
-> Enforce data types and remove common boilerplate code on class methods.> > ``` javascript> import { method } from 'type-enforcer';> > // Or import individual functions> import { methodBoolean, methodString } from 'type-enforcer';> ```
+## method : <code>object</code>
+> Enforce data types and remove common boilerplate code on class methods.
 
 **Example**  
-``` javascript// Use it as a prototype:const Thing = function() {};Thing.prototype.myMethod = method.string([options]);// or in a class:class Thing() {}Thing.prototype.myMethod = method.string([options]);// or as a non-prototype method:const Thing = function() {    this.myMethod = method.string([options]);};```
+``` javascript
+import { method } from 'type-enforcer';
+
+// Or import individual functions
+import { methodBoolean, methodString } from 'type-enforcer';
+
+
+// Use it as a prototype:
+const Thing = function() {};
+
+Thing.prototype.myMethod = method.string([options]);
+
+
+// or in a class:
+class Thing() {}
+
+Thing.prototype.myMethod = method.string([options]);
+
+
+// or as a non-prototype method:
+const Thing = function() {
+    this.myMethod = method.string([options]);
+};
+```
+
+##### Extending methods
+methodAny and all methods that extend it have a static method ".extend" that creates a new method. It accepts two args:
+- The first arg should be an object with default options. These options override any options in the method being extended.
+- The second arg (optional) should be a function that gets called when a method is initialized. This function is passed one arg, the options for this method.
+
+These methods also have a static method ".defaults" that mutates the default options for that method. For instance, if you would prefer that methodBoolean didn't have a default value of false, then you could use the following:
+``` javascript
+methodBoolean.defaults({init: undefined});
+```
+
+<br>
 
 * [method](#method) : <code>object</code>
     * [.any([options])](#method.any) ⇒ <code>function</code>
@@ -44,7 +79,7 @@
 
 <br><a name="method.any"></a>
 
-#### method.any([options]) ⇒ <code>function</code>
+### method.any([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting any data type
 
 **Alias:** `methodAny`
@@ -64,11 +99,42 @@
 | [options.stringify] | <code>Boolean</code> | <code>false</code> | If true, then call toString() on the value before returning it (if the value has a toString method) |
 
 **Example**  
-``` javascriptimport { method } from 'type-enforcer';const Widget = function() {    someMethod = method.any({        set(newValue) {            console.log(this);            console.log(newValue);        }    });    anotherMethod = method.any();    thirdMethod = method.any({        get(newValue) {            return 'item 2';        }    });};const widget = new Widget();widget.someMethod('a').anotherMethod(42).thirdMethod('item 1');// => console.log widget and 'a'widget.someMethod();// => 'a'widget.anotherMethod();// => 42widget.thirdMethod();// => 'item 2'```
+``` javascript
+import { method } from 'type-enforcer';
+
+const Widget = function() {
+    someMethod = method.any({
+        set(newValue) {
+            console.log(this);
+            console.log(newValue);
+        }
+    });
+    anotherMethod = method.any();
+    thirdMethod = method.any({
+        get(newValue) {
+            return 'item 2';
+        }
+    });
+};
+
+const widget = new Widget();
+
+widget.someMethod('a').anotherMethod(42).thirdMethod('item 1');
+// => console.log widget and 'a'
+
+widget.someMethod();
+// => 'a'
+
+widget.anotherMethod();
+// => 42
+
+widget.thirdMethod();
+// => 'item 2'
+```
 
 <br><a name="method.array"></a>
 
-#### method.array([options]) ⇒ <code>function</code>
+### method.array([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting an array
 
 **Alias:** `methodArray`
@@ -87,7 +153,7 @@
 
 <br><a name="method.boolean"></a>
 
-#### method.boolean([options]) ⇒ <code>function</code>
+### method.boolean([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting a boolean
 
 **Alias:** `methodBoolean`
@@ -104,7 +170,7 @@
 
 <br><a name="method.date"></a>
 
-#### method.date([options]) ⇒ <code>function</code>
+### method.date([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting a date
 
 **Alias:** `methodDate`
@@ -120,7 +186,7 @@
 
 <br><a name="method.enum"></a>
 
-#### method.enum([options]) ⇒ <code>function</code>
+### method.enum([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting an enumerable value in an [Enum](docs/Enum.md)
 
 **Alias:** `methodEnum`
@@ -136,7 +202,7 @@
 
 <br><a name="method.float"></a>
 
-#### method.float([options]) ⇒ <code>function</code>
+### method.float([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting a float
 
 **Alias:** `methodFloat`
@@ -154,7 +220,7 @@
 
 <br><a name="method.function"></a>
 
-#### method.function([options]) ⇒ <code>function</code>
+### method.function([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting a function
 
 **Alias:** `methodFunction`
@@ -170,7 +236,7 @@
 
 <br><a name="method.instanceOf"></a>
 
-#### method.instanceOf([options]) ⇒ <code>function</code>
+### method.instanceOf([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting an instance of a specific constructor
 
 **Alias:** `methodInstanceOf`
@@ -186,7 +252,7 @@
 
 <br><a name="method.int"></a>
 
-#### method.int([options]) ⇒ <code>function</code>
+### method.int([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting an integer
 
 **Alias:** `methodInteger`
@@ -204,7 +270,7 @@
 
 <br><a name="method.keyValue"></a>
 
-#### method.keyValue([options]) ⇒ <code>function</code>
+### method.keyValue([options]) ⇒ <code>function</code>
 > Builds a chainable method that accepts either a key and a value or an object with multiple key/value pairs.
 
 **Alias:** `methodKeyValue`
@@ -220,7 +286,7 @@
 
 <br><a name="method.map"></a>
 
-#### method.map([options]) ⇒ <code>function</code>
+### method.map([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting a Map
 
 **Alias:** `methodMap`
@@ -236,7 +302,7 @@
 
 <br><a name="method.number"></a>
 
-#### method.number([options]) ⇒ <code>function</code>
+### method.number([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting a number
 
 **Alias:** `methodNumber`
@@ -254,7 +320,7 @@
 
 <br><a name="method.object"></a>
 
-#### method.object([options]) ⇒ <code>function</code>
+### method.object([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting a plain object
 
 **Alias:** `methodObject`
@@ -272,7 +338,7 @@
 
 <br><a name="method.queue"></a>
 
-#### method.queue([options]) ⇒ <code>function</code>
+### method.queue([options]) ⇒ <code>function</code>
 > Builds a chainable method that implements a [Queue](docs/Queue.md)
 
 **Alias:** `methodQueue`
@@ -287,7 +353,7 @@
 
 <br><a name="method.regExp"></a>
 
-#### method.regExp([options]) ⇒ <code>function</code>
+### method.regExp([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting a RegExp
 
 **Alias:** `methodRegExp`
@@ -304,7 +370,7 @@
 
 <br><a name="method.set"></a>
 
-#### method.set([options]) ⇒ <code>function</code>
+### method.set([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting a Set
 
 **Alias:** `methodSet`
@@ -320,7 +386,7 @@
 
 <br><a name="method.string"></a>
 
-#### method.string([options]) ⇒ <code>function</code>
+### method.string([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting a string
 
 **Alias:** `methodString`
@@ -337,7 +403,7 @@
 
 <br><a name="method.symbol"></a>
 
-#### method.symbol([options]) ⇒ <code>function</code>
+### method.symbol([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting a Symbol
 
 **Alias:** `methodSymbol`
@@ -353,7 +419,7 @@
 
 <br><a name="method.weakMap"></a>
 
-#### method.weakMap([options]) ⇒ <code>function</code>
+### method.weakMap([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/setting a WeakMap
 
 **Alias:** `methodWeakMap`
@@ -369,7 +435,7 @@
 
 <br><a name="method.weakSet"></a>
 
-#### method.weakSet([options]) ⇒ <code>function</code>
+### method.weakSet([options]) ⇒ <code>function</code>
 > Builds a chainable method for getting/weakSetting a WeakSet
 
 **Alias:** `methodWeakSet`

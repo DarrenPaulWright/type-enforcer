@@ -17,8 +17,9 @@ import isWeakMap from './isWeakMap';
 import isWeakSet from './isWeakSet';
 
 /**
- * Utility functions for checking if something is a particular data type.
+ * Utility functions for checking if a value is a particular data type.
  *
+ * @example
  * ``` javascript
  * import { is } from 'type-enforcer';
  *
@@ -26,7 +27,7 @@ import isWeakSet from './isWeakSet';
  * import { isBoolean, isString } from 'type-enforcer';
  * ```
  *
- * @typedef {object} is
+ * @namespace is
  */
 export default {
 	array: isArray,

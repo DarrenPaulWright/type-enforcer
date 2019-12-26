@@ -11,39 +11,18 @@
 [![license][license]][license-url]
 
 
-<br><a name="castArray"></a>
+<br><a name="strictEquality"></a>
 
-## castArray(value) ⇒ <code>Array</code>
-> Casts a value to an array.
+## strictEquality(a, b) ⇒ <code>boolean</code>
+> Performs a strict equality check (===) between two values.
 
+**See**: [Strict Equality](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness#Strict_equality_using)  
 
-| Param | Type |
-| --- | --- |
-| value | <code>\*</code> | 
+| Param |
+| --- |
+| a | 
+| b | 
 
-**Example**  
-``` javascript
-import { castArray } from 'type-enforcer';
-
-// Arrays are returned without modification
-castArray(['string']);
-// => ['string']
-
-// Undefined becomes an empty array
-castArray();
-// => []
-
-// Array-like objects are converted to arrays
-function a() {
-    castArray(arguments);
-}
-a('b', 'c', 'd');
-// => ['b', 'c', 'd']
-
-// All other values are inserted into an array and that array is returned
-castArray('string');
-// => ['string']
-```
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg
 [npm-url]: https://npmjs.com/package/type-enforcer

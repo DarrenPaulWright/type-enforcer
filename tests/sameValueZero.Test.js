@@ -1,14 +1,6 @@
 import { multiTest } from 'type-enforcer-test-helper';
-import { sameValueZero } from '../index';
-import {
-	abstractEqual,
-	alwaysEqual,
-	alwaysNotEqual,
-	messageFalse,
-	messageTrue,
-	sameValueEqual,
-	sameValueNotEqual
-} from './compareValues';
+import { sameValueZero } from '../';
+import { abstractEqual, alwaysEqual, alwaysNotEqual, messageFalse, messageTrue, sameValueEqual, sameValueNotEqual } from './compareValues';
 
 describe('sameValueZero', () => {
 	multiTest({

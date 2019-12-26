@@ -13,7 +13,9 @@
 
 <br><a name="Enum"></a>
 
-### Enum
+## Enum
+> Freezes an enumerable object and adds a few helper methods
+
 
 * [Enum](#Enum)
     * [new Enum(object)](#new_Enum_new)
@@ -24,8 +26,10 @@
 
 <br><a name="new_Enum_new"></a>
 
-#### new Enum(object)
-> Freezes an enumerable object and adds a few helper methods> > ``` javascript> import { Enum } from 'type-enforcer';> ```
+### new Enum(object)
+> ``` javascript
+> import { Enum } from 'type-enforcer';
+> ```
 
 
 | Param | Type |
@@ -35,7 +39,7 @@
 
 <br><a name="Enum+has"></a>
 
-#### enum.has(value) ⇒ <code>boolean</code>
+### enum.has(value) ⇒ <code>boolean</code>
 > Check if a provided value is in this enum
 
 
@@ -46,7 +50,7 @@
 
 <br><a name="Enum+key"></a>
 
-#### enum.key(value) ⇒ <code>String</code>
+### enum.key(value) ⇒ <code>String</code>
 > Get the key of a provided value
 
 
@@ -57,8 +61,18 @@
 
 <br><a name="Enum+each"></a>
 
-#### enum.each(callback)
-> Calls a callback with each of the enum values> ``` javascript> const items = new Enum({>     THING: 'thing'> });> > items.each((value) => {>     console.log(value);> });> // => 'thing'> ```
+### enum.each(callback)
+> Calls a callback with each of the enum values
+> ``` javascript
+> const items = new Enum({
+>     THING: 'thing'
+> });
+> 
+> items.each((value) => {
+>     console.log(value);
+> });
+> // => 'thing'
+> ```
 
 
 | Param | Type |

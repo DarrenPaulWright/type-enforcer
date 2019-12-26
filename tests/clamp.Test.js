@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import clamp from '../src/utility/clamp';
+import { clamp } from '../';
 
 describe('clamp', () => {
 	it('should clamp to a min value', () => {

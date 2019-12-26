@@ -22,15 +22,14 @@ import methodWeakSet from './methodWeakSet';
 /**
  * Enforce data types and remove common boilerplate code on class methods.
  *
+ * @example
  * ``` javascript
  * import { method } from 'type-enforcer';
  *
  * // Or import individual functions
  * import { methodBoolean, methodString } from 'type-enforcer';
- * ```
  *
- * @example
- * ``` javascript
+ *
  * // Use it as a prototype:
  * const Thing = function() {};
  *
@@ -49,7 +48,19 @@ import methodWeakSet from './methodWeakSet';
  * };
  * ```
  *
- * @typedef {object} method
+ * ##### Extending methods
+ * methodAny and all methods that extend it have a static method ".extend" that creates a new method. It accepts two args:
+ * - The first arg should be an object with default options. These options override any options in the method being extended.
+ * - The second arg (optional) should be a function that gets called when a method is initialized. This function is passed one arg, the options for this method.
+ *
+ * These methods also have a static method ".defaults" that mutates the default options for that method. For instance, if you would prefer that methodBoolean didn't have a default value of false, then you could use the following:
+ * ``` javascript
+ * methodBoolean.defaults({init: undefined});
+ * ```
+ *
+ * <br>
+ *
+ * @namespace method
  */
 export default {
 	any: methodAny,

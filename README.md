@@ -10,62 +10,74 @@
 [![vulnerabilities][vulnerabilities]][vulnerabilities-url]
 [![license][license]][license-url]
 
-
 <br><a name="Installation"></a>
 
-### Installation
+## Installation
 ```
 npm install type-enforcer
 ```
 _Requires Babel 7.2+_
 
-<br><a name="Docs"></a>
-
-### Docs
-#### Type Checks
-- [checks](docs/checks.md)
-
-#### Type Enforcement
-- [enforce](docs/enforce.md)
-- [castArray](docs/castArray.md)
-
-#### Type Enforcing Methods
-- [method](docs/method.md)
-
-#### Other
-- [Enum](docs/Enum.md)
-- [Queue](docs/Queue.md)
-- [applySettings](docs/applySettings.md)
-- [PrivateVars](docs/PrivateVars.md)
-- [Removable](docs/Removable.md)
-- [equality checks](docs/equality.md)
 
 <br>
 
-### Type Enforcer Addon Libraries:
-- [type-enforcer-math](https://github.com/DarrenPaulWright/type-enforcer-math) (Point and Vector moved here at v1.0.0)
-- [type-enforcer-ui](https://github.com/DarrenPaulWright/type-enforcer-ui) (CssSize, DockPoint, Thickness, and Element moved here at v1.0.0)
+## Objects
+
+<dl>
+<dt><a href="docs/is.md">is</a> : <code>object</code></dt>
+<dd><p>Utility functions for checking if a value is a particular data type.</p>
+</dd>
+<dt><a href="docs/enforce.md">enforce</a> : <code>object</code></dt>
+<dd><p>Utility functions for enforcing data types.</p>
+</dd>
+<dt><a href="docs/method.md">method</a> : <code>object</code></dt>
+<dd><p>Enforce data types and remove common boilerplate code on class methods.</p>
+</dd>
+</dl>
 
 <br>
 
-### Extending & Modifying Type Enforcer
+## Classes
 
-#### Enforcers
-All enforcers with a "coerce" option also have a static method ".extend" that creates a new enforcer. It accepts two args:
-- The first arg should be a valid check function that accepts a second "coerce" arg.
-- The second arg should be a function that coerces a coercible value (as determined by the check function).
+<dl>
+<dt><a href="docs/Enum.md">Enum</a></dt>
+<dd><p>Freezes an enumerable object and adds a few helper methods</p>
+</dd>
+<dt><a href="docs/Queue.md">Queue</a></dt>
+<dd><p>A simple queue for callbacks that allows for adding, removing, and triggering all or specific callbacks</p>
+</dd>
+<dt><a href="docs/Removable.md">Removable</a></dt>
+<dd><p>A mixin that adds methods to a class to facilitate clean-up</p>
+</dd>
+<dt><a href="docs/PrivateVars.md">PrivateVars</a></dt>
+<dd><p>A thin wrapper over WeakMap for storing private variables</p>
+</dd>
+</dl>
 
 <br>
 
-#### Methods
-methodAny and all methods that extend it have a static method ".extend" that creates a new method. It accepts two args:
-- The first arg should be an object with default options. These options override any options in the method being extended.
-- The second arg (optional) should be a function that gets called when a method is initialized. This function is passed one arg, the options for this method.
+## Functions
 
-These methods also have a static method ".defaults" that mutates the default options for that method. For instance, if you would prefer that methodBoolean didn't have a default value of false, then you could use the following:
-``` javascript
-methodBoolean.defaults({init: undefined});
-```
+<dl>
+<dt><a href="docs/abstractEquality.md">abstractEquality(a, b)</a> ⇒ <code>boolean</code></dt>
+<dd><p>Performs an abstract equality check (==) between two values.</p>
+</dd>
+<dt><a href="docs/sameValue.md">sameValue(a, b)</a> ⇒ <code>boolean</code></dt>
+<dd><p>Performs a SameValue equality check (Object.is) between two values.</p>
+</dd>
+<dt><a href="docs/sameValueZero.md">sameValueZero(a, b)</a> ⇒ <code>boolean</code></dt>
+<dd><p>Performs a SameValueZero equality check between two values.</p>
+</dd>
+<dt><a href="docs/strictEquality.md">strictEquality(a, b)</a> ⇒ <code>boolean</code></dt>
+<dd><p>Performs a strict equality check (===) between two values.</p>
+</dd>
+<dt><a href="docs/applySettings.md">applySettings(target, settings, [priority], [deferred])</a></dt>
+<dd><p>Iterates over the provided settings and calls any methods of the same name, passing the value in as the argument.</p>
+</dd>
+<dt><a href="docs/castArray.md">castArray(value)</a> ⇒ <code>Array</code></dt>
+<dd><p>Casts a value to an array.</p>
+</dd>
+</dl>
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg
 [npm-url]: https://npmjs.com/package/type-enforcer

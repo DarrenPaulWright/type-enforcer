@@ -13,7 +13,7 @@
 
 <br><a name="applySettings"></a>
 
-### applySettings(target, settings, [priority], [deferred])
+## applySettings(target, settings, [priority], [deferred])
 > Iterates over the provided settings and calls any methods of the same name, passing the value in as the argument.
 
 

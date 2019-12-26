@@ -39,7 +39,7 @@ import {
 	enforceSymbol,
 	enforceWeakMap,
 	enforceWeakSet
-} from '../index';
+} from '../';
 import { enumData, validEnumObject } from './testValues';
 
 describe('enforce', () => {

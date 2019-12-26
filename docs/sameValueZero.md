@@ -11,51 +11,12 @@
 [![license][license]][license-url]
 
 
-<br><a name="abstractEquality"></a>
-
-### abstractEquality(a, b) ⇒ <code>boolean</code>
-> Performs an abstract equality check (==) between two values.
-
-**See**: [Loose Equality](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness#Loose_equality_using)  
-
-| Param |
-| --- |
-| a | 
-| b | 
-
-
-<br><a name="sameValue"></a>
-
-### sameValue(a, b) ⇒ <code>boolean</code>
-> Performs a SameValue equality check (Object.is) between two values.
-
-**See**: [SameValue](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness#Same-value_equality)  
-
-| Param |
-| --- |
-| a | 
-| b | 
-
-
 <br><a name="sameValueZero"></a>
 
-### sameValueZero(a, b) ⇒ <code>boolean</code>
+## sameValueZero(a, b) ⇒ <code>boolean</code>
 > Performs a SameValueZero equality check between two values.
 
 **See**: [SameValueZero](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness#Same-value-zero_equality)  
-
-| Param |
-| --- |
-| a | 
-| b | 
-
-
-<br><a name="strictEquality"></a>
-
-### strictEquality(a, b) ⇒ <code>boolean</code>
-> Performs a strict equality check (===) between two values.
-
-**See**: [Strict Equality](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness#Strict_equality_using)  
 
 | Param |
 | --- |

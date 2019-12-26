@@ -43,7 +43,7 @@ import {
 	methodWeakSet,
 	Queue,
 	Removable
-} from '../index';
+} from '../';
 import { enumData, validEnumObject } from './testValues';
 
 describe('method', () => {
@@ -439,7 +439,8 @@ describe('method', () => {
 		};
 
 		describe('(prototype, with onRemove)', () => {
-			class TestConstructor extends Removable {}
+			class TestConstructor extends Removable {
+			}
 
 			TestConstructor.prototype.onRemove = method.function();
 			TestConstructor.prototype.testMethod = method.queue({
@@ -489,7 +490,8 @@ describe('method', () => {
 		});
 
 		it('should set the context of the callback when triggered', () => {
-			class TestConstructor extends Removable {}
+			class TestConstructor extends Removable {
+			}
 
 			TestConstructor.prototype.onRemove = method.function();
 			TestConstructor.prototype.testMethod = method.queue({

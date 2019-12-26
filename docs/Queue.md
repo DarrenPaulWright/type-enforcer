@@ -13,7 +13,9 @@
 
 <br><a name="Queue"></a>
 
-### Queue
+## Queue
+> A simple queue for callbacks that allows for adding, removing, and triggering all or specific callbacks
+
 
 * [Queue](#Queue)
     * [new Queue()](#new_Queue_new)
@@ -29,25 +31,27 @@
 
 <br><a name="new_Queue_new"></a>
 
-#### new Queue()
-> A simple queue for callbacks that allows for adding, removing, and triggering all or specific callbacks> > ``` javascript> import { Queue } from 'type-enforcer';> ```
+### new Queue()
+> ``` javascript
+> import { Queue } from 'type-enforcer';
+> ```
 
 
 <br><a name="Queue+length"></a>
 
-#### queue.length ⇒ <code>number</code>
+### queue.length ⇒ <code>number</code>
 > The total number of current callbacks in this queue.
 
 
 <br><a name="Queue+isBusy"></a>
 
-#### queue.isBusy ⇒ <code>boolean</code>
+### queue.isBusy ⇒ <code>boolean</code>
 > See if this queue is currently executing callbacks.
 
 
 <br><a name="Queue+bindTo"></a>
 
-#### queue.bindTo(context) ⇒ <code>object</code> \| <code>this</code>
+### queue.bindTo(context) ⇒ <code>object</code> \| <code>this</code>
 > Binds all current and future callbacks to a specified context.
 
 **Returns**: <code>object</code> \| <code>this</code> - If setting a value then this is returned, otherwise the current context.  
@@ -59,7 +63,7 @@
 
 <br><a name="Queue+add"></a>
 
-#### queue.add(callback) ⇒ <code>Number</code>
+### queue.add(callback) ⇒ <code>Number</code>
 > Add a callback to the queue.
 
 **Returns**: <code>Number</code> - A unique id for this callback.  
@@ -71,7 +75,7 @@
 
 <br><a name="Queue+discard"></a>
 
-#### queue.discard(id) ⇒ <code>this</code>
+### queue.discard(id) ⇒ <code>this</code>
 > Remove a specific callback from the queue.
 
 
@@ -82,13 +86,13 @@
 
 <br><a name="Queue+discardAll"></a>
 
-#### queue.discardAll()
+### queue.discardAll()
 > Remove ALL callbacks from the queue.
 
 
 <br><a name="Queue+trigger"></a>
 
-#### queue.trigger([id], [extraArguments], [context]) ⇒ <code>this</code>
+### queue.trigger([id], [extraArguments], [context]) ⇒ <code>this</code>
 > Triggers one or all callbacks.
 
 
@@ -101,7 +105,7 @@
 
 <br><a name="Queue+triggerFirst"></a>
 
-#### queue.triggerFirst([extraArguments], [context]) ⇒ <code>this</code>
+### queue.triggerFirst([extraArguments], [context]) ⇒ <code>this</code>
 > Triggers the first callback and removes it from the queue.
 
 

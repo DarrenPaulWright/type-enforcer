@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import castArray from '../src/utility/castArray';
+import { castArray } from '../';
 
 describe('castArray', () => {
 	it('should wrap a string in an array', () => {

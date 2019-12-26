@@ -1,6 +1,4 @@
 /**
- * A thin wrapper over WeakMap for storing private variables
- *
  * @example
  * ``` javascript
  * import { PrivateVars } from 'type-enforcer';
@@ -32,6 +30,7 @@
  * ```
  *
  * @class PrivateVars
+ * @classdesc A thin wrapper over WeakMap for storing private variables
  *
  * @returns {Function} Gets a value from a WeakMap if a key is provided
  */
@@ -43,10 +42,13 @@ export default class PrivateVars extends WeakMap {
 
 		/**
 		 * Sets a value in the WeakMap
-		 * @method set
 		 *
-		 * @param {*} key
-		 * @param {*} [value={}]
+		 * @method set
+		 * @methodOf PrivateVars
+		 * @instance
+		 *
+		 * @arg {*} key
+		 * @arg {*} [value={}]
 		 *
 		 * @returns {*} The value provided
 		 */

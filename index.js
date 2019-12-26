@@ -1,61 +1,11 @@
 /**
  * @name Installation
+ * @private
  * @summary
  *
- * ```
- * npm install type-enforcer
- * ```
  * _Requires Babel 7.2+_
  */
 
-/**
- * @name Docs
- * @summary
- * #### Type Checks
- * - [checks](docs/checks.md)
- *
- * #### Type Enforcement
- * - [enforce](docs/enforce.md)
- * - [castArray](docs/castArray.md)
- *
- * #### Type Enforcing Methods
- * - [method](docs/method.md)
- *
- * #### Other
- * - [Enum](docs/Enum.md)
- * - [Queue](docs/Queue.md)
- * - [applySettings](docs/applySettings.md)
- * - [PrivateVars](docs/PrivateVars.md)
- * - [Removable](docs/Removable.md)
- * - [equality checks](docs/equality.md)
- *
- * <br>
- *
- * ### Type Enforcer Addon Libraries:
- * - [type-enforcer-math](https://github.com/DarrenPaulWright/type-enforcer-math) (Point and Vector moved here at v1.0.0)
- * - [type-enforcer-ui](https://github.com/DarrenPaulWright/type-enforcer-ui) (CssSize, DockPoint, Thickness, and Element moved here at v1.0.0)
- *
- * <br>
- *
- * ### Extending & Modifying Type Enforcer
- *
- * #### Enforcers
- * All enforcers with a "coerce" option also have a static method ".extend" that creates a new enforcer. It accepts two args:
- * - The first arg should be a valid check function that accepts a second "coerce" arg.
- * - The second arg should be a function that coerces a coercible value (as determined by the check function).
- *
- * <br>
- *
- * #### Methods
- * methodAny and all methods that extend it have a static method ".extend" that creates a new method. It accepts two args:
- * - The first arg should be an object with default options. These options override any options in the method being extended.
- * - The second arg (optional) should be a function that gets called when a method is initialized. This function is passed one arg, the options for this method.
- *
- * These methods also have a static method ".defaults" that mutates the default options for that method. For instance, if you would prefer that methodBoolean didn't have a default value of false, then you could use the following:
- * ``` javascript
- * methodBoolean.defaults({init: undefined});
- * ```
- */
 export { default as is } from './src/checks/is';
 export { default as isArray } from './src/checks/isArray';
 export { default as isBoolean } from './src/checks/isBoolean';
@@ -124,6 +74,7 @@ export { default as Removable } from './src/Removable';
 export { default as applySettings } from './src/utility/applySettings';
 export { default as castArray } from './src/utility/castArray';
 export { default as PrivateVars } from './src/utility/PrivateVars';
+export { default as clamp } from './src/utility/clamp';
 
 export { default as abstractEquality } from './src/equality/abstractEquality';
 export { default as strictEquality } from './src/equality/strictEquality';

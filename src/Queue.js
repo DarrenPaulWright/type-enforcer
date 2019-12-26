@@ -5,13 +5,12 @@ import PrivateVars from './utility/PrivateVars';
 const _ = new PrivateVars();
 
 /**
- * A simple queue for callbacks that allows for adding, removing, and triggering all or specific callbacks
- *
  * ``` javascript
  * import { Queue } from 'type-enforcer';
  * ```
  *
  * @class Queue
+ * @classdesc A simple queue for callbacks that allows for adding, removing, and triggering all or specific callbacks
  */
 export default class Queue {
 	constructor() {
@@ -158,7 +157,7 @@ export default class Queue {
 				.discard(id);
 			return true;
 		});
-		
+
 		_self.isBusy = false;
 
 		return this;

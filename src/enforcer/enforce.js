@@ -19,6 +19,7 @@ import enforceWeakSet from './enforceWeakSet';
 /**
  * Utility functions for enforcing data types.
  *
+ * @example
  * ``` javascript
  * import { enforce } from 'type-enforcer';
  *
@@ -26,7 +27,14 @@ import enforceWeakSet from './enforceWeakSet';
  * import { enforceBoolean, enforceString } from 'type-enforcer';
  * ```
  *
- * @typedef {object} enforce
+ * ##### Extending enforcers
+ * All enforcers with a "coerce" option also have a static method ".extend" that creates a new enforcer. It accepts two args:
+ * - The first arg should be a valid check function that accepts a second "coerce" arg.
+ * - The second arg should be a function that coerces a coercible value (as determined by the check function).
+ *
+ * <br>
+ *
+ * @namespace enforce
  */
 export default {
 	array: enforceArray,

@@ -11,39 +11,18 @@
 [![license][license]][license-url]
 
 
-<br><a name="castArray"></a>
+<br><a name="sameValue"></a>
 
-## castArray(value) ⇒ <code>Array</code>
-> Casts a value to an array.
+## sameValue(a, b) ⇒ <code>boolean</code>
+> Performs a SameValue equality check (Object.is) between two values.
 
+**See**: [SameValue](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness#Same-value_equality)  
 
-| Param | Type |
-| --- | --- |
-| value | <code>\*</code> | 
+| Param |
+| --- |
+| a | 
+| b | 
 
-**Example**  
-``` javascript
-import { castArray } from 'type-enforcer';
-
-// Arrays are returned without modification
-castArray(['string']);
-// => ['string']
-
-// Undefined becomes an empty array
-castArray();
-// => []
-
-// Array-like objects are converted to arrays
-function a() {
-    castArray(arguments);
-}
-a('b', 'c', 'd');
-// => ['b', 'c', 'd']
-
-// All other values are inserted into an array and that array is returned
-castArray('string');
-// => ['string']
-```
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg
 [npm-url]: https://npmjs.com/package/type-enforcer

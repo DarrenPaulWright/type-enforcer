@@ -27,9 +27,7 @@
 <br><a name="new_Enum_new"></a>
 
 ### new Enum(object)
-> ``` javascript
-> import { Enum } from 'type-enforcer';
-> ```
+> ``` javascript> import { Enum } from 'type-enforcer';> ```
 
 
 | Param | Type |
@@ -62,17 +60,7 @@
 <br><a name="Enum+each"></a>
 
 ### enum.each(callback)
-> Calls a callback with each of the enum values
-> ``` javascript
-> const items = new Enum({
->     THING: 'thing'
-> });
-> 
-> items.each((value) => {
->     console.log(value);
-> });
-> // => 'thing'
-> ```
+> Calls a callback with each of the enum values> ``` javascript> const items = new Enum({>     THING: 'thing'> });> > items.each((value) => {>     console.log(value);> });> // => 'thing'> ```
 
 
 | Param | Type |

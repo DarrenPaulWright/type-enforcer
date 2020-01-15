@@ -17,42 +17,7 @@
 > Enforce data types and remove common boilerplate code on class methods.
 
 **Example**  
-``` javascript
-import { method } from 'type-enforcer';
-
-// Or import individual functions
-import { methodBoolean, methodString } from 'type-enforcer';
-
-
-// Use it as a prototype:
-const Thing = function() {};
-
-Thing.prototype.myMethod = method.string([options]);
-
-
-// or in a class:
-class Thing() {}
-
-Thing.prototype.myMethod = method.string([options]);
-
-
-// or as a non-prototype method:
-const Thing = function() {
-    this.myMethod = method.string([options]);
-};
-```
-
-##### Extending methods
-methodAny and all methods that extend it have a static method ".extend" that creates a new method. It accepts two args:
-- The first arg should be an object with default options. These options override any options in the method being extended.
-- The second arg (optional) should be a function that gets called when a method is initialized. This function is passed one arg, the options for this method.
-
-These methods also have a static method ".defaults" that mutates the default options for that method. For instance, if you would prefer that methodBoolean didn't have a default value of false, then you could use the following:
-``` javascript
-methodBoolean.defaults({init: undefined});
-```
-
-<br>
+``` javascriptimport { method } from 'type-enforcer';// Or import individual functionsimport { methodBoolean, methodString } from 'type-enforcer';// Use it as a prototype:const Thing = function() {};Thing.prototype.myMethod = method.string([options]);// or in a class:class Thing() {}Thing.prototype.myMethod = method.string([options]);// or as a non-prototype method:const Thing = function() {    this.myMethod = method.string([options]);};```##### Extending methodsmethodAny and all methods that extend it have a static method ".extend" that creates a new method. It accepts two args:- The first arg should be an object with default options. These options override any options in the method being extended.- The second arg (optional) should be a function that gets called when a method is initialized. This function is passed one arg, the options for this method.These methods also have a static method ".defaults" that mutates the default options for that method. For instance, if you would prefer that methodBoolean didn't have a default value of false, then you could use the following:``` javascriptmethodBoolean.defaults({init: undefined});```<br>
 
 * [method](#method) : <code>object</code>
     * [.any([options])](#method.any) ⇒ <code>function</code>
@@ -99,38 +64,7 @@ methodBoolean.defaults({init: undefined});
 | [options.stringify] | <code>Boolean</code> | <code>false</code> | If true, then call toString() on the value before returning it (if the value has a toString method) |
 
 **Example**  
-``` javascript
-import { method } from 'type-enforcer';
-
-const Widget = function() {
-    someMethod = method.any({
-        set(newValue) {
-            console.log(this);
-            console.log(newValue);
-        }
-    });
-    anotherMethod = method.any();
-    thirdMethod = method.any({
-        get(newValue) {
-            return 'item 2';
-        }
-    });
-};
-
-const widget = new Widget();
-
-widget.someMethod('a').anotherMethod(42).thirdMethod('item 1');
-// => console.log widget and 'a'
-
-widget.someMethod();
-// => 'a'
-
-widget.anotherMethod();
-// => 42
-
-widget.thirdMethod();
-// => 'item 2'
-```
+``` javascriptimport { method } from 'type-enforcer';const Widget = function() {    someMethod = method.any({        set(newValue) {            console.log(this);            console.log(newValue);        }    });    anotherMethod = method.any();    thirdMethod = method.any({        get(newValue) {            return 'item 2';        }    });};const widget = new Widget();widget.someMethod('a').anotherMethod(42).thirdMethod('item 1');// => console.log widget and 'a'widget.someMethod();// => 'a'widget.anotherMethod();// => 42widget.thirdMethod();// => 'item 2'```
 
 <br><a name="method.array"></a>
 

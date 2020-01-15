@@ -25,11 +25,7 @@
 <br><a name="new_Removable_new"></a>
 
 ### new Removable()
-> ``` javascript
-> import { Removable } from 'type-enforcer';
-> 
-> class MyClass extends Removable {}
-> ```
+> ``` javascript> import { Removable } from 'type-enforcer';> > class MyClass extends Removable {}> ```
 
 
 <br><a name="Removable+isRemoved"></a>

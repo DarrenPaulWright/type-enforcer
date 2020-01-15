@@ -32,9 +32,7 @@
 <br><a name="new_Queue_new"></a>
 
 ### new Queue()
-> ``` javascript
-> import { Queue } from 'type-enforcer';
-> ```
+> ``` javascript> import { Queue } from 'type-enforcer';> ```
 
 
 <br><a name="Queue+length"></a>

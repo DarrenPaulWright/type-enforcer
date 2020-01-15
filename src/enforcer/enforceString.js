@@ -1,5 +1,5 @@
-import isString from '../checks/isString';
-import enforceObject from './enforceObject';
+import isString from '../checks/isString.js';
+import enforceObject from './enforceObject.js';
 
 /**
  * Enforce that a value is a string. Uses [isString](docs/checks.md#isString).

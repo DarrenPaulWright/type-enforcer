@@ -1,5 +1,5 @@
 import { benchSettings } from 'karma-webpack-bundle';
-import { PrivateVars } from '../../index';
+import { PrivateVars } from '../../index.js';
 
 suite(`PrivateVars`, () => {
 	let sandbox;

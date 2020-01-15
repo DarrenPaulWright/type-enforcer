@@ -1,5 +1,5 @@
-import enforceSymbol from '../enforcer/enforceSymbol';
-import methodAny from './methodAny';
+import enforceSymbol from '../enforcer/enforceSymbol.js';
+import methodAny from './methodAny.js';
 
 /**
  * Builds a chainable method for getting/setting a Symbol

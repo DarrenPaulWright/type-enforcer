@@ -1,7 +1,7 @@
 import { clone } from 'object-agent';
-import isFunction from '../checks/isFunction';
-import isInstanceOf from '../checks/isInstanceOf';
-import PrivateVars from '../utility/PrivateVars';
+import isFunction from '../checks/isFunction.js';
+import isInstanceOf from '../checks/isInstanceOf.js';
+import PrivateVars from '../utility/PrivateVars.js';
 
 export const _ = new PrivateVars();
 

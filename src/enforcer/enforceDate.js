@@ -1,5 +1,5 @@
-import isDate from '../checks/isDate';
-import enforceObject from './enforceObject';
+import isDate from '../checks/isDate.js';
+import enforceObject from './enforceObject.js';
 
 /**
  * Enforce that a value is a date. Uses [isDate](docs/checks.md#isDate).

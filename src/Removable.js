@@ -1,5 +1,5 @@
-import methodQueue from './methods/methodQueue';
-import PrivateVars from './utility/PrivateVars';
+import methodQueue from './methods/methodQueue.js';
+import PrivateVars from './utility/PrivateVars.js';
 
 const _ = new PrivateVars();
 

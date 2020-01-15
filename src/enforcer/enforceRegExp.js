@@ -1,5 +1,5 @@
-import isRegExp from '../checks/isRegExp';
-import enforceObject from './enforceObject';
+import isRegExp from '../checks/isRegExp.js';
+import enforceObject from './enforceObject.js';
 
 const SEPARATOR = '/';
 

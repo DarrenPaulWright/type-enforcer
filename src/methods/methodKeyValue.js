@@ -1,6 +1,6 @@
 import { forOwn } from 'object-agent';
-import isObject from '../checks/isObject';
-import methodAny, { _ } from './methodAny';
+import isObject from '../checks/isObject.js';
+import methodAny, { _ } from './methodAny.js';
 
 /**
  * Builds a chainable method that accepts either a key and a value or an object with multiple key/value pairs.

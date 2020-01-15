@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { Enum } from '../';
+import { Enum } from '../index.js';
 
 describe('Enum', () => {
 	it('should look like an object', () => {

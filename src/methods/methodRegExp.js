@@ -1,5 +1,5 @@
-import enforceRegExp from '../enforcer/enforceRegExp';
-import methodAny from './methodAny';
+import enforceRegExp from '../enforcer/enforceRegExp.js';
+import methodAny from './methodAny.js';
 
 /**
  * Builds a chainable method for getting/setting a RegExp

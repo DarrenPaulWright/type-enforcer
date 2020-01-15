@@ -1,6 +1,6 @@
-import isSet from '../checks/isSet';
-import enforceArray from './enforceArray';
-import enforceObject from './enforceObject';
+import isSet from '../checks/isSet.js';
+import enforceArray from './enforceArray.js';
+import enforceObject from './enforceObject.js';
 
 /**
  * Enforce that a value is a Set. Uses [isSet](docs/checks.md#isSet).

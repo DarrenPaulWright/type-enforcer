@@ -1,5 +1,5 @@
 import { benchSettings } from 'karma-webpack-bundle';
-import { applySettings } from '../../index';
+import { applySettings } from '../../index.js';
 
 suite(`applySettings`, () => {
 	let sandbox;

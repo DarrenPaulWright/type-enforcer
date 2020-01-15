@@ -1,5 +1,5 @@
-import isWeakSet from '../checks/isWeakSet';
-import enforceObject from './enforceObject';
+import isWeakSet from '../checks/isWeakSet.js';
+import enforceObject from './enforceObject.js';
 
 /**
  * Enforce that a value is a WeakSet. Uses [isWeakSet](docs/checks.md#isWeakSet).

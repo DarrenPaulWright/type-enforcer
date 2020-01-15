@@ -1,5 +1,5 @@
-import isFloat from '../checks/isFloat';
-import enforceNumber from './enforceNumber';
+import isFloat from '../checks/isFloat.js';
+import enforceNumber from './enforceNumber.js';
 
 /**
  * Enforce that a value is a finite float. Uses [isFloat](docs/checks.md#isFloat).

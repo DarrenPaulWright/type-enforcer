@@ -1,5 +1,5 @@
-import enforceEnum from '../enforcer/enforceEnum';
-import methodAny from './methodAny';
+import enforceEnum from '../enforcer/enforceEnum.js';
+import methodAny from './methodAny.js';
 
 /**
  * Builds a chainable method for getting/setting an enumerable value in an [Enum](docs/Enum.md)

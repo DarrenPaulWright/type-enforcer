@@ -1,5 +1,5 @@
 import { benchSettings } from 'karma-webpack-bundle';
-import clamp from '../../src/utility/clamp';
+import clamp from '../../src/utility/clamp.js';
 
 suite(`clamp`, () => {
 	let sandbox;

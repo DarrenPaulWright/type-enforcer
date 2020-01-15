@@ -1,5 +1,5 @@
 import { benchSettings } from 'karma-webpack-bundle';
-import { Queue } from '../index';
+import { Queue } from '../index.js';
 
 suite(`Queue`, () => {
 	let sandbox;

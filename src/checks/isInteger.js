@@ -1,4 +1,4 @@
-import isNumber from './isNumber';
+import isNumber from './isNumber.js';
 
 /**
  * Check if a value is a finite integer

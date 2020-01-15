@@ -1,4 +1,4 @@
-import isString from './isString';
+import isString from './isString.js';
 
 /**
  * Check if a value is a Symbol

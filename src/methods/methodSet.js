@@ -1,5 +1,5 @@
-import enforceSet from '../enforcer/enforceSet';
-import methodAny from './methodAny';
+import enforceSet from '../enforcer/enforceSet.js';
+import methodAny from './methodAny.js';
 
 /**
  * Builds a chainable method for getting/setting a Set

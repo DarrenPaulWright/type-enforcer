@@ -1,5 +1,5 @@
-import enforceString from '../enforcer/enforceString';
-import methodAny from './methodAny';
+import enforceString from '../enforcer/enforceString.js';
+import methodAny from './methodAny.js';
 
 /**
  * Builds a chainable method for getting/setting a string

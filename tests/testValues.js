@@ -1,5 +1,5 @@
 import { testValues } from 'type-enforcer-test-helper';
-import { Enum } from '../';
+import { Enum } from '../index.js';
 
 export const validEnumObject = new Enum({
 	test1: Symbol(),

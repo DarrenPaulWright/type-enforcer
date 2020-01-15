@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { Removable } from '../';
+import { Removable } from '../index.js';
 
 class TestClass extends Removable {
 }

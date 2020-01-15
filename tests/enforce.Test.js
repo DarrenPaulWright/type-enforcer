@@ -39,8 +39,8 @@ import {
 	enforceSymbol,
 	enforceWeakMap,
 	enforceWeakSet
-} from '../';
-import { enumData, validEnumObject } from './testValues';
+} from '../index.js';
+import { enumData, validEnumObject } from './testValues.js';
 
 describe('enforce', () => {
 	describe('.array', () => {

@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import { TestClass } from 'type-enforcer-test-helper';
-import { Queue } from '../';
+import { Queue } from '../index.js';
 
 const emptyFunction = () => {
 };

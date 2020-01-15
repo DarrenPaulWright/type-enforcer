@@ -1,6 +1,6 @@
 import { benchSettings } from 'karma-webpack-bundle';
 import { testTypes } from 'type-enforcer-test-helper';
-import { enforce } from '../index';
+import { enforce } from '../index.js';
 
 testTypes.forEach((data) => {
 	suite(`enforce.${data.name}`, () => {

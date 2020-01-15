@@ -1,4 +1,4 @@
-import PrivateVars from './utility/PrivateVars';
+import PrivateVars from './utility/PrivateVars.js';
 
 const _ = new PrivateVars();
 

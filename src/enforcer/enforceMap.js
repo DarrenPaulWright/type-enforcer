@@ -1,6 +1,6 @@
 import { forOwnReduce } from 'object-agent';
-import isMap from '../checks/isMap';
-import enforceObject from './enforceObject';
+import isMap from '../checks/isMap.js';
+import enforceObject from './enforceObject.js';
 
 /**
  * Enforce that a value is a Map. Uses [isMap](docs/checks.md#isMap).

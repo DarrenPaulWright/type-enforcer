@@ -1,5 +1,5 @@
-import isNumber from '../checks/isNumber';
-import clamp from '../utility/clamp';
+import isNumber from '../checks/isNumber.js';
+import clamp from '../utility/clamp.js';
 
 const numericEnforcer = (check, doCoercion) => {
 	const enforcer = (value, alt, coerce, minValue = -Infinity, maxValue = Infinity) => {

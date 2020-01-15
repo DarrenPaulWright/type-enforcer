@@ -1,5 +1,5 @@
-import enforceBoolean from '../enforcer/enforceBoolean';
-import methodAny from './methodAny';
+import enforceBoolean from '../enforcer/enforceBoolean.js';
+import methodAny from './methodAny.js';
 
 /**
  * Builds a chainable method for getting/setting a boolean

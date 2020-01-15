@@ -1,5 +1,5 @@
-import enforceNumber from '../enforcer/enforceNumber';
-import methodAny from './methodAny';
+import enforceNumber from '../enforcer/enforceNumber.js';
+import methodAny from './methodAny.js';
 
 /**
  * Builds a chainable method for getting/setting a number

@@ -1,5 +1,5 @@
-import isWeakMap from '../checks/isWeakMap';
-import enforceObject from './enforceObject';
+import isWeakMap from '../checks/isWeakMap.js';
+import enforceObject from './enforceObject.js';
 
 /**
  * Enforce that a value is a WeakMap. Uses [isWeakMap](docs/checks.md#isWeakMap).

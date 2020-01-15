@@ -1,5 +1,5 @@
-import isBoolean from '../checks/isBoolean';
-import enforceObject from './enforceObject';
+import isBoolean from '../checks/isBoolean.js';
+import enforceObject from './enforceObject.js';
 
 /**
  * Enforce that a value is a boolean. Uses [isBoolean](docs/checks.md#isBoolean).

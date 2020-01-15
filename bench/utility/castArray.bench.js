@@ -1,5 +1,5 @@
 import { benchSettings } from 'karma-webpack-bundle';
-import castArray from '../../src/utility/castArray';
+import castArray from '../../src/utility/castArray.js';
 
 suite(`castArray`, () => {
 	let sandbox;

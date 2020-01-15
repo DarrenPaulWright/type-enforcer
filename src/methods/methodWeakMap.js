@@ -1,5 +1,5 @@
-import enforceWeakMap from '../enforcer/enforceWeakMap';
-import methodAny from './methodAny';
+import enforceWeakMap from '../enforcer/enforceWeakMap.js';
+import methodAny from './methodAny.js';
 
 /**
  * Builds a chainable method for getting/setting a WeakMap

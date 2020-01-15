@@ -1,5 +1,5 @@
 import { benchSettings } from 'karma-webpack-bundle';
-import { Removable } from '../index';
+import { Removable } from '../index.js';
 
 suite(`Removable`, () => {
 	let sandbox;

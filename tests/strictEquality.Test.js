@@ -1,6 +1,14 @@
 import { multiTest } from 'type-enforcer-test-helper';
-import { strictEquality } from '../';
-import { abstractEqual, alwaysEqual, alwaysNotEqual, messageFalse, messageTrue, sameValueEqual, sameValueNotEqual } from './compareValues';
+import { strictEquality } from '../index.js';
+import {
+	abstractEqual,
+	alwaysEqual,
+	alwaysNotEqual,
+	messageFalse,
+	messageTrue,
+	sameValueEqual,
+	sameValueNotEqual
+} from './compareValues.js';
 
 describe('strictEquality', () => {
 	multiTest({

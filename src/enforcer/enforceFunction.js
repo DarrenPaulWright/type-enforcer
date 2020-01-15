@@ -1,4 +1,4 @@
-import isFunction from '../checks/isFunction';
+import isFunction from '../checks/isFunction.js';
 
 /**
  * Enforce that a value is a function. Uses [isFunction](docs/checks.md#isFunction).

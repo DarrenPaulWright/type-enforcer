@@ -1,5 +1,5 @@
-import enforceFunction from '../enforcer/enforceFunction';
-import methodAny from './methodAny';
+import enforceFunction from '../enforcer/enforceFunction.js';
+import methodAny from './methodAny.js';
 
 /**
  * Builds a chainable method for getting/setting a function

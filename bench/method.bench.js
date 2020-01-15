@@ -1,6 +1,6 @@
 import { benchSettings } from 'karma-webpack-bundle';
 import { forOwn } from 'object-agent';
-import { methodKeyValue, methodQueue, methodString } from '../index';
+import { methodKeyValue, methodQueue, methodString } from '../index.js';
 
 suite(`methodString`, () => {
 	let sandbox;

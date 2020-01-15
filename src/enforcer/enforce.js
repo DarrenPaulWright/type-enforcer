@@ -1,20 +1,20 @@
-import enforceArray from './enforceArray';
-import enforceBoolean from './enforceBoolean';
-import enforceDate from './enforceDate';
-import enforceEnum from './enforceEnum';
-import enforceFloat from './enforceFloat';
-import enforceFunction from './enforceFunction';
-import enforceInstanceOf from './enforceInstanceOf';
-import enforceInteger from './enforceInteger';
-import enforceMap from './enforceMap';
-import enforceNumber from './enforceNumber';
-import enforceObject from './enforceObject';
-import enforceRegExp from './enforceRegExp';
-import enforceSet from './enforceSet';
-import enforceString from './enforceString';
-import enforceSymbol from './enforceSymbol';
-import enforceWeakMap from './enforceWeakMap';
-import enforceWeakSet from './enforceWeakSet';
+import enforceArray from './enforceArray.js';
+import enforceBoolean from './enforceBoolean.js';
+import enforceDate from './enforceDate.js';
+import enforceEnum from './enforceEnum.js';
+import enforceFloat from './enforceFloat.js';
+import enforceFunction from './enforceFunction.js';
+import enforceInstanceOf from './enforceInstanceOf.js';
+import enforceInteger from './enforceInteger.js';
+import enforceMap from './enforceMap.js';
+import enforceNumber from './enforceNumber.js';
+import enforceObject from './enforceObject.js';
+import enforceRegExp from './enforceRegExp.js';
+import enforceSet from './enforceSet.js';
+import enforceString from './enforceString.js';
+import enforceSymbol from './enforceSymbol.js';
+import enforceWeakMap from './enforceWeakMap.js';
+import enforceWeakSet from './enforceWeakSet.js';
 
 /**
  * Utility functions for enforcing data types.

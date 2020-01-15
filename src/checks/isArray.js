@@ -1,4 +1,4 @@
-import isJson from './isJson';
+import isJson from './isJson.js';
 
 /**
  * Check if a value is an array

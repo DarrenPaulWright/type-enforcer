@@ -1,5 +1,5 @@
-import isInteger from '../checks/isInteger';
-import enforceNumber from './enforceNumber';
+import isInteger from '../checks/isInteger.js';
+import enforceNumber from './enforceNumber.js';
 
 /**
  * Enforce that a value is a finite integer. Uses [isInteger](docs/checks.md#isInteger).

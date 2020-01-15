@@ -1,5 +1,5 @@
-import isSymbol from '../checks/isSymbol';
-import enforceObject from './enforceObject';
+import isSymbol from '../checks/isSymbol.js';
+import enforceObject from './enforceObject.js';
 
 /**
  * Enforce that a value is a Symbol. Uses [isSymbol](docs/checks.md#isSymbol).

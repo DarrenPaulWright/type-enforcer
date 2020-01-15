@@ -1,5 +1,5 @@
-import enforceDate from '../enforcer/enforceDate';
-import methodAny from './methodAny';
+import enforceDate from '../enforcer/enforceDate.js';
+import methodAny from './methodAny.js';
 
 /**
  * Builds a chainable method for getting/setting a date

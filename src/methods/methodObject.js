@@ -1,6 +1,6 @@
 import { deepEqual } from 'object-agent';
-import enforceObject from '../enforcer/enforceObject';
-import methodAny from './methodAny';
+import enforceObject from '../enforcer/enforceObject.js';
+import methodAny from './methodAny.js';
 
 /**
  * Builds a chainable method for getting/setting a plain object

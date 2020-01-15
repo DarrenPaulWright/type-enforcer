@@ -1,20 +1,20 @@
-import isArray from './isArray';
-import isBoolean from './isBoolean';
-import isDate from './isDate';
-import isFloat from './isFloat';
-import isFunction from './isFunction';
-import isInstanceOf from './isInstanceOf';
-import isInteger from './isInteger';
-import isJson from './isJson';
-import isMap from './isMap';
-import isNumber from './isNumber';
-import isObject from './isObject';
-import isRegExp from './isRegExp';
-import isSet from './isSet';
-import isString from './isString';
-import isSymbol from './isSymbol';
-import isWeakMap from './isWeakMap';
-import isWeakSet from './isWeakSet';
+import isArray from './isArray.js';
+import isBoolean from './isBoolean.js';
+import isDate from './isDate.js';
+import isFloat from './isFloat.js';
+import isFunction from './isFunction.js';
+import isInstanceOf from './isInstanceOf.js';
+import isInteger from './isInteger.js';
+import isJson from './isJson.js';
+import isMap from './isMap.js';
+import isNumber from './isNumber.js';
+import isObject from './isObject.js';
+import isRegExp from './isRegExp.js';
+import isSet from './isSet.js';
+import isString from './isString.js';
+import isSymbol from './isSymbol.js';
+import isWeakMap from './isWeakMap.js';
+import isWeakSet from './isWeakSet.js';
 
 /**
  * Utility functions for checking if a value is a particular data type.

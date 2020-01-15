@@ -1,4 +1,4 @@
-import isNumber from './isNumber';
+import isNumber from './isNumber.js';
 
 const isFinite = (value) => value !== Infinity && value !== -Infinity;
 

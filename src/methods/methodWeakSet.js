@@ -1,5 +1,5 @@
-import enforceWeakSet from '../enforcer/enforceWeakSet';
-import methodAny from './methodAny';
+import enforceWeakSet from '../enforcer/enforceWeakSet.js';
+import methodAny from './methodAny.js';
 
 /**
  * Builds a chainable method for getting/weakSetting a WeakSet

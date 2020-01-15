@@ -1,5 +1,5 @@
-import enforceArray from '../enforcer/enforceArray';
-import methodObject from './methodObject';
+import enforceArray from '../enforcer/enforceArray.js';
+import methodObject from './methodObject.js';
 
 /**
  * Builds a chainable method for getting/setting an array

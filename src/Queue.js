@@ -1,6 +1,6 @@
 import { forOwn } from 'object-agent';
-import castArray from './utility/castArray';
-import PrivateVars from './utility/PrivateVars';
+import castArray from './utility/castArray.js';
+import PrivateVars from './utility/PrivateVars.js';
 
 const _ = new PrivateVars();
 

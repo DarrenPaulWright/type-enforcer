@@ -1,5 +1,5 @@
-import isArray from '../checks/isArray';
-import enforceObject from './enforceObject';
+import isArray from '../checks/isArray.js';
+import enforceObject from './enforceObject.js';
 
 /**
  * Enforce that a value is an array. Uses [isArray](docs/checks.md#isArray).

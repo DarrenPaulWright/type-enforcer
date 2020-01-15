@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { applySettings } from '../';
+import { applySettings } from '../index.js';
 
 describe('applySettings', () => {
 	it('should not throw errors if methods are provided that don\'t exist on the target', () => {

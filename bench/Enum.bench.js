@@ -1,5 +1,5 @@
 import { benchSettings } from 'karma-webpack-bundle';
-import { Enum } from '../index';
+import { Enum } from '../index.js';
 
 suite(`Enum`, () => {
 	let sandbox;

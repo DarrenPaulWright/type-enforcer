@@ -1,4 +1,4 @@
-import isArray from './isArray';
+import isArray from './isArray.js';
 
 export const isCoercableToWeakMap = (value) => {
 	return isArray(value) && value.every((item) => {

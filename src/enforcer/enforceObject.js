@@ -1,4 +1,4 @@
-import isObject from '../checks/isObject';
+import isObject from '../checks/isObject.js';
 
 const simpleEnforcer = (check, doCoercion) => {
 	const enforcer = (value, alt, coerce) => {

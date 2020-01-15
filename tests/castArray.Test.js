@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { castArray } from '../';
+import { castArray } from '../index.js';
 
 describe('castArray', () => {
 	it('should wrap a string in an array', () => {

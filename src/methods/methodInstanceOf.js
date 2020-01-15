@@ -1,5 +1,5 @@
-import enforceInstanceOf from '../enforcer/enforceInstanceOf';
-import methodAny from './methodAny';
+import enforceInstanceOf from '../enforcer/enforceInstanceOf.js';
+import methodAny from './methodAny.js';
 
 /**
  * Builds a chainable method for getting/setting an instance of a specific constructor

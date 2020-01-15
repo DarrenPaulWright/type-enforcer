@@ -1,6 +1,6 @@
-import isFunction from '../checks/isFunction';
-import Queue from '../Queue';
-import methodAny, { _ } from './methodAny';
+import isFunction from '../checks/isFunction.js';
+import Queue from '../Queue.js';
+import methodAny, { _ } from './methodAny.js';
 
 /**
  * Builds a chainable method that implements a [Queue](docs/Queue.md)

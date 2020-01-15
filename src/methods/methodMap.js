@@ -1,5 +1,5 @@
-import enforceMap from '../enforcer/enforceMap';
-import methodAny from './methodAny';
+import enforceMap from '../enforcer/enforceMap.js';
+import methodAny from './methodAny.js';
 
 /**
  * Builds a chainable method for getting/setting a Map

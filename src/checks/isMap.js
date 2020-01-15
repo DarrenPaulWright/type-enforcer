@@ -1,6 +1,6 @@
-import enforceArray from '../enforcer/enforceArray';
-import isObject from './isObject';
-import { isCoercableToWeakMap } from './isWeakMap';
+import enforceArray from '../enforcer/enforceArray.js';
+import isObject from './isObject.js';
+import { isCoercableToWeakMap } from './isWeakMap.js';
 
 /**
  * Check if a value is a Map

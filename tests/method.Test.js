@@ -43,8 +43,8 @@ import {
 	methodWeakSet,
 	Queue,
 	Removable
-} from '../';
-import { enumData, validEnumObject } from './testValues';
+} from '../index.js';
+import { enumData, validEnumObject } from './testValues.js';
 
 describe('method', () => {
 	describe('.any', () => {

@@ -1,4 +1,4 @@
-import isArray from './isArray';
+import isArray from './isArray.js';
 
 /**
  * Check if a value is a Set

@@ -1,4 +1,4 @@
-import isInstanceOf from '../checks/isInstanceOf';
+import isInstanceOf from '../checks/isInstanceOf.js';
 
 /**
  * Enforce that a value is an instance of a constructor. Uses [isInstanceOf](docs/checks.md#isInstanceOf).

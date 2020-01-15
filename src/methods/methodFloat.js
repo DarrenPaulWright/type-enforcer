@@ -1,5 +1,5 @@
-import enforceFloat from '../enforcer/enforceFloat';
-import methodAny from './methodAny';
+import enforceFloat from '../enforcer/enforceFloat.js';
+import methodAny from './methodAny.js';
 
 /**
  * Builds a chainable method for getting/setting a float

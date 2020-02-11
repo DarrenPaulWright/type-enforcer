@@ -1,5 +1,8 @@
 # Type Enforcer
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/DarrenPaulWright/type-enforcer.svg)](https://greenkeeper.io/)
+
+
 > A type enforcement library for javascript
 >
 > [![npm][npm]][npm-url]

@@ -9,6 +9,7 @@ import isJson from './isJson.js';
 import isMap from './isMap.js';
 import isNumber from './isNumber.js';
 import isObject from './isObject.js';
+import isPromise from './isPromise.js';
 import isRegExp from './isRegExp.js';
 import isSet from './isSet.js';
 import isString from './isString.js';
@@ -41,6 +42,7 @@ export default {
 	map: isMap,
 	number: isNumber,
 	object: isObject,
+	promise: isPromise,
 	regExp: isRegExp,
 	set: isSet,
 	string: isString,

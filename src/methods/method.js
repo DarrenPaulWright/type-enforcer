@@ -11,6 +11,7 @@ import methodKeyValue from './methodKeyValue.js';
 import methodMap from './methodMap.js';
 import methodNumber from './methodNumber.js';
 import methodObject from './methodObject.js';
+import methodPromise from './methodPromise.js';
 import methodQueue from './methodQueue.js';
 import methodRegExp from './methodRegExp.js';
 import methodSet from './methodSet.js';
@@ -77,6 +78,7 @@ export default {
 	map: methodMap,
 	number: methodNumber,
 	object: methodObject,
+	promise: methodPromise,
 	regExp: methodRegExp,
 	set: methodSet,
 	string: methodString,

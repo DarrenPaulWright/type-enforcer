@@ -9,6 +9,7 @@ import enforceInteger from './enforceInteger.js';
 import enforceMap from './enforceMap.js';
 import enforceNumber from './enforceNumber.js';
 import enforceObject from './enforceObject.js';
+import enforcePromise from './enforcePromise.js';
 import enforceRegExp from './enforceRegExp.js';
 import enforceSet from './enforceSet.js';
 import enforceString from './enforceString.js';
@@ -48,6 +49,7 @@ export default {
 	map: enforceMap,
 	number: enforceNumber,
 	object: enforceObject,
+	promise: enforcePromise,
 	regExp: enforceRegExp,
 	set: enforceSet,
 	string: enforceString,

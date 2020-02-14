@@ -1,5 +1,5 @@
-import { assert } from 'chai';
 import { clamp } from '../index.js';
+import assert from '../src/assert/assert.js';
 
 describe('clamp', () => {
 	it('should clamp to a min value', () => {
@@ -16,16 +16,16 @@ describe('clamp', () => {
 
 	it('should return the original value if equal to min', () => {
 		const value = new Number(4);
-		assert.deepEqual(clamp(value, 4, 5), value);
+		assert.equal(clamp(value, 4, 5), value);
 	});
 
 	it('should return the original value if equal to max', () => {
 		const value = new Number(4);
-		assert.deepEqual(clamp(value, 3, 4), value);
+		assert.equal(clamp(value, 3, 4), value);
 	});
 
 	it('should return the original value', () => {
 		const value = new Number(4);
-		assert.deepEqual(clamp(value, 3, 5), value);
+		assert.equal(clamp(value, 3, 5), value);
 	});
 });

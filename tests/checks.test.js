@@ -1,4 +1,3 @@
-import { assert } from 'chai';
 import displayValue from 'display-value';
 import {
 	arrayData,
@@ -11,6 +10,7 @@ import {
 	mapData,
 	numberData,
 	objectData,
+	promiseData,
 	regExpData,
 	setData,
 	stringData,
@@ -33,6 +33,7 @@ import {
 	isMap,
 	isNumber,
 	isObject,
+	isPromise,
 	isRegExp,
 	isSet,
 	isString,
@@ -40,6 +41,7 @@ import {
 	isWeakMap,
 	isWeakSet
 } from '../index.js';
+import assert from '../src/assert/assert.js';
 
 describe('checks', () => {
 	describe('isArray', () => {
@@ -64,20 +66,20 @@ describe('checks', () => {
 
 	describe('isInstanceOf', () => {
 		it('should exist in the exported "is" object', () => {
-			assert.deepEqual(isInstanceOf, is.instanceOf);
+			assert.equal(isInstanceOf, is.instanceOf);
 		});
 
 		testTypes.forEach((baseType) => {
 			if (baseType.value) {
 				baseType.true.forEach((newValue) => {
 					it('should return true for ' + displayValue(newValue) + ' and ' + displayValue(baseType.value), () => {
-						assert.isTrue(isInstanceOf(newValue, baseType.value));
+						assert.equal(isInstanceOf(newValue, baseType.value), true);
 					});
 				});
 
 				baseType.false.forEach((newValue) => {
 					it('should return false for ' + displayValue(newValue) + ' and ' + displayValue(baseType.value), () => {
-						assert.isFalse(isInstanceOf(newValue, baseType.value));
+						assert.equal(isInstanceOf(newValue, baseType.value), false);
 					});
 				});
 			}
@@ -100,13 +102,17 @@ describe('checks', () => {
 		testCheck(numberData, isNumber, is);
 
 		it('should return false for NaN', () => {
-			assert.isFalse(isNumber(NaN));
-			assert.isFalse(isNumber(NaN), true);
+			assert.equal(isNumber(NaN), false);
+			assert.equal(isNumber(NaN), false);
 		});
 	});
 
 	describe('isObject', () => {
 		testCheck(objectData, isObject, is);
+	});
+
+	describe('isPromise', () => {
+		testCheck(promiseData, isPromise, is);
 	});
 
 	describe('isRegExp', () => {

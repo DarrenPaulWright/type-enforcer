@@ -1,4 +1,3 @@
-import { assert } from 'chai';
 import {
 	arrayData,
 	booleanData,
@@ -10,6 +9,7 @@ import {
 	mapData,
 	numberData,
 	objectData,
+	promiseData,
 	regExpData,
 	setData,
 	stringData,
@@ -34,6 +34,7 @@ import {
 	methodMap,
 	methodNumber,
 	methodObject,
+	methodPromise,
 	methodQueue,
 	methodRegExp,
 	methodSet,
@@ -44,6 +45,7 @@ import {
 	Queue,
 	Removable
 } from '../index.js';
+import assert from '../src/assert/assert.js';
 import { enumData, validEnumObject } from './testValues.js';
 
 describe('method', () => {
@@ -81,7 +83,7 @@ describe('method', () => {
 			testSet = '';
 			testConstructor.testMethod(testArray2);
 
-			assert.deepEqual(testSet, '');
+			assert.equal(testSet, '');
 		});
 	});
 
@@ -169,7 +171,7 @@ describe('method', () => {
 			};
 			const testClass = new TestClass();
 
-			assert.doesNotThrow(() => {
+			assert.notThrows(() => {
 				testClass.testMethod('test');
 			});
 		});
@@ -208,7 +210,7 @@ describe('method', () => {
 		let count = 0;
 
 		it('should exist in the exported "method" object', () => {
-			assert.deepEqual(methodKeyValue, method.keyValue);
+			assert.equal(methodKeyValue, method.keyValue);
 		});
 
 		const runTests = (TestConstructor) => {
@@ -334,8 +336,12 @@ describe('method', () => {
 			testSet = '';
 			testConstructor.testMethod(testObject2);
 
-			assert.deepEqual(testSet, '');
+			assert.equal(testSet, '');
 		});
+	});
+
+	describe('.promise', () => {
+		testMethod({...promiseData}, methodPromise, method);
 	});
 
 	describe('.queue', () => {
@@ -345,14 +351,14 @@ describe('method', () => {
 		};
 
 		it('should exist in the exported "method" object', () => {
-			assert.deepEqual(methodQueue, method.queue);
+			assert.equal(methodQueue, method.queue);
 		});
 
 		const runTests = (TestConstructor, isRemovable) => {
 			it('should build a method', () => {
 				const testConstructor = new TestConstructor();
 
-				assert.isTrue(testConstructor.testMethod() instanceof Queue);
+				assert.equal(testConstructor.testMethod() instanceof Queue, true);
 				if (testConstructor.onRemove) {
 					testConstructor.onRemove();
 				}
@@ -405,7 +411,7 @@ describe('method', () => {
 
 				testConstructor.testMethod(testFunc);
 
-				assert.isTrue(testConstructor.testMethod() instanceof Queue);
+				assert.equal(testConstructor.testMethod() instanceof Queue, true);
 				if (testConstructor.onRemove) {
 					testConstructor.onRemove();
 				}

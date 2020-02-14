@@ -1,5 +1,5 @@
-import { assert } from 'chai';
 import { Enum } from '../index.js';
+import assert from '../src/assert/assert.js';
 
 describe('Enum', () => {
 	it('should look like an object', () => {
@@ -8,8 +8,8 @@ describe('Enum', () => {
 			TEST2: 'test2'
 		});
 
-		assert.isTrue(ENUM.TEST1 === 'test1');
-		assert.isTrue(ENUM.TEST2 === 'test2');
+		assert.equal(ENUM.TEST1 === 'test1', true);
+		assert.equal(ENUM.TEST2 === 'test2', true);
 	});
 
 	it('should be frozen', () => {
@@ -24,7 +24,7 @@ describe('Enum', () => {
 		catch (e) { // eslint-disable-line no-empty
 		}
 
-		assert.isTrue(ENUM.TEST3 === undefined);
+		assert.equal(ENUM.TEST3 === undefined, true);
 	});
 
 	describe('.key', () => {
@@ -54,7 +54,7 @@ describe('Enum', () => {
 				TEST2: 'test2'
 			});
 
-			assert.isTrue(ENUM.has('test2'));
+			assert.equal(ENUM.has('test2'), true);
 		});
 
 		it('should return false for a bad value', () => {
@@ -63,7 +63,7 @@ describe('Enum', () => {
 				TEST2: 'test2'
 			});
 
-			assert.isFalse(ENUM.has('test3'));
+			assert.equal(ENUM.has('test3'), false);
 		});
 	});
 

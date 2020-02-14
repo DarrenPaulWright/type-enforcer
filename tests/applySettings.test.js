@@ -1,5 +1,5 @@
-import { assert } from 'chai';
 import { applySettings } from '../index.js';
+import assert from '../src/assert/assert.js';
 
 describe('applySettings', () => {
 	it('should not throw errors if methods are provided that don\'t exist on the target', () => {
@@ -22,7 +22,7 @@ describe('applySettings', () => {
 			}
 		};
 
-		assert.doesNotThrow(() => {
+		assert.notThrows(() => {
 			applySettings(target, {
 				third: 3,
 				fourth: 1,
@@ -30,7 +30,7 @@ describe('applySettings', () => {
 				sixth: 6
 			}, ['fifth', 'seventh'], ['sixth', 'eighth']);
 		});
-		assert.deepEqual(testVar, 1);
+		assert.equal(testVar, 1);
 	});
 
 	it('should apply settings', () => {
@@ -59,7 +59,7 @@ describe('applySettings', () => {
 			third: 3
 		});
 
-		assert.deepEqual(testVar, 3);
+		assert.equal(testVar, 3);
 	});
 
 	it('should apply settings in order', () => {
@@ -99,7 +99,7 @@ describe('applySettings', () => {
 			fourth: 4
 		}, ['third'], ['first']);
 
-		assert.deepEqual(progress, 4);
-		assert.deepEqual(total, 4);
+		assert.equal(progress, 4);
+		assert.equal(total, 4);
 	});
 });

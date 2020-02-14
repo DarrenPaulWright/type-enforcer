@@ -1,5 +1,5 @@
-import { assert } from 'chai';
 import { Removable } from '../index.js';
+import assert from '../src/assert/assert.js';
 
 class TestClass extends Removable {
 }
@@ -56,7 +56,7 @@ describe('Removable', () => {
 	it('should return false when isRemoved is called and remove isn\'t called', () => {
 		const testClass = new TestClass();
 
-		assert.isFalse(testClass.isRemoved);
+		assert.equal(testClass.isRemoved, false);
 	});
 
 	it('should return false when isRemoved is called and onRemove is called', () => {
@@ -65,7 +65,7 @@ describe('Removable', () => {
 		testClass.onRemove(() => {
 		});
 
-		assert.isFalse(testClass.isRemoved);
+		assert.equal(testClass.isRemoved, false);
 	});
 
 	it('should return true when isRemoved is called and remove is called', () => {
@@ -75,13 +75,13 @@ describe('Removable', () => {
 		});
 		testClass.remove();
 
-		assert.isTrue(testClass.isRemoved);
+		assert.equal(testClass.isRemoved, true);
 	});
 
 	it('should not throw an error if remove is called without adding any onRemove callbacks', () => {
 		const testClass = new TestClass();
 
-		assert.doesNotThrow(() => {
+		assert.notThrows(() => {
 			testClass.remove();
 		});
 	});

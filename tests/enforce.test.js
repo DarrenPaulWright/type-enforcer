@@ -11,6 +11,7 @@ import {
 	multiTest,
 	numberData,
 	objectData,
+	promiseData,
 	regExpData,
 	setData,
 	stringData,
@@ -33,6 +34,7 @@ import {
 	enforceMap,
 	enforceNumber,
 	enforceObject,
+	enforcePromise,
 	enforceRegExp,
 	enforceSet,
 	enforceString,
@@ -91,6 +93,10 @@ describe('enforce', () => {
 
 	describe('.object', () => {
 		testEnforce(objectData, enforceObject, enforce, JSON.parse);
+	});
+
+	describe('.promise', () => {
+		testEnforce(promiseData, enforcePromise, enforce);
 	});
 
 	describe('.regExp', () => {

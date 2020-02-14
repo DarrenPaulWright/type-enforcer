@@ -145,7 +145,7 @@ describe('method', () => {
 			testClass.testMethod(testFunction);
 			testClass.testMethod()();
 
-			assert.equal(testVar, testClass);
+			assert.is(testVar, testClass);
 		});
 
 		it('should NOT bind the function to "this" if the option "bind" is set to false', () => {
@@ -162,7 +162,7 @@ describe('method', () => {
 			});
 			testClass.testMethod()();
 
-			assert.notEqual(testVar, testClass);
+			assert.notIs(testVar, testClass);
 		});
 
 		it('should NOT throw if set to something other than a function', () => {

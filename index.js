@@ -83,3 +83,5 @@ export { default as abstractEquality } from './src/equality/abstractEquality';
 export { default as strictEquality } from './src/equality/strictEquality';
 export { default as sameValue } from './src/equality/sameValue';
 export { default as sameValueZero } from './src/equality/sameValueZero';
+
+export { default as assert } from './src/assert/assert';

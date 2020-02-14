@@ -31,6 +31,7 @@
     * [.map(value, [coerce])](#is.map) ⇒ <code>Boolean</code>
     * [.number(value, [coerce])](#is.number) ⇒ <code>Boolean</code>
     * [.object(value, [coerce])](#is.object) ⇒ <code>Boolean</code>
+    * [.promise(value, [coerce])](#is.promise) ⇒ <code>Boolean</code>
     * [.regExp(value, [coerce])](#is.regExp) ⇒ <code>Boolean</code>
     * [.set(value, [coerce])](#is.set) ⇒ <code>Boolean</code>
     * [.string(value, [coerce])](#is.string) ⇒ <code>Boolean</code>
@@ -212,6 +213,22 @@
 
 **Example**  
 ``` javascriptimport { isObject } from 'type-enforcer';isObject({});// => trueisObject('{}');// => falseisObject('{}', true);// => true```
+
+<br><a name="is.promise"></a>
+
+### is.promise(value, [coerce]) ⇒ <code>Boolean</code>
+> Check if a value is a plain object
+
+**Alias:** `isPromise`
+
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | <code>\*</code> |  |  |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then see if the value can be coerced into a Promise. Functions can be coerced into Promises. |
+
+**Example**  
+``` javascriptimport { isPromise } from 'type-enforcer';isPromise(new Promise());// => trueisPromise('');// => falseisObject(() => {}, true);// => true```
 
 <br><a name="is.regExp"></a>
 

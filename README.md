@@ -24,6 +24,9 @@ _Requires Babel 7.2+_
 ## Objects
 
 <dl>
+<dt><a href="docs/assert.md">assert</a> : <code>object</code></dt>
+<dd><p>An assertion library for testing. Assertions do nothing if the test passes, and throw an AssertionError if they fail.</p>
+</dd>
 <dt><a href="docs/is.md">is</a> : <code>object</code></dt>
 <dd><p>Utility functions for checking if a value is a particular data type.</p>
 </dd>

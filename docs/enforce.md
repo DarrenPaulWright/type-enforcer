@@ -31,6 +31,7 @@
     * [.map(value, alt, [coerce])](#enforce.map) ⇒ <code>Object</code>
     * [.number(value, alt, [coerce], [minValue], [maxValue])](#enforce.number) ⇒ <code>Number</code>
     * [.object(value, alt, [coerce])](#enforce.object) ⇒ <code>Object</code>
+    * [.promise(value, alt, [coerce])](#enforce.promise) ⇒ <code>Promise</code>
     * [.regExp(value, alt, [coerce])](#enforce.regExp) ⇒ <code>RegExp</code>
     * [.set(value, alt, [coerce])](#enforce.set) ⇒ <code>Object</code>
     * [.string(value, alt, [coerce])](#enforce.string) ⇒ <code>String</code>
@@ -230,6 +231,23 @@
 
 **Example**  
 ``` javascriptimport { enforce } from 'type-enforcer';const a = {};const b = {};enforce.object(a, b);// => aenforce.object('{}', b);// => benforce.object('{}', b, true);// => {}```
+
+<br><a name="enforce.promise"></a>
+
+### enforce.promise(value, alt, [coerce]) ⇒ <code>Promise</code>
+> Enforce that a value is a Promise. Uses [isPromise](docs/checks.md#isPromise).
+
+**Alias:** `enforcePromise`
+
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | <code>\*</code> |  |  |
+| alt | <code>Promise</code> |  | Returned if the value is not the correct type |
+| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value if it's a function. Functions are wrapped in a Promise that resolves with the result of the function. |
+
+**Example**  
+``` javascriptimport { enforce } from 'type-enforcer';const a = new Promise((resolve) => resolve());const b = new Promise((resolve) => resolve());enforce.promise(a, b);// => aenforce.promise('', b);// => b```
 
 <br><a name="enforce.regExp"></a>
 

@@ -33,6 +33,7 @@
     * [.map([options])](#method.map) ⇒ <code>function</code>
     * [.number([options])](#method.number) ⇒ <code>function</code>
     * [.object([options])](#method.object) ⇒ <code>function</code>
+    * [.promise([options])](#method.promise) ⇒ <code>Promise</code>
     * [.queue([options])](#method.queue) ⇒ <code>function</code>
     * [.regExp([options])](#method.regExp) ⇒ <code>function</code>
     * [.set([options])](#method.set) ⇒ <code>function</code>
@@ -268,6 +269,21 @@
 | [options.compare] | <code>function</code> | <code>deepCompare</code> | Performs a deep comparison between values |
 | [options.deep] | <code>Boolean</code> | <code>true</code> | If false then only use strict equality |
 | [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+
+
+<br><a name="method.promise"></a>
+
+### method.promise([options]) ⇒ <code>Promise</code>
+> Builds a chainable method for getting/setting a promise
+
+**Alias:** `methodPromise`
+
+**Extends**: [<code>any</code>](#method.any)  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options.enforce] | <code>function</code> | <code>enforce.promise</code> |  |
 
 
 <br><a name="method.queue"></a>

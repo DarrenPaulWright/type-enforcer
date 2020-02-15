@@ -17,7 +17,7 @@ describe('abstractEquality', () => {
 		test(value) {
 			return abstractEquality(value[0], value[1]);
 		},
-		assertion: 'isTrue'
+		assertion: 'true'
 	});
 
 	multiTest({
@@ -26,7 +26,7 @@ describe('abstractEquality', () => {
 		test(value) {
 			return abstractEquality(value[0], value[1]);
 		},
-		assertion: 'isTrue'
+		assertion: 'true'
 	});
 
 	multiTest({
@@ -35,7 +35,7 @@ describe('abstractEquality', () => {
 		test(value) {
 			return abstractEquality(value[0], value[1]);
 		},
-		assertion: 'isTrue'
+		assertion: 'true'
 	});
 
 	multiTest({
@@ -44,7 +44,7 @@ describe('abstractEquality', () => {
 		test(value) {
 			return abstractEquality(value[0], value[1]);
 		},
-		assertion: 'isFalse'
+		assertion: 'false'
 	});
 
 	multiTest({
@@ -53,6 +53,6 @@ describe('abstractEquality', () => {
 		test(value) {
 			return abstractEquality(value[0], value[1]);
 		},
-		assertion: 'isFalse'
+		assertion: 'false'
 	});
 });

@@ -28,6 +28,10 @@
 		"docs:equality": "exec-each --out docs/{basefile}.md src/equality/*.js jsdoc2md -- {path} -t node_modules/dmd-readable/docs.hbs --plugin dmd-readable",
 		"docs": "run-p docs:*"
 	},
+	"browserslist": [
+		"defaults",
+		"maintained node versions"
+	],
 	"badges": {
 		"npm": {
 			"image": "https://img.shields.io/npm/v/{{name}}.svg",

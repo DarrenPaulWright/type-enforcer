@@ -2,6 +2,11 @@
 	"name": "type-enforcer",
 	"version": "1.1.1",
 	"description": "A type enforcement library for javascript",
+	"author": {
+		"name": "Darren Paul Wright",
+		"email": "Darren@DarrenPaulWright.com",
+		"url": "https://www.darrenpaulwright.com"
+	},
 	"type": "module",
 	"main": "index.js",
 	"files": [
@@ -15,9 +20,12 @@
 		"preversion": "npm test && npm run docs && git add --all && git diff --staged --quiet || git commit -m \"Updating docs\"",
 		"postversion": "npm publish",
 		"postpublish": "git push --follow-tags",
-		"deps": "ncu -u && npm install",
-		"deps-commit": "npm run deps && npm test && git add --all && git diff --staged --quiet || git commit -m \"Updating dependencies\"",
-		"deps-patch": "npm run deps-commit && npm version patch",
+		"pre-clean": "rm -rf node_modules && del /f package-lock.json",
+		"clean": "npm run pre-clean && npm install",
+		"update": "ncu -u && npm install",
+		"update-clean": "npm run pre-clean && npm run update",
+		"update-commit": "npm run update && npm test && git add --all && git diff --staged --quiet || git commit -m \"Updating dependencies\"",
+		"update-patch": "npm run update-commit && npm version patch",
 		"docs:readme": "jsdoc2md ./index.js src/**/*.js > README.md -t node_modules/dmd-readable/overview.hbs --plugin dmd-readable/overview-plugin.js",
 		"docs:assert": "jsdoc2md src/assert/assert.js > docs/assert.md -t node_modules/dmd-readable/docs.hbs --plugin dmd-readable",
 		"docs:checks": "jsdoc2md src/checks/**/*.js > docs/is.md -t node_modules/dmd-readable/docs.hbs --plugin dmd-readable",
@@ -77,21 +85,20 @@
 		"assert",
 		"assertion"
 	],
-	"author": "Darren Paul Wright <Darren@DarrenPaulWright.com>",
 	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/DarrenPaulWright/type-enforcer/issues"
 	},
 	"homepage": "https://github.com/DarrenPaulWright/type-enforcer#readme",
 	"dependencies": {
-		"object-agent": "^1.4.7"
+		"object-agent": "^1.4.11"
 	},
 	"devDependencies": {
-		"dmd-readable": "^1.1.1",
+		"dmd-readable": "^1.2.1",
 		"exec-each": "0.0.3",
 		"jsdoc-to-markdown": "^5.0.3",
-		"karma-webpack-bundle": "^0.1.0",
+		"karma-webpack-bundle": "^0.4.1",
 		"npm-run-all": "^4.1.5",
-		"type-enforcer-test-helper": "^1.2.1"
+		"type-enforcer-test-helper": "^1.3.2"
 	}
 }

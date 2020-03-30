@@ -1,6 +1,6 @@
 {
 	"name": "type-enforcer",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"description": "A type enforcement library for javascript",
 	"author": {
 		"name": "Darren Paul Wright",

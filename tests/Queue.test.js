@@ -42,6 +42,17 @@ describe('Queue', () => {
 			assert.equal(queue.length, 2);
 		});
 
+		it('should decrement length if the original callback is provided', () => {
+			const queue = new Queue();
+			queue.add(emptyFunction);
+			queue.add(emptyFunction);
+			queue.add(emptyFunction);
+
+			queue.discard(emptyFunction);
+
+			assert.equal(queue.length, 2);
+		});
+
 		it('should NOT decrement length if no id is provided', () => {
 			const queue = new Queue();
 			queue.add(emptyFunction);
@@ -84,6 +95,25 @@ describe('Queue', () => {
 			queue.trigger();
 
 			assert.equal(testVar, 3);
+		});
+
+		it('should stop calling callbacks if true is returned', () => {
+			let testVar = 0;
+			const queue = new Queue();
+			queue.add(() => {
+				testVar++;
+			});
+			queue.add(() => {
+				testVar++;
+				return true;
+			});
+			queue.add(() => {
+				testVar++;
+			});
+
+			queue.trigger();
+
+			assert.equal(testVar, 2);
 		});
 
 		it('should call the callback when called with an id', () => {
@@ -325,31 +355,34 @@ describe('Queue', () => {
 			assert.equal(testVar, 3);
 		});
 
-		it('should set the context of each callback when trigger is called without an id and context is provided', () => {
-			let testVar = 0;
-			const point = new TestClass();
-			const point2 = new TestClass();
-			const queue = new Queue().bindTo(point);
-			queue.add(function() {
-				if (this === point) {
-					testVar++;
-				}
-			});
-			queue.add(function() {
-				if (this === point) {
-					testVar++;
-				}
-			});
-			queue.add(function() {
-				if (this === point) {
-					testVar++;
-				}
-			});
+		it(
+			'should set the context of each callback when trigger is called without an id and context is provided',
+			() => {
+				let testVar = 0;
+				const point = new TestClass();
+				const point2 = new TestClass();
+				const queue = new Queue().bindTo(point);
+				queue.add(function() {
+					if (this === point) {
+						testVar++;
+					}
+				});
+				queue.add(function() {
+					if (this === point) {
+						testVar++;
+					}
+				});
+				queue.add(function() {
+					if (this === point) {
+						testVar++;
+					}
+				});
 
-			queue.trigger(null, [], point2);
+				queue.trigger(null, [], point2);
 
-			assert.equal(testVar, 3);
-		});
+				assert.equal(testVar, 3);
+			}
+		);
 
 		it('should set the context of the callback when trigger is called with an id', () => {
 			let testVar = 0;

@@ -1,4 +1,6 @@
 import { forOwn } from 'object-agent';
+import isFunction from './checks/isFunction.js';
+import isString from './checks/isString.js';
 import castArray from './utility/castArray.js';
 import PrivateVars from './utility/PrivateVars.js';
 
@@ -75,12 +77,21 @@ export default class Queue {
 	 * @memberOf Queue
 	 * @instance
 	 *
-	 * @arg {Number} id - The id returned by Queue.add().
+	 * @arg {Number} id - The id returned by Queue.add(), or the same callback passed in to Queue.add()
 	 *
 	 * @returns {this}
 	 */
 	discard(id) {
 		const _self = _(this);
+
+		if (isFunction(id)) {
+			forOwn(_self.callbacks, (callback, key) => {
+				if (id === callback) {
+					id = key;
+					return true;
+				}
+			});
+		}
 
 		if (id && _self.callbacks[id] !== undefined) {
 			delete _self.callbacks[id];
@@ -104,7 +115,7 @@ export default class Queue {
 	}
 
 	/**
-	 * Triggers one or all callbacks.
+	 * Triggers one or all callbacks. If one of the callbacks returns true then no further callbacks will be called.
 	 *
 	 * @memberOf Queue
 	 * @instance
@@ -118,17 +129,17 @@ export default class Queue {
 	 */
 	trigger(id, extraArguments, context) {
 		const _self = _(this);
-		const apply = (_self.bindTo || arguments.length < 3) ? (callback) => {
-			callback(...extraArguments);
-		} : (callback) => {
-			callback.apply(context, extraArguments);
-		};
+		const apply = (_self.bindTo || arguments.length < 3) ?
+			(callback) => callback(...extraArguments) :
+			(callback) => callback.apply(context, extraArguments);
 
 		extraArguments = castArray(extraArguments);
 
 		_self.isBusy = true;
 
-		id ? _self.callbacks[id] !== undefined && apply(_self.callbacks[id]) : forOwn(_self.callbacks, apply);
+		isString(id) ?
+			_self.callbacks[id] !== undefined && apply(_self.callbacks[id]) :
+			forOwn(_self.callbacks, apply);
 
 		_self.isBusy = false;
 

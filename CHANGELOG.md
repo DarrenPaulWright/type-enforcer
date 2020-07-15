@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
+## [1.2.0] - 2020-07-14
+### Added
+- [Queue](docs/Queue.md) can discard a callback by reference to the callback
+
+### Changed
+- [Queue](docs/Queue.md) will stop calling further callbacks ona trigger if true is returned from a callback.
+
 ## [1.1.0] - 2020-02-14
 ### Added
 - isPromise, enforcePromise, methodPromise
@@ -45,7 +52,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - privateProp
 - Moved CssSize, DockPoint, Thickness, and Element classes and functions to new type-enforcer-ui
 - Moved Point and Vector classes and functions to new type-enforcer-math
-- Queue no longer stores extra data with a callback
+- [Queue](docs/Queue.md) no longer stores extra data with a callback
 
 ## [0.6.4] - 2019-10-22
 ### Security
@@ -57,7 +64,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.6.2] - 2019-10-09
 ### Changed
-- Don't use .apply in Queue.trigger if no context is provided
+- Don't use .apply in [Queue](docs/Queue.md).trigger if no context is provided
 
 ## [0.6.1] - 2019-10-09
 ### Fixed
@@ -66,7 +73,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.6.0] - 2019-10-08
 ### Changed
 - preferring .bind over .call and .apply. Methods should be much faster now.
-- Added bindTo method to Queue for setting a context to bind all callbacks to
+- Added bindTo method to [Queue](docs/Queue.md) for setting a context to bind all callbacks to
 - methodFunction and methodQueue now bind callbacks to "this"
   - option "bind" can turn this off, defaults to true
 

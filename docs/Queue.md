@@ -32,7 +32,9 @@
 <br><a name="new_Queue_new"></a>
 
 ### new Queue()
-> ``` javascript> import { Queue } from 'type-enforcer';> ```
+> ``` javascript
+> import { Queue } from 'type-enforcer';
+> ```
 
 
 <br><a name="Queue+length"></a>
@@ -79,7 +81,7 @@
 
 | Param | Type | Description |
 | --- | --- | --- |
-| id | <code>Number</code> | The id returned by Queue.add(). |
+| id | <code>Number</code> | The id returned by Queue.add(), or the same callback passed in to Queue.add() |
 
 
 <br><a name="Queue+discardAll"></a>
@@ -91,7 +93,7 @@
 <br><a name="Queue+trigger"></a>
 
 ### queue.trigger([id], [extraArguments], [context]) ⇒ <code>this</code>
-> Triggers one or all callbacks.
+> Triggers one or all callbacks. If one of the callbacks returns true then no further callbacks will be called.
 
 
 | Param | Type | Description |

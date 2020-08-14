@@ -71,7 +71,7 @@ const assert = {
 	 */
 	notIs: assertion({
 		assert: (a, b) => !sameValue(a, b),
-		message: (a, b) => display(a) + ' to be ' + display(b)
+		message: (a, b) => display(a) + ' to not be ' + display(b)
 	}),
 	/**
 	 * Check if two values are deeply equal. Supports diffs in tools that use it.

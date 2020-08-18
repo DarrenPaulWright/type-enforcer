@@ -2,30 +2,84 @@
 	"name": "type-enforcer",
 	"version": "1.2.0",
 	"description": "A type enforcement library for javascript",
+	"type": "module",
+	"keywords": [
+		"type",
+		"enforce",
+		"method",
+		"assert",
+		"assertion"
+	],
+	"license": "MIT",
 	"author": {
 		"name": "Darren Paul Wright",
 		"email": "Darren@DarrenPaulWright.com",
 		"url": "https://www.darrenpaulwright.com"
 	},
-	"type": "module",
+	"homepage": "https://github.com/DarrenPaulWright/type-enforcer#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/DarrenPaulWright/type-enforcer.git"
+	},
+	"bugs": {
+		"url": "https://github.com/DarrenPaulWright/type-enforcer/issues"
+	},
 	"main": "index.js",
 	"files": [
 		"/src"
 	],
 	"sideEffects": false,
+	"browserslist": [
+		"defaults",
+		"maintained node versions"
+	],
+	"badges": {
+		"npm": {
+			"image": "https://img.shields.io/npm/v/type-enforcer.svg",
+			"url": "https://npmjs.com/package/type-enforcer"
+		},
+		"build": {
+			"base": "https://travis-ci.org/DarrenPaulWright/",
+			"image": "type-enforcer.svg?branch=master",
+			"url": "type-enforcer"
+		},
+		"coverage": {
+			"base": "https://coveralls.io/",
+			"image": "repos/github/DarrenPaulWright/type-enforcer/badge.svg?branch=master",
+			"url": "github/DarrenPaulWright/type-enforcer?branch=master"
+		},
+		"deps": {
+			"image": "https://david-dm.org/DarrenPaulWright/type-enforcer.svg",
+			"url": "https://david-dm.org/DarrenPaulWright/type-enforcer"
+		},
+		"size": {
+			"base": "https://packagephobia.now.sh/",
+			"image": "badge?p=type-enforcer",
+			"url": "result?p=type-enforcer"
+		},
+		"vulnerabilities": {
+			"base": "https://snyk.io/test/github/DarrenPaulWright/type-enforcer",
+			"image": "/badge.svg?targetFile=package.json",
+			"url": "?targetFile=package.json"
+		},
+		"license": {
+			"image": "https://img.shields.io/github/license/DarrenPaulWright/type-enforcer.svg",
+			"url": "https://npmjs.com/package/type-enforcer/LICENSE.md"
+		}
+	},
 	"scripts": {
 		"test": "karma start --single-run",
 		"test-watch": "karma start",
 		"bench": "karma start karma.bench.conf.js",
-		"preversion": "npm test && npm run docs && git add --all && git diff --staged --quiet || git commit -m \"Updating docs\"",
+		"preversion": "npm test && npm run docs && git add --all && git diff HEAD --quiet || git commit -m \"Updating docs\"",
 		"postversion": "npm publish",
 		"postpublish": "git push --follow-tags",
 		"pre-clean": "rm -rf node_modules && del /f package-lock.json",
-		"clean": "npm run pre-clean && npm install",
-		"update": "ncu -u && npm install",
+		"clean": "npm run pre-clean && npm install && npm audit fix",
+		"update": "ncu -u && git diff --quiet || npm install && npm audit fix",
 		"update-clean": "npm run pre-clean && npm run update",
-		"update-commit": "npm run update && npm test && git add --all && git diff --staged --quiet || git commit -m \"Updating dependencies\"",
-		"update-patch": "npm run update-commit && npm version patch",
+		"update-commit": "npm run update && npm test && git add --all && git diff HEAD --quiet || git commit -m \"Updating dependencies\"",
+		"update-patch": "npm run update && npm test && git add --all && git diff HEAD --quiet || git commit -m \"Updating dependencies\" && npm version patch",
 		"docs:readme": "jsdoc2md ./index.js src/**/*.js > README.md -t node_modules/dmd-readable/overview.hbs --plugin dmd-readable/overview-plugin.js",
 		"docs:assert": "jsdoc2md src/assert/assert.js > docs/assert.md -t node_modules/dmd-readable/docs.hbs --plugin dmd-readable",
 		"docs:checks": "jsdoc2md src/checks/**/*.js > docs/is.md -t node_modules/dmd-readable/docs.hbs --plugin dmd-readable",
@@ -36,60 +90,6 @@
 		"docs:equality": "exec-each --out docs/{basefile}.md src/equality/*.js jsdoc2md -- {path} -t node_modules/dmd-readable/docs.hbs --plugin dmd-readable",
 		"docs": "run-p docs:*"
 	},
-	"browserslist": [
-		"defaults",
-		"maintained node versions"
-	],
-	"badges": {
-		"npm": {
-			"image": "https://img.shields.io/npm/v/{{name}}.svg",
-			"url": "https://npmjs.com/package/{{name}}"
-		},
-		"build": {
-			"base": "https://travis-ci.org/DarrenPaulWright/",
-			"image": "{{name}}.svg?branch=master",
-			"url": "{{name}}"
-		},
-		"coverage": {
-			"base": "https://coveralls.io/",
-			"image": "repos/github/DarrenPaulWright/{{name}}/badge.svg?branch=master",
-			"url": "github/DarrenPaulWright/{{name}}?branch=master"
-		},
-		"deps": {
-			"image": "https://david-dm.org/darrenpaulwright/{{name}}.svg",
-			"url": "https://david-dm.org/darrenpaulwright/{{name}}"
-		},
-		"size": {
-			"base": "https://packagephobia.now.sh/",
-			"image": "badge?p={{name}}",
-			"url": "result?p={{name}}"
-		},
-		"vulnerabilities": {
-			"base": "https://snyk.io/test/github/DarrenPaulWright/{{name}}",
-			"image": "/badge.svg?targetFile=package.json",
-			"url": "?targetFile=package.json"
-		},
-		"license": {
-			"image": "https://img.shields.io/github/license/DarrenPaulWright/{{name}}.svg",
-			"url": "https://npmjs.com/package/{{name}}/LICENSE.md"
-		}
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/DarrenPaulWright/type-enforcer.git"
-	},
-	"keywords": [
-		"type",
-		"enforce",
-		"method",
-		"assert",
-		"assertion"
-	],
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/DarrenPaulWright/type-enforcer/issues"
-	},
-	"homepage": "https://github.com/DarrenPaulWright/type-enforcer#readme",
 	"dependencies": {
 		"display-value": "^1.7.3",
 		"object-agent": "^1.4.13"

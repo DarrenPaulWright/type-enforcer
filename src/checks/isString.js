@@ -1,5 +1,5 @@
 /**
- * Check if a value is a string
+ * Check if a value is a string.
  *
  * @example
  * ``` javascript
@@ -18,10 +18,10 @@
  * @function is.string
  * @alias isString
  *
- * @arg {*} value
- * @arg {Boolean} [coerce=false] - If true then see if the value can be coerced into a String
+ * @param {*} value - The value to check.
+ * @param {boolean} [coerce=false] - If true then see if the value can be coerced into a string.
  *
- * @returns {Boolean}
+ * @returns {boolean}
  */
 export default (value, coerce) => {
 	return typeof value === 'string' || value instanceof String || (coerce === true && value !== null && value !== undefined && value.toString !== undefined);

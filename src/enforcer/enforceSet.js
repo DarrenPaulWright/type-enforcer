@@ -25,10 +25,10 @@ import enforceObject from './enforceObject.js';
  * @function enforce.set
  * @alias enforceSet
  *
- * @arg {*} value
- * @arg {Set} alt - Returned if the value is not the correct type
- * @arg {Boolean} [coerce=false] - If true then coerce the value when possible
+ * @param {*} value
+ * @param {Set} alt - Returned if the value is not the correct type
+ * @param {boolean} [coerce=false] - If true then coerce the value when possible
  *
- * @returns {Object}
+ * @returns {object}
  */
 export default enforceObject.extend(isSet, (value) => new Set(enforceArray(value, 0, true)));

@@ -1,68 +1,12 @@
 import { benchSettings } from 'karma-webpack-bundle';
 import { Queue } from '../index.js';
 
-suite(`Queue`, () => {
-	let sandbox;
-	let queue;
+/* eslint-disable no-unused-vars */
+suite('Queue', () => {
+	let sandbox = null;
+	let queue = null;
 	let id = 1;
-
-	benchmark(`init`, () => {
-		sandbox = new Queue();
-	}, benchSettings);
-
-	benchmark(`add`, () => {
-		queue.add(() => {
-			sandbox = 3;
-		});
-	}, {
-		...benchSettings,
-		onStart() {
-			queue = new Queue();
-		}
-	});
-
-	benchmark(`add bind`, () => {
-		queue.add(() => {
-			sandbox = 3;
-		});
-	}, {
-		...benchSettings,
-		onStart() {
-			queue = new Queue();
-			queue.bindTo({});
-		}
-	});
-
-	benchmark(`bindTo`, () => {
-		queue.bindTo({});
-	}, {
-		...benchSettings,
-		onStart() {
-			queue = new Queue();
-		}
-	});
-
-	benchmark(`bindTo with callbacks`, () => {
-		queue.bindTo({});
-	}, {
-		...benchSettings,
-		onStart() {
-			queue = new Queue();
-			queue.add(() => {
-				sandbox = 3;
-			});
-			queue.add(() => {
-				sandbox = 3;
-			});
-			queue.add(() => {
-				sandbox = 3;
-			});
-		}
-	});
-
-	benchmark(`trigger id`, () => {
-		queue.trigger(id);
-	}, {
+	const triggerSettings = {
 		...benchSettings,
 		onStart() {
 			queue = new Queue();
@@ -76,45 +20,61 @@ suite(`Queue`, () => {
 				sandbox = 3;
 			});
 		}
+	};
+
+	benchmark('init', () => {
+		sandbox = new Queue();
+	}, benchSettings);
+
+	benchmark('add', () => {
+		queue.add(() => {
+			sandbox = 3;
+		});
+	}, {
+		...benchSettings,
+		onStart() {
+			queue = new Queue();
+		}
 	});
 
-	benchmark(`trigger all`, () => {
+	benchmark('add bind', () => {
+		queue.add(() => {
+			sandbox = 3;
+		});
+	}, {
+		...benchSettings,
+		onStart() {
+			queue = new Queue();
+			queue.bindTo({});
+		}
+	});
+
+	benchmark('bindTo', () => {
+		queue.bindTo({});
+	}, {
+		...benchSettings,
+		onStart() {
+			queue = new Queue();
+		}
+	});
+
+	benchmark('bindTo with callbacks', () => {
+		queue.bindTo({});
+	}, triggerSettings);
+
+	benchmark('trigger id', () => {
+		queue.trigger(id);
+	}, triggerSettings);
+
+	benchmark('trigger all', () => {
 		queue.trigger();
-	}, {
-		...benchSettings,
-		onStart() {
-			queue = new Queue();
-			queue.add(() => {
-				sandbox = 3;
-			});
-			queue.add(() => {
-				sandbox = 3;
-			});
-			queue.add(() => {
-				sandbox = 3;
-			});
-		}
-	});
+	}, triggerSettings);
 
-	benchmark(`triggerFirst`, () => {
+	benchmark('triggerFirst', () => {
 		queue.triggerFirst();
-	}, {
-		...benchSettings,
-		onStart() {
-			queue = new Queue();
-			queue.add(() => {
-				sandbox = 3;
-			});
-			queue.add(() => {
-				sandbox = 3;
-			});
-			queue.add(() => {
-				sandbox = 3;
-			});
-		}
-	});
+	}, triggerSettings);
 
-	benchmark(`discard`, () => {
+	benchmark('discard', () => {
 		queue.add(() => {
 			queue.discard(id);
 		});
@@ -127,5 +87,4 @@ suite(`Queue`, () => {
 			});
 		}
 	});
-
 });

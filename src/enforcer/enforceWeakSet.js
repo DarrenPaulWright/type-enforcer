@@ -24,10 +24,10 @@ import enforceObject from './enforceObject.js';
  * @function enforce.weakSet
  * @alias enforceWeakSet
  *
- * @arg {*} value
- * @arg {WeakSet} alt - Returned if the value is not the correct type
- * @arg {Boolean} [coerce=false] - If true then coerce the value when possible
+ * @param {*} value
+ * @param {WeakSet} alt - Returned if the value is not the correct type
+ * @param {boolean} [coerce=false] - If true then coerce the value when possible
  *
- * @returns {Object}
+ * @returns {object}
  */
 export default enforceObject.extend(isWeakSet, (value) => new WeakSet(value));

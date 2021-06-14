@@ -1,5 +1,6 @@
 import isFunction from '../checks/isFunction.js';
 
+/* eslint-disable jsdoc/valid-types */
 /**
  * Enforce that a value is a function. Uses [isFunction](docs/checks.md#isFunction).
  *
@@ -20,8 +21,8 @@ import isFunction from '../checks/isFunction.js';
  * @function enforce.function
  * @alias enforceFunction
  *
- * @arg {*} value
- * @arg {Function} alt - Returned if the value is not the correct type
+ * @param {*} value - The value to enforce.
+ * @param {Function} alt - Returned if the value is not the correct type.
  *
  * @returns {Function}
  */

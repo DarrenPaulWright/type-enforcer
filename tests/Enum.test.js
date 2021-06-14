@@ -21,7 +21,8 @@ describe('Enum', () => {
 		try {
 			ENUM.TEST3 = 'test3';
 		}
-		catch (e) { // eslint-disable-line no-empty
+		catch (error) {
+			assert.equal(1, 1);
 		}
 
 		assert.equal(ENUM.TEST3 === undefined, true);
@@ -69,17 +70,17 @@ describe('Enum', () => {
 
 	describe('.each', () => {
 		it('should call a callback for each value', () => {
-			let testVar = 0;
+			let testVariable = 0;
 			const ENUM = new Enum({
 				TEST1: 'test1',
 				TEST2: 'test2'
 			});
 
 			ENUM.each(() => {
-				testVar++;
+				testVariable++;
 			});
 
-			assert.equal(testVar, 2);
+			assert.equal(testVariable, 2);
 		});
 	});
 });

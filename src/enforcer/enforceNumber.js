@@ -3,10 +3,10 @@ import clamp from '../utility/clamp.js';
 
 const numericEnforcer = (check, doCoercion) => {
 	const enforcer = (value, alt, coerce, minValue = -Infinity, maxValue = Infinity) => {
-		return check(value) ? clamp(value, minValue, maxValue) : (coerce === true && check(value, true)) ? clamp(doCoercion(value), minValue, maxValue) : alt;
+		return check(value) ? clamp(value, minValue, maxValue) : ((coerce === true && check(value, true)) ? clamp(doCoercion(value), minValue, maxValue) : alt);
 	};
 
-	enforcer.extend = (check, doCoercion) => numericEnforcer(check, doCoercion);
+	enforcer.extend = (extendedCheck, extendedDoCoercion) => numericEnforcer(extendedCheck, extendedDoCoercion);
 
 	return enforcer;
 };
@@ -34,12 +34,12 @@ const numericEnforcer = (check, doCoercion) => {
  * @function enforce.number
  * @alias enforceNumber
  *
- * @arg {*} value
- * @arg {Number} alt - Returned if the value is not the correct type
- * @arg {Boolean} [coerce=false] - If true then coerce the value when possible
- * @arg {Number} [minValue=-Infinity]
- * @arg {Number} [maxValue=Infinity]
+ * @param {*} value
+ * @param {number} alt - Returned if the value is not the correct type
+ * @param {boolean} [coerce=false] - If true then coerce the value when possible
+ * @param {number} [minValue=-Infinity]
+ * @param {number} [maxValue=Infinity]
  *
- * @returns {Number}
+ * @returns {number}
  */
 export default numericEnforcer(isNumber, Number);

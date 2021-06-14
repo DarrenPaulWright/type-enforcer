@@ -3,7 +3,7 @@ import isNumber from './isNumber.js';
 const isFinite = (value) => value !== Infinity && value !== -Infinity;
 
 /**
- * Check if a value is a finite float
+ * Check if a value is a finite float.
  *
  * @example
  * ``` javascript
@@ -22,10 +22,10 @@ const isFinite = (value) => value !== Infinity && value !== -Infinity;
  * @function is.float
  * @alias isFloat
  *
- * @arg {*} value
- * @arg {Boolean} [coerce=false] - If true then see if the value can be coerced into a float
+ * @param {*} value - The value to check.
+ * @param {boolean} [coerce=false] - If true then see if the value can be coerced into a float.
  *
- * @returns {Boolean}
+ * @returns {boolean}
  */
 export default (value, coerce) => {
 	return (isNumber(value) && value !== Infinity && value !== -Infinity) || (coerce === true && !isNaN(value) && isFinite(parseFloat(value)));

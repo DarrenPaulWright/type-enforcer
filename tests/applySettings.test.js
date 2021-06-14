@@ -3,21 +3,21 @@ import assert from '../src/assert/assert.js';
 
 describe('applySettings', () => {
 	it('should not throw errors if methods are provided that don\'t exist on the target', () => {
-		let testVar = 0;
+		let testVariable = 0;
 		const target = {
 			first(value) {
 				if (value === 1) {
-					testVar += 1;
+					testVariable += 1;
 				}
 			},
 			second(value) {
 				if (value === 2) {
-					testVar += 1;
+					testVariable += 1;
 				}
 			},
 			third(value) {
 				if (value === 3) {
-					testVar += 1;
+					testVariable += 1;
 				}
 			}
 		};
@@ -30,25 +30,25 @@ describe('applySettings', () => {
 				sixth: 6
 			}, ['fifth', 'seventh'], ['sixth', 'eighth']);
 		});
-		assert.equal(testVar, 1);
+		assert.equal(testVariable, 1);
 	});
 
 	it('should apply settings', () => {
-		let testVar = 0;
+		let testVariable = 0;
 		const target = {
 			first(value) {
 				if (value === 1) {
-					testVar += 1;
+					testVariable += 1;
 				}
 			},
 			second(value) {
 				if (value === 2) {
-					testVar += 1;
+					testVariable += 1;
 				}
 			},
 			third(value) {
 				if (value === 3) {
-					testVar += 1;
+					testVariable += 1;
 				}
 			}
 		};
@@ -59,7 +59,7 @@ describe('applySettings', () => {
 			third: 3
 		});
 
-		assert.equal(testVar, 3);
+		assert.equal(testVariable, 3);
 	});
 
 	it('should apply settings in order', () => {

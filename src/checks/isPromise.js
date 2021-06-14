@@ -1,7 +1,7 @@
 import isFunction from './isFunction.js';
 
 /**
- * Check if a value is a plain object
+ * Check if a value is a plain object.
  *
  * @example
  * ``` javascript
@@ -20,10 +20,10 @@ import isFunction from './isFunction.js';
  * @function is.promise
  * @alias isPromise
  *
- * @arg {*} value
- * @arg {Boolean} [coerce=false] - If true then see if the value can be coerced into a Promise. Functions can be coerced into Promises.
+ * @param {*} value - The value to check.
+ * @param {boolean} [coerce=false] - If true then see if the value can be coerced into a Promise. Functions can be coerced into Promises.
  *
- * @returns {Boolean}
+ * @returns {boolean}
  */
 export default (value, coerce) => {
 	return value instanceof Promise || (coerce === true && isFunction(value));

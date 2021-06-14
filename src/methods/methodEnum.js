@@ -1,6 +1,7 @@
 import enforceEnum from '../enforcer/enforceEnum.js';
 import methodAny from './methodAny.js';
 
+/* eslint-disable jsdoc/no-undefined-types */
 /**
  * Builds a chainable method for getting/setting an enumerable value in an [Enum](docs/Enum.md)
  *
@@ -8,9 +9,9 @@ import methodAny from './methodAny.js';
  * @extends method.any
  * @alias methodEnum
  *
- * @arg {Object} [options] - Same as {@link method.any} with the following differences:
- * @arg {Function} [options.enforce=enforce.enum]
- * @arg {Enum} options.enum - An enum to restrict the values to.
+ * @param {object} [options] - Same as {@link method.any} with the following differences:
+ * @param {Function} [options.enforce=enforce.enum]
+ * @param {Enum} options.enum - An enum to restrict the values to.
  *
  * @returns {Function}
  */

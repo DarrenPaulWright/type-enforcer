@@ -1,8 +1,10 @@
 import methodQueue from './methods/methodQueue.js';
+// eslint-disable-next-line unicorn/prevent-abbreviations
 import PrivateVars from './utility/PrivateVars.js';
 
 const _ = new PrivateVars();
 
+/* eslint-disable jsdoc/no-undefined-types */
 /**
  * ``` javascript
  * import { Removable } from 'type-enforcer';
@@ -15,7 +17,7 @@ const _ = new PrivateVars();
  */
 export default class Removable {
 	/**
-	 * Calls all the onRemove callbacks and sets isRemoved to true
+	 * Calls all the onRemove callbacks and sets isRemoved to true.
 	 *
 	 * @method remove
 	 * @instance
@@ -40,7 +42,7 @@ export default class Removable {
 	 * @memberOf Removable
 	 * @instance
 	 *
-	 * @returns {Boolean}
+	 * @returns {boolean}
 	 */
 	get isRemoved() {
 		return Boolean(_(this));
@@ -54,7 +56,7 @@ Object.assign(Removable.prototype, {
 	 * @method onRemove
 	 * @instance
 	 *
-	 * @arg {Function} callback
+	 * @param {Function} callback
 	 *
 	 * @returns {Queue}
 	 */

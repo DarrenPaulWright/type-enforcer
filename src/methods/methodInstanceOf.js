@@ -8,9 +8,9 @@ import methodAny from './methodAny.js';
  * @extends method.any
  * @alias methodInstanceOf
  *
- * @arg {Object} [options] - Same as {@link method.any} with the following differences:
- * @arg {Function} [options.enforce=enforce.instanceOf]
- * @arg {Constructor} [options.instanceOf] - The item to run enforce.instanceOf against
+ * @param {object} [options] - Same as {@link method.any} with the following differences:
+ * @param {Function} [options.enforce=enforce.instanceOf] - Enforce function.
+ * @param {Function} [options.instanceOf] - The constructor to run enforce.instanceOf against
  *
  * @returns {Function}
  */

@@ -21,9 +21,9 @@ import enforceObject from './enforceObject.js';
  * @function enforce.array
  * @alias enforceArray
  *
- * @arg {*} value
- * @arg {Array} alt - Returned if the value is not the correct type
- * @arg {Boolean} [coerce=false] - If true then coerce the value when possible
+ * @param {*} value
+ * @param {Array} alt - Returned if the value is not the correct type
+ * @param {boolean} [coerce=false] - If true then coerce the value when possible
  *
  * @returns {Array}
  */

@@ -1,6 +1,8 @@
 import displayValue from 'display-value';
 import { combo } from 'object-agent';
 
+/* eslint-disable require-unicode-regexp */
+/* eslint-disable no-new-wrappers */
 export const messageTrue = (input) => `should return true for ${displayValue(input[0])} and ${displayValue(input[1])}`;
 
 export const messageFalse = (input) => `should return false for ${displayValue(input[0])} and ${displayValue(input[1])}`;

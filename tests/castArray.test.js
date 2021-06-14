@@ -15,10 +15,12 @@ describe('castArray', () => {
 	});
 
 	it('should return an array if arguments are given', () => {
-		function test() {
+		// eslint-disable-next-line jsdoc/require-jsdoc
+		function doTest() {
+			// eslint-disable-next-line prefer-rest-params
 			assert.equal(castArray(arguments), ['a', 'b', 'c']);
 		}
 
-		test('a', 'b', 'c');
+		doTest('a', 'b', 'c');
 	});
 });

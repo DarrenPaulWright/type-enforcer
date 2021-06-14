@@ -3,7 +3,7 @@ import isObject from './isObject.js';
 import { isCoercableToWeakMap } from './isWeakMap.js';
 
 /**
- * Check if a value is a Map
+ * Check if a value is a Map.
  *
  * @example
  * ``` javascript
@@ -22,10 +22,10 @@ import { isCoercableToWeakMap } from './isWeakMap.js';
  * @function is.map
  * @alias isMap
  *
- * @arg {*} value
- * @arg {Boolean} [coerce=false] - If true then see if the value can be coerced into a Map. Objects or Strings that can be coerced into Objects can be coerced into Maps, as well as anything that can be coerced into a WeakMap
+ * @param {*} value - The value to check.
+ * @param {boolean} [coerce=false] - If true then see if the value can be coerced into a Map. Objects or Strings that can be coerced into Objects can be coerced into Maps, as well as anything that can be coerced into a WeakMap.
  *
- * @returns {Boolean}
+ * @returns {boolean}
  */
 export default (value, coerce) => {
 	return value instanceof Map || (coerce === true && (isObject(value, true) || isCoercableToWeakMap(enforceArray(value, 0, true))));

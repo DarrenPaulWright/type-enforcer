@@ -24,10 +24,10 @@ import isInstanceOf from '../checks/isInstanceOf.js';
  * @function enforce.instanceOf
  * @alias enforceInstanceOf
  *
- * @arg {*} value
- * @arg {Function} constructor
- * @arg {Object} alt - Returned if the value is not the correct type
+ * @param {*} value - The value to enforce.
+ * @param {Function} constructor - A constructor function.
+ * @param {object} alt - Returned if the value is not the correct type.
  *
- * @returns {Object}
+ * @returns {object}
  */
 export default (value, constructor, alt) => isInstanceOf(value, constructor) ? value : alt;

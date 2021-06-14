@@ -21,10 +21,10 @@ import enforceObject from './enforceObject.js';
  * @function enforce.boolean
  * @alias enforceBoolean
  *
- * @arg {*} value
- * @arg {Boolean} alt - Returned if the value is not the correct type
- * @arg {Boolean} [coerce=false] - If true then coerce the value when possible
+ * @param {*} value
+ * @param {boolean} alt - Returned if the value is not the correct type
+ * @param {boolean} [coerce=false] - If true then coerce the value when possible
  *
- * @returns {Boolean}
+ * @returns {boolean}
  */
 export default enforceObject.extend(isBoolean, Boolean);

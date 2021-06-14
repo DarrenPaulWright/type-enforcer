@@ -1,5 +1,6 @@
+/* eslint-disable jsdoc/no-undefined-types */
 /**
- * Enforce that a value exists in the provided [Enum](docs/Enum.md)
+ * Enforce that a value exists in the provided [Enum](docs/Enum.md).
  *
  * @example
  * ``` javascript
@@ -20,10 +21,10 @@
  * @function enforce.enum
  * @alias enforceEnum
  *
- * @arg {*} value
- * @arg {Enum} enumerable
- * @arg {String} alt - Returned if the value is not the correct type
+ * @param {*} value - The value to enforce.
+ * @param {Enum} enumerable - A valid enum.
+ * @param {string} alt - Returned if the value is not the correct type.
  *
- * @returns {String}
+ * @returns {string}
  */
 export default (value, enumerable, alt) => (enumerable !== undefined && enumerable.has(value)) ? value : alt;

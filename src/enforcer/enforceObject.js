@@ -2,7 +2,7 @@ import isObject from '../checks/isObject.js';
 
 const simpleEnforcer = (check, doCoercion) => {
 	const enforcer = (value, alt, coerce) => {
-		return check(value) ? value : (coerce === true && check(value, coerce)) ? doCoercion(value) : alt;
+		return check(value) ? value : ((coerce === true && check(value, coerce)) ? doCoercion(value) : alt);
 	};
 
 	enforcer.extend = simpleEnforcer;
@@ -33,10 +33,10 @@ const simpleEnforcer = (check, doCoercion) => {
  * @function enforce.object
  * @alias enforceObject
  *
- * @arg {*} value
- * @arg {Object} alt - Returned if the value is not the correct type
- * @arg {Boolean} [coerce=false] - If true then coerce the value when possible
+ * @param {*} value
+ * @param {object} alt - Returned if the value is not the correct type
+ * @param {boolean} [coerce=false] - If true then coerce the value when possible
  *
- * @returns {Object}
+ * @returns {object}
  */
 export default simpleEnforcer(isObject, JSON.parse);

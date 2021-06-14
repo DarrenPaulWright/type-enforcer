@@ -5,8 +5,8 @@
  *
  * @function sameValue
  *
- * @arg a
- * @arg b
+ * @param {*} a - A value to test.
+ * @param {*} b - Another value to test.
  *
  * @returns {boolean}
  */

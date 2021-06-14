@@ -8,9 +8,9 @@ import methodAny from './methodAny.js';
  * @extends method.any
  * @alias methodWeakSet
  *
- * @arg {Object} [options] - Same as {@link method.any} with the following differences:
- * @arg {Function} [options.enforce=enforce.weakSet]
- * @arg {Boolean} [options.coerce=false] - If true then coerce the value when possible
+ * @param {object} [options] - Same as {@link method.any} with the following differences:
+ * @param {Function} [options.enforce=enforce.weakSet]
+ * @param {boolean} [options.coerce=false] - If true then coerce the value when possible
  *
  * @returns {Function}
  */

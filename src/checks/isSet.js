@@ -1,7 +1,7 @@
 import isArray from './isArray.js';
 
 /**
- * Check if a value is a Set
+ * Check if a value is a Set.
  *
  * @example
  * ``` javascript
@@ -20,10 +20,10 @@ import isArray from './isArray.js';
  * @function is.set
  * @alias isSet
  *
- * @arg {*} value
- * @arg {Boolean} [coerce=false] - If true then see if the value can be coerced into a Set. Arrays or Strings that can be coerced into Arrays can be coerced into Sets.
+ * @param {*} value - The value to check.
+ * @param {boolean} [coerce=false] - If true then see if the value can be coerced into a Set. Arrays or Strings that can be coerced into Arrays can be coerced into Sets.
  *
- * @returns {Boolean}
+ * @returns {boolean}
  */
 export default (value, coerce) => {
 	return value instanceof Set || (coerce === true && isArray(value, true));

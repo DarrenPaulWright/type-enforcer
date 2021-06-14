@@ -8,8 +8,8 @@ import methodAny from './methodAny.js';
  * @extends method.any
  * @alias methodPromise
  *
- * @arg {Object} [options] - Same as {@link method.any} with the following differences:
- * @arg {Function} [options.enforce=enforce.promise]
+ * @param {object} [options] - Same as {@link method.any} with the following differences:
+ * @param {Function} [options.enforce=enforce.promise]
  *
  * @returns {Promise}
  */

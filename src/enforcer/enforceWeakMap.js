@@ -24,11 +24,11 @@ import enforceObject from './enforceObject.js';
  * @function enforce.weakMap
  * @alias enforceWeakMap
  *
- * @arg {*} value
- * @arg {WeakMap} alt - Returned if the value is not the correct type
- * @arg {Boolean} [coerce=false] - If true then coerce the value when possible
+ * @param {*} value
+ * @param {WeakMap} alt - Returned if the value is not the correct type
+ * @param {boolean} [coerce=false] - If true then coerce the value when possible
  *
- * @returns {Object}
+ * @returns {object}
  */
 export default enforceObject.extend(isWeakMap, (value) => {
 	return value.reduce((result, item) => {

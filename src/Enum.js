@@ -1,3 +1,4 @@
+// eslint-disable-next-line unicorn/prevent-abbreviations
 import PrivateVars from './utility/PrivateVars.js';
 
 const _ = new PrivateVars();
@@ -10,7 +11,7 @@ const _ = new PrivateVars();
  * @class Enum
  * @classdesc Freezes an enumerable object and adds a few helper methods
  *
- * @arg {Object} object
+ * @param {object} object
  */
 export default class Enum {
 	constructor(object) {
@@ -23,12 +24,12 @@ export default class Enum {
 	}
 
 	/**
-	 * Check if a provided value is in this enum
+	 * Check if a provided value is in this enum.
 	 *
 	 * @memberOf Enum
 	 * @instance
 	 *
-	 * @arg {String} value
+	 * @param {*} value - A value to check against the values in this Enum.
 	 *
 	 * @returns {boolean}
 	 */
@@ -37,14 +38,14 @@ export default class Enum {
 	}
 
 	/**
-	 * Get the key of a provided value
+	 * Get the key of a provided value.
 	 *
 	 * @memberOf Enum
 	 * @instance
 	 *
-	 * @arg {String} value
+	 * @param {*} value - A value in this enum.
 	 *
-	 * @returns {String}
+	 * @returns {string | undefined}
 	 */
 	key(value) {
 		const _self = _(this);
@@ -53,7 +54,7 @@ export default class Enum {
 	}
 
 	/**
-	 * Calls a callback with each of the enum values
+	 * Calls a callback with each of the enum values.
 	 * ``` javascript
 	 * const items = new Enum({
 	 *     THING: 'thing'
@@ -68,9 +69,9 @@ export default class Enum {
 	 * @memberOf Enum
 	 * @instance
 	 *
-	 * @arg {Function} callback
+	 * @param {Function} callback - Callback is provided one arg, the value.
 	 */
 	each(callback) {
-		_(this).values.forEach(callback);
+		_(this).values.forEach((value) => callback(value));
 	}
 }

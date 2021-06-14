@@ -1,5 +1,5 @@
 /**
- * Check if a value can be parsed as JSON
+ * Check if a value can be parsed as JSON.
  *
  * @example
  * ``` javascript
@@ -9,14 +9,15 @@
  * @function is.json
  * @alias isJson
  *
- * @arg {*} value
+ * @param {*} value - The value to check.
  *
- * @returns {Boolean}
+ * @returns {boolean}
  */
 export default (value) => {
 	try {
 		JSON.parse(value);
-	} catch (e) {
+	}
+	catch (error) {
 		return false;
 	}
 	return true;

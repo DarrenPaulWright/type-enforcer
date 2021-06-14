@@ -8,8 +8,8 @@ describe('assert', () => {
 		['is', [12, 12], [-0, 0], true],
 		['is', [array, array], [{}, {}], true],
 		['notIs', [1, 2], [1, 1]],
-		['equal', [{a: 1}, {a: 1}], [{a: 1}, {a: 2}], true],
-		['notEqual', [{a: 1}, {a: 2}], [{a: 1}, {a: 1}]],
+		['equal', [{ a: 1 }, { a: 1 }], [{ a: 1 }, { a: 2 }], true],
+		['notEqual', [{ a: 1 }, { a: 2 }], [{ a: 1 }, { a: 1 }]],
 		['moreThan', [2.1, 2], [1, 1]],
 		['atLeast', [2, 2], [0, 1]],
 		['lessThan', [1, 2], [1, 1]],
@@ -32,13 +32,14 @@ describe('assert', () => {
 		}], [2]],
 		['instanceOf', [new Enum({}), Enum], [2, Enum]],
 		['integer', [7], [1.2]],
-		['json', ['{"x":3}'], [{x: 3}]],
+		['json', ['{"x":3}'], [{ x: 3 }]],
 		['map', [new Map()], [new WeakMap()]],
 		['number', [Infinity], [NaN]],
 		['object', [{}], [new WeakMap()]],
 		['promise', [new Promise(() => {
 		})], [() => {
 		}]],
+		// eslint-disable-next-line require-unicode-regexp
 		['regExp', [/t/], ['test']],
 		['set', [new Set()], ['test']],
 		['string', ['test'], [9]],
@@ -64,15 +65,15 @@ describe('assert', () => {
 					try {
 						assert[data[0]](...data[2]);
 					}
-					catch (e) {
-						assert.instanceOf(e, AssertionError);
-						if (!data[3]) {
-							assert.equal(e.showDiff, undefined);
+					catch (error) {
+						assert.instanceOf(error, AssertionError);
+						if (data[3]) {
+							assert.equal(error.showDiff, true);
+							assert.equal(error.actual, data[2][0]);
+							assert.equal(error.expected, data[2][1]);
 						}
 						else {
-							assert.equal(e.showDiff, true);
-							assert.equal(e.actual, data[2][0]);
-							assert.equal(e.expected, data[2][1]);
+							assert.equal(error.showDiff, undefined);
 						}
 					}
 				});

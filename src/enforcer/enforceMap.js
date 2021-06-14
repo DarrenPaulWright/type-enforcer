@@ -22,14 +22,14 @@ import enforceObject from './enforceObject.js';
  * @function enforce.map
  * @alias enforceMap
  *
- * @arg {*} value
- * @arg {Map} alt - Returned if the value is not the correct type
- * @arg {Boolean} [coerce=false] - If true then coerce the value when possible
+ * @param {*} value
+ * @param {Map} alt - Returned if the value is not the correct type
+ * @param {boolean} [coerce=false] - If true then coerce the value when possible
  *
- * @returns {Object}
+ * @returns {object}
  */
 export default enforceObject.extend(isMap, (value) => {
-	return forOwnReduce(enforceObject(value, 0, true), (result, value, key) => {
-		return result.set(key, value);
+	return forOwnReduce(enforceObject(value, 0, true), (result, innerValue, key) => {
+		return result.set(key, innerValue);
 	}, new Map());
 });

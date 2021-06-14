@@ -5,9 +5,9 @@
  *
  * @function sameValueZero
  *
- * @arg a
- * @arg b
+ * @param {*} a - A value to test.
+ * @param {*} b - Another value to test.
  *
  * @returns {boolean}
  */
-export default (a, b) => a === b || (a !== a && b !== b);
+export default (a, b) => a === b || (a !== a && b !== b); // eslint-disable-line no-self-compare

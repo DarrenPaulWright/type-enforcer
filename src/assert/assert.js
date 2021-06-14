@@ -6,15 +6,20 @@ import AssertionError from './AssertionError.js';
 import startsWithVowel from './startsWithVowel.js';
 
 const assertion = (settings) => {
-	const {assert, message, showDiff} = settings;
+	const { assert, message, showDiff } = settings;
 
 	return (actual, expected) => {
 		if (assert(actual, expected) === false) {
-			throw new AssertionError(message(actual, expected), {actual, expected, showDiff});
+			throw new AssertionError(message(actual, expected), {
+				actual,
+				expected,
+				showDiff
+			});
 		}
 	};
 };
 
+/* eslint-disable jsdoc/valid-types */
 /**
  * An assertion library for testing. Assertions do nothing if the test passes, and throw an AssertionError if they fail.
  *
@@ -39,8 +44,8 @@ const assert = {
 	 *
 	 * @function assert.is
 	 *
-	 * @arg {*} actual
-	 * @arg {*} expected
+	 * @param {*} actual
+	 * @param {*} expected
 	 */
 	is: assertion({
 		assert: sameValue,
@@ -66,8 +71,8 @@ const assert = {
 	 *
 	 * @function assert.notIs
 	 *
-	 * @arg {*} actual
-	 * @arg {*} expected
+	 * @param {*} actual
+	 * @param {*} expected
 	 */
 	notIs: assertion({
 		assert: (a, b) => !sameValue(a, b),
@@ -90,8 +95,8 @@ const assert = {
 	 *
 	 * @function assert.equal
 	 *
-	 * @arg {*} actual
-	 * @arg {*} expected
+	 * @param {*} actual
+	 * @param {*} expected
 	 */
 	equal: assertion({
 		assert: deepEqual,
@@ -116,8 +121,8 @@ const assert = {
 	 *
 	 * @function assert.notEqual
 	 *
-	 * @arg {*} actual
-	 * @arg {*} expected
+	 * @param {*} actual
+	 * @param {*} expected
 	 */
 	notEqual: assertion({
 		assert: (a, b) => !deepEqual(a, b),
@@ -138,8 +143,8 @@ const assert = {
 	 *
 	 * @function assert.moreThan
 	 *
-	 * @arg {*} leftOperand
-	 * @arg {*} rightOperand
+	 * @param {*} leftOperand
+	 * @param {*} rightOperand
 	 */
 	moreThan: assertion({
 		assert: (a, b) => a > b,
@@ -160,8 +165,8 @@ const assert = {
 	 *
 	 * @function assert.atLeast
 	 *
-	 * @arg {*} leftOperand
-	 * @arg {*} rightOperand
+	 * @param {*} leftOperand
+	 * @param {*} rightOperand
 	 */
 	atLeast: assertion({
 		assert: (a, b) => a >= b,
@@ -182,8 +187,8 @@ const assert = {
 	 *
 	 * @function assert.lessThan
 	 *
-	 * @arg {*} leftOperand
-	 * @arg {*} rightOperand
+	 * @param {*} leftOperand
+	 * @param {*} rightOperand
 	 */
 	lessThan: assertion({
 		assert: (a, b) => a < b,
@@ -204,8 +209,8 @@ const assert = {
 	 *
 	 * @function assert.atMost
 	 *
-	 * @arg {*} leftOperand
-	 * @arg {*} rightOperand
+	 * @param {*} leftOperand
+	 * @param {*} rightOperand
 	 */
 	atMost: assertion({
 		assert: (a, b) => a <= b,
@@ -216,7 +221,7 @@ const assert = {
 	 *
 	 * @function assert.throws
 	 *
-	 * @arg {function} function
+	 * @param {Function} function
 	 */
 	throws: assertion({
 		assert: (a) => {
@@ -224,7 +229,7 @@ const assert = {
 				a();
 				return false;
 			}
-			catch (e) {
+			catch (error) {
 				return true;
 			}
 		},
@@ -235,7 +240,7 @@ const assert = {
 	 *
 	 * @function assert.notThrows
 	 *
-	 * @arg {function} function
+	 * @param {Function} function
 	 */
 	notThrows: assertion({
 		assert: (a) => {
@@ -243,7 +248,7 @@ const assert = {
 				a();
 				return true;
 			}
-			catch (e) {
+			catch (error) {
 				return false;
 			}
 		},
@@ -256,127 +261,127 @@ const assert = {
  *
  * @function assert.array
  *
- * @arg {*} actual
+ * @param {*} actual
  */
 /**
  * Check if a value is a [boolean](is.md#boolean).
  *
  * @function assert.boolean
  *
- * @arg {*} actual
+ * @param {*} actual
  */
 /**
  * Check if a value is a [date](is.md#date).
  *
  * @function assert.date
  *
- * @arg {*} actual
+ * @param {*} actual
  */
 /**
  * Check if a value is a [float](is.md#float).
  *
  * @function assert.float
  *
- * @arg {*} actual
+ * @param {*} actual
  */
 /**
  * Check if a value is a [function](is.md#function).
  *
  * @function assert.function
  *
- * @arg {*} actual
+ * @param {*} actual
  */
 /**
  * Check if a value is an [instanceOf](is.md#instanceOf) a constructor.
  *
  * @function assert.instanceOf
  *
- * @arg {*} actual
- * @arg {Function} constructor
+ * @param {*} actual
+ * @param {Function} constructor
  */
 /**
  * Check if a value is an [integer](is.md#integer).
  *
  * @function assert.integer
  *
- * @arg {*} actual
+ * @param {*} actual
  */
 /**
  * Check if a value is [json](is.md#json).
  *
  * @function assert.json
  *
- * @arg {*} actual
+ * @param {*} actual
  */
 /**
  * Check if a value is a [Map](is.md#map).
  *
  * @function assert.map
  *
- * @arg {*} actual
+ * @param {*} actual
  */
 /**
  * Check if a value is a [number](is.md#number).
  *
  * @function assert.number
  *
- * @arg {*} actual
+ * @param {*} actual
  */
 /**
  * Check if a value is an [object](is.md#object).
  *
  * @function assert.object
  *
- * @arg {*} actual
+ * @param {*} actual
  */
 /**
  * Check if a value is a [Promise](is.md#promise).
  *
  * @function assert.promise
  *
- * @arg {*} actual
+ * @param {*} actual
  */
 /**
  * Check if a value is a [RegExp](is.md#regExp).
  *
  * @function assert.regExp
  *
- * @arg {*} actual
+ * @param {*} actual
  */
 /**
  * Check if a value is a [Set](is.md#set).
  *
  * @function assert.set
  *
- * @arg {*} actual
+ * @param {*} actual
  */
 /**
  * Check if a value is a [string](is.md#string).
  *
  * @function assert.string
  *
- * @arg {*} actual
+ * @param {*} actual
  */
 /**
  * Check if a value is a [Symbol](is.md#symbol).
  *
  * @function assert.symbol
  *
- * @arg {*} actual
+ * @param {*} actual
  */
 /**
  * Check if a value is a [WeakMap](is.md#weakMap).
  *
  * @function assert.weakMap
  *
- * @arg {*} actual
+ * @param {*} actual
  */
 /**
  * Check if a value is a [WeakSet](is.md#weakSet).
  *
  * @function assert.weakSet
  *
- * @arg {*} actual
+ * @param {*} actual
  */
 forOwn(is, (check, name) => {
 	const settings = {

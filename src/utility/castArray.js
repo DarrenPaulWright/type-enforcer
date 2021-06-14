@@ -27,8 +27,22 @@
  *
  * @function castArray
  *
- * @arg {*} value
+ * @param {*} value - Value to be cast to an array.
  *
  * @returns {Array}
  */
-export default (value) => Array.isArray(value) ? value : (value === undefined) ? [] : (value !== null && typeof value === 'object' && typeof value.length === 'number') ? Array.prototype.slice.call(value) : [value];
+export default (value) => {
+	if (Array.isArray(value)) {
+		return value;
+	}
+
+	if (value === undefined) {
+		return [];
+	}
+
+	if (value !== null && typeof value === 'object' && typeof value.length === 'number') {
+		return Array.prototype.slice.call(value);
+	}
+
+	return [value];
+};

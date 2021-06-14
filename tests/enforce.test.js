@@ -42,7 +42,7 @@ import {
 	enforceWeakMap,
 	enforceWeakSet
 } from '../index.js';
-import { enumData, validEnumObject } from './testValues.js';
+import { enumData, validEnumObject } from './helpers/testValues.js';
 
 describe('enforce', () => {
 	describe('.array', () => {
@@ -102,12 +102,12 @@ describe('enforce', () => {
 	describe('.regExp', () => {
 		testEnforce(regExpData, enforceRegExp, enforce, (value) => {
 			if (value.charAt(0) !== '/') {
+				// eslint-disable-next-line require-unicode-regexp
 				return RegExp(value);
 			}
-			else {
-				const index = value.lastIndexOf('/');
-				return RegExp(value.substring(1, index), value.substring(index + 1));
-			}
+
+			const index = value.lastIndexOf('/');
+			return RegExp(value.slice(1, index), value.slice(Math.max(0, index + 1)));
 		});
 	});
 
@@ -133,7 +133,9 @@ describe('enforce', () => {
 				return `should return a coerced ${displayValue(input)} when coerce is true`;
 			},
 			test(value) {
-				return enforce.symbol(value, value, true).toString().slice(7, -1);
+				return enforce.symbol(value, value, true)
+					.toString()
+					.slice(7, -1);
 			},
 			inputKey: 'input',
 			outputKey: 'output'

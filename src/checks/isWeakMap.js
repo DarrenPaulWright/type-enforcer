@@ -7,7 +7,7 @@ export const isCoercableToWeakMap = (value) => {
 };
 
 /**
- * Check if a value is a WeakMap
+ * Check if a value is a WeakMap.
  *
  * @example
  * ``` javascript
@@ -28,10 +28,10 @@ export const isCoercableToWeakMap = (value) => {
  * @function is.weakMap
  * @alias isWeakMap
  *
- * @arg {*} value
- * @arg {Boolean} [coerce=false] - If true then see if the value can be coerced into a WeakMap. Must be an array of arrays, each inner array must be length 2, and the first item of each inner array must be an object to be coerced into a WeakMap.
+ * @param {*} value - The value to check.
+ * @param {boolean} [coerce=false] - If true then see if the value can be coerced into a WeakMap. Must be an array of arrays, each inner array must be length 2, and the first item of each inner array must be an object to be coerced into a WeakMap.
  *
- * @returns {Boolean}
+ * @returns {boolean}
  */
 export default (value, coerce) => {
 	return value instanceof WeakMap || (coerce === true && isCoercableToWeakMap(value));

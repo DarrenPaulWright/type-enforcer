@@ -21,12 +21,12 @@ import enforceNumber from './enforceNumber.js';
  * @function enforce.float
  * @alias enforceFloat
  *
- * @arg {*} value
- * @arg {int} alt - Returned if the value is not the correct type
- * @arg {Boolean} [coerce=false] - If true then coerce the value when possible
- * @arg {int} [minValue]
- * @arg {int} [maxValue]
+ * @param {*} value
+ * @param {number.int} alt - Returned if the value is not the correct type
+ * @param {boolean} [coerce=false] - If true then coerce the value when possible
+ * @param {number.int} [minValue]
+ * @param {number.int} [maxValue]
  *
- * @returns {int}
+ * @returns {number.int}
  */
 export default enforceNumber.extend(isFloat, Number);

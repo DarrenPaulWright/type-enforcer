@@ -5,9 +5,9 @@
  *
  * @function abstractEquality
  *
- * @arg a
- * @arg b
+ * @param {*} a - A value to test.
+ * @param {*} b - Another value to test.
  *
  * @returns {boolean}
  */
-export default (a, b) => a == b;
+export default (a, b) => a == b; // eslint-disable-line eqeqeq

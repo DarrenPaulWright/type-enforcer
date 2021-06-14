@@ -1,10 +1,11 @@
 import { benchSettings } from 'karma-webpack-bundle';
 import { Enum } from '../index.js';
 
-suite(`Enum`, () => {
-	let sandbox;
-	let enumInstance;
-	let id = 1;
+/* eslint-disable no-unused-vars */
+suite('Enum', () => {
+	let sandbox = null;
+	let enumInstance = null;
+	const id = 1;
 	const data = {
 		one: 'one',
 		two: 'two',
@@ -17,11 +18,11 @@ suite(`Enum`, () => {
 		nine: 'nine'
 	};
 
-	benchmark(`init`, () => {
+	benchmark('init', () => {
 		sandbox = new Enum(data);
 	}, benchSettings);
 
-	benchmark(`has`, () => {
+	benchmark('has', () => {
 		enumInstance.has('three');
 	}, {
 		...benchSettings,
@@ -30,7 +31,7 @@ suite(`Enum`, () => {
 		}
 	});
 
-	benchmark(`key`, () => {
+	benchmark('key', () => {
 		sandbox = enumInstance.key('three');
 	}, {
 		...benchSettings,
@@ -39,7 +40,7 @@ suite(`Enum`, () => {
 		}
 	});
 
-	benchmark(`each`, () => {
+	benchmark('each', () => {
 		enumInstance.each((value) => {
 			sandbox = value;
 		});
@@ -49,5 +50,4 @@ suite(`Enum`, () => {
 			enumInstance = new Enum(data);
 		}
 	});
-
 });

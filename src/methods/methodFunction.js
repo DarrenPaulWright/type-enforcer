@@ -1,6 +1,7 @@
 import enforceFunction from '../enforcer/enforceFunction.js';
 import methodAny from './methodAny.js';
 
+/* eslint-disable jsdoc/valid-types */
 /**
  * Builds a chainable method for getting/setting a function
  *
@@ -8,9 +9,9 @@ import methodAny from './methodAny.js';
  * @extends method.any
  * @alias methodFunction
  *
- * @arg {Object} [options] - Same as {@link method.any} with the following differences:
- * @arg {Function} [options.enforce=enforce.function]
- * @arg {boolean} [options.bind=true] - Binds the set function to the same context as the method.
+ * @param {object} [options] - Same as {@link method.any} with the following differences:
+ * @param {Function} [options.enforce=enforce.function]
+ * @param {boolean} [options.bind=true] - Binds the set function to the same context as the method.
  *
  * @returns {Function}
  */

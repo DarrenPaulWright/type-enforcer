@@ -1,7 +1,7 @@
 import isNumber from './isNumber.js';
 
 /**
- * Check if a value is a finite integer
+ * Check if a value is a finite integer.
  *
  * @example
  * ``` javascript
@@ -23,13 +23,13 @@ import isNumber from './isNumber.js';
  * @function is.integer
  * @alias isInteger
  *
- * @arg {*} value
- * @arg {Boolean} [coerce=false] - If true then see if the value can be coerced into an Integer
+ * @param {*} value - The value to check.
+ * @param {boolean} [coerce=false] - If true then see if the value can be coerced into an Integer.
  *
- * @returns {Boolean}
+ * @returns {boolean}
  */
 const isInteger = (value, coerce) => {
-	return (isNumber(value) && value !== Infinity && value !== -Infinity && value == (value | 0)) || (coerce === true && !isNaN(value) && isInteger(parseFloat(value)));
+	return (isNumber(value) && value !== Infinity && value !== -Infinity && value == (value | 0)) || (coerce === true && !isNaN(value) && isInteger(parseFloat(value))); // eslint-disable-line eqeqeq
 };
 
 export default isInteger;

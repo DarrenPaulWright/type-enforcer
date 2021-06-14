@@ -1,5 +1,5 @@
 /**
- * Check if a value is a number
+ * Check if a value is a number.
  *
  * @example
  * ``` javascript
@@ -18,11 +18,11 @@
  * @function is.number
  * @alias isNumber
  *
- * @arg {*} value
- * @arg {Boolean} [coerce=false] - If true then see if the value can be coerced into a Number
+ * @param {*} value - The value to check.
+ * @param {boolean} [coerce=false] - If true then see if the value can be coerced into a Number.
  *
- * @returns {Boolean}
+ * @returns {boolean}
  */
 export default (value, coerce) => {
-	return ((typeof value === 'number' || value instanceof Number) && value === value) || (coerce === true && !isNaN(value));
+	return ((typeof value === 'number' || value instanceof Number) && value === value) || (coerce === true && !isNaN(value)); // eslint-disable-line no-self-compare
 };

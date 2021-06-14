@@ -1,37 +1,40 @@
 import { benchSettings } from 'karma-webpack-bundle';
 import castArray from '../../src/utility/castArray.js';
 
-suite(`castArray`, () => {
-	let sandbox;
-	let args;
+/* eslint-disable no-unused-vars */
+suite('castArray', () => {
+	let sandbox = null;
+	let args = null;
 
+	// eslint-disable-next-line jsdoc/require-jsdoc
 	function getArgs() {
+		// eslint-disable-next-line prefer-rest-params
 		args = arguments;
 	}
 
 	getArgs('a', 'b', 'c');
 
-	benchmark(`empty array`, () => {
+	benchmark('empty array', () => {
 		sandbox = castArray([]);
 	}, benchSettings);
 
-	benchmark(`small array`, () => {
+	benchmark('small array', () => {
 		sandbox = castArray([1, 2, 3, 4, 5, 6, 7, 8, 9]);
 	}, benchSettings);
 
-	benchmark(`undefined`, () => {
+	benchmark('undefined', () => {
 		sandbox = castArray();
 	}, benchSettings);
 
-	benchmark(`args`, () => {
+	benchmark('args', () => {
 		sandbox = castArray(args);
 	}, benchSettings);
 
-	benchmark(`number`, () => {
+	benchmark('number', () => {
 		sandbox = castArray(23);
 	}, benchSettings);
 
-	benchmark(`null`, () => {
+	benchmark('null', () => {
 		sandbox = castArray(null);
 	}, benchSettings);
 });

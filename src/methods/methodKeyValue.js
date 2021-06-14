@@ -8,11 +8,11 @@ import methodAny, { _ } from './methodAny.js';
  * @function method.keyValue
  * @alias methodKeyValue
  *
- * @arg {Object}   [options]
- * @arg {Function} [options.set] - Called for each key/value pair applied. Provides two args, the key and value, and sets the context to the methods constructor.
- * @arg {Function} [options.get] - Called if the method is called with a single, non-object, arg. Provides the same arg, sets the context to the methods constructor.
+ * @param {object}   [options] - Options object.
+ * @param {Function} [options.set] - Called for each key/value pair applied. Provides two args, the key and value, and sets the context to the methods constructor.
+ * @param {Function} [options.get] - Called if the method is called with a single, non-object, arg. Provides the same arg, sets the context to the methods constructor.
  *
- * @returns {Function} Accepts a new value and returns the methods constructor (allows chaining), or if no args are passed returns the output of options.get
+ * @returns {Function} Accepts a new value and returns the methods constructor (allows chaining), or if no args are passed returns the output of options.get.
  */
 export default (options = {}) => {
 	const key = Symbol();

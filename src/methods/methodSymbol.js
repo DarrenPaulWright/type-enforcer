@@ -8,9 +8,9 @@ import methodAny from './methodAny.js';
  * @extends method.any
  * @alias methodSymbol
  *
- * @arg {Object} [options] - Same as {@link method.any} with the following differences:
- * @arg {Function} [options.enforce=enforce.symbol]
- * @arg {Boolean} [options.coerce=false] - If true then coerce the value when possible
+ * @param {object} [options] - Same as {@link method.any} with the following differences:
+ * @param {Function} [options.enforce=enforce.symbol]
+ * @param {boolean} [options.coerce=false] - If true then coerce the value when possible
  *
  * @returns {Function}
  */

@@ -1,5 +1,5 @@
 /**
- * Check if a value is a date
+ * Check if a value is a date.
  *
  * @example
  * ``` javascript
@@ -18,10 +18,10 @@
  * @function is.date
  * @alias isDate
  *
- * @arg {*} value
- * @arg {Boolean} [coerce=false] - If true then see if the value can be coerced into a Date
+ * @param {*} value - The value to check.
+ * @param {boolean} [coerce=false] - If true then see if the value can be coerced into a Date.
  *
- * @returns {Boolean}
+ * @returns {boolean}
  */
 export default (value, coerce) => {
 	return value instanceof Date || (coerce === true && typeof value !== 'symbol' && !isNaN(Date.parse(value)));

@@ -1,14 +1,12 @@
 import { benchSettings } from 'karma-webpack-bundle';
 import { applySettings } from '../../index.js';
 
-suite(`applySettings`, () => {
-	let sandbox;
-
+suite('applySettings', () => {
 	class Widget {}
 
-	let widget = new Widget();
+	const widget = new Widget();
 
-	benchmark(`settings only`, () => {
+	benchmark('settings only', () => {
 		applySettings(widget, {
 			test: 3,
 			test1: 3,
@@ -23,7 +21,7 @@ suite(`applySettings`, () => {
 		});
 	}, benchSettings);
 
-	benchmark(`priority list`, () => {
+	benchmark('priority list', () => {
 		applySettings(widget, {
 			test: 3,
 			test1: 3,
@@ -38,7 +36,7 @@ suite(`applySettings`, () => {
 		}, ['test1', 'test3', 'test7']);
 	}, benchSettings);
 
-	benchmark(`defered list`, () => {
+	benchmark('defered list', () => {
 		applySettings(widget, {
 			test: 3,
 			test1: 3,
@@ -53,7 +51,7 @@ suite(`applySettings`, () => {
 		}, [], ['test', 'test4', 'test8']);
 	}, benchSettings);
 
-	benchmark(`both lists`, () => {
+	benchmark('both lists', () => {
 		applySettings(widget, {
 			test: 3,
 			test1: 3,

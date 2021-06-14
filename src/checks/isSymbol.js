@@ -1,7 +1,7 @@
 import isString from './isString.js';
 
 /**
- * Check if a value is a Symbol
+ * Check if a value is a Symbol.
  *
  * @example
  * ``` javascript
@@ -20,10 +20,10 @@ import isString from './isString.js';
  * @function is.symbol
  * @alias isSymbol
  *
- * @arg {*} value
- * @arg {Boolean} [coerce=false] - If true then see if the value can be coerced into a Symbol. Anything that can be coerced into a string can also be coerced into a Symbol.
+ * @param {*} value - The value to check.
+ * @param {boolean} [coerce=false] - If true then see if the value can be coerced into a Symbol. Anything that can be coerced into a string can also be coerced into a Symbol.
  *
- * @returns {Boolean}
+ * @returns {boolean}
  */
 export default (value, coerce) => {
 	return typeof value === 'symbol' || (coerce === true && isString(value, true));

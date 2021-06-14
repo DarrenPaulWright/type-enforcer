@@ -1,5 +1,6 @@
+/* eslint-disable jsdoc/valid-types */
 /**
- * Check if a value is a function
+ * Check if a value is a function.
  *
  * @example
  * ``` javascript
@@ -12,8 +13,8 @@
  * @function is.function
  * @alias isFunction
  *
- * @arg {*} value
+ * @param {*} value - The value to check.
  *
- * @returns {Boolean}
+ * @returns {boolean}
  */
 export default (value) => typeof value === 'function';

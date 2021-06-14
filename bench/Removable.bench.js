@@ -1,11 +1,12 @@
 import { benchSettings } from 'karma-webpack-bundle';
 import { Removable } from '../index.js';
 
-suite(`Removable`, () => {
-	let sandbox;
-	let instance;
+/* eslint-disable no-unused-vars */
+suite('Removable', () => {
+	let sandbox = null;
+	let instance = null;
 
-	benchmark(`isRemoved false`, () => {
+	benchmark('isRemoved false', () => {
 		sandbox = instance.isRemoved;
 	}, {
 		...benchSettings,
@@ -14,7 +15,7 @@ suite(`Removable`, () => {
 		}
 	});
 
-	benchmark(`isRemoved true`, () => {
+	benchmark('isRemoved true', () => {
 		sandbox = instance.isRemoved;
 	}, {
 		...benchSettings,
@@ -24,7 +25,7 @@ suite(`Removable`, () => {
 		}
 	});
 
-	benchmark(`remove, no callbacks`, () => {
+	benchmark('remove, no callbacks', () => {
 		sandbox = instance.remove();
 	}, {
 		...benchSettings,
@@ -33,7 +34,7 @@ suite(`Removable`, () => {
 		}
 	});
 
-	benchmark(`remove, with callbacks`, () => {
+	benchmark('remove, with callbacks', () => {
 		sandbox = instance.remove();
 	}, {
 		...benchSettings,
@@ -44,5 +45,4 @@ suite(`Removable`, () => {
 			});
 		}
 	});
-
 });

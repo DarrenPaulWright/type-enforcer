@@ -5,7 +5,7 @@ const typeOfMap = new Map()
 	.set(Symbol, 'symbol');
 
 /**
- * @description Check if a value is an instance of a constructor. Fixes issues with native instanceOf and primitives Boolean, Number, String, and Symbol (see example).
+ * Check if a value is an instance of a constructor. Fixes issues with native instanceOf and primitives Boolean, Number, String, and Symbol (see example).
  *
  * @example
  * ``` javascript
@@ -38,10 +38,10 @@ const typeOfMap = new Map()
  * @function is.instanceOf
  * @alias isInstanceOf
  *
- * @arg {*} object
- * @arg {Function} constructor
+ * @param {*} object - The object to check.
+ * @param {Function} constructor - The constructor function.
  *
- * @returns {Boolean}
+ * @returns {boolean}
  */
 export default (object, constructor) => {
 	return constructor && constructor.prototype && (object instanceof constructor || typeof object === typeOfMap.get(constructor));

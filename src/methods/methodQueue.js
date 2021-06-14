@@ -8,10 +8,10 @@ import methodAny, { _ } from './methodAny.js';
  * @function method.queue
  * @alias methodQueue
  *
- * @arg {Object}   [options]
- * @arg {Function} [options.set] - Called after a new callback is added to the queue. Provides a reference to the queue, the new id for the callback, the callback, and sets the context to the methods constructor.
+ * @param {object}   [options] - Options object.
+ * @param {Function} [options.set] - Called after a new callback is added to the queue. Provides a reference to the queue, the new id for the callback, the callback, and sets the context to the methods constructor.
  *
- * @returns {Function} accepts a new value and returns the methods constructor (allows chaining), or if no args are passed returns the instance of Queue
+ * @returns {Function} Accepts a new value and returns the methods constructor (allows chaining), or if no args are passed returns the instance of Queue.
  */
 export default (options = {}) => {
 	const key = Symbol();
@@ -37,7 +37,7 @@ export default (options = {}) => {
 			}
 		}
 
-		if (arguments.length) {
+		if (arguments.length !== 0) {
 			if (isFunction(callback) && !self.isRemoved) {
 				const id = _self[key].queue.add(callback);
 

@@ -1,7 +1,7 @@
 import isJson from './isJson.js';
 
 /**
- * Check if a value is an array
+ * Check if a value is an array.
  *
  * @example
  * ``` javascript
@@ -20,10 +20,10 @@ import isJson from './isJson.js';
  * @function is.array
  * @alias isArray
  *
- * @arg {*} value
- * @arg {Boolean} [coerce=false] - If true then see if the value can be coerced into an array
+ * @param {*} value - The value to check.
+ * @param {boolean} [coerce=false] - If true then see if the value can be coerced into an array.
  *
- * @returns {Boolean}
+ * @returns {boolean}
  */
 export default (value, coerce) => {
 	return Array.isArray(value) || (coerce === true && typeof value === 'string' && value.charAt(0) === '[' && isJson(value));

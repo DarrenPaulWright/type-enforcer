@@ -21,10 +21,10 @@ import enforceObject from './enforceObject.js';
  * @function enforce.string
  * @alias enforceString
  *
- * @arg {*} value
- * @arg {String} alt - Returned if the value is not the correct type
- * @arg {Boolean} [coerce=false] - If true then coerce the value when possible
+ * @param {*} value
+ * @param {string} alt - Returned if the value is not the correct type
+ * @param {boolean} [coerce=false] - If true then coerce the value when possible
  *
- * @returns {String}
+ * @returns {string}
  */
 export default enforceObject.extend(isString, (value) => value.toString());

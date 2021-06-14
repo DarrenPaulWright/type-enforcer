@@ -2,6 +2,7 @@ import { benchSettings } from 'karma-webpack-bundle';
 import { testTypes } from 'type-enforcer-test-helper';
 import { enforce } from '../index.js';
 
+/* eslint-disable no-unused-vars */
 testTypes.forEach((data) => {
 	suite(`enforce.${data.name}`, () => {
 		const enforceFunction = enforce[data.name];
@@ -30,23 +31,23 @@ testTypes.forEach((data) => {
 			});
 		}
 		else {
-			benchmark(`true`, () => {
+			benchmark('true', () => {
 				const result = enforceFunction(trueValue, altValue);
 			}, benchSettings);
 
-			benchmark(`false`, () => {
+			benchmark('false', () => {
 				const result = enforceFunction(falseValue, altValue);
 			}, benchSettings);
 		}
 
-		if (data.coerceTrue.length) {
-			benchmark(`coerce true`, () => {
+		if (data.coerceTrue.length !== 0) {
+			benchmark('coerce true', () => {
 				const result = enforceFunction(coerceTrueValue, altValue, true);
 			}, benchSettings);
 		}
 
-		if (data.coerceFalse.length) {
-			benchmark(`coerce false`, () => {
+		if (data.coerceFalse.length !== 0) {
+			benchmark('coerce false', () => {
 				const result = enforceFunction(coerceFalseValue, altValue, true);
 			}, benchSettings);
 		}

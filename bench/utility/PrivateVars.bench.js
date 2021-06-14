@@ -1,10 +1,13 @@
+/* eslint-disable unicorn/prevent-abbreviations */
 import { benchSettings } from 'karma-webpack-bundle';
-import { PrivateVars } from '../../index.js';
+import { PrivateVars as PrivateVars } from '../../index.js'; /* eslint-disable no-unused-vars */
 
-suite(`PrivateVars`, () => {
-	let sandbox;
+/* eslint-disable no-unused-vars */
+suite('PrivateVars', () => {
+	let sandbox = null;
 
 	class SimpleWeakMapWrapper extends WeakMap {
+		// eslint-disable-next-line no-useless-constructor
 		constructor() {
 			super();
 		}
@@ -16,19 +19,19 @@ suite(`PrivateVars`, () => {
 
 	let _ = new PrivateVars();
 
-	benchmark(`new WeakMap`, () => {
+	benchmark('new WeakMap', () => {
 		sandbox = new WeakMap();
 	}, benchSettings);
 
-	benchmark(`new SimpleWeakMapWrapper`, () => {
+	benchmark('new SimpleWeakMapWrapper', () => {
 		sandbox = new SimpleWeakMapWrapper();
 	}, benchSettings);
 
-	benchmark(`init`, () => {
+	benchmark('init', () => {
 		sandbox = new PrivateVars();
 	}, benchSettings);
 
-	benchmark(`get empty`, () => {
+	benchmark('get empty', () => {
 		sandbox = _(widget);
 	}, {
 		...benchSettings,
@@ -37,7 +40,7 @@ suite(`PrivateVars`, () => {
 		}
 	});
 
-	benchmark(`get`, () => {
+	benchmark('get', () => {
 		sandbox = _(widget);
 	}, {
 		...benchSettings,
@@ -47,7 +50,7 @@ suite(`PrivateVars`, () => {
 		}
 	});
 
-	benchmark(`set`, () => {
+	benchmark('set', () => {
 		sandbox = _.set(widget);
 	}, {
 		...benchSettings,
@@ -56,8 +59,8 @@ suite(`PrivateVars`, () => {
 		}
 	});
 
-	benchmark(`set custom object`, () => {
-		sandbox = _.set(widget, {'thing': 7});
+	benchmark('set custom object', () => {
+		sandbox = _.set(widget, { 'thing': 7 });
 	}, {
 		...benchSettings,
 		onStart() {
@@ -65,14 +68,13 @@ suite(`PrivateVars`, () => {
 		}
 	});
 
-	benchmark(`get custom object`, () => {
+	benchmark('get custom object', () => {
 		sandbox = _(widget);
 	}, {
 		...benchSettings,
 		onStart() {
 			_ = new PrivateVars();
-			_.set(widget, {'thing': 7});
+			_.set(widget, { 'thing': 7 });
 		}
 	});
-
 });

@@ -8,11 +8,11 @@ import methodAny from './methodAny.js';
  * @extends method.any
  * @alias methodNumber
  *
- * @arg {Object} [options] - Same as {@link method.any} with the following differences:
- * @arg {Function} [options.enforce=enforce.number]
- * @arg {Boolean} [options.coerce=false] - If true then coerce the value when possible
- * @arg {Number} [options.min] - Passed to enforce.number
- * @arg {Number} [options.max] - Passed to enforce.number
+ * @param {object} [options] - Same as {@link method.any} with the following differences:
+ * @param {Function} [options.enforce=enforce.number]
+ * @param {boolean} [options.coerce=false] - If true then coerce the value when possible
+ * @param {number} [options.min] - Passed to enforce.number
+ * @param {number} [options.max] - Passed to enforce.number
  *
  * @returns {Function}
  */

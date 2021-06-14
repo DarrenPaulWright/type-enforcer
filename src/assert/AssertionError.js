@@ -1,8 +1,8 @@
 export default class AssertionError extends Error {
-	constructor(message, props) {
+	constructor(message, properties) {
 		super('expected ' + message);
 		this.name = 'AssertionError';
-		Object.assign(this, props);
+		Object.assign(this, properties);
 
 		if (this.stack !== undefined) {
 			this.stack = this.stack.split('\n');

@@ -2,6 +2,7 @@ import { forOwn } from 'object-agent';
 import isFunction from './checks/isFunction.js';
 import isString from './checks/isString.js';
 import castArray from './utility/castArray.js';
+// eslint-disable-next-line unicorn/prevent-abbreviations
 import PrivateVars from './utility/PrivateVars.js';
 
 const _ = new PrivateVars();
@@ -29,7 +30,7 @@ export default class Queue {
 	 * @memberOf Queue
 	 * @instance
 	 *
-	 * @arg {object} context - Callback function.
+	 * @param {object} context - Callback function.
 	 *
 	 * @returns {object|this} If setting a value then this is returned, otherwise the current context.
 	 */
@@ -55,9 +56,9 @@ export default class Queue {
 	 * @memberOf Queue
 	 * @instance
 	 *
-	 * @arg {Function} callback - Callback function.
+	 * @param {Function} callback - Callback function.
 	 *
-	 * @returns {Number} A unique id for this callback.
+	 * @returns {number} A unique id for this callback.
 	 */
 	add(callback) {
 		if (callback !== undefined) {
@@ -77,7 +78,7 @@ export default class Queue {
 	 * @memberOf Queue
 	 * @instance
 	 *
-	 * @arg {Number} id - The id returned by Queue.add(), or the same callback passed in to Queue.add()
+	 * @param {number} id - The id returned by Queue.add(), or the same callback passed in to Queue.add().
 	 *
 	 * @returns {this}
 	 */
@@ -120,10 +121,9 @@ export default class Queue {
 	 * @memberOf Queue
 	 * @instance
 	 *
-	 * @arg {Number} [id] - To trigger only a specific callback, provide the id returned by Queue.add().
-	 *    Otherwise all callbacks are called.
-	 * @arg {Array} [extraArguments] - Array of arguments to apply to each callback.
-	 * @arg {Array} [context] - Ignored if bindTo is set
+	 * @param {number} [id] - To trigger only a specific callback, provide the id returned by Queue.add(). Otherwise all callbacks are called.
+	 * @param {Array} [extraArguments] - Array of arguments to apply to each callback.
+	 * @param {Array} [context] - Ignored if bindTo is set.
 	 *
 	 * @returns {this}
 	 */
@@ -137,9 +137,14 @@ export default class Queue {
 
 		_self.isBusy = true;
 
-		isString(id) ?
-			_self.callbacks[id] !== undefined && apply(_self.callbacks[id]) :
+		if (isString(id)) {
+			if (_self.callbacks[id] !== undefined) {
+				apply(_self.callbacks[id]);
+			}
+		}
+		else {
 			forOwn(_self.callbacks, apply);
+		}
 
 		_self.isBusy = false;
 
@@ -152,8 +157,8 @@ export default class Queue {
 	 * @memberOf Queue
 	 * @instance
 	 *
-	 * @arg {Array} [extraArguments] - Array of arguments to apply to each callback.
-	 * @arg {Array} [context] - "this" applied to the callback
+	 * @param {Array} [extraArguments] - Array of arguments to apply to each callback.
+	 * @param {Array} [context] - The context, or "this", applied to the callback.
 	 *
 	 * @returns {this}
 	 */

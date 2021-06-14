@@ -46,8 +46,9 @@ import {
 	Removable
 } from '../index.js';
 import assert from '../src/assert/assert.js';
-import { enumData, validEnumObject } from './testValues.js';
+import { enumData, validEnumObject } from './helpers/testValues.js';
 
+/* eslint-disable consistent-this */
 describe('method', () => {
 	describe('.any', () => {
 		testMethod({
@@ -59,7 +60,7 @@ describe('method', () => {
 	});
 
 	describe('.array', () => {
-		testMethod({...arrayData, init: []}, methodArray, method);
+		testMethod({ ...arrayData, init: [] }, methodArray, method);
 
 		it('should NOT call the set callback if the same array is provided and deep=false', () => {
 			let testSet = '';
@@ -88,11 +89,11 @@ describe('method', () => {
 	});
 
 	describe('.boolean', () => {
-		testMethod({...booleanData, init: false}, methodBoolean, method);
+		testMethod({ ...booleanData, init: false }, methodBoolean, method);
 	});
 
 	describe('.date', () => {
-		testMethod({...dateData}, methodDate, method);
+		testMethod({ ...dateData }, methodDate, method);
 	});
 
 	describe('.enum', () => {
@@ -132,44 +133,44 @@ describe('method', () => {
 		}, methodFunction, method);
 
 		it('should bind the function to "this" by default', () => {
-			let testVar = '';
-			const TestClass = function() {
+			let self = '';
+			const ThisTestClass = function() {
 				this.testMethod = methodFunction();
 			};
-			const testClass = new TestClass();
+			const testClass = new ThisTestClass();
 
 			const testFunction = function() {
-				testVar = this;
+				self = this;
 			};
 
 			testClass.testMethod(testFunction);
 			testClass.testMethod()();
 
-			assert.is(testVar, testClass);
+			assert.is(self, testClass);
 		});
 
 		it('should NOT bind the function to "this" if the option "bind" is set to false', () => {
-			let testVar = '';
-			const TestClass = function() {
+			let self = '';
+			const ThisTestClass = function() {
 				this.testMethod = methodFunction({
 					bind: false
 				});
 			};
-			const testClass = new TestClass();
+			const testClass = new ThisTestClass();
 
 			testClass.testMethod(function() {
-				testVar = this;
+				self = this;
 			});
 			testClass.testMethod()();
 
-			assert.notIs(testVar, testClass);
+			assert.notIs(self, testClass);
 		});
 
 		it('should NOT throw if set to something other than a function', () => {
-			const TestClass = function() {
+			const ThisTestClass = function() {
 				this.testMethod = methodFunction();
 			};
-			const testClass = new TestClass();
+			const testClass = new ThisTestClass();
 
 			assert.notThrows(() => {
 				testClass.testMethod('test');
@@ -291,7 +292,7 @@ describe('method', () => {
 	});
 
 	describe('.map', () => {
-		testMethod({...mapData}, methodMap, method);
+		testMethod({ ...mapData }, methodMap, method);
 	});
 
 	describe('.number', () => {
@@ -312,7 +313,7 @@ describe('method', () => {
 	});
 
 	describe('.object', () => {
-		testMethod({...objectData}, methodObject, method);
+		testMethod({ ...objectData }, methodObject, method);
 
 		it('should NOT call the set callback if the same object is provided and deep=false', () => {
 			let testSet = '';
@@ -341,12 +342,12 @@ describe('method', () => {
 	});
 
 	describe('.promise', () => {
-		testMethod({...promiseData}, methodPromise, method);
+		testMethod({ ...promiseData }, methodPromise, method);
 	});
 
 	describe('.queue', () => {
 		let didExecute = 0;
-		const testFunc = () => {
+		const testFunction = () => {
 			didExecute++;
 		};
 
@@ -368,7 +369,7 @@ describe('method', () => {
 				const testConstructor = new TestConstructor();
 
 				didExecute = 0;
-				testConstructor.testMethod(testFunc);
+				testConstructor.testMethod(testFunction);
 
 				assert.equal(didExecute, 0);
 				if (testConstructor.onRemove) {
@@ -380,7 +381,7 @@ describe('method', () => {
 				const testConstructor = new TestConstructor();
 
 				didExecute = 0;
-				testConstructor.testMethod(testFunc);
+				testConstructor.testMethod(testFunction);
 				testConstructor.testMethod().trigger();
 
 				assert.equal(didExecute, 1);
@@ -409,7 +410,7 @@ describe('method', () => {
 			it('should return an instance of Queue if no value is provided', () => {
 				const testConstructor = new TestConstructor();
 
-				testConstructor.testMethod(testFunc);
+				testConstructor.testMethod(testFunction);
 
 				assert.equal(testConstructor.testMethod() instanceof Queue, true);
 				if (testConstructor.onRemove) {
@@ -422,7 +423,7 @@ describe('method', () => {
 					const testConstructor = new TestConstructor();
 
 					didExecute = 0;
-					testConstructor.testMethod(testFunc);
+					testConstructor.testMethod(testFunction);
 					testConstructor.onRemove()();
 					testConstructor.testMethod().trigger();
 
@@ -436,11 +437,10 @@ describe('method', () => {
 					const testConstructor = new TestConstructor();
 
 					testConstructor.remove();
-					const result = testConstructor.testMethod(testFunc);
+					const result = testConstructor.testMethod(testFunction);
 
 					assert.equal(result, testConstructor);
 				});
-
 			}
 		};
 
@@ -495,7 +495,7 @@ describe('method', () => {
 			runTests(TestConstructor);
 		});
 
-		it('should set the context of the callback when triggered', () => {
+		it('should set the context of the callback in a queue when triggered', () => {
 			class TestConstructor extends Removable {
 			}
 
@@ -519,31 +519,30 @@ describe('method', () => {
 				testConstructor.onRemove();
 			}
 		});
-
 	});
 
 	describe('.regExp', () => {
-		testMethod({...regExpData}, methodRegExp, method);
+		testMethod({ ...regExpData }, methodRegExp, method);
 	});
 
 	describe('.set', () => {
-		testMethod({...setData}, methodSet, method);
+		testMethod({ ...setData }, methodSet, method);
 	});
 
 	describe('.string', () => {
-		testMethod({...stringData, init: ''}, methodString, method);
+		testMethod({ ...stringData, init: '' }, methodString, method);
 	});
 
 	describe('.symbol', () => {
-		testMethod({...symbolData}, methodSymbol, method);
+		testMethod({ ...symbolData }, methodSymbol, method);
 	});
 
 	describe('.weakMap', () => {
-		testMethod({...weakMapData}, methodWeakMap, method);
+		testMethod({ ...weakMapData }, methodWeakMap, method);
 	});
 
 	describe('.weakSet', () => {
-		testMethod({...weakSetData}, methodWeakSet, method);
+		testMethod({ ...weakSetData }, methodWeakSet, method);
 	});
 });
 

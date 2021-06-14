@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/prevent-abbreviations */
 /**
  * @example
  * ``` javascript
@@ -41,16 +42,16 @@ export default class PrivateVars extends WeakMap {
 		const output = this.get.bind(this);
 
 		/**
-		 * Sets a value in the WeakMap
+		 * Sets a value in the WeakMap.
 		 *
 		 * @method set
-		 * @methodOf PrivateVars
+		 * @memberOf PrivateVars
 		 * @instance
 		 *
-		 * @arg {*} key
-		 * @arg {*} [value={}]
+		 * @param {*} key - The key for the variables. Usually "this".
+		 * @param {*} [value={}] - An object with private variables.
 		 *
-		 * @returns {*} The value provided
+		 * @returns {*} The value provided.
 		 */
 		output.set = (key, value = {}) => {
 			this.set(key, value);

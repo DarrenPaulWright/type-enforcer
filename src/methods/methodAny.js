@@ -1,6 +1,7 @@
 import { clone } from 'object-agent';
 import isFunction from '../checks/isFunction.js';
 import isInstanceOf from '../checks/isInstanceOf.js';
+// eslint-disable-next-line unicorn/prevent-abbreviations
 import PrivateVars from '../utility/PrivateVars.js';
 
 export const _ = new PrivateVars();
@@ -44,7 +45,7 @@ const buildMethod = (defaultOptions, onInit) => {
 
 			const value = _self[key].get ? _self[key].get() : _self[key].value;
 
-			if (arguments.length) {
+			if (arguments.length !== 0) {
 				_self = _self[key];
 
 				if (!options.other || !hasOther(newValue, options.other)) {
@@ -71,14 +72,14 @@ const buildMethod = (defaultOptions, onInit) => {
 	};
 
 	method.bindCallback = (callback, self) => {
-		return !callback ? false : (isFunction(callback) ? callback : self[callback]).bind(self);
+		return callback ? (isFunction(callback) ? callback : self[callback]).bind(self) : false;
 	};
 
 	method.defaults = (options) => {
 		Object.assign(defaultOptions, options);
 	};
 
-	method.extend = (options = {}, newOnInit) => {
+	method.extend = (options = {}, newOnInit = null) => {
 		return buildMethod(Object.assign({}, defaultOptions, options), newOnInit || onInit);
 	};
 
@@ -125,15 +126,15 @@ const buildMethod = (defaultOptions, onInit) => {
  * @function method.any
  * @alias methodAny
  *
- * @arg {Object}   [options]
- * @arg {*} [options.init] - The initial value
- * @arg {Function|String|Symbol} [options.enforce] - Enforce this data type.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name.
- * @arg {Function|String|Symbol} [options.compare] - Compares a new value to the current value. Return true if the two values are different.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name.
- * @arg {Function|String|Symbol} [options.before] - Called before a new valid value is set. Provides the prior value.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name.
- * @arg {Function|String|Symbol} [options.set] - Called after a new valid value is set. Provides the new value.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name.
- * @arg {Function|String|Symbol} [options.get] - Called to get the value.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name.
- * @arg {Array|*}  [options.other] - Another value/type or array of other values/types that can be set
- * @arg {Boolean}  [options.stringify=false] - If true, then call toString() on the value before returning it (if the value has a toString method)
+ * @param {object}   [options]
+ * @param {*} [options.init] - The initial value
+ * @param {Function | string | symbol} [options.enforce] - Enforce this data type.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name.
+ * @param {Function | string | symbol} [options.compare] - Compares a new value to the current value. Return true if the two values are different.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name.
+ * @param {Function | string | symbol} [options.before] - Called before a new valid value is set. Provides the prior value.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name.
+ * @param {Function | string | symbol} [options.set] - Called after a new valid value is set. Provides the new value.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name.
+ * @param {Function | string | symbol} [options.get] - Called to get the value.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name.
+ * @param {Array|*}  [options.other] - Another value/type or array of other values/types that can be set
+ * @param {boolean}  [options.stringify=false] - If true, then call toString() on the value before returning it (if the value has a toString method)
  *
  * @returns {Function} if a "before" or "set" option is set, then this function accepts two args: a new value and forceSave override. If no args are provided then the current value is returned. If neither "before" nor "set" is set, then only one arg is accepted, the new value. Also returns the current value if no args are provided.
  */

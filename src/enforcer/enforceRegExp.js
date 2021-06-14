@@ -23,18 +23,17 @@ const SEPARATOR = '/';
  * @function enforce.regExp
  * @alias enforceRegExp
  *
- * @arg {*} value
- * @arg {RegExp} alt - Returned if the value is not the correct type
- * @arg {Boolean} [coerce=false] - If true then coerce the value when possible
+ * @param {*} value
+ * @param {RegExp} alt - Returned if the value is not the correct type
+ * @param {boolean} [coerce=false] - If true then coerce the value when possible
  *
  * @returns {RegExp}
  */
 export default enforceObject.extend(isRegExp, (value) => {
 	if (value.charAt(0) !== SEPARATOR) {
-		return RegExp(value);
+		return RegExp(value); // eslint-disable-line require-unicode-regexp
 	}
-	else {
-		const index = value.lastIndexOf(SEPARATOR);
-		return RegExp(value.substring(1, index), value.substring(index + 1));
-	}
+
+	const index = value.lastIndexOf(SEPARATOR);
+	return RegExp(value.slice(1, index), value.slice(Math.max(0, index + 1)));
 });

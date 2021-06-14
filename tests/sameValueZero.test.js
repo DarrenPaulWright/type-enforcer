@@ -8,7 +8,7 @@ import {
 	messageTrue,
 	sameValueEqual,
 	sameValueNotEqual
-} from './compareValues.js';
+} from './helpers/compareValues.js';
 
 describe('sameValueZero', () => {
 	multiTest({

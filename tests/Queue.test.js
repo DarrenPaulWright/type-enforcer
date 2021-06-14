@@ -5,6 +5,7 @@ import assert from '../src/assert/assert.js';
 const emptyFunction = () => {
 };
 
+/* eslint-disable consistent-this */
 describe('Queue', () => {
 	describe('.add', () => {
 		it('should return an id when a function is provided', () => {
@@ -80,410 +81,410 @@ describe('Queue', () => {
 
 	describe('.trigger', () => {
 		it('should call all the callbacks', () => {
-			let testVar = 0;
+			let testVariable = 0;
 			const queue = new Queue();
 			queue.add(() => {
-				testVar++;
+				testVariable++;
 			});
 			queue.add(() => {
-				testVar++;
+				testVariable++;
 			});
 			queue.add(() => {
-				testVar++;
+				testVariable++;
 			});
 
 			queue.trigger();
 
-			assert.equal(testVar, 3);
+			assert.equal(testVariable, 3);
 		});
 
 		it('should stop calling callbacks if true is returned', () => {
-			let testVar = 0;
+			let testVariable = 0;
 			const queue = new Queue();
 			queue.add(() => {
-				testVar++;
+				testVariable++;
 			});
 			queue.add(() => {
-				testVar++;
+				testVariable++;
 				return true;
 			});
 			queue.add(() => {
-				testVar++;
+				testVariable++;
 			});
 
 			queue.trigger();
 
-			assert.equal(testVar, 2);
+			assert.equal(testVariable, 2);
 		});
 
 		it('should call the callback when called with an id', () => {
-			let testVar = 0;
+			let testVariable = 0;
 			const queue = new Queue();
 			queue.add(() => {
-				testVar = 1;
+				testVariable = 1;
 			});
 			const id = queue.add(() => {
-				testVar = 2;
+				testVariable = 2;
 			});
 			queue.add(() => {
-				testVar = 3;
+				testVariable = 3;
 			});
 
 			queue.trigger(id);
 
-			assert.equal(testVar, 2);
+			assert.equal(testVariable, 2);
 		});
 
 		it('should NOT call any callbacks when called with an invalid id', () => {
-			let testVar = 0;
+			let testVariable = 0;
 			const queue = new Queue();
 			queue.add(() => {
-				testVar = 1;
+				testVariable = 1;
 			});
 			queue.add(() => {
-				testVar = 2;
+				testVariable = 2;
 			});
 			queue.add(() => {
-				testVar = 3;
+				testVariable = 3;
 			});
 
 			queue.trigger('test');
 
-			assert.equal(testVar, 0);
+			assert.equal(testVariable, 0);
 		});
 
 		it('should NOT call any callbacks that are discarded during a trigger', () => {
-			let testVar = 0;
+			let testVariable = 0;
 			const queue = new Queue();
 			queue.add(() => {
-				testVar = 1;
+				testVariable = 1;
 				queue.discard(id1);
 				queue.discard(id2);
 			});
 			const id1 = queue.add(() => {
-				testVar = 2;
+				testVariable = 2;
 			});
 			const id2 = queue.add(() => {
-				testVar = 3;
+				testVariable = 3;
 			});
 
 			queue.trigger();
 
-			assert.equal(testVar, 1);
+			assert.equal(testVariable, 1);
 		});
 
 		it('should call the callback with args when called with an id and args', () => {
-			let testVar = 0;
+			let testVariable = 0;
 			const queue = new Queue();
 			queue.add(() => {
-				testVar = 1;
+				testVariable = 1;
 			});
 			const id = queue.add((value1, value2) => {
-				testVar = value2;
+				testVariable = value2;
 			});
 			queue.add(() => {
-				testVar = 3;
+				testVariable = 3;
 			});
 
 			queue.trigger(id, [10, 5]);
 
-			assert.equal(testVar, 5);
+			assert.equal(testVariable, 5);
 		});
 
 		it('should call the callback with context when called with an id and context', () => {
-			let testVar = 0;
+			let testVariable = 0;
 			const instance = new TestClass();
 			const queue = new Queue();
 			queue.add(() => {
-				testVar = 1;
+				testVariable = 1;
 			});
 			const id = queue.add(function() {
-				testVar = this;
+				testVariable = this;
 			});
 			queue.add(() => {
-				testVar = 3;
+				testVariable = 3;
 			});
 
 			queue.trigger(id, [], instance);
 
-			assert.equal(testVar, instance);
+			assert.equal(testVariable, instance);
 		});
 
 		it('should be busy when a callback is triggered', () => {
-			let testVar = 0;
+			let testVariable = 0;
 			const queue = new Queue();
 			queue.add(function() {
-				testVar = 1;
+				testVariable = 1;
 			});
 			const id = queue.add(() => {
-				testVar = queue.isBusy;
+				testVariable = queue.isBusy;
 			});
 			queue.add(() => {
-				testVar = 3;
+				testVariable = 3;
 			});
 
 			queue.trigger(id);
 
-			assert.equal(testVar, true);
+			assert.equal(testVariable, true);
 		});
 	});
 
 	describe('.triggerFirst', () => {
 		it('should call the first callback and decrement length', () => {
-			let testVar = 0;
+			let testVariable = 0;
 			const queue = new Queue();
 			queue.add(() => {
-				testVar = 1;
+				testVariable = 1;
 			});
 			queue.add(() => {
-				testVar = 2;
+				testVariable = 2;
 			});
 			queue.add(() => {
-				testVar = 3;
+				testVariable = 3;
 			});
 
 			queue.triggerFirst();
 
-			assert.equal(testVar, 1);
+			assert.equal(testVariable, 1);
 			assert.equal(queue.length, 2);
 		});
 
 		it('should call the callback with args when called with args', () => {
-			let testVar = 0;
+			let testVariable = 0;
 			const queue = new Queue();
 			queue.add((value1, value2) => {
-				testVar = value2;
+				testVariable = value2;
 			});
 			queue.add(() => {
-				testVar = 1;
+				testVariable = 1;
 			});
 			queue.add(() => {
-				testVar = 3;
+				testVariable = 3;
 			});
 
 			queue.triggerFirst([10, 5]);
 
-			assert.equal(testVar, 5);
+			assert.equal(testVariable, 5);
 		});
 
 		it('should call the callback with context when trigger is called with an id and context', () => {
-			let testVar = 0;
+			let testVariable = 0;
 			const instance = new TestClass();
 			const queue = new Queue();
 			queue.add(function() {
-				testVar = this;
+				testVariable = this;
 			});
 			queue.add(() => {
-				testVar = 1;
+				testVariable = 1;
 			});
 			queue.add(() => {
-				testVar = 3;
+				testVariable = 3;
 			});
 
 			queue.triggerFirst([], instance);
 
-			assert.equal(testVar, instance);
+			assert.equal(testVariable, instance);
 		});
 
 		it('should be busy when a callback is triggered', () => {
-			let testVar = 0;
+			let testVariable = 0;
 			const queue = new Queue();
 			queue.add(function() {
-				testVar = queue.isBusy;
+				testVariable = queue.isBusy;
 			});
 			queue.add(() => {
-				testVar = 1;
+				testVariable = 1;
 			});
 			queue.add(() => {
-				testVar = 3;
+				testVariable = 3;
 			});
 
 			queue.triggerFirst();
 
-			assert.equal(testVar, true);
+			assert.equal(testVariable, true);
 		});
 	});
 
 	describe('.bindTo', () => {
 		it('should set the context of each callback when trigger is called without an id', () => {
-			let testVar = 0;
+			let testVariable = 0;
 			const point = new TestClass();
 			const queue = new Queue().bindTo(point);
 			queue.add(function() {
 				if (this === point) {
-					testVar++;
+					testVariable++;
 				}
 			});
 			queue.add(function() {
 				if (this === point) {
-					testVar++;
+					testVariable++;
 				}
 			});
 			queue.add(function() {
 				if (this === point) {
-					testVar++;
+					testVariable++;
 				}
 			});
 
 			queue.trigger();
 
-			assert.equal(testVar, 3);
+			assert.equal(testVariable, 3);
 		});
 
 		it('should set the context of each callback if bindTo is called after callbacks are added', () => {
-			let testVar = 0;
+			let testVariable = 0;
 			const point = new TestClass();
 			const queue = new Queue();
 			queue.add(function() {
 				if (this === point) {
-					testVar++;
+					testVariable++;
 				}
 			});
 			queue.add(function() {
 				if (this === point) {
-					testVar++;
+					testVariable++;
 				}
 			});
 			queue.add(function() {
 				if (this === point) {
-					testVar++;
+					testVariable++;
 				}
 			});
 
 			queue.bindTo(point).trigger();
 
-			assert.equal(testVar, 3);
+			assert.equal(testVariable, 3);
 		});
 
 		it(
 			'should set the context of each callback when trigger is called without an id and context is provided',
 			() => {
-				let testVar = 0;
+				let testVariable = 0;
 				const point = new TestClass();
 				const point2 = new TestClass();
 				const queue = new Queue().bindTo(point);
 				queue.add(function() {
 					if (this === point) {
-						testVar++;
+						testVariable++;
 					}
 				});
 				queue.add(function() {
 					if (this === point) {
-						testVar++;
+						testVariable++;
 					}
 				});
 				queue.add(function() {
 					if (this === point) {
-						testVar++;
+						testVariable++;
 					}
 				});
 
 				queue.trigger(null, [], point2);
 
-				assert.equal(testVar, 3);
+				assert.equal(testVariable, 3);
 			}
 		);
 
 		it('should set the context of the callback when trigger is called with an id', () => {
-			let testVar = 0;
+			let testVariable = 0;
 			const point = new TestClass();
 			const queue = new Queue().bindTo(point);
 			queue.add(function() {
 				if (this === point) {
-					testVar++;
+					testVariable++;
 				}
 			});
 			const id = queue.add(function() {
 				if (this === point) {
-					testVar++;
+					testVariable++;
 				}
 			});
 			queue.add(function() {
 				if (this === point) {
-					testVar++;
+					testVariable++;
 				}
 			});
 
 			queue.trigger(id);
 
-			assert.equal(testVar, 1);
+			assert.equal(testVariable, 1);
 		});
 
 		it('should set the context of the callback when trigger is called with an id and context is provided', () => {
-			let testVar = 0;
+			let testVariable = 0;
 			const point = new TestClass();
 			const point2 = new TestClass();
 			const queue = new Queue().bindTo(point);
 			queue.add(function() {
 				if (this === point) {
-					testVar++;
+					testVariable++;
 				}
 			});
 			const id = queue.add(function() {
 				if (this === point) {
-					testVar++;
+					testVariable++;
 				}
 			});
 			queue.add(function() {
 				if (this === point) {
-					testVar++;
+					testVariable++;
 				}
 			});
 
 			queue.trigger(id, [], point2);
 
-			assert.equal(testVar, 1);
+			assert.equal(testVariable, 1);
 		});
 
 		it('should set the context of the callback when triggerFirst is called', () => {
-			let testVar = 0;
+			let testVariable = 0;
 			const point = new TestClass();
 			const queue = new Queue().bindTo(point);
 			queue.add(function() {
 				if (this === point) {
-					testVar++;
+					testVariable++;
 				}
 			});
 			queue.add(function() {
 				if (this === point) {
-					testVar++;
+					testVariable++;
 				}
 			});
 			queue.add(function() {
 				if (this === point) {
-					testVar++;
+					testVariable++;
 				}
 			});
 
 			queue.triggerFirst();
 
-			assert.equal(testVar, 1);
+			assert.equal(testVariable, 1);
 		});
 
 		it('should set the context of the callback when triggerFirst is called and context is provided', () => {
-			let testVar = 0;
+			let testVariable = 0;
 			const point = new TestClass();
 			const point2 = new TestClass();
 			const queue = new Queue().bindTo(point);
 			queue.add(function() {
 				if (this === point) {
-					testVar++;
+					testVariable++;
 				}
 			});
 			queue.add(function() {
 				if (this === point) {
-					testVar++;
+					testVariable++;
 				}
 			});
 			queue.add(function() {
 				if (this === point) {
-					testVar++;
+					testVariable++;
 				}
 			});
 
 			queue.triggerFirst([], point2);
 
-			assert.equal(testVar, 1);
+			assert.equal(testVariable, 1);
 		});
 	});
 });

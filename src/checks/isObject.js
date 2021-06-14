@@ -1,7 +1,7 @@
 import isJson from './isJson.js';
 
 /**
- * Check if a value is a plain object
+ * Check if a value is a plain object.
  *
  * @example
  * ``` javascript
@@ -20,10 +20,10 @@ import isJson from './isJson.js';
  * @function is.object
  * @alias isObject
  *
- * @arg {*} value
- * @arg {Boolean} [coerce=false] - If true then see if the value can be coerced into an Object
+ * @param {*} value - The value to check.
+ * @param {boolean} [coerce=false] - If true then see if the value can be coerced into an Object.
  *
- * @returns {Boolean}
+ * @returns {boolean}
  */
 export default (value, coerce) => {
 	return Boolean(value) && (value.constructor === Object || (coerce === true && typeof value === 'string' && value.charAt(0) === '{' && isJson(value)));

@@ -22,7 +22,7 @@
     * [.length](#Queue+length) ⇒ <code>number</code>
     * [.isBusy](#Queue+isBusy) ⇒ <code>boolean</code>
     * [.bindTo(context)](#Queue+bindTo) ⇒ <code>object</code> \| <code>this</code>
-    * [.add(callback)](#Queue+add) ⇒ <code>Number</code>
+    * [.add(callback)](#Queue+add) ⇒ <code>number</code>
     * [.discard(id)](#Queue+discard) ⇒ <code>this</code>
     * [.discardAll()](#Queue+discardAll)
     * [.trigger([id], [extraArguments], [context])](#Queue+trigger) ⇒ <code>this</code>
@@ -63,10 +63,10 @@
 
 <br><a name="Queue+add"></a>
 
-### queue.add(callback) ⇒ <code>Number</code>
+### queue.add(callback) ⇒ <code>number</code>
 > Add a callback to the queue.
 
-**Returns**: <code>Number</code> - A unique id for this callback.  
+**Returns**: <code>number</code> - A unique id for this callback.  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -81,7 +81,7 @@
 
 | Param | Type | Description |
 | --- | --- | --- |
-| id | <code>Number</code> | The id returned by Queue.add(), or the same callback passed in to Queue.add() |
+| id | <code>number</code> | The id returned by Queue.add(), or the same callback passed in to Queue.add(). |
 
 
 <br><a name="Queue+discardAll"></a>
@@ -98,9 +98,9 @@
 
 | Param | Type | Description |
 | --- | --- | --- |
-| [id] | <code>Number</code> | To trigger only a specific callback, provide the id returned by Queue.add().    Otherwise all callbacks are called. |
+| [id] | <code>number</code> | To trigger only a specific callback, provide the id returned by Queue.add(). Otherwise all callbacks are called. |
 | [extraArguments] | <code>Array</code> | Array of arguments to apply to each callback. |
-| [context] | <code>Array</code> | Ignored if bindTo is set |
+| [context] | <code>Array</code> | Ignored if bindTo is set. |
 
 
 <br><a name="Queue+triggerFirst"></a>
@@ -112,7 +112,7 @@
 | Param | Type | Description |
 | --- | --- | --- |
 | [extraArguments] | <code>Array</code> | Array of arguments to apply to each callback. |
-| [context] | <code>Array</code> | "this" applied to the callback |
+| [context] | <code>Array</code> | The context, or "this", applied to the callback. |
 
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg

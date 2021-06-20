@@ -19,25 +19,29 @@
 
 * [Removable](#Removable)
     * [new Removable()](#new_Removable_new)
-    * [.isRemoved](#Removable+isRemoved) ⇒ <code>Boolean</code>
+    * [.isRemoved](#Removable+isRemoved) ⇒ <code>boolean</code>
 
 
 <br><a name="new_Removable_new"></a>
 
 ### new Removable()
-> ``` javascript> import { Removable } from 'type-enforcer';> > class MyClass extends Removable {}> ```
+> ``` javascript
+> import { Removable } from 'type-enforcer';
+> 
+> class MyClass extends Removable {}
+> ```
 
 
 <br><a name="Removable+isRemoved"></a>
 
-### removable.isRemoved ⇒ <code>Boolean</code>
+### removable.isRemoved ⇒ <code>boolean</code>
 > If the returned value is true then remove has been called.
 
 
 <br><a name="remove"></a>
 
 ## .remove()
-> Calls all the onRemove callbacks and sets isRemoved to true
+> Calls all the onRemove callbacks and sets isRemoved to true.
 
 
 <br><a name="onRemove"></a>

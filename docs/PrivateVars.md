@@ -17,18 +17,17 @@
 > A thin wrapper over WeakMap for storing private variables
 
 
-<br><a name="set"></a>
+<br><a name="PrivateVars+set"></a>
 
-## .set(key, [value]) ⇒ <code>\*</code>
-> Sets a value in the WeakMap
+### privateVars.set(key, [value]) ⇒ <code>\*</code>
+> Sets a value in the WeakMap.
 
-**Returns**: <code>\*</code> - The value provided  
-**Methodof**: PrivateVars  
+**Returns**: <code>\*</code> - The value provided.  
 
-| Param | Type | Default |
-| --- | --- | --- |
-| key | <code>\*</code> |  | 
-| [value] | <code>\*</code> | <code>{}</code> | 
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| key | <code>\*</code> |  | The key for the variables. Usually "this". |
+| [value] | <code>\*</code> | <code>{}</code> | An object with private variables. |
 
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg

@@ -60,7 +60,17 @@
 | expected | <code>\*</code> | 
 
 **Example**  
-``` javascriptimport { assert } from 'type-enforcer';assert.is(12, 12);assert.is([], []);// => AssertionErrorconst array = [];assert.is(array, array);```
+``` javascript
+import { assert } from 'type-enforcer';
+
+assert.is(12, 12);
+
+assert.is([], []);
+// => AssertionError
+
+const array = [];
+assert.is(array, array);
+```
 
 <br><a name="assert.notIs"></a>
 
@@ -74,7 +84,18 @@
 | expected | <code>\*</code> | 
 
 **Example**  
-``` javascriptimport { assert } from 'type-enforcer';assert.notIs(12, 12);// => AssertionErrorassert.notIs([], []);const array = [];assert.notIs(array, array);// => AssertionError```
+``` javascript
+import { assert } from 'type-enforcer';
+
+assert.notIs(12, 12);
+// => AssertionError
+
+assert.notIs([], []);
+
+const array = [];
+assert.notIs(array, array);
+// => AssertionError
+```
 
 <br><a name="assert.equal"></a>
 
@@ -88,7 +109,16 @@
 | expected | <code>\*</code> | 
 
 **Example**  
-``` javascriptimport { assert } from 'type-enforcer';assert.equal(12, 12);assert.equal([], []);assert.equal([1, 2, 3], [1, 2, 4]);// => AssertionError```
+``` javascript
+import { assert } from 'type-enforcer';
+
+assert.equal(12, 12);
+
+assert.equal([], []);
+
+assert.equal([1, 2, 3], [1, 2, 4]);
+// => AssertionError
+```
 
 <br><a name="assert.notEqual"></a>
 
@@ -102,7 +132,17 @@
 | expected | <code>\*</code> | 
 
 **Example**  
-``` javascriptimport { assert } from 'type-enforcer';assert.notEqual(12, 12);// => AssertionErrorassert.notEqual([], []);// => AssertionErrorassert.notEqual([1, 2, 3], [1, 2, 4]);```
+``` javascript
+import { assert } from 'type-enforcer';
+
+assert.notEqual(12, 12);
+// => AssertionError
+
+assert.notEqual([], []);
+// => AssertionError
+
+assert.notEqual([1, 2, 3], [1, 2, 4]);
+```
 
 <br><a name="assert.moreThan"></a>
 
@@ -116,7 +156,14 @@
 | rightOperand | <code>\*</code> | 
 
 **Example**  
-``` javascriptimport { assert } from 'type-enforcer';assert.moreThan(12, 10);assert.moreThan(10, 12);// => AssertionError```
+``` javascript
+import { assert } from 'type-enforcer';
+
+assert.moreThan(12, 10);
+
+assert.moreThan(10, 12);
+// => AssertionError
+```
 
 <br><a name="assert.atLeast"></a>
 
@@ -130,7 +177,14 @@
 | rightOperand | <code>\*</code> | 
 
 **Example**  
-``` javascriptimport { assert } from 'type-enforcer';assert.atLeast(10, 10);assert.atLeast(10, 12);// => AssertionError```
+``` javascript
+import { assert } from 'type-enforcer';
+
+assert.atLeast(10, 10);
+
+assert.atLeast(10, 12);
+// => AssertionError
+```
 
 <br><a name="assert.lessThan"></a>
 
@@ -144,7 +198,14 @@
 | rightOperand | <code>\*</code> | 
 
 **Example**  
-``` javascriptimport { assert } from 'type-enforcer';assert.lessThan(10, 12);assert.lessThan(12, 10);// => AssertionError```
+``` javascript
+import { assert } from 'type-enforcer';
+
+assert.lessThan(10, 12);
+
+assert.lessThan(12, 10);
+// => AssertionError
+```
 
 <br><a name="assert.atMost"></a>
 
@@ -158,7 +219,14 @@
 | rightOperand | <code>\*</code> | 
 
 **Example**  
-``` javascriptimport { assert } from 'type-enforcer';assert.atMost(10, 10);assert.atMost(10, 12);// => AssertionError```
+``` javascript
+import { assert } from 'type-enforcer';
+
+assert.atMost(10, 10);
+
+assert.atMost(10, 12);
+// => AssertionError
+```
 
 <br><a name="assert.throws"></a>
 

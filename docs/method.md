@@ -17,7 +17,42 @@
 > Enforce data types and remove common boilerplate code on class methods.
 
 **Example**  
-``` javascriptimport { method } from 'type-enforcer';// Or import individual functionsimport { methodBoolean, methodString } from 'type-enforcer';// Use it as a prototype:const Thing = function() {};Thing.prototype.myMethod = method.string([options]);// or in a class:class Thing() {}Thing.prototype.myMethod = method.string([options]);// or as a non-prototype method:const Thing = function() {    this.myMethod = method.string([options]);};```##### Extending methodsmethodAny and all methods that extend it have a static method ".extend" that creates a new method. It accepts two args:- The first arg should be an object with default options. These options override any options in the method being extended.- The second arg (optional) should be a function that gets called when a method is initialized. This function is passed one arg, the options for this method.These methods also have a static method ".defaults" that mutates the default options for that method. For instance, if you would prefer that methodBoolean didn't have a default value of false, then you could use the following:``` javascriptmethodBoolean.defaults({init: undefined});```<br>
+``` javascript
+import { method } from 'type-enforcer';
+
+// Or import individual functions
+import { methodBoolean, methodString } from 'type-enforcer';
+
+
+// Use it as a prototype:
+const Thing = function() {};
+
+Thing.prototype.myMethod = method.string([options]);
+
+
+// or in a class:
+class Thing() {}
+
+Thing.prototype.myMethod = method.string([options]);
+
+
+// or as a non-prototype method:
+const Thing = function() {
+    this.myMethod = method.string([options]);
+};
+```
+
+##### Extending methods
+methodAny and all methods that extend it have a static method ".extend" that creates a new method. It accepts two args:
+- The first arg should be an object with default options. These options override any options in the method being extended.
+- The second arg (optional) should be a function that gets called when a method is initialized. This function is passed one arg, the options for this method.
+
+These methods also have a static method ".defaults" that mutates the default options for that method. For instance, if you would prefer that methodBoolean didn't have a default value of false, then you could use the following:
+``` javascript
+methodBoolean.defaults({init: undefined});
+```
+
+<br>
 
 * [method](#method) : <code>object</code>
     * [.any([options])](#method.any) ⇒ <code>function</code>
@@ -54,18 +89,49 @@
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [options] | <code>Object</code> |  |  |
+| [options] | <code>object</code> |  |  |
 | [options.init] | <code>\*</code> |  | The initial value |
-| [options.enforce] | <code>function</code>, <code>String</code>, <code>Symbol</code> |  | Enforce this data type.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name. |
-| [options.compare] | <code>function</code>, <code>String</code>, <code>Symbol</code> |  | Compares a new value to the current value. Return true if the two values are different.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name. |
-| [options.before] | <code>function</code>, <code>String</code>, <code>Symbol</code> |  | Called before a new valid value is set. Provides the prior value.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name. |
-| [options.set] | <code>function</code>, <code>String</code>, <code>Symbol</code> |  | Called after a new valid value is set. Provides the new value.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name. |
-| [options.get] | <code>function</code>, <code>String</code>, <code>Symbol</code> |  | Called to get the value.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name. |
+| [options.enforce] | <code>function</code>, <code>string</code>, <code>symbol</code> |  | Enforce this data type.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name. |
+| [options.compare] | <code>function</code>, <code>string</code>, <code>symbol</code> |  | Compares a new value to the current value. Return true if the two values are different.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name. |
+| [options.before] | <code>function</code>, <code>string</code>, <code>symbol</code> |  | Called before a new valid value is set. Provides the prior value.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name. |
+| [options.set] | <code>function</code>, <code>string</code>, <code>symbol</code> |  | Called after a new valid value is set. Provides the new value.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name. |
+| [options.get] | <code>function</code>, <code>string</code>, <code>symbol</code> |  | Called to get the value.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name. |
 | [options.other] | <code>Array</code>, <code>\*</code> |  | Another value/type or array of other values/types that can be set |
-| [options.stringify] | <code>Boolean</code> | <code>false</code> | If true, then call toString() on the value before returning it (if the value has a toString method) |
+| [options.stringify] | <code>boolean</code> | <code>false</code> | If true, then call toString() on the value before returning it (if the value has a toString method) |
 
 **Example**  
-``` javascriptimport { method } from 'type-enforcer';const Widget = function() {    someMethod = method.any({        set(newValue) {            console.log(this);            console.log(newValue);        }    });    anotherMethod = method.any();    thirdMethod = method.any({        get(newValue) {            return 'item 2';        }    });};const widget = new Widget();widget.someMethod('a').anotherMethod(42).thirdMethod('item 1');// => console.log widget and 'a'widget.someMethod();// => 'a'widget.anotherMethod();// => 42widget.thirdMethod();// => 'item 2'```
+``` javascript
+import { method } from 'type-enforcer';
+
+const Widget = function() {
+    someMethod = method.any({
+        set(newValue) {
+            console.log(this);
+            console.log(newValue);
+        }
+    });
+    anotherMethod = method.any();
+    thirdMethod = method.any({
+        get(newValue) {
+            return 'item 2';
+        }
+    });
+};
+
+const widget = new Widget();
+
+widget.someMethod('a').anotherMethod(42).thirdMethod('item 1');
+// => console.log widget and 'a'
+
+widget.someMethod();
+// => 'a'
+
+widget.anotherMethod();
+// => 42
+
+widget.thirdMethod();
+// => 'item 2'
+```
 
 <br><a name="method.array"></a>
 
@@ -78,12 +144,12 @@
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options] | <code>object</code> |  | Same as [any](#method.any) with the following differences: |
 | [options.init] | <code>\*</code> | <code>[]</code> |  |
 | [options.enforce] | <code>function</code> | <code>enforce.array</code> |  |
 | [options.compare] | <code>function</code> | <code>deepCompare</code> | Performs a deep comparison between values |
-| [options.deep] | <code>Boolean</code> | <code>true</code> | If false then only use strict equality |
-| [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+| [options.deep] | <code>boolean</code> | <code>true</code> | If false then only use strict equality |
+| [options.coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 
 <br><a name="method.boolean"></a>
@@ -97,10 +163,10 @@
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options] | <code>object</code> |  | Same as [any](#method.any) with the following differences: |
 | [options.init] | <code>\*</code> | <code>false</code> |  |
 | [options.enforce] | <code>function</code> | <code>enforce.boolean</code> |  |
-| [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+| [options.coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 
 <br><a name="method.date"></a>
@@ -114,9 +180,9 @@
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options] | <code>object</code> |  | Same as [any](#method.any) with the following differences: |
 | [options.enforce] | <code>function</code> | <code>enforce.date</code> |  |
-| [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+| [options.coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 
 <br><a name="method.enum"></a>
@@ -130,7 +196,7 @@
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options] | <code>object</code> |  | Same as [any](#method.any) with the following differences: |
 | [options.enforce] | <code>function</code> | <code>enforce.enum</code> |  |
 | options.enum | <code>Enum</code> |  | An enum to restrict the values to. |
 
@@ -146,11 +212,11 @@
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options] | <code>object</code> |  | Same as [any](#method.any) with the following differences: |
 | [options.enforce] | <code>function</code> | <code>enforce.float</code> |  |
-| [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
-| [options.min] | <code>Number</code> |  | Passed to enforce.float |
-| [options.max] | <code>Number</code> |  | Passed to enforce.float |
+| [options.coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
+| [options.min] | <code>number</code> |  | Passed to enforce.float |
+| [options.max] | <code>number</code> |  | Passed to enforce.float |
 
 
 <br><a name="method.function"></a>
@@ -164,7 +230,7 @@
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options] | <code>object</code> |  | Same as [any](#method.any) with the following differences: |
 | [options.enforce] | <code>function</code> | <code>enforce.function</code> |  |
 | [options.bind] | <code>boolean</code> | <code>true</code> | Binds the set function to the same context as the method. |
 
@@ -180,9 +246,9 @@
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
-| [options.enforce] | <code>function</code> | <code>enforce.instanceOf</code> |  |
-| [options.instanceOf] | <code>Constructor</code> |  | The item to run enforce.instanceOf against |
+| [options] | <code>object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options.enforce] | <code>function</code> | <code>enforce.instanceOf</code> | Enforce function. |
+| [options.instanceOf] | <code>function</code> |  | The constructor to run enforce.instanceOf against |
 
 
 <br><a name="method.int"></a>
@@ -196,11 +262,11 @@
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options] | <code>object</code> |  | Same as [any](#method.any) with the following differences: |
 | [options.enforce] | <code>function</code> | <code>enforce.int</code> |  |
-| [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
-| [options.min] | <code>Number</code> |  | Passed to enforce.int |
-| [options.max] | <code>Number</code> |  | Passed to enforce.int |
+| [options.coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
+| [options.min] | <code>number</code> |  | Passed to enforce.int |
+| [options.max] | <code>number</code> |  | Passed to enforce.int |
 
 
 <br><a name="method.keyValue"></a>
@@ -210,11 +276,11 @@
 
 **Alias:** `methodKeyValue`
 
-**Returns**: <code>function</code> - Accepts a new value and returns the methods constructor (allows chaining), or if no args are passed returns the output of options.get  
+**Returns**: <code>function</code> - Accepts a new value and returns the methods constructor (allows chaining), or if no args are passed returns the output of options.get.  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| [options] | <code>Object</code> |  |
+| [options] | <code>object</code> | Options object. |
 | [options.set] | <code>function</code> | Called for each key/value pair applied. Provides two args, the key and value, and sets the context to the methods constructor. |
 | [options.get] | <code>function</code> | Called if the method is called with a single, non-object, arg. Provides the same arg, sets the context to the methods constructor. |
 
@@ -230,9 +296,9 @@
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options] | <code>object</code> |  | Same as [any](#method.any) with the following differences: |
 | [options.enforce] | <code>function</code> | <code>enforce.map</code> |  |
-| [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+| [options.coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 
 <br><a name="method.number"></a>
@@ -246,11 +312,11 @@
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options] | <code>object</code> |  | Same as [any](#method.any) with the following differences: |
 | [options.enforce] | <code>function</code> | <code>enforce.number</code> |  |
-| [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
-| [options.min] | <code>Number</code> |  | Passed to enforce.number |
-| [options.max] | <code>Number</code> |  | Passed to enforce.number |
+| [options.coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
+| [options.min] | <code>number</code> |  | Passed to enforce.number |
+| [options.max] | <code>number</code> |  | Passed to enforce.number |
 
 
 <br><a name="method.object"></a>
@@ -264,11 +330,11 @@
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options] | <code>object</code> |  | Same as [any](#method.any) with the following differences: |
 | [options.enforce] | <code>function</code> | <code>enforce.object</code> |  |
 | [options.compare] | <code>function</code> | <code>deepCompare</code> | Performs a deep comparison between values |
-| [options.deep] | <code>Boolean</code> | <code>true</code> | If false then only use strict equality |
-| [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+| [options.deep] | <code>boolean</code> | <code>true</code> | If false then only use strict equality |
+| [options.coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 
 <br><a name="method.promise"></a>
@@ -282,7 +348,7 @@
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options] | <code>object</code> |  | Same as [any](#method.any) with the following differences: |
 | [options.enforce] | <code>function</code> | <code>enforce.promise</code> |  |
 
 
@@ -293,11 +359,11 @@
 
 **Alias:** `methodQueue`
 
-**Returns**: <code>function</code> - accepts a new value and returns the methods constructor (allows chaining), or if no args are passed returns the instance of Queue  
+**Returns**: <code>function</code> - Accepts a new value and returns the methods constructor (allows chaining), or if no args are passed returns the instance of Queue.  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| [options] | <code>Object</code> |  |
+| [options] | <code>object</code> | Options object. |
 | [options.set] | <code>function</code> | Called after a new callback is added to the queue. Provides a reference to the queue, the new id for the callback, the callback, and sets the context to the methods constructor. |
 
 
@@ -312,10 +378,10 @@
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options] | <code>object</code> |  | Same as [any](#method.any) with the following differences: |
 | [options.init] | <code>\*</code> | <code>&#x27;&#x27;</code> |  |
 | [options.enforce] | <code>function</code> | <code>enforce.string</code> |  |
-| [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+| [options.coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 
 <br><a name="method.set"></a>
@@ -329,9 +395,9 @@
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options] | <code>object</code> |  | Same as [any](#method.any) with the following differences: |
 | [options.enforce] | <code>function</code> | <code>enforce.set</code> |  |
-| [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+| [options.coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 
 <br><a name="method.string"></a>
@@ -345,10 +411,10 @@
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options] | <code>object</code> |  | Same as [any](#method.any) with the following differences: |
 | [options.init] | <code>\*</code> | <code>&#x27;&#x27;</code> |  |
 | [options.enforce] | <code>function</code> | <code>enforce.string</code> |  |
-| [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+| [options.coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 
 <br><a name="method.symbol"></a>
@@ -362,9 +428,9 @@
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options] | <code>object</code> |  | Same as [any](#method.any) with the following differences: |
 | [options.enforce] | <code>function</code> | <code>enforce.symbol</code> |  |
-| [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+| [options.coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 
 <br><a name="method.weakMap"></a>
@@ -378,9 +444,9 @@
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options] | <code>object</code> |  | Same as [any](#method.any) with the following differences: |
 | [options.enforce] | <code>function</code> | <code>enforce.weakMap</code> |  |
-| [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+| [options.coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 
 <br><a name="method.weakSet"></a>
@@ -394,9 +460,9 @@
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [options] | <code>Object</code> |  | Same as [any](#method.any) with the following differences: |
+| [options] | <code>object</code> |  | Same as [any](#method.any) with the following differences: |
 | [options.enforce] | <code>function</code> | <code>enforce.weakSet</code> |  |
-| [options.coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+| [options.coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg

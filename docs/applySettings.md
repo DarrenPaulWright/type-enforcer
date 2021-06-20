@@ -19,8 +19,8 @@
 
 | Param | Type | Description |
 | --- | --- | --- |
-| target | <code>Object</code> | The target to apply the settings to. |
-| settings | <code>Object</code> |  |
+| target | <code>object</code> | The target to apply the settings to. |
+| settings | <code>object</code> | Setting object. |
 | [priority] | <code>Array</code> | Array of method names to apply first, if they are actually in the settings. Methods are called in the order provided in this array. |
 | [deferred] | <code>Array</code> | Array of method names to apply last, if they are actually in the settings. Methods are called in the order provided in this array. |
 

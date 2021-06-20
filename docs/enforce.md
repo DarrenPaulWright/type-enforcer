@@ -17,27 +17,39 @@
 > Utility functions for enforcing data types.
 
 **Example**  
-``` javascriptimport { enforce } from 'type-enforcer';// Or import individual functionsimport { enforceBoolean, enforceString } from 'type-enforcer';```##### Extending enforcersAll enforcers with a "coerce" option also have a static method ".extend" that creates a new enforcer. It accepts two args:- The first arg should be a valid check function that accepts a second "coerce" arg.- The second arg should be a function that coerces a coercible value (as determined by the check function).<br>
+``` javascript
+import { enforce } from 'type-enforcer';
+
+// Or import individual functions
+import { enforceBoolean, enforceString } from 'type-enforcer';
+```
+
+##### Extending enforcers
+All enforcers with a "coerce" option also have a static method ".extend" that creates a new enforcer. It accepts two args:
+- The first arg should be a valid check function that accepts a second "coerce" arg.
+- The second arg should be a function that coerces a coercible value (as determined by the check function).
+
+<br>
 
 * [enforce](#enforce) : <code>object</code>
     * [.array(value, alt, [coerce])](#enforce.array) ⇒ <code>Array</code>
-    * [.boolean(value, alt, [coerce])](#enforce.boolean) ⇒ <code>Boolean</code>
+    * [.boolean(value, alt, [coerce])](#enforce.boolean) ⇒ <code>boolean</code>
     * [.date(value, alt, [coerce])](#enforce.date) ⇒ <code>Date</code>
-    * [.enum(value, enumerable, alt)](#enforce.enum) ⇒ <code>String</code>
-    * [.float(value, alt, [coerce], [minValue], [maxValue])](#enforce.float) ⇒ <code>int</code>
+    * [.enum(value, enumerable, alt)](#enforce.enum) ⇒ <code>string</code>
+    * [.float(value, alt, [coerce], [minValue], [maxValue])](#enforce.float) ⇒ <code>number.int</code>
     * [.function(value, alt)](#enforce.function) ⇒ <code>function</code>
-    * [.instanceOf(value, constructor, alt)](#enforce.instanceOf) ⇒ <code>Object</code>
-    * [.integer(value, alt, [coerce], [minValue], [maxValue])](#enforce.integer) ⇒ <code>int</code>
-    * [.map(value, alt, [coerce])](#enforce.map) ⇒ <code>Object</code>
-    * [.number(value, alt, [coerce], [minValue], [maxValue])](#enforce.number) ⇒ <code>Number</code>
-    * [.object(value, alt, [coerce])](#enforce.object) ⇒ <code>Object</code>
+    * [.instanceOf(value, constructor, alt)](#enforce.instanceOf) ⇒ <code>object</code>
+    * [.integer(value, alt, [coerce], [minValue], [maxValue])](#enforce.integer) ⇒ <code>number.int</code>
+    * [.map(value, alt, [coerce])](#enforce.map) ⇒ <code>object</code>
+    * [.number(value, alt, [coerce], [minValue], [maxValue])](#enforce.number) ⇒ <code>number</code>
+    * [.object(value, alt, [coerce])](#enforce.object) ⇒ <code>object</code>
     * [.promise(value, alt, [coerce])](#enforce.promise) ⇒ <code>Promise</code>
     * [.regExp(value, alt, [coerce])](#enforce.regExp) ⇒ <code>RegExp</code>
-    * [.set(value, alt, [coerce])](#enforce.set) ⇒ <code>Object</code>
-    * [.string(value, alt, [coerce])](#enforce.string) ⇒ <code>String</code>
-    * [.symbol(value, alt, [coerce])](#enforce.symbol) ⇒ <code>Object</code>
-    * [.weakMap(value, alt, [coerce])](#enforce.weakMap) ⇒ <code>Object</code>
-    * [.weakSet(value, alt, [coerce])](#enforce.weakSet) ⇒ <code>Object</code>
+    * [.set(value, alt, [coerce])](#enforce.set) ⇒ <code>object</code>
+    * [.string(value, alt, [coerce])](#enforce.string) ⇒ <code>string</code>
+    * [.symbol(value, alt, [coerce])](#enforce.symbol) ⇒ <code>object</code>
+    * [.weakMap(value, alt, [coerce])](#enforce.weakMap) ⇒ <code>object</code>
+    * [.weakSet(value, alt, [coerce])](#enforce.weakSet) ⇒ <code>object</code>
 
 
 <br><a name="enforce.array"></a>
@@ -52,14 +64,25 @@
 | --- | --- | --- | --- |
 | value | <code>\*</code> |  |  |
 | alt | <code>Array</code> |  | Returned if the value is not the correct type |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+| [coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 **Example**  
-``` javascriptimport { enforce } from 'type-enforcer';enforce.array(['a string'], ['alt']);// => ['a string']enforce.array('[]', ['alt']);// => ['alt']enforce.array('[]', ['alt'], true);// => []```
+``` javascript
+import { enforce } from 'type-enforcer';
+
+enforce.array(['a string'], ['alt']);
+// => ['a string']
+
+enforce.array('[]', ['alt']);
+// => ['alt']
+
+enforce.array('[]', ['alt'], true);
+// => []
+```
 
 <br><a name="enforce.boolean"></a>
 
-### enforce.boolean(value, alt, [coerce]) ⇒ <code>Boolean</code>
+### enforce.boolean(value, alt, [coerce]) ⇒ <code>boolean</code>
 > Enforce that a value is a boolean. Uses [isBoolean](docs/checks.md#isBoolean).
 
 **Alias:** `enforceBoolean`
@@ -68,11 +91,22 @@
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | value | <code>\*</code> |  |  |
-| alt | <code>Boolean</code> |  | Returned if the value is not the correct type |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+| alt | <code>boolean</code> |  | Returned if the value is not the correct type |
+| [coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 **Example**  
-``` javascriptimport { enforce } from 'type-enforcer';enforce.boolean(false, true);// => falseenforce.boolean('', true);// => trueenforce.boolean('', true, true);// => false```
+``` javascript
+import { enforce } from 'type-enforcer';
+
+enforce.boolean(false, true);
+// => false
+
+enforce.boolean('', true);
+// => true
+
+enforce.boolean('', true, true);
+// => false
+```
 
 <br><a name="enforce.date"></a>
 
@@ -86,31 +120,55 @@
 | --- | --- | --- | --- |
 | value | <code>\*</code> |  |  |
 | alt | <code>Date</code> |  | Returned if the value is not the correct type |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+| [coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 **Example**  
-``` javascriptimport { enforce } from 'type-enforcer';enforce.date(new Date('10/12/1980'), new Date('1/1/2000'));// => date of 10/12/1980enforce.date('10/12/1980', new Date('1/1/2000'));// => date of 1/1/2000enforce.date('10/12/1980', new Date('1/1/2000'), true);// => date of 10/12/1980```
+``` javascript
+import { enforce } from 'type-enforcer';
+
+enforce.date(new Date('10/12/1980'), new Date('1/1/2000'));
+// => date of 10/12/1980
+
+enforce.date('10/12/1980', new Date('1/1/2000'));
+// => date of 1/1/2000
+
+enforce.date('10/12/1980', new Date('1/1/2000'), true);
+// => date of 10/12/1980
+```
 
 <br><a name="enforce.enum"></a>
 
-### enforce.enum(value, enumerable, alt) ⇒ <code>String</code>
-> Enforce that a value exists in the provided [Enum](docs/Enum.md)
+### enforce.enum(value, enumerable, alt) ⇒ <code>string</code>
+> Enforce that a value exists in the provided [Enum](docs/Enum.md).
 
 **Alias:** `enforceEnum`
 
 
 | Param | Type | Description |
 | --- | --- | --- |
-| value | <code>\*</code> |  |
-| enumerable | <code>Enum</code> |  |
-| alt | <code>String</code> | Returned if the value is not the correct type |
+| value | <code>\*</code> | The value to enforce. |
+| enumerable | <code>Enum</code> | A valid enum. |
+| alt | <code>string</code> | Returned if the value is not the correct type. |
 
 **Example**  
-``` javascriptimport { enforce, Enum } from 'type-enforcer';const values = new Enum({    a: 'item a',    b: 'item b'});enforce.enum(values.a, values, values.b);// => 'item a'enforce.enum(values.c, values, values.b);// => 'item b'```
+``` javascript
+import { enforce, Enum } from 'type-enforcer';
+
+const values = new Enum({
+    a: 'item a',
+    b: 'item b'
+});
+
+enforce.enum(values.a, values, values.b);
+// => 'item a'
+
+enforce.enum(values.c, values, values.b);
+// => 'item b'
+```
 
 <br><a name="enforce.float"></a>
 
-### enforce.float(value, alt, [coerce], [minValue], [maxValue]) ⇒ <code>int</code>
+### enforce.float(value, alt, [coerce], [minValue], [maxValue]) ⇒ <code>number.int</code>
 > Enforce that a value is a finite float. Uses [isFloat](docs/checks.md#isFloat).
 
 **Alias:** `enforceFloat`
@@ -119,13 +177,24 @@
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | value | <code>\*</code> |  |  |
-| alt | <code>int</code> |  | Returned if the value is not the correct type |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
-| [minValue] | <code>int</code> |  |  |
-| [maxValue] | <code>int</code> |  |  |
+| alt | <code>number.int</code> |  | Returned if the value is not the correct type |
+| [coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
+| [minValue] | <code>number.int</code> |  |  |
+| [maxValue] | <code>number.int</code> |  |  |
 
 **Example**  
-``` javascriptimport { enforce } from 'type-enforcer';enforce.float(3.14159, 13.2);// => 3.14159enforce.float('3.14159', 13.2);// => 13.2enforce.float('3.14159', 13.2, true);// => 3.14159```
+``` javascript
+import { enforce } from 'type-enforcer';
+
+enforce.float(3.14159, 13.2);
+// => 3.14159
+
+enforce.float('3.14159', 13.2);
+// => 13.2
+
+enforce.float('3.14159', 13.2, true);
+// => 3.14159
+```
 
 <br><a name="enforce.function"></a>
 
@@ -137,15 +206,26 @@
 
 | Param | Type | Description |
 | --- | --- | --- |
-| value | <code>\*</code> |  |
-| alt | <code>function</code> | Returned if the value is not the correct type |
+| value | <code>\*</code> | The value to enforce. |
+| alt | <code>function</code> | Returned if the value is not the correct type. |
 
 **Example**  
-``` javascriptimport { enforce } from 'type-enforcer';const a = () => {};const b = () => {};enforce.function(a, b);// => aenforce.function('', b);// => b```
+``` javascript
+import { enforce } from 'type-enforcer';
+
+const a = () => {};
+const b = () => {};
+
+enforce.function(a, b);
+// => a
+
+enforce.function('', b);
+// => b
+```
 
 <br><a name="enforce.instanceOf"></a>
 
-### enforce.instanceOf(value, constructor, alt) ⇒ <code>Object</code>
+### enforce.instanceOf(value, constructor, alt) ⇒ <code>object</code>
 > Enforce that a value is an instance of a constructor. Uses [isInstanceOf](docs/checks.md#isInstanceOf).
 
 **Alias:** `enforceInstanceOf`
@@ -153,16 +233,31 @@
 
 | Param | Type | Description |
 | --- | --- | --- |
-| value | <code>\*</code> |  |
-| constructor | <code>function</code> |  |
-| alt | <code>Object</code> | Returned if the value is not the correct type |
+| value | <code>\*</code> | The value to enforce. |
+| constructor | <code>function</code> | A constructor function. |
+| alt | <code>object</code> | Returned if the value is not the correct type. |
 
 **Example**  
-``` javascriptimport { enforce } from 'type-enforcer';class A {};class C {};const a = new A();const b = new A();const c = new C();enforce.instanceOf(b, A, a); => benforce.instanceOf(c, A, a); => a```
+``` javascript
+import { enforce } from 'type-enforcer';
+
+class A {};
+class C {};
+
+const a = new A();
+const b = new A();
+const c = new C();
+
+enforce.instanceOf(b, A, a);
+ => b
+
+enforce.instanceOf(c, A, a);
+ => a
+```
 
 <br><a name="enforce.integer"></a>
 
-### enforce.integer(value, alt, [coerce], [minValue], [maxValue]) ⇒ <code>int</code>
+### enforce.integer(value, alt, [coerce], [minValue], [maxValue]) ⇒ <code>number.int</code>
 > Enforce that a value is a finite integer. Uses [isInteger](docs/checks.md#isInteger).
 
 **Alias:** `enforceInteger`
@@ -171,17 +266,28 @@
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | value | <code>\*</code> |  |  |
-| alt | <code>int</code> |  | Returned if the value is not the correct type |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
-| [minValue] | <code>int</code> |  |  |
-| [maxValue] | <code>int</code> |  |  |
+| alt | <code>number.int</code> |  | Returned if the value is not the correct type |
+| [coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
+| [minValue] | <code>number.int</code> |  |  |
+| [maxValue] | <code>number.int</code> |  |  |
 
 **Example**  
-``` javascriptimport { enforce } from 'type-enforcer';enforce.integer(42, 12);// => 42enforce.integer('42', 12);// => 12enforce.integer('42', 12, true);// => 42```
+``` javascript
+import { enforce } from 'type-enforcer';
+
+enforce.integer(42, 12);
+// => 42
+
+enforce.integer('42', 12);
+// => 12
+
+enforce.integer('42', 12, true);
+// => 42
+```
 
 <br><a name="enforce.map"></a>
 
-### enforce.map(value, alt, [coerce]) ⇒ <code>Object</code>
+### enforce.map(value, alt, [coerce]) ⇒ <code>object</code>
 > Enforce that a value is a Map. Uses [isMap](docs/checks.md#isMap).
 
 **Alias:** `enforceMap`
@@ -191,14 +297,25 @@
 | --- | --- | --- | --- |
 | value | <code>\*</code> |  |  |
 | alt | <code>Map</code> |  | Returned if the value is not the correct type |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+| [coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 **Example**  
-``` javascriptimport { enforce } from 'type-enforcer';const a = new Map();const b = new Map();enforce.map(a, b);// => aenforce.map('map', b);// => b```
+``` javascript
+import { enforce } from 'type-enforcer';
+
+const a = new Map();
+const b = new Map();
+
+enforce.map(a, b);
+// => a
+
+enforce.map('map', b);
+// => b
+```
 
 <br><a name="enforce.number"></a>
 
-### enforce.number(value, alt, [coerce], [minValue], [maxValue]) ⇒ <code>Number</code>
+### enforce.number(value, alt, [coerce], [minValue], [maxValue]) ⇒ <code>number</code>
 > Enforce that a value is a number (excluding NaN). Uses [isNumber](docs/checks.md#isNumber).
 
 **Alias:** `enforceNumber`
@@ -207,17 +324,31 @@
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | value | <code>\*</code> |  |  |
-| alt | <code>Number</code> |  | Returned if the value is not the correct type |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
-| [minValue] | <code>Number</code> | <code>-Infinity</code> |  |
-| [maxValue] | <code>Number</code> | <code>Infinity</code> |  |
+| alt | <code>number</code> |  | Returned if the value is not the correct type |
+| [coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
+| [minValue] | <code>number</code> | <code>-Infinity</code> |  |
+| [maxValue] | <code>number</code> | <code>Infinity</code> |  |
 
 **Example**  
-``` javascriptimport { enforce } from 'type-enforcer';enforce.number(3.14159, 13.2);// => 3.14159enforce.number('3.14159', 13.2);// => 13.2enforce.number('3.14159', 13.2, true);// => 3.14159enforce.number(Infinity, 13.2, true);// => Infinity```
+``` javascript
+import { enforce } from 'type-enforcer';
+
+enforce.number(3.14159, 13.2);
+// => 3.14159
+
+enforce.number('3.14159', 13.2);
+// => 13.2
+
+enforce.number('3.14159', 13.2, true);
+// => 3.14159
+
+enforce.number(Infinity, 13.2, true);
+// => Infinity
+```
 
 <br><a name="enforce.object"></a>
 
-### enforce.object(value, alt, [coerce]) ⇒ <code>Object</code>
+### enforce.object(value, alt, [coerce]) ⇒ <code>object</code>
 > Enforce that a value is an object. Uses [isObject](docs/checks.md#isObject).
 
 **Alias:** `enforceObject`
@@ -226,11 +357,25 @@
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | value | <code>\*</code> |  |  |
-| alt | <code>Object</code> |  | Returned if the value is not the correct type |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+| alt | <code>object</code> |  | Returned if the value is not the correct type |
+| [coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 **Example**  
-``` javascriptimport { enforce } from 'type-enforcer';const a = {};const b = {};enforce.object(a, b);// => aenforce.object('{}', b);// => benforce.object('{}', b, true);// => {}```
+``` javascript
+import { enforce } from 'type-enforcer';
+
+const a = {};
+const b = {};
+
+enforce.object(a, b);
+// => a
+
+enforce.object('{}', b);
+// => b
+
+enforce.object('{}', b, true);
+// => {}
+```
 
 <br><a name="enforce.promise"></a>
 
@@ -244,10 +389,21 @@
 | --- | --- | --- | --- |
 | value | <code>\*</code> |  |  |
 | alt | <code>Promise</code> |  | Returned if the value is not the correct type |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value if it's a function. Functions are wrapped in a Promise that resolves with the result of the function. |
+| [coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value if it's a function. Functions are wrapped in a Promise that resolves with the result of the function. |
 
 **Example**  
-``` javascriptimport { enforce } from 'type-enforcer';const a = new Promise((resolve) => resolve());const b = new Promise((resolve) => resolve());enforce.promise(a, b);// => aenforce.promise('', b);// => b```
+``` javascript
+import { enforce } from 'type-enforcer';
+
+const a = new Promise((resolve) => resolve());
+const b = new Promise((resolve) => resolve());
+
+enforce.promise(a, b);
+// => a
+
+enforce.promise('', b);
+// => b
+```
 
 <br><a name="enforce.regExp"></a>
 
@@ -261,14 +417,25 @@
 | --- | --- | --- | --- |
 | value | <code>\*</code> |  |  |
 | alt | <code>RegExp</code> |  | Returned if the value is not the correct type |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+| [coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 **Example**  
-``` javascriptimport { enforce } from 'type-enforcer';enforce.regExp(/*+/g, /[a-z]+/);// => /*+/genforce.regExp('/*+/g', /[a-z]+/);// => /[a-z]+/enforce.regExp('/*+/g', /[a-z]+/, true);// => /*+/g```
+``` javascript
+import { enforce } from 'type-enforcer';
+
+enforce.regExp(/*+/g, /[a-z]+/);
+// => /*+/g
+
+enforce.regExp('/*+/g', /[a-z]+/);
+// => /[a-z]+/
+
+enforce.regExp('/*+/g', /[a-z]+/, true);
+// => /*+/g
+```
 
 <br><a name="enforce.set"></a>
 
-### enforce.set(value, alt, [coerce]) ⇒ <code>Object</code>
+### enforce.set(value, alt, [coerce]) ⇒ <code>object</code>
 > Enforce that a value is a Set. Uses [isSet](docs/checks.md#isSet).
 
 **Alias:** `enforceSet`
@@ -278,14 +445,28 @@
 | --- | --- | --- | --- |
 | value | <code>\*</code> |  |  |
 | alt | <code>Set</code> |  | Returned if the value is not the correct type |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+| [coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 **Example**  
-``` javascriptimport { enforce } from 'type-enforcer';const a = new Set();const b = new Set();enforce.set(a, b);// => aenforce.set('set', b);// => benforce.set([1, 2], b, true);// => Set with 1 and 2```
+``` javascript
+import { enforce } from 'type-enforcer';
+
+const a = new Set();
+const b = new Set();
+
+enforce.set(a, b);
+// => a
+
+enforce.set('set', b);
+// => b
+
+enforce.set([1, 2], b, true);
+// => Set with 1 and 2
+```
 
 <br><a name="enforce.string"></a>
 
-### enforce.string(value, alt, [coerce]) ⇒ <code>String</code>
+### enforce.string(value, alt, [coerce]) ⇒ <code>string</code>
 > Enforce that a value is a string. Uses [isString](docs/checks.md#isString).
 
 **Alias:** `enforceString`
@@ -294,15 +475,26 @@
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | value | <code>\*</code> |  |  |
-| alt | <code>String</code> |  | Returned if the value is not the correct type |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+| alt | <code>string</code> |  | Returned if the value is not the correct type |
+| [coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 **Example**  
-``` javascriptimport { enforce } from 'type-enforcer';enforce.string('a', 'b');// => 'a'enforce.string(new Point(), 'b');// => 'b'enforce.string(new Point(), 'b', true);// => '0,0'```
+``` javascript
+import { enforce } from 'type-enforcer';
+
+enforce.string('a', 'b');
+// => 'a'
+
+enforce.string(new Point(), 'b');
+// => 'b'
+
+enforce.string(new Point(), 'b', true);
+// => '0,0'
+```
 
 <br><a name="enforce.symbol"></a>
 
-### enforce.symbol(value, alt, [coerce]) ⇒ <code>Object</code>
+### enforce.symbol(value, alt, [coerce]) ⇒ <code>object</code>
 > Enforce that a value is a Symbol. Uses [isSymbol](docs/checks.md#isSymbol).
 
 **Alias:** `enforceSymbol`
@@ -311,15 +503,26 @@
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | value | <code>\*</code> |  |  |
-| alt | <code>Symbol</code> |  | Returned if the value is not the correct type |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+| alt | <code>symbol</code> |  | Returned if the value is not the correct type |
+| [coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 **Example**  
-``` javascriptimport { enforce } from 'type-enforcer';enforce.symbol(Symbol('label'), Symbol('alt'));// => Symbol(label)enforce.symbol('symbol', Symbol('alt'));// => Symbol('alt')enforce.symbol('label', Symbol('alt'), true);// => Symbol(label)```
+``` javascript
+import { enforce } from 'type-enforcer';
+
+enforce.symbol(Symbol('label'), Symbol('alt'));
+// => Symbol(label)
+
+enforce.symbol('symbol', Symbol('alt'));
+// => Symbol('alt')
+
+enforce.symbol('label', Symbol('alt'), true);
+// => Symbol(label)
+```
 
 <br><a name="enforce.weakMap"></a>
 
-### enforce.weakMap(value, alt, [coerce]) ⇒ <code>Object</code>
+### enforce.weakMap(value, alt, [coerce]) ⇒ <code>object</code>
 > Enforce that a value is a WeakMap. Uses [isWeakMap](docs/checks.md#isWeakMap).
 
 **Alias:** `enforceWeakMap`
@@ -329,14 +532,28 @@
 | --- | --- | --- | --- |
 | value | <code>\*</code> |  |  |
 | alt | <code>WeakMap</code> |  | Returned if the value is not the correct type |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+| [coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 **Example**  
-``` javascriptimport { enforce } from 'type-enforcer';const a = new WeakMap();const b = new WeakMap();enforce.weakMap(a, b);// => aenforce.weakMap('weakMap', b);// => benforce.weakMap([[a, 12]], new WeakMap(), true);// => WeakMap with key a set to 12```
+``` javascript
+import { enforce } from 'type-enforcer';
+
+const a = new WeakMap();
+const b = new WeakMap();
+
+enforce.weakMap(a, b);
+// => a
+
+enforce.weakMap('weakMap', b);
+// => b
+
+enforce.weakMap([[a, 12]], new WeakMap(), true);
+// => WeakMap with key a set to 12
+```
 
 <br><a name="enforce.weakSet"></a>
 
-### enforce.weakSet(value, alt, [coerce]) ⇒ <code>Object</code>
+### enforce.weakSet(value, alt, [coerce]) ⇒ <code>object</code>
 > Enforce that a value is a WeakSet. Uses [isWeakSet](docs/checks.md#isWeakSet).
 
 **Alias:** `enforceWeakSet`
@@ -346,10 +563,24 @@
 | --- | --- | --- | --- |
 | value | <code>\*</code> |  |  |
 | alt | <code>WeakSet</code> |  | Returned if the value is not the correct type |
-| [coerce] | <code>Boolean</code> | <code>false</code> | If true then coerce the value when possible |
+| [coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 **Example**  
-``` javascriptimport { enforce } from 'type-enforcer';const a = new WeakSet();const b = new WeakSet();enforce.weakSet(a, b);// => aenforce.weakSet('weakSet', b);// => benforce.weakSet([new Map()], b, true);// => WeakSet with a Map in it```
+``` javascript
+import { enforce } from 'type-enforcer';
+
+const a = new WeakSet();
+const b = new WeakSet();
+
+enforce.weakSet(a, b);
+// => a
+
+enforce.weakSet('weakSet', b);
+// => b
+
+enforce.weakSet([new Map()], b, true);
+// => WeakSet with a Map in it
+```
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg
 [npm-url]: https://npmjs.com/package/type-enforcer

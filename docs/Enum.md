@@ -20,52 +20,64 @@
 * [Enum](#Enum)
     * [new Enum(object)](#new_Enum_new)
     * [.has(value)](#Enum+has) ⇒ <code>boolean</code>
-    * [.key(value)](#Enum+key) ⇒ <code>String</code>
+    * [.key(value)](#Enum+key) ⇒ <code>string</code> \| <code>undefined</code>
     * [.each(callback)](#Enum+each)
 
 
 <br><a name="new_Enum_new"></a>
 
 ### new Enum(object)
-> ``` javascript> import { Enum } from 'type-enforcer';> ```
+> ``` javascript
+> import { Enum } from 'type-enforcer';
+> ```
 
 
 | Param | Type |
 | --- | --- |
-| object | <code>Object</code> | 
+| object | <code>object</code> | 
 
 
 <br><a name="Enum+has"></a>
 
 ### enum.has(value) ⇒ <code>boolean</code>
-> Check if a provided value is in this enum
+> Check if a provided value is in this enum.
 
 
-| Param | Type |
-| --- | --- |
-| value | <code>String</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| value | <code>\*</code> | A value to check against the values in this Enum. |
 
 
 <br><a name="Enum+key"></a>
 
-### enum.key(value) ⇒ <code>String</code>
-> Get the key of a provided value
+### enum.key(value) ⇒ <code>string</code> \| <code>undefined</code>
+> Get the key of a provided value.
 
 
-| Param | Type |
-| --- | --- |
-| value | <code>String</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| value | <code>\*</code> | A value in this enum. |
 
 
 <br><a name="Enum+each"></a>
 
 ### enum.each(callback)
-> Calls a callback with each of the enum values> ``` javascript> const items = new Enum({>     THING: 'thing'> });> > items.each((value) => {>     console.log(value);> });> // => 'thing'> ```
+> Calls a callback with each of the enum values.
+> ``` javascript
+> const items = new Enum({
+>     THING: 'thing'
+> });
+> 
+> items.each((value) => {
+>     console.log(value);
+> });
+> // => 'thing'
+> ```
 
 
-| Param | Type |
-| --- | --- |
-| callback | <code>function</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| callback | <code>function</code> | Callback is provided one arg, the value. |
 
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg

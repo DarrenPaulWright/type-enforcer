@@ -18,10 +18,10 @@
 
 **See**: [Loose Equality](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness#Loose_equality_using)  
 
-| Param |
-| --- |
-| a | 
-| b | 
+| Param | Type | Description |
+| --- | --- | --- |
+| a | <code>\*</code> | A value to test. |
+| b | <code>\*</code> | Another value to test. |
 
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg

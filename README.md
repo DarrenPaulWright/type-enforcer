@@ -43,6 +43,8 @@ _Requires Babel 7.2+_
 ## Classes
 
 <dl>
+<dt><a href="docs/AssertionError.md">AssertionError</a></dt>
+<dd></dd>
 <dt><a href="docs/Enum.md">Enum</a></dt>
 <dd><p>Freezes an enumerable object and adds a few helper methods</p>
 </dd>

@@ -355,7 +355,7 @@ widget.thirdMethod();
 <br><a name="method.queue"></a>
 
 ### method.queue([options]) ⇒ <code>function</code>
-> Builds a chainable method that implements a [Queue](docs/Queue.md)
+> Builds a chainable method that implements a [Queue](docs/Queue.md).
 
 **Alias:** `methodQueue`
 

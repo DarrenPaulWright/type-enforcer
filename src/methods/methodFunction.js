@@ -1,7 +1,6 @@
 import enforceFunction from '../enforcer/enforceFunction.js';
 import methodAny from './methodAny.js';
 
-/* eslint-disable jsdoc/valid-types */
 /**
  * Builds a chainable method for getting/setting a function
  *

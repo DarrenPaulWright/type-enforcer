@@ -1,6 +1,5 @@
 import isFunction from '../checks/isFunction.js';
 
-/* eslint-disable jsdoc/valid-types */
 /**
  * Enforce that a value is a function. Uses [isFunction](docs/checks.md#isFunction).
  *

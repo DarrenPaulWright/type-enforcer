@@ -3,7 +3,7 @@ import Queue from '../Queue.js';
 import methodAny, { _ } from './methodAny.js';
 
 /**
- * Builds a chainable method that implements a [Queue](docs/Queue.md)
+ * Builds a chainable method that implements a [Queue](docs/Queue.md).
  *
  * @function method.queue
  * @alias methodQueue

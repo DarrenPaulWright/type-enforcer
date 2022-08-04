@@ -1,3 +1,6 @@
+/**
+ * @class AssertionError
+ */
 export default class AssertionError extends Error {
 	constructor(message, properties) {
 		super('expected ' + message);

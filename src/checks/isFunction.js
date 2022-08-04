@@ -1,4 +1,3 @@
-/* eslint-disable jsdoc/valid-types */
 /**
  * Check if a value is a function.
  *

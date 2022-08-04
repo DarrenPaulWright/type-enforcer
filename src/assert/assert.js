@@ -19,7 +19,6 @@ const assertion = (settings) => {
 	};
 };
 
-/* eslint-disable jsdoc/valid-types */
 /**
  * An assertion library for testing. Assertions do nothing if the test passes, and throw an AssertionError if they fail.
  *

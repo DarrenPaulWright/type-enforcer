@@ -22,12 +22,11 @@ import enforceNumber from './enforceNumber.js';
  * @alias enforceInteger
  *
  * @param {*} value
- * @param {number.int} alt - Returned if the value is not the correct type
+ * @param {number} alt - Returned if the value is not the correct type
  * @param {boolean} [coerce=false] - If true then coerce the value when possible
- * @param {number.int} [minValue]
- * @param {number.int} [maxValue]
+ * @param {number} [minValue]
+ * @param {number} [maxValue]
  *
- * @returns {number.int}
+ * @returns {number}
  */
 export default enforceNumber.extend(isInteger, Number);
-

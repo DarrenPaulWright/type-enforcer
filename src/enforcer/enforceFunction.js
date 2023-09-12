@@ -20,7 +20,7 @@ import isFunction from '../checks/isFunction.js';
  * @function enforce.function
  * @alias enforceFunction
  *
- * @param {*} value - The value to enforce.
+ * @param {unknown} value - The value to enforce.
  * @param {Function} alt - Returned if the value is not the correct type.
  *
  * @returns {Function}

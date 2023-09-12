@@ -1,13 +1,23 @@
 import display from 'display-value';
-import { deepEqual, forOwn } from 'object-agent';
+import { deepEqual } from 'object-agent';
 import is from '../checks/is.js';
 import sameValue from '../equality/sameValue.js';
 import AssertionError from './AssertionError.js';
-import startsWithVowel from './startsWithVowel.js';
 
-const assertion = (settings) => {
-	const { assert, message, showDiff } = settings;
-
+/**
+ * Generate an assertion function.
+ *
+ * @function assertion
+ * @private
+ *
+ * @param {object} settings
+ * @param {Function} settings.assert
+ * @param {Function} settings.message
+ * @param {boolean} [settings.showDiff]
+ *
+ * @returns {(function(unknown, unknown): void)}
+ */
+const assertion = ({ assert, message, showDiff }) => {
 	return (actual, expected) => {
 		if (assert(actual, expected) === false) {
 			throw new AssertionError(message(actual, expected), {
@@ -43,8 +53,8 @@ const assert = {
 	 *
 	 * @function assert.is
 	 *
-	 * @param {*} actual
-	 * @param {*} expected
+	 * @param {unknown} actual
+	 * @param {unknown} expected
 	 */
 	is: assertion({
 		assert: sameValue,
@@ -70,8 +80,8 @@ const assert = {
 	 *
 	 * @function assert.notIs
 	 *
-	 * @param {*} actual
-	 * @param {*} expected
+	 * @param {unknown} actual
+	 * @param {unknown} expected
 	 */
 	notIs: assertion({
 		assert: (a, b) => !sameValue(a, b),
@@ -94,8 +104,8 @@ const assert = {
 	 *
 	 * @function assert.equal
 	 *
-	 * @param {*} actual
-	 * @param {*} expected
+	 * @param {unknown} actual
+	 * @param {unknown} expected
 	 */
 	equal: assertion({
 		assert: deepEqual,
@@ -120,8 +130,8 @@ const assert = {
 	 *
 	 * @function assert.notEqual
 	 *
-	 * @param {*} actual
-	 * @param {*} expected
+	 * @param {unknown} actual
+	 * @param {unknown} expected
 	 */
 	notEqual: assertion({
 		assert: (a, b) => !deepEqual(a, b),
@@ -142,8 +152,8 @@ const assert = {
 	 *
 	 * @function assert.moreThan
 	 *
-	 * @param {*} leftOperand
-	 * @param {*} rightOperand
+	 * @param {unknown} leftOperand
+	 * @param {unknown} rightOperand
 	 */
 	moreThan: assertion({
 		assert: (a, b) => a > b,
@@ -164,8 +174,8 @@ const assert = {
 	 *
 	 * @function assert.atLeast
 	 *
-	 * @param {*} leftOperand
-	 * @param {*} rightOperand
+	 * @param {unknown} leftOperand
+	 * @param {unknown} rightOperand
 	 */
 	atLeast: assertion({
 		assert: (a, b) => a >= b,
@@ -186,8 +196,8 @@ const assert = {
 	 *
 	 * @function assert.lessThan
 	 *
-	 * @param {*} leftOperand
-	 * @param {*} rightOperand
+	 * @param {unknown} leftOperand
+	 * @param {unknown} rightOperand
 	 */
 	lessThan: assertion({
 		assert: (a, b) => a < b,
@@ -208,8 +218,8 @@ const assert = {
 	 *
 	 * @function assert.atMost
 	 *
-	 * @param {*} leftOperand
-	 * @param {*} rightOperand
+	 * @param {unknown} leftOperand
+	 * @param {unknown} rightOperand
 	 */
 	atMost: assertion({
 		assert: (a, b) => a <= b,
@@ -252,150 +262,224 @@ const assert = {
 			}
 		},
 		message: () => 'to not throw'
+	}),
+
+	/**
+	 * Check if a value is an [array](is.md#array).
+	 *
+	 * @function assert.array
+	 *
+	 * @param {unknown} actual
+	 */
+	array: assertion({
+		assert: is.array,
+		message: (a) => `${ display(a) } to be an array`
+	}),
+
+	/**
+	 * Check if a value is a [boolean](is.md#boolean).
+	 *
+	 * @function assert.boolean
+	 *
+	 * @param {unknown} actual
+	 */
+	boolean: assertion({
+		assert: is.boolean,
+		message: (a) => `${ display(a) } to be a boolean`
+	}),
+
+	/**
+	 * Check if a value is a [date](is.md#date).
+	 *
+	 * @function assert.date
+	 *
+	 * @param {unknown} actual
+	 */
+	date: assertion({
+		assert: is.date,
+		message: (a) => `${ display(a) } to be a date`
+	}),
+
+	/**
+	 * Check if a value is a [float](is.md#float).
+	 *
+	 * @function assert.float
+	 *
+	 * @param {unknown} actual
+	 */
+	float: assertion({
+		assert: is.float,
+		message: (a) => `${ display(a) } to be a float`
+	}),
+
+	/**
+	 * Check if a value is a [function](is.md#function).
+	 *
+	 * @function assert.function
+	 *
+	 * @param {unknown} actual
+	 */
+	function: assertion({
+		assert: is.function,
+		message: (a) => `${ display(a) } to be a function`
+	}),
+
+	/**
+	 * Check if a value is an [instanceOf](is.md#instanceOf) a constructor.
+	 *
+	 * @function assert.instanceOf
+	 *
+	 * @param {unknown} actual
+	 * @param {Function} constructor
+	 */
+	instanceOf: assertion({
+		assert: is.instanceOf,
+		message: (a, b) => `${ display(a) } to be an instance of ${ display(b) }`
+	}),
+
+	/**
+	 * Check if a value is an [integer](is.md#integer).
+	 *
+	 * @function assert.integer
+	 *
+	 * @param {unknown} actual
+	 */
+	integer: assertion({
+		assert: is.integer,
+		message: (a) => `${ display(a) } to be an integer`
+	}),
+
+	/**
+	 * Check if a value is [json](is.md#json).
+	 *
+	 * @function assert.json
+	 *
+	 * @param {unknown} actual
+	 */
+	json: assertion({
+		assert: is.json,
+		message: (a) => `${ display(a) } to be json`
+	}),
+
+	/**
+	 * Check if a value is a [Map](is.md#map).
+	 *
+	 * @function assert.map
+	 *
+	 * @param {unknown} actual
+	 */
+	map: assertion({
+		assert: is.map,
+		message: (a) => `${ display(a) } to be a map`
+	}),
+
+	/**
+	 * Check if a value is a [number](is.md#number).
+	 *
+	 * @function assert.number
+	 *
+	 * @param {unknown} actual
+	 */
+	number: assertion({
+		assert: is.number,
+		message: (a) => `${ display(a) } to be a number`
+	}),
+
+	/**
+	 * Check if a value is an [object](is.md#object).
+	 *
+	 * @function assert.object
+	 *
+	 * @param {unknown} actual
+	 */
+	object: assertion({
+		assert: is.object,
+		message: (a) => `${ display(a) } to be an object`
+	}),
+
+	/**
+	 * Check if a value is a [Promise](is.md#promise).
+	 *
+	 * @function assert.promise
+	 *
+	 * @param {unknown} actual
+	 */
+	promise: assertion({
+		assert: is.promise,
+		message: (a) => `${ display(a) } to be a promise`
+	}),
+
+	/**
+	 * Check if a value is a [RegExp](is.md#regExp).
+	 *
+	 * @function assert.regExp
+	 *
+	 * @param {unknown} actual
+	 */
+	regExp: assertion({
+		assert: is.regExp,
+		message: (a) => `${ display(a) } to be a regExp`
+	}),
+
+	/**
+	 * Check if a value is a [Set](is.md#set).
+	 *
+	 * @function assert.set
+	 *
+	 * @param {unknown} actual
+	 */
+	set: assertion({
+		assert: is.set,
+		message: (a) => `${ display(a) } to be a Set`
+	}),
+
+	/**
+	 * Check if a value is a [string](is.md#string).
+	 *
+	 * @function assert.string
+	 *
+	 * @param {unknown} actual
+	 */
+	string: assertion({
+		assert: is.string,
+		message: (a) => `${ display(a) } to be a string`
+	}),
+
+	/**
+	 * Check if a value is a [Symbol](is.md#symbol).
+	 *
+	 * @function assert.symbol
+	 *
+	 * @param {unknown} actual
+	 */
+	symbol: assertion({
+		assert: is.symbol,
+		message: (a) => `${ display(a) } to be a Symbol`
+	}),
+
+	/**
+	 * Check if a value is a [WeakMap](is.md#weakMap).
+	 *
+	 * @function assert.weakMap
+	 *
+	 * @param {unknown} actual
+	 */
+	weakMap: assertion({
+		assert: is.weakMap(),
+		message: (a) => `${ display(a) } to be a WeakMap`
+	}),
+
+	/**
+	 * Check if a value is a [WeakSet](is.md#weakSet).
+	 *
+	 * @function assert.weakSet
+	 *
+	 * @param {unknown} actual
+	 */
+	weakSet: assertion({
+		assert: is.weakSet,
+		message: (a) => `${ display(a) } to be a WeakSet`
 	})
 };
-
-/**
- * Check if a value is an [array](is.md#array).
- *
- * @function assert.array
- *
- * @param {*} actual
- */
-/**
- * Check if a value is a [boolean](is.md#boolean).
- *
- * @function assert.boolean
- *
- * @param {*} actual
- */
-/**
- * Check if a value is a [date](is.md#date).
- *
- * @function assert.date
- *
- * @param {*} actual
- */
-/**
- * Check if a value is a [float](is.md#float).
- *
- * @function assert.float
- *
- * @param {*} actual
- */
-/**
- * Check if a value is a [function](is.md#function).
- *
- * @function assert.function
- *
- * @param {*} actual
- */
-/**
- * Check if a value is an [instanceOf](is.md#instanceOf) a constructor.
- *
- * @function assert.instanceOf
- *
- * @param {*} actual
- * @param {Function} constructor
- */
-/**
- * Check if a value is an [integer](is.md#integer).
- *
- * @function assert.integer
- *
- * @param {*} actual
- */
-/**
- * Check if a value is [json](is.md#json).
- *
- * @function assert.json
- *
- * @param {*} actual
- */
-/**
- * Check if a value is a [Map](is.md#map).
- *
- * @function assert.map
- *
- * @param {*} actual
- */
-/**
- * Check if a value is a [number](is.md#number).
- *
- * @function assert.number
- *
- * @param {*} actual
- */
-/**
- * Check if a value is an [object](is.md#object).
- *
- * @function assert.object
- *
- * @param {*} actual
- */
-/**
- * Check if a value is a [Promise](is.md#promise).
- *
- * @function assert.promise
- *
- * @param {*} actual
- */
-/**
- * Check if a value is a [RegExp](is.md#regExp).
- *
- * @function assert.regExp
- *
- * @param {*} actual
- */
-/**
- * Check if a value is a [Set](is.md#set).
- *
- * @function assert.set
- *
- * @param {*} actual
- */
-/**
- * Check if a value is a [string](is.md#string).
- *
- * @function assert.string
- *
- * @param {*} actual
- */
-/**
- * Check if a value is a [Symbol](is.md#symbol).
- *
- * @function assert.symbol
- *
- * @param {*} actual
- */
-/**
- * Check if a value is a [WeakMap](is.md#weakMap).
- *
- * @function assert.weakMap
- *
- * @param {*} actual
- */
-/**
- * Check if a value is a [WeakSet](is.md#weakSet).
- *
- * @function assert.weakSet
- *
- * @param {*} actual
- */
-forOwn(is, (check, name) => {
-	const settings = {
-		assert: check,
-		message: (a) => display(a) + ' to be a' + (startsWithVowel(name) ? 'n ' : ' ') + name
-	};
-
-	if (name === 'json') {
-		settings.message = (a) => display(a) + ' to be ' + name;
-	}
-	else if (name === 'instanceOf') {
-		settings.message = (a, b) => display(a) + ' to be an instance of ' + display(b);
-	}
-
-	assert[name] = assertion(settings);
-});
 
 export default assert;

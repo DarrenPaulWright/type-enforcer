@@ -55,7 +55,7 @@ import { isBoolean, isString } from 'type-enforcer';
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| value | <code>\*</code> |  | The value to check. |
+| value | <code>unknown</code> |  | The value to check. |
 | [coerce] | <code>boolean</code> | <code>false</code> | If true then see if the value can be coerced into an array. |
 
 **Example**  
@@ -82,7 +82,7 @@ isArray('[]', true);
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| value | <code>\*</code> |  | The value to check. |
+| value | <code>unknown</code> |  | The value to check. |
 | [coerce] | <code>boolean</code> | <code>false</code> | If true then see if the value can be coerced into a boolean. Always returns true, as _everything_ can be coerced into a boolean. |
 
 **Example**  
@@ -109,7 +109,7 @@ isBoolean('a string', true);
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| value | <code>\*</code> |  | The value to check. |
+| value | <code>unknown</code> |  | The value to check. |
 | [coerce] | <code>boolean</code> | <code>false</code> | If true then see if the value can be coerced into a Date. |
 
 **Example**  
@@ -136,7 +136,7 @@ isDate('10/12/1980', true);
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| value | <code>\*</code> |  | The value to check. |
+| value | <code>unknown</code> |  | The value to check. |
 | [coerce] | <code>boolean</code> | <code>false</code> | If true then see if the value can be coerced into a float. |
 
 **Example**  
@@ -163,7 +163,7 @@ isFloat('3.14159', true);
 
 | Param | Type | Description |
 | --- | --- | --- |
-| value | <code>\*</code> | The value to check. |
+| value | <code>unknown</code> | The value to check. |
 
 **Example**  
 ``` javascript
@@ -183,7 +183,7 @@ isFunction(() => {});
 
 | Param | Type | Description |
 | --- | --- | --- |
-| object | <code>\*</code> | The object to check. |
+| object | <code>unknown</code> | The object to check. |
 | constructor | <code>function</code> | The constructor function. |
 
 **Example**  
@@ -224,7 +224,7 @@ isInstanceOf(Symbol(), Symbol);
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| value | <code>\*</code> |  | The value to check. |
+| value | <code>unknown</code> |  | The value to check. |
 | [coerce] | <code>boolean</code> | <code>false</code> | If true then see if the value can be coerced into an Integer. |
 
 **Example**  
@@ -254,7 +254,7 @@ isInteger('42.5', true);
 
 | Param | Type | Description |
 | --- | --- | --- |
-| value | <code>\*</code> | The value to check. |
+| value | <code>unknown</code> | The value to check. |
 
 **Example**  
 ``` javascript
@@ -271,7 +271,7 @@ import { isJson } from 'type-enforcer';
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| value | <code>\*</code> |  | The value to check. |
+| value | <code>unknown</code> |  | The value to check. |
 | [coerce] | <code>boolean</code> | <code>false</code> | If true then see if the value can be coerced into a Map. Objects or Strings that can be coerced into Objects can be coerced into Maps, as well as anything that can be coerced into a WeakMap. |
 
 **Example**  
@@ -298,7 +298,7 @@ isMap({'a': 12}, new Map(), true);
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| value | <code>\*</code> |  | The value to check. |
+| value | <code>unknown</code> |  | The value to check. |
 | [coerce] | <code>boolean</code> | <code>false</code> | If true then see if the value can be coerced into a Number. |
 
 **Example**  
@@ -325,7 +325,7 @@ isNumber('3.14159', true);
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| value | <code>\*</code> |  | The value to check. |
+| value | <code>unknown</code> |  | The value to check. |
 | [coerce] | <code>boolean</code> | <code>false</code> | If true then see if the value can be coerced into an Object. |
 
 **Example**  
@@ -352,7 +352,7 @@ isObject('{}', true);
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| value | <code>\*</code> |  | The value to check. |
+| value | <code>unknown</code> |  | The value to check. |
 | [coerce] | <code>boolean</code> | <code>false</code> | If true then see if the value can be coerced into a Promise. Functions can be coerced into Promises. |
 
 **Example**  
@@ -379,7 +379,7 @@ isObject(() => {}, true);
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| value | <code>\*</code> |  | The value to check. |
+| value | <code>unknown</code> |  | The value to check. |
 | [coerce] | <code>boolean</code> | <code>false</code> | If true then see if the value can be coerced into a RegExp. |
 
 **Example**  
@@ -406,7 +406,7 @@ isRegExp('/*+/g', true);
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| value | <code>\*</code> |  | The value to check. |
+| value | <code>unknown</code> |  | The value to check. |
 | [coerce] | <code>boolean</code> | <code>false</code> | If true then see if the value can be coerced into a Set. Arrays or Strings that can be coerced into Arrays can be coerced into Sets. |
 
 **Example**  
@@ -433,7 +433,7 @@ isSet([1, 2], new Set(), true);
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| value | <code>\*</code> |  | The value to check. |
+| value | <code>unknown</code> |  | The value to check. |
 | [coerce] | <code>boolean</code> | <code>false</code> | If true then see if the value can be coerced into a string. |
 
 **Example**  
@@ -460,7 +460,7 @@ isString(new Date(), true);
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| value | <code>\*</code> |  | The value to check. |
+| value | <code>unknown</code> |  | The value to check. |
 | [coerce] | <code>boolean</code> | <code>false</code> | If true then see if the value can be coerced into a Symbol. Anything that can be coerced into a string can also be coerced into a Symbol. |
 
 **Example**  
@@ -487,7 +487,7 @@ isSymbol('string', true);
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| value | <code>\*</code> |  | The value to check. |
+| value | <code>unknown</code> |  | The value to check. |
 | [coerce] | <code>boolean</code> | <code>false</code> | If true then see if the value can be coerced into a WeakMap. Must be an array of arrays, each inner array must be length 2, and the first item of each inner array must be an object to be coerced into a WeakMap. |
 
 **Example**  
@@ -516,7 +516,7 @@ isWeakMap([[a, 12]], true);
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| value | <code>\*</code> |  | The value to check. |
+| value | <code>unknown</code> |  | The value to check. |
 | [coerce] | <code>boolean</code> | <code>false</code> | If true then see if the value can be coerced into a WeakSet. Arrays of objects can be coerced into WeakSets. |
 
 **Example**  

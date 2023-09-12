@@ -21,7 +21,7 @@ import enforceNumber from './enforceNumber.js';
  * @function enforce.float
  * @alias enforceFloat
  *
- * @param {*} value
+ * @param {unknown} value
  * @param {number} alt - Returned if the value is not the correct type
  * @param {boolean} [coerce=false] - If true then coerce the value when possible
  * @param {number} [minValue]

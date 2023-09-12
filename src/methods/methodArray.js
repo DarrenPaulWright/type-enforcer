@@ -9,7 +9,7 @@ import methodObject from './methodObject.js';
  * @alias methodArray
  *
  * @param {object} [options] - Same as {@link method.any} with the following differences:
- * @param {*} [options.init=[]]
+ * @param {unknown} [options.init=[]]
  * @param {Function} [options.enforce=enforce.array]
  * @param {Function} [options.compare=deepCompare] - Performs a deep comparison between values
  * @param {boolean} [options.deep=true] - If false then only use strict equality

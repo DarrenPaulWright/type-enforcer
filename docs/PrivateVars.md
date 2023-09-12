@@ -19,15 +19,15 @@
 
 <br><a name="PrivateVars+set"></a>
 
-### privateVars.set(key, [value]) ⇒ <code>\*</code>
+### privateVars.set(key, [value]) ⇒ <code>unknown</code>
 > Sets a value in the WeakMap.
 
-**Returns**: <code>\*</code> - The value provided.  
+**Returns**: <code>unknown</code> - The value provided.  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| key | <code>\*</code> |  | The key for the variables. Usually "this". |
-| [value] | <code>\*</code> | <code>{}</code> | An object with private variables. |
+| key | <code>unknown</code> |  | The key for the variables. Usually "this". |
+| [value] | <code>unknown</code> | <code>{}</code> | An object with private variables. |
 
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg

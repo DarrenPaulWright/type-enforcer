@@ -21,7 +21,7 @@ import enforceObject from './enforceObject.js';
  * @function enforce.promise
  * @alias enforcePromise
  *
- * @param {*} value
+ * @param {unknown} value
  * @param {Promise} alt - Returned if the value is not the correct type
  * @param {boolean} [coerce=false] - If true then coerce the value if it's a function. Functions are wrapped in a Promise that resolves with the result of the function.
  *

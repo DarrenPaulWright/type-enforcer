@@ -5,8 +5,8 @@
  *
  * @function strictEquality
  *
- * @param {*} a - A value to test.
- * @param {*} b - Another value to test.
+ * @param {unknown} a - A value to test.
+ * @param {unknown} b - Another value to test.
  *
  * @returns {boolean}
  */

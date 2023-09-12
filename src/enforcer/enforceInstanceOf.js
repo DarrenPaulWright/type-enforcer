@@ -24,7 +24,7 @@ import isInstanceOf from '../checks/isInstanceOf.js';
  * @function enforce.instanceOf
  * @alias enforceInstanceOf
  *
- * @param {*} value - The value to enforce.
+ * @param {unknown} value - The value to enforce.
  * @param {Function} constructor - A constructor function.
  * @param {object} alt - Returned if the value is not the correct type.
  *

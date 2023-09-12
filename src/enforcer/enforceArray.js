@@ -20,11 +20,12 @@ import enforceObject from './enforceObject.js';
  *
  * @function enforce.array
  * @alias enforceArray
+ * @template ReturnType
  *
- * @param {*} value
- * @param {Array} alt - Returned if the value is not the correct type
+ * @param {unknown} value
+ * @param {Array<ReturnType>} alt - Returned if the value is not the correct type
  * @param {boolean} [coerce=false] - If true then coerce the value when possible
  *
- * @returns {Array}
+ * @returns {Array<ReturnType>}
  */
 export default enforceObject.extend(isArray, JSON.parse);

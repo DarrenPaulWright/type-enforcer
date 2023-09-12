@@ -21,7 +21,7 @@ import enforceObject from './enforceObject.js';
  * @function enforce.boolean
  * @alias enforceBoolean
  *
- * @param {*} value
+ * @param {unknown} value
  * @param {boolean} alt - Returned if the value is not the correct type
  * @param {boolean} [coerce=false] - If true then coerce the value when possible
  *

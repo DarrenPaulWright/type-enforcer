@@ -22,7 +22,7 @@ import enforceObject from './enforceObject.js';
  * @function enforce.map
  * @alias enforceMap
  *
- * @param {*} value
+ * @param {unknown} value
  * @param {Map} alt - Returned if the value is not the correct type
  * @param {boolean} [coerce=false] - If true then coerce the value when possible
  *

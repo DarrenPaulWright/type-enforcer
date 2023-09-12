@@ -21,7 +21,7 @@
  * @function enforce.enum
  * @alias enforceEnum
  *
- * @param {*} value - The value to enforce.
+ * @param {unknown} value - The value to enforce.
  * @param {Enum} enumerable - A valid enum.
  * @param {string} alt - Returned if the value is not the correct type.
  *

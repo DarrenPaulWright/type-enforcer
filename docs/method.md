@@ -90,13 +90,13 @@ methodBoolean.defaults({init: undefined});
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | [options] | <code>object</code> |  |  |
-| [options.init] | <code>\*</code> |  | The initial value |
+| [options.init] | <code>unknown</code> |  | The initial value |
 | [options.enforce] | <code>function</code>, <code>string</code>, <code>symbol</code> |  | Enforce this data type.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name. |
 | [options.compare] | <code>function</code>, <code>string</code>, <code>symbol</code> |  | Compares a new value to the current value. Return true if the two values are different.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name. |
 | [options.before] | <code>function</code>, <code>string</code>, <code>symbol</code> |  | Called before a new valid value is set. Provides the prior value.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name. |
 | [options.set] | <code>function</code>, <code>string</code>, <code>symbol</code> |  | Called after a new valid value is set. Provides the new value.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name. |
 | [options.get] | <code>function</code>, <code>string</code>, <code>symbol</code> |  | Called to get the value.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name. |
-| [options.other] | <code>Array</code>, <code>\*</code> |  | Another value/type or array of other values/types that can be set |
+| [options.other] | <code>Array</code>, <code>unknown</code> |  | Another value/type or array of other values/types that can be set |
 | [options.stringify] | <code>boolean</code> | <code>false</code> | If true, then call toString() on the value before returning it (if the value has a toString method) |
 
 **Example**  
@@ -145,7 +145,7 @@ widget.thirdMethod();
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | [options] | <code>object</code> |  | Same as [any](#method.any) with the following differences: |
-| [options.init] | <code>\*</code> | <code>[]</code> |  |
+| [options.init] | <code>unknown</code> | <code>[]</code> |  |
 | [options.enforce] | <code>function</code> | <code>enforce.array</code> |  |
 | [options.compare] | <code>function</code> | <code>deepCompare</code> | Performs a deep comparison between values |
 | [options.deep] | <code>boolean</code> | <code>true</code> | If false then only use strict equality |
@@ -164,7 +164,7 @@ widget.thirdMethod();
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | [options] | <code>object</code> |  | Same as [any](#method.any) with the following differences: |
-| [options.init] | <code>\*</code> | <code>false</code> |  |
+| [options.init] | <code>unknown</code> | <code>false</code> |  |
 | [options.enforce] | <code>function</code> | <code>enforce.boolean</code> |  |
 | [options.coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
@@ -379,7 +379,7 @@ widget.thirdMethod();
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | [options] | <code>object</code> |  | Same as [any](#method.any) with the following differences: |
-| [options.init] | <code>\*</code> | <code>&#x27;&#x27;</code> |  |
+| [options.init] | <code>unknown</code> | <code>&#x27;&#x27;</code> |  |
 | [options.enforce] | <code>function</code> | <code>enforce.string</code> |  |
 | [options.coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
@@ -412,7 +412,7 @@ widget.thirdMethod();
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | [options] | <code>object</code> |  | Same as [any](#method.any) with the following differences: |
-| [options.init] | <code>\*</code> | <code>&#x27;&#x27;</code> |  |
+| [options.init] | <code>unknown</code> | <code>&#x27;&#x27;</code> |  |
 | [options.enforce] | <code>function</code> | <code>enforce.string</code> |  |
 | [options.coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 

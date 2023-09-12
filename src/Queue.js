@@ -58,7 +58,7 @@ export default class Queue {
 	 *
 	 * @param {Function} callback - Callback function.
 	 *
-	 * @returns {number} A unique id for this callback.
+	 * @returns {number|void} A unique id for this callback.
 	 */
 	add(callback) {
 		if (callback !== undefined) {

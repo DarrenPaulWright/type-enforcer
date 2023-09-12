@@ -38,7 +38,7 @@ const typeOfMap = new Map()
  * @function is.instanceOf
  * @alias isInstanceOf
  *
- * @param {*} object - The object to check.
+ * @param {unknown} object - The object to check.
  * @param {Function} constructor - The constructor function.
  *
  * @returns {boolean}

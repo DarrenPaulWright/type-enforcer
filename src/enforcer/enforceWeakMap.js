@@ -24,7 +24,7 @@ import enforceObject from './enforceObject.js';
  * @function enforce.weakMap
  * @alias enforceWeakMap
  *
- * @param {*} value
+ * @param {unknown} value
  * @param {WeakMap} alt - Returned if the value is not the correct type
  * @param {boolean} [coerce=false] - If true then coerce the value when possible
  *

@@ -1,4 +1,4 @@
-import { assert, Enum } from '../index.js';
+import { assert, Enum, is } from '../index.js';
 import AssertionError from '../src/assert/AssertionError.js';
 
 describe('assert', () => {
@@ -49,13 +49,13 @@ describe('assert', () => {
 	]
 		.forEach((data) => {
 			describe(data[0], () => {
-				it(`should not throw if assert.${data[0]} passes`, () => {
+				it(`should not throw if assert.${ data[0] } passes`, () => {
 					assert.notThrows(() => {
 						assert[data[0]](...data[1]);
 					});
 				});
 
-				it(`should throw if assert.${data[0]} fails`, () => {
+				it(`should throw if assert.${ data[0] } fails`, () => {
 					assert.throws(() => {
 						assert[data[0]](...data[2]);
 					});
@@ -79,4 +79,10 @@ describe('assert', () => {
 				});
 			});
 		});
+
+	Object.keys(is).forEach((key) => {
+		it(`should have a key "${ key }" from "is"`, () => {
+			assert.is(true, key in assert);
+		});
+	});
 });

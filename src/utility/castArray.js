@@ -27,7 +27,7 @@
  *
  * @function castArray
  *
- * @param {*} value - Value to be cast to an array.
+ * @param {unknown} value - Value to be cast to an array.
  *
  * @returns {Array}
  */

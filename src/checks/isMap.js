@@ -22,7 +22,7 @@ import { isCoercableToWeakMap } from './isWeakMap.js';
  * @function is.map
  * @alias isMap
  *
- * @param {*} value - The value to check.
+ * @param {unknown} value - The value to check.
  * @param {boolean} [coerce=false] - If true then see if the value can be coerced into a Map. Objects or Strings that can be coerced into Objects can be coerced into Maps, as well as anything that can be coerced into a WeakMap.
  *
  * @returns {boolean}

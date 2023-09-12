@@ -20,7 +20,7 @@ import isString from './isString.js';
  * @function is.symbol
  * @alias isSymbol
  *
- * @param {*} value - The value to check.
+ * @param {unknown} value - The value to check.
  * @param {boolean} [coerce=false] - If true then see if the value can be coerced into a Symbol. Anything that can be coerced into a string can also be coerced into a Symbol.
  *
  * @returns {boolean}

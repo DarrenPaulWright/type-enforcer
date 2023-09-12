@@ -32,17 +32,17 @@ All enforcers with a "coerce" option also have a static method ".extend" that cr
 <br>
 
 * [enforce](#enforce) : <code>object</code>
-    * [.array(value, alt, [coerce])](#enforce.array) ⇒ <code>Array</code>
+    * [.array(value, alt, [coerce])](#enforce.array) ⇒ <code>Array.&lt;ReturnType&gt;</code>
     * [.boolean(value, alt, [coerce])](#enforce.boolean) ⇒ <code>boolean</code>
     * [.date(value, alt, [coerce])](#enforce.date) ⇒ <code>Date</code>
     * [.enum(value, enumerable, alt)](#enforce.enum) ⇒ <code>string</code>
-    * [.float(value, alt, [coerce], [minValue], [maxValue])](#enforce.float) ⇒ <code>number.int</code>
+    * [.float(value, alt, [coerce], [minValue], [maxValue])](#enforce.float) ⇒ <code>number</code>
     * [.function(value, alt)](#enforce.function) ⇒ <code>function</code>
     * [.instanceOf(value, constructor, alt)](#enforce.instanceOf) ⇒ <code>object</code>
-    * [.integer(value, alt, [coerce], [minValue], [maxValue])](#enforce.integer) ⇒ <code>number.int</code>
+    * [.integer(value, alt, [coerce], [minValue], [maxValue])](#enforce.integer) ⇒ <code>number</code>
     * [.map(value, alt, [coerce])](#enforce.map) ⇒ <code>object</code>
     * [.number(value, alt, [coerce], [minValue], [maxValue])](#enforce.number) ⇒ <code>number</code>
-    * [.object(value, alt, [coerce])](#enforce.object) ⇒ <code>object</code>
+    * [.object(value, alt, [coerce])](#enforce.object) ⇒ <code>T</code>
     * [.promise(value, alt, [coerce])](#enforce.promise) ⇒ <code>Promise</code>
     * [.regExp(value, alt, [coerce])](#enforce.regExp) ⇒ <code>RegExp</code>
     * [.set(value, alt, [coerce])](#enforce.set) ⇒ <code>object</code>
@@ -54,7 +54,7 @@ All enforcers with a "coerce" option also have a static method ".extend" that cr
 
 <br><a name="enforce.array"></a>
 
-### enforce.array(value, alt, [coerce]) ⇒ <code>Array</code>
+### enforce.array(value, alt, [coerce]) ⇒ <code>Array.&lt;ReturnType&gt;</code>
 > Enforce that a value is an array. Uses [isArray](docs/checks.md#isArray).
 
 **Alias:** `enforceArray`
@@ -62,8 +62,8 @@ All enforcers with a "coerce" option also have a static method ".extend" that cr
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| value | <code>\*</code> |  |  |
-| alt | <code>Array</code> |  | Returned if the value is not the correct type |
+| value | <code>unknown</code> |  |  |
+| alt | <code>Array.&lt;ReturnType&gt;</code> |  | Returned if the value is not the correct type |
 | [coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 **Example**  
@@ -90,7 +90,7 @@ enforce.array('[]', ['alt'], true);
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| value | <code>\*</code> |  |  |
+| value | <code>unknown</code> |  |  |
 | alt | <code>boolean</code> |  | Returned if the value is not the correct type |
 | [coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
@@ -118,7 +118,7 @@ enforce.boolean('', true, true);
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| value | <code>\*</code> |  |  |
+| value | <code>unknown</code> |  |  |
 | alt | <code>Date</code> |  | Returned if the value is not the correct type |
 | [coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
@@ -146,7 +146,7 @@ enforce.date('10/12/1980', new Date('1/1/2000'), true);
 
 | Param | Type | Description |
 | --- | --- | --- |
-| value | <code>\*</code> | The value to enforce. |
+| value | <code>unknown</code> | The value to enforce. |
 | enumerable | <code>Enum</code> | A valid enum. |
 | alt | <code>string</code> | Returned if the value is not the correct type. |
 
@@ -168,7 +168,7 @@ enforce.enum(values.c, values, values.b);
 
 <br><a name="enforce.float"></a>
 
-### enforce.float(value, alt, [coerce], [minValue], [maxValue]) ⇒ <code>number.int</code>
+### enforce.float(value, alt, [coerce], [minValue], [maxValue]) ⇒ <code>number</code>
 > Enforce that a value is a finite float. Uses [isFloat](docs/checks.md#isFloat).
 
 **Alias:** `enforceFloat`
@@ -176,11 +176,11 @@ enforce.enum(values.c, values, values.b);
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| value | <code>\*</code> |  |  |
-| alt | <code>number.int</code> |  | Returned if the value is not the correct type |
+| value | <code>unknown</code> |  |  |
+| alt | <code>number</code> |  | Returned if the value is not the correct type |
 | [coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
-| [minValue] | <code>number.int</code> |  |  |
-| [maxValue] | <code>number.int</code> |  |  |
+| [minValue] | <code>number</code> |  |  |
+| [maxValue] | <code>number</code> |  |  |
 
 **Example**  
 ``` javascript
@@ -206,7 +206,7 @@ enforce.float('3.14159', 13.2, true);
 
 | Param | Type | Description |
 | --- | --- | --- |
-| value | <code>\*</code> | The value to enforce. |
+| value | <code>unknown</code> | The value to enforce. |
 | alt | <code>function</code> | Returned if the value is not the correct type. |
 
 **Example**  
@@ -233,7 +233,7 @@ enforce.function('', b);
 
 | Param | Type | Description |
 | --- | --- | --- |
-| value | <code>\*</code> | The value to enforce. |
+| value | <code>unknown</code> | The value to enforce. |
 | constructor | <code>function</code> | A constructor function. |
 | alt | <code>object</code> | Returned if the value is not the correct type. |
 
@@ -257,7 +257,7 @@ enforce.instanceOf(c, A, a);
 
 <br><a name="enforce.integer"></a>
 
-### enforce.integer(value, alt, [coerce], [minValue], [maxValue]) ⇒ <code>number.int</code>
+### enforce.integer(value, alt, [coerce], [minValue], [maxValue]) ⇒ <code>number</code>
 > Enforce that a value is a finite integer. Uses [isInteger](docs/checks.md#isInteger).
 
 **Alias:** `enforceInteger`
@@ -265,11 +265,11 @@ enforce.instanceOf(c, A, a);
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| value | <code>\*</code> |  |  |
-| alt | <code>number.int</code> |  | Returned if the value is not the correct type |
+| value | <code>unknown</code> |  |  |
+| alt | <code>number</code> |  | Returned if the value is not the correct type |
 | [coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
-| [minValue] | <code>number.int</code> |  |  |
-| [maxValue] | <code>number.int</code> |  |  |
+| [minValue] | <code>number</code> |  |  |
+| [maxValue] | <code>number</code> |  |  |
 
 **Example**  
 ``` javascript
@@ -295,7 +295,7 @@ enforce.integer('42', 12, true);
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| value | <code>\*</code> |  |  |
+| value | <code>unknown</code> |  |  |
 | alt | <code>Map</code> |  | Returned if the value is not the correct type |
 | [coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
@@ -323,7 +323,7 @@ enforce.map('map', b);
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| value | <code>\*</code> |  |  |
+| value | <code>unknown</code> |  |  |
 | alt | <code>number</code> |  | Returned if the value is not the correct type |
 | [coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 | [minValue] | <code>number</code> | <code>-Infinity</code> |  |
@@ -348,7 +348,7 @@ enforce.number(Infinity, 13.2, true);
 
 <br><a name="enforce.object"></a>
 
-### enforce.object(value, alt, [coerce]) ⇒ <code>object</code>
+### enforce.object(value, alt, [coerce]) ⇒ <code>T</code>
 > Enforce that a value is an object. Uses [isObject](docs/checks.md#isObject).
 
 **Alias:** `enforceObject`
@@ -356,8 +356,8 @@ enforce.number(Infinity, 13.2, true);
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| value | <code>\*</code> |  |  |
-| alt | <code>object</code> |  | Returned if the value is not the correct type |
+| value | <code>unknown</code> |  |  |
+| alt | <code>T</code> |  | Returned if the value is not the correct type |
 | [coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
 **Example**  
@@ -387,7 +387,7 @@ enforce.object('{}', b, true);
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| value | <code>\*</code> |  |  |
+| value | <code>unknown</code> |  |  |
 | alt | <code>Promise</code> |  | Returned if the value is not the correct type |
 | [coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value if it's a function. Functions are wrapped in a Promise that resolves with the result of the function. |
 
@@ -415,7 +415,7 @@ enforce.promise('', b);
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| value | <code>\*</code> |  |  |
+| value | <code>unknown</code> |  |  |
 | alt | <code>RegExp</code> |  | Returned if the value is not the correct type |
 | [coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
@@ -443,7 +443,7 @@ enforce.regExp('/*+/g', /[a-z]+/, true);
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| value | <code>\*</code> |  |  |
+| value | <code>unknown</code> |  |  |
 | alt | <code>Set</code> |  | Returned if the value is not the correct type |
 | [coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
@@ -474,7 +474,7 @@ enforce.set([1, 2], b, true);
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| value | <code>\*</code> |  |  |
+| value | <code>unknown</code> |  |  |
 | alt | <code>string</code> |  | Returned if the value is not the correct type |
 | [coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
@@ -502,7 +502,7 @@ enforce.string(new Point(), 'b', true);
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| value | <code>\*</code> |  |  |
+| value | <code>unknown</code> |  |  |
 | alt | <code>symbol</code> |  | Returned if the value is not the correct type |
 | [coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
@@ -530,7 +530,7 @@ enforce.symbol('label', Symbol('alt'), true);
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| value | <code>\*</code> |  |  |
+| value | <code>unknown</code> |  |  |
 | alt | <code>WeakMap</code> |  | Returned if the value is not the correct type |
 | [coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 
@@ -561,7 +561,7 @@ enforce.weakMap([[a, 12]], new WeakMap(), true);
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| value | <code>\*</code> |  |  |
+| value | <code>unknown</code> |  |  |
 | alt | <code>WeakSet</code> |  | Returned if the value is not the correct type |
 | [coerce] | <code>boolean</code> | <code>false</code> | If true then coerce the value when possible |
 

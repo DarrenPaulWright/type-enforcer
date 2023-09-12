@@ -18,7 +18,7 @@
  * @function is.string
  * @alias isString
  *
- * @param {*} value - The value to check.
+ * @param {unknown} value - The value to check.
  * @param {boolean} [coerce=false] - If true then see if the value can be coerced into a string.
  *
  * @returns {boolean}

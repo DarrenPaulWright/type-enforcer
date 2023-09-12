@@ -20,8 +20,8 @@
 
 | Param | Type | Description |
 | --- | --- | --- |
-| a | <code>\*</code> | A value to test. |
-| b | <code>\*</code> | Another value to test. |
+| a | <code>unknown</code> | A value to test. |
+| b | <code>unknown</code> | Another value to test. |
 
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg

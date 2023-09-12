@@ -23,7 +23,7 @@ import isNumber from './isNumber.js';
  * @function is.integer
  * @alias isInteger
  *
- * @param {*} value - The value to check.
+ * @param {unknown} value - The value to check.
  * @param {boolean} [coerce=false] - If true then see if the value can be coerced into an Integer.
  *
  * @returns {boolean}

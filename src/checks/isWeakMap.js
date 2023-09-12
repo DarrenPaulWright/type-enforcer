@@ -28,7 +28,7 @@ export const isCoercableToWeakMap = (value) => {
  * @function is.weakMap
  * @alias isWeakMap
  *
- * @param {*} value - The value to check.
+ * @param {unknown} value - The value to check.
  * @param {boolean} [coerce=false] - If true then see if the value can be coerced into a WeakMap. Must be an array of arrays, each inner array must be length 2, and the first item of each inner array must be an object to be coerced into a WeakMap.
  *
  * @returns {boolean}

@@ -21,7 +21,7 @@ import enforceObject from './enforceObject.js';
  * @function enforce.date
  * @alias enforceDate
  *
- * @param {*} value
+ * @param {unknown} value
  * @param {Date} alt - Returned if the value is not the correct type
  * @param {boolean} [coerce=false] - If true then coerce the value when possible
  *

@@ -127,13 +127,13 @@ const buildMethod = (defaultOptions, onInit) => {
  * @alias methodAny
  *
  * @param {object}   [options]
- * @param {*} [options.init] - The initial value
+ * @param {unknown} [options.init] - The initial value
  * @param {Function | string | symbol} [options.enforce] - Enforce this data type.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name.
  * @param {Function | string | symbol} [options.compare] - Compares a new value to the current value. Return true if the two values are different.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name.
  * @param {Function | string | symbol} [options.before] - Called before a new valid value is set. Provides the prior value.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name.
  * @param {Function | string | symbol} [options.set] - Called after a new valid value is set. Provides the new value.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name.
  * @param {Function | string | symbol} [options.get] - Called to get the value.<br>- Sets the context to the same context as the resulting method.<br>- If a String or Symbol then maps to another method by that name.
- * @param {Array|*}  [options.other] - Another value/type or array of other values/types that can be set
+ * @param {Array|unknown}  [options.other] - Another value/type or array of other values/types that can be set
  * @param {boolean}  [options.stringify=false] - If true, then call toString() on the value before returning it (if the value has a toString method)
  *
  * @returns {Function} if a "before" or "set" option is set, then this function accepts two args: a new value and forceSave override. If no args are provided then the current value is returned. If neither "before" nor "set" is set, then only one arg is accepted, the new value. Also returns the current value if no args are provided.

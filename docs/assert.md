@@ -56,8 +56,8 @@
 
 | Param | Type |
 | --- | --- |
-| actual | <code>\*</code> | 
-| expected | <code>\*</code> | 
+| actual | <code>unknown</code> | 
+| expected | <code>unknown</code> | 
 
 **Example**  
 ``` javascript
@@ -80,8 +80,8 @@ assert.is(array, array);
 
 | Param | Type |
 | --- | --- |
-| actual | <code>\*</code> | 
-| expected | <code>\*</code> | 
+| actual | <code>unknown</code> | 
+| expected | <code>unknown</code> | 
 
 **Example**  
 ``` javascript
@@ -105,8 +105,8 @@ assert.notIs(array, array);
 
 | Param | Type |
 | --- | --- |
-| actual | <code>\*</code> | 
-| expected | <code>\*</code> | 
+| actual | <code>unknown</code> | 
+| expected | <code>unknown</code> | 
 
 **Example**  
 ``` javascript
@@ -128,8 +128,8 @@ assert.equal([1, 2, 3], [1, 2, 4]);
 
 | Param | Type |
 | --- | --- |
-| actual | <code>\*</code> | 
-| expected | <code>\*</code> | 
+| actual | <code>unknown</code> | 
+| expected | <code>unknown</code> | 
 
 **Example**  
 ``` javascript
@@ -152,8 +152,8 @@ assert.notEqual([1, 2, 3], [1, 2, 4]);
 
 | Param | Type |
 | --- | --- |
-| leftOperand | <code>\*</code> | 
-| rightOperand | <code>\*</code> | 
+| leftOperand | <code>unknown</code> | 
+| rightOperand | <code>unknown</code> | 
 
 **Example**  
 ``` javascript
@@ -173,8 +173,8 @@ assert.moreThan(10, 12);
 
 | Param | Type |
 | --- | --- |
-| leftOperand | <code>\*</code> | 
-| rightOperand | <code>\*</code> | 
+| leftOperand | <code>unknown</code> | 
+| rightOperand | <code>unknown</code> | 
 
 **Example**  
 ``` javascript
@@ -194,8 +194,8 @@ assert.atLeast(10, 12);
 
 | Param | Type |
 | --- | --- |
-| leftOperand | <code>\*</code> | 
-| rightOperand | <code>\*</code> | 
+| leftOperand | <code>unknown</code> | 
+| rightOperand | <code>unknown</code> | 
 
 **Example**  
 ``` javascript
@@ -215,8 +215,8 @@ assert.lessThan(12, 10);
 
 | Param | Type |
 | --- | --- |
-| leftOperand | <code>\*</code> | 
-| rightOperand | <code>\*</code> | 
+| leftOperand | <code>unknown</code> | 
+| rightOperand | <code>unknown</code> | 
 
 **Example**  
 ``` javascript
@@ -258,7 +258,7 @@ assert.atMost(10, 12);
 
 | Param | Type |
 | --- | --- |
-| actual | <code>\*</code> | 
+| actual | <code>unknown</code> | 
 
 
 <br><a name="assert.boolean"></a>
@@ -269,7 +269,7 @@ assert.atMost(10, 12);
 
 | Param | Type |
 | --- | --- |
-| actual | <code>\*</code> | 
+| actual | <code>unknown</code> | 
 
 
 <br><a name="assert.date"></a>
@@ -280,7 +280,7 @@ assert.atMost(10, 12);
 
 | Param | Type |
 | --- | --- |
-| actual | <code>\*</code> | 
+| actual | <code>unknown</code> | 
 
 
 <br><a name="assert.float"></a>
@@ -291,7 +291,7 @@ assert.atMost(10, 12);
 
 | Param | Type |
 | --- | --- |
-| actual | <code>\*</code> | 
+| actual | <code>unknown</code> | 
 
 
 <br><a name="assert.function"></a>
@@ -302,7 +302,7 @@ assert.atMost(10, 12);
 
 | Param | Type |
 | --- | --- |
-| actual | <code>\*</code> | 
+| actual | <code>unknown</code> | 
 
 
 <br><a name="assert.instanceOf"></a>
@@ -313,7 +313,7 @@ assert.atMost(10, 12);
 
 | Param | Type |
 | --- | --- |
-| actual | <code>\*</code> | 
+| actual | <code>unknown</code> | 
 | constructor | <code>function</code> | 
 
 
@@ -325,7 +325,7 @@ assert.atMost(10, 12);
 
 | Param | Type |
 | --- | --- |
-| actual | <code>\*</code> | 
+| actual | <code>unknown</code> | 
 
 
 <br><a name="assert.json"></a>
@@ -336,7 +336,7 @@ assert.atMost(10, 12);
 
 | Param | Type |
 | --- | --- |
-| actual | <code>\*</code> | 
+| actual | <code>unknown</code> | 
 
 
 <br><a name="assert.map"></a>
@@ -347,7 +347,7 @@ assert.atMost(10, 12);
 
 | Param | Type |
 | --- | --- |
-| actual | <code>\*</code> | 
+| actual | <code>unknown</code> | 
 
 
 <br><a name="assert.number"></a>
@@ -358,7 +358,7 @@ assert.atMost(10, 12);
 
 | Param | Type |
 | --- | --- |
-| actual | <code>\*</code> | 
+| actual | <code>unknown</code> | 
 
 
 <br><a name="assert.object"></a>
@@ -369,7 +369,7 @@ assert.atMost(10, 12);
 
 | Param | Type |
 | --- | --- |
-| actual | <code>\*</code> | 
+| actual | <code>unknown</code> | 
 
 
 <br><a name="assert.promise"></a>
@@ -380,7 +380,7 @@ assert.atMost(10, 12);
 
 | Param | Type |
 | --- | --- |
-| actual | <code>\*</code> | 
+| actual | <code>unknown</code> | 
 
 
 <br><a name="assert.regExp"></a>
@@ -391,7 +391,7 @@ assert.atMost(10, 12);
 
 | Param | Type |
 | --- | --- |
-| actual | <code>\*</code> | 
+| actual | <code>unknown</code> | 
 
 
 <br><a name="assert.set"></a>
@@ -402,7 +402,7 @@ assert.atMost(10, 12);
 
 | Param | Type |
 | --- | --- |
-| actual | <code>\*</code> | 
+| actual | <code>unknown</code> | 
 
 
 <br><a name="assert.string"></a>
@@ -413,7 +413,7 @@ assert.atMost(10, 12);
 
 | Param | Type |
 | --- | --- |
-| actual | <code>\*</code> | 
+| actual | <code>unknown</code> | 
 
 
 <br><a name="assert.symbol"></a>
@@ -424,7 +424,7 @@ assert.atMost(10, 12);
 
 | Param | Type |
 | --- | --- |
-| actual | <code>\*</code> | 
+| actual | <code>unknown</code> | 
 
 
 <br><a name="assert.weakMap"></a>
@@ -435,7 +435,7 @@ assert.atMost(10, 12);
 
 | Param | Type |
 | --- | --- |
-| actual | <code>\*</code> | 
+| actual | <code>unknown</code> | 
 
 
 <br><a name="assert.weakSet"></a>
@@ -446,7 +446,7 @@ assert.atMost(10, 12);
 
 | Param | Type |
 | --- | --- |
-| actual | <code>\*</code> | 
+| actual | <code>unknown</code> | 
 
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg

@@ -9,7 +9,7 @@ import methodAny from './methodAny.js';
  * @alias methodBoolean
  *
  * @param {object} [options] - Same as {@link method.any} with the following differences:
- * @param {*} [options.init=false]
+ * @param {unknown} [options.init=false]
  * @param {Function} [options.enforce=enforce.boolean]
  * @param {boolean} [options.coerce=false] - If true then coerce the value when possible
  *

@@ -19,7 +19,7 @@
 
 | Param | Type | Description |
 | --- | --- | --- |
-| value | <code>\*</code> | Value to be cast to an array. |
+| value | <code>unknown</code> | Value to be cast to an array. |
 
 **Example**  
 ``` javascript

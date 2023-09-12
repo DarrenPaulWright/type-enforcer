@@ -22,7 +22,7 @@ const isFinite = (value) => value !== Infinity && value !== -Infinity;
  * @function is.float
  * @alias isFloat
  *
- * @param {*} value - The value to check.
+ * @param {unknown} value - The value to check.
  * @param {boolean} [coerce=false] - If true then see if the value can be coerced into a float.
  *
  * @returns {boolean}

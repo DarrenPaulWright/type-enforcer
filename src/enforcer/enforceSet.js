@@ -25,7 +25,7 @@ import enforceObject from './enforceObject.js';
  * @function enforce.set
  * @alias enforceSet
  *
- * @param {*} value
+ * @param {unknown} value
  * @param {Set} alt - Returned if the value is not the correct type
  * @param {boolean} [coerce=false] - If true then coerce the value when possible
  *

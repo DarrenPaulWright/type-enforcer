@@ -22,7 +22,7 @@ import isArray from './isArray.js';
  * @function is.weakSet
  * @alias isWeakSet
  *
- * @param {*} value - The value to check.
+ * @param {unknown} value - The value to check.
  * @param {boolean} [coerce=false] - If true then see if the value can be coerced into a WeakSet. Arrays of objects can be coerced into WeakSets.
  *
  * @returns {boolean}

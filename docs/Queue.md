@@ -22,7 +22,7 @@
     * [.length](#Queue+length) ⇒ <code>number</code>
     * [.isBusy](#Queue+isBusy) ⇒ <code>boolean</code>
     * [.bindTo(context)](#Queue+bindTo) ⇒ <code>object</code> \| <code>this</code>
-    * [.add(callback)](#Queue+add) ⇒ <code>number</code>
+    * [.add(callback)](#Queue+add) ⇒ <code>number</code> \| <code>void</code>
     * [.discard(id)](#Queue+discard) ⇒ <code>this</code>
     * [.discardAll()](#Queue+discardAll)
     * [.trigger([id], [extraArguments], [context])](#Queue+trigger) ⇒ <code>this</code>
@@ -63,10 +63,10 @@
 
 <br><a name="Queue+add"></a>
 
-### queue.add(callback) ⇒ <code>number</code>
+### queue.add(callback) ⇒ <code>number</code> \| <code>void</code>
 > Add a callback to the queue.
 
-**Returns**: <code>number</code> - A unique id for this callback.  
+**Returns**: <code>number</code> \| <code>void</code> - A unique id for this callback.  
 
 | Param | Type | Description |
 | --- | --- | --- |

@@ -48,10 +48,10 @@ export default class PrivateVars extends WeakMap {
 		 * @memberOf PrivateVars
 		 * @instance
 		 *
-		 * @param {*} key - The key for the variables. Usually "this".
-		 * @param {*} [value={}] - An object with private variables.
+		 * @param {unknown} key - The key for the variables. Usually "this".
+		 * @param {unknown} [value={}] - An object with private variables.
 		 *
-		 * @returns {*} The value provided.
+		 * @returns {unknown} The value provided.
 		 */
 		output.set = (key, value = {}) => {
 			this.set(key, value);

@@ -9,7 +9,7 @@
  * @function is.json
  * @alias isJson
  *
- * @param {*} value - The value to check.
+ * @param {unknown} value - The value to check.
  *
  * @returns {boolean}
  */

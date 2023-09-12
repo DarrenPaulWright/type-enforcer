@@ -4,6 +4,12 @@ import PrivateVars from './utility/PrivateVars.js';
 const _ = new PrivateVars();
 
 /**
+ * @callback eachCallback
+ * @private
+ * @param {unknown} value
+ */
+
+/**
  * ``` javascript
  * import { Enum } from 'type-enforcer';
  * ```
@@ -11,7 +17,7 @@ const _ = new PrivateVars();
  * @class Enum
  * @classdesc Freezes an enumerable object and adds a few helper methods
  *
- * @param {object} object
+ * @param {Object.<string, unknown>} object
  */
 export default class Enum {
 	constructor(object) {
@@ -29,7 +35,7 @@ export default class Enum {
 	 * @memberOf Enum
 	 * @instance
 	 *
-	 * @param {*} value - A value to check against the values in this Enum.
+	 * @param {unknown} value - A value to check against the values in this Enum.
 	 *
 	 * @returns {boolean}
 	 */
@@ -43,7 +49,7 @@ export default class Enum {
 	 * @memberOf Enum
 	 * @instance
 	 *
-	 * @param {*} value - A value in this enum.
+	 * @param {unknown} value - A value in this enum.
 	 *
 	 * @returns {string | undefined}
 	 */
@@ -69,7 +75,7 @@ export default class Enum {
 	 * @memberOf Enum
 	 * @instance
 	 *
-	 * @param {Function} callback - Callback is provided one arg, the value.
+	 * @param {eachCallback} callback - Callback is provided one arg, the value.
 	 */
 	each(callback) {
 		_(this).values.forEach((value) => callback(value));

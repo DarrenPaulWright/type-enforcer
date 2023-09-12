@@ -34,7 +34,7 @@
 
 | Param | Type |
 | --- | --- |
-| object | <code>object</code> | 
+| object | <code>Object.&lt;string, unknown&gt;</code> | 
 
 
 <br><a name="Enum+has"></a>
@@ -45,7 +45,7 @@
 
 | Param | Type | Description |
 | --- | --- | --- |
-| value | <code>\*</code> | A value to check against the values in this Enum. |
+| value | <code>unknown</code> | A value to check against the values in this Enum. |
 
 
 <br><a name="Enum+key"></a>
@@ -56,7 +56,7 @@
 
 | Param | Type | Description |
 | --- | --- | --- |
-| value | <code>\*</code> | A value in this enum. |
+| value | <code>unknown</code> | A value in this enum. |
 
 
 <br><a name="Enum+each"></a>
@@ -77,7 +77,7 @@
 
 | Param | Type | Description |
 | --- | --- | --- |
-| callback | <code>function</code> | Callback is provided one arg, the value. |
+| callback | <code>eachCallback</code> | Callback is provided one arg, the value. |
 
 
 [npm]: https://img.shields.io/npm/v/type-enforcer.svg

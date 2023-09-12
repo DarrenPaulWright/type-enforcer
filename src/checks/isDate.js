@@ -18,7 +18,7 @@
  * @function is.date
  * @alias isDate
  *
- * @param {*} value - The value to check.
+ * @param {unknown} value - The value to check.
  * @param {boolean} [coerce=false] - If true then see if the value can be coerced into a Date.
  *
  * @returns {boolean}

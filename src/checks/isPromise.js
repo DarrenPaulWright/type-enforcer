@@ -20,7 +20,7 @@ import isFunction from './isFunction.js';
  * @function is.promise
  * @alias isPromise
  *
- * @param {*} value - The value to check.
+ * @param {unknown} value - The value to check.
  * @param {boolean} [coerce=false] - If true then see if the value can be coerced into a Promise. Functions can be coerced into Promises.
  *
  * @returns {boolean}

@@ -29,7 +29,12 @@ import isNumber from './isNumber.js';
  * @returns {boolean}
  */
 const isInteger = (value, coerce) => {
-	return (isNumber(value) && value !== Infinity && value !== -Infinity && value == (value | 0)) || (coerce === true && !isNaN(value) && isInteger(parseFloat(value))); // eslint-disable-line eqeqeq
+	return (
+		isNumber(value) &&
+		value !== Infinity &&
+		value !== -Infinity &&
+		value == Math.floor(value) // eslint-disable-line eqeqeq
+	) || (coerce === true && !isNaN(value) && isInteger(parseFloat(value)));
 };
 
 export default isInteger;

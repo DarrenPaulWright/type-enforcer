@@ -465,7 +465,7 @@ const assert = {
 	 * @param {unknown} actual
 	 */
 	weakMap: assertion({
-		assert: is.weakMap(),
+		assert: is.weakMap,
 		message: (a) => `${ display(a) } to be a WeakMap`
 	}),
 

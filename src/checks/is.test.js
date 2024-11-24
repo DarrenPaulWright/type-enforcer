@@ -1,4 +1,5 @@
 import displayValue from 'display-value';
+import { describe, it } from 'hippogriff';
 import {
 	arrayData,
 	booleanData,
@@ -40,8 +41,8 @@ import {
 	isSymbol,
 	isWeakMap,
 	isWeakSet
-} from '../index.js';
-import assert from '../src/assert/assert.js';
+} from '../../index.js';
+import assert from '../assert/assert.js';
 
 describe('checks', () => {
 	describe('isArray', () => {

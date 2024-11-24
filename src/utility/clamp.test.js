@@ -1,5 +1,6 @@
-import { clamp } from '../index.js';
-import assert from '../src/assert/assert.js';
+import { describe, it } from 'hippogriff';
+import { clamp } from '../../index.js';
+import assert from '../assert/assert.js';
 
 describe('clamp', () => {
 	it('should clamp to a min value', () => {

@@ -1,8 +1,8 @@
-import { benchSettings } from 'karma-webpack-bundle';
 import castArray from '../../src/utility/castArray.js';
+import { when, bench } from 'hippogriff';
 
 /* eslint-disable no-unused-vars */
-suite('castArray', () => {
+when('castArray', () => {
 	let sandbox = null;
 	let args = null;
 
@@ -14,27 +14,27 @@ suite('castArray', () => {
 
 	getArgs('a', 'b', 'c');
 
-	benchmark('empty array', () => {
+	bench('empty array', () => {
 		sandbox = castArray([]);
-	}, benchSettings);
+	});
 
-	benchmark('small array', () => {
+	bench('small array', () => {
 		sandbox = castArray([1, 2, 3, 4, 5, 6, 7, 8, 9]);
-	}, benchSettings);
+	});
 
-	benchmark('undefined', () => {
+	bench('undefined', () => {
 		sandbox = castArray();
-	}, benchSettings);
+	});
 
-	benchmark('args', () => {
+	bench('args', () => {
 		sandbox = castArray(args);
-	}, benchSettings);
+	});
 
-	benchmark('number', () => {
+	bench('number', () => {
 		sandbox = castArray(23);
-	}, benchSettings);
+	});
 
-	benchmark('null', () => {
+	bench('null', () => {
 		sandbox = castArray(null);
-	}, benchSettings);
+	});
 });

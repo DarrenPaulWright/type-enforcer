@@ -1,9 +1,9 @@
 /* eslint-disable unicorn/prevent-abbreviations */
-import { benchSettings } from 'karma-webpack-bundle';
 import { PrivateVars as PrivateVars } from '../../index.js'; /* eslint-disable no-unused-vars */
+import { when, bench, beforeEach } from 'hippogriff';
 
 /* eslint-disable no-unused-vars */
-suite('PrivateVars', () => {
+when('PrivateVars', () => {
 	let sandbox = null;
 
 	class SimpleWeakMapWrapper extends WeakMap {
@@ -19,62 +19,55 @@ suite('PrivateVars', () => {
 
 	let _ = new PrivateVars();
 
-	benchmark('new WeakMap', () => {
+	bench('new WeakMap', () => {
 		sandbox = new WeakMap();
-	}, benchSettings);
+	});
 
-	benchmark('new SimpleWeakMapWrapper', () => {
+	bench('new SimpleWeakMapWrapper', () => {
 		sandbox = new SimpleWeakMapWrapper();
-	}, benchSettings);
+	});
 
-	benchmark('init', () => {
+	bench('init', () => {
 		sandbox = new PrivateVars();
-	}, benchSettings);
-
-	benchmark('get empty', () => {
-		sandbox = _(widget);
-	}, {
-		...benchSettings,
-		onStart() {
-			_ = new PrivateVars();
-		}
 	});
 
-	benchmark('get', () => {
-		sandbox = _(widget);
-	}, {
-		...benchSettings,
-		onStart() {
+	when('PrivateVars', () => {
+		beforeEach(() => {
 			_ = new PrivateVars();
-			_.set(widget);
-		}
-	});
+		});
 
-	benchmark('set', () => {
-		sandbox = _.set(widget);
-	}, {
-		...benchSettings,
-		onStart() {
-			_ = new PrivateVars();
-		}
-	});
+		bench('get empty', () => {
+			sandbox = _(widget);
+		});
 
-	benchmark('set custom object', () => {
-		sandbox = _.set(widget, { 'thing': 7 });
-	}, {
-		...benchSettings,
-		onStart() {
-			_ = new PrivateVars();
-		}
-	});
+		when('get', () => {
+			beforeEach(() => {
+				_ = new PrivateVars();
+				_.set(widget);
+			});
 
-	benchmark('get custom object', () => {
-		sandbox = _(widget);
-	}, {
-		...benchSettings,
-		onStart() {
-			_ = new PrivateVars();
-			_.set(widget, { 'thing': 7 });
-		}
+			bench('get', () => {
+				sandbox = _(widget);
+			});
+		});
+
+		bench('set', () => {
+			sandbox = _.set(widget);
+		});
+
+		bench('set custom object', () => {
+			sandbox = _.set(widget, { 'thing': 7 });
+		});
+
+		when('get', () => {
+			beforeEach(() => {
+				_ = new PrivateVars();
+				_.set(widget, { 'thing': 7 });
+			});
+
+			bench('get custom object', () => {
+				sandbox = _(widget);
+			});
+		});
 	});
 });

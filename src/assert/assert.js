@@ -13,11 +13,34 @@ import AssertionError from './AssertionError.js';
  * @param {object} settings
  * @param {Function} settings.assert
  * @param {Function} settings.message
+ *
+ * @returns {(function(unknown, unknown): void)}
+ */
+const assertion = ({ assert, message }) => {
+	return (value) => {
+		if (assert(value) === false) {
+			throw new AssertionError(message(value), {
+				actual: value,
+				showDiff: false
+			});
+		}
+	};
+};
+
+/**
+ * Generate an assertion function that compares two values.
+ *
+ * @function compareAssertion
+ * @private
+ *
+ * @param {object} settings
+ * @param {Function} settings.assert
+ * @param {Function} settings.message
  * @param {boolean} [settings.showDiff]
  *
  * @returns {(function(unknown, unknown): void)}
  */
-const assertion = ({ assert, message, showDiff }) => {
+const compareAssertion = ({ assert, message, showDiff }) => {
 	return (actual, expected) => {
 		if (assert(actual, expected) === false) {
 			throw new AssertionError(message(actual, expected), {
@@ -28,6 +51,9 @@ const assertion = ({ assert, message, showDiff }) => {
 		}
 	};
 };
+
+// TODO: do type validation where appropriate, return more helpful messages if types are wrong
+// TODO: test ansi with chalk, verify that strings are compared correctly. show better error messages (if strings are the same with ansi stripped, say so, etc), render ansi in message?
 
 /**
  * An assertion library for testing. Assertions do nothing if the test passes, and throw an AssertionError if they fail.
@@ -56,7 +82,7 @@ const assert = {
 	 * @param {unknown} actual
 	 * @param {unknown} expected
 	 */
-	is: assertion({
+	is: compareAssertion({
 		assert: sameValue,
 		message: (a, b) => display(a) + ' to be ' + display(b),
 		showDiff: true
@@ -83,7 +109,7 @@ const assert = {
 	 * @param {unknown} actual
 	 * @param {unknown} expected
 	 */
-	notIs: assertion({
+	notIs: compareAssertion({
 		assert: (a, b) => !sameValue(a, b),
 		message: (a, b) => display(a) + ' to not be ' + display(b)
 	}),
@@ -107,7 +133,7 @@ const assert = {
 	 * @param {unknown} actual
 	 * @param {unknown} expected
 	 */
-	equal: assertion({
+	equal: compareAssertion({
 		assert: deepEqual,
 		message: (a, b) => display(a) + ' to equal ' + display(b),
 		showDiff: true
@@ -133,7 +159,7 @@ const assert = {
 	 * @param {unknown} actual
 	 * @param {unknown} expected
 	 */
-	notEqual: assertion({
+	notEqual: compareAssertion({
 		assert: (a, b) => !deepEqual(a, b),
 		message: (a, b) => display(a) + ' to not equal ' + display(b)
 	}),
@@ -155,7 +181,7 @@ const assert = {
 	 * @param {unknown} leftOperand
 	 * @param {unknown} rightOperand
 	 */
-	moreThan: assertion({
+	moreThan: compareAssertion({
 		assert: (a, b) => a > b,
 		message: (a, b) => display(a) + ' to be more than ' + display(b)
 	}),
@@ -177,7 +203,7 @@ const assert = {
 	 * @param {unknown} leftOperand
 	 * @param {unknown} rightOperand
 	 */
-	atLeast: assertion({
+	atLeast: compareAssertion({
 		assert: (a, b) => a >= b,
 		message: (a, b) => display(a) + ' to be at least ' + display(b)
 	}),
@@ -199,7 +225,7 @@ const assert = {
 	 * @param {unknown} leftOperand
 	 * @param {unknown} rightOperand
 	 */
-	lessThan: assertion({
+	lessThan: compareAssertion({
 		assert: (a, b) => a < b,
 		message: (a, b) => display(a) + ' to be less than ' + display(b)
 	}),
@@ -221,7 +247,7 @@ const assert = {
 	 * @param {unknown} leftOperand
 	 * @param {unknown} rightOperand
 	 */
-	atMost: assertion({
+	atMost: compareAssertion({
 		assert: (a, b) => a <= b,
 		message: (a, b) => display(a) + ' to be at most ' + display(b)
 	}),
@@ -332,7 +358,7 @@ const assert = {
 	 * @param {unknown} actual
 	 * @param {Function} constructor
 	 */
-	instanceOf: assertion({
+	instanceOf: compareAssertion({
 		assert: is.instanceOf,
 		message: (a, b) => `${ display(a) } to be an instance of ${ display(b) }`
 	}),

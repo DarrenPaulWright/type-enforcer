@@ -1,48 +1,42 @@
-import { benchSettings } from 'karma-webpack-bundle';
 import { Removable } from '../index.js';
+import { when, bench, beforeEach } from 'hippogriff';
 
 /* eslint-disable no-unused-vars */
-suite('Removable', () => {
+when('Removable', () => {
 	let sandbox = null;
 	let instance = null;
 
-	benchmark('isRemoved false', () => {
+	beforeEach(() => {
+		instance = new Removable();
+	})
+
+	bench('isRemoved false', () => {
 		sandbox = instance.isRemoved;
-	}, {
-		...benchSettings,
-		onStart() {
-			instance = new Removable();
-		}
 	});
 
-	benchmark('isRemoved true', () => {
-		sandbox = instance.isRemoved;
-	}, {
-		...benchSettings,
-		onStart() {
-			instance = new Removable();
+	when('isRemoved', () => {
+		beforeEach(() => {
 			instance.remove();
-		}
+		})
+
+		bench('isRemoved true', () => {
+			sandbox = instance.isRemoved;
+		});
 	});
 
-	benchmark('remove, no callbacks', () => {
+	bench('remove, no callbacks', () => {
 		sandbox = instance.remove();
-	}, {
-		...benchSettings,
-		onStart() {
-			instance = new Removable();
-		}
 	});
 
-	benchmark('remove, with callbacks', () => {
-		sandbox = instance.remove();
-	}, {
-		...benchSettings,
-		onStart() {
-			instance = new Removable();
+	when('isRemoved', () => {
+		beforeEach(() => {
 			instance.onRemove(() => {
 				sandbox = instance;
 			});
-		}
+		})
+
+		bench('remove, with callbacks', () => {
+			sandbox = instance.remove();
+		});
 	});
 });

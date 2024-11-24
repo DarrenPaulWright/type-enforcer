@@ -1,4 +1,5 @@
 import displayValue from 'display-value';
+import { describe } from 'hippogriff';
 import {
 	arrayData,
 	booleanData,
@@ -41,8 +42,8 @@ import {
 	enforceSymbol,
 	enforceWeakMap,
 	enforceWeakSet
-} from '../index.js';
-import { enumData, validEnumObject } from './helpers/testValues.js';
+} from '../../index.js';
+import { enumData, validEnumObject } from '../../tests/helpers/testValues.js';
 
 describe('enforce', () => {
 	describe('.array', () => {
@@ -130,7 +131,7 @@ describe('enforce', () => {
 				};
 			}),
 			message(input) {
-				return `should return a coerced ${displayValue(input)} when coerce is true`;
+				return `should return a coerced ${ displayValue(input) } when coerce is true`;
 			},
 			test(value) {
 				return enforce.symbol(value, value, true)

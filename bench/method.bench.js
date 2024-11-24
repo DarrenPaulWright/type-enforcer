@@ -1,10 +1,10 @@
-import { benchSettings } from 'karma-webpack-bundle';
 import { forOwn } from 'object-agent';
 import { methodKeyValue, methodQueue, methodString } from '../index.js';
+import { when, bench } from 'hippogriff';
 
 /* eslint-disable no-unused-vars */
-suite('', () => {
-	suite('methodString', () => {
+when('', () => {
+	when('methodString', () => {
 		let sandbox = null;
 
 		forOwn({
@@ -50,29 +50,29 @@ suite('', () => {
 
 			const widget = new Widget();
 
-			benchmark(`${key} init`, () => {
+			bench(`${key} init`, () => {
 				methodString(value);
-			}, benchSettings);
+			});
 
-			benchmark(`${key} get`, () => {
+			bench(`${key} get`, () => {
 				widget[key]();
-			}, benchSettings);
+			});
 
-			benchmark(`${key} set`, () => {
+			bench(`${key} set`, () => {
 				widget[key]('asdf');
-			}, benchSettings);
+			});
 
-			benchmark(`${key} set other`, () => {
+			bench(`${key} set other`, () => {
 				widget[key](3);
-			}, benchSettings);
+			});
 
-			benchmark(`${key} set bad`, () => {
+			bench(`${key} set bad`, () => {
 				widget[key]([]);
-			}, benchSettings);
+			});
 		});
 	});
 
-	suite('methodKeyValue', () => {
+	when('methodKeyValue', () => {
 		let sandbox = null;
 
 		class Widget {}
@@ -88,7 +88,7 @@ suite('', () => {
 
 		const widget = new Widget();
 
-		benchmark('init', () => {
+		bench('init', () => {
 			methodKeyValue({
 				get() {
 					return sandbox;
@@ -97,26 +97,26 @@ suite('', () => {
 					sandbox = value;
 				}
 			});
-		}, benchSettings);
+		});
 
-		benchmark('get', () => {
+		bench('get', () => {
 			widget.test();
-		}, benchSettings);
+		});
 
-		benchmark('get single', () => {
+		bench('get single', () => {
 			widget.test('test');
-		}, benchSettings);
+		});
 
-		benchmark('set', () => {
+		bench('set', () => {
 			widget.test({ 'asdf': 5, 'another': 10 });
-		}, benchSettings);
+		});
 
-		benchmark('set single', () => {
+		bench('set single', () => {
 			widget.test('asdf', 5);
-		}, benchSettings);
+		});
 	});
 
-	suite('methodQueue', () => {
+	when('methodQueue', () => {
 		let sandbox = null;
 
 		class Widget {}
@@ -129,22 +129,22 @@ suite('', () => {
 
 		const widget = new Widget();
 
-		benchmark('init', () => {
+		bench('init', () => {
 			methodQueue({
 				set(queue, id) {
 					sandbox = id;
 				}
 			});
-		}, benchSettings);
+		});
 
-		benchmark('get', () => {
+		bench('get', () => {
 			widget.test();
-		}, benchSettings);
+		});
 
-		benchmark('set', () => {
+		bench('set', () => {
 			widget.test(() => {
 				sandbox = 1;
 			});
-		}, benchSettings);
+		});
 	});
 });

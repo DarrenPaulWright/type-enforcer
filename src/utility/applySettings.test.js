@@ -1,5 +1,6 @@
-import { applySettings } from '../index.js';
-import assert from '../src/assert/assert.js';
+import { describe, it } from 'hippogriff';
+import { applySettings } from '../../index.js';
+import assert from '../assert/assert.js';
 
 describe('applySettings', () => {
 	it('should not throw errors if methods are provided that don\'t exist on the target', () => {

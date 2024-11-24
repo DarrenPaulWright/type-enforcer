@@ -1,12 +1,12 @@
-import { benchSettings } from 'karma-webpack-bundle';
 import { applySettings } from '../../index.js';
+import { when, bench } from 'hippogriff';
 
-suite('applySettings', () => {
+when('applySettings', () => {
 	class Widget {}
 
 	const widget = new Widget();
 
-	benchmark('settings only', () => {
+	bench('settings only', () => {
 		applySettings(widget, {
 			test: 3,
 			test1: 3,
@@ -19,9 +19,9 @@ suite('applySettings', () => {
 			test8: 3,
 			test9: 3
 		});
-	}, benchSettings);
+	});
 
-	benchmark('priority list', () => {
+	bench('priority list', () => {
 		applySettings(widget, {
 			test: 3,
 			test1: 3,
@@ -34,9 +34,9 @@ suite('applySettings', () => {
 			test8: 3,
 			test9: 3
 		}, ['test1', 'test3', 'test7']);
-	}, benchSettings);
+	});
 
-	benchmark('defered list', () => {
+	bench('defered list', () => {
 		applySettings(widget, {
 			test: 3,
 			test1: 3,
@@ -49,9 +49,9 @@ suite('applySettings', () => {
 			test8: 3,
 			test9: 3
 		}, [], ['test', 'test4', 'test8']);
-	}, benchSettings);
+	});
 
-	benchmark('both lists', () => {
+	bench('both lists', () => {
 		applySettings(widget, {
 			test: 3,
 			test1: 3,
@@ -64,5 +64,5 @@ suite('applySettings', () => {
 			test8: 3,
 			test9: 3
 		}, ['test1', 'test3', 'test7'], ['test', 'test4', 'test8']);
-	}, benchSettings);
+	});
 });

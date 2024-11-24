@@ -1,5 +1,6 @@
+import { describe, it } from 'hippogriff';
 import { Removable } from '../index.js';
-import assert from '../src/assert/assert.js';
+import assert from './assert/assert.js';
 
 class TestClass extends Removable {
 }

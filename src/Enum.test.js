@@ -1,5 +1,6 @@
+import { describe, it } from 'hippogriff';
 import { Enum } from '../index.js';
-import assert from '../src/assert/assert.js';
+import assert from './assert/assert.js';
 
 describe('Enum', () => {
 	it('should look like an object', () => {

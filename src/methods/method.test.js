@@ -1,3 +1,4 @@
+import { describe, it } from 'hippogriff';
 import {
 	arrayData,
 	booleanData,
@@ -44,9 +45,9 @@ import {
 	methodWeakSet,
 	Queue,
 	Removable
-} from '../index.js';
-import assert from '../src/assert/assert.js';
-import { enumData, validEnumObject } from './helpers/testValues.js';
+} from '../../index.js';
+import assert from '../assert/assert.js';
+import { enumData, validEnumObject } from '../../tests/helpers/testValues.js';
 
 /* eslint-disable consistent-this */
 describe('method', () => {
@@ -545,4 +546,3 @@ describe('method', () => {
 		testMethod({ ...weakSetData }, methodWeakSet, method);
 	});
 });
-

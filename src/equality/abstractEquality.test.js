@@ -1,5 +1,6 @@
+import { describe } from 'hippogriff';
 import { multiTest } from 'type-enforcer-test-helper';
-import { strictEquality } from '../index.js';
+import { abstractEquality } from '../../index.js';
 import {
 	abstractEqual,
 	alwaysEqual,
@@ -8,14 +9,14 @@ import {
 	messageTrue,
 	sameValueEqual,
 	sameValueNotEqual
-} from './helpers/compareValues.js';
+} from '../../tests/helpers/compareValues.js';
 
-describe('strictEquality', () => {
+describe('abstractEquality', () => {
 	multiTest({
 		values: alwaysEqual,
 		message: messageTrue,
 		test(value) {
-			return strictEquality(value[0], value[1]);
+			return abstractEquality(value[0], value[1]);
 		},
 		assertion: 'true'
 	});
@@ -24,25 +25,25 @@ describe('strictEquality', () => {
 		values: sameValueNotEqual,
 		message: messageTrue,
 		test(value) {
-			return strictEquality(value[0], value[1]);
+			return abstractEquality(value[0], value[1]);
 		},
 		assertion: 'true'
 	});
 
 	multiTest({
 		values: abstractEqual,
-		message: messageFalse,
+		message: messageTrue,
 		test(value) {
-			return strictEquality(value[0], value[1]);
+			return abstractEquality(value[0], value[1]);
 		},
-		assertion: 'false'
+		assertion: 'true'
 	});
 
 	multiTest({
 		values: alwaysNotEqual,
 		message: messageFalse,
 		test(value) {
-			return strictEquality(value[0], value[1]);
+			return abstractEquality(value[0], value[1]);
 		},
 		assertion: 'false'
 	});
@@ -51,7 +52,7 @@ describe('strictEquality', () => {
 		values: sameValueEqual,
 		message: messageFalse,
 		test(value) {
-			return strictEquality(value[0], value[1]);
+			return abstractEquality(value[0], value[1]);
 		},
 		assertion: 'false'
 	});

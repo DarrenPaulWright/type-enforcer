@@ -1,10 +1,10 @@
-import { benchSettings } from 'karma-webpack-bundle';
 import { testTypes } from 'type-enforcer-test-helper';
 import { is } from '../index.js';
+import { when, bench } from 'hippogriff';
 
 /* eslint-disable no-unused-vars */
 testTypes.forEach((data) => {
-	suite(`is.${data.name}`, () => {
+	when(`is.${data.name}`, () => {
 		const check = is[data.name];
 		const trueValue = data.true[0];
 		const falseValue = data.false[0];
@@ -19,36 +19,36 @@ testTypes.forEach((data) => {
 					const innerTrueValue = innerData.true[0];
 					const innerFalseValue = innerData.false[0];
 
-					benchmark(`${innerData.name} true`, () => {
+					bench(`${innerData.name} true`, () => {
 						const result = check(innerTrueValue, innerValue);
-					}, benchSettings);
+					});
 
-					benchmark(`${innerData.name} false`, () => {
+					bench(`${innerData.name} false`, () => {
 						const result = check(innerFalseValue, innerValue);
-					}, benchSettings);
+					});
 				}
 			});
 		}
 		else {
-			benchmark('true', () => {
+			bench('true', () => {
 				const result = check(trueValue);
-			}, benchSettings);
+			});
 
-			benchmark('false', () => {
+			bench('false', () => {
 				const result = check(falseValue);
-			}, benchSettings);
+			});
 		}
 
 		if (data.coerceTrue.length !== 0) {
-			benchmark('coerce true', () => {
+			bench('coerce true', () => {
 				const result = check(coerceTrueValue, true);
-			}, benchSettings);
+			});
 		}
 
 		if (data.coerceFalse.length !== 0) {
-			benchmark('coerce false', () => {
+			bench('coerce false', () => {
 				const result = check(coerceFalseValue, true);
-			}, benchSettings);
+			});
 		}
 	});
 });

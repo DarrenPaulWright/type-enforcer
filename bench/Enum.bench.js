@@ -1,11 +1,10 @@
-import { benchSettings } from 'karma-webpack-bundle';
 import { Enum } from '../index.js';
+import { describe, bench, beforeEach } from 'hippogriff';
 
 /* eslint-disable no-unused-vars */
-suite('Enum', () => {
+describe('Enum', () => {
 	let sandbox = null;
 	let enumInstance = null;
-	const id = 1;
 	const data = {
 		one: 'one',
 		two: 'two',
@@ -18,36 +17,29 @@ suite('Enum', () => {
 		nine: 'nine'
 	};
 
-	benchmark('init', () => {
-		sandbox = new Enum(data);
-	}, benchSettings);
-
-	benchmark('has', () => {
-		enumInstance.has('three');
-	}, {
-		...benchSettings,
-		onStart() {
-			enumInstance = new Enum(data);
-		}
-	});
-
-	benchmark('key', () => {
-		sandbox = enumInstance.key('three');
-	}, {
-		...benchSettings,
-		onStart() {
-			enumInstance = new Enum(data);
-		}
-	});
-
-	benchmark('each', () => {
-		enumInstance.each((value) => {
-			sandbox = value;
+	describe('initializing', () => {
+		bench('init', () => {
+			sandbox = new Enum(data);
 		});
-	}, {
-		...benchSettings,
-		onStart() {
+	});
+
+	describe('initialized', () => {
+		beforeEach(() => {
 			enumInstance = new Enum(data);
-		}
+		});
+
+		bench('has', () => {
+			enumInstance.has('three');
+		});
+
+		bench('key', () => {
+			sandbox = enumInstance.key('three');
+		});
+
+		bench('each', () => {
+			enumInstance.each((value) => {
+				sandbox = value;
+			});
+		});
 	});
 });

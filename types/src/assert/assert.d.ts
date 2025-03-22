@@ -1,0 +1,32 @@
+export default assert;
+declare namespace assert {
+	export let is: (actual: unknown, expected: unknown) => void;
+	export let notIs: (actual: unknown, expected: unknown) => void;
+	export let equal: (actual: unknown, expected: unknown) => void;
+	export let notEqual: (actual: unknown, expected: unknown) => void;
+	export let moreThan: (actual: unknown, expected: unknown) => void;
+	export let atLeast: (actual: unknown, expected: unknown) => void;
+	export let lessThan: (actual: unknown, expected: unknown) => void;
+	export let atMost: (actual: unknown, expected: unknown) => void;
+	export let throws: (callback: () => void | Promise<void>) => void;
+	export let notThrows: (callback: () => void | Promise<void>) => void;
+	export let array: (value: unknown) => void;
+	export let boolean: (value: unknown) => void;
+	export let date: (value: unknown) => void;
+	export let float: (value: unknown) => void;
+	let _function: (value: unknown) => void;
+	export { _function as function };
+	export let instanceOf: (value: unknown, instance: unknown) => void;
+	export let integer: (value: unknown) => void;
+	export let json: (value: unknown) => void;
+	export let map: (value: unknown) => void;
+	export let number: (value: unknown) => void;
+	export let object: (value: unknown) => void;
+	export let promise: (value: unknown) => void;
+	export let regExp: (value: unknown) => void;
+	export let set: (value: unknown) => void;
+	export let string: (value: unknown) => void;
+	export let symbol: (value: unknown) => void;
+	export let weakMap: (value: unknown) => void;
+	export let weakSet: (value: unknown) => void;
+}

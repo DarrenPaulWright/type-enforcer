@@ -6,6 +6,9 @@
 		"index.js"
 	],
 	"compilerOptions": {
+		"target": "esnext",
+		"module": "esnext",
+		"moduleResolution": "bundler",
 		"allowJs": true,
 		"declaration": true,
 		"emitDeclarationOnly": true,
